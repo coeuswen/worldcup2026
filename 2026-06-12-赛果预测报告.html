@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026世界杯 · 6月12日赛果预测报告</title>
+<style>
+  :root {
+    --bg: #0a0e17;
+    --card: #111827;
+    --card2: #1a2235;
+    --border: #1e2d45;
+    --tx: #e2e8f0;
+    --tx2: #94a3b8;
+    --tx3: #64748b;
+    --gr: #22c55e;
+    --rd: #ef4444;
+    --bl: #3b82f6;
+    --gd: #eab308;
+    --sl: #8b5cf6;
+    --br: #f97316;
+    --cyan: #06b6d4;
+    --accent: #f59e0b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--tx);
+    line-height: 1.7;
+    padding: 16px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 32px 16px 24px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .header h1 { font-size: clamp(22px, 4vw, 30px); color: #fff; margin-bottom: 8px; }
+  .header .sub { font-size: 13px; color: var(--tx2); }
+  .header .trophy { font-size: 48px; margin-bottom: 8px; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .card h2 {
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 {
+    font-size: 16px;
+    color: var(--tx);
+    margin: 16px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--card2);
+    color: var(--tx2);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  tr:last-child td { border-bottom: none; }
+  td:first-child, th:first-child { text-align: left; }
+
+  /* Highlights */
+  .highlight { color: var(--gr); font-weight: 700; }
+  .warn { color: var(--rd); }
+  .info { color: var(--bl); }
+  .note { color: var(--gd); }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0 2px;
+  }
+  .tag-gr { background: rgba(34,197,94,0.15); color: var(--gr); }
+  .tag-rd { background: rgba(239,68,68,0.15); color: var(--rd); }
+  .tag-bl { background: rgba(59,130,246,0.15); color: var(--bl); }
+  .tag-gd { background: rgba(234,179,8,0.15); color: var(--gd); }
+
+  /* Prediction Box */
+  .prediction {
+    background: var(--card2);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .prediction .pred-header {
+    font-size: 14px;
+    color: var(--tx2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .prediction .matchup {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .prediction .result-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .prediction .result-item {
+    text-align: center;
+  }
+  .prediction .result-item .label {
+    font-size: 11px;
+    color: var(--tx3);
+    text-transform: uppercase;
+  }
+  .prediction .result-item .value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gr);
+  }
+  .prediction .stars { font-size: 22px; letter-spacing: 2px; }
+  .prediction .logic-list {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .prediction .logic-list li {
+    font-size: 13px;
+    color: var(--tx2);
+    margin: 4px 0;
+    padding-left: 4px;
+  }
+
+  /* Star colors */
+  .star-high { color: var(--gr); }
+  .star-mid { color: var(--gd); }
+  .star-low { color: var(--rd); }
+
+  /* Overview table */
+  .overview-table td { font-size: 13px; }
+
+  /* Methodology */
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .method-item {
+    background: var(--card2);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .method-item .step { font-size: 11px; color: var(--accent); font-weight: 600; }
+  .method-item .name { font-size: 14px; color: var(--tx); margin: 4px 0; }
+  .method-item .desc { font-size: 12px; color: var(--tx3); }
+
+  /* Summary grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .summary-item {
+    background: var(--card2);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .summary-item .val { font-size: 20px; font-weight: 700; }
+  .summary-item .lbl { font-size: 11px; color: var(--tx3); margin-top: 2px; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--tx3);
+    font-size: 12px;
+  }
+  .footer a { color: var(--bl); text-decoration: none; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .card { padding: 14px; }
+    table { font-size: 12px; }
+    th, td { padding: 8px 6px; }
+    .prediction .matchup { font-size: 18px; }
+    .method-grid { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  .risk-box {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 8px;
+    padding: 14px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--tx2);
+  }
+
+  .match-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--tx2);
+    margin-bottom: 12px;
+  }
+  .match-meta span { color: var(--tx); font-weight: 500; }
+
+  .elo-compare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+  }
+  .elo-team {
+    text-align: center;
+    padding: 12px 20px;
+    background: var(--bg);
+    border-radius: 10px;
+    min-width: 120px;
+  }
+  .elo-team .flag { font-size: 32px; }
+  .elo-team .name { font-size: 14px; font-weight: 600; color: #fff; }
+  .elo-team .elo-val { font-size: 24px; font-weight: 700; color: var(--bl); }
+  .elo-team .elo-label { font-size: 10px; color: var(--tx3); }
+  .elo-vs { font-size: 20px; font-weight: 700; color: var(--tx2); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <div class="trophy">🏆</div>
+  <h1>2026世界杯 — 6月12日赛果预测报告</h1>
+  <div class="sub">生成时间：2026年6月4日 · 世界杯预测程序 v3.3.7 + 欧赔市场数据</div>
+</div>
+
+<!-- Methodology -->
+<div class="card">
+  <h2>📋 方法论</h2>
+  <p style="font-size:14px;color:var(--tx2);margin-bottom:12px;">本报告结合<b style="color:var(--tx)">两大分析体系</b>交叉验证：</p>
+  <div class="method-grid">
+    <div class="method-item">
+      <div class="step">体系一</div>
+      <div class="name">模型预测</div>
+      <div class="desc">Elo差值 + Poisson xG + 六因子评分</div>
+    </div>
+    <div class="method-item">
+      <div class="step">体系二</div>
+      <div class="name">欧赔分析</div>
+      <div class="desc">初赔→隐含概率→返还率→真实概率</div>
+    </div>
+  </div>
+  <div class="risk-box">
+    <b>判断原则：</b>模型与市场一致 → 高置信度；模型与市场分歧 → 需关注分歧原因。
+  </div>
+</div>
+
+<!-- Match 1: Mexico vs South Africa -->
+<div class="card">
+  <h2>⚽ 第一场：墨西哥 🇲🇽 vs 南非 🇿🇦</h2>
+  <div class="match-meta">
+    <div>比赛时间 <span>6月12日 03:00 (北京时间)</span></div>
+    <div>轮次 <span>A组 小组赛第1轮</span></div>
+    <div>场地 <span>阿兹特克体育场, 墨西哥城</span></div>
+    <div>性质 <span style="color:var(--accent)">🎆 2026世界杯揭幕战</span></div>
+  </div>
+
+  <h3>📊 欧赔分析</h3>
+  <table>
+    <tr><th>选项</th><th>小数赔率</th><th>隐含概率</th><th>校准真实概率</th></tr>
+    <tr><td><b>墨西哥胜</b></td><td class="highlight">1.43</td><td>69.93%</td><td class="highlight">66.72%</td></tr>
+    <tr><td>平局</td><td>4.50</td><td>22.22%</td><td>21.20%</td></tr>
+    <tr><td>南非胜</td><td class="warn">7.90</td><td>12.66%</td><td>12.08%</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--tx3);margin-top:-4px;">返还率：<span class="highlight">95.41%</span>（较高，赔率较为公允）</p>
+  <p style="font-size:13px;color:var(--tx2);margin-top:8px;">
+    <span class="tag tag-gr">欧赔解读</span> 初赔差距巨大（1.43 vs 4.50 vs 7.90），市场对墨西哥取胜形成<b style="color:var(--tx)">强共识</b>。平局赔4.50偏高水平，"防平"不是主流策略。
+  </p>
+
+  <h3>🤖 模型分析</h3>
+  <div class="elo-compare">
+    <div class="elo-team">
+      <div class="flag">🇲🇽</div>
+      <div class="name">墨西哥</div>
+      <div class="elo-val">1689</div>
+      <div class="elo-label">ELO 评分</div>
+    </div>
+    <div class="elo-vs">VS</div>
+    <div class="elo-team">
+      <div class="flag">🇿🇦</div>
+      <div class="name">南非</div>
+      <div class="elo-val" style="color:var(--tx3)">1570</div>
+      <div class="elo-label">ELO 评分</div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:14px;color:var(--accent);margin-top:-4px;">ELO差距：<b>+119</b>（修正后 +260）</p>
+
+  <h3>六因子评分</h3>
+  <table>
+    <tr><th>因子</th><th>🇲🇽 墨西哥</th><th>🇿🇦 南非</th></tr>
+    <tr><td>Elo锚点</td><td class="highlight">+5.7%</td><td>+3.8%</td></tr>
+    <tr><td>年龄结构</td><td class="highlight">+7.3%</td><td class="warn">-4.3% ⚠️</td></tr>
+    <tr><td>大赛经验</td><td class="highlight">+9.0%</td><td>+0.0%</td></tr>
+    <tr><td>近期状态</td><td>+0.9%</td><td>+0.3%</td></tr>
+    <tr><td>教练因素</td><td class="highlight">+3.7%</td><td>+1.1%</td></tr>
+    <tr><td>玄学因子</td><td>+0.0%</td><td>+0.0%</td></tr>
+  </table>
+
+  <h3>模型 vs 市场一致性</h3>
+  <table>
+    <tr><th>维度</th><th>墨西哥胜</th><th>平局</th><th>南非胜</th></tr>
+    <tr><td>市场概率</td><td class="highlight">66.7%</td><td>21.2%</td><td>12.1%</td></tr>
+    <tr><td>模型(ELO)</td><td class="highlight">66.5%</td><td>—</td><td>33.5%</td></tr>
+  </table>
+  <p style="font-size:13px;margin-top:8px;"><span class="tag tag-gr">✓ 高度一致</span> 市场与模型均指向墨西哥大优，置信度极高。</p>
+
+  <div class="prediction">
+    <div class="pred-header">🎯 综合预测</div>
+    <div class="matchup">🇲🇽 墨西哥 vs 南非 🇿🇦</div>
+    <div class="result-row">
+      <div class="result-item"><div class="label">预测方向</div><div class="value">墨西哥胜</div></div>
+      <div class="result-item"><div class="label">预测比分</div><div class="value">2-0 / 2-1</div></div>
+      <div class="result-item"><div class="label">置信度</div><div class="stars star-high">★★★★★</div></div>
+    </div>
+    <ul class="logic-list">
+      <li>① 揭幕战+主场阿兹特克 → 东道主光环</li>
+      <li>② ELO差距119分 → 实力档位差明显</li>
+      <li>③ 南非年龄结构 -4.3% → 年轻阵容难扛揭幕战压力</li>
+      <li>④ 欧赔1.43超低 → 市场已Price In墨西哥优势</li>
+      <li>⑤ 模型与市场完全一致 → 无需怀疑</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Match 2: Korea vs Czech -->
+<div class="card">
+  <h2>⚽ 第二场：韩国 🇰🇷 vs 捷克 🇨🇿</h2>
+  <div class="match-meta">
+    <div>比赛时间 <span>6月12日 10:00 (北京时间)</span></div>
+    <div>轮次 <span>A组 小组赛第1轮</span></div>
+    <div>场地 <span>阿克隆体育场, 瓜达拉哈拉</span></div>
+    <div>性质 <span>小组赛</span></div>
+  </div>
+
+  <h3>📊 欧赔分析</h3>
+  <table>
+    <tr><th>选项</th><th>小数赔率 (Bet365)</th><th>隐含概率</th><th>校准真实概率</th></tr>
+    <tr><td><b>韩国胜</b></td><td>2.60</td><td>38.46%</td><td>36.14%</td></tr>
+    <tr><td>平局</td><td class="note">3.10</td><td class="note">32.26%</td><td class="note">30.31%</td></tr>
+    <tr><td>捷克胜</td><td>2.80</td><td>35.71%</td><td>33.55%</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--tx3);margin-top:-4px;">返还率：93.96%</p>
+  <p style="font-size:13px;color:var(--tx2);margin-top:8px;">
+    <span class="tag tag-gd">均赔格局</span> 初赔非常接近（2.60/3.10/2.80），<b style="color:var(--tx)">平局概率显著提升</b>，是重点关注方向。韩国赔率最低（2.60），市场微弱倾向韩国，但差距仅在伯仲之间。
+  </p>
+
+  <h3>🤖 模型分析</h3>
+  <div class="elo-compare">
+    <div class="elo-team">
+      <div class="flag">🇰🇷</div>
+      <div class="name">韩国</div>
+      <div class="elo-val">1668</div>
+      <div class="elo-label">ELO 评分</div>
+    </div>
+    <div class="elo-vs">VS</div>
+    <div class="elo-team">
+      <div class="flag">🇨🇿</div>
+      <div class="name">捷克</div>
+      <div class="elo-val" style="color:var(--gr)">1690</div>
+      <div class="elo-label">ELO 评分</div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:14px;color:var(--tx2);margin-top:-4px;">ELO差距：<b>-22</b>（捷克微弱领先，修正后 -3）</p>
+
+  <h3>六因子评分</h3>
+  <table>
+    <tr><th>因子</th><th>🇰🇷 韩国</th><th>🇨🇿 捷克</th></tr>
+    <tr><td>Elo锚点</td><td>+5.3%</td><td>+5.7%</td></tr>
+    <tr><td>年龄结构</td><td class="highlight">+6.5%</td><td>+4.1%</td></tr>
+    <tr><td>大赛经验</td><td class="highlight">+9.0%</td><td class="highlight">+9.0%</td></tr>
+    <tr><td>近期状态</td><td>+0.8%</td><td>+1.0%</td></tr>
+    <tr><td>教练因素</td><td class="highlight">+3.4%</td><td>+1.8%</td></tr>
+    <tr><td>玄学因子</td><td>+0.0%</td><td>+0.0%</td></tr>
+  </table>
+
+  <h3>模型 vs 市场 分歧分析</h3>
+  <table>
+    <tr><th>维度</th><th>韩国胜</th><th>平局</th><th>捷克胜</th></tr>
+    <tr><td>市场概率</td><td>36.1%</td><td class="note">30.3%</td><td>33.6%</td></tr>
+    <tr><td>模型(ELO)</td><td>46.8%</td><td>—</td><td class="highlight">53.2%</td></tr>
+  </table>
+  <div class="risk-box">
+    <b>⚠️ 市场与模型出现分歧！</b><br>
+    市场（Bet365）微弱倾向韩国（2.60 vs 2.80），但模型（ELO）微弱倾向捷克（1690 vs 1668）。<b>差距都非常小</b>——这是一场本质上"五五开"的比赛。
+  </div>
+
+  <div class="prediction" style="border-color: var(--gd);">
+    <div class="pred-header">🎯 综合预测</div>
+    <div class="matchup">🇰🇷 韩国 vs 捷克 🇨🇿</div>
+    <div class="result-row">
+      <div class="result-item"><div class="label">预测方向</div><div class="value" style="color:var(--gd)">平局 / 捷克不败</div></div>
+      <div class="result-item"><div class="label">预测比分</div><div class="value" style="color:var(--gd)">1-1 / 0-1</div></div>
+      <div class="result-item"><div class="label">置信度</div><div class="stars star-low">★★☆☆☆</div></div>
+    </div>
+    <ul class="logic-list">
+      <li>① 欧赔呈均赔格局 → 平局概率高达30.3%</li>
+      <li>② 模型ELO仅差22分 → 纸面实力几乎无差距</li>
+      <li>③ 捷克ELO略高(1690>1668) → 模型角度捷克占优</li>
+      <li>④ 市场微弱倾向韩国但赔率差距不显著 → 不可过度解读</li>
+      <li>⑤ 世界杯揭幕日第2场 → 双方都会谨慎、倾向保守</li>
+      <li>⑥ 博彩离散度高 → 机构判断分歧大、不确定性高</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Overview -->
+<div class="card">
+  <h2>📊 6月12日总览</h2>
+  <table class="overview-table">
+    <tr><th>场次</th><th>对阵</th><th>预测方向</th><th>置信度</th><th>推荐比分</th><th>风险</th></tr>
+    <tr>
+      <td>1</td>
+      <td>🇲🇽 墨西哥 vs 🇿🇦 南非</td>
+      <td class="highlight">墨西哥胜</td>
+      <td class="star-high">★★★★★</td>
+      <td>2-0</td>
+      <td><span class="tag tag-gr">低风险</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>🇰🇷 韩国 vs 🇨🇿 捷克</td>
+      <td class="note">平局/捷克不败</td>
+      <td class="star-low">★★☆☆☆</td>
+      <td>1-1</td>
+      <td><span class="tag tag-rd">高风险</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- Betting Reference -->
+<div class="card">
+  <h2>💡 投注参考（仅供娱乐）</h2>
+  <table>
+    <tr><th>场次</th><th>策略建议</th><th>理由</th></tr>
+    <tr>
+      <td>墨西哥 vs 南非</td>
+      <td><b>墨西哥胜 + 小球(&lt;2.5)</b></td>
+      <td style="font-size:12px;color:var(--tx2)">揭幕战双方保守，墨西哥控场但不一定大比分；欧赔大小球盘口小于2.5球赔率-130（隐含概率56.5%）</td>
+    </tr>
+    <tr>
+      <td>韩国 vs 捷克</td>
+      <td><b>平局</b> 或 <b>捷克+0（平手盘）</b></td>
+      <td style="font-size:12px;color:var(--tx2)">均赔格局首选平局；欧赔平局3.10结合返还率94%有一定价值</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Quick Reference -->
+<div class="card">
+  <h2>📐 欧赔知识速查</h2>
+  <div class="method-grid">
+    <div class="method-item"><div class="step">第一步</div><div class="name">倒数法</div><div class="desc">某结果概率 = 1 / 赔率</div></div>
+    <div class="method-item"><div class="step">第二步</div><div class="name">返还率</div><div class="desc">1 / (三个结果倒数之和)</div></div>
+    <div class="method-item"><div class="step">第三步</div><div class="name">真实概率</div><div class="desc">倒数 × 返还率 = 真实概率</div></div>
+    <div class="method-item"><div class="step">第四步</div><div class="name">凯利指数</div><div class="desc">0.85-1.05 合理区间</div></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>本报告由世界杯预测程序 (World Cup Predictor v3.3.7) 结合欧赔分析自动生成。</p>
+  <p style="margin-top:4px;">所有预测仅供参考。足球是圆的，任何结果都有可能发生。⚽</p>
+</div>
+
+</div>
+</body>
+</html>
