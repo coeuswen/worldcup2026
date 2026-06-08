@@ -149,6 +149,19 @@ td { color: var(--text); }
 .risk-4 { background:var(--orange); }
 .risk-5 { background:var(--red); }
 
+
+.asian-card{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);border:1px solid #4fc3f7;border-radius:12px;padding:18px;margin-top:10px;margin-bottom:0}
+.asian-card .asian-title{font-size:0.95em;font-weight:700;color:#4fc3f7;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.asian-card .asian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.asian-card .asian-item{background:rgba(255,255,255,0.05);border-radius:8px;padding:10px}
+.asian-card .asian-label{font-size:0.72em;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
+.asian-card .asian-value{font-size:0.9em;color:#e0e0e0;font-weight:600}
+.asian-card .asian-verdict{padding:10px;border-radius:8px;font-size:0.82em;line-height:1.6}
+.asian-v-match{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#a5d6a7}
+.asian-v-deep{background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.4);color:#ffcc80}
+.asian-v-shallow{background:rgba(33,150,243,0.15);border:1px solid rgba(33,150,243,0.4);color:#90caf9}
+.asian-verdict .verdict-icon{font-size:1.1em;margin-right:4px}
+.asian-card .asian-source{font-size:0.68em;color:var(--text2);text-align:right;margin-top:6px}
 </style>
 </head>
 <body>
@@ -284,6 +297,24 @@ td { color: var(--text); }
   </div>
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">瑞士让一球/球半（-1.25），卡塔尔受让</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">一球至一/球半（欧赔1.28约73%胜率→合理让1~1.25球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-match">
+    <span class="verdict-icon">✅</span><strong>欧亚一致 — 盘口深度与欧赔完全匹配</strong><br>
+    欧赔客胜1.28 + 亚盘瑞士-1.25 → 完美匹配。瑞士需净胜2球才能赢全盘，门槛够高。深盘+极低离散(0.08) → 欧亚双保险，本日最强稳胆信号。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-low">
   <div class="title" style="color:#10b981">
     🌡️ 卡塔尔 vs 瑞士 — 爆冷风险：极低（★☆☆☆☆）
@@ -399,6 +430,24 @@ td { color: var(--text); }
   </div>
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">巴西让一球/球半（-1.25）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">半球至半/一（欧赔1.55→约60%胜率→合理让0.5~0.75球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-deep">
+    <span class="verdict-icon">⚠️</span><strong>欧亚矛盾 — 亚盘比欧赔隐含合理值偏深，存在名气溢价或诱上风险</strong><br>
+    🔥 欧赔仅1.55约60%胜率 → 合理让球0.5-0.75，但亚盘开到-1.25 → **亚盘比欧赔深了整整2档**！这是典型的巴西"名气盘"——庄家利用巴西品牌溢价抬高门槛。结合大公司(Coral/Ladbrokes)给出偏高的1.60，欧亚矛盾加剧 → 巴西穿盘难度大，摩洛哥+1.25价值极高。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-mid">
   <div class="title" style="color:#f59e0b">
     🌡️ 巴西 vs 摩洛哥 — 爆冷风险：中等（★★★☆☆）
@@ -512,6 +561,24 @@ td { color: var(--text); }
   </div>
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">苏格兰让一球/球半（-1.25），海地受让</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">半/一至一球（欧赔1.39→约67%胜率→合理让0.75~1.0球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-deep">
+    <span class="verdict-icon">⚠️</span><strong>欧亚矛盾 — 亚盘比欧赔隐含合理值偏深，存在名气溢价或诱上风险</strong><br>
+    欧赔1.39约67%胜率支持0.75-1.0球让幅，但亚盘开到-1.25 → **偏深约半档**。结合苏格兰不在预测模型中（数据盲区），这个偏深盘口需要谨慎：庄家是否真的看好苏格兰净胜2+球？还是利用"欧洲vs加勒比"认知偏差抬高门槛？建议苏格兰-1.25观望。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-low">
   <div class="title" style="color:#10b981">
     🌡️ 海地 vs 苏格兰 — 爆冷风险：低（★★☆☆☆）
@@ -627,6 +694,24 @@ td { color: var(--text); }
   </div>
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">土耳其让半球/一球（-0.75），澳大利亚受让</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平/半至半球（欧赔1.86→约50%胜率→合理让0.25~0.5球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-deep">
+    <span class="verdict-icon">⚠️</span><strong>欧亚矛盾 — 亚盘比欧赔隐含合理值偏深，存在名气溢价或诱上风险</strong><br>
+    欧赔客胜1.86仅50%胜率 → 合理让0.25-0.5，但亚盘开到-0.75 → **偏深1-2档**！这是"市场追捧"信号：土耳其作为欧洲二流强队被市场高看，但欧赔并未完全支持。ELO差距仅107分进一步佐证双方实力接近。澳大利亚+0.75具有显著价值。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-high">
   <div class="title" style="color:#ef4444">
     🌡️ 澳大利亚 vs 土耳其 — 爆冷风险：中高（★★★★☆）
@@ -642,6 +727,48 @@ td { color: var(--text); }
 </div>
 </div>
 
+
+
+<!-- ============ 🏧 亚盘欧赔联合分析 ============ -->
+<div class="section-title">🏧 亚盘数据总览（titan007.com）</div>
+<div class="upset-summary" style="border-color:#4fc3f7">
+  <h3>欧赔 vs 亚盘 — 交叉验证分析</h3>
+  <table>
+    <thead><tr>
+      <th>让球方</th><th>亚盘盘口</th><th>欧亚一致</th><th>关键分析</th>
+    </tr></thead>
+    <tbody>
+<tr>
+    <td>瑞士</td>
+    <td>瑞士让一球/球半（-1.25），卡塔尔受让</td>
+    <td style="color:#4caf50">✅</td>
+    <td style="font-size:11px;text-align:left">欧赔客胜1.28 + 亚盘瑞士-1.25 → 完美匹配。瑞士需净胜2球才能赢全盘，门槛够高。深盘+极低离散(0.08) ...</td>
+  </tr>
+<tr>
+    <td>巴西</td>
+    <td>巴西让一球/球半（-1.25）</td>
+    <td style="color:#ff9800">⚠️偏深</td>
+    <td style="font-size:11px;text-align:left">🔥 欧赔仅1.55约60%胜率 → 合理让球0.5-0.75，但亚盘开到-1.25 → **亚盘比欧赔深了整整2档**！...</td>
+  </tr>
+<tr>
+    <td>苏格兰</td>
+    <td>苏格兰让一球/球半（-1.25），海地受让</td>
+    <td style="color:#ff9800">⚠️偏深</td>
+    <td style="font-size:11px;text-align:left">欧赔1.39约67%胜率支持0.75-1.0球让幅，但亚盘开到-1.25 → **偏深约半档**。结合苏格兰不在预测模型...</td>
+  </tr>
+<tr>
+    <td>土耳其</td>
+    <td>土耳其让半球/一球（-0.75），澳大利亚受让</td>
+    <td style="color:#ff9800">⚠️偏深</td>
+    <td style="font-size:11px;text-align:left">欧赔客胜1.86仅50%胜率 → 合理让0.25-0.5，但亚盘开到-0.75 → **偏深1-2档**！这是"市场追捧...</td>
+  </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;font-size:12px;color:var(--text2)">
+  💡 <strong>解读</strong>：✅欧亚一致=双保险信号，可信度高 | ⚠️偏深=亚盘比欧赔深→警惕名气溢价/诱上陷阱 | 🔵偏浅=庄家谨慎→热门方未被充分信任<br>
+  📊 数据源：欧赔(worldcup-odds.com) + 亚盘(2026.titan007.com)
+  </p>
+</div>
 
 <!-- ==================== 爆冷预警总览 ==================== -->
 <div class="upset-summary">

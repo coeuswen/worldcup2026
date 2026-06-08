@@ -100,6 +100,19 @@ table .worst { color:var(--red); opacity:0.7; }
 .risk-4 { background:var(--orange); }
 .risk-5 { background:var(--red); }
 
+
+.asian-card{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);border:1px solid #4fc3f7;border-radius:12px;padding:18px;margin-top:10px;margin-bottom:0}
+.asian-card .asian-title{font-size:0.95em;font-weight:700;color:#4fc3f7;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.asian-card .asian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.asian-card .asian-item{background:rgba(255,255,255,0.05);border-radius:8px;padding:10px}
+.asian-card .asian-label{font-size:0.72em;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
+.asian-card .asian-value{font-size:0.9em;color:#e0e0e0;font-weight:600}
+.asian-card .asian-verdict{padding:10px;border-radius:8px;font-size:0.82em;line-height:1.6}
+.asian-v-match{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#a5d6a7}
+.asian-v-deep{background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.4);color:#ffcc80}
+.asian-v-shallow{background:rgba(33,150,243,0.15);border:1px solid rgba(33,150,243,0.4);color:#90caf9}
+.asian-verdict .verdict-icon{font-size:1.1em;margin-right:4px}
+.asian-card .asian-source{font-size:0.68em;color:var(--text2);text-align:right;margin-top:6px}
 </style>
 </head>
 <body>
@@ -230,6 +243,24 @@ table .worst { color:var(--red); opacity:0.7; }
 
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">德国让三球半/四球（-3.75）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">三球+（欧赔1.01→极限→合理让3+球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-match">
+    <span class="verdict-icon">✅</span><strong>欧亚一致 — 盘口深度与欧赔完全匹配</strong><br>
+    极限深盘3.75球配欧赔1.01，欧亚一致。这是本届世界杯最深盘口，德国净胜4球才能赢全盘。庄家设置如此高门槛，本身就说明了双方实力的巨大鸿沟。库拉索受让3.75虽有"捡便宜"心理，但实际德国大胜概率极高。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-low">
   <div class="title" style="color:#10b981">🌡️ 德国 vs 库拉索 — 爆冷风险：极低（★☆☆☆☆）</div>
   <div class="upset-meter">
@@ -338,6 +369,24 @@ table .worst { color:var(--red); opacity:0.7; }
 
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">荷兰让半球（-0.5）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平/半（欧赔1.95→约47%胜率→合理让0.25球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-deep">
+    <span class="verdict-icon">⚠️</span><strong>欧亚矛盾 — 亚盘比欧赔隐含合理值偏深，存在名气溢价或诱上风险</strong><br>
+    ⚠️ 欧赔1.95仅47%胜率 → 理应平/半盘，但亚盘开到半球 → **偏深一档**。结合平赔3.40集中、日本标注"冷门博"，欧亚矛盾+玄学预警=典型爆冷温床。半球盘买下盘（日本+0.5）是对冲优选。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-high">
   <div class="title" style="color:#ef4444">🌡️ 荷兰 vs 日本 — 爆冷风险：中高（★★★★☆）</div>
   <div class="upset-meter">
@@ -441,6 +490,24 @@ table .worst { color:var(--red); opacity:0.7; }
 
 
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">厄瓜多尔让平手/半球（-0.25），科特迪瓦受让</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平手至平/半（欧赔2.30→约41%胜率→合理让0~0.25球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-match">
+    <span class="verdict-icon">✅</span><strong>欧亚一致 — 盘口深度与欧赔完全匹配</strong><br>
+    欧赔离散度0.00全票共识(2.30) + 亚盘浅让平/半 → 欧亚完美呼应。浅盘暗示比赛将非常胶着，厄瓜多尔仅获最低限度让球。结合全票共识信号，这是"有方向但幅度小"的典型格局：厄瓜多尔大概率赢球但净胜不超过1球。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-low">
   <div class="title" style="color:#10b981">🌡️ 科特迪瓦 vs 厄瓜多尔 — 爆冷风险：极低（★☆☆☆☆）</div>
   <div class="upset-meter">
@@ -568,6 +635,48 @@ table .worst { color:var(--red); opacity:0.7; }
 
 <!-- ====== 方法论 & 风险提示 ====== -->
 
+
+<!-- ============ 🏧 亚盘欧赔联合分析 ============ -->
+<div class="section-title">🏧 亚盘数据总览（titan007.com）</div>
+<div class="upset-summary" style="border-color:#4fc3f7">
+  <h3>欧赔 vs 亚盘 — 交叉验证分析</h3>
+  <table>
+    <thead><tr>
+      <th>让球方</th><th>亚盘盘口</th><th>欧亚一致</th><th>关键分析</th>
+    </tr></thead>
+    <tbody>
+<tr>
+    <td>德国</td>
+    <td>德国让三球半/四球（-3.75）</td>
+    <td style="color:#4caf50">✅</td>
+    <td style="font-size:11px;text-align:left">极限深盘3.75球配欧赔1.01，欧亚一致。这是本届世界杯最深盘口，德国净胜4球才能赢全盘。庄家设置如此高门槛，本身就说...</td>
+  </tr>
+<tr>
+    <td>荷兰</td>
+    <td>荷兰让半球（-0.5）</td>
+    <td style="color:#ff9800">⚠️偏深</td>
+    <td style="font-size:11px;text-align:left">⚠️ 欧赔1.95仅47%胜率 → 理应平/半盘，但亚盘开到半球 → **偏深一档**。结合平赔3.40集中、日本标注"...</td>
+  </tr>
+<tr>
+    <td>厄瓜多尔</td>
+    <td>厄瓜多尔让平手/半球（-0.25），科特迪瓦受让</td>
+    <td style="color:#4caf50">✅</td>
+    <td style="font-size:11px;text-align:left">欧赔离散度0.00全票共识(2.30) + 亚盘浅让平/半 → 欧亚完美呼应。浅盘暗示比赛将非常胶着，厄瓜多尔仅获最低限...</td>
+  </tr>
+<tr>
+    <td>瑞典</td>
+    <td>瑞典让半球（-0.5）</td>
+    <td style="color:#ff9800">⚠️偏深</td>
+    <td style="font-size:11px;text-align:left">欧赔1.93约48%胜率 → 合理平/半，但亚盘开到半球 → **偏深一档**。北欧球队通常获得"欧洲溢价"，但结合瑞典...</td>
+  </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;font-size:12px;color:var(--text2)">
+  💡 <strong>解读</strong>：✅欧亚一致=双保险信号，可信度高 | ⚠️偏深=亚盘比欧赔深→警惕名气溢价/诱上陷阱 | 🔵偏浅=庄家谨慎→热门方未被充分信任<br>
+  📊 数据源：欧赔(worldcup-odds.com) + 亚盘(2026.titan007.com)
+  </p>
+</div>
+
 <!-- ==================== 爆冷预警总览 ==================== -->
 <div class="upset-summary">
   <h3>🌡️ 爆冷预警总览 — 6月15日（周一）</h3>
@@ -623,6 +732,24 @@ table .worst { color:var(--red); opacity:0.7; }
 </body>
 </html
 <!-- ===== 爆冷风险分析 ===== -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">瑞典让半球（-0.5）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平/半（欧赔1.93→约48%胜率→合理让0.25球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-deep">
+    <span class="verdict-icon">⚠️</span><strong>欧亚矛盾 — 亚盘比欧赔隐含合理值偏深，存在名气溢价或诱上风险</strong><br>
+    欧赔1.93约48%胜率 → 合理平/半，但亚盘开到半球 → **偏深一档**。北欧球队通常获得"欧洲溢价"，但结合瑞典主胜离散度0.12（偏高）和突尼斯"冷门博"标签，半球盘存在诱上风险。突尼斯+0.5值得关注。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card upset-mid">
   <div class="title" style="color:#f59e0b">🌡️ 瑞典 vs 突尼斯 — 爆冷风险：中等（★★★☆☆）</div>
   <div class="upset-meter">

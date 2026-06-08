@@ -102,6 +102,19 @@ table .best{color:var(--green);font-weight:700;}
 .upset-highlight{background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.3);border-radius:12px;padding:16px;margin-top:16px}
 .upset-highlight .hl-title{font-size:.9rem;font-weight:700;color:#f97316;margin-bottom:6px}
 
+
+.asian-card{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);border:1px solid #4fc3f7;border-radius:12px;padding:18px;margin-top:10px;margin-bottom:0}
+.asian-card .asian-title{font-size:0.95em;font-weight:700;color:#4fc3f7;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.asian-card .asian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.asian-card .asian-item{background:rgba(255,255,255,0.05);border-radius:8px;padding:10px}
+.asian-card .asian-label{font-size:0.72em;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
+.asian-card .asian-value{font-size:0.9em;color:#e0e0e0;font-weight:600}
+.asian-card .asian-verdict{padding:10px;border-radius:8px;font-size:0.82em;line-height:1.6}
+.asian-v-match{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#a5d6a7}
+.asian-v-deep{background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.4);color:#ffcc80}
+.asian-v-shallow{background:rgba(33,150,243,0.15);border:1px solid rgba(33,150,243,0.4);color:#90caf9}
+.asian-verdict .verdict-icon{font-size:1.1em;margin-right:4px}
+.asian-card .asian-source{font-size:0.68em;color:var(--text2);text-align:right;margin-top:6px}
 </style>
 </head>
 <body>
@@ -225,6 +238,24 @@ table .best{color:var(--green);font-weight:700;}
 <div>✅ <b>推荐买入</b>：加拿大胜（2.00）× 总进球<2.5 = 优势组合<br>✅ <b>首选比分</b>：1-0（安全） + 2-0（进取）<br>⚠️ <b>亚盘策略</b>：加拿大-0.5 主水0.900可操作<br>⚠️ <b>风险提示</b>：波黑不在ELO模型中，纯欧赔分析置信度略降</div>
 
 <!-- 🌡️ 爆冷风险分析 -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">加拿大让平手/半球（-0.25）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平/半至半球（欧赔2.25→约42%胜率→合理让0.25~0.5球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-match">
+    <span class="verdict-icon">✅</span><strong>欧亚一致 — 盘口深度与欧赔完全匹配</strong><br>
+    浅让平/半搭配欧赔2.25主胜，欧亚高度一致。但浅盘意味着庄家对加拿大信心有限，仅给予最低限度让球。"平/半盘买下盘"是亚洲盘经典策略，波黑+0.25具有明确投资价值。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card">
 <div class="upset-header">
   <span class="upset-icon">🌡️</span>
@@ -366,6 +397,24 @@ table .best{color:var(--green);font-weight:700;}
 <div>⚠️ <b>建议回避主胜</b>：ELO-赔率-亚盘矛盾信号太强，不推荐买入美国胜<br>✅ <b>价值方向</b>：巴拉圭+0.5（客水1.875，庄家暗防）<br>✅ <b>首选比分</b>：1-1（安全）<br>⚠️ <b>亚盘策略</b>：走巴拉圭+0.5方向，坐和望赢<br>⚠️ <b>大小球</b>：小球2.5 水1.800 = 庄家预期沉闷</div>
 
 <!-- 🌡️ 爆冷风险分析 -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">美国让半球（-0.5）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平/半（欧赔2.10→约44%胜率→合理让0.25球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-deep">
+    <span class="verdict-icon">⚠️</span><strong>欧亚矛盾 — 亚盘比欧赔隐含合理值偏深，存在名气溢价或诱上风险</strong><br>
+    ⚠️ 欧赔2.10约44%胜率仅支持平/半盘，但亚盘开到半球→**亚盘比欧赔深一档**。这是"名气溢价"信号：美国作为东道主获得额外盘口尊重，但欧赔数据不支持。半球盘买下盘（巴拉圭+0.5）具有明确价值，经典"欧亚矛盾"陷阱。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card">
 <div class="upset-header">
   <span class="upset-icon">🌡️</span>
@@ -425,6 +474,36 @@ table .best{color:var(--green);font-weight:700;}
 </div>
 </div>
 
+
+
+<!-- ============ 🏧 亚盘欧赔联合分析 ============ -->
+<div class="section-title">🏧 亚盘数据总览（titan007.com）</div>
+<div class="upset-summary" style="border-color:#4fc3f7">
+  <h3>欧赔 vs 亚盘 — 交叉验证分析</h3>
+  <table>
+    <thead><tr>
+      <th>让球方</th><th>亚盘盘口</th><th>欧亚一致</th><th>关键分析</th>
+    </tr></thead>
+    <tbody>
+<tr>
+    <td>加拿大</td>
+    <td>加拿大让平手/半球（-0.25）</td>
+    <td style="color:#4caf50">✅</td>
+    <td style="font-size:11px;text-align:left">浅让平/半搭配欧赔2.25主胜，欧亚高度一致。但浅盘意味着庄家对加拿大信心有限，仅给予最低限度让球。"平/半盘买下盘"是...</td>
+  </tr>
+<tr>
+    <td>美国</td>
+    <td>美国让半球（-0.5）</td>
+    <td style="color:#ff9800">⚠️偏深</td>
+    <td style="font-size:11px;text-align:left">⚠️ 欧赔2.10约44%胜率仅支持平/半盘，但亚盘开到半球→**亚盘比欧赔深一档**。这是"名气溢价"信号：美国作为东...</td>
+  </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;font-size:12px;color:var(--text2)">
+  💡 <strong>解读</strong>：✅欧亚一致=双保险信号，可信度高 | ⚠️偏深=亚盘比欧赔深→警惕名气溢价/诱上陷阱 | 🔵偏浅=庄家谨慎→热门方未被充分信任<br>
+  📊 数据源：欧赔(worldcup-odds.com) + 亚盘(2026.titan007.com)
+  </p>
+</div>
 
 <!-- 🌡️ 爆冷预警总览 -->
 <div class="card" style="border:2px solid #f97316;">

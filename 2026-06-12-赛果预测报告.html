@@ -163,6 +163,19 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .upset-highlight{background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.3);border-radius:12px;padding:16px;margin-top:16px}
 .upset-highlight .hl-title{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px}
 
+
+.asian-card{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);border:1px solid #4fc3f7;border-radius:12px;padding:18px;margin-top:10px;margin-bottom:0}
+.asian-card .asian-title{font-size:0.95em;font-weight:700;color:#4fc3f7;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.asian-card .asian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.asian-card .asian-item{background:rgba(255,255,255,0.05);border-radius:8px;padding:10px}
+.asian-card .asian-label{font-size:0.72em;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
+.asian-card .asian-value{font-size:0.9em;color:#e0e0e0;font-weight:600}
+.asian-card .asian-verdict{padding:10px;border-radius:8px;font-size:0.82em;line-height:1.6}
+.asian-v-match{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#a5d6a7}
+.asian-v-deep{background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.4);color:#ffcc80}
+.asian-v-shallow{background:rgba(33,150,243,0.15);border:1px solid rgba(33,150,243,0.4);color:#90caf9}
+.asian-verdict .verdict-icon{font-size:1.1em;margin-right:4px}
+.asian-card .asian-source{font-size:0.68em;color:var(--text2);text-align:right;margin-top:6px}
 </style>
 </head>
 <body>
@@ -313,6 +326,24 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </div>
 
 <!-- 🌡️ 爆冷风险分析 -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">墨西哥让一球（-1.0）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">一球至一/球半（欧赔1.28约73%胜率→合理让1~1.25球）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-match">
+    <span class="verdict-icon">✅</span><strong>欧亚一致 — 盘口深度与欧赔完全匹配</strong><br>
+    欧赔客胜1.28 vs 亚盘让一球，两者高度一致。深盘保护下冷门空间极小。亚盘印证了欧赔对墨西哥的强力看好，属"深盘+低赔"双保险格局。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card">
 <div class="upset-header">
   <span class="upset-icon">🌡️</span>
@@ -440,6 +471,24 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </div>
 
 <!-- 🌡️ 爆冷风险分析 -->
+<div class="asian-card">
+  <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+  <div class="asian-grid">
+    <div class="asian-item">
+      <div class="asian-label">即时盘口</div>
+      <div class="asian-value">平手盘（0）</div>
+    </div>
+    <div class="asian-item">
+      <div class="asian-label">欧赔推导合理盘</div>
+      <div class="asian-value">平手（欧赔2.60/3.10/2.62三线接近→完全均势）</div>
+    </div>
+  </div>
+  <div class="asian-verdict asian-v-match">
+    <span class="verdict-icon">✅</span><strong>欧亚一致 — 盘口深度与欧赔完全匹配</strong><br>
+    欧赔三线接近(2.60/3.10/2.62) → 亚盘平手盘完美对应。平手盘意味着庄家完全不表态，任何一方都没有让球优势。这是典型的"市场看不懂"信号，投注价值低但爆冷概率高——任何方向都可能打出。
+  </div>
+  <div class="asian-source">盘口来源：2026.titan007.com（皇冠/澳门/Bet365综合）</div>
+</div>
 <div class="upset-card">
 <div class="upset-header">
   <span class="upset-icon">🌡️</span>
@@ -498,6 +547,36 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </table>
 </div>
 
+
+
+<!-- ============ 🏧 亚盘欧赔联合分析 ============ -->
+<div class="section-title">🏧 亚盘数据总览（titan007.com）</div>
+<div class="upset-summary" style="border-color:#4fc3f7">
+  <h3>欧赔 vs 亚盘 — 交叉验证分析</h3>
+  <table>
+    <thead><tr>
+      <th>让球方</th><th>亚盘盘口</th><th>欧亚一致</th><th>关键分析</th>
+    </tr></thead>
+    <tbody>
+<tr>
+    <td>墨西哥</td>
+    <td>墨西哥让一球（-1.0）</td>
+    <td style="color:#4caf50">✅</td>
+    <td style="font-size:11px;text-align:left">欧赔客胜1.28 vs 亚盘让一球，两者高度一致。深盘保护下冷门空间极小。亚盘印证了欧赔对墨西哥的强力看好，属"深盘+低...</td>
+  </tr>
+<tr>
+    <td>无</td>
+    <td>平手盘（0）</td>
+    <td style="color:#4caf50">✅</td>
+    <td style="font-size:11px;text-align:left">欧赔三线接近(2.60/3.10/2.62) → 亚盘平手盘完美对应。平手盘意味着庄家完全不表态，任何一方都没有让球优势...</td>
+  </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;font-size:12px;color:var(--text2)">
+  💡 <strong>解读</strong>：✅欧亚一致=双保险信号，可信度高 | ⚠️偏深=亚盘比欧赔深→警惕名气溢价/诱上陷阱 | 🔵偏浅=庄家谨慎→热门方未被充分信任<br>
+  📊 数据源：欧赔(worldcup-odds.com) + 亚盘(2026.titan007.com)
+  </p>
+</div>
 
 <!-- ============ 🌡️ 爆冷预警总览 ============ -->
 <div class="section">
@@ -580,7 +659,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 • 预测模型：本地世界杯预测程序（ELO+Poisson xG + 六因子 + 玄学分析，运行于localhost:7862）<br><br>
 
 <b style="color:var(--gold)">综合权重体系：</b><br>
-• 欧赔深度分析（广实/骨架/方向/离散度）：30%<br>
+• 欧赔深度分析（广实/骨架/方向/离散度）：25%<br>• 亚盘欧亚一致性分析（titan007.com盘口）：5%<br>
 • 亚盘盘口+水位验证：15%<br>
 • 大小球交叉验证：10%<br>
 • ELO差距+六因子评分：25%<br>
