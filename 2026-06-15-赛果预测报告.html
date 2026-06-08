@@ -78,6 +78,28 @@ table .worst { color:var(--red); opacity:0.7; }
   .match-header { flex-direction:column; text-align:center; }
   .match-info { text-align:center; margin-top:4px; }
 }
+.upset-card { border-radius:10px; padding:14px 16px; margin-top:12px; font-size:0.85em; }
+.upset-low { background:#0d1f0d20; border:1px solid #0d3320; }
+.upset-mid { background:#1a1a0a20; border:1px solid #332a0d; }
+.upset-high { background:#1a0a0a20; border:1px solid #3d1a1a; }
+.upset-extreme { background:#0d0d1f20; border:1px solid #1a1a3d; }
+.upset-card .title { font-weight:700; margin-bottom:6px; }
+.upset-card .signals { margin:4px 0; }
+.upset-card .signal { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.78em; margin:2px; font-weight:600; }
+.signal-risk { background:#330d0d; color:#ef4444; }
+.signal-warn { background:#332a0d; color:#f59e0b; }
+.signal-safe { background:#0d3320; color:#10b981; }
+.upset-summary { background:linear-gradient(135deg,#1a1a2e,#16213e); border:1px solid var(--border); border-radius:12px; padding:20px; margin:20px 0; }
+.upset-summary h3 { color:var(--accent); margin-bottom:12px; }
+.upset-meter { display:flex; align-items:center; gap:8px; margin:6px 0; }
+.upset-meter .bar-bg { flex:1; height:8px; background:var(--card2); border-radius:4px; overflow:hidden; }
+.upset-meter .bar-fill { height:100%; border-radius:4px; transition:width 0.3s; }
+.risk-1 { background:var(--green); }
+.risk-2 { background:var(--note); }
+.risk-3 { background:var(--accent); }
+.risk-4 { background:var(--orange); }
+.risk-5 { background:var(--red); }
+
 </style>
 </head>
 <body>
@@ -206,6 +228,20 @@ table .worst { color:var(--red); opacity:0.7; }
   </div>
 </div>
 
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-low">
+  <div class="title" style="color:#10b981">🌡️ 德国 vs 库拉索 — 爆冷风险：极低（★☆☆☆☆）</div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-1" style="width:5%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#10b981">🟢 极低</span>
+  </div>
+  <div class="signals"><span class="signal signal-safe">极限深盘</span><span class="signal signal-safe">主胜1.01-1.03</span><span class="signal signal-safe">客胜34-91</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">主胜1.01-1.03为世界足坛极值赔率，客胜34-91说明庄家完全放弃管控库拉索爆冷。ELO差距超500分，不存在任何爆冷可能。这是本届世界杯最没有悬念的比赛。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：⚠️ 绝对不建议博冷。此役只适合用于串关填充（主胜1.01做胆）。</p>
+</div>
+
 <!-- ====== 比赛2: 荷兰 vs 日本 ====== -->
 <div class="card">
   <div class="match-header">
@@ -300,6 +336,20 @@ table .worst { color:var(--red); opacity:0.7; }
   </div>
 </div>
 
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-high">
+  <div class="title" style="color:#ef4444">🌡️ 荷兰 vs 日本 — 爆冷风险：中高（★★★★☆）</div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-4" style="width:68%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#ef4444">🟠 中高</span>
+  </div>
+  <div class="signals"><span class="signal signal-warn">平赔集中3.40-3.60</span><span class="signal signal-risk">日本冷门博</span><span class="signal signal-warn">主胜1.95中庸</span><span class="signal signal-risk">客胜离散0.45</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">🔥 <b>本日最值得关注的冷门！</b>四大预警：(1)荷兰主胜1.95属中庸偏实盘，庄家并未强力示好；(2)平赔3.40-3.60极度集中，庄家明确防范平局；(3)日本客胜Bet365给到3.30，有公司暗示日本有机会；(4)日本"冷门博"标签 + 亚洲队广实修正后可拉近差距。荷兰是传统大赛慢热型球队。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：🚨 强烈建议防范：(1)双选「荷兰胜+平局」；(2)小注日本受让+0.5/1；(3)1:1波胆值得小注；(4)若博高赔，日本客胜3.75值博率不错。</p>
+</div>
+
 <!-- ====== 比赛3: 科特迪瓦 vs 厄瓜多尔 ====== -->
 <div class="card">
   <div class="match-header">
@@ -387,6 +437,20 @@ table .worst { color:var(--red); opacity:0.7; }
     <div style="background:var(--bg);border-radius:6px;padding:8px;text-align:center;"><div style="font-weight:700;">0:0</div><div style="color:var(--muted);font-size:0.75em;">★★ 5%</div></div>
     <div style="background:var(--bg);border-radius:6px;padding:8px;text-align:center;"><div style="font-weight:700;">2:1</div><div style="color:var(--muted);font-size:0.75em;">★☆ 3%</div></div>
   </div>
+</div>
+
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-low">
+  <div class="title" style="color:#10b981">🌡️ 科特迪瓦 vs 厄瓜多尔 — 爆冷风险：极低（★☆☆☆☆）</div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-1" style="width:5%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#10b981">🟢 极低</span>
+  </div>
+  <div class="signals"><span class="signal signal-safe">全票共识2.30</span><span class="signal signal-safe">离散度0.00</span><span class="signal signal-safe">五大原则全支持</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">客胜离散度0.00为本届唯一完美一致信号，7家公司全部给出完全相同赔率(2.30)，欧赔史上极为罕见。五大原则全线支持厄瓜多尔。科特迪瓦虽有"冷门博"标签，但全票共识的威力远超单一标签。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：⚠️ 不建议博冷。厄瓜多尔客胜是当日最稳信号之一，适合重注。</p>
 </div>
 
 <!-- ====== 比赛4: 瑞典 vs 突尼斯 ====== -->
@@ -503,6 +567,51 @@ table .worst { color:var(--red); opacity:0.7; }
 </div>
 
 <!-- ====== 方法论 & 风险提示 ====== -->
+
+<!-- ==================== 爆冷预警总览 ==================== -->
+<div class="upset-summary">
+  <h3>🌡️ 爆冷预警总览 — 6月15日（周一）</h3>
+  <table style="margin:12px 0;">
+    <tr><th>#</th><th>比赛</th><th>爆冷风险</th><th>强度</th><th>核心建议</th></tr>
+    
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">一</td>
+        <td style="font-weight:600;">德国 vs 库拉索</td>
+        <td style="color:#10b981;font-weight:700;font-size:0.9em;">🟢 极低</td>
+        <td style="color:#10b981;">█░░░░</td>
+        <td style="font-size:0.82em;color:var(--text2);">⚠️ 绝对不建议博冷</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">二</td>
+        <td style="font-weight:600;">荷兰 vs 日本</td>
+        <td style="color:#f97316;font-weight:700;font-size:0.9em;">🟠 中高</td>
+        <td style="color:#f97316;">████░</td>
+        <td style="font-size:0.82em;color:var(--text2);">🚨 强烈建议防范：(1)双选「荷兰胜+平局」；(2)小注日本受让+0.5/1；(3)1:1</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">三</td>
+        <td style="font-weight:600;">科特迪瓦 vs 厄瓜多尔</td>
+        <td style="color:#10b981;font-weight:700;font-size:0.9em;">🟢 极低</td>
+        <td style="color:#10b981;">█░░░░</td>
+        <td style="font-size:0.82em;color:var(--text2);">⚠️ 不建议博冷</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">四</td>
+        <td style="font-weight:600;">瑞典 vs 突尼斯</td>
+        <td style="color:#f59e0b;font-weight:700;font-size:0.9em;">🟡 中等</td>
+        <td style="color:#f59e0b;">███░░</td>
+        <td style="font-size:0.82em;color:var(--text2);">⚠️ 建议防范：(1)双选「瑞典胜+平局」；(2)若博高赔，小注突尼斯受让+0.5/1</td>
+      </tr>
+  </table>
+  <div style="margin-top:12px;padding:12px;background:var(--card2);border-radius:8px;font-size:0.85em;">
+    <b style="color:#f97316;">⚠️ 本日最高爆冷风险：荷兰 vs 日本 — 爆冷风险：中高（★★★★☆）</b><br>
+    <span style="color:var(--text2);">🔥 <b>本日最值得关注的冷门！</b>四大预警：(1)荷兰主胜1.95属中庸偏实盘，庄家并未强力示好；(2)平赔3.40-3.60极度集中，庄家明确防范平局；(3)日本客胜Bet365给到3.30，有公司暗示日本有机会；(4)日本"冷门博"标签 + 亚洲队广实修正后可拉近差距。荷兰是传统大赛慢热型球队。</span>
+  </div>
+  <p style="margin-top:10px;font-size:0.78em;color:var(--muted);">
+    🔑 爆冷风险评估维度：ELO差距 · 欧赔离散度 · 玄学冷门信号 · 盘口深度 · 大公司异常 · 五大原则矛盾
+  </p>
+</div>
+
 <div class="footer">
   <p>📊 欧赔(30%) + ELO(25%) + 六因子(20%) + 玄学(15%) + Polymarket(10%)</p>
   <p>📅 数据日期：2026-04-21 GMT（worldcup-odds.com）| 🏷️ zgzcw.com 6月15日标签页确认4场比赛</p>
@@ -512,4 +621,18 @@ table .worst { color:var(--red); opacity:0.7; }
 
 </div>
 </body>
-</html>
+</html
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-mid">
+  <div class="title" style="color:#f59e0b">🌡️ 瑞典 vs 突尼斯 — 爆冷风险：中等（★★★☆☆）</div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-3" style="width:50%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#f59e0b">🟡 中等</span>
+  </div>
+  <div class="signals"><span class="signal signal-warn">主胜离散0.12</span><span class="signal signal-risk">突尼斯冷门博</span><span class="signal signal-warn">Coral放任客胜4.33</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">三大预警：(1)瑞典主胜离散度0.12偏高，各公司对瑞典信心不完全一致；(2)突尼斯有"冷门博"标签 + "柔弱胜刚强"玄学；(3)Coral/Ladbrokes客胜给到4.33，并未强力压低突尼斯赔付，留有爆冷空间。但瑞典ELO优势和六因子占优提供安全垫。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：⚠️ 建议防范：(1)双选「瑞典胜+平局」；(2)若博高赔，小注突尼斯受让+0.5/1。</p>
+</div>
+
+>

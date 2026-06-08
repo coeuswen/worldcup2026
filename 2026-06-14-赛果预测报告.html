@@ -127,6 +127,28 @@ td { color: var(--text); }
   .match-header { font-size: 1em; }
   .elo-bar .team { min-width: 50px; font-size: 0.75em; }
 }
+.upset-card { border-radius:10px; padding:14px 16px; margin-top:12px; font-size:0.85em; }
+.upset-low { background:#0d1f0d20; border:1px solid #0d3320; }
+.upset-mid { background:#1a1a0a20; border:1px solid #332a0d; }
+.upset-high { background:#1a0a0a20; border:1px solid #3d1a1a; }
+.upset-extreme { background:#0d0d1f20; border:1px solid #1a1a3d; }
+.upset-card .title { font-weight:700; margin-bottom:6px; }
+.upset-card .signals { margin:4px 0; }
+.upset-card .signal { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.78em; margin:2px; font-weight:600; }
+.signal-risk { background:#330d0d; color:#ef4444; }
+.signal-warn { background:#332a0d; color:#f59e0b; }
+.signal-safe { background:#0d3320; color:#10b981; }
+.upset-summary { background:linear-gradient(135deg,#1a1a2e,#16213e); border:1px solid var(--border); border-radius:12px; padding:20px; margin:20px 0; }
+.upset-summary h3 { color:var(--accent); margin-bottom:12px; }
+.upset-meter { display:flex; align-items:center; gap:8px; margin:6px 0; }
+.upset-meter .bar-bg { flex:1; height:8px; background:var(--card2); border-radius:4px; overflow:hidden; }
+.upset-meter .bar-fill { height:100%; border-radius:4px; transition:width 0.3s; }
+.risk-1 { background:var(--green); }
+.risk-2 { background:var(--note); }
+.risk-3 { background:var(--accent); }
+.risk-4 { background:var(--orange); }
+.risk-5 { background:var(--red); }
+
 </style>
 </head>
 <body>
@@ -260,6 +282,21 @@ td { color: var(--text); }
       <b style="color:var(--highlight);">推荐：客胜</b> | 半全场：负/负 | 总进球：3-4球
     </p>
   </div>
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-low">
+  <div class="title" style="color:#10b981">
+    🌡️ 卡塔尔 vs 瑞士 — 爆冷风险：极低（★☆☆☆☆）
+  </div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-1" style="width:8%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#10b981">🟢 极低</span>
+  </div>
+  <div class="signals"><span class="signal signal-safe">深盘保护</span><span class="signal signal-safe">离散度0.08</span><span class="signal signal-safe">三线一致</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">ELO差距403分 + 客胜离散0.08 + 7-8区深盘 → 几乎不存在爆冷可能。唯一微弱变数是卡塔尔"坤☷冷门博"标签，但实力差距过大，不足以构成威胁。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：⚠️ 不建议博冷。瑞士客胜是本日最稳胆，重注可行。</p>
+</div>
 </div>
 
 <!-- ==================== MATCH 2: 巴西 vs 摩洛哥 ==================== -->
@@ -360,6 +397,21 @@ td { color: var(--text); }
       <b style="color:var(--highlight);">推荐：主胜</b> | 半全场：胜/胜 | 总进球：2-3球 | <b style="color:var(--note);">防平: 1:1</b>
     </p>
   </div>
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-mid">
+  <div class="title" style="color:#f59e0b">
+    🌡️ 巴西 vs 摩洛哥 — 爆冷风险：中等（★★★☆☆）
+  </div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-3" style="width:55%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#f59e0b">🟡 中等</span>
+  </div>
+  <div class="signals"><span class="signal signal-warn">大公司偏高1.60</span><span class="signal signal-warn">平赔集中</span><span class="signal signal-risk">摩洛哥冷门博</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">⚠️ 本日最值得关注的潜在冷门！三大预警信号：(1)Coral/Ladbrokes给巴西1.60偏高，未强力压低赔付；(2)平赔3.80-4.00极度集中(离散0.20)，庄家明确防范平局；(3)摩洛哥"冷门博"标签 + 年龄结构优势(+0.061)。浅盘3-4区说明庄家认为差距比ELO所示更小。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：⚠️ 建议防范平局(1:1)。可考虑「巴西让球平」或「双平」对冲。重注主胜有风险。</p>
+</div>
 </div>
 
 <!-- ==================== MATCH 3: 海地 vs 苏格兰 ==================== -->
@@ -458,6 +510,21 @@ td { color: var(--text); }
       <b style="color:var(--highlight);">推荐：客胜</b> | 半全场：负/负 | 总进球：2-3球
     </p>
   </div>
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-low">
+  <div class="title" style="color:#10b981">
+    🌡️ 海地 vs 苏格兰 — 爆冷风险：低（★★☆☆☆）
+  </div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-2" style="width:15%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#10b981">🟢 低</span>
+  </div>
+  <div class="signals"><span class="signal signal-safe">离散度0.04</span><span class="signal signal-warn">数据盲区</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">离散度0.04为当日最低，7家博彩公司对苏格兰客胜几乎无分歧。唯一风险是苏格兰不在预测模型中（ELO为估值~1680），模型层面存在数据盲区。但欧赔市场的强力信号足以弥补。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：⚠️ 客胜稳胆，但不要过度重注（因模型数据不完整）。</p>
+</div>
 </div>
 
 <!-- ==================== MATCH 4: 澳大利亚 vs 土耳其 ==================== -->
@@ -558,6 +625,68 @@ td { color: var(--text); }
       <b style="color:var(--highlight);">推荐：客胜</b> | 半全场：平/负 | 总进球：2-3球 | <b style="color:var(--note);">防平: 1:1</b>
     </p>
   </div>
+
+<!-- ===== 爆冷风险分析 ===== -->
+<div class="upset-card upset-high">
+  <div class="title" style="color:#ef4444">
+    🌡️ 澳大利亚 vs 土耳其 — 爆冷风险：中高（★★★★☆）
+  </div>
+  <div class="upset-meter">
+    <span style="font-size:0.75em;color:var(--muted);width:36px;">风险</span>
+    <div class="bar-bg"><div class="bar-fill risk-4" style="width:70%"></div></div>
+    <span style="font-size:0.78em;font-weight:700;color:#ef4444">🟠 中高</span>
+  </div>
+  <div class="signals"><span class="signal signal-risk">ELO差仅107</span><span class="signal signal-risk">双方冷门博</span><span class="signal signal-warn">离散度0.15</span><span class="signal signal-warn">浅盘3区</span></div>
+  <p style="margin-top:8px;color:var(--text2);line-height:1.7;">🔥 <b>本日最高爆冷风险！</b>四大预警：(1)ELO差距仅107分，是当日实力最接近的比赛；(2)澳大利亚有坤卦"柔弱胜刚强"冷门基因；(3)客胜离散度0.15为当日最高，各公司对土耳其信心不一致；(4)浅盘3区说明庄家认为差距很小。大公司(Coral/Ladbrokes)虽压至1.70，但不排除是诱导投注。</p>
+  <p style="margin-top:6px;color:var(--accent);font-weight:600;">💡 建议：🚨 强烈建议回避重注土耳其客胜。可考虑：(1)双选「客胜+平局」SP约1.40；(2)小注澳大利亚受让+0.5；(3)若博高赔，澳大利亚主胜4.26值博。</p>
+</div>
+</div>
+
+
+<!-- ==================== 爆冷预警总览 ==================== -->
+<div class="upset-summary">
+  <h3>🌡️ 爆冷预警总览 — 6月14日（周日）</h3>
+  <table style="margin:12px 0;">
+    <tr>
+      <th>#</th><th>比赛</th><th>爆冷风险</th><th>强度</th><th>核心建议</th>
+    </tr>
+    
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">一</td>
+        <td style="font-weight:600;">卡塔尔 vs 瑞士</td>
+        <td style="color:#10b981;font-weight:700;font-size:0.9em;">🟢 极低</td>
+        <td style="color:#10b981;">█░░░░</td>
+        <td style="font-size:0.82em;color:var(--text2);">⚠️ 不建议博冷</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">二</td>
+        <td style="font-weight:600;">巴西 vs 摩洛哥</td>
+        <td style="color:#f59e0b;font-weight:700;font-size:0.9em;">🟡 中等</td>
+        <td style="color:#f59e0b;">███░░</td>
+        <td style="font-size:0.82em;color:var(--text2);">⚠️ 建议防范平局(1:1)</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">三</td>
+        <td style="font-weight:600;">海地 vs 苏格兰</td>
+        <td style="color:#10b981;font-weight:700;font-size:0.9em;">🟢 低</td>
+        <td style="color:#10b981;">██░░░</td>
+        <td style="font-size:0.82em;color:var(--text2);">⚠️ 客胜稳胆，但不要过度重注（因模型数据不完整）</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted);font-size:0.85em;">四</td>
+        <td style="font-weight:600;">澳大利亚 vs 土耳其</td>
+        <td style="color:#f97316;font-weight:700;font-size:0.9em;">🟠 中高</td>
+        <td style="color:#f97316;">████░</td>
+        <td style="font-size:0.82em;color:var(--text2);">🚨 强烈建议回避重注土耳其客胜</td>
+      </tr>
+  </table>
+  <div style="margin-top:12px;padding:12px;background:var(--card2);border-radius:8px;font-size:0.85em;">
+    <b style="color:#f97316;">⚠️ 本日最高爆冷风险：爆冷风险：中高（★★★★☆）</b><br>
+    <span style="color:var(--text2);">🔥 <b>本日最高爆冷风险！</b>四大预警：(1)ELO差距仅107分，是当日实力最接近的比赛；(2)澳大利亚有坤卦"柔弱胜刚强"冷门基因；(3)客胜离散度0.15为当日最高，各公司对土耳其信心不一致；(4)浅盘3区说明庄家认为差距很小。大公司(Coral/Ladbrokes)虽压至1.70，但不排除是诱导投注。</span>
+  </div>
+  <p style="margin-top:10px;font-size:0.78em;color:var(--muted);">
+    🔑 爆冷风险评估维度：ELO差距 · 欧赔离散度 · 玄学冷门信号 · 盘口深度 · 大公司异常 · 五大原则矛盾
+  </p>
 </div>
 
 <!-- ==================== FOOTER ==================== -->
