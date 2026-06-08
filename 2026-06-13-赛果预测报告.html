@@ -74,6 +74,34 @@ table .best{color:var(--green);font-weight:700;}
 .water-low{color:#22c55e;font-weight:700;}
 .water-mid{color:#eab308;}
 .water-high{color:#ef4444;}
+
+.upset-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:14px}
+.upset-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.upset-icon{font-size:20px}
+.upset-level{font-size:14px;font-weight:800}
+.upset-level.lvl1{color:#22c55e}
+.upset-level.lvl2{color:#4ade80}
+.upset-level.lvl3{color:#eab308}
+.upset-level.lvl4{color:#f97316}
+.upset-level.lvl5{color:#ef4444}
+.upset-bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:8px 0}
+.upset-bar-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.upset-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.upset-tag{font-size:.75rem;padding:3px 10px;border-radius:12px;font-weight:600}
+.upset-tag.safe{background:rgba(34,197,94,0.15);color:#22c55e;border:1px solid rgba(34,197,94,0.3)}
+.upset-tag.caution{background:rgba(234,179,8,0.15);color:#eab308;border:1px solid rgba(234,179,8,0.3)}
+.upset-tag.danger{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}
+.upset-detail{font-size:.82rem;color:var(--muted);line-height:1.7;margin-top:8px}
+.upset-advice{font-size:.82rem;color:var(--text);margin-top:10px;padding:10px 14px;background:rgba(212,168,67,0.08);border-radius:8px;border-left:3px solid var(--gold)}
+.upset-summary{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:24px;margin-bottom:24px}
+.upset-summary h3{font-size:1.1rem;color:var(--gold);margin-bottom:16px;text-align:center}
+.upset-summary table{width:100%;border-collapse:collapse;font-size:.82rem}
+.upset-summary th{background:var(--card2);color:var(--muted);padding:8px 8px;text-align:center;font-weight:600;font-size:.78rem}
+.upset-summary td{padding:8px 8px;text-align:center;border-bottom:1px solid var(--border);font-size:.82rem}
+.upset-summary .risk-lvl{font-weight:800}
+.upset-highlight{background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.3);border-radius:12px;padding:16px;margin-top:16px}
+.upset-highlight .hl-title{font-size:.9rem;font-weight:700;color:#f97316;margin-bottom:6px}
+
 </style>
 </head>
 <body>
@@ -195,6 +223,29 @@ table .best{color:var(--green);font-weight:700;}
 <div class="strategy-box">
 <div class="s-title">💡 投注策略建议</div>
 <div>✅ <b>推荐买入</b>：加拿大胜（2.00）× 总进球<2.5 = 优势组合<br>✅ <b>首选比分</b>：1-0（安全） + 2-0（进取）<br>⚠️ <b>亚盘策略</b>：加拿大-0.5 主水0.900可操作<br>⚠️ <b>风险提示</b>：波黑不在ELO模型中，纯欧赔分析置信度略降</div>
+
+<!-- 🌡️ 爆冷风险分析 -->
+<div class="upset-card">
+<div class="upset-header">
+  <span class="upset-icon">🌡️</span>
+  <span class="upset-level lvl3">爆冷风险：中等 · 3/5级</span>
+</div>
+<div class="upset-bar-track"><div class="upset-bar-fill" style="width:45%;background:#eab308"></div></div>
+<div class="upset-tags">
+  <span class="upset-tag caution">波黑数据盲区</span>
+  <span class="upset-tag safe">加拿大低水保护</span>
+  <span class="upset-tag caution">主胜离散0.10</span>
+  <span class="upset-tag safe">欧亚一致</span>
+</div>
+<div class="upset-detail">
+  <b>中等风险，主要来自数据盲区。</b>加拿大广义实力「中游」（ELO~1720），波黑不在模型中（估~1680），实际差距不大。欧赔主胜1.95-2.05落在2-3区中庸偏浅位置，离散度0.10说明公司间有一定分歧（Bet365给出最低1.95，Betfred最高2.10）。亚盘-0.5主水0.900低水是积极信号。<br>
+  <b style="color:#eab308">主要风险因子：</b>①波黑数据盲区→真实实力可能被低估 ②主胜离散0.10不算极低→存在庄家分歧 ③欧赔2.00既不深也不浅→中庸盘容易被市场情绪左右 ④波黑若实力被低估100分，则ELO差距将消失。
+</div>
+<div class="upset-advice">
+  💡 <b>投注建议：</b>加拿大胜可作为首选但不建议重注。最佳策略：加拿大胜 + 小球2.5组合。若波黑开场防守稳固→走地平局对冲。1-0是最可能比分（22%），小注比分比大注胜平负更安全。
+</div>
+</div>
+
 </div>
 </div>
 
@@ -313,6 +364,29 @@ table .best{color:var(--green);font-weight:700;}
 <div class="strategy-box">
 <div class="s-title">💡 投注策略建议</div>
 <div>⚠️ <b>建议回避主胜</b>：ELO-赔率-亚盘矛盾信号太强，不推荐买入美国胜<br>✅ <b>价值方向</b>：巴拉圭+0.5（客水1.875，庄家暗防）<br>✅ <b>首选比分</b>：1-1（安全）<br>⚠️ <b>亚盘策略</b>：走巴拉圭+0.5方向，坐和望赢<br>⚠️ <b>大小球</b>：小球2.5 水1.800 = 庄家预期沉闷</div>
+
+<!-- 🌡️ 爆冷风险分析 -->
+<div class="upset-card">
+<div class="upset-header">
+  <span class="upset-icon">🌡️</span>
+  <span class="upset-level lvl4">爆冷风险：中高 · 4/5级 🔥</span>
+</div>
+<div class="upset-bar-track"><div class="upset-bar-fill" style="width:75%;background:#f97316"></div></div>
+<div class="upset-tags">
+  <span class="upset-tag danger">ELO逆差58</span>
+  <span class="upset-tag danger">三重矛盾信号</span>
+  <span class="upset-tag caution">美国让球不合理</span>
+  <span class="upset-tag danger">巴拉圭实力更强</span>
+</div>
+<div class="upset-detail">
+  <b>⚠️ 本日最强爆冷信号！ELO-赔率-亚盘三重矛盾。</b>巴拉圭ELO（1760）高于美国（1702），按实力应该是巴拉圭让球，但实际欧赔却开出美国主胜2.40-2.60让球格局。这是典型的「名气盘」——庄家利用美国主场+知名度优势制造让球假象。<br>
+  <b style="color:#f97316">关键预警因子（6个触发4个）：</b>①ELO逆差→巴拉圭实力更强→高风险 ②浅盘2-3区→爆冷空间大 ③美国亚盘-0.25被市场追捧→庄家迎合而非防范 ④五大原则「信冷不信热」→市场热捧美国，巴拉圭被低估 ⑤欧亚矛盾→欧赔主胜偏高+亚盘水位不合理 ⑥巴拉圭玄学「上善若水」→无明显冷门信号但稳健。
+</div>
+<div class="upset-advice">
+  💡 <b>投注建议：</b>强烈建议回避美国方向。巴拉圭+0.5（客水1.875）是价值方向，坐和望赢。平局（3.30赔率）价值极高——美国虽主场但实力不占优，巴拉圭防守反击策略明确。最佳策略：买巴拉圭不败双选（平局+巴拉圭胜）+ 小球2.5。绝对不要把美国放入串关。
+</div>
+</div>
+
 </div>
 </div>
 
@@ -350,6 +424,46 @@ table .best{color:var(--green);font-weight:700;}
 <p style="margin-top:6px;">所有预测基于历史数据和统计模型，不构成投注建议。足球比赛存在不确定性，请理性对待。</p>
 </div>
 </div>
+
+
+<!-- 🌡️ 爆冷预警总览 -->
+<div class="card" style="border:2px solid #f97316;">
+<h2 style="text-align:center;color:#f97316;">🌡️ 6月13日 · 爆冷预警总览</h2>
+<table>
+<tr><th>比赛</th><th>风险等级</th><th>ELO差</th><th>离散度</th><th>盘口深度</th><th>核心预警</th><th>操作</th></tr>
+<tr>
+  <td>🇨🇦 加拿大 vs 🇧🇦 波黑</td>
+  <td class="risk-lvl" style="color:#eab308">🟡 中等 (3/5)</td>
+  <td>~40</td>
+  <td>0.10</td>
+  <td>2-3区浅盘</td>
+  <td>波黑数据盲区+主胜分歧</td>
+  <td><span class="upset-tag caution">谨慎</span></td>
+</tr>
+<tr style="background:rgba(249,115,22,0.06)">
+  <td>🇺🇸 美国 vs 🇵🇾 巴拉圭</td>
+  <td class="risk-lvl" style="color:#f97316">🟠 中高 (4/5) 🔥</td>
+  <td>-58</td>
+  <td>0.12</td>
+  <td>2-3区浅盘</td>
+  <td>ELO逆差+三重矛盾</td>
+  <td><span class="upset-tag danger">回避美国</span></td>
+</tr>
+</table>
+
+<div class="upset-highlight">
+<div class="hl-title">🔥 本日最高爆冷风险：美国 vs 巴拉圭</div>
+<div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+这是本届开赛以来最典型的「名气盘」陷阱。巴拉圭ELO（1760）实实在在高于美国（1702），但庄家利用美国主场优势和知名度开出美国让球的盘口，制造「美国占优」的假象。<br>
+<b style="color:#f97316">⚠️ ELO-欧赔-亚盘三重矛盾信号汇聚同一方向，这是爆冷的前兆。</b>参考历史：2018世界杯德国vs墨西哥（ELO逆差+浅盘→墨西哥1-0爆冷）、2022世界杯沙特vs阿根廷（名气盘让球→沙特2-1逆转）。本场最合理的预期是<b>平局或巴拉圭小胜</b>。
+</div>
+</div>
+
+<div style="margin-top:16px;padding:12px;background:var(--card2);border-radius:8px;font-size:.78rem;color:var(--muted);line-height:1.6">
+<b>爆冷评估维度（6因子）：</b>①ELO差距（越小→越高风险）②欧赔离散度（热门方>0.15→预警）③玄学冷门信号 ④盘口深度（浅盘1-4区→空间大）⑤大公司异常（Coral/Ladbrokes偏高→不看好）⑥五大原则矛盾（矛盾越多→爆冷可能越大）
+</div>
+</div>
+
 
 <div class="footer">
 <p>🔗 <a href="https://coeuswen.github.io/worldcup2026/" target="_blank">世界杯预测报告首页</a> | 数据来源：<a href="https://worldcup.zgzcw.com/zhuanti/worldCupsc" target="_blank">zgzcw.com</a> · <a href="https://worldcup-odds.com/2026/fixtures/" target="_blank">worldcup-odds.com</a> · totalcorner.com</p>

@@ -135,6 +135,34 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
   .prediction-score{font-size:26px}
   .summary-table{font-size:10px}
 }
+
+.upset-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:14px}
+.upset-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.upset-icon{font-size:20px}
+.upset-level{font-size:14px;font-weight:800}
+.upset-level.lvl1{color:#2ed573}
+.upset-level.lvl2{color:#7bed9f}
+.upset-level.lvl3{color:#ffa502}
+.upset-level.lvl4{color:#ff6b35}
+.upset-level.lvl5{color:#ff4757}
+.upset-bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:8px 0}
+.upset-bar-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.upset-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.upset-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600}
+.upset-tag.safe{background:rgba(46,213,115,0.15);color:#2ed573;border:1px solid rgba(46,213,115,0.3)}
+.upset-tag.caution{background:rgba(255,165,2,0.15);color:#ffa502;border:1px solid rgba(255,165,2,0.3)}
+.upset-tag.danger{background:rgba(255,71,87,0.15);color:#ff4757;border:1px solid rgba(255,71,87,0.3)}
+.upset-detail{font-size:12px;color:var(--text2);line-height:1.7;margin-top:8px}
+.upset-advice{font-size:12px;color:var(--text);margin-top:10px;padding:10px 14px;background:rgba(255,215,0,0.08);border-radius:8px;border-left:3px solid var(--gold)}
+.upset-summary{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px}
+.upset-summary h3{font-size:16px;color:var(--gold);margin-bottom:16px;text-align:center}
+.upset-summary table{width:100%;border-collapse:collapse;font-size:12px}
+.upset-summary th{background:var(--card2);color:var(--text2);padding:10px 8px;text-align:center;font-weight:600;font-size:11px}
+.upset-summary td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);font-size:12px}
+.upset-summary .risk-lvl{font-weight:800}
+.upset-highlight{background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.3);border-radius:12px;padding:16px;margin-top:16px}
+.upset-highlight .hl-title{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px}
+
 </style>
 </head>
 <body>
@@ -283,6 +311,29 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 <div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
 <b style="color:var(--gold)">📝 深度研判：</b>墨西哥广义实力「普强」，南非「下游」并扣除非洲修正-20分，ELO差距约340分→骨架位置7-8区（标准赔率~1.40-1.50）。实际欧赔1.45-1.53完全落在合理区间。亚盘-0.5低水是「实盘低水」形态——庄家靠低赔付而非深开盘口来保护，这是对强队取胜最真实的信心信号。大小球2.5均水+必发68%主胜买单，预期墨西哥掌控全场节奏，2:0是合理终场比分。<b style="color:var(--green)">全玩法建议：胜平负买主胜 / 亚盘买墨西哥-0.5 / 半全场买胜胜 / 总进球买2球（大球2.5）</b>
 </div>
+
+<!-- 🌡️ 爆冷风险分析 -->
+<div class="upset-card">
+<div class="upset-header">
+  <span class="upset-icon">🌡️</span>
+  <span class="upset-level lvl1">爆冷风险：极低 · 1/5级</span>
+</div>
+<div class="upset-bar-track"><div class="upset-bar-fill" style="width:10%;background:#2ed573"></div></div>
+<div class="upset-tags">
+  <span class="upset-tag safe">深盘保护</span>
+  <span class="upset-tag safe">离散度0.08</span>
+  <span class="upset-tag safe">ELO差340</span>
+  <span class="upset-tag safe">三线一致</span>
+</div>
+<div class="upset-detail">
+  <b>6维爆冷因子全绿灯。</b>墨西哥vs南非是本届最深盘之一（骨架7-8区），欧赔离散度仅0.08表明7家公司对墨西哥取胜毫无分歧。ELO差距340分属于碾压级，南非身处下游且非洲修正-20分，实力差距真实。亚盘-0.5低水（0.85）是「实盘低水」形态——庄家通过低赔付而非深开盘口来保护，这是最真实的信心信号。<br>
+  <b style="color:#2ed573">唯一风险点：</b>南非玄学信号「柔弱胜刚强」理论上存在微小冷门基因，但在如此深盘+低离散面前几乎不可能触发。
+</div>
+<div class="upset-advice">
+  💡 <b>投注建议：</b>稳胆重注首选。胜平负买墨西哥胜，亚盘墨西哥-0.5低水是最佳方向。本日最安全的投注标的，可作串关稳胆。
+</div>
+</div>
+
 </div>
 </div>
 
@@ -387,6 +438,29 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 <div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
 <b style="color:var(--gold)">📝 深度研判：</b>这是本日开盘最均衡的场次，欧赔平局离散度仅0.10是强烈信号。韩国广义实力「中上-中游」扣除亚洲-20分后约1680，捷克「中游-中上」加东欧+8分后约1630，修正后差距几乎为零。骨架位置1-2区（标准平赔~3.00-3.30）→ 实际平赔3.10-3.20精准落位。平手盘是「中庸盘」——庄家不想暴露态度，让市场自行博弈。这是典型的「观望盘」，赛前30分钟水位变动会给出最终方向。<b style="color:var(--yellow)">全玩法建议：胜负平买平局（搏）/ 亚盘回避 / 半全场买平平 / 总进球买2球（小球）</b>
 </div>
+
+<!-- 🌡️ 爆冷风险分析 -->
+<div class="upset-card">
+<div class="upset-header">
+  <span class="upset-icon">🌡️</span>
+  <span class="upset-level lvl4">爆冷风险：中高 · 4/5级 🔥</span>
+</div>
+<div class="upset-bar-track"><div class="upset-bar-fill" style="width:70%;background:#ff6b35"></div></div>
+<div class="upset-tags">
+  <span class="upset-tag danger">ELO仅差50</span>
+  <span class="upset-tag caution">平赔集中</span>
+  <span class="upset-tag caution">平手盘博弈</span>
+  <span class="upset-tag danger">任意方向可出</span>
+</div>
+<div class="upset-detail">
+  <b>⚠️ 本日最高爆冷风险！</b>这是开赛以来最均衡的对决。韩捷修正后ELO差距几乎为零（韩国1680 vs 捷克1630），骨架位置仅1-2区（浅盘区间）。欧赔2.55-3.20-2.75形成经典「剪刀差」形态——任何一方取胜都不是冷门。平赔离散度仅0.10是庄家对和局的强烈防范。<br>
+  <b style="color:#ff6b35">关键预警：</b>①ELO差<100→高风险 ②平手盘=庄家不站队 ③韩国「柔弱胜刚强」+捷克「上善若水」玄学均非强信号 ④五大原则中「信深不信浅」→浅盘本身就是警告 ⑤平赔3.10-3.20低离散→平局打出概率被严重低估。
+</div>
+<div class="upset-advice">
+  💡 <b>投注建议：</b>强烈建议回避单边投注。本场任何一方取胜赔率都在2.50以上，平局概率高达30%+。最佳策略：①走地平局对冲 ②等赛前30分钟水位变动再定方向 ③小注搏平局（3.20赔率价值不错） ④绝对不要放入串关稳胆。
+</div>
+</div>
+
 </div>
 </div>
 
@@ -423,6 +497,49 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 
 </table>
 </div>
+
+
+<!-- ============ 🌡️ 爆冷预警总览 ============ -->
+<div class="section">
+<div class="section-title">🌡️ 爆冷预警总览</div>
+<div class="upset-summary">
+<h3>6月12日 · 爆冷风险一览</h3>
+<table>
+<tr><th>比赛</th><th>风险等级</th><th>ELO差</th><th>离散度</th><th>盘口深度</th><th>核心预警</th><th>操作</th></tr>
+<tr>
+  <td>🇲🇽 墨西哥 vs 🇿🇦 南非</td>
+  <td class="risk-lvl" style="color:#2ed573">🟢 极低 (1/5)</td>
+  <td>340</td>
+  <td>0.08</td>
+  <td>7-8区深盘</td>
+  <td>全绿灯，稳胆首选</td>
+  <td><span class="upset-tag safe">重注</span></td>
+</tr>
+<tr>
+  <td>🇰🇷 韩国 vs 🇨🇿 捷克</td>
+  <td class="risk-lvl" style="color:#ff6b35">🟠 中高 (4/5) 🔥</td>
+  <td>~50</td>
+  <td>0.10</td>
+  <td>1-2区平手盘</td>
+  <td>ELO零差距+浅盘+平赔集中</td>
+  <td><span class="upset-tag danger">回避单边</span></td>
+</tr>
+</table>
+
+<div class="upset-highlight">
+<div class="hl-title">🔥 本日最高爆冷风险：韩国 vs 捷克</div>
+<div style="font-size:12px;color:var(--text2);line-height:1.7">
+这是开赛以来最均衡的对决。韩捷ELO差距仅约50分，修正后几乎为零，欧赔给出经典「均势盘」（2.55/3.20/2.75）。平手盘意味着庄家完全不想表态，平赔离散度0.10是庄家对和局最强烈的防患。<br>
+<b style="color:#ff6b35">⚠️ 任何一方取胜都不算冷门。</b>如果韩国取胜（2.55赔率），回报可观但胜率仅约38%；如果捷克取胜（2.75赔率），也不足为奇。本场最理性的策略是<b>走平局或观望</b>，切忌因「韩国亚洲强队」的刻板印象而盲目追韩国。
+</div>
+</div>
+
+<div style="margin-top:16px;padding:12px;background:var(--card2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.6">
+<b>爆冷评估维度（6因子）：</b>①ELO差距（越小越易爆冷）②欧赔离散度（越高越易爆冷）③玄学冷门信号（冷门博/柔弱胜刚强）④盘口深度（浅盘→爆冷空间大）⑤大公司异常（大公司赔率偏高→不看好热门）⑥五大原则矛盾（原则冲突越多→爆冷可能越大）
+</div>
+</div>
+</div>
+
 
 <!-- ============ 投注策略 & 风险提醒 ============ -->
 <div class="section">
