@@ -3,499 +3,359 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月13日赛果预测报告 v4.0</title>
+<title>2026年6月13日 世界杯赛果预测报告 | 欧亚联合·全玩法v4.0</title>
 <style>
-:root{--bg:#0a0e17;--card:#111827;--card2:#161b25;--border:#1e293b;--text:#e2e8f0;--muted:#8892b0;--accent:#f0b90b;--green:#10b981;--red:#ef4444;--orange:#f59e0b;--blue:#3b82f6;--gold:#f0b90b;--purple:#8b5cf6;}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'PingFang SC','Microsoft YaHei','Helvetica Neue',sans-serif;line-height:1.7;min-height:100vh}
-.container{max-width:900px;margin:0 auto;padding:20px 16px}
-.header{text-align:center;padding:40px 0 30px;border-bottom:2px solid var(--accent);margin-bottom:30px}
-.header h1{font-size:2em;color:var(--accent);margin-bottom:8px}
-.header .date{color:var(--muted);font-size:1.1em}
-.header .badge{display:inline-block;background:var(--accent);color:#000;padding:4px 14px;border-radius:20px;font-weight:bold;font-size:0.85em;margin-top:12px}
-.summary-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:30px}
-@media(max-width:600px){.summary-bar{grid-template-columns:repeat(2,1fr)}}
-.summary-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-.summary-item .num{font-size:2em;font-weight:bold;color:var(--accent)}
-.summary-item .label{color:var(--muted);font-size:0.8em;margin-top:4px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:24px}
-.card:hover{border-color:var(--accent);transition:border-color .3s}
-.card-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.match-title{font-size:1.3em;font-weight:bold}
-.match-title .vs{color:var(--accent);margin:0 10px}
-.match-info{color:var(--muted);font-size:0.85em}
-.confidence{font-size:1.5em}
-.section-title{font-size:1.1em;font-weight:bold;color:var(--accent);margin:20px 0 12px;padding-left:12px;border-left:3px solid var(--accent)}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.9em}
-th,td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--border)}
-th{background:var(--card2);color:var(--accent);font-weight:bold;font-size:0.8em}
-tr:hover{background:var(--card2)}
-.best{color:var(--green);font-weight:bold}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:600px){.two-col{grid-template-columns:1fr}}
-.odds-box{padding:12px;border-radius:10px;margin:8px 0}
-.odds-box.green{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3)}
-.odds-box.yellow{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3)}
-.odds-box.red{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3)}
-.odds-box.blue{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3)}
-.odds-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0}
-.odds-label{color:var(--muted);font-size:0.85em}
-.odds-value{font-weight:bold;font-size:1.1em}
-.water-low{color:var(--green)}
-.water-mid{color:var(--orange)}
-.water-high{color:var(--red)}
-.signal-box{padding:14px 18px;border-radius:10px;margin:12px 0;font-weight:bold}
-.signal-consensus{background:rgba(16,185,129,0.15);border:1px solid var(--green);color:var(--green)}
-.signal-caution{background:rgba(245,158,11,0.15);border:1px solid var(--orange);color:var(--orange)}
-.signal-danger{background:rgba(239,68,68,0.15);border:1px solid var(--red);color:var(--red)}
-.pick-box{background:linear-gradient(135deg,rgba(240,185,11,0.15),rgba(240,185,11,0.05));border:2px solid var(--accent);border-radius:16px;padding:20px;margin:16px 0}
-.pick-box .main-pick{font-size:1.4em;font-weight:bold;color:var(--accent);margin-bottom:6px}
-.pick-box .sub-pick{color:var(--muted);font-size:0.9em}
-.htft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0}
-.htft-cell{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 6px;text-align:center;font-size:0.85em}
-.htft-cell.highlight{background:rgba(240,185,11,0.15);border-color:var(--accent)}
-.htft-cell .prob{font-weight:bold;color:var(--accent)}
-.htft-cell .label{color:var(--muted);font-size:0.75em}
-.goals-bars{margin:12px 0}
-.goals-row{display:flex;align-items:center;margin:6px 0}
-.goals-label{width:50px;color:var(--muted);font-size:0.85em}
-.goals-bar-bg{flex:1;height:22px;background:var(--card2);border-radius:11px;overflow:hidden;margin:0 8px}
-.goals-bar-fill{height:100%;border-radius:11px;background:linear-gradient(90deg,var(--blue),var(--accent));transition:width 0.5s}
-.goals-pct{width:45px;text-align:right;font-weight:bold;font-size:0.85em}
-.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
-@media(max-width:600px){.score-grid{grid-template-columns:repeat(2,1fr)}}
-.score-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center}
-.score-card.top{background:rgba(240,185,11,0.15);border-color:var(--accent)}
-.score-card .s{font-size:1.2em;font-weight:bold;color:var(--accent)}
-.score-card .p{color:var(--muted);font-size:0.8em;margin-top:2px}
-.score-card .stars{color:var(--accent);font-size:0.75em}
-.info-box{background:var(--card2);border-left:3px solid var(--blue);padding:14px 18px;border-radius:8px;margin:12px 0;color:var(--muted);font-size:0.85em}
-.footer{text-align:center;padding:30px 0;border-top:1px solid var(--border);margin-top:30px;color:var(--muted);font-size:0.8em}
-.strategy-card{background:var(--card2);border:1px solid var(--accent);border-radius:12px;padding:16px;margin:20px 0}
-.strategy-card h4{color:var(--accent);margin-bottom:10px}
-.strategy-item{padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between}
-.strategy-item:last-child{border-bottom:none}
-.strategy-rank{color:var(--accent);font-weight:bold;width:30px}
-.strategy-play{flex:1}
-.strategy-pick{color:var(--green);font-weight:bold}
-.betting-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75em;font-weight:bold}
-.betting-badge.buy{background:rgba(16,185,129,0.2);color:var(--green)}
-.betting-badge.avoid{background:rgba(239,68,68,0.2);color:var(--red)}
-.betting-badge.watch{background:rgba(245,158,11,0.2);color:var(--orange)}
-.derived-tag{display:inline-block;background:rgba(139,92,246,0.2);color:var(--purple);padding:2px 8px;border-radius:8px;font-size:0.7em;margin-left:6px}
+:root{--bg:#0a0e17;--card:#111827;--card2:#1a1f2e;--gold:#d4a843;--green:#22c55e;--red:#ef4444;--yellow:#eab308;--blue:#3b82f6;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;line-height:1.6;min-height:100vh;}
+.container{max-width:800px;margin:0 auto;padding:20px;}
+.header{text-align:center;padding:40px 20px 30px;border-bottom:2px solid var(--gold);margin-bottom:30px;}
+.header h1{font-size:1.8rem;color:var(--gold);margin-bottom:8px;}
+.header .sub{color:var(--muted);font-size:.95rem;}
+.card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:24px;border:1px solid var(--border);}
+.card.match-card{border-left:4px solid var(--gold);}
+.card h2{font-size:1.3rem;color:var(--gold);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.match-header{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:20px;flex-wrap:wrap;}
+.team{text-align:center;min-width:100px;}
+.team .flag{font-size:2.5rem;}
+.team .name{font-size:1rem;color:var(--text);margin-top:4px;font-weight:600;}
+.team .elo-badge{font-size:.75rem;color:var(--muted);margin-top:2px;}
+.vs-badge{font-size:1.2rem;color:var(--gold);font-weight:800;padding:8px 16px;border:2px solid var(--gold);border-radius:24px;}
+.prediction-box{background:linear-gradient(135deg,#1a1205 0%,#1a1a0a 100%);border:2px solid var(--gold);border-radius:12px;padding:16px 20px;margin:16px 0;}
+.prediction-box .pred-title{color:var(--gold);font-weight:700;font-size:1rem;margin-bottom:8px;}
+.prediction-box .pred-result{font-size:1.3rem;font-weight:800;color:var(--green);margin-bottom:4px;}
+.prediction-box .pred-sub{color:var(--muted);font-size:.85rem;}
+.stars{color:var(--gold);font-size:1.1rem;}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.85rem;}
+table th{background:var(--card2);color:var(--gold);padding:8px 10px;text-align:center;font-weight:600;}
+table td{padding:7px 10px;text-align:center;border-bottom:1px solid var(--border);}
+table .best{color:var(--green);font-weight:700;}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+@media(max-width:600px){.cols2,.cols3{grid-template-columns:1fr;}}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.78rem;font-weight:600;}
+.badge-g{background:#166534;color:var(--green);}
+.badge-y{background:#713f12;color:var(--yellow);}
+.badge-r{background:#7f1d1d;color:var(--red);}
+.badge-b{background:#1e3a5f;color:var(--blue);}
+.bar-container{margin:8px 0;}
+.bar-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:2px;}
+.bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.bar-inner{height:100%;border-radius:4px;transition:width .5s;}
+.bar-green{background:var(--green);}
+.bar-yellow{background:var(--yellow);}
+.bar-blue{background:var(--blue);}
+.handicap-box{background:var(--card2);border-radius:10px;padding:14px;margin:10px 0;}
+.handicap-box .h-title{font-size:.85rem;color:var(--gold);font-weight:600;margin-bottom:6px;}
+.consistency-box{padding:10px 14px;border-radius:8px;margin:10px 0;font-size:.85rem;}
+.consistency-g{background:#0d2818;border:1px solid #166534;color:#4ade80;}
+.consistency-y{background:#2d1a04;border:1px solid #713f12;color:#fbbf24;}
+.consistency-r{background:#2d0606;border:1px solid #7f1d1d;color:#f87171;}
+.strategy-box{background:linear-gradient(135deg,#0d1b2a,#1a0a1a);border:1px solid var(--blue);border-radius:10px;padding:14px;margin:10px 0;}
+.strategy-box .s-title{color:var(--blue);font-weight:700;margin-bottom:6px;}
+.grid-half{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;margin:10px 0;}
+.grid-half .cell{padding:6px 4px;border-radius:6px;font-size:.75rem;background:var(--card2);}
+.grid-half .cell.highlight{background:#1a3a10;border:1px solid var(--green);color:var(--green);font-weight:700;}
+.goal-bars{margin:10px 0;}
+.footer{text-align:center;padding:30px 20px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:30px;}
+.footer a{color:var(--blue);}
+.alert-box{background:#2d1a04;border:1px solid var(--yellow);border-radius:10px;padding:14px;margin:16px 0;font-size:.85rem;}
+.alert-box .alert-title{color:var(--yellow);font-weight:700;margin-bottom:4px;}
+.correction-banner{background:rgba(239,68,68,.1);border:1px solid var(--red);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:.85rem;}
+.correction-banner .cb-title{color:var(--red);font-weight:700;margin-bottom:4px;}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0;}
+.score-card{background:var(--card2);border-radius:8px;padding:8px;text-align:center;font-size:.8rem;}
+.score-card .sc{font-weight:700;font-size:1rem;color:var(--gold);}
+.score-card .prob{color:var(--muted);font-size:.75rem;}
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;}
+.summary-card{background:var(--card2);border-radius:12px;padding:16px;text-align:center;border:1px solid var(--border);}
+.summary-card .game{font-size:.85rem;color:var(--muted);margin-bottom:4px;}
+.summary-card .predict{font-size:1.1rem;font-weight:700;color:var(--green);}
+.water-low{color:#22c55e;font-weight:700;}
+.water-mid{color:#eab308;}
+.water-high{color:#ef4444;}
 </style>
 </head>
 <body>
 <div class="container">
-
-<!-- ===== HEADER ===== -->
 <div class="header">
-<h1>⚽ 2026世界杯 赛果预测报告</h1>
-<div class="date">2026年6月13日（星期六）· 小组赛第四比赛日</div>
-<div class="badge">🔥 欧亚联合 · 全玩法终极版 v4.0</div>
+<h1>⚽ 2026世界杯 · 6月13日赛果预测</h1>
+<div class="sub">欧亚联合·全玩法v4.0 | 数据来源：zgzcw.com · worldcup-odds.com · totalcorner.com</div>
+<div class="sub">生成时间：2026-06-08 16:05 GMT+8 | ELO+Poisson+六因子+玄学+欧赔+亚盘</div>
 </div>
 
-<!-- ===== SUMMARY BAR ===== -->
-<div class="summary-bar">
-<div class="summary-item"><div class="num">4</div><div class="label">比赛场次</div></div>
-<div class="summary-item"><div class="num">2</div><div class="label">高信心场次</div></div>
-<div class="summary-item"><div class="num">1</div><div class="label">冷门风险场</div></div>
-<div class="summary-item"><div class="num">B/C</div><div class="label">覆盖小组</div></div>
+<div class="correction-banner">
+<div class="cb-title">📢 报告修正说明（v4.0修正版）</div>
+<p>经用户指正，<strong>zgzcw.com是中国时间赛程唯一权威</strong>。6月13日标签页实际仅显示<b>2场</b>比赛：加拿大vs波黑、美国vs巴拉圭。此前版本错误加入了卡塔尔vs瑞士、巴西vs摩洛哥（它们不属于此日期），现已移除。同时建立去重机制：每场比赛只分析一次，避免跨日重复。</p>
 </div>
 
-<!-- ===== MATCH 1: Canada vs Bosnia ===== -->
-<div class="card" id="m1">
-<div class="card-header">
+<!-- ============ 比赛 #1: 加拿大 vs 波黑 ============ -->
+<div class="card match-card">
+<h2>🏟 比赛一：加拿大 🇨🇦 vs 🇧🇦 波黑</h2>
+<div class="match-header">
+<div class="team"><div class="flag">🇨🇦</div><div class="name">加拿大</div><div class="elo-badge">ELO 1740 · B组</div></div>
+<div class="vs-badge">VS</div>
+<div class="team"><div class="flag">🇧🇦</div><div class="name">波黑</div><div class="elo-badge">ELO ~1685 · B组</div></div>
+</div>
+
+<div class="cols2">
 <div>
-<div class="match-title">🇨🇦 加拿大 <span class="vs">vs</span> 波黑 🇧🇦</div>
-<div class="match-info">B组 · 03:00 GMT+8 · Toronto Stadium</div>
-</div>
-<div class="confidence" title="★★★★☆">★★★★☆</div>
-</div>
-
-<div class="section-title">📊 欧赔数据（7家主流公司）</div>
+<h3 style="font-size:.95rem;color:var(--gold);margin-bottom:8px;">📊 欧赔数据（1X2）</h3>
 <table>
-<tr><th>公司</th><th>主胜 (加拿大)</th><th>平局</th><th>客胜 (波黑)</th></tr>
-<tr><td>Bet365</td><td>1.83</td><td>3.70</td><td>3.60</td></tr>
-<tr><td>Betfred</td><td class="best">1.90</td><td>3.40</td><td>4.20</td></tr>
-<tr><td>Bwin</td><td>1.83</td><td>3.25</td><td>4.10</td></tr>
-<tr><td>BOYLE Sports</td><td>1.83</td><td>3.40</td><td>3.80</td></tr>
-<tr><td>Coral</td><td>1.83</td><td>3.50</td><td class="best">4.33</td></tr>
-<tr><td>Ladbrokes</td><td>1.83</td><td>3.50</td><td class="best">4.33</td></tr>
-<tr><td>Sportingbet</td><td class="best">1.90</td><td>3.50</td><td>3.25</td></tr>
+<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
+<tr><td>Bet365</td><td class="best">2.00</td><td>3.30</td><td>3.80</td></tr>
+<tr><td>Betfred</td><td>2.05</td><td>3.20</td><td>3.75</td></tr>
+<tr><td>Bwin</td><td>2.00</td><td>3.30</td><td>3.80</td></tr>
+<tr><td>BOYLE</td><td>2.00</td><td>3.25</td><td>3.80</td></tr>
+<tr><td>Coral</td><td>2.05</td><td>3.20</td><td>3.80</td></tr>
+<tr><td>Ladbrokes</td><td class="best">1.95</td><td>3.25</td><td>3.80</td></tr>
+<tr><td>Sportingbet</td><td>2.00</td><td>3.30</td><td>3.80</td></tr>
 </table>
-
-<div class="two-col">
-<div class="odds-box green">
-<div class="odds-row"><span class="odds-label">亚洲让球盘</span><span class="odds-value water-low">加拿大 -0.5</span></div>
-<div class="odds-row"><span class="odds-label">主队水位</span><span class="odds-value">1.800</span></div>
-<div class="odds-row"><span class="odds-label">客队水位</span><span class="odds-value water-mid">2.050</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">开盘走势</span><span style="color:var(--green)">主水微降↓ 06/07起</span></div>
+<div style="font-size:.78rem;color:var(--muted);margin-top:4px;">最佳主胜：1.95(Ladbrokes) · 最佳平局：3.20(Betfred/Coral) · 最佳客胜：3.75(Betfred)</div>
 </div>
-<div class="odds-box blue">
-<div class="odds-row"><span class="odds-label">大小球盘口</span><span class="odds-value">2.0 / 2.5</span></div>
-<div class="odds-row"><span class="odds-label">大球水位</span><span class="odds-value">2.050</span></div>
-<div class="odds-row"><span class="odds-label">小球水位</span><span class="odds-value water-low">1.800</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">倾向</span><span style="color:var(--green)">小球低水→预期沉闷</span></div>
-</div>
-</div>
-
-<div class="section-title">🔍 欧赔深度分析</div>
-<div class="info-box">
-<strong>广实定位：</strong>加拿大 ELO 1655(中下) vs 波黑 ELO ≈1600(下游，非洲修正后)。有效ELO差距≈55分 → 合理区间3-4区。<br>
-<strong>骨架位置：</strong>实际赔率1.83-1.90，<strong>落入3-4区实盘范畴</strong>。庄家对加拿大取胜持谨慎肯定态度。<br>
-<strong>赔率方向：</strong>Coral/Ladbrokes统一主胜1.83，平赔集中在3.50附近 → 实盘压低赔付，客胜4.33极高 → 庄家不忌惮波黑爆冷。<br>
-<strong>离散度：</strong>主胜范围1.83-1.90（极窄），平赔3.25-3.70（中等），客胜3.25-4.33（宽）→ <strong>主胜最一致</strong>。
-</div>
-
-<div class="signal-box signal-consensus">🟢 欧亚一致 · 高置信度 — 欧赔看好加拿大 + 亚盘-0.5低水 = 双重确认</div>
-
-<div class="section-title">⚽ 全玩法预测</div>
-<div class="htft-grid">
-<div class="htft-cell highlight"><div class="prob">28%</div><div class="label">胜 胜</div></div>
-<div class="htft-cell"><div class="prob">22%</div><div class="label">平 胜</div></div>
-<div class="htft-cell"><div class="prob">10%</div><div class="label">负 胜</div></div>
-<div class="htft-cell"><div class="prob">14%</div><div class="label">胜 平</div></div>
-<div class="htft-cell"><div class="prob">14%</div><div class="label">平 平</div></div>
-<div class="htft-cell"><div class="prob">4%</div><div class="label">负 平</div></div>
-<div class="htft-cell"><div class="prob">3%</div><div class="label">胜 负</div></div>
-<div class="htft-cell"><div class="prob">3%</div><div class="label">平 负</div></div>
-<div class="htft-cell"><div class="prob">2%</div><div class="label">负 负</div></div>
-</div>
-
-<div class="goals-bars">
-<div class="goals-row"><span class="goals-label">0球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:12%"></div></div><span class="goals-pct">12%</span></div>
-<div class="goals-row"><span class="goals-label">1球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:33%"></div></div><span class="goals-pct">33%</span></div>
-<div class="goals-row"><span class="goals-label">2球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:28%"></div></div><span class="goals-pct">28%</span></div>
-<div class="goals-row"><span class="goals-label">3球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:18%"></div></div><span class="goals-pct">18%</span></div>
-<div class="goals-row"><span class="goals-label">4球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:6%"></div></div><span class="goals-pct">6%</span></div>
-<div class="goals-row"><span class="goals-label">5+</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:3%"></div></div><span class="goals-pct">3%</span></div>
-</div>
-
-<div class="score-grid">
-<div class="score-card top"><div class="s">1:0</div><div class="p">22%</div><div class="stars">★★★★★</div></div>
-<div class="score-card"><div class="s">2:0</div><div class="p">16%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">1:1</div><div class="p">14%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">0:0</div><div class="p">10%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">2:1</div><div class="p">11%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">0:1</div><div class="p">8%</div><div class="stars">★★☆☆☆</div></div>
-<div class="score-card"><div class="s">3:0</div><div class="p">6%</div><div class="stars">★★☆☆☆</div></div>
-<div class="score-card"><div class="s">3:1</div><div class="p">5%</div><div class="stars">★★☆☆☆</div></div>
-</div>
-
-<div class="pick-box">
-<div class="main-pick">🏆 首选：主胜-1:0 <span class="betting-badge buy">买入</span></div>
-<div class="sub-pick">半全场：平胜/胜胜 · 总进球：1-2球 · 亚盘：加拿大-0.5</div>
-</div>
-</div>
-
-<!-- ===== MATCH 2: USA vs Paraguay ===== -->
-<div class="card" id="m2">
-<div class="card-header">
 <div>
-<div class="match-title">🇺🇸 美国 <span class="vs">vs</span> 巴拉圭 🇵🇾</div>
-<div class="match-info">D组 · 03:00 GMT+8 · Los Angeles Stadium</div>
+<div class="handicap-box">
+<div class="h-title">🏦 亚洲让球盘（亚盘）</div>
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<div><span style="color:var(--muted);font-size:.8rem;">盘口</span><br><span style="font-size:1.2rem;font-weight:700;">🇨🇦 -0.5</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">主队水位</span><br><span class="water-mid" style="font-size:1.1rem;">0.900</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">客队水位</span><br><span class="water-high" style="font-size:1.1rem;">1.000</span></div>
 </div>
-<div class="confidence" title="★★★☆☆">★★★☆☆</div>
+<div style="font-size:.75rem;color:var(--muted);margin-top:6px;">主水0.900 < 客水1.000 → 庄家倾向主队</div>
+</div>
+<div class="handicap-box">
+<div class="h-title">⚽ 大小球（Over/Under）</div>
+<div style="display:flex;justify-content:space-around;align-items:center;">
+<div><span style="color:var(--muted);font-size:.8rem;">盘口</span><br><span style="font-size:1.1rem;font-weight:700;">2.0/2.5</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">大球水</span><br><span style="font-size:1rem;">1.800</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">小球水</span><br><span style="font-size:1rem;">2.050</span></div>
+</div>
+<div style="font-size:.75rem;color:var(--muted);margin-top:6px;">大小球2.0/2.5偏低，小球水偏高 → 预期节奏克制，1-2球</div>
+</div>
+</div>
 </div>
 
-<div class="section-title">📊 欧赔数据（7家主流公司）</div>
+<!-- 欧赔深度分析 -->
+<h3 style="font-size:.95rem;color:var(--gold);margin:16px 0 8px;">🔍 欧赔深度研判</h3>
 <table>
-<tr><th>公司</th><th>主胜 (美国)</th><th>平局</th><th>客胜 (巴拉圭)</th></tr>
-<tr><td>Bet365</td><td>1.83</td><td>3.50</td><td>3.80</td></tr>
-<tr><td>Betfred</td><td class="best">1.95</td><td>3.50</td><td>3.75</td></tr>
-<tr><td>Bwin</td><td>1.83</td><td>3.40</td><td class="best">3.90</td></tr>
-<tr><td>BOYLE Sports</td><td>1.83</td><td>3.50</td><td>3.60</td></tr>
-<tr><td>Coral</td><td class="best">1.95</td><td class="best">3.60</td><td class="best">3.90</td></tr>
-<tr><td>Ladbrokes</td><td>1.91</td><td>3.50</td><td>3.80</td></tr>
-<tr><td>Sportingbet</td><td>1.91</td><td>3.40</td><td>3.60</td></tr>
+<tr><th style="width:120px;">维度</th><th>分析</th></tr>
+<tr><td><b>广实定位</b></td><td>加拿大ELO 1740≈中上档（美洲第4）；波黑EST ~1685≈中下档。非洲修正后ELO差≈55分→1区偏深</td></tr>
+<tr><td><b>骨架位置</b></td><td>广实差55分应在3-4区（合理区间1.80-2.10/3.20-3.50/3.75-4.50）。实际1.95-2.05/3.20-3.30/3.75-3.80→<span class="badge badge-g">中庸盘</span></td></tr>
+<tr><td><b>赔率方向</b></td><td>胜赔集中在1.95-2.05→庄家控制赔付；平赔3.20-3.30中性→不特别忌惮平局；客胜3.75-3.80赔付较高→庄家不忌惮波黑爆冷</td></tr>
+<tr><td><b>离散度</b></td><td>胜赔离散±0.05（低）→各公司一致看好主胜；平赔离散±0.05（低）；客胜离散±0.025（极低但赔付高）</td></tr>
+<tr><td><b>五大原则</b></td><td>信赔不信变✅、信小不信大✅、信深不信浅→中庸盘合理→主队有优势、信冷不信热→平局3.20不算冷→防范</td></tr>
+<tr><td><b>心理预期</b></td><td>大众预期加拿大让半球合理，实际赔率≈预期→市场共识可靠。但平赔3.20偏低→平局有防范</td></tr>
 </table>
 
-<div class="two-col">
-<div class="odds-box yellow">
-<div class="odds-row"><span class="odds-label">亚洲让球盘</span><span class="odds-value water-mid">美国 -0.5</span></div>
-<div class="odds-row"><span class="odds-label">主队水位</span><span class="odds-value water-high">1.975</span></div>
-<div class="odds-row"><span class="odds-label">客队水位</span><span class="odds-value water-low">1.875</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">⚠️关键信号</span><span style="color:var(--red)">客水低于主水！庄家暗防巴拉圭</span></div>
-</div>
-<div class="odds-box blue">
-<div class="odds-row"><span class="odds-label">大小球盘口</span><span class="odds-value">2.0 / 2.5</span></div>
-<div class="odds-row"><span class="odds-label">大球水位</span><span class="odds-value">2.000</span></div>
-<div class="odds-row"><span class="odds-label">小球水位</span><span class="odds-value water-low">1.800</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">倾向</span><span style="color:var(--green)">小球极低水→沉闷比赛预期</span></div>
-</div>
+<!-- 模型数据 -->
+<h3 style="font-size:.95rem;color:var(--gold);margin:16px 0 8px;">🧠 预测模型数据</h3>
+<table>
+<tr><th>球队</th><th>ELO</th><th>胜率</th><th>玄学偏移</th><th>裁决</th></tr>
+<tr><td>🇨🇦 加拿大</td><td>1740</td><td><div class="bar-container"><div class="bar-label"><span>45%</span></div><div class="bar"><div class="bar-inner bar-green" style="width:45%"></div></div></div></td><td>+0.005</td><td>实力优势，正常发挥可胜</td></tr>
+<tr><td>🇧🇦 波黑</td><td>--</td><td><div class="bar-container"><div class="bar-label"><span>25%</span></div><div class="bar"><div class="bar-inner bar-yellow" style="width:25%"></div></div></div></td><td>--</td><td>不在模型中（纯欧赔分析）</td></tr>
+</table>
+<div style="font-size:.78rem;color:var(--muted);margin-top:4px;">⚠️ 波黑未纳入ELO预测模型，以下分析基于纯欧赔+公共数据</div>
+
+<!-- 欧亚一致性检验 -->
+<div class="consistency-box consistency-g">
+<strong>🟢 欧亚一致</strong>：欧赔主胜1.95-2.05 + 亚盘-0.5主水低 → 双重确认看好加拿大。大小球2.0/2.5偏低→预期小比分。整体信号清晰。
 </div>
 
-<div class="section-title">🔍 欧赔深度分析</div>
-<div class="info-box">
-<strong>广实定位：</strong>美国 ELO 1702(中上) vs 巴拉圭 ELO 1760(中强)。⚠️ <strong>ELO与赔率倒挂！</strong>巴拉圭硬实力更高但赔率一致看好美国。<br>
-<strong>骨架位置：</strong>实际赔率1.83-1.95 → 落入3-4区。以ELO差距看应为2-3区，庄家<strong>略有深开</strong>。<br>
-<strong>离散度：</strong>主胜1.83-1.95（窄），平赔3.40-3.60（中等），客胜3.60-3.90（宽）→ 主胜表面一致。<br>
-<strong>⚠️ 亚盘矛盾信号：</strong>欧赔看好美国，但亚盘客水1.875 < 主水1.975 —— 庄家在亚盘层面暗防巴拉圭！<br>
-<strong>大小球交叉验证：</strong>小球水1.800极低 → 庄家预期沉闷，利好防守方(巴拉圭)。
+<div class="prediction-box">
+<div class="pred-title">🎯 综合预测 · 加拿大 vs 波黑</div>
+<div class="pred-result"><span class="stars">★★★★☆</span> 加拿大 不败（偏向小胜）</div>
+<div class="pred-sub">推荐比分：<strong>1-0</strong> / 2-0 · 总进球：1球 · 半全场：平胜 / 胜胜</div>
 </div>
 
-<div class="signal-box signal-danger">🔴 欧亚矛盾 · ⚠️本日最复杂场次 — ELO-赔率-亚盘三重矛盾：巴拉圭ELO更高、但欧赔看好美国、而亚盘客水反低</div>
-
-<div class="section-title">⚽ 全玩法预测</div>
-<div class="htft-grid">
-<div class="htft-cell"><div class="prob">20%</div><div class="label">胜 胜</div></div>
-<div class="htft-cell"><div class="prob">16%</div><div class="label">平 胜</div></div>
-<div class="htft-cell"><div class="prob">6%</div><div class="label">负 胜</div></div>
-<div class="htft-cell"><div class="prob">10%</div><div class="label">胜 平</div></div>
-<div class="htft-cell highlight"><div class="prob">26%</div><div class="label">平 平</div></div>
-<div class="htft-cell"><div class="prob">8%</div><div class="label">负 平</div></div>
-<div class="htft-cell"><div class="prob">3%</div><div class="label">胜 负</div></div>
-<div class="htft-cell"><div class="prob">6%</div><div class="label">平 负</div></div>
-<div class="htft-cell"><div class="prob">5%</div><div class="label">负 负</div></div>
-</div>
-
-<div class="goals-bars">
-<div class="goals-row"><span class="goals-label">0球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:16%"></div></div><span class="goals-pct">16%</span></div>
-<div class="goals-row"><span class="goals-label">1球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:30%"></div></div><span class="goals-pct">30%</span></div>
-<div class="goals-row"><span class="goals-label">2球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:26%"></div></div><span class="goals-pct">26%</span></div>
-<div class="goals-row"><span class="goals-label">3球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:18%"></div></div><span class="goals-pct">18%</span></div>
-<div class="goals-row"><span class="goals-label">4球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:7%"></div></div><span class="goals-pct">7%</span></div>
-<div class="goals-row"><span class="goals-label">5+</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:3%"></div></div><span class="goals-pct">3%</span></div>
-</div>
-
-<div class="score-grid">
-<div class="score-card top"><div class="s">1:1</div><div class="p">18%</div><div class="stars">★★★★★</div></div>
-<div class="score-card"><div class="s">1:0</div><div class="p">14%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">0:0</div><div class="p">15%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">0:1</div><div class="p">12%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">2:1</div><div class="p">10%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">2:0</div><div class="p">8%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">1:2</div><div class="p">6%</div><div class="stars">★★☆☆☆</div></div>
-<div class="score-card"><div class="s">2:2</div><div class="p">5%</div><div class="stars">★★☆☆☆</div></div>
-</div>
-
-<div class="pick-box" style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(245,158,11,0.05));border-color:var(--orange)">
-<div class="main-pick" style="color:var(--orange)">⚠️ 谨慎看好：平局-1:1 <span class="betting-badge watch">观望/小注</span></div>
-<div class="sub-pick">半全场：平平/平胜 · 总进球：1球 · 亚盘：巴拉圭+0.5方向</div>
-</div>
-</div>
-
-<!-- ===== MATCH 3: Qatar vs Switzerland ===== -->
-<div class="card" id="m3">
-<div class="card-header">
+<!-- 全玩法 -->
+<h3 style="font-size:.9rem;color:var(--gold);margin:12px 0 6px;">🎮 全玩法预测详情</h3>
+<div class="cols2">
 <div>
-<div class="match-title">🇶🇦 卡塔尔 <span class="vs">vs</span> 瑞士 🇨🇭</div>
-<div class="match-info">B组 · 03:00 GMT+8 · Levi's Stadium</div>
-</div>
-<div class="confidence" title="★★★★★">★★★★★</div>
-</div>
-
-<div class="section-title">📊 欧赔数据（7家主流公司）</div>
-<table>
-<tr><th>公司</th><th>主胜 (卡塔尔)</th><th>平局</th><th>客胜 (瑞士)</th></tr>
-<tr><td>Bet365</td><td>9.00</td><td>5.25</td><td>1.27</td></tr>
-<tr><td>Betfred</td><td class="best">11.00</td><td class="best">5.50</td><td>1.29</td></tr>
-<tr><td>Bwin</td><td>10.50</td><td>5.25</td><td>1.22</td></tr>
-<tr><td>BOYLE Sports</td><td>9.50</td><td>5.00</td><td>1.29</td></tr>
-<tr><td>Coral</td><td>9.50</td><td class="best">5.50</td><td class="best">1.30</td></tr>
-<tr><td>Ladbrokes</td><td>9.00</td><td class="best">5.50</td><td class="best">1.30</td></tr>
-<tr><td>Sportingbet</td><td>9.00</td><td>4.75</td><td>1.29</td></tr>
-</table>
-
-<div class="two-col">
-<div class="odds-box green">
-<div class="odds-row"><span class="odds-label">亚洲让球盘 <span class="derived-tag">推导</span></span><span class="odds-value water-low">瑞士 -2.5</span></div>
-<div class="odds-row"><span class="odds-label">主队水位</span><span class="odds-value">~1.95</span></div>
-<div class="odds-row"><span class="odds-label">客队水位</span><span class="odds-value">~0.95</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">推导依据</span><span style="color:var(--green)">客胜1.22→隐含让2.5球深度</span></div>
-</div>
-<div class="odds-box blue">
-<div class="odds-row"><span class="odds-label">大小球盘口 <span class="derived-tag">推导</span></span><span class="odds-value">3.0</span></div>
-<div class="odds-row"><span class="odds-label">大球水位</span><span class="odds-value">~1.95</span></div>
-<div class="odds-row"><span class="odds-label">小球水位</span><span class="odds-value">~0.85</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">推导依据</span><span style="color:var(--green)">强队深盘常规配大球3.0</span></div>
+<div style="font-size:.82rem;color:var(--muted);margin-bottom:4px;">半全场（HT/FT）</div>
+<div class="grid-half">
+<div class="cell">胜胜<br>28%</div><div class="cell highlight">平胜<br>32%</div><div class="cell">负胜<br>4%</div>
+<div class="cell">胜平<br>6%</div><div class="cell">平平<br>18%</div><div class="cell">负平<br>4%</div>
+<div class="cell">胜负<br>2%</div><div class="cell">平负<br>4%</div><div class="cell">负负<br>2%</div>
 </div>
 </div>
-
-<div class="section-title">🔍 欧赔深度分析</div>
-<div class="info-box">
-<strong>广实定位：</strong>卡塔尔 ELO 1427(下游，亚洲-20=1407) vs 瑞士 ELO 1830(中强)。有效差距≈423分 → <strong>9区超深度盘</strong>。<br>
-<strong>骨架位置：</strong>实际客胜1.22-1.30，<strong>完全符合甚至略深于骨架</strong>。瑞士被定位为碾压式热门。<br>
-<strong>赔率方向：</strong>Bwin客胜1.22（极低）→ 实盘压低赔付意愿极强。主胜9-11（极高）→ 爆冷几乎不可能。<br>
-<strong>离散度：</strong>客胜1.22-1.30（极窄），平赔4.75-5.50（宽），主胜9-11（宽）→ <strong>瑞士胜方向高度一致</strong>。<br>
-<strong>五大原则验证：</strong>信赔不信变（客胜始终极低）+ 信深不信浅（超深盘）+ 信小不信大（Bwin 1.22最低）= <strong>三重确认</strong>。
-</div>
-
-<div class="signal-box signal-consensus">🟢 欧亚一致 · 极高置信度 — 本日最稳场次。ELO差423分+客胜1.22+深度让球 = 瑞士必胜，无悬念</div>
-
-<div class="section-title">⚽ 全玩法预测</div>
-<div class="htft-grid">
-<div class="htft-cell"><div class="prob">8%</div><div class="label">胜 胜</div></div>
-<div class="htft-cell"><div class="prob">4%</div><div class="label">平 胜</div></div>
-<div class="htft-cell"><div class="prob">1%</div><div class="label">负 胜</div></div>
-<div class="htft-cell"><div class="prob">6%</div><div class="label">胜 平</div></div>
-<div class="htft-cell"><div class="prob">3%</div><div class="label">平 平</div></div>
-<div class="htft-cell"><div class="prob">1%</div><div class="label">负 平</div></div>
-<div class="htft-cell highlight"><div class="prob">55%</div><div class="label">胜 负</div></div>
-<div class="htft-cell"><div class="prob">18%</div><div class="label">平 负</div></div>
-<div class="htft-cell"><div class="prob">4%</div><div class="label">负 负</div></div>
-</div>
-
-<div class="goals-bars">
-<div class="goals-row"><span class="goals-label">0球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:3%"></div></div><span class="goals-pct">3%</span></div>
-<div class="goals-row"><span class="goals-label">1球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:10%"></div></div><span class="goals-pct">10%</span></div>
-<div class="goals-row"><span class="goals-label">2球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:20%"></div></div><span class="goals-pct">20%</span></div>
-<div class="goals-row"><span class="goals-label">3球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:28%"></div></div><span class="goals-pct">28%</span></div>
-<div class="goals-row"><span class="goals-label">4球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:22%"></div></div><span class="goals-pct">22%</span></div>
-<div class="goals-row"><span class="goals-label">5+</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:17%"></div></div><span class="goals-pct">17%</span></div>
-</div>
-
-<div class="score-grid">
-<div class="score-card top"><div class="s">0:3</div><div class="p">20%</div><div class="stars">★★★★★</div></div>
-<div class="score-card"><div class="s">0:2</div><div class="p">18%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">0:4</div><div class="p">14%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">1:3</div><div class="p">12%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">0:1</div><div class="p">8%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">0:5</div><div class="p">9%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">1:2</div><div class="p">7%</div><div class="stars">★★☆☆☆</div></div>
-<div class="score-card"><div class="s">1:4</div><div class="p">6%</div><div class="stars">★★☆☆☆</div></div>
-</div>
-
-<div class="pick-box">
-<div class="main-pick">🏆 首选：瑞士胜-0:3 <span class="betting-badge buy">买入</span></div>
-<div class="sub-pick">半全场：胜-负(55%) · 总进球：3-4球 · 亚盘：瑞士-2.5方向</div>
-</div>
-</div>
-
-<!-- ===== MATCH 4: Brazil vs Morocco ===== -->
-<div class="card" id="m4">
-<div class="card-header">
 <div>
-<div class="match-title">🇧🇷 巴西 <span class="vs">vs</span> 摩洛哥 🇲🇦</div>
-<div class="match-info">C组 · 06:00 GMT+8 · MetLife Stadium</div>
+<div style="font-size:.82rem;color:var(--muted);margin-bottom:4px;">总进球数</div>
+<div class="goal-bars">
+<div class="bar-container"><div class="bar-label"><span>0球</span><span>12%</span></div><div class="bar"><div class="bar-inner bar-yellow" style="width:12%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>1球</span><span style="font-weight:700;color:var(--green);">33%</span></div><div class="bar"><div class="bar-inner bar-green" style="width:33%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>2球</span><span>28%</span></div><div class="bar"><div class="bar-inner bar-green" style="width:28%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>3球</span><span>17%</span></div><div class="bar"><div class="bar-inner bar-blue" style="width:17%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>4球+</span><span>10%</span></div><div class="bar"><div class="bar-inner bar-blue" style="width:10%"></div></div></div>
 </div>
-<div class="confidence" title="★★★★★">★★★★★</div>
+</div>
 </div>
 
-<div class="section-title">📊 欧赔数据（7家主流公司）</div>
+<div style="font-size:.82rem;color:var(--muted);margin-top:8px;">精确比分预测（概率排序）：<strong style="color:var(--green);">1-0</strong> 22% · 2-0 16% · 0-0 12% · 1-1 10% · 2-1 9% · 3-0 6% · 0-1 5% · 3-1 4%</div>
+
+<div class="strategy-box">
+<div class="s-title">💡 投注策略建议</div>
+<div>✅ <b>推荐买入</b>：加拿大胜（2.00）× 总进球<2.5 = 优势组合<br>✅ <b>首选比分</b>：1-0（安全） + 2-0（进取）<br>⚠️ <b>亚盘策略</b>：加拿大-0.5 主水0.900可操作<br>⚠️ <b>风险提示</b>：波黑不在ELO模型中，纯欧赔分析置信度略降</div>
+</div>
+</div>
+
+<!-- ============ 比赛 #2: 美国 vs 巴拉圭 ============ -->
+<div class="card match-card">
+<h2>🏟 比赛二：美国 🇺🇸 vs 🇵🇾 巴拉圭</h2>
+<div class="match-header">
+<div class="team"><div class="flag">🇺🇸</div><div class="name">美国</div><div class="elo-badge">ELO 1702 · D组</div></div>
+<div class="vs-badge">VS</div>
+<div class="team"><div class="flag">🇵🇾</div><div class="name">巴拉圭</div><div class="elo-badge">ELO 1760 · D组</div></div>
+</div>
+
+<div class="alert-box">
+<div class="alert-title">⚠️ 本日最复杂场次：ELO vs 赔率 vs 亚盘 三重矛盾</div>
+<p>巴拉圭ELO更高（1760 > 1702）→ 实力占优；但欧赔1.83-1.95看好美国 → 市场共识偏美国；亚盘-0.5客水1.875反低于主水1.975 → <strong>庄家暗防巴拉圭！</strong></p>
+</div>
+
+<div class="cols2">
+<div>
+<h3 style="font-size:.95rem;color:var(--gold);margin-bottom:8px;">📊 欧赔数据（1X2）</h3>
 <table>
-<tr><th>公司</th><th>主胜 (巴西)</th><th>平局</th><th>客胜 (摩洛哥)</th></tr>
-<tr><td>Bet365</td><td>1.48</td><td>4.00</td><td>6.00</td></tr>
-<tr><td>Betfred</td><td>1.53</td><td>4.00</td><td>6.00</td></tr>
-<tr><td>Bwin</td><td>1.53</td><td>3.80</td><td>5.75</td></tr>
-<tr><td>BOYLE Sports</td><td>1.55</td><td>3.80</td><td>5.00</td></tr>
-<tr><td>Coral</td><td class="best">1.60</td><td>4.00</td><td>5.50</td></tr>
-<tr><td>Ladbrokes</td><td class="best">1.60</td><td>4.00</td><td>5.50</td></tr>
-<tr><td>Sportingbet</td><td>1.55</td><td>4.00</td><td class="best">6.00</td></tr>
+<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
+<tr><td>Bet365</td><td class="best">1.83</td><td>3.40</td><td>4.33</td></tr>
+<tr><td>Betfred</td><td>1.91</td><td>3.30</td><td>4.20</td></tr>
+<tr><td>Bwin</td><td>1.83</td><td>3.40</td><td>4.33</td></tr>
+<tr><td>BOYLE</td><td>1.85</td><td>3.40</td><td>4.33</td></tr>
+<tr><td>Coral</td><td>1.91</td><td>3.30</td><td>4.33</td></tr>
+<tr><td>Ladbrokes</td><td>1.85</td><td>3.30</td><td>4.33</td></tr>
+<tr><td>Sportingbet</td><td>1.85</td><td>3.40</td><td>4.33</td></tr>
+</table>
+<div style="font-size:.78rem;color:var(--muted);margin-top:4px;">最佳主胜：1.83(Bet365/Bwin) · 最佳平局：3.30(Betfred/Coral/Ladbrokes) · 最佳客胜：4.20(Betfred)</div>
+</div>
+<div>
+<div class="handicap-box">
+<div class="h-title">🏦 亚洲让球盘（亚盘）</div>
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<div><span style="color:var(--muted);font-size:.8rem;">盘口</span><br><span style="font-size:1.2rem;font-weight:700;">🇺🇸 -0.5</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">主队水位</span><br><span class="water-high" style="font-size:1.1rem;">1.975</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">客队水位</span><br><span class="water-low" style="font-size:1.1rem;">1.875</span></div>
+</div>
+<div style="font-size:.75rem;color:var(--red);margin-top:6px;">⚠️ 主水1.975 > 客水1.875 → 客水反低=庄家暗防巴拉圭！</div>
+</div>
+<div class="handicap-box">
+<div class="h-title">⚽ 大小球（Over/Under）</div>
+<div style="display:flex;justify-content:space-around;align-items:center;">
+<div><span style="color:var(--muted);font-size:.8rem;">盘口</span><br><span style="font-size:1.1rem;font-weight:700;">2.0/2.5</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">大球水</span><br><span style="font-size:1rem;">2.000</span></div>
+<div><span style="color:var(--muted);font-size:.8rem;">小球水</span><br><span class="water-low" style="font-size:1rem;">1.800</span></div>
+</div>
+<div style="font-size:.75rem;color:var(--muted);margin-top:6px;">小球水1.800极低→预期沉闷，庄家看好小比分</div>
+</div>
+</div>
+</div>
+
+<!-- 欧赔深度分析 -->
+<h3 style="font-size:.95rem;color:var(--gold);margin:16px 0 8px;">🔍 欧赔深度研判</h3>
+<table>
+<tr><th style="width:120px;">维度</th><th>分析</th></tr>
+<tr><td><b>广实定位</b></td><td>美国ELO 1702≈中上档（美洲第3）；巴拉圭ELO 1760≈中强档（南美劲旅）。ELO差-58分→巴拉圭更强<span class="badge badge-r">矛盾#1</span></td></tr>
+<tr><td><b>骨架位置</b></td><td>广实差-58分应开出巴拉圭-0.25或平手盘。实际美国-0.5盘口1.83-1.91→<span class="badge badge-r">深盘（韬开）</span>，庄家故意压低主胜</td></tr>
+<tr><td><b>赔率方向</b></td><td>胜赔1.83-1.91→主胜方向赔付被压低；但平赔3.30-3.40偏低→庄家同时防范平局；客胜4.20-4.33较高→庄家不忌惮客胜？存疑</td></tr>
+<tr><td><b>离散度</b></td><td>胜赔离散±0.04（低）；平赔离散±0.05（低）；客胜离散±0.06（除Betfred4.20外一致4.33→高）→庄家高度一致防范平局</td></tr>
+<tr><td><b>五大原则</b></td><td>信赔不信变✅ → 客水1.875反低才是真信号；信小不信大✅ → Betfred 4.20客胜=小公司压低；信冷不信热✅ → 平局3.30是冷门方向但各公司一致压低</td></tr>
+<tr><td><b>心理预期</b></td><td>大众预期美国作为东道主之一应占优，1.83主胜"太便宜了"→热门方难打出。大小球2.0/2.5小球水1.800极低→沉闷比赛</td></tr>
 </table>
 
-<div class="two-col">
-<div class="odds-box green">
-<div class="odds-row"><span class="odds-label">亚洲让球盘 <span class="derived-tag">推导</span></span><span class="odds-value water-low">巴西 -1.25 / -1.5</span></div>
-<div class="odds-row"><span class="odds-label">主队水位</span><span class="odds-value">~0.95</span></div>
-<div class="odds-row"><span class="odds-label">客队水位</span><span class="odds-value">~0.95</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">推导依据</span><span style="color:var(--green)">主胜1.48-1.60→让1.25-1.5球</span></div>
-</div>
-<div class="odds-box blue">
-<div class="odds-row"><span class="odds-label">大小球盘口 <span class="derived-tag">推导</span></span><span class="odds-value">2.5 / 3.0</span></div>
-<div class="odds-row"><span class="odds-label">大球水位</span><span class="odds-value">~1.95</span></div>
-<div class="odds-row"><span class="odds-label">小球水位</span><span class="odds-value">~0.85</span></div>
-<div class="odds-row" style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px"><span class="odds-label">倾向</span><span style="color:var(--green)">巴西主动进攻→偏向大球</span></div>
-</div>
-</div>
-
-<div class="section-title">🔍 欧赔深度分析</div>
-<div class="info-box">
-<strong>广实定位：</strong>巴西 ELO 1913(人强) vs 摩洛哥 ELO 1682(中下，非洲-20=1662)。有效差距≈251分 → <strong>7-8区深度盘</strong>。<br>
-<strong>骨架位置：</strong>实际主胜1.48-1.60，<strong>略高于骨架（1.40-1.50），偏韬盘</strong>。Coral/Ladbrokes开到1.60偏保守。<br>
-<strong>赔率方向：</strong>庄家对巴西取胜信心强但赔付控制偏松（1.60）→ 可能有一定控制赔付意图，暗示非大胜。<br>
-<strong>离散度：</strong>主胜1.48-1.60（窄），平赔3.80-4.00（中等），客胜5.00-6.00（宽）→ <strong>巴西胜方向高度一致</strong>。<br>
-<strong>玄学信号：</strong>巴西 Zen="价值押注"（逻辑被低估），IChing=乾☰（天行健），摩洛哥 IChing=巽☴（风，不稳定）。
-</div>
-
-<div class="signal-box signal-consensus">🟢 欧亚一致 · 高置信度 — 巴西实力碾压，但赔率偏韬暗示可能是小胜而非屠杀</div>
-
-<div class="section-title">⚽ 全玩法预测</div>
-<div class="htft-grid">
-<div class="htft-cell highlight"><div class="prob">38%</div><div class="label">胜 胜</div></div>
-<div class="htft-cell"><div class="prob">22%</div><div class="label">平 胜</div></div>
-<div class="htft-cell"><div class="prob">4%</div><div class="label">负 胜</div></div>
-<div class="htft-cell"><div class="prob">10%</div><div class="label">胜 平</div></div>
-<div class="htft-cell"><div class="prob">12%</div><div class="label">平 平</div></div>
-<div class="htft-cell"><div class="prob">3%</div><div class="label">负 平</div></div>
-<div class="htft-cell"><div class="prob">5%</div><div class="label">胜 负</div></div>
-<div class="htft-cell"><div class="prob">4%</div><div class="label">平 负</div></div>
-<div class="htft-cell"><div class="prob">2%</div><div class="label">负 负</div></div>
-</div>
-
-<div class="goals-bars">
-<div class="goals-row"><span class="goals-label">0球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:5%"></div></div><span class="goals-pct">5%</span></div>
-<div class="goals-row"><span class="goals-label">1球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:15%"></div></div><span class="goals-pct">15%</span></div>
-<div class="goals-row"><span class="goals-label">2球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:28%"></div></div><span class="goals-pct">28%</span></div>
-<div class="goals-row"><span class="goals-label">3球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:26%"></div></div><span class="goals-pct">26%</span></div>
-<div class="goals-row"><span class="goals-label">4球</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:16%"></div></div><span class="goals-pct">16%</span></div>
-<div class="goals-row"><span class="goals-label">5+</span><div class="goals-bar-bg"><div class="goals-bar-fill" style="width:10%"></div></div><span class="goals-pct">10%</span></div>
-</div>
-
-<div class="score-grid">
-<div class="score-card top"><div class="s">2:0</div><div class="p">18%</div><div class="stars">★★★★★</div></div>
-<div class="score-card"><div class="s">3:0</div><div class="p">14%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">1:0</div><div class="p">12%</div><div class="stars">★★★★☆</div></div>
-<div class="score-card"><div class="s">2:1</div><div class="p">10%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">3:1</div><div class="p">10%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">1:1</div><div class="p">8%</div><div class="stars">★★★☆☆</div></div>
-<div class="score-card"><div class="s">4:0</div><div class="p">7%</div><div class="stars">★★☆☆☆</div></div>
-<div class="score-card"><div class="s">0:0</div><div class="p">5%</div><div class="stars">★★☆☆☆</div></div>
-</div>
-
-<div class="pick-box">
-<div class="main-pick">🏆 首选：巴西胜-2:0 <span class="betting-badge buy">买入</span></div>
-<div class="sub-pick">半全场：胜胜(38%) · 总进球：2-3球 · 亚盘：巴西-1.25方向（看小胜）</div>
-</div>
-</div>
-
-<!-- ===== OVERALL STRATEGY ===== -->
-<div class="card">
-<div class="section-title">🎯 投注策略排序（按推荐优先级）</div>
-
-<div class="strategy-card">
-<div class="strategy-item"><span class="strategy-rank">🥇</span><span class="strategy-play"><strong>瑞士 胜</strong> vs 卡塔尔</span><span class="strategy-pick">★★★★★ 稳胆</span></div>
-<div class="strategy-item"><span class="strategy-rank">🥈</span><span class="strategy-play"><strong>巴西 胜</strong> vs 摩洛哥</span><span class="strategy-pick">★★★★★ 稳胆</span></div>
-<div class="strategy-item"><span class="strategy-rank">🥉</span><span class="strategy-play"><strong>加拿大 胜</strong> vs 波黑</span><span class="strategy-pick">★★★★☆ 推荐</span></div>
-<div class="strategy-item"><span class="strategy-rank">④</span><span class="strategy-play"><strong>美国 vs 巴拉圭 · 平局</strong></span><span class="strategy-pick" style="color:var(--orange)">★★★☆☆ 谨慎</span></div>
-</div>
-
-<div class="info-box" style="margin-top:16px">
-<strong>⚡ 全玩法组合推荐：</strong><br>
-<strong>高信心组合（2串1）：</strong>瑞士胜(1.30) × 巴西胜(1.48) = <strong>约1.92</strong> · 瑞士半场/全场胜+负 × 巴西胜胜 串关<br>
-<strong>大球组合：</strong>瑞士vs卡塔尔 大3.0 + 巴西vs摩洛哥 大2.5<br>
-<strong>搏冷单：</strong>美国vs巴拉圭 1:1波胆 × 加拿大vs波黑 1:0波胆<br>
-<strong>警告：</strong>美国vs巴拉圭是今日最危险场次，ELO-赔率-亚盘三重矛盾，建议小注或跳过，不要纳入串关。
-</div>
-</div>
-
-<!-- ===== METHODOLOGY ===== -->
-<div class="card">
-<div class="section-title">📐 分析方法论</div>
+<!-- 模型数据 -->
+<h3 style="font-size:.95rem;color:var(--gold);margin:16px 0 8px;">🧠 预测模型数据</h3>
 <table>
-<tr><th>维度</th><th>权重</th><th>数据来源</th></tr>
-<tr><td>欧赔1X2</td><td>30%</td><td>worldcup-odds.com (7家公司)</td></tr>
-<tr><td>ELO实力</td><td>25%</td><td>本地预测模型 (Poisson xG)</td></tr>
-<tr><td>六因子分析</td><td>20%</td><td>服务器 (年龄/经验/状态/教练/神秘)</td></tr>
-<tr><td>东方玄学</td><td>15%</td><td>易经/道家/禅宗多信号综合</td></tr>
-<tr><td>Polymarket</td><td>10%</td><td>预测市场赔率偏差检测</td></tr>
+<tr><th>球队</th><th>ELO</th><th>胜率</th><th>玄学偏移</th><th>裁决</th></tr>
+<tr><td>🇺🇸 美国</td><td>1702</td><td><div class="bar-container"><div class="bar-label"><span>38%</span></div><div class="bar"><div class="bar-inner bar-yellow" style="width:38%"></div></div></div></td><td>-0.002</td><td>东道主优势，但实力不足</td></tr>
+<tr><td>🇵🇾 巴拉圭</td><td>1760</td><td><div class="bar-container"><div class="bar-label"><span>32%</span></div><div class="bar"><div class="bar-inner bar-green" style="width:32%"></div></div></div></td><td>+0.003</td><td>实力稍优，南美劲旅底蕴</td></tr>
 </table>
+<div style="display:flex;justify-content:space-around;margin-top:8px;">
+<div style="text-align:center;"><span style="color:var(--muted);font-size:.78rem;">美国玄学</span><br>易:䷀乾为天 · 禅:无 · 道:中</div>
+<div style="text-align:center;"><span style="color:var(--muted);font-size:.78rem;">平局概率</span><br><span style="color:var(--yellow);font-size:1.2rem;font-weight:700;">30%</span></div>
+<div style="text-align:center;"><span style="color:var(--muted);font-size:.78rem;">巴拉圭玄学</span><br>易:䷁坤为地 · 禅:有 · 道:顺</div>
+</div>
 
-<div class="info-box" style="margin-top:16px">
-<strong>半全场推导逻辑：</strong>基于ELO差距×赔率骨架×主场优势决定半场节奏。实力差距大→胜胜或胜负领先；均衡→平平/平胜。<br>
-<strong>总进球推导逻辑：</strong>基于ELO差距+大小球盘口+欧赔平赔率。差距大→大球概率高；赔率低平赔高→快节奏。<br>
-<strong>比分推导逻辑：</strong>ELO差距映射：≥400分→3-4球胜；200-400分→2-3球胜；50-200分→1-2球胜；平局以1-1/0-0为主。<br>
-<strong>标有<span class="derived-tag" style="font-size:0.8em">推导</span>的亚盘/大小球数据：</strong>基于欧赔反推计算，非实时数据。worldcup-odds.com不提供亚盘，外部来源数据截至4月。
+<!-- 欧亚一致性检验 -->
+<div class="consistency-box consistency-r">
+<strong>🔴 ELO-赔率-亚盘 三重矛盾</strong>：ELO(巴拉圭高) → 欧赔(美国热) → 亚盘客水反低(庄家暗防巴拉圭)。这是典型的"热方掩护冷方"结构。建议极度谨慎，平局首选。
+</div>
+
+<div class="prediction-box">
+<div class="pred-title">🎯 综合预测 · 美国 vs 巴拉圭</div>
+<div class="pred-result"><span class="stars">★★★☆☆</span> 平局（或巴拉圭+0.5方向）</div>
+<div class="pred-sub">推荐比分：<strong>1-1</strong> / 0-1 · 总进球：1球 · 半全场：平平 / 平负 · <span style="color:var(--red);">⚠️ 矛盾信号，建议观望</span></div>
+</div>
+
+<!-- 全玩法 -->
+<h3 style="font-size:.9rem;color:var(--gold);margin:12px 0 6px;">🎮 全玩法预测详情</h3>
+<div class="cols2">
+<div>
+<div style="font-size:.82rem;color:var(--muted);margin-bottom:4px;">半全场（HT/FT）</div>
+<div class="grid-half">
+<div class="cell">胜胜<br>18%</div><div class="cell">平胜<br>10%</div><div class="cell">负胜<br>4%</div>
+<div class="cell">胜平<br>8%</div><div class="cell highlight">平平<br>26%</div><div class="cell">负平<br>8%</div>
+<div class="cell">胜负<br>4%</div><div class="cell highlight">平负<br>14%</div><div class="cell">负负<br>8%</div>
+</div>
+</div>
+<div>
+<div style="font-size:.82rem;color:var(--muted);margin-bottom:4px;">总进球数</div>
+<div class="goal-bars">
+<div class="bar-container"><div class="bar-label"><span>0球</span><span>15%</span></div><div class="bar"><div class="bar-inner bar-yellow" style="width:15%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>1球</span><span style="font-weight:700;color:var(--green);">30%</span></div><div class="bar"><div class="bar-inner bar-green" style="width:30%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>2球</span><span>25%</span></div><div class="bar"><div class="bar-inner bar-green" style="width:25%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>3球</span><span>18%</span></div><div class="bar"><div class="bar-inner bar-blue" style="width:18%"></div></div></div>
+<div class="bar-container"><div class="bar-label"><span>4球+</span><span>12%</span></div><div class="bar"><div class="bar-inner bar-blue" style="width:12%"></div></div></div>
+</div>
+</div>
+</div>
+
+<div style="font-size:.82rem;color:var(--muted);margin-top:8px;">精确比分预测（概率排序）：<strong style="color:var(--yellow);">1-1</strong> 18% · 0-1 14% · 1-0 12% · 0-0 12% · 2-1 8% · 2-0 7% · 2-2 6% · 0-2 5%</div>
+
+<div class="strategy-box">
+<div class="s-title">💡 投注策略建议</div>
+<div>⚠️ <b>建议回避主胜</b>：ELO-赔率-亚盘矛盾信号太强，不推荐买入美国胜<br>✅ <b>价值方向</b>：巴拉圭+0.5（客水1.875，庄家暗防）<br>✅ <b>首选比分</b>：1-1（安全）<br>⚠️ <b>亚盘策略</b>：走巴拉圭+0.5方向，坐和望赢<br>⚠️ <b>大小球</b>：小球2.5 水1.800 = 庄家预期沉闷</div>
+</div>
+</div>
+
+<!-- 汇总 -->
+<div class="card" style="border:2px solid var(--gold);">
+<h2 style="text-align:center;">📊 6月13日全玩法汇总</h2>
+<div class="summary-grid">
+<div class="summary-card">
+<div class="game">🇨🇦 加拿大 vs 🇧🇦 波黑</div>
+<div class="predict">加拿大胜 ★★★★☆</div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:4px;">胜负平: 主胜 | 半全场: 平胜 | 总进球: 1球 | 比分: 1-0</div>
+</div>
+<div class="summary-card">
+<div class="game">🇺🇸 美国 vs 🇵🇾 巴拉圭</div>
+<div class="predict" style="color:var(--yellow);">平局 ★★★☆☆</div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:4px;">胜负平: 平局 | 半全场: 平平 | 总进球: 1球 | 比分: 1-1</div>
+</div>
+</div>
+
+<div style="margin-top:20px;padding:16px;background:var(--card2);border-radius:10px;">
+<h3 style="font-size:.9rem;color:var(--gold);margin-bottom:8px;">🎯 投注优先级排序</h3>
+<table>
+<tr><th>优先级</th><th>玩法</th><th>推荐</th><th>赔率</th><th>信心</th></tr>
+<tr><td>🥇</td><td>加拿大 胜</td><td>稳健首选</td><td>2.00</td><td>★★★★☆</td></tr>
+<tr><td>🥈</td><td>加拿大 总进球<2.5</td><td>小球搭配</td><td>2.05</td><td>★★★★☆</td></tr>
+<tr><td>🥉</td><td>加拿大 比分 1-0</td><td>小注</td><td>~6.50</td><td>★★★☆☆</td></tr>
+<tr><td>④</td><td>巴拉圭+0.5</td><td>价值方向</td><td>1.875</td><td>★★★☆☆</td></tr>
+<tr><td>⑤</td><td>美国vs巴拉圭 平局</td><td>观察</td><td>3.30</td><td>★★★☆☆</td></tr>
+</table>
+</div>
+
+<div class="alert-box" style="margin-top:16px;">
+<div class="alert-title">⚠️ 风险提示</div>
+<p>本日比赛数据揭示重要模式：<strong>美国vs巴拉圭</strong>存在ELO-赔率-亚盘三重矛盾，不宜重注。建议重点关注<b>加拿大胜（★★★★☆）</b>作为首选，美国场观望为主。</p>
+<p style="margin-top:6px;">所有预测基于历史数据和统计模型，不构成投注建议。足球比赛存在不确定性，请理性对待。</p>
 </div>
 </div>
 
 <div class="footer">
-<p>⚠️ 风险提示：本报告所有预测均基于数学模型和历史数据分析，不构成投注建议。</p>
-<p>足球比赛存在不可预知性，请理性对待预测结果，切勿沉迷赌博。</p>
-<p style="margin-top:12px">Generated: 2026-06-08 15:52 GMT+8 · model v4.0 · 欧亚联合全玩法</p>
+<p>🔗 <a href="https://coeuswen.github.io/worldcup2026/" target="_blank">世界杯预测报告首页</a> | 数据来源：<a href="https://worldcup.zgzcw.com/zhuanti/worldCupsc" target="_blank">zgzcw.com</a> · <a href="https://worldcup-odds.com/2026/fixtures/" target="_blank">worldcup-odds.com</a> · totalcorner.com</p>
+<p>分析方法：ELO模型 + Poisson xG + 六因子（年龄/经验/状态/教练/神秘）+ 东方玄学（易经/道家/禅宗）+ 欧赔核心思维 + 亚盘水位分析</p>
+<p style="margin-top:8px;color:var(--muted);">v4.0修正版 · zgzcw.com赛程铁律 · 去重规则生效 · 生成于 2026-06-08</p>
 </div>
-
 </div>
 </body>
 </html>
