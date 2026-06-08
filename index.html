@@ -154,6 +154,7 @@ body {
 <script>
 // 报告列表 — 每次新增报告在此添加一行
 const REPORTS = [
+  { date:"2026-06-14", file:"2026-06-14-赛果预测报告.html", matches:"德国 vs 库拉索 | 荷兰 vs 日本 | 科特迪瓦 vs 厄瓜多尔 | 瑞典 vs 突尼斯", summary:"欧亚联合v4.0 · 德国稳胆 · 厄瓜多尔全票共识 · 日本冷门预警" },
   { date:"2026-06-13", file:"2026-06-13-赛果预测报告.html", matches:"加拿大 vs 波黑 | 美国 vs 巴拉圭", summary:"欧亚联合v4.0修正版 · zgzcw确认2场 · 美国三重矛盾" },
   { date:"2026-06-12", file:"2026-06-12-赛果预测报告.html", matches:"墨西哥 vs 南非 | 韩国 vs 捷克", summary:"欧亚联合·全玩法终极版v4.0 · 半全场/总进球/比分/亚盘/大小球" }
 ];
@@ -163,7 +164,7 @@ const REPORTS = [
   let totalM = 0;
   REPORTS.forEach(r => { totalM += (r.matches.match(/vs/g)||[]).length; });
   document.getElementById("totalMatches").textContent = totalM;
-  if(REPORTS.length > 0) document.getElementById("latestDate").textContent = REPORTS[REPORTS.length-1].date;
+  if(REPORTS.length > 0) document.getElementById("latestDate").textContent = REPORTS[0].date;
   else document.getElementById("latestDate").textContent = "暂无";
 
   const list = document.getElementById("reportList");
