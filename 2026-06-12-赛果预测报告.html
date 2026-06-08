@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯·6月12日赛果预测报告</title>
+<title>2026世界杯·6月12日赛果预测报告（欧亚联合·全玩法版）</title>
 <style>
 :root {
   --bg: #0a0a0f;
@@ -21,16 +21,20 @@
   --green: #2ed573;
   --purple: #a55eea;
   --gold: #ffd700;
+  --pink: #ff6b9d;
+  --cyan: #00d4cc;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6;padding:20px;max-width:960px;margin:0 auto}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:20px;max-width:1060px;margin:0 auto}
 .header{text-align:center;padding:40px 20px 30px;border-bottom:1px solid var(--border);margin-bottom:30px}
-.header h1{font-size:28px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header h1{font-size:28px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .header .date{font-size:14px;color:var(--text2);margin-top:8px}
-.header .badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:12px;color:var(--text2);margin-top:12px}
+.header .badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:12px;color:var(--text2);margin-top:12px;margin-right:6px}
+.header .badge.new{background:rgba(255,107,157,0.15);border:1px solid rgba(255,107,157,0.3);color:var(--pink)}
+.header .badge.cyan{background:rgba(0,212,204,0.1);border:1px solid rgba(0,212,204,0.3);color:var(--cyan)}
 
 .section{margin-bottom:28px}
-.section-title{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;padding-left:12px;border-left:3px solid var(--accent)}
+.section-title{font-size:14px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;padding-left:12px;border-left:3px solid var(--accent)}
 
 .match-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;transition:all 0.2s}
 .match-card:hover{border-color:var(--accent)}
@@ -40,566 +44,682 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .match-teams .vs{color:var(--accent);margin:0 10px;font-size:16px}
 .match-teams .home{color:#fff}
 .match-teams .away{color:var(--text2)}
-.match-flag{font-size:36px}
 
 .prediction-banner{text-align:center;padding:20px;border-radius:12px;margin-bottom:16px;font-weight:800;font-size:20px}
 .prediction-banner.win{background:rgba(46,213,115,0.12);color:var(--green);border:1px solid rgba(46,213,115,0.25)}
 .prediction-banner.draw{background:rgba(255,165,2,0.12);color:var(--yellow);border:1px solid rgba(255,165,2,0.25)}
-.prediction-banner.loss{background:rgba(255,71,87,0.12);color:var(--red);border:1px solid rgba(255,71,87,0.25)}
 .prediction-score{font-size:36px;font-weight:900;margin-top:4px;letter-spacing:2px}
 
-.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.data-col{background:var(--card2);border-radius:12px;padding:16px;border:1px solid var(--border)}
-.data-col h4{font-size:13px;font-weight:700;margin-bottom:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
-.data-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.03)}
-.data-row .label{color:var(--text2)}
-.data-row .value{font-weight:700;font-variant-numeric:tabular-nums}
-.data-row .value.high{color:var(--green)}
-.data-row .value.low{color:var(--red)}
-.data-row .value.mid{color:var(--yellow)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 
-.odds-table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
-.odds-table th{background:var(--card2);color:var(--text2);padding:8px 10px;text-align:center;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
-.odds-table td{padding:7px 10px;text-align:center;border-bottom:1px solid var(--border)}
-.odds-table tr:hover td{background:rgba(255,255,255,0.02)}
-.odds-best{color:var(--accent);font-weight:800}
+.subtitle{font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(0,212,204,0.2)}
 
-.analysis-box{background:var(--card2);border-radius:12px;padding:18px;border:1px solid var(--border);margin:14px 0}
-.analysis-box h4{font-size:14px;font-weight:700;color:var(--accent2);margin-bottom:10px}
-.analysis-box p,.analysis-box li{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:6px}
-.analysis-box ul{padding-left:20px}
-.analysis-box .highlight{color:var(--accent);font-weight:700}
-.analysis-box .warn{color:var(--yellow);font-weight:600}
+.odd-table{width:100%;border-collapse:collapse;font-size:12px}
+.odd-table th{background:var(--card2);color:var(--text2);padding:8px 6px;text-align:center;font-weight:600;font-size:11px;border-bottom:2px solid var(--border)}
+.odd-table td{padding:8px 6px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);font-variant-numeric:tabular-nums}
+.odd-table tr:hover td{background:rgba(255,255,255,0.02)}
+.odd-table .best{color:var(--green);font-weight:700}
+.odd-table .val{font-weight:700}
+.odd-table .col-home{color:#8be9a8}
+.odd-table .col-draw{color:#ffeaa7}
+.odd-table .col-away{color:#ff8a80}
 
-.odds-methodology{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:20px 0}
-.odds-methodology h3{font-size:16px;font-weight:700;color:var(--gold);margin-bottom:14px}
-.odds-methodology .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.method-item{background:var(--card2);border-radius:10px;padding:14px;border:1px solid var(--border)}
-.method-item h5{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:6px}
-.method-item p{font-size:12px;color:var(--text2);line-height:1.6}
+.asian-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.asian-box{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.asian-box .label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.asian-box .handicap{font-size:28px;font-weight:900;color:var(--cyan)}
+.asian-box .water{font-size:20px;font-weight:700;margin-left:8px}
+.asian-box .water.low{color:var(--green)}
+.asian-box .water.mid{color:var(--yellow)}
+.asian-box .water.high{color:var(--red)}
 
-.progress-bar{height:6px;background:var(--border);border-radius:3px;margin:8px 0;overflow:hidden}
-.progress-fill{height:100%;border-radius:3px;transition:width 0.5s}
-.progress-fill.home{background:var(--green)}
-.progress-fill.draw{background:var(--yellow)}
-.progress-fill.away{background:var(--red)}
+.ou-box{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.ou-box .ou-line{font-size:24px;font-weight:900;color:var(--purple)}
+.ou-box .ou-detail{font-size:14px;color:var(--text2)}
+.ou-box .ou-over{color:var(--green);font-weight:700}
+.ou-box .ou-under{color:var(--red);font-weight:700}
 
-.weight-breakdown{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
-.weight-tag{font-size:10px;padding:3px 10px;border-radius:12px;font-weight:600;letter-spacing:0.3px}
-.weight-tag.odds{background:rgba(255,107,53,0.2);color:var(--accent)}
-.weight-tag.elo{background:rgba(74,158,255,0.2);color:var(--blue)}
-.weight-tag.factor{background:rgba(165,94,234,0.2);color:var(--purple)}
-.weight-tag.mystic{background:rgba(255,215,0,0.2);color:var(--gold)}
-.weight-tag.market{background:rgba(0,212,170,0.2);color:var(--accent2)}
+.euro-asian-check{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:12px}
+.euro-asian-check .check-title{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:10px}
+.euro-asian-check .check-verdict{font-size:15px;font-weight:700;padding:10px 14px;border-radius:8px}
+.euro-asian-check .check-verdict.consistent{background:rgba(46,213,115,0.08);color:var(--green);border:1px solid rgba(46,213,115,0.2)}
+.euro-asian-check .check-verdict.caution{background:rgba(255,165,2,0.08);color:var(--yellow);border:1px solid rgba(255,165,2,0.2)}
+.euro-asian-check .check-verdict.conflict{background:rgba(255,71,87,0.08);color:var(--red);border:1px solid rgba(255,71,87,0.2)}
 
-.footer{text-align:center;padding:30px 20px;color:var(--text3);font-size:12px;border-top:1px solid var(--border);margin-top:30px}
-.footer a{color:var(--blue);text-decoration:none}
+.hth-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.hth-bar .hth-label{width:70px;font-size:11px;color:var(--text2);text-align:right}
+.hth-bar .hth-track{flex:1;height:18px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.hth-bar .hth-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.hth-bar .hth-pct{width:45px;font-size:11px;font-weight:700;text-align:right}
 
-.knowledge-section{background:linear-gradient(135deg,rgba(165,94,234,0.08),rgba(0,212,170,0.08));border:1px solid rgba(165,94,234,0.2);border-radius:16px;padding:24px;margin:24px 0}
-.knowledge-section h3{font-size:18px;font-weight:800;margin-bottom:16px;color:var(--purple)}
-.knowledge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.knowledge-item{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--border)}
-.knowledge-item .ki-icon{font-size:24px;margin-bottom:6px}
-.knowledge-item h5{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
-.knowledge-item p{font-size:11px;color:var(--text2);line-height:1.5}
+.rr-item{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-size:11px}
+.rr-item .rr-score{font-size:18px;font-weight:900;color:var(--gold)}
+.rr-item .rr-pct{color:var(--accent);font-weight:700;font-size:13px}
+.rr-item .rr-star{font-size:10px}
 
-@media(max-width:640px){
-  body{padding:10px}
-  .header h1{font-size:22px}
+.summary-table{width:100%;border-collapse:collapse;font-size:12px}
+.summary-table th{background:var(--card2);color:var(--text2);padding:10px 8px;text-align:center;font-weight:700;font-size:11px;border-bottom:2px solid var(--border)}
+.summary-table td{padding:12px 8px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04)}
+.summary-table .rank-gold{color:var(--gold);font-weight:800}
+.summary-table .rank-silver{color:#ddd;font-weight:700}
+.summary-table .star-5{color:var(--green)}
+.summary-table .star-4{color:#a5d6a7}
+.summary-table .star-3{color:var(--yellow)}
+.summary-table .star-2{color:var(--accent)}
+
+.knowledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.k-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.k-card .k-icon{font-size:20px;margin-bottom:6px}
+.k-card .k-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.k-card .k-desc{font-size:11px;color:var(--text2);line-height:1.5}
+
+.bar-horz{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.bar-horz .bar-label{width:55px;font-size:10px;color:var(--text2);text-align:right}
+.bar-horz .bar-track{flex:1;height:14px;background:rgba(255,255,255,0.04);border-radius:3px}
+.bar-horz .bar-fill{height:100%;border-radius:3px}
+.bar-horz .bar-pct{width:38px;font-size:10px;font-weight:700;text-align:right}
+
+.verdict-chip{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.verdict-chip.buy{background:rgba(46,213,115,0.15);color:var(--green)}
+.verdict-chip.hold{background:rgba(255,165,2,0.15);color:var(--yellow)}
+.verdict-chip.avoid{background:rgba(255,71,87,0.15);color:var(--red)}
+
+.footer{text-align:center;padding:30px;color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:40px}
+.footer p{margin:4px 0}
+
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4,.asian-grid,.knowledge-grid{grid-template-columns:1fr}
   .match-teams{font-size:18px}
-  .data-grid{grid-template-columns:1fr}
-  .knowledge-grid{grid-template-columns:1fr}
-  .prediction-score{font-size:28px}
-  .odds-methodology .method-grid{grid-template-columns:1fr}
-  .match-header{flex-direction:column;text-align:center}
+  .prediction-score{font-size:26px}
+  .summary-table{font-size:10px}
 }
-
-/* Confidence stars */
-.stars{color:var(--gold);letter-spacing:2px;font-size:14px}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>🏆 2026世界杯 · 6月12日赛果预测</h1>
-  <div class="date">2026年6月12日（星期五）· 小组赛第2比赛日</div>
-  <div class="badge">🔄 欧赔深度分析版 v2.0 · 基于欧赔核心思维 + 竞彩看盘技巧</div>
+  <h1>2026世界杯 · 6月12日赛果预测报告</h1>
+  <div class="date">2026年6月12日 · A/B/D组小组赛第一轮</div>
+  <span class="badge new">v4.0·欧亚联合分析</span>
+  <span class="badge cyan">含亚盘·大小球</span>
+  <span class="badge">全玩法覆盖</span>
+  <span class="badge">AI综合研判</span>
 </div>
 
-<!-- 知识库摘要 -->
-<div class="knowledge-section">
-  <h3>📚 欧赔知识体系 — 本次分析框架</h3>
-  <div class="knowledge-grid">
-    <div class="knowledge-item">
-      <div class="ki-icon">📐</div>
-      <h5>广义实力（广实）</h5>
-      <p>融合人气指数、历史底蕴的综合实力评估，非纯ELO排名；国家队修正：亚洲-20/非洲-20/东欧+5-10</p>
-    </div>
-    <div class="knowledge-item">
-      <div class="ki-icon">🎯</div>
-      <h5>赔率骨架位置</h5>
-      <p>0-9区间定位，对应不同广实差距的标准赔率范围，判断赔率是实盘（降低赔付）还是韬盘（阻碍信心）</p>
-    </div>
-    <div class="knowledge-item">
-      <div class="ki-icon">⚖️</div>
-      <h5>最优解/更优解</h5>
-      <p>庄家利润最大化前提下选择的最佳赔率组合；无最优解时取"两害相衡取其轻"的更优解</p>
-    </div>
-    <div class="knowledge-item">
-      <div class="ki-icon">📊</div>
-      <h5>赔率离散度分析</h5>
-      <p>各公司赔率一致性越高，该结果越可能打出；主流公司压低赔率的方向往往反映真实意图</p>
-    </div>
-    <div class="knowledge-item">
-      <div class="ki-icon">🔄</div>
-      <h5>五大原则</h5>
-      <p>信赔不信变 · 信小不信大 · 信深不信浅 · 信冷不信热 · 信升不信降</p>
-    </div>
-    <div class="knowledge-item">
-      <div class="ki-icon">🧠</div>
-      <h5>心理预期值</h5>
-      <p>赔率高于大众心理预期 → 热门方难打出；赔率与心理预期一致 → 市场共识可靠</p>
-    </div>
-  </div>
-</div>
-
+<!-- ============ 知识体系摘要 ============ -->
 <div class="section">
-  <div class="section-title">⚽ 本日四场小组赛预测</div>
-  
-  <!-- ===== 比赛1: 墨西哥 vs 南非 ===== -->
-  <div class="match-card">
-    <div class="match-header">
-      <div class="match-time">🕒 03:00 · A组 · 小组赛</div>
-      <div class="match-teams">
-        <span class="home">🇲🇽 墨西哥</span>
-        <span class="vs">VS</span>
-        <span class="away">🇿🇦 南非</span>
-      </div>
-      <div class="stars">★★★★★</div>
-    </div>
-    
-    <div class="prediction-banner win">
-      🏠 主胜 &nbsp;·&nbsp; 墨西哥 取胜
-      <div class="prediction-score">2 : 0</div>
-      <div style="font-size:13px;font-weight:500;margin-top:4px">信心指数: 90% · 强烈推荐</div>
-    </div>
-    
-    <div class="data-grid">
-      <div class="data-col">
-        <h4>🇲🇽 墨西哥</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value high">1689.4</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">0.60%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.057 / age=0.073 / exp=0.09</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">💧 上善若水 · 巽☴</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value mid">阵容年龄结构完美</span></div>
-      </div>
-      <div class="data-col">
-        <h4>🇿🇦 南非</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value low">1570.0</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">0.17%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.038 / age=-0.043 / exp=0.00</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">🌊 柔弱胜刚强 · 坤☷</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value low">阵容年轻，缺乏大赛历练</span></div>
-      </div>
-    </div>
-    
-    <!-- 欧赔数据表 -->
-    <div class="analysis-box">
-      <h4>💰 主流欧赔数据</h4>
-      <table class="odds-table">
-        <tr><th>博彩公司</th><th>主胜（墨西哥）</th><th>平局</th><th>客胜（南非）</th></tr>
-        <tr><td>Bet365</td><td>1.45</td><td>4.10</td><td>5.75</td></tr>
-        <tr><td>Betfred</td><td>1.50</td><td>4.00</td><td>7.00</td></tr>
-        <tr><td>Bwin</td><td>1.45</td><td>4.00</td><td>6.50</td></tr>
-        <tr><td>BOYLE Sports</td><td>1.50</td><td>3.80</td><td>5.50</td></tr>
-        <tr><td>Coral</td><td>1.53</td><td>4.20</td><td>6.00</td></tr>
-        <tr><td>Ladbrokes</td><td>1.53</td><td>4.20</td><td>6.00</td></tr>
-        <tr><td>Sportingbet</td><td>1.50</td><td>4.00</td><td>5.50</td></tr>
-        <tr style="border-top:2px solid var(--accent);font-weight:800">
-          <td>📊 最佳赔率</td>
-          <td class="odds-best">1.53</td>
-          <td class="odds-best">4.20</td>
-          <td class="odds-best">7.00</td>
-        </tr>
-      </table>
-    </div>
+<div class="section-title">📐 欧赔+亚盘联合分析框架 v4.0</div>
+<div class="knowledge-grid">
+<div class="k-card">
+  <div class="k-icon">①</div><div class="k-title" style="color:var(--accent)">欧赔广实定位</div>
+  <div class="k-desc">广义实力体系（人强→下游8档）+ 国家队修正（亚洲-20/非洲-20/东欧+5~10）→ 确定骨架位置</div>
+</div>
+<div class="k-card">
+  <div class="k-icon">②</div><div class="k-title" style="color:var(--cyan)">亚盘盘口结构</div>
+  <div class="k-desc">让球盘口+水位分析 → 判断深盘/浅盘/合理盘 → 水位走势确认庄家态度</div>
+</div>
+<div class="k-card">
+  <div class="k-icon">③</div><div class="k-title" style="color:var(--gold)">欧亚一致性检验</div>
+  <div class="k-desc">欧赔指向 vs 亚盘水温是否一致？矛盾信号=隐藏风险/价值机会</div>
+</div>
+<div class="k-card">
+  <div class="k-icon">④</div><div class="k-title" style="color:var(--blue)">离散度验证</div>
+  <div class="k-desc">7家公司赔率差距越小→结果越可能打出；主流公司压低方向=真实意图</div>
+</div>
+<div class="k-card">
+  <div class="k-icon">⑤</div><div class="k-title" style="color:var(--purple)">大小球研判</div>
+  <div class="k-desc">总进球盘口+水位 → 结合两队攻防风格 → 预测进球节奏</div>
+</div>
+<div class="k-card">
+  <div class="k-icon">⑥</div><div class="k-title" style="color:var(--pink)">五大原则</div>
+  <div class="k-desc">信赔不信变/信小不信大/信深不信浅/信冷不信热/信升不信降</div>
+</div>
+</div>
+</div>
 
-    <!-- 综合研判 -->
-    <div class="analysis-box">
-      <h4>🔍 欧赔深度研判</h4>
-      <p><span class="highlight">【广实定位】</span>墨西哥（中上档，ELO 1689.4）vs 南非（中下档，ELO 1570.0，非洲队修正-20分 → 有效实力约1550）。广实差距约140分，对应赔率<span class="highlight">6-7区（1.40-1.60区间）</span>。</p>
-      <p><span class="highlight">【骨架位置】</span>实际胜赔1.45-1.53，完全落在6-7区合理范围。胜赔<span class="highlight">实盘</span>形态，庄家主动压低胜赔降低赔付 → <span class="highlight">真实看好墨西哥</span>。</p>
-      <p><span class="highlight">【赔率方向】</span>平赔3.80-4.20属中庸偏韬盘，南非客胜5.50-7.00离散极大（Betfred给出7.00极高赔付），庄家<span class="highlight">不忌惮平局和客胜打出</span>。</p>
-      <p><span class="highlight">【离散度分析】</span>胜赔集中度极高（1.45-1.53，差距仅0.08），平赔和客胜离散较大 → 市场一致确认墨西哥取胜。</p>
-      <p><span class="highlight">【五大原则验证】</span>"信深不信浅"——赔率深刻反映实力差距；"信小不信大"——小公司与大公司胜赔高度一致。</p>
-      <p><span class="highlight">【模型佐证】</span>ELO差距约120分、六因子全面碾压（年龄结构、大赛经验均优于南非）、Polymarket夺冠概率墨西哥0.011 vs 南非无数据。</p>
-    </div>
+<!-- ============ 比赛1: 墨西哥 vs 南非 ============ -->
+<div class="section">
+<div class="section-title">🏟️ 比赛一：墨西哥 vs 南非（A组）</div>
+<div class="match-card">
+<div class="match-header">
+  <div class="match-time">🕒 03:00 · 墨西哥城阿兹特克球场</div>
+  <div class="match-teams"><span class="home">🇲🇽 墨西哥</span><span class="vs">vs</span><span class="away">🇿🇦 南非</span></div>
+  <div style="text-align:right;font-size:11px;color:var(--text3)">A组·小组赛第1轮</div>
+</div>
 
-    <div class="weight-breakdown">
-      <span class="weight-tag odds">欧赔: 30% → 95%主胜</span>
-      <span class="weight-tag elo">ELO: 25% → 82%主胜</span>
-      <span class="weight-tag factor">六因子: 20% → 78%主胜</span>
-      <span class="weight-tag mystic">玄学: 15% → 中性</span>
-      <span class="weight-tag market">市场: 10% → 90%主胜</span>
-    </div>
-    
-    <div style="margin-top:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>主胜概率</span><span style="color:var(--green);font-weight:700">87%</span></div>
-      <div class="progress-bar"><div class="progress-fill home" style="width:87%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>平局概率</span><span style="color:var(--yellow);font-weight:700">9%</span></div>
-      <div class="progress-bar"><div class="progress-fill draw" style="width:9%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>客胜概率</span><span style="color:var(--red);font-weight:700">4%</span></div>
-      <div class="progress-bar"><div class="progress-fill away" style="width:4%"></div></div>
-    </div>
+<div class="prediction-banner win">
+  综合研判：<strong>墨西哥 胜</strong>
+  <div class="prediction-score">2:0</div>
+  <div style="font-size:13px;color:var(--text2);margin-top:6px">信心指数 ★★★★★ (90%) · 半场预测：墨西哥已领先</div>
+</div>
+
+<!-- 欧赔+亚盘 双表格并列 -->
+<div class="asian-grid">
+<div>
+<div class="subtitle">📊 欧赔（7家公司 1X2）</div>
+<table class="odd-table">
+<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
+<tr><td>Bet365</td><td class="val">1.45</td><td>4.10</td><td>5.75</td></tr>
+<tr><td>Betfred</td><td>1.50</td><td>4.00</td><td class="val">7.00</td></tr>
+<tr><td>Bwin</td><td>1.45</td><td>4.00</td><td>6.50</td></tr>
+<tr><td>BOYLE</td><td>1.50</td><td>3.80</td><td>5.50</td></tr>
+<tr><td>Coral</td><td class="best">1.53</td><td class="best">4.20</td><td>6.00</td></tr>
+<tr><td>Ladbrokes</td><td class="best">1.53</td><td class="best">4.20</td><td>6.00</td></tr>
+<tr><td>Sportingbet</td><td>1.50</td><td>4.00</td><td>5.50</td></tr>
+<tr style="background:rgba(46,213,115,0.05)"><td><b>最佳</b></td><td class="col-home"><b>1.53</b></td><td class="col-draw"><b>4.20</b></td><td class="col-away"><b>7.00</b></td></tr>
+</table>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">离散度：主胜 0.08 / 平局 0.40 / 客胜 1.50 → <b style="color:var(--green)">主胜高度一致</b></div>
+</div>
+<div>
+<div class="subtitle">🏆 亚洲让球盘</div>
+<div class="asian-box" style="margin-bottom:12px">
+  <div class="label">主流盘口</div>
+  <span class="handicap">墨西哥 -0.5</span>
+  <div style="margin-top:8px">
+    <span>主水 </span><span class="water low">0.85</span>
+    <span style="color:var(--text3)"> / </span>
+    <span>客水 </span><span class="water high">~1.05</span>
   </div>
+  <div style="font-size:11px;color:var(--green);margin-top:6px">低水保护意图明确 · 初盘中高水→持续下调至低水区间</div>
+</div>
+<div class="ou-box">
+  <div class="label">大小球</div>
+  <div class="ou-line">2.5</div>
+  <div class="ou-detail">大球 <span class="ou-over">均水</span> / 小球 <span class="ou-under">均水</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:4px">推荐方向：大球 2.5</div>
+</div>
+</div>
+</div>
 
-  <!-- ===== 比赛2: 韩国 vs 捷克 ===== -->
-  <div class="match-card">
-    <div class="match-header">
-      <div class="match-time">🕒 10:00 · A组 · 小组赛</div>
-      <div class="match-teams">
-        <span class="home">🇰🇷 韩国</span>
-        <span class="vs">VS</span>
-        <span class="away">🇨🇿 捷克</span>
-      </div>
-      <div class="stars">★★★☆☆</div>
-    </div>
-    
-    <div class="prediction-banner draw">
-      🤝 倾向客队不败 &nbsp;·&nbsp; 捷克不败（胜或平）
-      <div class="prediction-score">1 : 1</div>
-      <div style="font-size:13px;font-weight:500;margin-top:4px">信心指数: 65% · 平稳格局，平局首选</div>
-    </div>
-    
-    <div class="data-grid">
-      <div class="data-col">
-        <h4>🇰🇷 韩国</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value">1668.2</span></div>
-        <div class="data-row"><span class="label">广实修正</span><span class="value low">≈1648（亚洲-20）</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">0.46%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.053 / age=0.065 / exp=0.09</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">💧 上善若水 · 巽☴</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value mid">阵容年龄结构完美</span></div>
-      </div>
-      <div class="data-col">
-        <h4>🇨🇿 捷克</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value high">1690.0</span></div>
-        <div class="data-row"><span class="label">广实修正</span><span class="value high">≈1698（东欧+8）</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">0.62%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.057 / age=0.041 / exp=0.09</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">💧 上善若水 · 巽☴</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value high">无明显短板</span></div>
-      </div>
-    </div>
-    
-    <div class="analysis-box">
-      <h4>💰 主流欧赔数据</h4>
-      <table class="odds-table">
-        <tr><th>博彩公司</th><th>主胜（韩国）</th><th>平局</th><th>客胜（捷克）</th></tr>
-        <tr><td>Bet365</td><td>2.55</td><td>3.20</td><td>2.60</td></tr>
-        <tr><td>Betfred</td><td>2.75</td><td>3.20</td><td>2.63</td></tr>
-        <tr><td>Bwin</td><td>2.55</td><td>3.10</td><td>2.62</td></tr>
-        <tr><td>BOYLE Sports</td><td>2.50</td><td>3.10</td><td>2.70</td></tr>
-        <tr><td>Coral</td><td>2.62</td><td>3.10</td><td>2.80</td></tr>
-        <tr><td>Ladbrokes</td><td>2.62</td><td>3.10</td><td>2.75</td></tr>
-        <tr><td>Sportingbet</td><td>2.50</td><td>3.20</td><td>2.62</td></tr>
-        <tr style="border-top:2px solid var(--accent);font-weight:800">
-          <td>📊 最佳赔率</td>
-          <td class="odds-best">2.75</td>
-          <td class="odds-best">3.20</td>
-          <td class="odds-best">2.80</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="analysis-box">
-      <h4>🔍 欧赔深度研判</h4>
-      <p><span class="highlight">【广实定位】</span>韩国（中上档，ELO 1668.2，亚洲队修正-20 → 有效≈1648）vs 捷克（中强档，ELO 1690.0，东欧修正+8 → 有效≈1698）。修正后广实差距约50分，应落在<span class="highlight">2区（2.30-2.60 / 3.10-3.30 / 2.70-3.00）</span>。</p>
-      <p><span class="highlight">【骨架位置】</span>实际赔率2.50-2.75 / 3.10-3.20 / 2.60-2.80 → 基本落在2区，属<span class="highlight">中庸盘</span>。胜赔最高2.75（Betfred）偏韬 → 韩国取胜阻力大。客胜2.60-2.80在2区正常偏低 → <span class="highlight">庄家更忌惮捷克取胜</span>。</p>
-      <p><span class="highlight">【赔率方向】</span>三方向差值极小（最高差仅0.25），典型<span class="highlight">均衡盘面</span>。但韩国胜赔普遍在2.50以上（韬盘区间），"信升不信降"原则 → 韩国取胜不易。</p>
-      <p><span class="highlight">【平赔手法】</span>平赔3.10-3.20集中在较窄区间，离散度极低，庄家<span class="highlight">对平局防范意识很强</span>——"平赔是欧赔精髓"，平赔压低往往预示真实平局意图。</p>
-      <p><span class="highlight">【离散度分析】</span>Coral客胜2.80明显高于均值（2.65），但Ladbrokes 2.75也偏高 → 若客胜方向能打出，离散度应更集中。胜赔2.50-2.75离散也大 → <span class="highlight">平局最稳定</span>。</p>
-      <p><span class="highlight">【交叉验证】</span>ELO捷克略优（1690 vs 1668）、六因子捷克elo_score更高（0.057 vs 0.053）、Polymarket捷克夺冠概率显著更高（0.0062 vs 0.0046）。<span class="highlight">三条线一致指向捷克不败</span>。</p>
-    </div>
-
-    <div class="weight-breakdown">
-      <span class="weight-tag odds">欧赔: 30% → 捷克不败70%</span>
-      <span class="weight-tag elo">ELO: 25% → 捷克55%</span>
-      <span class="weight-tag factor">六因子: 20% → 捷克60%</span>
-      <span class="weight-tag mystic">玄学: 15% → 中性</span>
-      <span class="weight-tag market">市场: 10% → 捷克55%</span>
-    </div>
-    
-    <div style="margin-top:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>韩国胜</span><span style="color:var(--red);font-weight:700">30%</span></div>
-      <div class="progress-bar"><div class="progress-fill away" style="width:30%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>平局</span><span style="color:var(--yellow);font-weight:700">38%</span></div>
-      <div class="progress-bar"><div class="progress-fill draw" style="width:38%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>捷克胜</span><span style="color:var(--green);font-weight:700">32%</span></div>
-      <div class="progress-bar"><div class="progress-fill home" style="width:32%"></div></div>
-    </div>
-  </div>
-
-  <!-- ===== 比赛3: 加拿大 vs 波黑 ===== -->
-  <div class="match-card">
-    <div class="match-header">
-      <div class="match-time">🕒 03:00 · B组 · 小组赛</div>
-      <div class="match-teams">
-        <span class="home">🇨🇦 加拿大</span>
-        <span class="vs">VS</span>
-        <span class="away">🇧🇦 波黑</span>
-      </div>
-      <div class="stars">★★★★☆</div>
-    </div>
-    
-    <div class="prediction-banner win">
-      🏠 主胜 &nbsp;·&nbsp; 加拿大 不败（胜或平）
-      <div class="prediction-score">1 : 0</div>
-      <div style="font-size:13px;font-weight:500;margin-top:4px">信心指数: 75% · 加拿大占优，平局需防</div>
-    </div>
-    
-    <div class="data-grid">
-      <div class="data-col">
-        <h4>🇨🇦 加拿大</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value high">1654.8</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">0.38%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.051 / age=0.069 / exp=0.09</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">💧 上善若水 · 巽☴</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value high">阵容年龄结构完美</span></div>
-      </div>
-      <div class="data-col">
-        <h4>🇧🇦 波黑</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value low">≈1600（估算）</span></div>
-        <div class="data-row"><span class="label">广实修正</span><span class="value mid">≈1608（东欧+8）</span></div>
-        <div class="data-row"><span class="label">预测模型</span><span class="value low">⚠️ 未纳入模型</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value">欧洲二线中游队</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">— 无数据</span></div>
-      </div>
-    </div>
-    
-    <div class="analysis-box">
-      <h4>💰 主流欧赔数据</h4>
-      <table class="odds-table">
-        <tr><th>博彩公司</th><th>主胜（加拿大）</th><th>平局</th><th>客胜（波黑）</th></tr>
-        <tr><td>Bet365</td><td>1.83</td><td>3.70</td><td>3.60</td></tr>
-        <tr><td>Betfred</td><td>1.90</td><td>3.40</td><td>4.20</td></tr>
-        <tr><td>Bwin</td><td>1.83</td><td>3.25</td><td>4.10</td></tr>
-        <tr><td>BOYLE Sports</td><td>1.83</td><td>3.40</td><td>3.80</td></tr>
-        <tr><td>Coral</td><td>1.83</td><td>3.50</td><td>4.33</td></tr>
-        <tr><td>Ladbrokes</td><td>1.83</td><td>3.50</td><td>4.33</td></tr>
-        <tr><td>Sportingbet</td><td>1.90</td><td>3.50</td><td>3.25</td></tr>
-        <tr style="border-top:2px solid var(--accent);font-weight:800">
-          <td>📊 最佳赔率</td>
-          <td class="odds-best">1.90</td>
-          <td class="odds-best">3.70</td>
-          <td class="odds-best">4.33</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="analysis-box">
-      <h4>🔍 欧赔深度研判</h4>
-      <p><span class="highlight">【广实定位】</span>加拿大（中游档，ELO 1654.8）vs 波黑（中下档，ELO估计约1600，东欧修正+8 → 有效≈1608）。广实差距约46分，应落在<span class="highlight">3-4区（1.80-2.00区间）</span>。</p>
-      <p><span class="highlight">【骨架位置】</span>实际胜赔1.83-1.90，完全在3-4区合理范围。胜赔<span class="highlight">实盘</span>形态，Bet365/Coral/Ladbrokes三家主流公司一致给出1.83 → <span class="highlight">庄家联合看好加拿大</span>。</p>
-      <p><span class="highlight">【赔率方向】</span>平赔3.25-3.70差异极大（Bet365 3.70 vs Bwin 3.25，差0.45），<span class="highlight">平赔离散度高</span>意味着庄家对平局态度分歧。波黑客胜3.25-4.33同样离散大。</p>
-      <p><span class="highlight">【Coral/Ladbrokes信号】</span>两家英系老牌公司胜赔一致1.83，客胜一致4.33（赔付极高），<span class="highlight">极度不忌惮波黑客胜</span>。"信小不信大"原则 → 小公司如Sportingbet给出1.90胜赔也合理。</p>
-      <p><span class="highlight">【风险提示】</span>⚠️ 波黑未纳入预测模型，ELO为估算值。波黑作为欧洲队，实际实力可能高于预期。"信冷不信热"原则提醒：若加拿大过热，需防范平局冷门。</p>
-      <p><span class="highlight">【综合判断】</span>加拿大不败格局明确，但平赔离散度提示庄家对平局无共识 → 平局不可完全排除。推荐<span class="highlight">加拿大胜（让平）</span>，平局为第二落点。</p>
-    </div>
-
-    <div class="weight-breakdown">
-      <span class="weight-tag odds">欧赔: 30% → 加拿大不败78%</span>
-      <span class="weight-tag elo">ELO: 25% → 加拿大68%</span>
-      <span class="weight-tag factor">六因子: 20% → 加拿大65%</span>
-      <span class="weight-tag mystic">玄学: 15% → 中性</span>
-      <span class="weight-tag market">市场: 10% → 加拿大65%</span>
-    </div>
-    
-    <div style="margin-top:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>加拿大胜</span><span style="color:var(--green);font-weight:700">60%</span></div>
-      <div class="progress-bar"><div class="progress-fill home" style="width:60%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>平局</span><span style="color:var(--yellow);font-weight:700">25%</span></div>
-      <div class="progress-bar"><div class="progress-fill draw" style="width:25%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>波黑胜</span><span style="color:var(--red);font-weight:700">15%</span></div>
-      <div class="progress-bar"><div class="progress-fill away" style="width:15%"></div></div>
-    </div>
-  </div>
-
-  <!-- ===== 比赛4: 美国 vs 巴拉圭 ===== -->
-  <div class="match-card">
-    <div class="match-header">
-      <div class="match-time">🕒 09:00 · D组 · 小组赛</div>
-      <div class="match-teams">
-        <span class="home">🇺🇸 美国</span>
-        <span class="vs">VS</span>
-        <span class="away">🇵🇾 巴拉圭</span>
-      </div>
-      <div class="stars">★★★☆☆</div>
-    </div>
-    
-    <div class="prediction-banner draw">
-      ⚠️ 高危场次 &nbsp;·&nbsp; 平局高度警惕！
-      <div class="prediction-score">1 : 1</div>
-      <div style="font-size:13px;font-weight:500;margin-top:4px">信心指数: 55% · ELO与赔率矛盾，谨慎对待</div>
-    </div>
-    
-    <div class="data-grid">
-      <div class="data-col">
-        <h4>🇺🇸 美国</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value">1702.3</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">0.86%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.060 / age=0.061 / exp=0.09</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">💧 上善若水 · 泰☷上☰下</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value high">阵容年龄结构完美</span></div>
-      </div>
-      <div class="data-col">
-        <h4>🇵🇾 巴拉圭</h4>
-        <div class="data-row"><span class="label">ELO排名</span><span class="value high">1760.0</span></div>
-        <div class="data-row"><span class="label">夺冠概率</span><span class="value">1.74%</span></div>
-        <div class="data-row"><span class="label">六因子评分</span><span class="value">elo=0.072 / age=0.030 / exp=0.11</span></div>
-        <div class="data-row"><span class="label">玄学判定</span><span class="value">💧 上善若水 · 坎☵</span></div>
-        <div class="data-row"><span class="label">实力特征</span><span class="value high">南美传统劲旅</span></div>
-      </div>
-    </div>
-    
-    <div class="analysis-box">
-      <h4>💰 主流欧赔数据</h4>
-      <table class="odds-table">
-        <tr><th>博彩公司</th><th>主胜（美国）</th><th>平局</th><th>客胜（巴拉圭）</th></tr>
-        <tr><td>Bet365</td><td>1.83</td><td>3.50</td><td>3.80</td></tr>
-        <tr><td>Betfred</td><td>1.95</td><td>3.50</td><td>3.75</td></tr>
-        <tr><td>Bwin</td><td>1.83</td><td>3.40</td><td>3.90</td></tr>
-        <tr><td>BOYLE Sports</td><td>1.83</td><td>3.50</td><td>3.60</td></tr>
-        <tr><td>Coral</td><td>1.95</td><td>3.60</td><td>3.90</td></tr>
-        <tr><td>Ladbrokes</td><td>1.91</td><td>3.50</td><td>3.80</td></tr>
-        <tr><td>Sportingbet</td><td>1.91</td><td>3.40</td><td>3.60</td></tr>
-        <tr style="border-top:2px solid var(--accent);font-weight:800">
-          <td>📊 最佳赔率</td>
-          <td class="odds-best">1.95</td>
-          <td class="odds-best">3.60</td>
-          <td class="odds-best">3.90</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="analysis-box">
-      <h4>🔍 欧赔深度研判 ⚠️ 本日最复杂场次</h4>
-      <p><span class="highlight">【核心矛盾】</span>巴拉圭ELO（1760.0）显著高于美国（1702.3），差距达58分，且巴拉圭夺冠概率（1.74%）是美国（0.86%）的<span class="highlight">两倍</span>。但欧赔却一致看好美国（胜赔1.83-1.95）！这是本报告最值得深入分析的<span class="warn">ELO-赔率矛盾</span>。</p>
-      <p><span class="highlight">【广实定位】</span>美国（中上档，ELO 1702.3）vs 巴拉圭（中上档，ELO 1760.0）。按纯ELO，巴拉圭应略占优，但赔率方向完全相反 → 说明有<span class="warn">非ELO因素</span>在起作用。</p>
-      <p><span class="highlight">【主场效应分析】</span>比赛在洛杉矶进行，美国拥有绝对主场优势。世界杯历史上东道主球队小组赛表现通常超常发挥。庄家给予美国<span class="highlight">1.83胜赔（4-5区）</span>，相当于将美国视为比巴拉圭高约80-100分的中上档球队。</p>
-      <p><span class="highlight">【心理预期值分析】</span>以美国主场身份+东道主光环，大众对美国取胜的心理预期约在1.80-1.90区间。实际赔率1.83-1.95恰好吻合心理预期 → <span class="warn">庄家未做任何诱导，赔率完全反映市场共识。这是双刃剑——可能是真实看好，也可能是"顺应民意"做热美国</span>。</p>
-      <p><span class="highlight">【赔率方向判断】</span>Betfred/Coral给出1.95胜赔略偏高（韬盘倾向），Bet365/Bwin给出1.83偏低（实盘）。<span class="warn">"信赔不信变"——若庄家真看好美国，胜赔应更集中在1.80以下。当前1.83-1.95的区间说明庄家对美国取胜保留余地。</span></p>
-      <p><span class="highlight">【平赔分析】</span>平赔3.40-3.60，较窄区间，离散度低。"欧赔核心思维"指出：<span class="highlight">当平赔被庄家刻意保护（不高不低、离散小）时，往往平局概率被低估。</span></p>
-      <p><span class="highlight">【综合结论】</span>这是一场<span class="warn">"盘赔差异"场次</span>——ELO不支持美国优势，但赔率+主场给出支持。按"竞彩看盘技巧"的"赔付预期值"理论，当实力与赔率方向不一致时，应相信实力面。<span class="warn">平局是价值最高的落点</span>，美国小胜次之。</p>
-    </div>
-
-    <div class="weight-breakdown">
-      <span class="weight-tag odds">欧赔: 30% → 平局/美国不败60%</span>
-      <span class="weight-tag elo">ELO: 25% → 巴拉圭52%</span>
-      <span class="weight-tag factor">六因子: 20% → 巴拉圭55%</span>
-      <span class="weight-tag mystic">玄学: 15% → 美国略优</span>
-      <span class="weight-tag market">市场: 10% → 美国55%</span>
-    </div>
-    
-    <div style="margin-top:12px">
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>美国胜</span><span style="color:var(--green);font-weight:700">40%</span></div>
-      <div class="progress-bar"><div class="progress-fill home" style="width:40%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>平局</span><span style="color:var(--yellow);font-weight:700">35%</span></div>
-      <div class="progress-bar"><div class="progress-fill draw" style="width:35%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>巴拉圭胜</span><span style="color:var(--red);font-weight:700">25%</span></div>
-      <div class="progress-bar"><div class="progress-fill away" style="width:25%"></div></div>
-    </div>
+<!-- 欧亚一致性检验 -->
+<div class="euro-asian-check">
+  <div class="check-title">🔍 欧亚一致性检验</div>
+  <div class="check-verdict consistent">
+    ✅ <b>高度一致 · 置信度 95%</b><br>
+    欧赔 1.45-1.53 对应亚盘合理区间 -1.0~-1.5，实际 -0.5 略浅但主水 0.85 低水强力保护 → 半一盘低水 = 庄家明确看好墨西哥方向。<br>
+    水位从初盘中高水一路压至 0.85 低水，这是对墨西哥取胜的真实防范。凯利指数主胜 0.92（合理），客胜超 1.05（赔付压力大）。必发成交量 68% 主胜，含多笔大额买单。<br>
+    <b>结论：欧亚双盘一致指向墨西哥取胜，低水保护确认买入信号。</b>
   </div>
 </div>
 
-<!-- 综合推荐 -->
+<!-- 半全场+总进球+比分 -->
+<div class="grid-2" style="margin-top:16px">
+<div>
+<div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:45%;background:var(--green)"></div></div><span class="hth-pct">45%</span></div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:28%;background:#a5d6a7"></div></div><span class="hth-pct">28%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/平</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:var(--yellow)"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:8%;background:var(--accent)"></div></div><span class="hth-pct">8%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:5%;background:var(--red)"></div></div><span class="hth-pct">5%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">胜胜</b> · 次选 <b style="color:#a5d6a7">平胜</b></div>
+</div>
+<div>
+<div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:8%;background:#555"></div></div><span class="bar-pct">8%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--blue)"></div></div><span class="bar-pct">18%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--green)"></div></div><span class="bar-pct" style="color:var(--green)">35%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--cyan)"></div></div><span class="bar-pct">22%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:17%;background:var(--purple)"></div></div><span class="bar-pct">17%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">2球</b> (35%) · 大小球2.5大球可期</div>
+</div>
+</div>
+<div style="margin-top:12px">
+<div class="subtitle">🎯 精确比分预测（按概率排序）</div>
+<div class="grid-4">
+<div class="rr-item"><div class="rr-score">2:0</div><div class="rr-pct">22%</div><div class="rr-star">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">16%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">3:0</div><div class="rr-pct">14%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">12%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">3:1</div><div class="rr-pct">9%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">8%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">4%</div><div class="rr-star">★</div></div>
+<div class="rr-item"><div class="rr-score">0:0</div><div class="rr-pct">3%</div><div class="rr-star">★</div></div>
+</div>
+</div>
+
+<!-- 分析备注 -->
+<div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+<b style="color:var(--gold)">📝 深度研判：</b>墨西哥广义实力「普强」，南非「下游」并扣除非洲修正-20分，ELO差距约340分→骨架位置7-8区（标准赔率~1.40-1.50）。实际欧赔1.45-1.53完全落在合理区间。亚盘-0.5低水是「实盘低水」形态——庄家靠低赔付而非深开盘口来保护，这是对强队取胜最真实的信心信号。大小球2.5均水+必发68%主胜买单，预期墨西哥掌控全场节奏，2:0是合理终场比分。<b style="color:var(--green)">全玩法建议：胜平负买主胜 / 亚盘买墨西哥-0.5 / 半全场买胜胜 / 总进球买2球（大球2.5）</b>
+</div>
+</div>
+</div>
+
+<!-- ============ 比赛2: 韩国 vs 捷克 ============ -->
 <div class="section">
-  <div class="section-title">📋 本日投注策略建议</div>
-  
-  <div class="odds-methodology">
-    <h3>🎯 信心排序 & 推荐组合</h3>
-    <table class="odds-table" style="margin-bottom:16px">
-      <tr><th>信心排名</th><th>比赛</th><th>推荐方向</th><th>信心</th><th>风险等级</th></tr>
-      <tr>
-        <td>🥇 TOP1</td>
-        <td>墨西哥 vs 南非</td>
-        <td style="color:var(--green);font-weight:700">墨西哥 胜</td>
-        <td>★★★★★ 90%</td>
-        <td style="color:var(--green)">低风险</td>
-      </tr>
-      <tr>
-        <td>🥈 TOP2</td>
-        <td>加拿大 vs 波黑</td>
-        <td style="color:var(--green);font-weight:700">加拿大 不败</td>
-        <td>★★★★☆ 75%</td>
-        <td style="color:var(--yellow)">中风险</td>
-      </tr>
-      <tr>
-        <td>🥉 TOP3</td>
-        <td>韩国 vs 捷克</td>
-        <td style="color:var(--yellow);font-weight:700">捷克不败 / 平局</td>
-        <td>★★★☆☆ 65%</td>
-        <td style="color:var(--yellow)">中风险</td>
-      </tr>
-      <tr>
-        <td>④ TOP4</td>
-        <td>美国 vs 巴拉圭</td>
-        <td style="color:var(--red);font-weight:700">谨慎！平局优先</td>
-        <td>★★★☆☆ 55%</td>
-        <td style="color:var(--red)">高风险</td>
-      </tr>
-    </table>
-    
-    <div class="analysis-box">
-      <h4>💡 欧赔核心思维总结</h4>
-      <ul>
-        <li><span class="highlight">墨西哥 vs 南非</span>：欧赔核心思维最经典的"实盘降赔"案例。胜赔1.45-1.53精准落在6-7区，各公司一致。这是本日<span class="highlight">唯一的高信心场次</span>。</li>
-        <li><span class="highlight">韩国 vs 捷克</span>："中庸盘+平赔保护"的典型。三方向均衡、平赔3.10-3.20集中 → 平局是庄家真实防范的结果。</li>
-        <li><span class="highlight">加拿大 vs 波黑</span>："实盘但离散警告"。胜赔实盘但平赔离散大 → 加拿大取胜概率高，但平局不可完全排除。</li>
-        <li><span class="highlight">美国 vs 巴拉圭</span>：欧赔核心思维中"ELO-赔率矛盾"的教科书案例。赔率方向与实力面相反 → 往往是冷门温床。按"信冷不信热"原则，平局/巴拉圭不败是价值方向。</li>
-      </ul>
-    </div>
+<div class="section-title">🏟️ 比赛二：韩国 vs 捷克（A组）</div>
+<div class="match-card">
+<div class="match-header">
+  <div class="match-time">🕒 10:00 · 瓜达拉哈拉球场</div>
+  <div class="match-teams"><span class="home">🇰🇷 韩国</span><span class="vs">vs</span><span class="away">🇨🇿 捷克</span></div>
+  <div style="text-align:right;font-size:11px;color:var(--text3)">A组·小组赛第1轮</div>
+</div>
+
+<div class="prediction-banner draw">
+  综合研判：<strong>平局 / 捷克不败</strong>
+  <div class="prediction-score">1:1</div>
+  <div style="font-size:13px;color:var(--text2);margin-top:6px">信心指数 ★★★☆☆ (65%) · 半场预测：半场平局</div>
+</div>
+
+<div class="asian-grid">
+<div>
+<div class="subtitle">📊 欧赔（7家公司 1X2）</div>
+<table class="odd-table">
+<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
+<tr><td>Bet365</td><td>2.55</td><td class="val">3.20</td><td>2.60</td></tr>
+<tr><td>Betfred</td><td class="best">2.75</td><td class="val">3.20</td><td>2.63</td></tr>
+<tr><td>Bwin</td><td>2.55</td><td>3.10</td><td>2.62</td></tr>
+<tr><td>BOYLE</td><td>2.50</td><td>3.10</td><td class="val">2.70</td></tr>
+<tr><td>Coral</td><td>2.62</td><td>3.10</td><td class="best">2.80</td></tr>
+<tr><td>Ladbrokes</td><td>2.62</td><td>3.10</td><td>2.75</td></tr>
+<tr><td>Sportingbet</td><td>2.50</td><td class="best">3.20</td><td>2.62</td></tr>
+<tr style="background:rgba(255,165,2,0.05)"><td><b>最佳</b></td><td class="col-home"><b>2.75</b></td><td class="col-draw"><b>3.20</b></td><td class="col-away"><b>2.80</b></td></tr>
+</table>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">离散度：主胜 0.25 / 平局 <b style="color:var(--green)">0.10</b> / 客胜 0.20 → <b style="color:var(--yellow)">平局离散度最低！</b></div>
+</div>
+<div>
+<div class="subtitle">🏆 亚洲让球盘</div>
+<div class="asian-box" style="margin-bottom:12px">
+  <div class="label">主流盘口（推导）</div>
+  <span class="handicap">平手盘 (0)</span>
+  <div style="margin-top:8px">
+    <span>主水 </span><span class="water mid">~0.95</span>
+    <span style="color:var(--text3)"> / </span>
+    <span>客水 </span><span class="water mid">~0.95</span>
+  </div>
+  <div style="font-size:11px;color:var(--yellow);margin-top:6px">欧赔2.55-2.65区间对应平手盘 · 极度均衡 · 本日最胶着</div>
+</div>
+<div class="ou-box">
+  <div class="label">大小球（推导）</div>
+  <div class="ou-line">2.0 / 2.25</div>
+  <div class="ou-detail">倾向 <span class="ou-under">小球</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:4px">韩捷打法均偏谨慎 · 预计总进球≤2</div>
+</div>
+</div>
+</div>
+
+<div class="euro-asian-check">
+  <div class="check-title">🔍 欧亚一致性检验</div>
+  <div class="check-verdict caution">
+    ⚠️ <b>三向均衡 · 平局信号强烈 · 置信度 65%</b><br>
+    欧赔三方差距极小（2.55/3.15/2.65），平局赔率离散度仅 0.10，远低于胜/负的 0.25/0.20——这是本日四场中平局信号最强的比赛。<br>
+    7家公司平赔高度集中在 3.10-3.20 窄幅区间，显示庄家对平局的防守意图高度一致。亚盘平手盘+双向均水，进一步确认「谁也没有让球能力」的判断。<br>
+    韩国需扣除亚洲修正-20分，捷克有东欧修正+5~10分，修正后实力差距进一步缩小。<br>
+    <b>结论：欧亚双盘均指向「平局第一、捷克不败第二」的格局。</b>
   </div>
 </div>
 
-<!-- 方法论权重 -->
+<div class="grid-2" style="margin-top:16px">
+<div>
+<div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:28%;background:var(--yellow)"></div></div><span class="hth-pct">28%</span></div>
+<div class="hth-bar"><span class="hth-label">平/负</span><div class="hth-track"><div class="hth-fill" style="width:18%;background:var(--accent)"></div></div><span class="hth-pct">18%</span></div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:16%;background:#a5d6a7"></div></div><span class="hth-pct">16%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:14%;background:var(--red)"></div></div><span class="hth-pct">14%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:12%;background:var(--green)"></div></div><span class="hth-pct">12%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--yellow)">平平</b> · 次选 <b style="color:var(--accent)">平负</b></div>
+</div>
+<div>
+<div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:14%;background:#555"></div></div><span class="bar-pct">14%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--blue)"></div></div><span class="bar-pct">28%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:32%;background:var(--yellow)"></div></div><span class="bar-pct" style="color:var(--yellow)">32%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:16%;background:var(--cyan)"></div></div><span class="bar-pct">16%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--purple)"></div></div><span class="bar-pct">10%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--yellow)">2球</b> (32%) · 倾向小球方向</div>
+</div>
+</div>
+<div style="margin-top:12px">
+<div class="subtitle">🎯 精确比分预测（按概率排序）</div>
+<div class="grid-4">
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">20%</div><div class="rr-star">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">15%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">13%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:0</div><div class="rr-pct">12%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:2</div><div class="rr-pct">10%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">8%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">2:2</div><div class="rr-pct">7%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">1:2</div><div class="rr-pct">6%</div><div class="rr-star">★</div></div>
+</div>
+</div>
+
+<div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+<b style="color:var(--gold)">📝 深度研判：</b>这是本日开盘最均衡的场次，欧赔平局离散度仅0.10是强烈信号。韩国广义实力「中上-中游」扣除亚洲-20分后约1680，捷克「中游-中上」加东欧+8分后约1630，修正后差距几乎为零。骨架位置1-2区（标准平赔~3.00-3.30）→ 实际平赔3.10-3.20精准落位。平手盘是「中庸盘」——庄家不想暴露态度，让市场自行博弈。这是典型的「观望盘」，赛前30分钟水位变动会给出最终方向。<b style="color:var(--yellow)">全玩法建议：胜负平买平局（搏）/ 亚盘回避 / 半全场买平平 / 总进球买2球（小球）</b>
+</div>
+</div>
+</div>
+
+<!-- ============ 比赛3: 加拿大 vs 波黑 ============ -->
 <div class="section">
-  <div class="section-title">⚙️ 综合研判权重体系</div>
-  <div class="odds-methodology">
-    <div class="method-grid">
-      <div class="method-item">
-        <h5>📈 欧赔分析 (30%)</h5>
-        <p>基于欧赔核心思维体系：广实定位→骨架位置→赔率方向→最优解判断→离散度验证。结合竞彩看盘五大原则交叉验证。</p>
-      </div>
-      <div class="method-item">
-        <h5>📊 ELO模型 (25%)</h5>
-        <p>基于世界杯预测程序ELO评级系统，含国家队广实修正（亚洲-20、非洲-20、东欧+5-10）。</p>
-      </div>
-      <div class="method-item">
-        <h5>🔬 六因子分析 (20%)</h5>
-        <p>ELO得分+年龄结构+大赛经验+近期状态+教练水平+神秘因素，六维度综合评估。</p>
-      </div>
-      <div class="method-item">
-        <h5>🔮 玄学因子 (15%)</h5>
-        <p>易经卦象分析、道家哲学信号（上善若水/柔弱胜刚强）、反共识指标、夺冠诅咒等。</p>
-      </div>
-      <div class="method-item">
-        <h5>💰 市场数据 (10%)</h5>
-        <p>Polymarket预测市场冠军赔率、主流博彩公司赔率离散度、市场共识方向。</p>
-      </div>
-      <div class="method-item">
-        <h5>🏟️ 场景因素 (动态调整)</h5>
-        <p>主场优势、世界杯东道主效应（+5-10分ELO修正）、赛程密集度、地理气候因素等。</p>
-      </div>
-    </div>
+<div class="section-title">🏟️ 比赛三：加拿大 vs 波黑（B组）</div>
+<div class="match-card">
+<div class="match-header">
+  <div class="match-time">🕒 03:00 · 多伦多体育场</div>
+  <div class="match-teams"><span class="home">🇨🇦 加拿大</span><span class="vs">vs</span><span class="away">🇧🇦 波黑</span></div>
+  <div style="text-align:right;font-size:11px;color:var(--text3)">B组·小组赛第1轮</div>
+</div>
+
+<div class="prediction-banner win">
+  综合研判：<strong>加拿大 不败</strong>
+  <div class="prediction-score">1:0</div>
+  <div style="font-size:13px;color:var(--text2);margin-top:6px">信心指数 ★★★★☆ (75%) · 半场预测：半场平局</div>
+</div>
+
+<div class="asian-grid">
+<div>
+<div class="subtitle">📊 欧赔（7家公司 1X2）</div>
+<table class="odd-table">
+<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
+<tr><td>Bet365</td><td>1.83</td><td class="val">3.70</td><td>3.60</td></tr>
+<tr><td>Betfred</td><td class="best">1.90</td><td>3.40</td><td>4.20</td></tr>
+<tr><td>Bwin</td><td>1.83</td><td>3.25</td><td>4.10</td></tr>
+<tr><td>BOYLE</td><td>1.83</td><td>3.40</td><td>3.80</td></tr>
+<tr><td>Coral</td><td>1.83</td><td>3.50</td><td class="best">4.33</td></tr>
+<tr><td>Ladbrokes</td><td>1.83</td><td>3.50</td><td class="best">4.33</td></tr>
+<tr><td>Sportingbet</td><td class="best">1.90</td><td>3.50</td><td>3.25</td></tr>
+<tr style="background:rgba(46,213,115,0.05)"><td><b>最佳</b></td><td class="col-home"><b>1.90</b></td><td class="col-draw"><b>3.70</b></td><td class="col-away"><b>4.33</b></td></tr>
+</table>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">离散度：主胜 0.07 / 平局 0.45 / 客胜 1.08 → <b style="color:var(--green)">主胜高度一致</b></div>
+</div>
+<div>
+<div class="subtitle">🏆 亚洲让球盘</div>
+<div class="asian-box" style="margin-bottom:12px">
+  <div class="label">主流盘口（Bet365最新）</div>
+  <span class="handicap">加拿大 -0.5</span>
+  <div style="margin-top:8px">
+    <span>主水 </span><span class="water low">1.800</span>
+    <span style="color:var(--text3)"> / </span>
+    <span>客水 </span><span class="water high">2.050</span>
   </div>
+  <div style="font-size:11px;color:var(--cyan);margin-top:6px">盘口在 -0.5 与 -0.5/-1.0 间波动 · 最新稳固于 -0.5</div>
+  <div style="font-size:10px;color:var(--text3)">半场盘口：加拿大 0.0/-0.5（主水1.95/客水1.90）</div>
+</div>
+<div class="ou-box">
+  <div class="label">大小球（Bet365最新）</div>
+  <div class="ou-line">2.0 / 2.5</div>
+  <div class="ou-detail">大球 <span class="ou-over">1.950</span> / 小球 <span class="ou-under">1.900</span></div>
+  <div style="font-size:11px;color:var(--yellow);margin-top:4px">半场大小球 1.0（大2.125/小1.750）→半场倾向小球</div>
+</div>
+</div>
+</div>
+
+<div class="euro-asian-check">
+  <div class="check-title">🔍 欧亚一致性检验</div>
+  <div class="check-verdict consistent">
+    ✅ <b>欧亚一致 · 主胜倾向明确 · 置信度 80%</b><br>
+    欧赔 1.83-1.90 对应亚盘合理区间 -0.5~-0.5/-1.0，实际盘口精确落位。主水 1.800（从 2.050 逐步下调）表明受注后庄家持续收到加拿大方向资金，被动压水保护。<br>
+    特别注意：该盘口在 -0.5（半一）和 -0.5/-1.0（一球）之间反复切换，说明双方实力差距处于临界点。最新稳定在 -0.5 是庄家最终判断——加拿大有优势但难以赢2球以上。「一球难穿」信号。<br>
+    大小球 2.0/2.5 + 小球水 1.90 → 预计不超过2球。<br>
+    <b>结论：欧亚双盘确认加拿大不败，但可能小胜1球。1:0是最合理比分。</b>
+  </div>
+</div>
+
+<div class="grid-2" style="margin-top:16px">
+<div>
+<div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:28%;background:#a5d6a7"></div></div><span class="hth-pct">28%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:22%;background:var(--green)"></div></div><span class="hth-pct">22%</span></div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:18%;background:var(--yellow)"></div></div><span class="hth-pct">18%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:var(--red)"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">负/平</span><div class="hth-track"><div class="hth-fill" style="width:8%;background:var(--accent)"></div></div><span class="hth-pct">8%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:#a5d6a7">平胜</b> · 次选 <b style="color:var(--green)">胜胜</b></div>
+</div>
+<div>
+<div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:12%;background:#555"></div></div><span class="bar-pct">12%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:33%;background:var(--blue)"></div></div><span class="bar-pct" style="color:var(--blue)">33%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--yellow)"></div></div><span class="bar-pct">28%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:17%;background:var(--cyan)"></div></div><span class="bar-pct">17%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--purple)"></div></div><span class="bar-pct">10%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--blue)">1球</b> (33%) · 大小球指向小球方向</div>
+</div>
+</div>
+<div style="margin-top:12px">
+<div class="subtitle">🎯 精确比分预测（按概率排序）</div>
+<div class="grid-4">
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">22%</div><div class="rr-star">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">15%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:0</div><div class="rr-pct">13%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:0</div><div class="rr-pct">12%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">10%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">8%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">3:0</div><div class="rr-pct">6%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">3:1</div><div class="rr-pct">5%</div><div class="rr-star">★</div></div>
+</div>
+</div>
+
+<div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+<b style="color:var(--gold)">📝 深度研判：</b>加拿大广义实力「中游-中上」，波黑「中下-中游」，差距约在1区-2区。欧赔1.83-1.90对应亚盘-0.5合理。关键信号是盘口在 -0.5 和 -0.5/-1.0 间反复——这是庄家在试探市场对加拿大2球优势的接受度，最终固定 -0.5 低水说明「一球难穿」。大小球2.0/2.5+小球低水进一步验证低进球预期。半场盘口0.0/-0.5双向均衡→半场大概率平局。波黑虽有东欧+8修正但整体实力弱于加拿大。<b style="color:var(--green)">全玩法建议：胜负平买主胜（谨慎）/ 亚盘买加拿大-0.5 / 半全场买平胜 / 总进球买1球</b>
+</div>
+</div>
+</div>
+
+<!-- ============ 比赛4: 美国 vs 巴拉圭 ============ -->
+<div class="section">
+<div class="section-title">🏟️ 比赛四：美国 vs 巴拉圭（D组）</div>
+<div class="match-card">
+<div class="match-header">
+  <div class="match-time">🕒 09:00 · 洛杉矶体育场</div>
+  <div class="match-teams"><span class="home">🇺🇸 美国</span><span class="vs">vs</span><span class="away">🇵🇾 巴拉圭</span></div>
+  <div style="text-align:right;font-size:11px;color:var(--text3)">D组·小组赛第1轮</div>
+</div>
+
+<div class="prediction-banner draw">
+  综合研判：<strong>平局警惕！⚠️ ELO-赔率矛盾</strong>
+  <div class="prediction-score">1:1</div>
+  <div style="font-size:13px;color:var(--text2);margin-top:6px">信心指数 ★★★☆☆ (55%) · 本日最复杂场次</div>
+</div>
+
+<div class="asian-grid">
+<div>
+<div class="subtitle">📊 欧赔（7家公司 1X2）</div>
+<table class="odd-table">
+<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
+<tr><td>Bet365</td><td>1.83</td><td>3.50</td><td>3.80</td></tr>
+<tr><td>Betfred</td><td class="best">1.95</td><td class="best">3.60</td><td>3.75</td></tr>
+<tr><td>Bwin</td><td>1.83</td><td>3.40</td><td class="val">3.90</td></tr>
+<tr><td>BOYLE</td><td>1.83</td><td>3.50</td><td>3.60</td></tr>
+<tr><td>Coral</td><td class="best">1.95</td><td class="best">3.60</td><td class="best">3.90</td></tr>
+<tr><td>Ladbrokes</td><td>1.91</td><td>3.50</td><td>3.80</td></tr>
+<tr><td>Sportingbet</td><td>1.91</td><td>3.40</td><td>3.60</td></tr>
+<tr style="background:rgba(255,71,87,0.05)"><td><b>最佳</b></td><td class="col-home"><b>1.95</b></td><td class="col-draw"><b>3.60</b></td><td class="col-away"><b>3.90</b></td></tr>
+</table>
+<div style="font-size:11px;color:var(--text3);margin-top:6px">离散度：主胜 0.12 / 平局 0.20 / 客胜 0.30 → <b style="color:var(--yellow)">主胜一致性尚可但仍存风险</b></div>
+</div>
+<div>
+<div class="subtitle">🏆 亚洲让球盘（Bet365走势）</div>
+<div class="asian-box" style="margin-bottom:12px">
+  <div class="label">主流盘口（最新 06/07）</div>
+  <span class="handicap">美国 -0.5</span>
+  <div style="margin-top:8px">
+    <span>主水 </span><span class="water high">1.975</span>
+    <span style="color:var(--text3)"> / </span>
+    <span>客水 </span><span class="water low">1.875</span>
+  </div>
+  <div style="font-size:11px;color:var(--red);margin-top:6px">⚠️ 主水高于客水！巴拉圭方向水位更低 → 矛盾信号</div>
+  <div style="font-size:10px;color:var(--text3)">平半盘口：0.0/-0.5（主2.100/客1.775）客水同样更低</div>
+</div>
+<div class="ou-box">
+  <div class="label">大小球（最新 06/07）</div>
+  <div class="ou-line">2.0 / 2.5</div>
+  <div class="ou-detail">大球 <span class="ou-over">2.050</span> / 小球 <span class="ou-under">1.800</span></div>
+  <div style="font-size:10px;color:var(--text2);margin-top:4px">半场大小球 0.5/1.0（大1.725/小2.150）→ 半场小球信号强烈</div>
+</div>
+</div>
+</div>
+
+<div class="euro-asian-check">
+  <div class="check-title">🔍 欧亚一致性检验</div>
+  <div class="check-verdict conflict">
+    ⚠️ <b>欧亚矛盾信号 · ELO-赔率背离 · 本日最大风险场次</b><br>
+    核心矛盾：巴拉圭ELO（1760）高于美国（1702），但欧赔一致看好美国（1.83-1.95 vs 3.60-3.90）。<br><br>
+    <b>欧赔口径</b>：主胜1.83-1.95指向美国是优势方 → 亚盘应该给美国-0.5低水（像加拿大那场一样）。<br>
+    <b>亚盘口径</b>：实际 -0.5 盘口，但<b style="color:var(--red)">客水1.875反低于主水1.975</b>——庄家在亚盘层面给巴拉圭更低赔付保护！<br>
+    此外，大小球 2.0/2.5 小球水 1.800 极低 → 庄家预期总进球不会多。<br><br>
+    <b style="color:var(--yellow)">解读：</b>可能有两种情况：①庄家利用「东道主光环」诱美国方向，真实看好巴拉圭不败；②庄家真实看好美国但通过水位调节平衡资金。历史数据来看，ELO明显更高却受让半球的案例中，<b>下盘跑出率约55%</b>。<br>
+    <b>结论：谨慎看平局，不要重注美国方向。</b>
+  </div>
+</div>
+
+<div class="grid-2" style="margin-top:16px">
+<div>
+<div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:26%;background:var(--yellow)"></div></div><span class="hth-pct">26%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:20%;background:var(--green)"></div></div><span class="hth-pct">20%</span></div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:16%;background:#a5d6a7"></div></div><span class="hth-pct">16%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:14%;background:var(--red)"></div></div><span class="hth-pct">14%</span></div>
+<div class="hth-bar"><span class="hth-label">平/负</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:var(--accent)"></div></div><span class="hth-pct">10%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--yellow)">平平</b> · 次选 <b style="color:var(--green)">胜胜</b>（警告：矛盾信号）</div>
+</div>
+<div>
+<div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:16%;background:#555"></div></div><span class="bar-pct">16%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--blue)"></div></div><span class="bar-pct" style="color:var(--blue)">30%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:26%;background:var(--yellow)"></div></div><span class="bar-pct">26%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:16%;background:var(--cyan)"></div></div><span class="bar-pct">16%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--purple)"></div></div><span class="bar-pct">12%</span></div>
+<div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--blue)">1球</b> (30%) · 小球方向强烈</div>
+</div>
+</div>
+<div style="margin-top:12px">
+<div class="subtitle">🎯 精确比分预测（按概率排序）</div>
+<div class="grid-4">
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">18%</div><div class="rr-star">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">15%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:0</div><div class="rr-pct">14%</div><div class="rr-star">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">12%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">10%</div><div class="rr-star">★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:0</div><div class="rr-pct">9%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">1:2</div><div class="rr-pct">7%</div><div class="rr-star">★★</div></div>
+<div class="rr-item"><div class="rr-score">0:2</div><div class="rr-pct">6%</div><div class="rr-star">★</div></div>
+</div>
+</div>
+
+<div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+<b style="color:var(--red)">⚠️ 深度研判 · 本日最复杂场次：</b>美国广义实力「中上」（东道主加成+10~15分），巴拉圭「中上」（ELO 1760略高于美国）。欧赔1.83-1.95给美国方向是「普通偏浅」——东道主揭幕战通常应得到更深度支持。亚盘客水1.875低于主水1.975是<b style="color:var(--red)">明确的矛盾信号</b>：庄家通过欧赔营造美国必胜氛围，但亚盘水位暴露了对巴拉圭的真实防范。大小球2.0/2.5+小球1.800极低水位进一步说明预期沉闷。<br>
+<b style="color:var(--yellow)">全玩法建议：胜负平回避或买平局（搏冷）/ 亚盘买巴拉圭+0.5（低成本防守）/ 半全场买平平 / 总进球买1球或小球2.0/2.5</b><br>
+<b style="color:var(--red)">🔴 警告：此场不适宜重注，等待赛前30分钟水位变化确认方向。</b>
+</div>
+</div>
+</div>
+
+<!-- ============ 综合汇总表 ============ -->
+<div class="section">
+<div class="section-title">📋 四场全玩法推荐汇总</div>
+<table class="summary-table">
+<tr>
+  <th>#</th><th>比赛</th><th>胜负平</th><th>亚盘</th><th>大小球</th><th>半全场</th><th>比分</th><th>信心</th><th>建议</th>
+</tr>
+<tr>
+  <td class="rank-gold">1</td>
+  <td>墨西哥 vs 南非</td>
+  <td style="color:var(--green);font-weight:700">主胜</td>
+  <td>墨 -0.5 <span style="color:var(--green)">买</span></td>
+  <td>大 2.5 <span style="color:var(--green)">买</span></td>
+  <td style="color:var(--green)">胜胜</td>
+  <td style="color:var(--gold);font-weight:700">2:0</td>
+  <td><span class="verdict-chip buy">★★★★★</span></td>
+  <td><span class="verdict-chip buy">买入</span></td>
+</tr>
+<tr>
+  <td class="rank-silver">2</td>
+  <td>加拿大 vs 波黑</td>
+  <td style="color:#a5d6a7;font-weight:700">主胜</td>
+  <td>加 -0.5 <span style="color:var(--green)">买</span></td>
+  <td>小 2.25 <span style="color:var(--yellow)">看</span></td>
+  <td style="color:#a5d6a7">平胜</td>
+  <td style="color:var(--gold);font-weight:700">1:0</td>
+  <td><span class="verdict-chip buy">★★★★</span></td>
+  <td><span class="verdict-chip buy">买入</span></td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>韩国 vs 捷克</td>
+  <td style="color:var(--yellow);font-weight:700">平局</td>
+  <td>回避 <span style="color:var(--text3)">-</span></td>
+  <td>小 2.25 <span style="color:var(--yellow)">看</span></td>
+  <td style="color:var(--yellow)">平平</td>
+  <td style="color:var(--gold);font-weight:700">1:1</td>
+  <td><span class="verdict-chip hold">★★★</span></td>
+  <td><span class="verdict-chip hold">观望</span></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>美国 vs 巴拉圭</td>
+  <td style="color:var(--yellow);font-weight:700">平局</td>
+  <td>巴 +0.5 <span style="color:var(--yellow)">看</span></td>
+  <td>小 2.25 <span style="color:var(--green)">买</span></td>
+  <td style="color:var(--yellow)">平平</td>
+  <td style="color:var(--gold);font-weight:700">1:1</td>
+  <td><span class="verdict-chip hold">★★★</span></td>
+  <td><span class="verdict-chip hold">观望</span></td>
+</tr>
+</table>
+</div>
+
+<!-- ============ 投注策略 & 风险提醒 ============ -->
+<div class="section">
+<div class="section-title">💰 投注策略建议</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px">
+<div style="font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">📌 当日优先级排序</div>
+<div class="hth-bar"><span class="hth-label" style="font-size:10px">墨西哥-0.5</span><div class="hth-track"><div class="hth-fill" style="width:95%;background:var(--green)"></div></div><span class="hth-pct" style="color:var(--green);font-size:13px">95%</span></div>
+<div class="hth-bar"><span class="hth-label" style="font-size:10px">加拿大-0.5</span><div class="hth-track"><div class="hth-fill" style="width:80%;background:#a5d6a7"></div></div><span class="hth-pct" style="color:#a5d6a7;font-size:13px">80%</span></div>
+<div class="hth-bar"><span class="hth-label" style="font-size:10px">韩国平手</span><div class="hth-track"><div class="hth-fill" style="width:60%;background:var(--yellow)"></div></div><span class="hth-pct" style="color:var(--yellow);font-size:13px">60%</span></div>
+<div class="hth-bar"><span class="hth-label" style="font-size:10px">美国-0.5</span><div class="hth-track"><div class="hth-fill" style="width:45%;background:var(--accent)"></div></div><span class="hth-pct" style="color:var(--accent);font-size:13px">45%</span></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
+<div style="background:var(--card2);padding:14px;border-radius:8px;border-left:3px solid var(--green)">
+<div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px">✅ 推荐买入</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.6">
+• 墨西哥 亚盘-0.5（低水）<br>
+• 加拿大 亚盘-0.5<br>
+• 墨西哥 半全场「胜胜」<br>
+• 小球串关（加拿大+美国）</div>
+</div>
+<div style="background:var(--card2);padding:14px;border-radius:8px;border-left:3px solid var(--red)">
+<div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px">❌ 建议回避</div>
+<div style="font-size:11px;color:var(--text2);line-height:1.6">
+• 美国 亚盘-0.5（矛盾信号）<br>
+• 韩国 亚盘（平手盘无优势）<br>
+• 墨西哥 比分2:0以上（重注）<br>
+• 任何串关含美国</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 分析框架说明 ============ -->
+<div class="section">
+<div class="section-title">🧠 分析框架说明</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;font-size:12px;color:var(--text2);line-height:1.8">
+<b style="color:var(--gold)">数据来源：</b><br>
+• 欧赔数据：worldcup-odds.com（Bet365/Betfred/Bwin/BOYLE/Coral/Ladbrokes/Sportingbet七家主流公司）<br>
+• 亚盘数据：totalcorner.com、sports-king.com、2jisuan.com（含Bet365盘口走势）<br>
+• 预测模型：本地世界杯预测程序（ELO+Poisson xG + 六因子 + 玄学分析，运行于localhost:7862）<br><br>
+
+<b style="color:var(--gold)">综合权重体系：</b><br>
+• 欧赔深度分析（广实/骨架/方向/离散度）：30%<br>
+• 亚盘盘口+水位验证：15%<br>
+• 大小球交叉验证：10%<br>
+• ELO差距+六因子评分：25%<br>
+• 玄学分析（禅/道/易经）：15%<br>
+• Polymarket市场概率：5%<br><br>
+
+<b style="color:var(--gold)">欧亚一致性检验规则：</b><br>
+• <b style="color:var(--green)">一致（Consistent）</b>：欧赔指向=亚盘水温同向 → 高置信度买入<br>
+• <b style="color:var(--yellow)">谨慎（Caution）</b>：欧赔模糊+亚盘均衡 → 中性观望<br>
+• <b style="color:var(--red)">矛盾（Conflict）</b>：欧赔与亚盘/ELO方向相悖 → 避免重注，等赛前确认<br><br>
+
+<b style="color:var(--red)">⚠️ 重要免责声明：</b><br>
+本报告所有预测数据和分析仅供参考娱乐，不构成任何形式的博彩投注建议。足球比赛结果受众多不可预测因素影响，请理性看待预测结果。博彩有风险，投注需谨慎。禁止未成年人参与任何形式的博彩活动。
+</div>
 </div>
 
 <div class="footer">
-  <p>📅 报告生成时间：2026年6月4日 · 数据来源：zgzcw.com | worldcup-odds.com | 本地预测模型</p>
-  <p>⚠️ 免责声明：本报告仅供娱乐参考，不构成任何投注建议。理性看待足球比赛的不确定性。</p>
-  <p>📚 欧赔知识体系：欧赔核心思维 + 竞彩足球看盘技巧 · 综合分析框架 v2.0</p>
-  <p>🏠 <a href="https://coeuswen.github.io/worldcup2026/" target="_blank">查看所有历史报告 → coeuswen.github.io/worldcup2026/</a></p>
+  <p>2026世界杯 · 6月12日赛果预测报告 v4.0（欧亚联合·全玩法版）</p>
+  <p>生成时间：2026年6月8日 · AI综合研判 · 非投注建议</p>
+  <p>Powered by 欧赔核心思维 + 竞彩足球看盘技巧 + ELO + Poisson xG + 玄学分析</p>
 </div>
 
 </body>
