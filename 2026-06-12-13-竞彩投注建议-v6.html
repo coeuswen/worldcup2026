@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6月12日-13日 竞彩投注建议 v6.0 · M串N容错专版</title>
+<style>
+:root {
+  --bg: #0a0e17;
+  --card: #111827;
+  --card2: #1a1f2e;
+  --text: #d1d5db;
+  --text2: #9ca3af;
+  --highlight: #22c55e;
+  --warn: #ef4444;
+  --note: #eab308;
+  --info: #3b82f6;
+  --purple: #a855f7;
+  --gold: #f59e0b;
+  --border: #1f2937;
+  --accent: #f97316;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+.header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 30px;
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(135deg, var(--highlight), var(--info), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.header .subtitle { color: var(--accent); font-size: 1.2em; font-weight: 600; }
+.header .date { color: var(--text2); font-size: 0.95em; margin-top: 6px; }
+
+/* ⭐ Section */
+.section-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 35px 0 18px;
+  padding-left: 14px;
+  border-left: 4px solid var(--highlight);
+  color: #e5e7eb;
+}
+.section-title.orange { border-left-color: var(--accent); }
+.section-title.blue { border-left-color: var(--info); }
+.section-title.purple { border-left-color: var(--purple); }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: #374151; }
+.card.recommend {
+  border: 2px solid var(--accent);
+  background: linear-gradient(135deg, #1a1208 0%, #111827 100%);
+}
+.card.safe { border-left: 4px solid var(--highlight); }
+.card.aggressive { border-left: 4px solid var(--warn); }
+
+/* Scheme table */
+.scheme-name {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.scheme-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.78em;
+  font-weight: 600;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+.tag-mxn { background: #1e3a5f; color: #60a5fa; }
+.tag-mx1 { background: #3b1f1f; color: #f87171; }
+.tag-recommend { background: #5c3d0e; color: #fbbf24; }
+.tag-value { background: #1a3d1a; color: #4ade80; }
+.tag-safe { background: #1a2e3d; color: #93c5fd; }
+
+.match-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0;
+}
+.match-pick {
+  flex: 1;
+  min-width: 220px;
+  background: var(--card2);
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+}
+.match-pick .teams { font-size: 0.9em; color: var(--text2); }
+.match-pick .play { font-size: 0.85em; color: var(--info); margin: 4px 0; }
+.match-pick .pick { font-size: 1.15em; font-weight: 700; color: var(--highlight); }
+.match-pick .odds { font-size: 1.5em; font-weight: 800; color: var(--gold); }
+
+.analysis-box {
+  background: var(--card2);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+.analysis-box .why { color: var(--note); font-weight: 600; }
+.analysis-box ul { padding-left: 18px; margin-top: 6px; }
+.analysis-box li { margin: 4px 0; color: var(--text2); font-size: 0.88em; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+.result-item {
+  background: var(--card2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.result-item .scenario { font-size: 0.8em; color: var(--text2); margin-bottom: 4px; }
+.result-item .payout { font-size: 1.3em; font-weight: 800; }
+.result-item .profit { font-size: 0.85em; }
+.profit-up { color: var(--highlight); }
+.profit-down { color: var(--warn); }
+
+.cost-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+  padding: 14px;
+  background: var(--card2);
+  border-radius: 10px;
+}
+.cost-box .total { font-size: 1.6em; font-weight: 800; color: var(--gold); }
+.cost-box .detail { font-size: 0.88em; color: var(--text2); }
+.cost-box .per-bet { font-size: 0.85em; color: var(--text2); }
+
+.combo-formula {
+  font-family: 'Courier New', monospace;
+  background: #0d1117;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85em;
+  color: var(--info);
+  margin: 8px 0;
+  display: inline-block;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+.info-item {
+  background: var(--card2);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+.info-item .label { font-size: 0.8em; color: var(--text2); }
+.info-item .value { font-size: 1.2em; font-weight: 700; }
+
+/* Strategy card */
+.strategy-card {
+  background: linear-gradient(135deg, #1a1f2e 0%, #1e293b 100%);
+  border-radius: 14px;
+  padding: 24px;
+  margin: 20px 0;
+  border: 1px solid #374151;
+}
+.strategy-card h3 { color: var(--accent); margin-bottom: 10px; }
+.strategy-card .rule { 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 10px;
+  margin: 10px 0; 
+  padding: 10px;
+  background: rgba(249,115,22,0.08);
+  border-radius: 8px;
+}
+.strategy-card .rule .icon { font-size: 1.4em; flex-shrink: 0; }
+.strategy-card .rule .text { font-size: 0.9em; }
+.strategy-card .rule .text strong { color: var(--accent); }
+
+/* Comparison table */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88em;
+}
+.comparison-table th {
+  background: var(--card2);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+}
+.comparison-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+}
+.comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+.comparison-table .highlight-row td { 
+  background: rgba(249,115,22,0.1); 
+  color: var(--text);
+  font-weight: 600;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text2);
+  font-size: 0.82em;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.5em; }
+  .match-row { flex-direction: column; }
+  .info-grid { grid-template-columns: 1fr; }
+  .result-grid { grid-template-columns: 1fr 1fr; }
+  .comparison-table { font-size: 0.75em; }
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+.badge-green { background: #064e3b; color: #34d399; }
+.badge-red { background: #450a0a; color: #f87171; }
+.badge-yellow { background: #713f12; color: #fbbf24; }
+.badge-blue { background: #1e3a5f; color: #60a5fa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🎯 竞彩投注建议 v6.0</h1>
+  <div class="subtitle">M串N 容错专版 · 性价比优先</div>
+  <div class="date">2026年6月12日(周五) — 6月13日(周六) · 共4场比赛</div>
+</div>
+
+<!-- ⚠️ 核心策略 -->
+<div class="strategy-card">
+  <h3>🔥 v6.0 核心策略升级</h3>
+  <div class="rule">
+    <div class="icon">🔑</div>
+    <div class="text">
+      <strong>M串N 替代 M串1</strong> — v5全M串1太激进，v6主力推荐二串三/三串四等容错型，即使某场猜错仍有回报。
+      比分高赔率 + M串N容错 = 最佳性价比。
+    </div>
+  </div>
+  <div class="rule">
+    <div class="icon">📐</div>
+    <div class="text">
+      <strong>比分替代总进球（延续v5策略）</strong> — 强弱分明时，比分赔率是总进球的1.5-2倍，同样判断逻辑，更高回报。
+    </div>
+  </div>
+  <div class="rule">
+    <div class="icon">🚫</div>
+    <div class="text">
+      <strong>铁律：同场比赛只一种玩法</strong> — 跨玩法混选（半全场+比分同一场）❌ 违规。同一玩法内多选（比分2:0+1:0）✅ 复式。
+    </div>
+  </div>
+  <div class="rule">
+    <div class="icon">⚖️</div>
+    <div class="text">
+      <strong>容错成本可视化</strong> — 每个方案标注「中N场回报」，让容错的价值一目了然。
+    </div>
+  </div>
+</div>
+
+<!-- ============ M串N 容错方案（主力） ============ -->
+<h2 class="section-title">🛡️ M串N 容错方案（主力推荐）</h2>
+
+<!-- 方案N1: 二串三 比分型 -->
+<div class="card recommend">
+  <div class="scheme-name">方案N1 · 二串三 比分型 ⭐ 性价比之王</div>
+  <span class="scheme-tag tag-mxn">M串N</span>
+  <span class="scheme-tag tag-recommend">首选推荐</span>
+  <span class="scheme-tag tag-value">比分高赔</span>
+
+  <div class="match-row">
+    <div class="match-pick">
+      <div class="teams">🇲🇽 墨西哥 vs 南非 🇿🇦</div>
+      <div class="play">玩法：比分</div>
+      <div class="pick">比分 2:0</div>
+      <div class="odds">@5.50</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇨🇦 加拿大 vs 波黑 🇧🇦</div>
+      <div class="play">玩法：比分</div>
+      <div class="pick">比分 1:0</div>
+      <div class="odds">@6.00</div>
+    </div>
+  </div>
+
+  <div class="combo-formula">二串三 = 3注：{墨单关} + {加单关} + {墨×加 二串一}</div>
+
+  <div class="cost-box">
+    <div class="total">30元/注 × 3注 = 90元</div>
+    <div class="detail">墨单关30元 · 加单关30元 · 二串一30元</div>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-item">
+      <div class="scenario">✅ 仅中墨西哥</div>
+      <div class="payout" style="color:var(--highlight)">165元</div>
+      <div class="profit profit-up">+75元 (+83%)</div>
+    </div>
+    <div class="result-item">
+      <div class="scenario">✅ 仅中加拿大</div>
+      <div class="payout" style="color:var(--highlight)">180元</div>
+      <div class="profit profit-up">+90元 (+100%)</div>
+    </div>
+    <div class="result-item" style="border:2px solid var(--gold)">
+      <div class="scenario">🏆 两场全中</div>
+      <div class="payout" style="color:var(--gold);font-size:1.6em">1,335元</div>
+      <div class="profit profit-up">+1,245元 (+1,383%)</div>
+    </div>
+    <div class="result-item">
+      <div class="scenario">❌ 两场全错</div>
+      <div class="payout" style="color:var(--warn)">0元</div>
+      <div class="profit profit-down">-90元</div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <div class="why">💡 为什么这是性价比之王？</div>
+    <ul>
+      <li>中1场 = 赚钱（165或180 > 投入90），二串三的单关机制提供天然安全垫</li>
+      <li>中2场 = 1335元（回报率1383%），比分高赔在二串一叠加后爆发力极强</li>
+      <li>vs v5方案B(二串一比分33x, 50→1650) — 本方案只需中1场就回本，v5方案必须全中</li>
+      <li>墨西哥零封南非概率极高（ELO差315分，欧赔离散0.06）；加拿大零封波黑也合理（ELO差247分）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 方案N2: 二串三 半全场型 -->
+<div class="card safe">
+  <div class="scheme-name">方案N2 · 二串三 半全场型 🛡️ 稳健首选</div>
+  <span class="scheme-tag tag-mxn">M串N</span>
+  <span class="scheme-tag tag-safe">低风险</span>
+  <span class="scheme-tag tag-value">半全场</span>
+
+  <div class="match-row">
+    <div class="match-pick">
+      <div class="teams">🇲🇽 墨西哥 vs 南非 🇿🇦</div>
+      <div class="play">玩法：半全场</div>
+      <div class="pick">胜胜</div>
+      <div class="odds">@2.05</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇨🇦 加拿大 vs 波黑 🇧🇦</div>
+      <div class="play">玩法：半全场</div>
+      <div class="pick">胜胜</div>
+      <div class="odds">@2.15</div>
+    </div>
+  </div>
+
+  <div class="combo-formula">二串三 = 3注：{墨单关} + {加单关} + {墨×加 二串一}</div>
+
+  <div class="cost-box">
+    <div class="total">50元/注 × 3注 = 150元</div>
+    <div class="detail">赔率低但概率高，天然适合做大额稳健投注</div>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-item">
+      <div class="scenario">✅ 仅中墨西哥</div>
+      <div class="payout" style="color:var(--highlight)">103元</div>
+      <div class="profit profit-up">+53元 (+35%)</div>
+    </div>
+    <div class="result-item">
+      <div class="scenario">✅ 仅中加拿大</div>
+      <div class="payout" style="color:var(--highlight)">108元</div>
+      <div class="profit profit-up">+58元 (+39%)</div>
+    </div>
+    <div class="result-item" style="border:2px solid var(--gold)">
+      <div class="scenario">🏆 两场全中</div>
+      <div class="payout" style="color:var(--gold);font-size:1.6em">429元</div>
+      <div class="profit profit-up">+279元 (+186%)</div>
+    </div>
+    <div class="result-item">
+      <div class="scenario">❌ 两场全错</div>
+      <div class="payout" style="color:var(--warn)">0元</div>
+      <div class="profit profit-down">-150元</div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <div class="why">💡 为什么稳健？</div>
+    <ul>
+      <li>半全场「胜胜」只需要强弱分明时上半场领先+全场赢，结合分析这2场都是碾压局</li>
+      <li>墨西哥上半场领先概率高（ELO差315），加拿大亦然（ELO差247）</li>
+      <li>回本概率极高，二串三框架下单关提供最低保障</li>
+      <li>适合作为「保底方案」，与方案N1搭配使用形成高低赔组合</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 方案N3: 三串四 混合型 -->
+<div class="card">
+  <div class="scheme-name">方案N3 · 三串四 混合型 🔥 进取博弈</div>
+  <span class="scheme-tag tag-mxn">M串N</span>
+  <span class="scheme-tag tag-value">混合玩法</span>
+  <span class="badge badge-yellow">容1错</span>
+
+  <div class="match-row">
+    <div class="match-pick">
+      <div class="teams">🇲🇽 墨西哥 vs 南非 🇿🇦</div>
+      <div class="play">玩法：比分</div>
+      <div class="pick">比分 2:0</div>
+      <div class="odds">@5.50</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇰🇷 韩国 vs 捷克 🇨🇿</div>
+      <div class="play">玩法：半全场</div>
+      <div class="pick">平平</div>
+      <div class="odds">@4.50</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇨🇦 加拿大 vs 波黑 🇧🇦</div>
+      <div class="play">玩法：比分</div>
+      <div class="pick">比分 1:0</div>
+      <div class="odds">@6.00</div>
+    </div>
+  </div>
+
+  <div class="combo-formula">三串四 = 4注：{墨×韩} + {墨×加} + {韩×加} + {墨×韩×加}</div>
+
+  <div class="cost-box">
+    <div class="total">25元/注 × 4注 = 100元</div>
+    <div class="detail">3个二串一 各25元 · 1个三串一 25元</div>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-item">
+      <div class="scenario">✅ 仅中墨+韩</div>
+      <div class="payout" style="color:var(--highlight)">619元</div>
+      <div class="profit profit-up">+519元 (+519%)</div>
+    </div>
+    <div class="result-item">
+      <div class="scenario">✅ 仅中墨+加</div>
+      <div class="payout" style="color:var(--highlight)">825元</div>
+      <div class="profit profit-up">+725元 (+725%)</div>
+    </div>
+    <div class="result-item">
+      <div class="scenario">✅ 仅中韩+加</div>
+      <div class="payout" style="color:var(--highlight)">675元</div>
+      <div class="profit profit-up">+575元 (+575%)</div>
+    </div>
+    <div class="result-item" style="border:2px solid var(--gold);grid-column: span 2;">
+      <div class="scenario">🏆 三场全中</div>
+      <div class="payout" style="color:var(--gold);font-size:1.8em">5,831元</div>
+      <div class="profit profit-up">+5,731元 (+5,731%)</div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <div class="why">💡 容错逻辑</div>
+    <ul>
+      <li>韩国vs捷克是4场中最难预测的（ELO差仅23分，爆冷风险中等），三串四的设计恰好允许这场出错</li>
+      <li>只要墨西哥+加拿大两场都中（概率最高），即使韩国错也能中一个二串一 = 825元</li>
+      <li>三串四 = 4注，容1错（3场中任意2场就有回报），M串1必须全中</li>
+      <li>半全场「平平」预判韩国捷克半场不分胜负，符合双方谨慎开局的特点</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ M串1 精准方案（补充） ============ -->
+<h2 class="section-title orange">⚡ M串1 精准方案（激进补充）</h2>
+<p style="color:var(--text2);margin-bottom:16px;font-size:0.9em;">
+  ⚠️ M串1需要全部猜中才有回报，适合预算充足、追求高赔率的玩家。建议搭配上方M串N方案使用，降低全损风险。
+</p>
+
+<!-- 方案1: 比分二串一 -->
+<div class="card aggressive">
+  <div class="scheme-name">方案M1 · 比分二串一 🎯 一箭双雕</div>
+  <span class="scheme-tag tag-mx1">M串1</span>
+  <span class="scheme-tag tag-value">比分高赔</span>
+
+  <div class="match-row">
+    <div class="match-pick">
+      <div class="teams">🇲🇽 墨西哥 vs 南非</div>
+      <div class="pick">比分 2:0</div><div class="odds">@5.50</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇨🇦 加拿大 vs 波黑</div>
+      <div class="pick">比分 1:0</div><div class="odds">@6.00</div>
+    </div>
+  </div>
+
+  <div class="combo-formula">二串一 = 5.50 × 6.00 = 33.00倍</div>
+
+  <div class="cost-box">
+    <div class="total">1注 × 30元 = 30元</div>
+    <div class="detail">必须全中 → 回报 30×33.00=990元 (+3,200%)</div>
+  </div>
+</div>
+
+<!-- 方案M2: 复式比分二串一 -->
+<div class="card aggressive">
+  <div class="scheme-name">方案M2 · 复式比分二串一 🎲 双保险</div>
+  <span class="scheme-tag tag-mx1">M串1</span>
+  <span class="scheme-tag tag-value">复式比分</span>
+
+  <div class="match-row">
+    <div class="match-pick">
+      <div class="teams">🇲🇽 墨西哥 vs 南非</div>
+      <div class="play">玩法：比分（同一玩法内复式 ✅）</div>
+      <div class="pick">2:0 + 1:0</div>
+      <div class="odds">@5.50 / @4.80</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇨🇦 加拿大 vs 波黑</div>
+      <div class="play">玩法：比分（同一玩法内复式 ✅）</div>
+      <div class="pick">1:0 + 2:0</div>
+      <div class="odds">@6.00 / @8.00</div>
+    </div>
+  </div>
+
+  <div class="combo-formula">复式 = 2选×2选 = 4注二串一</div>
+
+  <div class="cost-box">
+    <div class="total">4注 × 20元 = 80元</div>
+    <div class="detail">最高组合 5.50×8.00=44.00倍 → 最高回报 880元</div>
+  </div>
+
+  <div class="analysis-box">
+    <div class="why">💡 复式逻辑</div>
+    <ul>
+      <li>同一玩法内多选（比分2:0+1:0）✅ 合规 — 比v3/v4的跨玩法混选更安全</li>
+      <li>4种组合覆盖更多比分可能性，比单注二串一命中率高4倍</li>
+      <li>4注中任意1注命中就回本（最低5.50×6.00=33x, 20×33=660 > 80）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 方案M3: 让球二串一 -->
+<div class="card safe">
+  <div class="scheme-name">方案M3 · 让球二串一 🧱 最低风险</div>
+  <span class="scheme-tag tag-mx1">M串1</span>
+  <span class="scheme-tag tag-safe">极低风险</span>
+
+  <div class="match-row">
+    <div class="match-pick">
+      <div class="teams">🇲🇽 墨西哥 vs 南非</div>
+      <div class="pick">让球(-1) 胜</div><div class="odds">@2.15</div>
+    </div>
+    <div class="match-pick">
+      <div class="teams">🇨🇦 加拿大 vs 波黑</div>
+      <div class="pick">让球(-1) 胜</div><div class="odds">@2.30</div>
+    </div>
+  </div>
+
+  <div class="combo-formula">二串一 = 2.15 × 2.30 = 4.94倍</div>
+
+  <div class="cost-box">
+    <div class="total">1注 × 100元 = 100元</div>
+    <div class="detail">全中回报 494元 (+394%) · 命中率最高组合</div>
+  </div>
+</div>
+
+<!-- ============ 四场分析速览 ============ -->
+<h2 class="section-title blue">📊 四场比赛分析速览</h2>
+
+<table class="comparison-table">
+  <thead>
+    <tr>
+      <th>比赛</th>
+      <th>ELO差</th>
+      <th>预测方向</th>
+      <th>爆冷风险</th>
+      <th>性价比策略</th>
+      <th>推荐玩法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="highlight-row">
+      <td>🇲🇽 墨西哥 vs 南非</td>
+      <td>+315</td>
+      <td>墨西哥胜 · 零封</td>
+      <td><span class="badge badge-green">🟢 低</span></td>
+      <td>比分2:0 @5.50 > 总进球2球 @3.30 (+67%)</td>
+      <td>比分 / 半全场</td>
+    </tr>
+    <tr>
+      <td>🇰🇷 韩国 vs 捷克</td>
+      <td>+23</td>
+      <td>平局倾向 · 僵持</td>
+      <td><span class="badge badge-yellow">🟡 中等</span></td>
+      <td>半全场平平 @4.50 > 总进球2球 @3.10 (+45%)</td>
+      <td>半全场 / 总进球</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>🇨🇦 加拿大 vs 波黑</td>
+      <td>+247</td>
+      <td>加拿大胜 · 零封</td>
+      <td><span class="badge badge-green">🟢 低</span></td>
+      <td>比分1:0 @6.00 > 总进球1球 @4.00 (+50%)</td>
+      <td>比分 / 半全场</td>
+    </tr>
+    <tr>
+      <td>🇺🇸 美国 vs 巴拉圭</td>
+      <td>—</td>
+      <td>三重矛盾信号</td>
+      <td><span class="badge badge-red">🔴 高</span></td>
+      <td>⛔ 绝对回避 · 不入任何串关</td>
+      <td>不投注</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============ 对比表 ============ -->
+<h2 class="section-title purple">📈 v5 vs v6 核心对比</h2>
+
+<table class="comparison-table">
+  <thead>
+    <tr>
+      <th>对比维度</th>
+      <th>v5.0（旧版）</th>
+      <th>v6.0（新版）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>主力方案类型</td>
+      <td>全部为 M串1（必须全中）</td>
+      <td><strong>M串N 容错型为主</strong>（可容1错）</td>
+    </tr>
+    <tr>
+      <td>最佳方案</td>
+      <td>方案B：二串一 33x (50→1650)</td>
+      <td><strong>方案N1：二串三 33x组合 (90→1335)</strong></td>
+    </tr>
+    <tr>
+      <td>容错能力</td>
+      <td>❌ 无容错 · 错1场=全损</td>
+      <td>✅ 可容错 · 中1场就回本</td>
+    </tr>
+    <tr>
+      <td>回本条件</td>
+      <td>必须全部猜对</td>
+      <td><strong>仅需猜对1场（方案N1/N2）</strong></td>
+    </tr>
+    <tr>
+      <td>最大亏损率</td>
+      <td>100%（全输）</td>
+      <td><strong>100%（全输），但中1场回本概率翻倍</strong></td>
+    </tr>
+    <tr>
+      <td>性价比策略</td>
+      <td>✅ 比分替代总进球</td>
+      <td>✅ 保留 + 增强：比分+M串N容错</td>
+    </tr>
+    <tr>
+      <td>单场规则</td>
+      <td>同玩法复式 ✅ / 跨玩法 ❌</td>
+      <td>同玩法复式 ✅ / 跨玩法 ❌（保持一致）</td>
+    </tr>
+    <tr>
+      <td>美国vs巴拉圭</td>
+      <td>⛔ 回避</td>
+      <td>⛔ 回避（一致）</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============ 推荐组合 ============ -->
+<h2 class="section-title">🎯 推荐投注组合</h2>
+
+<div class="card recommend">
+  <div class="scheme-name">🥇 黄金组合（推荐）</div>
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="label">方案N1 · 二串三比分</div>
+      <div class="value" style="color:var(--gold)">90元</div>
+    </div>
+    <div class="info-item">
+      <div class="label">方案N2 · 二串三半全场</div>
+      <div class="value" style="color:var(--info)">150元</div>
+    </div>
+    <div class="info-item" style="grid-column: span 2;">
+      <div class="label">总投入</div>
+      <div class="value" style="color:var(--highlight);font-size:1.4em">240元</div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <div class="why">💡 组合逻辑</div>
+    <ul>
+      <li><strong>方案N1(高赔)</strong>：比分二串三，搏高回报。中1场回本，中2场1335元</li>
+      <li><strong>方案N2(稳健)</strong>：半全场二串三，高概率。两场都中概率极高</li>
+      <li><strong>协同效应</strong>：两方案选同一场次(墨+加)，判断逻辑一致，互为保险</li>
+      <li>N1+N2全中：1335 + 429 = <strong>1,764元</strong>（投入240 → 回报735%）</li>
+      <li>仅中N2（最差情况）：429元（仍净赚189元，回报79%）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <div class="scheme-name">🥈 进取组合</div>
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="label">方案N3 · 三串四混合</div>
+      <div class="value" style="color:var(--gold)">100元</div>
+    </div>
+    <div class="info-item">
+      <div class="label">方案M2 · 复式比分</div>
+      <div class="value" style="color:var(--accent)">80元</div>
+    </div>
+    <div class="info-item" style="grid-column: span 2;">
+      <div class="label">总投入</div>
+      <div class="value" style="color:var(--info)">180元</div>
+    </div>
+  </div>
+
+  <div class="analysis-box">
+    <div class="why">💡 组合逻辑</div>
+    <ul>
+      <li>N3三串四将韩国捷克纳入，若韩国场也猜对，奖金暴涨至5831元</li>
+      <li>M2复式比分提供比分覆盖，4种组合弥补N1的单选项局限</li>
+      <li>适合预算充足、对韩国vs捷克有一定判断的玩家</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ M串N vs M串1 教学 ============ -->
+<h2 class="section-title blue">📚 M串N 容错机制详解</h2>
+
+<div class="strategy-card">
+  <h3>M串N = 从M场比赛中生成N个投注组合</h3>
+  <table class="comparison-table">
+    <thead>
+      <tr><th>类型</th><th>M场</th><th>N注</th><th>组成</th><th>容错</th><th>适用场景</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td><strong>二串三</strong></td>
+        <td>2场</td>
+        <td>3注</td>
+        <td>2单关 + 1二串一</td>
+        <td>容1错（中1有回报）</td>
+        <td>2场高信心 + 追求高赔率</td>
+      </tr>
+      <tr>
+        <td><strong>三串四</strong></td>
+        <td>3场</td>
+        <td>4注</td>
+        <td>3二串一 + 1三串一</td>
+        <td>容1错（中2有回报）</td>
+        <td>2场稳+1场搏</td>
+      </tr>
+      <tr>
+        <td><strong>三串七</strong></td>
+        <td>3场</td>
+        <td>7注</td>
+        <td>3单关 + 3二串一 + 1三串一</td>
+        <td>容2错（中1有回报）</td>
+        <td>预算充足 + 极度避险</td>
+      </tr>
+      <tr>
+        <td>二串一</td>
+        <td>2场</td>
+        <td>1注</td>
+        <td>1二串一</td>
+        <td>无容错</td>
+        <td>极强信心</td>
+      </tr>
+      <tr>
+        <td>三串一</td>
+        <td>3场</td>
+        <td>1注</td>
+        <td>1三串一</td>
+        <td>无容错</td>
+        <td>不建议（太激进）</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 风险提示 ============ -->
+<div class="strategy-card" style="border-color: var(--warn); margin-top: 30px;">
+  <h3 style="color:var(--warn)">⚠️ 风险提示</h3>
+  <ul style="padding-left:18px;color:var(--text2);font-size:0.9em;">
+    <li>所有赔率数据来自 lottery.gov.cn/sporttery.cn，截至报告生成时刻</li>
+    <li>M串N容错 ≠ 稳赚不赔。全错时M串N和M串1一样会全损</li>
+    <li>比分玩法赔率高但波动大，建议用M串N(二串三)容错，而非M串1(二串一)孤注一掷</li>
+    <li>美国vs巴拉圭因三重矛盾信号强烈建议回避，所有方案均不纳入</li>
+    <li>理性购彩，量力而行。本报告仅供参考，不构成投注建议</li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p>2026世界杯竞彩投注建议 v6.0 · M串N容错专版</p>
+  <p>数据来源：lottery.gov.cn / sporttery.cn · 分析模型：ELO + 六因子 + 东方玄学 + 欧赔深度分析</p>
+  <p>生成时间：2026-06-09 11:56 CST · GitHub Pages: coeuswen.github.io/worldcup2026</p>
+</div>
+
+</div>
+</body>
+</html>
