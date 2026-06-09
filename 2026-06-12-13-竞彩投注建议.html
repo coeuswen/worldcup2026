@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6月12-13日·竞彩足球投注建议 | 二串一/三串一/四串一</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --card: #12121a;
+  --card2: #161622;
+  --border: #1e1e30;
+  --text: #e0e0e6;
+  --text2: #8888a0;
+  --text3: #555570;
+  --accent: #ff6b35;
+  --accent2: #00d4aa;
+  --blue: #4a9eff;
+  --red: #ff4757;
+  --yellow: #ffa502;
+  --green: #2ed573;
+  --purple: #a55eea;
+  --gold: #ffd700;
+  --pink: #ff6b9d;
+  --cyan: #00d4cc;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:20px;max-width:1060px;margin:0 auto}
+.header{text-align:center;padding:40px 20px 30px;border-bottom:1px solid var(--border);margin-bottom:30px}
+.header h1{font-size:28px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header .date{font-size:14px;color:var(--text2);margin-top:8px}
+.header .badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:12px;color:var(--text2);margin-top:12px;margin-right:6px}
+.header .badge.primary{background:rgba(255,107,53,0.15);border:1px solid rgba(255,107,53,0.3);color:var(--accent)}
+.header .badge.gold{background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);color:var(--gold)}
+.header .badge.green{background:rgba(46,213,115,0.1);border:1px solid rgba(46,213,115,0.3);color:var(--green)}
+.section{margin-bottom:28px}
+.section-title{font-size:14px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;padding-left:12px;border-left:3px solid var(--accent)}
+.plan-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.plan-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:24px;transition:all 0.2s}
+.plan-card.recommended{border-color:var(--gold);box-shadow:0 0 30px rgba(255,215,0,0.08)}
+.plan-card.conservative{border-color:var(--green)}
+.plan-card.aggressive{border-color:var(--accent)}
+.plan-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.plan-label{font-size:14px;font-weight:800;padding:6px 16px;border-radius:20px}
+.plan-label.recommended{background:rgba(255,215,0,0.15);color:var(--gold);border:1px solid var(--gold)}
+.plan-label.conservative{background:rgba(46,213,115,0.12);color:var(--green);border:1px solid rgba(46,213,115,0.3)}
+.plan-label.aggressive{background:rgba(255,107,53,0.12);color:var(--accent);border:1px solid rgba(255,107,53,0.3)}
+.plan-odds{font-size:32px;font-weight:900;color:var(--gold)}
+.plan-est{font-size:12px;color:var(--text2)}
+.leg-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.leg-table th{background:var(--card2);color:var(--text2);padding:8px 10px;text-align:center;font-weight:600;font-size:11px;border-bottom:2px solid var(--border)}
+.leg-table td{padding:10px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04)}
+.leg-table .leg-num{color:var(--accent);font-weight:800;font-size:16px}
+.leg-table .leg-match{text-align:left;font-weight:600}
+.leg-table .leg-play{color:var(--cyan);font-weight:600}
+.leg-table .leg-odds{color:var(--gold);font-weight:700;font-size:16px}
+.leg-table .leg-confidence{font-size:11px}
+.conf-5{color:var(--green)}
+.conf-4{color:#a5d6a7}
+.conf-3{color:var(--yellow)}
+.conf-2{color:var(--accent)}
+.conf-1{color:var(--red)}
+.payout-box{background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,107,53,0.05));border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:16px;margin-top:12px;text-align:center}
+.payout-box .amount{font-size:20px;color:var(--text2);margin-bottom:4px}
+.payout-box .payout{font-size:36px;font-weight:900;color:var(--gold)}
+.payout-box .detail{font-size:12px;color:var(--text2);margin-top:4px}
+.reason-box{background:var(--card2);border-radius:10px;padding:14px;margin-top:12px;font-size:13px;color:var(--text2);line-height:1.7}
+.reason-box strong{color:var(--text)}
+.risk-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;margin-left:6px}
+.risk-tag.low{background:rgba(46,213,115,0.15);color:var(--green)}
+.risk-tag.medium{background:rgba(255,165,2,0.15);color:var(--yellow)}
+.risk-tag.high{background:rgba(255,71,87,0.15);color:var(--red)}
+.avoid-box{background:rgba(255,71,87,0.06);border:1px solid rgba(255,71,87,0.2);border-radius:12px;padding:16px;margin-top:12px}
+.avoid-box .avoid-title{color:var(--red);font-weight:700;margin-bottom:6px;font-size:13px}
+.match-summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.match-summary-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.match-summary-card .ms-teams{font-weight:700;font-size:15px;margin-bottom:8px}
+.match-summary-card .ms-prediction{font-size:13px;color:var(--accent2);margin-bottom:4px}
+.match-summary-card .ms-elo{font-size:11px;color:var(--text3)}
+.match-summary-card .ms-risk{font-size:12px;font-weight:700}
+.odds-quick-view{font-size:11px;color:var(--text2);margin-top:6px;line-height:1.5}
+.odds-quick-view .sq{display:inline-block;background:var(--card);padding:2px 6px;border-radius:4px;margin:2px 3px;font-variant-numeric:tabular-nums}
+.odds-quick-view .sq.highlight{background:rgba(255,215,0,0.1);color:var(--gold);font-weight:600}
+.odds-quick-view .sq.value{background:rgba(46,213,115,0.1);color:var(--green);font-weight:600}
+.summary-table{width:100%;border-collapse:collapse;font-size:12px;margin:16px 0}
+.summary-table th{background:var(--card2);color:var(--text2);padding:10px 8px;text-align:center;font-weight:700;font-size:11px;border-bottom:2px solid var(--border)}
+.summary-table td{padding:10px 8px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04)}
+.summary-table .best{color:var(--green);font-weight:700}
+.footer{text-align:center;padding:30px;color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:40px}
+.footer p{margin:4px 0}
+.note-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:12px;color:var(--text2);line-height:1.8;margin-top:20px}
+.note-box strong{color:var(--gold)}
+@media(max-width:768px){
+  .match-summary-grid{grid-template-columns:1fr}
+  .plan-odds{font-size:24px}
+  .payout-box .payout{font-size:28px}
+  .leg-table{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>2026世界杯 · 6月12-13日竞彩投注建议</h1>
+  <div class="date">覆盖4场比赛：墨西哥vs南非 · 韩国vs捷克 · 加拿大vs波黑 · 美国vs巴拉圭</div>
+  <span class="badge primary">串关方案</span>
+  <span class="badge gold">二串一</span>
+  <span class="badge gold">三串一</span>
+  <span class="badge green">四串一</span>
+  <span class="badge">实时赔率：lottery.gov.cn</span>
+  <div style="font-size:12px;color:var(--text3);margin-top:10px">生成时间：2026年6月9日 · 赔率采集自中国体育彩票竞彩足球官网 · 实际赔率以购彩时为准</div>
+</div>
+
+<!-- ============ 赛况总览 ============ -->
+<div class="section">
+<div class="section-title">📊 四场比赛预测结论总览</div>
+<div class="match-summary-grid">
+  <!-- 墨西哥 vs 南非 -->
+  <div class="match-summary-card" style="border-left:3px solid var(--green)">
+    <div class="ms-teams">🇲🇽 墨西哥 vs 🇿🇦 南非 <span style="font-size:11px;color:var(--text3)">周四001</span></div>
+    <div class="ms-prediction">预测：<b style="color:var(--green)">墨西哥胜 2:0</b> · 信心 ★★★★★</div>
+    <div class="ms-elo">ELO差 ~340分 · 骨架7-8区深盘</div>
+    <div class="ms-risk" style="color:var(--green)">🟢 爆冷风险 极低(1/5) · <b>稳胆首选</b></div>
+    <div class="odds-quick-view">
+      胜负平: <span class="sq">主1.31</span> <span class="sq">平4.10</span> <span class="sq">客8.30</span> |
+      总进球: <span class="sq highlight">2球3.05</span> <span class="sq">3球3.60</span> |
+      比分: <span class="sq value">2:0→5.40</span> <span class="sq">1:0→5.10</span> |
+      半全场: <span class="sq value">胜胜1.88</span>
+    </div>
+  </div>
+
+  <!-- 韩国 vs 捷克 -->
+  <div class="match-summary-card" style="border-left:3px solid var(--accent)">
+    <div class="ms-teams">🇰🇷 韩国 vs 🇨🇿 捷克 <span style="font-size:11px;color:var(--text3)">周四002</span></div>
+    <div class="ms-prediction">预测：<b style="color:var(--yellow)">平局 1:1</b> · 信心 ★★★☆☆</div>
+    <div class="ms-elo">ELO差 ~50分 · 平手盘极度均衡</div>
+    <div class="ms-risk" style="color:var(--accent)">🟠 爆冷风险 中高(4/5) · <b>回避单边</b></div>
+    <div class="odds-quick-view">
+      胜负平: <span class="sq">主2.43</span> <span class="sq highlight">平2.84</span> <span class="sq">客2.74</span> |
+      总进球: <span class="sq highlight">2球2.90</span> <span class="sq">1球4.10</span> |
+      比分: <span class="sq value">1:1→5.00</span> <span class="sq">0:0→8.00</span> |
+      半全场: <span class="sq value">平平4.00</span>
+    </div>
+  </div>
+
+  <!-- 加拿大 vs 波黑 -->
+  <div class="match-summary-card" style="border-left:3px solid var(--blue)">
+    <div class="ms-teams">🇨🇦 加拿大 vs 🇧🇦 波黑 <span style="font-size:11px;color:var(--text3)">周五003</span></div>
+    <div class="ms-prediction">预测：<b style="color:var(--green)">加拿大胜 1:0</b> · 信心 ★★★★☆</div>
+    <div class="ms-elo">ELO差 ~55分 · 中庸盘2-3区</div>
+    <div class="ms-risk" style="color:var(--yellow)">🟡 爆冷风险 中等(3/5) · 谨慎首选</div>
+    <div class="odds-quick-view">
+      胜负平: <span class="sq value">主1.59</span> <span class="sq">平3.38</span> <span class="sq">客4.90</span> |
+      总进球: <span class="sq highlight">1球4.30</span> <span class="sq">2球3.10</span> |
+      比分: <span class="sq value">1:0→5.70</span> <span class="sq">2:0→6.50</span> |
+      半全场: <span class="sq value">胜胜2.45</span>
+    </div>
+  </div>
+
+  <!-- 美国 vs 巴拉圭 -->
+  <div class="match-summary-card" style="border-left:3px solid var(--red)">
+    <div class="ms-teams">🇺🇸 美国 vs 🇵🇾 巴拉圭 <span style="font-size:11px;color:var(--text3)">周五004</span></div>
+    <div class="ms-prediction">预测：<b style="color:var(--yellow)">平局/巴拉圭不败 1:1</b> · 信心 ★★★☆☆</div>
+    <div class="ms-elo">ELO差 -58分（巴拉圭更高）· ELO-赔率-亚盘三重矛盾</div>
+    <div class="ms-risk" style="color:var(--red)">🔴 爆冷风险 中高(4/5) · <b>绝对回避</b></div>
+    <div class="odds-quick-view">
+      胜负平: <span class="sq">主1.87</span> <span class="sq highlight">平3.02</span> <span class="sq">客3.80</span> |
+      总进球: <span class="sq highlight">1球4.10</span> <span class="sq">2球2.90</span> |
+      比分: <span class="sq value">1:1→5.50</span> <span class="sq">0:1→9.00</span> |
+      半全场: <span class="sq value">平平4.25</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 串关方案 ============ -->
+<div class="section">
+<div class="section-title">🎯 串关投注方案</div>
+
+<div class="plan-grid">
+
+  <!-- 方案B：推荐 -->
+  <div class="plan-card recommended">
+    <div class="plan-header">
+      <div>
+        <span class="plan-label recommended">🥇 方案B · 推荐</span>
+        <span style="font-size:12px;color:var(--gold);margin-left:8px">进取价值型二串一</span>
+      </div>
+      <div style="text-align:right">
+        <div class="plan-odds">约 11.65 倍</div>
+      </div>
+    </div>
+    <table class="leg-table">
+      <tr><th>腿序</th><th>比赛</th><th>玩法</th><th>选择</th><th>赔率</th><th>分析置信度</th><th>核心逻辑</th></tr>
+      <tr>
+        <td class="leg-num">腿1</td>
+        <td class="leg-match">🇲🇽 墨西哥 vs 🇿🇦 南非<br><span style="font-size:10px;color:var(--text3)">周四001 · 06-12 03:00</span></td>
+        <td class="leg-play">半全场</td>
+        <td><b style="color:var(--green)">胜胜</b></td>
+        <td class="leg-odds">1.88</td>
+        <td class="leg-confidence conf-5">★★★★★</td>
+        <td style="font-size:11px;text-align:left">墨西哥碾压局，半场即领先概率45%+<br>ELO差340分+深盘保护=半场解决战斗</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿2</td>
+        <td class="leg-match">🇨🇦 加拿大 vs 🇧🇦 波黑<br><span style="font-size:10px;color:var(--text3)">周五003 · 06-13 03:00</span></td>
+        <td class="leg-play">总进球</td>
+        <td><b style="color:var(--green)">1球</b></td>
+        <td class="leg-odds">4.30</td>
+        <td class="leg-confidence conf-3">★★★☆☆</td>
+        <td style="font-size:11px;text-align:left">大小球2.0/2.5偏低→庄家预期小比分<br>加拿大1:0是最可能比分(22%)</td>
+      </tr>
+    </table>
+    <div class="payout-box">
+      <div class="amount">投注金额参考（以10元为例）</div>
+      <div class="payout">≈ 116.50 元</div>
+      <div class="detail">净收益约 106.50 元 · 投100元中约1,165元</div>
+    </div>
+    <div class="reason-box">
+      <strong>💡 推荐理由：</strong>这是平衡风险与回报的最佳方案。<br>
+      ① <b>腿1墨西哥半全场胜胜(1.88)</b> — 相比胜负平1.31的低赔，半全场胜胜赔率高出43%，且墨西哥碾压局上半场进球概率极高。ELO差340分意味着南非几乎无法威胁墨西哥球门，墨西哥大概率半场结束战斗。<br>
+      ② <b>腿2加拿大总进球1球(4.30)</b> — 加拿大vs波黑大小球仅开2.0/2.5，是当日最低大球线。庄家明确预期沉闷。加拿大预测1:0（22%概率），总进球1球的4.30赔率具有极高的期望价值。<br>
+      ③ 两腿独立性强，不依赖同一场比赛的不同结果。<br>
+      ④ 综合胜率约22-28%，期望回报率远超1.0，是正期望值下注。<br>
+      <span style="color:var(--gold)">⚠️ 建议投注金额：单注10-30元，不超过总资金的15%。</span>
+    </div>
+  </div>
+
+  <!-- 方案A：稳健 -->
+  <div class="plan-card conservative">
+    <div class="plan-header">
+      <div>
+        <span class="plan-label conservative">🥈 方案A · 稳健</span>
+        <span style="font-size:12px;color:var(--green);margin-left:8px">保守型二串一</span>
+      </div>
+      <div style="text-align:right">
+        <div class="plan-odds">约 5.47 倍</div>
+      </div>
+    </div>
+    <table class="leg-table">
+      <tr><th>腿序</th><th>比赛</th><th>玩法</th><th>选择</th><th>赔率</th><th>分析置信度</th><th>核心逻辑</th></tr>
+      <tr>
+        <td class="leg-num">腿1</td>
+        <td class="leg-match">🇲🇽 墨西哥 vs 🇿🇦 南非<br><span style="font-size:10px;color:var(--text3)">周四001</span></td>
+        <td class="leg-play">总进球</td>
+        <td><b style="color:var(--green)">2球</b></td>
+        <td class="leg-odds">3.05</td>
+        <td class="leg-confidence conf-5">★★★★★</td>
+        <td style="font-size:11px;text-align:left">预测比分2:0(22%), 总进球2球概率35%<br>墨西哥碾压但南非死守不易大比分</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿2</td>
+        <td class="leg-match">🇨🇦 加拿大 vs 🇧🇦 波黑<br><span style="font-size:10px;color:var(--text3)">周五003</span></td>
+        <td class="leg-play">总进球</td>
+        <td><b style="color:var(--green)">2球</b></td>
+        <td class="leg-odds">3.10</td>
+        <td class="leg-confidence conf-3">★★★☆☆</td>
+        <td style="font-size:11px;text-align:left">总进球2球概率28%<br>加拿大2:0(16%)+1:1(10%)均含2球</td>
+      </tr>
+    </table>
+    <div class="payout-box">
+      <div class="amount">投注金额参考（以10元为例）</div>
+      <div class="payout">≈ 94.60 元</div>
+      <div class="detail">净收益约 84.60 元 · 综合赔率 3.05×3.10 = 9.46倍 · 用10元中约94元</div>
+    </div>
+    <div class="reason-box">
+      <strong>💡 选择理由：</strong>全部选择「总进球数」玩法的组合，不依赖单一赛果方向，容错率高。<br>
+      ① 两场都选总进球2球，墨西哥vs南非预测2:0，加拿大vs波黑预测1:0或0:0都可能落在2球以内。<br>
+      ② 总进球玩法对比分方向更稳健——不需要精确命中谁赢，只需要进球总数对。<br>
+      ③ 单腿赔率3.05和3.10都在合理区间，不是极端彩票，实际打出概率可观。<br>
+      ④ 适合作为串关的「基本盘」方案，与方案B互补。<br>
+      <span style="color:var(--green)">建议投注金额：单注20-50元。</span>
+    </div>
+  </div>
+
+  <!-- 方案C：三串一 -->
+  <div class="plan-card aggressive">
+    <div class="plan-header">
+      <div>
+        <span class="plan-label aggressive">🥉 方案C · 博弈</span>
+        <span style="font-size:12px;color:var(--accent);margin-left:8px">价值三串一</span>
+      </div>
+      <div style="text-align:right">
+        <div class="plan-odds">约 40.80 倍</div>
+      </div>
+    </div>
+    <table class="leg-table">
+      <tr><th>腿序</th><th>比赛</th><th>玩法</th><th>选择</th><th>赔率</th><th>分析置信度</th><th>核心逻辑</th></tr>
+      <tr>
+        <td class="leg-num">腿1</td>
+        <td class="leg-match">🇲🇽 墨西哥 vs 🇿🇦 南非</td>
+        <td class="leg-play">比分精确</td>
+        <td><b style="color:var(--green)">2:0</b></td>
+        <td class="leg-odds">5.40</td>
+        <td class="leg-confidence conf-4">★★★★☆</td>
+        <td style="font-size:11px;text-align:left">二号热门比分，概率22%<br>深盘+弱队进球0→2:0正路</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿2</td>
+        <td class="leg-match">🇰🇷 韩国 vs 🇨🇿 捷克</td>
+        <td class="leg-play">比分精确</td>
+        <td><b style="color:var(--yellow)">1:1</b></td>
+        <td class="leg-odds">5.00</td>
+        <td class="leg-confidence conf-3">★★★☆☆</td>
+        <td style="font-size:11px;text-align:left">平赔离散度0.10极低<br>1:1是双方各进1球的均衡比分</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿3</td>
+        <td class="leg-match">🇨🇦 加拿大 vs 🇧🇦 波黑</td>
+        <td class="leg-play">比分精确</td>
+        <td><b style="color:var(--green)">1:0</b></td>
+        <td class="leg-odds">5.70</td>
+        <td class="leg-confidence conf-3">★★★☆☆</td>
+        <td style="font-size:11px;text-align:left">最可能比分22%<br>加拿大防守稳固+波黑进攻乏力</td>
+      </tr>
+    </table>
+    <div class="payout-box">
+      <div class="amount">投注金额参考（以10元为例）</div>
+      <div class="payout">≈ 153.90 元</div>
+      <div class="detail">净收益约 143.90 元 · 综合赔率 5.40×5.00×5.70 ≈ 153.9倍 · 或以2元起步中约30元</div>
+    </div>
+    <div class="reason-box">
+      <strong>💡 选择理由：</strong>三场比分精确串联，每腿独立且概率可期。<br>
+      ① <b>墨西哥2:0</b> — 明确碾压局，比分概率模型给出22%，是第二高概率比分。<br>
+      ② <b>韩国1:1</b> — 平赔离散度仅0.10，7家公司高度一致防范平局。1:1比0:0更合理（双方都有进球能力）。平赔5.00在比分选项中极具价值。<br>
+      ③ <b>加拿大1:0</b> — 加拿大预测最佳比分，大小球低开进一步确认。<br>
+      ④ 三场比赛时间分散（6/12凌晨→6/12上午→6/13凌晨），可逐场验证心态。<br>
+      <span style="color:var(--accent)">⚠️ 三串一风险极高，建议投注金额：2-10元（不超过总资金的5%）。</span>
+    </div>
+  </div>
+
+  <!-- 方案D：四串一 -->
+  <div class="plan-card" style="border-color:var(--purple)">
+    <div class="plan-header">
+      <div>
+        <span class="plan-label" style="background:rgba(165,94,234,0.12);color:var(--purple);border:1px solid rgba(165,94,234,0.3)">🏅 方案D · 极限</span>
+        <span style="font-size:12px;color:var(--purple);margin-left:8px">四串一娱乐型</span>
+      </div>
+      <div style="text-align:right">
+        <div class="plan-odds">约 58.60 倍</div>
+      </div>
+    </div>
+    <table class="leg-table">
+      <tr><th>腿序</th><th>比赛</th><th>玩法</th><th>选择</th><th>赔率</th><th>分析置信度</th><th>核心逻辑</th></tr>
+      <tr>
+        <td class="leg-num">腿1</td>
+        <td class="leg-match">🇲🇽 墨西哥 vs 🇿🇦 南非</td>
+        <td class="leg-play">半全场</td>
+        <td><b style="color:var(--green)">胜胜</b></td>
+        <td class="leg-odds">1.88</td>
+        <td class="leg-confidence conf-5">★★★★★</td>
+        <td style="font-size:11px;text-align:left">最强稳胆腿</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿2</td>
+        <td class="leg-match">🇰🇷 韩国 vs 🇨🇿 捷克</td>
+        <td class="leg-play">总进球</td>
+        <td><b style="color:var(--yellow)">2球</b></td>
+        <td class="leg-odds">2.90</td>
+        <td class="leg-confidence conf-3">★★★☆☆</td>
+        <td style="font-size:11px;text-align:left">1:1概率最高，2球覆盖</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿3</td>
+        <td class="leg-match">🇨🇦 加拿大 vs 🇧🇦 波黑</td>
+        <td class="leg-play">胜负平</td>
+        <td><b style="color:var(--green)">主胜</b></td>
+        <td class="leg-odds">1.59</td>
+        <td class="leg-confidence conf-4">★★★★☆</td>
+        <td style="font-size:11px;text-align:left">加拿大不败概率70%+</td>
+      </tr>
+      <tr>
+        <td class="leg-num">腿4</td>
+        <td class="leg-match">🇺🇸 美国 vs 🇵🇾 巴拉圭</td>
+        <td class="leg-play">总进球</td>
+        <td><b style="color:var(--cyan)">1球</b></td>
+        <td class="leg-odds">4.10</td>
+        <td class="leg-confidence conf-3">★★★☆☆</td>
+        <td style="font-size:11px;text-align:left">小球水极低, 预期沉闷</td>
+      </tr>
+    </table>
+    <div class="payout-box">
+      <div class="amount">投注金额参考（以2元为例）</div>
+      <div class="payout">≈ 70.90 元</div>
+      <div class="detail">综合赔率 1.88×2.90×1.59×4.10 ≈ 35.5倍 · 2元起步 · 纯娱乐性质</div>
+    </div>
+    <div class="reason-box">
+      <strong>💡 选择理由：</strong>全玩法混合四串一，每腿选不同玩法降低相关性。<br>
+      ① 腿1墨西哥胜胜(1.88)——最强稳胆，作为压舱石。<br>
+      ② 腿2韩国总进球2球(2.90)——不选方向只选进球，降低韩国vs捷克的不确定性。<br>
+      ③ 腿3加拿大主胜(1.59)——第二稳胆，加拿大欧亚一致信号清晰。<br>
+      ④ 腿4美国vs巴拉圭总进球1球(4.10)——三重矛盾场选总进球而非方向，小球水1.80极低验证庄家预期。<br>
+      <span style="color:var(--purple)">⚠️ 四串一纯属娱乐，建议投注金额：2元。三重矛盾场（美国vs巴拉圭）入串风险巨大。</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ============ 绝对回避 ============ -->
+<div class="section">
+<div class="section-title">⛔ 绝对回避清单</div>
+
+<div class="avoid-box">
+  <div class="avoid-title">⛔ 美国 vs 巴拉圭 — 任何胜负平/让球方向均不入串</div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.8">
+    <b>理由：</b>ELO-欧赔-亚盘三重矛盾信号汇聚。<br>
+    ① <b>ELO逆差58分</b> — 巴拉圭(1760) > 美国(1702)，实力占优却开出美国让球，典型「名气盘」。<br>
+    ② <b>欧亚矛盾</b> — 欧赔1.87仅支持平/半盘，亚盘却开到半球(-0.5)，偏深一档→诱上陷阱。<br>
+    ③ <b>客水反低</b> — 美国-0.5客水1.875反低于主水1.975→庄家暗防巴拉圭。<br>
+    ④ <b>历史规律</b> — 类似矛盾结构的比赛（2018德国vs墨西哥、2022沙特vs阿根廷）均出冷门。<br><br>
+    <b style="color:var(--red)">结论：</b>美国vs巴拉圭任何方向都不要放入串关。如果非要选择，<b>总进球1球(4.10)</b>是最安全的参与方式（不赌方向），但即便如此也要作为串关第4腿（最短腿），而非核心腿。
+  </p>
+</div>
+
+<div class="avoid-box" style="margin-top:12px;background:rgba(255,165,2,0.04);border:1px solid rgba(255,165,2,0.2)">
+  <div class="avoid-title" style="color:var(--yellow)">⚠️ 韩国 vs 捷克 — 不选胜负平方向入串</div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.8">
+    本场为开赛以来最均衡的场次（ELO差距仅50分），平手盘+平赔离散度0.10。<b>任何一方取胜都不算冷门。</b><br>
+    如果入串，只选「总进球」或「比分精确」玩法，避免选胜负平方向。<b>尤其不要把韩国胜(2.43)作为串关稳胆——这是一个40%概率都不到的腿。</b>
+  </p>
+</div>
+</div>
+
+<!-- ============ 穿关策略总结 ============ -->
+<div class="section">
+<div class="section-title">📋 串关方案对比速查</div>
+<table class="summary-table">
+  <tr>
+    <th>方案</th>
+    <th>类型</th>
+    <th>腿数</th>
+    <th>综合赔率</th>
+    <th>估计胜率</th>
+    <th>期望价值</th>
+    <th>10元预期回报</th>
+    <th>推荐度</th>
+  </tr>
+  <tr style="background:rgba(255,215,0,0.04)">
+    <td style="color:var(--gold);font-weight:800">🥇 方案B</td>
+    <td>进取二串一</td>
+    <td>2</td>
+    <td><b>11.65倍</b></td>
+    <td>~25%</td>
+    <td style="color:var(--green)">正期望(+2.9x)</td>
+    <td>~116元</td>
+    <td><span style="color:var(--gold);font-weight:800">★★★★★</span></td>
+  </tr>
+  <tr>
+    <td style="color:var(--green);font-weight:700">🥈 方案A</td>
+    <td>稳健二串一</td>
+    <td>2</td>
+    <td><b>9.46倍</b></td>
+    <td>~35%</td>
+    <td style="color:var(--green)">正期望(+3.3x)</td>
+    <td>~95元</td>
+    <td><span style="color:var(--green)">★★★★☆</span></td>
+  </tr>
+  <tr>
+    <td style="color:var(--accent);font-weight:700">🥉 方案C</td>
+    <td>博弈三串一</td>
+    <td>3</td>
+    <td><b>153.9倍</b></td>
+    <td>~3%</td>
+    <td style="color:var(--green)">正期望(+4.6x)</td>
+    <td>~1,539元</td>
+    <td><span style="color:var(--accent)">★★★☆☆</span></td>
+  </tr>
+  <tr>
+    <td style="color:var(--purple);font-weight:700">🏅 方案D</td>
+    <td>娱乐四串一</td>
+    <td>4</td>
+    <td><b>35.5倍</b></td>
+    <td>~8%</td>
+    <td style="color:var(--accent)">正期望(+2.8x)</td>
+    <td>~355元</td>
+    <td><span style="color:var(--purple)">★★☆☆☆</span></td>
+  </tr>
+</table>
+</div>
+
+<!-- ============ 资金分配建议 ============ -->
+<div class="section">
+<div class="section-title">💰 资金分配建议</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px">
+  <table class="summary-table">
+    <tr><th>方案</th><th>投注占比</th><th>建议金额(总100元)</th><th>风险定位</th></tr>
+    <tr>
+      <td style="font-weight:700;color:var(--green)">方案A 稳健二串一</td>
+      <td><b>40%</b></td>
+      <td>40元</td>
+      <td>基本盘 · 保本</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;color:var(--gold)">方案B 进取二串一</td>
+      <td><b>35%</b></td>
+      <td>35元</td>
+      <td>核心盘 · 盈利</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;color:var(--accent)">方案C 博弈三串一</td>
+      <td><b>15%</b></td>
+      <td>15元</td>
+      <td>弹性盘 · 暴击</td>
+    </tr>
+    <tr>
+      <td style="font-weight:700;color:var(--purple)">方案D 娱乐四串一</td>
+      <td><b>10%</b></td>
+      <td>10元</td>
+      <td>娱乐盘 · 梦想</td>
+    </tr>
+  </table>
+  <div style="font-size:12px;color:var(--text2);margin-top:16px;line-height:1.8">
+    <strong style="color:var(--gold)">💡 资金管理原则：</strong><br>
+    ① <b>A+B组合打法</b>（投75元）：稳健+进取二串一搭配，只要任一方案命中即可盈利。<br>
+    ② <b>总投入不超过100元</b>（以此为基准调整实际投入）。<br>
+    ③ <b>方案C+D</b>为纯博弈性质，25元属于「沉没成本」心态——中了是大惊喜，不中不影响基本盘。<br>
+    ④ <b>绝不追单</b>：第一场（6/12凌晨墨西哥）结束后，即使赢钱也不要临时追加美国vs巴拉圭方向。<br>
+    ⑤ <b>核心纪律</b>：美国vs巴拉圭无论前几场结果如何，不做任何胜负平方向追注。
+  </div>
+</div>
+</div>
+
+<!-- ============ 数据来源 & 免责 ============ -->
+<div class="section">
+<div class="section-title">📐 分析方法与数据来源</div>
+<div class="note-box">
+  <strong>数据来源：</strong><br>
+  • 赛程：lyskx.net（北京时间权威）<br>
+  • 欧赔：worldcup-odds.com（Bet365/Betfred/Bwin/BOYLE/Coral/Ladbrokes/Sportingbet 七家公司）<br>
+  • 亚盘盘口：titan007.com<br>
+  • 官方投注赔率：lottery.gov.cn（中国体育彩票竞彩足球，agent-browser实时爬取）<br>
+  • 预测模型：本地世界杯预测程序（ELO+Poisson xG + 六因子 + 玄学分析，localhost:7862）<br><br>
+
+  <strong>串关分析方法：</strong><br>
+  • 各腿独立性评估：确保同一比赛的不同结果不会同时作为串关腿<br>
+  • 期望价值计算：胜率×赔率 > 1.0 = 正期望方向<br>
+  • 风险分层：稳健腿(置信度★★★★★/★★★★☆)优先考虑 / 矛盾信号场次绝对回避<br>
+  • 赔率对比：彩票官网实时赔率 vs 欧赔市场赔率 → 识别被低估方向<br>
+  • 玩法优化：不同比赛选择最有价值的玩法（比分/总进球/半全场/胜负平）<br><br>
+
+  <strong style="color:var(--red)">⚠️ 重要免责声明：</strong><br>
+  本报告所有分析和建议仅供参考娱乐，不构成任何形式的博彩投注建议。足球比赛结果受众多不可预测因素影响，历史数据和统计模型无法保证未来结果。博彩有风险，投注需谨慎。请理性对待，量力而行。禁止未成年人参与任何形式的博彩活动。所有赔率数据以中国体育彩票竞彩足球官网实时显示为准。
+</div>
+</div>
+
+<div class="footer">
+  <p>2026世界杯 · 6月12-13日竞彩投注建议报告</p>
+  <p>生成时间：2026年6月9日 · 赔率来源：lottery.gov.cn（实时）· 分析基础：6月12日+6月13日赛果预测报告</p>
+  <p>串关方案：A稳健 / B推荐 / C博弈 / D娱乐 | GitHub Pages: coeuswen.github.io/worldcup2026</p>
+</div>
+
+</body>
+</html>
