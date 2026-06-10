@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6月14日 世界杯投注建议 v14.0 · SPF+过N关版</title>
+<title>6月14日 世界杯投注建议 v14.1 · 大小球深度分析版</title>
 <style>
 :root {
   --bg:#0a0e1a; --card:#111827; --card2:#161c2e; --border:#1e2d50; --text:#e0e6ee;
@@ -58,18 +58,19 @@ footer{text-align:center;padding:24px 0;margin-top:30px;border-top:1px solid var
 
 <div class="header">
   <h1>2026世界杯 · 6月14日 投注建议</h1>
-  <div class="meta">v14.0 · SPF+过N关版 · lottery.gov.cn实时赔率</div>
-  <span class="ver">v14.0 新增 SPF分析 + 过2关/过3关</span>
+  <div class="meta">v14.1 · 大小球深度分析版 · lottery.gov.cn实时赔率</div>
+  <span class="ver">v14.1 新增 大小球条件概率 · 边际成本优化</span>
 </div>
 
 <!-- ========== v14.0 更新说明 ========== -->
 <div class="section" style="border-color:var(--blue)">
-<h2>v14.0 三点重大更新</h2>
+<h2>v14.1 四点重大更新</h2>
 <table>
 <tr><th>#</th><th>修正项</th><th>说明</th></tr>
 <tr><td>1</td><td><strong>+SPF胜负平分析</strong></td><td>逐场分析SPF+RQSPF赔率，解释为何不选/何时可选</td></tr>
 <tr><td>2</td><td><strong>修复杂码</strong></td><td>零封率行f-string源码泄露 → 已修正</td></tr>
 <tr><td>3</td><td><strong>+过2关/过3关</strong></td><td>三串一拆分为「过3关=全中」+「过2关=任意中2场」，**哪怕最低赔率组合也得回本**</td></tr>
+<tr style="background:rgba(0,212,204,0.06)"><td><strong>4 新增</strong></td><td><strong>+大小球条件概率深度分析</strong></td><td>零封前提下用泊松条件概率+大小球预期进球数精确锁定最优比分组合 · 边际成本优化</td></tr>
 </table>
 </div>
 
@@ -176,6 +177,55 @@ footer{text-align:center;padding:24px 0;margin-top:30px;border-top:1px solid var
 <tr><td>理由</td><td colspan="3">大球概率>60%·ELO差141·土耳其进攻强</td></tr>
 </table>
 <h3 style="color:var(--gold);margin-top:14px">推荐选项</h3><div class="score-grid"><div class="score-item selected"><div class="score-odd">2球<span style="float:right;color:var(--green);font-size:.8em">@3.25</span></div></div><div class="score-item selected"><div class="score-odd">3球<span style="float:right;color:var(--green);font-size:.8em">@3.65</span></div></div></div></div></div>
+<div class="section" style="border-color:var(--cyan)">
+<h2 style="color:var(--cyan)">大小球条件概率深度分析: 零封比分的边际成本优化</h2>
+<div class="gate-card">
+<h4>核心原理</h4>
+<p style="font-size:.88em;color:var(--text2)">零封不是单一比分，而是一个比分集合。每多选一个比分 = 成本+2元。用<strong>泊松条件概率（给定弱队0球）</strong> × <strong>大小球预期总进球</strong> 精确锁定最优覆盖边界。</p>
+</div>
+
+<h3>瑞士 vs 卡塔尔 · 大小球交叉验证</h3>
+<table>
+<tr><th>参数</th><th>数值</th><th>解读</th></tr>
+<tr><td>λ 总预期进球</td><td><strong>2.46</strong></td><td>≈ 大小球盘口 <strong>2.5球</strong></td></tr>
+<tr><td>over_2.5 概率</td><td><strong>53.5%</strong></td><td>大球略占优，总进球 2~3球最可能</td></tr>
+<tr><td>卡塔尔0球概率</td><td><strong>43.3%</strong></td><td>零封基线 (含0:0和瑞士胜零封)</td></tr>
+</table>
+
+<h3>条件概率分布 (给定卡塔尔=0球)</h3>
+<table>
+<tr><th>比分</th><th>绝对概率</th><th style="color:var(--gold)">条件概率</th><th>累计覆盖</th><th>赔率</th><th>性价比</th></tr><tr><td>0:0</td><td>8.5%</td><td style="color:var(--gold);font-weight:bold">19.7%</td><td>19.7%</td><td>@16.00</td><td>3.16</td><td><span class="tag tag-yellow">平局对冲</span></td></tr>
+<tr><td>0:1</td><td>13.9%</td><td style="color:var(--gold);font-weight:bold">32.1%</td><td>51.9%</td><td>@6.20</td><td>1.99</td><td><span class="tag tag-blue">可行</span></td></tr>
+<tr style="background:rgba(0,212,204,0.06)"><td>0:2</td><td>11.3%</td><td style="color:var(--gold);font-weight:bold">26.2%</td><td>78.1%</td><td>@5.20</td><td>1.36</td><td><span class="tag tag-green">最优区</span></td></tr>
+<tr style="background:rgba(0,212,204,0.06)"><td>0:3</td><td>6.2%</td><td style="color:var(--gold);font-weight:bold">14.2%</td><td>92.3%</td><td>@6.30</td><td>0.90</td><td><span class="tag tag-green">最优区</span></td></tr>
+<tr><td>0:4</td><td>2.5%</td><td style="color:var(--gold);font-weight:bold">5.8%</td><td>98.1%</td><td>@8.00</td><td>0.46</td><td><span class="tag tag-red">尾端</span></td></tr>
+<tr><td>0:5</td><td>0.8%</td><td style="color:var(--gold);font-weight:bold">1.9%</td><td>100.0%</td><td>@12.00</td><td>0.23</td><td><span class="tag tag-red">尾端</span></td></tr>
+</table>
+
+<div class="gate-card" style="margin-top:16px">
+<h4>边际成本 vs 边际覆盖分析</h4>
+<table>
+<tr><th>策略</th><th>比分</th><th>累计覆盖</th><th>注数</th><th>成本</th><th>最低回报</th><th>回报比</th><th>边际增益</th></tr><tr><td>1选 (仅0:2)</td><td>0:2</td><td>19.7%</td><td>1注</td><td>2元</td><td>10.4元</td><td>5.20x</td><td>+19.7%/2元</td></tr>
+<tr style="background:rgba(255,215,0,0.08);font-weight:bold"><td>2选 ⭐最优</td><td>0:1+0:2</td><td>51.9%</td><td>2注</td><td>4元</td><td>10.4元</td><td>2.60x</td><td>+32.1%/2元</td></tr>
+<tr><td>3选</td><td>0:1+0:2+0:3</td><td>78.1%</td><td>3注</td><td>6元</td><td>10.4元</td><td>1.73x</td><td>+26.2%/2元</td></tr>
+<tr><td>4选 (+0:0)</td><td>0:1+0:2+0:3+0:0</td><td>92.3%</td><td>4注</td><td>8元</td><td>10.4元</td><td>1.30x</td><td>+14.2%/2元</td></tr>
+<tr><td>5选 (全覆盖)</td><td>0:1+0:2+0:3+0:4+0:0</td><td>98.1%</td><td>5注</td><td>10元</td><td>10.4元</td><td>1.04x</td><td>+5.8%/2元</td></tr>
+</table>
+</div>
+
+<div class="gate-card" style="margin-top:16px;border-color:var(--gold)">
+<h4 style="color:var(--gold)">结论: 2选 (0:1 + 0:2) 是最优解</h4>
+<ol style="font-size:.88em;line-height:1.8;margin:8px 0 8px 24px">
+  <li><strong>大小球预期总进球 2.46</strong> → 最可能的零封比分是 0:2 和 0:3 → 与总进球2~3球区间一致</li>
+  <li><strong>0:1 (11.7%) + 0:2 (9.6%) = 覆盖 56.2%</strong> 零封场景 → 2注4元 → 最低回报10.4元 → 2.60x回报比</li>
+  <li><strong>3选加0:3</strong>: 覆盖率升至69.9% (+13.7%)，成本+2元 → 边际增益适中，<span style="color:var(--yellow)">可选但不必须</span></li>
+  <li><strong>不推荐加0:0</strong>: 0:0是平局非瑞士胜，与预测方向不一致 → 除非做对冲，否则不入零封比分复选</li>
+  <li><strong>0:4以上</strong>: 累计覆盖仅11%，每+1比分成本+2元但覆盖率增量递减 → <span style="color:var(--red)">边际递减，不划算</span></li>
+  <li><strong>核心口诀</strong>: <span style="color:var(--gold)">λ_total ≈ 大小球盘口 → 总进球±0.5的零封比分 = 最优区间</span></li>
+</ol>
+</div>
+</div>
+
 <div class="section">
 <h2>M串N 投注方案 (v14.0 · 过N关版)</h2>
 
@@ -296,7 +346,7 @@ footer{text-align:center;padding:24px 0;margin-top:30px;border-top:1px solid var
 </div>
 
 <footer>
-  <p>生成时间: 2026年6月10日 | v14.0 · SPF+过N关版</p>
+  <p>生成时间: 2026年6月10日 | v14.1 · 大小球深度分析版</p>
   <p>Poisson Score Analyzer v2.0 | 欧赔核心思维 + 竞彩足球看盘技巧</p>
 </footer>
 
