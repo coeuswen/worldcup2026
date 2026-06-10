@@ -3,561 +3,475 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯·2026年6月14日投注建议 v10.0</title>
+<title>2026年6月14日 · 竞彩投注建议 v11.0</title>
 <style>
 :root {
-  --bg: #0a0a0f;
-  --card: #12121a;
-  --card2: #161622;
-  --border: #1e1e30;
-  --text: #e0e0e6;
-  --text2: #8888a0;
-  --text3: #555570;
-  --accent: #ff6b35;
-  --accent2: #00d4aa;
-  --blue: #4a9eff;
-  --red: #ff4757;
-  --yellow: #ffa502;
-  --green: #2ed573;
-  --purple: #a55eea;
-  --gold: #ffd700;
-  --pink: #ff6b9d;
-  --cyan: #00d4cc;
+    --bg: #0a0e14;
+    --card: #131820;
+    --border: #1e2836;
+    --text: #cdd6e0;
+    --muted: #6b7d95;
+    --green: #00c853;
+    --red: #ff3d3d;
+    --blue: #448aff;
+    --yellow: #ffc107;
+    --orange: #ff9800;
+    --pink: #e91e63;
+    --cyan: #00bcd4;
+    --gold: #ffd700;
+    --tag-bg: #1a2332;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:20px;max-width:1060px;margin:0 auto}
-.header{text-align:center;padding:40px 20px 30px;border-bottom:1px solid var(--border);margin-bottom:30px}
-.header h1{font-size:28px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.header .date{font-size:14px;color:var(--text2);margin-top:8px}
-.header .badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:12px;color:var(--text2);margin-top:12px;margin-right:6px}
-.header .badge.new{background:rgba(255,107,157,0.15);border:1px solid rgba(255,107,157,0.3);color:var(--pink)}
-.header .badge.cyan{background:rgba(0,212,204,0.1);border:1px solid rgba(0,212,204,0.3);color:var(--cyan)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    max-width: 900px; margin: 0 auto; padding: 16px;
+}
+h1 { font-size: 1.6em; margin: 16px 0 4px; color: #fff; }
+h2 { font-size: 1.2em; margin: 24px 0 12px; color: #90caf9; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+h3 { font-size: 1.05em; margin: 16px 0 8px; color: #ce93d8; }
+.card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; margin: 12px 0;
+}
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.75em; font-weight: 700; margin: 0 2px;
+}
+.bg-green { background: #00c85322; color: var(--green); border: 1px solid #00c85344; }
+.bg-red { background: #ff3d3d22; color: var(--red); border: 1px solid #ff3d3d44; }
+.bg-yellow { background: #ffc10722; color: var(--yellow); border: 1px solid #ffc10744; }
+.bg-blue { background: #448aff22; color: var(--blue); border: 1px solid #448aff44; }
+.bg-orange { background: #ff980022; color: var(--orange); border: 1px solid #ff980044; }
+.bg-pink { background: #e91e6322; color: var(--pink); border: 1px solid #e91e6344; }
+.bg-cyan { background: #00bcd422; color: var(--cyan); border: 1px solid #00bcd444; }
 
-.section{margin-bottom:28px}
-.section-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;padding-left:12px;border-left:3px solid;display:inline-block}
+.odds-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.88em; }
+.odds-table th, .odds-table td { padding: 6px 8px; text-align: center; border: 1px solid var(--border); }
+.odds-table th { background: #1a2332; color: var(--muted); font-weight: 600; }
+.odds-table td { color: var(--text); }
+.odds-highlight { color: var(--green); font-weight: 700; }
+.odds-warn { color: var(--orange); }
+.stars { color: var(--gold); font-size: 1.1em; }
 
-.match-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;transition:all 0.2s}
-.match-card:hover{border-color:var(--accent)}
-.match-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
-.match-teams{font-size:22px;font-weight:800;text-align:center}
-.match-teams .vs{color:var(--accent);margin:0 10px;font-size:16px}
-.match-teams .home{color:#fff}
-.match-teams .away{color:var(--text2)}
+.plan-card {
+    background: linear-gradient(135deg, #1a2332 0%, #131820 100%);
+    border: 2px solid var(--border); border-radius: 12px;
+    padding: 18px; margin: 16px 0; position: relative;
+}
+.plan-card.recommended { border-color: var(--green); box-shadow: 0 0 20px #00c85322; }
+.plan-card.conservative { border-color: var(--blue); }
+.plan-card.aggressive { border-color: var(--orange); }
+.plan-card.extreme { border-color: var(--pink); }
+.plan-badge {
+    position: absolute; top: -12px; left: 16px; padding: 2px 12px;
+    border-radius: 6px; font-weight: 700; font-size: 0.82em;
+}
+.plan-badge.recommended { background: var(--green); color: #000; }
+.plan-badge.conservative { background: var(--blue); color: #fff; }
+.plan-badge.aggressive { background: var(--orange); color: #000; }
+.plan-badge.extreme { background: var(--pink); color: #fff; }
 
-.prediction-banner{text-align:center;padding:20px;border-radius:12px;margin-bottom:16px;font-weight:800}
+.parlay-item { 
+    display: flex; align-items: center; gap: 8px; padding: 6px 0;
+    border-bottom: 1px solid #1a2332; flex-wrap: wrap;
+}
+.parlay-item:last-child { border-bottom: none; }
 
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.breakeven { background: #1a2332; border-radius: 8px; padding: 12px; margin: 10px 0; }
+.breakeven-row { display: flex; justify-content: space-between; padding: 3px 0; }
+.breakeven-pass { color: var(--green); font-weight: 700; }
+.breakeven-fail { color: var(--red); }
+.breakeven-info { color: var(--cyan); }
 
-.subtitle{font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(0,212,204,0.2)}
-.odd-table{width:100%;border-collapse:collapse;font-size:12px}
-.odd-table th{background:var(--card2);color:var(--text2);padding:8px 6px;text-align:center;font-weight:600;font-size:11px;border-bottom:2px solid var(--border)}
-.odd-table td{padding:8px 6px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);font-variant-numeric:tabular-nums}
-.odd-table tr:hover td{background:rgba(255,255,255,0.02)}
-.odd-table .col-home{color:#8be9a8}
-.odd-table .col-draw{color:#ffeaa7}
-.odd-table .col-away{color:#ff8a80}
+.tag { padding: 2px 8px; border-radius: 4px; font-size: 0.78em; }
+.tag-g { background: #00c85322; color: #00c853; }
+.tag-y { background: #ffc10722; color: #ffc107; }
+.tag-r { background: #ff3d3d22; color: #ff3d3d; }
+.tag-b { background: #448aff22; color: #448aff; }
 
-.sa-stat{text-align:center;padding:6px;background:rgba(0,0,0,0.2);border-radius:6px}
-.sa-stat .sa-sv{font-size:16px;font-weight:800}
-.sa-stat .sa-sl{font-size:10px;color:var(--text2)}
+.warning-box {
+    background: #ff3d3d11; border: 1px solid #ff3d3d33; border-radius: 8px;
+    padding: 12px 16px; margin: 12px 0; color: #ff8a80;
+}
 
-.verdict-chip{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
-.verdict-chip.buy{background:rgba(46,213,115,0.15);color:var(--green)}
+.footer { text-align: center; padding: 32px 0 16px; color: var(--muted); font-size: 0.78em; }
 
-.footer{text-align:center;padding:30px;color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:40px}
-.footer p{margin:4px 0}
+.scenario-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+.scenario-name { font-weight: 600; min-width: 80px; }
+.scenario-odds { color: var(--green); font-weight: 700; }
+.scenario-result { color: var(--muted); font-size: 0.85em; }
 
-@media(max-width:768px){
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
-  .match-teams{font-size:18px}
+@media (max-width: 600px) {
+    body { padding: 8px; }
+    h1 { font-size: 1.3em; }
+    .odds-table { font-size: 0.75em; }
+    .odds-table th, .odds-table td { padding: 4px 3px; }
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>2026世界杯 · 2026年6月14日投注建议</h1>
-  <div class="date">C组/D组/E组 · 4场比赛 · 逐场定方向 → M串N组合 → 回本约束</div>
-  <span class="badge new">v10.0 投注专版</span>
-  <span class="badge cyan">基于v10.0完整深度分析</span>
-  <span class="badge">M串N容错</span>
-  <span class="badge">跨玩法混合</span>
-  <span class="badge" style="background:rgba(255,165,2,0.15);border:1px solid rgba(255,165,2,0.3);color:var(--yellow)">⚠️ 比分/总进球/半全场赔率未开售(使用模型估算值)</span>
+<h1>📊 2026年6月14日 · 竞彩投注建议 <span class="badge bg-cyan">v11.0 实时赔率版</span></h1>
+
+<div class="card" style="background: #131820; border-color: #00bcd422;">
+<p style="color: var(--cyan); font-size: 0.88em; margin: 0;">
+⏰ <b>赔率获取时间</b>：2026-06-10 11:18 CST ｜
+📡 <b>数据源</b>：<a href="https://www.lottery.gov.cn/jc/jsq/zqspf/" style="color: var(--cyan);">lottery.gov.cn 官方竞彩计算器</a> ｜
+🎯 <b>可用玩法</b>：SPF · 让球SPF · 总进球数 · 半全场 ｜
+⚠️ <b>比分玩法</b>：未开售（实事求是）
+</p>
 </div>
 
-<!-- 核心策略 -->
-<div style="background:var(--card);border:2px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px">
-<h3 style="font-size:16px;color:var(--gold);margin-bottom:16px;text-align:center">🎯 投注策略总纲：先定单场玩法方向，再以回本原则做M串N组合</h3>
-<div class="grid-4" style="margin-top:12px">
-  <div style="text-align:center;padding:12px;background:var(--card2);border-radius:8px">
-    <div style="font-size:22px">①</div>
-    <div style="font-size:12px;font-weight:700;margin:4px 0">逐场定最优玩法</div>
-    <div style="font-size:10px;color:var(--text2)">碾压局→比分 · 均衡→总进球 · 避险→回避</div>
-  </div>
-  <div style="text-align:center;padding:12px;background:var(--card2);border-radius:8px">
-    <div style="font-size:22px">②</div>
-    <div style="font-size:12px;font-weight:700;margin:4px 0">同场复选覆盖</div>
-    <div style="font-size:10px;color:var(--text2)">零封局→3比分覆盖 · 小球→2总进球覆盖</div>
-  </div>
-  <div style="text-align:center;padding:12px;background:var(--card2);border-radius:8px">
-    <div style="font-size:22px">③</div>
-    <div style="font-size:12px;font-weight:700;margin:4px 0">M串N容错回本</div>
-    <div style="font-size:10px;color:var(--text2)">二串三≥3 · 三串四≥4 · 中1场回本</div>
-  </div>
-  <div style="text-align:center;padding:12px;background:var(--card2);border-radius:8px">
-    <div style="font-size:22px">④</div>
-    <div style="font-size:12px;font-weight:700;margin:4px 0">跨玩法自由混合</div>
-    <div style="font-size:10px;color:var(--text2)">比分×总进球×半全场 → 收益风险平衡</div>
-  </div>
-</div>
-</div>
+<p style="color: var(--muted); margin: 8px 0; font-size: 0.85em;">
+<strong>分析方法</strong>：逐场定最优玩法方向 → 以最低赔率组合也能回本为约束 → M串N组合 → 同场复选提升命中率
+</p>
 
+<!-- ========== 逐场分析 ========== -->
+<h2>📋 一、逐场玩法方向</h2>
 
-    <!-- ===== 卡塔尔 vs 瑞士 ===== -->
-    <div class="section">
-    <div class="section-title">📋 单场①：卡塔尔 vs 瑞士（C组 03:00）</div>
-    <div class="match-card" style="border-left: 3px solid #2ed573">
-      <div class="match-header">
-        <div class="match-teams"><span class="home">卡塔尔</span><span class="vs">vs</span><span class="away">瑞士</span></div>
-        <div style="font-size:12px;color:var(--text2)">周六005 | 蒙特雷 BBVA体育场 | 多云 26°C</div>
-      </div>
+<p style="color: var(--muted); font-size: 0.85em; margin-bottom: 12px;">
+基于v10.0分析报告的ELO+欧赔+亚盘+泊松综合研判，结合lottery.gov.cn <strong>实时赔率</strong>确定每场最优投注方向。
+</p>
 
-      <!-- 分析结论 -->
-      <div class="analysis-box" style="background:rgba(0,0,0,0.2);padding:14px;border-radius:8px;margin-bottom:12px">
-        <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px">🎯 AI综合分析结论</div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.7">当天最稳胆。瑞士11人实力碾压，90%零封，比分0:2或0:1。全玩法建议：比分买0:2+0:1+1:2复选</div>
-      </div>
+<!-- 卡塔尔vs瑞士 -->
+<div class="card">
+<h3 style="margin-top: 0;">🇶🇦 卡塔尔 vs 瑞士 🇨🇭 <span class="badge bg-green">稳胆场</span> <span class="stars">⭐⭐⭐⭐⭐</span></h3>
+<p style="color: var(--muted); font-size: 0.85em;">周六005 · 06-14 03:00 · ELO差400 · 零封率85% · 碾压局</p>
 
-      <!-- 核心指标 -->
-      <div class="grid-4" style="margin-bottom:12px">
-        <div class="sa-stat"><div class="sa-sl">方向</div><div class="sa-sv" style="color:#2ed573">客胜</div></div>
-        <div class="sa-stat"><div class="sa-sl">零封概率</div><div class="sa-sv" style="color:#2ed573">90%</div></div>
-        <div class="sa-stat"><div class="sa-sl">0:0概率</div><div class="sa-sv" style="color:#ffa502">7.2%</div></div>
-        <div class="sa-stat"><div class="sa-sl">爆冷风险</div><div class="sa-sv" style="color:#2ed573">极低 1/5</div></div>
-      </div>
-
-      <!-- 竞彩实时赔率 -->
-      <div class="subtitle">💴 竞彩实时赔率（lottery.gov.cn 2026-06-10 09:18更新）</div>
-      <table class="odd-table">
-        <tr><th>玩法</th><th>选项1</th><th>选项2</th><th>选项3</th></tr>
-        <tr><td>胜平负(0)</td>
-          <td class="col-home">主胜 未开售</td>
-          <td class="col-draw">平 未开售</td>
-          <td class="col-away">客胜 未开售</td>
-        </tr>
-        <tr><td>让球(+2)</td>
-          <td class="col-home">主胜 1.98</td>
-          <td class="col-draw">平 3.85</td>
-          <td class="col-away">客胜 2.74</td>
-        </tr>
-        <tr style="opacity:0.7"><td>比分</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>总进球</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>半全场</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-      </table>
-
-      <!-- 各玩法性价比评级 -->
-      <div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6">
-        <b style="color:var(--gold)">💎 各玩法性价比评级：</b>
-        <span class="verdict-chip buy" style="margin:2px">spf ⭐⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">asian ⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">score ⭐⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">total ⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">htft ⭐⭐⭐⭐⭐</span>
-      </div>
-    </div></div>
-
-    <!-- ===== 巴西 vs 摩洛哥 ===== -->
-    <div class="section">
-    <div class="section-title">📋 单场①：巴西 vs 摩洛哥（C组 06:00）</div>
-    <div class="match-card" style="border-left: 3px solid #ffa502">
-      <div class="match-header">
-        <div class="match-teams"><span class="home">巴西</span><span class="vs">vs</span><span class="away">摩洛哥</span></div>
-        <div style="font-size:12px;color:var(--text2)">周六006 | 洛杉矶 玫瑰碗体育场 | 晴 24°C</div>
-      </div>
-
-      <!-- 分析结论 -->
-      <div class="analysis-box" style="background:rgba(0,0,0,0.2);padding:14px;border-radius:8px;margin-bottom:12px">
-        <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px">🎯 AI综合分析结论</div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.7">欧亚矛盾风险高！巴西穿盘困难，建议回避亚盘和比分零封。全玩法建议：总进球大球(大2.5球概率76.4%)</div>
-      </div>
-
-      <!-- 核心指标 -->
-      <div class="grid-4" style="margin-bottom:12px">
-        <div class="sa-stat"><div class="sa-sl">方向</div><div class="sa-sv" style="color:#ffa502">主胜⚠️</div></div>
-        <div class="sa-stat"><div class="sa-sl">零封概率</div><div class="sa-sv" style="color:#ffa502">72%</div></div>
-        <div class="sa-stat"><div class="sa-sl">0:0概率</div><div class="sa-sv" style="color:#2ed573">2.3%</div></div>
-        <div class="sa-stat"><div class="sa-sl">爆冷风险</div><div class="sa-sv" style="color:#ffa502">中等 3/5</div></div>
-      </div>
-
-      <!-- 竞彩实时赔率 -->
-      <div class="subtitle">💴 竞彩实时赔率（lottery.gov.cn 2026-06-10 09:18更新）</div>
-      <table class="odd-table">
-        <tr><th>玩法</th><th>选项1</th><th>选项2</th><th>选项3</th></tr>
-        <tr><td>胜平负(0)</td>
-          <td class="col-home">主胜 1.53</td>
-          <td class="col-draw">平 3.50</td>
-          <td class="col-away">客胜 5.25</td>
-        </tr>
-        <tr><td>让球(-1)</td>
-          <td class="col-home">客胜 2.75</td>
-          <td class="col-draw">平 3.26</td>
-          <td class="col-away">主胜 2.18</td>
-        </tr>
-        <tr style="opacity:0.7"><td>比分</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>总进球</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>半全场</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-      </table>
-
-      <!-- 各玩法性价比评级 -->
-      <div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6">
-        <b style="color:var(--gold)">💎 各玩法性价比评级：</b>
-        <span class="verdict-chip " style="margin:2px">spf ⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">asian ⭐⭐⭐⭐⭐</span> <span class="verdict-chip " style="margin:2px">score ⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">total ⭐⭐⭐⭐</span> <span class="verdict-chip " style="margin:2px">htft ⭐⭐⭐</span>
-      </div>
-    </div></div>
-
-    <!-- ===== 海地 vs 苏格兰 ===== -->
-    <div class="section">
-    <div class="section-title">📋 单场①：海地 vs 苏格兰（D组 09:00）</div>
-    <div class="match-card" style="border-left: 3px solid #2ed573">
-      <div class="match-header">
-        <div class="match-teams"><span class="home">海地</span><span class="vs">vs</span><span class="away">苏格兰</span></div>
-        <div style="font-size:12px;color:var(--text2)">周六007 | 纽约 大都会人寿体育场 | 晴 20°C</div>
-      </div>
-
-      <!-- 分析结论 -->
-      <div class="analysis-box" style="background:rgba(0,0,0,0.2);padding:14px;border-radius:8px;margin-bottom:12px">
-        <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px">🎯 AI综合分析结论</div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.7">当天的欧赔-泊松最大分歧场！赔率看好苏格兰但泊松五五开。0:0概率7.4%+首轮加成=11.2%需防。总进球1球最佳</div>
-      </div>
-
-      <!-- 核心指标 -->
-      <div class="grid-4" style="margin-bottom:12px">
-        <div class="sa-stat"><div class="sa-sl">方向</div><div class="sa-sv" style="color:#2ed573">客胜</div></div>
-        <div class="sa-stat"><div class="sa-sl">零封概率</div><div class="sa-sv" style="color:#ffa502">55%</div></div>
-        <div class="sa-stat"><div class="sa-sl">0:0概率</div><div class="sa-sv" style="color:#ffa502">7.4%</div></div>
-        <div class="sa-stat"><div class="sa-sl">爆冷风险</div><div class="sa-sv" style="color:#7bed9f">低 2/5</div></div>
-      </div>
-
-      <!-- 竞彩实时赔率 -->
-      <div class="subtitle">💴 竞彩实时赔率（lottery.gov.cn 2026-06-10 09:18更新）</div>
-      <table class="odd-table">
-        <tr><th>玩法</th><th>选项1</th><th>选项2</th><th>选项3</th></tr>
-        <tr><td>胜平负(0)</td>
-          <td class="col-home">主胜 7.65</td>
-          <td class="col-draw">平 4.25</td>
-          <td class="col-away">客胜 1.31</td>
-        </tr>
-        <tr><td>让球(+1)</td>
-          <td class="col-home">主胜 2.81</td>
-          <td class="col-draw">平 3.35</td>
-          <td class="col-away">客胜 2.11</td>
-        </tr>
-        <tr style="opacity:0.7"><td>比分</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>总进球</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>半全场</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-      </table>
-
-      <!-- 各玩法性价比评级 -->
-      <div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6">
-        <b style="color:var(--gold)">💎 各玩法性价比评级：</b>
-        <span class="verdict-chip buy" style="margin:2px">spf ⭐⭐⭐⭐</span> <span class="verdict-chip " style="margin:2px">asian ⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">score ⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">total ⭐⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">htft ⭐⭐⭐⭐</span>
-      </div>
-    </div></div>
-
-    <!-- ===== 澳大利亚 vs 土耳其 ===== -->
-    <div class="section">
-    <div class="section-title">📋 单场①：澳大利亚 vs 土耳其（E组 12:00）</div>
-    <div class="match-card" style="border-left: 3px solid #2ed573">
-      <div class="match-header">
-        <div class="match-teams"><span class="home">澳大利亚</span><span class="vs">vs</span><span class="away">土耳其</span></div>
-        <div style="font-size:12px;color:var(--text2)">周六008 | 旧金山 李维斯体育场 | 晴 23°C</div>
-      </div>
-
-      <!-- 分析结论 -->
-      <div class="analysis-box" style="background:rgba(0,0,0,0.2);padding:14px;border-radius:8px;margin-bottom:12px">
-        <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px">🎯 AI综合分析结论</div>
-        <div style="font-size:12px;color:var(--text2);line-height:1.7">Coral/Ladbrokes客胜低至1.70明显看好土耳其。大球方向(61.6%大2.5)。全玩法建议：总进球大2.5球+半全场负/负</div>
-      </div>
-
-      <!-- 核心指标 -->
-      <div class="grid-4" style="margin-bottom:12px">
-        <div class="sa-stat"><div class="sa-sl">方向</div><div class="sa-sv" style="color:#2ed573">客胜</div></div>
-        <div class="sa-stat"><div class="sa-sl">零封概率</div><div class="sa-sv" style="color:#ffa502">60%</div></div>
-        <div class="sa-stat"><div class="sa-sl">0:0概率</div><div class="sa-sv" style="color:#ffa502">5.2%</div></div>
-        <div class="sa-stat"><div class="sa-sl">爆冷风险</div><div class="sa-sv" style="color:#ffa502">中等 3/5</div></div>
-      </div>
-
-      <!-- 竞彩实时赔率 -->
-      <div class="subtitle">💴 竞彩实时赔率（lottery.gov.cn 2026-06-10 09:18更新）</div>
-      <table class="odd-table">
-        <tr><th>玩法</th><th>选项1</th><th>选项2</th><th>选项3</th></tr>
-        <tr><td>胜平负(0)</td>
-          <td class="col-home">主胜 5.15</td>
-          <td class="col-draw">平 3.45</td>
-          <td class="col-away">客胜 1.55</td>
-        </tr>
-        <tr><td>让球(+1)</td>
-          <td class="col-home">主胜 2.11</td>
-          <td class="col-draw">平 3.25</td>
-          <td class="col-away">客胜 2.88</td>
-        </tr>
-        <tr style="opacity:0.7"><td>比分</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>总进球</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-        <tr style="opacity:0.7"><td>半全场</td><td colspan="3" style="color:#ffa502">⚠️ 未开售 — 使用分析模型估算值</td></tr>
-      </table>
-
-      <!-- 各玩法性价比评级 -->
-      <div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6">
-        <b style="color:var(--gold)">💎 各玩法性价比评级：</b>
-        <span class="verdict-chip buy" style="margin:2px">spf ⭐⭐⭐⭐</span> <span class="verdict-chip " style="margin:2px">asian ⭐⭐⭐</span> <span class="verdict-chip " style="margin:2px">score ⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">total ⭐⭐⭐⭐</span> <span class="verdict-chip buy" style="margin:2px">htft ⭐⭐⭐⭐</span>
-      </div>
-    </div></div>
-
-<div class="section">
-<div class="section-title" style="color:var(--green)">💰 方案A：保守稳健 · 二串三（容1错）</div>
-<div class="match-card" style="border-left:3px solid var(--green)">
-<div class="prediction-banner win" style="font-size:16px">
-  ⭐ 瑞士零封 × 苏格兰小球 — 2场3注 二串三（中1场即可回本）
+<table class="odds-table"><tr><th>玩法</th><th>选项</th><th>赔率</th><th>性价比</th><th>推荐</th></tr>
+<tr><td rowspan="3">让球SPF(+2)</td><td>胜(卡)</td><td>1.98</td><td>⭐⭐</td><td>—</td></tr>
+<tr><td>平</td><td>3.85</td><td>⭐⭐⭐</td><td>—</td></tr>
+<tr><td><b>负(瑞)</b></td><td><b class="odds-highlight">2.74</b></td><td>⭐⭐⭐⭐</td><td>✅ 主力</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="3">总进球数</td><td>1球</td><td>5.70</td><td>⭐⭐⭐</td><td>复选</td></tr>
+<tr><td><b>2球</b></td><td><b class="odds-highlight">3.85</b></td><td>⭐⭐⭐⭐</td><td>✅ 首选</td></tr>
+<tr><td>3球</td><td>3.50</td><td>⭐⭐⭐</td><td>复选</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="2">半全场</td><td>平负</td><td>3.60</td><td>⭐⭐⭐⭐</td><td>✅ 优选</td></tr>
+<tr><td><b>负负</b></td><td><b class="odds-highlight">1.52</b></td><td>⭐⭐⭐</td><td>太低保底</td></tr>
+</table>
+<p style="color: var(--muted); font-size: 0.82em; margin-top: 6px;">
+📊 <b>研判</b>：瑞士客场碾压级优势，最可能比分0:2/0:1。让球(+2)客胜@2.74是最佳平衡点，总进球2球@3.85值博。
+<i>注：SPF未开售，但让球SPF可用；比分玩法未开售。</i>
+</p>
 </div>
 
-<div class="grid-2">
-<div>
-<div class="subtitle">场次① 卡塔尔 vs 瑞士</div>
-<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px">🎯 比分 复选 0:1 + 0:2</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.6">
-  📊 零封概率90% · ELO差400 · 碾压局<br>
-  🔑 复选2个比分覆盖瑞士1-2球零封<br>
-  💰 估赔率 0:1@6.50 / 0:2@7.00<br>
-  ⚡ 复选双保险：含瑞士进球比分28% → 纯零封比分62%<br>
-  📐 需分开投注，二串三每关单选 → 选0:2@7.00
-</div>
-</div>
-<div>
-<div class="subtitle">场次② 海地 vs 苏格兰</div>
-<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px">🎯 半全场 平/负</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.6">
-  📊 平/负概率28% · 次选平/平25%<br>
-  🔑 苏格兰半场难领先，下半场突破<br>
-  💰 估赔率 5.00<br>
-  ⚡ 0:0概率7.4%+首轮加成→需防上半场平局
-</div>
+<!-- 巴西vs摩洛哥 -->
+<div class="card" style="border-left: 3px solid var(--orange);">
+<h3 style="margin-top: 0;">🇧🇷 巴西 vs 摩洛哥 🇲🇦 <span class="badge bg-orange">⚠️欧亚矛盾</span> <span class="stars">⭐⭐⭐</span></h3>
+<p style="color: var(--muted); font-size: 0.85em;">周六006 · 06-14 06:00 · ELO差227 · 欧赔1.53但亚盘-1.25偏深2档</p>
+
+<table class="odds-table"><tr><th>玩法</th><th>选项</th><th>赔率</th><th>性价比</th><th>推荐</th></tr>
+<tr><td rowspan="3">SPF</td><td><b>胜(巴)</b></td><td><b>1.53</b></td><td>⭐⭐⭐</td><td>⚠️谨慎</td></tr>
+<tr><td>平</td><td>3.50</td><td>⭐⭐⭐</td><td>—</td></tr>
+<tr><td>负(摩)</td><td>5.25</td><td>⭐⭐</td><td>—</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="3">让球SPF(-1)</td><td>胜(巴)</td><td>2.75</td><td>⭐⭐⭐</td><td>风险高</td></tr>
+<tr><td>平</td><td>3.26</td><td>⭐⭐⭐</td><td>—</td></tr>
+<tr><td>负(摩)</td><td>2.18</td><td>⭐⭐⭐⭐</td><td>🔄 反方向</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="2">总进球</td><td>3球</td><td>3.60</td><td>⭐⭐⭐</td><td>入串可选</td></tr>
+<tr><td>4球</td><td>5.90</td><td>⭐⭐</td><td>—</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td>半全场</td><td>胜胜</td><td>2.35</td><td>⭐⭐⭐</td><td>⚠️</td></tr>
+</table>
+<div class="warning-box" style="margin: 10px 0;">
+⚠️ <b>入串风险</b>：欧赔1.53 vs 亚盘-1.25（偏深2档）= 典型"名气溢价陷阱"。分析报告明确标注"回避入串"。
+让球-1负@2.18（摩洛哥+1不败）反而更有投注价值，有悖大众预期。
 </div>
 </div>
 
-<div style="margin-top:14px;padding:12px;background:rgba(46,213,115,0.08);border-radius:8px;border-left:3px solid var(--green)">
-  <div style="font-size:14px;font-weight:800;color:var(--green);margin-bottom:8px">💰 投注明细</div>
-  <table class="odd-table" style="margin-bottom:10px">
-    <tr><th>类型</th><th>组合</th><th>注数</th><th>单注金额</th><th>金额</th></tr>
-    <tr><td>单关①</td><td>卡塔尔vs瑞士 比分 0:2 @7.00</td><td>1注</td><td>2元</td><td>2元</td></tr>
-    <tr><td>单关②</td><td>海地vs苏格兰 半全场 平/负 @5.00</td><td>1注</td><td>2元</td><td>2元</td></tr>
-    <tr><td>二串一</td><td>0:2@7.00 × 平/负@5.00 = 35.00</td><td>1注</td><td>2元</td><td>2元</td></tr>
-    <tr style="font-weight:800;background:rgba(46,213,115,0.1)"><td colspan="3">二串三 总投入</td><td></td><td style="color:var(--green)">6元</td></tr>
-  </table>
-  <div style="font-size:11px;color:var(--text2);line-height:1.6">
-    <b style="color:var(--green)">✅ 回本验证：</b>最低单关赔率 5.00 ≥ 3（二串三回本线）<br>
-    <b>中1场(比分0:2)：</b>7.00 × 2 = 14元（回本6元+盈利8元）<br>
-    <b>中1场(半全场平/负)：</b>5.00 × 2 = 10元（回本6元+盈利4元）<br>
-    <b>中2场串关：</b>35.00 × 2 = 70元（暴赚10倍+）<br>
-    <b style="color:#ffa502">⚠️ 风险点：</b>瑞士如果只赢1:0（11.7%概率），比分的0:2不会中 — 但半全场平/负可能中（如果瑞士下半场制胜）
-  </div>
-</div>
-</div></div>
+<!-- 海地vs苏格兰 -->
+<div class="card">
+<h3 style="margin-top: 0;">🇭🇹 海地 vs 苏格兰 🏴󠁧󠁢󠁳󠁣󠁴󠁿 <span class="badge bg-blue">小球局</span> <span class="stars">⭐⭐⭐⭐</span></h3>
+<p style="color: var(--muted); font-size: 0.85em;">周六007 · 06-14 09:00 · ELO差仅18 · 0:0概率11.2% · 小球倾向</p>
 
-<div class="section">
-<div class="section-title" style="color:var(--gold)">💰 方案B⭐推荐：跨玩法三串四 · 最佳性价比（容1错）</div>
-<div class="match-card" style="border-left:3px solid var(--gold);background:linear-gradient(135deg,#1a1a10,#1a1210,#101a20)">
-<div class="prediction-banner win" style="font-size:16px;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3)">
-  🏆 主推方案：瑞士比分 × 苏格兰总进球 × 土耳其总进球 — 3场4注 三串四
-</div>
-
-<div class="grid-3">
-<div>
-<div class="subtitle" style="color:var(--cyan)">场① 卡塔尔vs瑞士</div>
-<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px">🎯 比分 0:2 @7.00</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.4">
-  零封90% · 碾压局<br>
-  λ=0.83 vs 1.63 · 最稳胆
-</div>
-</div>
-<div>
-<div class="subtitle" style="color:var(--cyan)">场② 海地vs苏格兰</div>
-<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px">🎯 总进球 1球 @4.20</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.4">
-  1球概率30% · 小球倾向<br>
-  λ=1.08 vs 1.35 · 低进球
-</div>
-</div>
-<div>
-<div class="subtitle" style="color:var(--cyan)">场③ 澳大利亚vs土耳其</div>
-<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:6px">🎯 总进球 3球 @3.80</div>
-<div style="font-size:11px;color:var(--text2);line-height:1.4">
-  3球概率28% · 大球方向<br>
-  λ=1.22 vs 1.51 · Coral看好
-</div>
-</div>
+<table class="odds-table"><tr><th>玩法</th><th>选项</th><th>赔率</th><th>性价比</th><th>推荐</th></tr>
+<tr><td rowspan="3">SPF</td><td>胜(海)</td><td>7.65</td><td>⭐</td><td>—</td></tr>
+<tr><td>平</td><td>4.25</td><td>⭐⭐</td><td>—</td></tr>
+<tr><td><b>负(苏)</b></td><td><b class="odds-highlight">1.31</b></td><td>⭐⭐⭐</td><td>太低保底</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="3">让球SPF(+1)</td><td>胜(海)</td><td>2.81</td><td>⭐⭐⭐</td><td>—</td></tr>
+<tr><td>平</td><td><b class="odds-highlight">3.35</b></td><td>⭐⭐⭐⭐</td><td>✅ 高价值</td></tr>
+<tr><td>负(苏)</td><td>2.11</td><td>⭐⭐⭐</td><td>可选</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="2">总进球</td><td><b>1球</b></td><td><b class="odds-highlight">4.40</b></td><td>⭐⭐⭐⭐⭐</td><td>✅ 最佳</td></tr>
+<tr><td>2球</td><td>3.35</td><td>⭐⭐⭐⭐</td><td>复选</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="2">半全场</td><td>平负</td><td>3.60</td><td>⭐⭐⭐⭐</td><td>✅ 优选</td></tr>
+<tr><td>负负</td><td>1.87</td><td>⭐⭐⭐</td><td>太低保底</td></tr>
+</table>
+<p style="color: var(--muted); font-size: 0.82em; margin-top: 6px;">
+📊 <b>研判</b>：苏格兰客胜方向明确但赔率太低。让球(+1)平@3.35（赢1球走盘）价值最高，配合总进球1球@4.40为最佳组合。
+</p>
 </div>
 
-<div style="margin-top:14px;padding:12px;background:rgba(255,214,0,0.08);border-radius:8px;border-left:3px solid var(--gold)">
-  <div style="font-size:14px;font-weight:800;color:var(--gold);margin-bottom:8px">💰 投注明细</div>
-  <table class="odd-table" style="margin-bottom:10px">
-    <tr><th>类型</th><th>组合</th><th>注数</th><th>金额</th><th>赔率</th></tr>
-    <tr><td>二串一①</td><td>瑞士0:2 @7.00 × 苏格兰1球 @4.20</td><td>1注</td><td>2元</td><td>29.40</td></tr>
-    <tr><td>二串一②</td><td>瑞士0:2 @7.00 × 土耳其3球 @3.80</td><td>1注</td><td>2元</td><td>26.60</td></tr>
-    <tr><td>二串一③</td><td>苏格兰1球 @4.20 × 土耳其3球 @3.80</td><td>1注</td><td>2元</td><td>15.96</td></tr>
-    <tr><td>三串一</td><td>7.00 × 4.20 × 3.80</td><td>1注</td><td>2元</td><td>111.72</td></tr>
-    <tr style="font-weight:800;background:rgba(255,214,0,0.1)"><td colspan="3">三串四 总投入</td><td style="color:var(--gold)">8元</td><td></td></tr>
-  </table>
-  <div style="font-size:11px;color:var(--text2);line-height:1.6">
-    <b style="color:var(--green)">✅ 回本验证：</b>最低二串一赔率 15.96 ≥ 4（三串四回本线）<br>
-    <b>中2场(苏格兰1球+土耳其3球)：</b>15.96 × 2 = 31.92元（回本8元+盈利23.92元）<br>
-    <b>中3场(全部)：</b>111.72 × 2 = 223.44元（暴赚27倍）<br>
-    <b style="color:var(--gold)">⭐ 优势：</b>跨玩法混合 — 比分(高赔)+总进球(稳定) — 单关6元即可
-  </div>
-</div>
-</div></div>
+<!-- 澳大利亚vs土耳其 -->
+<div class="card">
+<h3 style="margin-top: 0;">🇦🇺 澳大利亚 vs 土耳其 🇹🇷 <span class="badge bg-yellow">大球倾向</span> <span class="stars">⭐⭐⭐⭐</span></h3>
+<p style="color: var(--muted); font-size: 0.85em;">周六008 · 06-14 12:00 · ELO差107 · 2-3球总概率56% · Coral分歧</p>
 
-<div class="section">
-<div class="section-title" style="color:var(--red)">💰 方案C：进取博弈 · 同场复选比分（容1错）</div>
-<div class="match-card" style="border-left:3px solid var(--red)">
-<div class="prediction-banner win" style="font-size:16px;background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.3)">
-  🔥 同场复选覆盖：瑞士3比分 × 苏格兰2总进球 × 土耳其2总进球
+<table class="odds-table"><tr><th>玩法</th><th>选项</th><th>赔率</th><th>性价比</th><th>推荐</th></tr>
+<tr><td rowspan="3">SPF</td><td>胜(澳)</td><td>5.15</td><td>⭐⭐</td><td>—</td></tr>
+<tr><td>平</td><td>3.45</td><td>⭐⭐⭐</td><td>可选</td></tr>
+<tr><td><b>负(土)</b></td><td><b class="odds-highlight">1.55</b></td><td>⭐⭐⭐</td><td>太低保底</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="3">让球SPF(+1)</td><td>胜(澳)</td><td><b class="odds-highlight">2.11</b></td><td>⭐⭐⭐⭐</td><td>✅ 高价值</td></tr>
+<tr><td>平</td><td>3.25</td><td>⭐⭐⭐</td><td>—</td></tr>
+<tr><td>负(土)</td><td>2.88</td><td>⭐⭐⭐</td><td>—</td></tr>
+<tr style="background:#1a2332;"><td colspan="5"></td></tr>
+<tr><td rowspan="3">总进球</td><td>2球</td><td>3.25</td><td>⭐⭐⭐⭐</td><td>✅ 首选</td></tr>
+<tr><td><b>3球</b></td><td><b class="odds-highlight">3.65</b></td><td>⭐⭐⭐⭐⭐</td><td>✅ 最佳</td></tr>
+<tr><td>4球</td><td>6.00</td><td>⭐⭐⭐</td><td>复选</td></tr>
+</table>
+<p style="color: var(--muted); font-size: 0.82em; margin-top: 6px;">
+📊 <b>研判</b>：土耳其客胜方向但赔率偏低。总进球3球@3.65是全场最高性价比选项，配合让球(+1)主胜@2.11形成双重覆盖。
+</p>
 </div>
 
-<div style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:12px">
-  <b style="color:var(--red)">策略核心：</b>利用复式投注增强覆盖。瑞士零封局复选0:1+0:2+1:2三个比分，苏格兰和土耳其复选总进球。虽注数增加但覆盖率大幅提升。
+<!-- ========== 玩法汇总 ========== -->
+<h2>🎯 二、逐场最优玩法汇总</h2>
+<div class="card">
+<table class="odds-table">
+<tr><th>比赛</th><th>最优玩法</th><th>首选选项</th><th>赔率</th><th>次选选项</th><th>赔率</th><th>入串状态</th></tr>
+<tr>
+    <td>卡塔尔vs瑞士</td>
+    <td>总进球</td>
+    <td><b>2球</b></td>
+    <td class="odds-highlight">3.85</td>
+    <td>3球</td>
+    <td>3.50</td>
+    <td><span class="tag tag-g">✅ 主锚</span></td>
+</tr>
+<tr>
+    <td>巴西vs摩洛哥</td>
+    <td>—</td>
+    <td><b>回避</b></td>
+    <td>—</td>
+    <td>—</td>
+    <td>—</td>
+    <td><span class="tag tag-r">⚠️ 回避</span></td>
+</tr>
+<tr>
+    <td>海地vs苏格兰</td>
+    <td>总进球</td>
+    <td><b>1球</b></td>
+    <td class="odds-highlight">4.40</td>
+    <td>2球</td>
+    <td>3.35</td>
+    <td><span class="tag tag-g">✅ 入串</span></td>
+</tr>
+<tr>
+    <td>澳大利亚vs土耳其</td>
+    <td>总进球</td>
+    <td><b>3球</b></td>
+    <td class="odds-highlight">3.65</td>
+    <td>2球</td>
+    <td>3.25</td>
+    <td><span class="tag tag-g">✅ 入串</span></td>
+</tr>
+</table>
+<p style="color: var(--orange); font-size: 0.82em; margin-top: 8px;">
+⚠️ <b>巴西回避理由</b>：欧亚矛盾偏深2档（欧赔1.53 vs 亚盘-1.25），为典型"名气溢价陷阱"，v10.0分析报告明确标注"回避入串"。
+</p>
 </div>
 
-<div style="padding:12px;background:rgba(255,71,87,0.08);border-radius:8px;border-left:3px solid var(--red)">
-  <div style="font-size:14px;font-weight:800;color:var(--red);margin-bottom:8px">📐 复式三串四（最多12注）</div>
-  <table class="odd-table" style="margin-bottom:10px">
-    <tr><th>场次</th><th>玩法</th><th>复选选项</th><th>选项数</th></tr>
-    <tr><td>场① 卡塔尔vs瑞士</td><td>比分</td><td>0:1@6.50 + 0:2@7.00 + 1:2@8.00</td><td>3选</td></tr>
-    <tr><td>场② 海地vs苏格兰</td><td>总进球</td><td>1球@4.20 + 2球@3.40</td><td>2选</td></tr>
-    <tr><td>场③ 澳大利亚vs土耳其</td><td>总进球</td><td>2球@3.50 + 3球@3.80</td><td>2选</td></tr>
-  </table>
-  <div style="font-size:11px;color:var(--text2);line-height:1.6">
-    <b>复式组合数：</b>3 × 2 × 2 = 12种组合<br>
-    <b>三串四（每组合4注）：</b>12 × 4 = 48注 × 2元 = <b style="color:var(--red)">96元</b><br>
-    <b style="color:#ffa502">⚠️ 注数过多（48注/96元），建议改用三串一复式（12注/24元）</b>
-  </div>
+<!-- ========== 串关方案 ========== -->
+<h2>🔗 三、M串N 串关方案</h2>
+<p style="color: var(--muted); font-size: 0.85em; margin-bottom: 12px;">
+以<b>「哪怕最低赔率组合也能回本」</b>为铁律设计。跨玩法混合：总进球×总进球=合法。每场复选2个选项提升命中率。
+</p>
+
+<!-- 方案A -->
+<div class="plan-card conservative">
+<div class="plan-badge conservative">方案A · 保守稳健</div>
+<h3 style="margin-top: 8px;">二串三 · 总进球复选 </h3>
+<p style="color: var(--muted); font-size: 0.82em;">2场 × 各2选项 × 二串三(3注) = 共3注 · 2元/注 = <b>6元</b></p>
+
+<div class="parlay-item">
+    <span class="badge bg-blue">场1</span>
+    <b>瑞士总进球: 2球@3.85 + 3球@3.50</b>
+    <span class="tag tag-g">复选</span>
+</div>
+<div class="parlay-item">
+    <span class="badge bg-blue">场2</span>
+    <b>海地vs苏格兰总进球: 1球@4.40 + 2球@3.35</b>
+    <span class="tag tag-g">复选</span>
 </div>
 
-<div style="margin-top:10px;padding:12px;background:rgba(255,165,2,0.08);border-radius:8px;border-left:3px solid var(--yellow)">
-  <div style="font-size:13px;font-weight:700;color:var(--yellow);margin-bottom:6px">⬇️ 降配版：复式三串一（12注 = 24元）</div>
-  <table class="odd-table" style="margin-bottom:10px">
-    <tr><th>类型</th><th>组合说明</th><th>注数</th><th>金额</th></tr>
-    <tr><td>三串一(复式)</td><td>场①3选 × 场②2选 × 场③2选</td><td>12注</td><td style="color:var(--red)">24元</td></tr>
-  </table>
-  <div style="font-size:11px;color:var(--text2);line-height:1.6">
-    <b>最低组合赔率：</b>0:2@7.00 × 2球@3.40 × 2球@3.50 = 83.30<br>
-    <b>回本验证：</b>83.30 × 2 = 166.60元 ≥ 24元 ✅<br>
-    <b>最佳组合赔率：</b>0:1@6.50 × 1球@4.20 × 3球@3.80 = 103.74 → 207.48元<br>
-    <b style="color:#ffa502">⚠️ 风险：</b>三串一无容错，4场中必须12个组合中恰好1个命中
-  </div>
+<div class="breakeven" style="margin-top: 12px;">
+<div style="font-weight: 700; margin-bottom: 8px; color: var(--cyan);">💰 回本验证（二串三 = 2单关 + 1二串一，共3注6元）</div>
+<div class="breakeven-row"><span>最低单关赔率:</span> <span>3.35（苏格兰2球）</span></div>
+<div class="breakeven-row"><span>最低二串一赔率:</span> <span>3.50 × 3.35 = 11.73</span></div>
+<div class="breakeven-row"><span>回本线(二串三):</span> <span>单关≥3 / 二串一≥4</span></div>
+<div class="breakeven-row"><span>单关最低回报:</span> <span class="breakeven-pass">3.35 × 2元 = 6.70元 ≥ 6元 ✅</span></div>
+<div class="breakeven-row"><span>二串一最低回报:</span> <span class="breakeven-pass">3.50 × 3.35 × 2元 = 23.45元 ≥ 6元 ✅✅</span></div>
 </div>
-</div></div>
-
-<div class="section">
-<div class="section-title" style="color:var(--purple)">💰 方案D：极简单关 · 性价比首选</div>
-<div class="match-card" style="border-left:3px solid var(--purple)">
-<div class="prediction-banner win" style="font-size:16px;background:rgba(165,94,234,0.1);border:1px solid rgba(165,94,234,0.3)">
-  🎯 适合小额投注者 — 单关最高价值选择
+<p style="color: var(--green); font-size: 0.85em; margin-top: 8px;">
+✅ <b>中1场就回本</b>（苏格兰2球@3.35×2=6.70>6元），中2场大赚。
+</p>
 </div>
 
-<div class="grid-2" style="margin-top:12px">
-<div style="padding:12px;background:rgba(46,213,115,0.06);border-radius:8px">
-  <div style="font-size:13px;font-weight:700;color:var(--green)">🏅 第1推荐</div>
-  <div style="font-size:14px;font-weight:800;color:var(--gold);margin:6px 0">瑞士让球(+2) 客胜 @2.74</div>
-  <div style="font-size:11px;color:var(--text2);line-height:1.5">
-    卡塔尔+2让球 → 瑞士赢2球以上即中<br>
-    零封率90% · ELO差400 · 当天最稳<br>
-    ⚡ 2元投注 → 最高回报5.48元
-  </div>
+<!-- 方案B -->
+<div class="plan-card recommended">
+<div class="plan-badge recommended">方案B⭐ · 推荐性价比</div>
+<h3 style="margin-top: 8px;">三串四 · 总进球跨玩法混合</h3>
+<p style="color: var(--muted); font-size: 0.82em;">3场 × 复选 × 三串四(4注) = 1注三串一 + 3注二串一 · 2元/注 = <b>8元</b></p>
+
+<div class="parlay-item">
+    <span class="badge bg-green">场1</span>
+    <b>卡塔尔vs瑞士 · 总进球: 2球@3.85 + 3球@3.50</b>
+    <span class="tag tag-g">复选</span>
 </div>
-<div style="padding:12px;background:rgba(46,213,115,0.06);border-radius:8px">
-  <div style="font-size:13px;font-weight:700;color:var(--green)">🥈 第2推荐</div>
-  <div style="font-size:14px;font-weight:800;color:var(--gold);margin:6px 0">土耳其 客胜 @1.55</div>
-  <div style="font-size:11px;color:var(--text2);line-height:1.5">
-    Coral/Ladbrokes客胜低至1.70 → 真实看好<br>
-    泊松客胜46% → 性价比合理<br>
-    ⚡ 2元投注 → 最高回报3.10元
-  </div>
+<div class="parlay-item">
+    <span class="badge bg-blue">场2</span>
+    <b>海地vs苏格兰 · 总进球: 1球@4.40</b>
+    <span class="tag tag-b">单选</span>
+</div>
+<div class="parlay-item">
+    <span class="badge bg-yellow">场3</span>
+    <b>澳大利亚vs土耳其 · 总进球: 3球@3.65 + 2球@3.25</b>
+    <span class="tag tag-g">复选</span>
+</div>
+
+<div class="breakeven" style="margin-top: 12px;">
+<div style="font-weight: 700; margin-bottom: 8px; color: var(--cyan);">💰 回本验证（三串四 = 3个二串一 + 1个三串一，共4注8元）</div>
+<div class="breakeven-row"><span>最低二串一赔率:</span> <span>3.50 × 4.40 = 15.40</span></div>
+<div class="breakeven-row"><span>最低三串一赔率:</span> <span>3.50 × 4.40 × 3.25 = 50.05</span></div>
+<div class="breakeven-row"><span>回本线(三串四):</span> <span>二串一≥4</span></div>
+<div class="breakeven-row"><span>最低二串一回报:</span> <span class="breakeven-pass">3.50 × 4.40 × 2元 = 30.80元 ≥ 8元 ✅✅</span></div>
+<div class="breakeven-row"><span>最佳三串一回报:</span> <span class="breakeven-pass">3.85 × 4.40 × 3.65 × 2元 = 123.68元 💰</span></div>
+</div>
+<p style="color: var(--green); font-size: 0.85em; margin-top: 8px;">
+✅ <b>中2场就回本</b>，中3场十倍回报。瑞士+苏格兰+土耳其三场方向一致（都偏客队），总进球玩法规避了比分精准度要求。
+</p>
+</div>
+
+<!-- 方案C -->
+<div class="plan-card aggressive">
+<div class="plan-badge aggressive">方案C · 进取搏击</div>
+<h3 style="margin-top: 8px;">复式三串一 · 总进球全覆盖</h3>
+<p style="color: var(--muted); font-size: 0.82em;">3场 × 复选 × 三串一 · 组合数=2×1×2=4注 · 2元/注 = <b>8元</b></p>
+
+<div class="parlay-item">
+    <span class="badge bg-green">场1</span>
+    <b>卡塔尔vs瑞士 · 总进球: 2球@3.85 + 3球@3.50</b>
+</div>
+<div class="parlay-item">
+    <span class="badge bg-blue">场2</span>
+    <b>海地vs苏格兰 · 总进球: 1球@4.40</b>
+</div>
+<div class="parlay-item">
+    <span class="badge bg-yellow">场3</span>
+    <b>澳大利亚vs土耳其 · 总进球: 3球@3.65 + 2球@3.25</b>
+</div>
+
+<div class="breakeven" style="margin-top: 12px;">
+<div style="font-weight: 700; margin-bottom: 8px; color: var(--cyan);">💰 三串一复式 = 2×1×2 = 4组合</div>
+<table class="odds-table">
+<tr><th>组合</th><th>瑞士</th><th>苏格兰</th><th>土澳</th><th>赔率</th></tr>
+<tr><td>1</td><td>2球@3.85</td><td>1球@4.40</td><td>3球@3.65</td><td class="odds-highlight">61.85</td></tr>
+<tr><td>2</td><td>2球@3.85</td><td>1球@4.40</td><td>2球@3.25</td><td>55.06</td></tr>
+<tr><td>3</td><td>3球@3.50</td><td>1球@4.40</td><td>3球@3.65</td><td>56.21</td></tr>
+<tr><td>4</td><td>3球@3.50</td><td>1球@4.40</td><td>2球@3.25</td><td>50.05</td></tr>
+</table>
+<div class="breakeven-row" style="margin-top: 8px;"><span>最低组合赔率(每人2元):</span> <span class="breakeven-pass">50.05 × 2 = 100.10元 ≥ 8元 ✅✅</span></div>
 </div>
 </div>
 
-<div class="grid-2" style="margin-top:8px">
-<div style="padding:12px;background:rgba(46,213,115,0.06);border-radius:8px">
-  <div style="font-size:13px;font-weight:700;color:var(--green)">🥉 第3推荐</div>
-  <div style="font-size:14px;font-weight:800;color:var(--gold);margin:6px 0">苏格兰 客胜 @1.31</div>
-  <div style="font-size:11px;color:var(--text2);line-height:1.5">
-    最低赔率但最稳 · 欧赔离散度0.02<br>
-    信心度高但赔率低<br>
-    ⚡ 适合做串关胆材
-  </div>
-</div>
-<div style="padding:12px;background:rgba(255,71,87,0.06);border-radius:8px">
-  <div style="font-size:13px;font-weight:700;color:var(--red)">⚠️ 回避推荐</div>
-  <div style="font-size:14px;font-weight:800;color:var(--red);margin:6px 0">巴西 SPF 主胜 @1.53</div>
-  <div style="font-size:11px;color:var(--text2);line-height:1.5">
-    欧亚矛盾偏深2档 · 名气溢价陷阱<br>
-    庄家利用巴西品牌吸筹 · 穿盘概率低<br>
-    ⚡ 高风险场次 · 不推荐入串
-  </div>
-</div>
-</div>
-</div></div>
+<!-- 方案D -->
+<div class="plan-card conservative">
+<div class="plan-badge conservative">方案D · 半全场保守</div>
+<h3 style="margin-top: 8px;">二串三 · 半全场稳健</h3>
+<p style="color: var(--muted); font-size: 0.82em;">2场 × 单选 × 二串三(3注) · 2元/注 = <b>6元</b></p>
 
-<div class="section">
-<div class="section-title" style="color:var(--cyan)">📊 6月14日方案总览对比</div>
-<div class="match-card">
-  <table class="odd-table">
-    <tr><th>方案</th><th>类型</th><th>场次</th><th>注数</th><th>金额</th><th>容错</th><th>最低回报</th><th>回本</th><th>推荐度</th></tr>
-    <tr>
-      <td style="color:var(--green);font-weight:700">A 保守</td>
-      <td>二串三</td><td>瑞士比分+苏格兰半全场</td>
-      <td>3注</td><td style="color:var(--green)">6元</td>
-      <td>容1错</td><td>10元</td><td>✅</td>
-      <td>⭐⭐⭐⭐</td>
-    </tr>
-    <tr style="background:rgba(255,214,0,0.06)">
-      <td style="color:var(--gold);font-weight:700">B⭐推荐</td>
-      <td>三串四</td><td>瑞士比分+苏格兰总进球+土耳其总进球</td>
-      <td>4注</td><td style="color:var(--gold)">8元</td>
-      <td>容1错</td><td>31.92元</td><td>✅✅</td>
-      <td>⭐⭐⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td style="color:var(--red);font-weight:700">C 进取</td>
-      <td>复式三串一</td><td>瑞士3比分×苏格兰2总进球×土耳其2总进球</td>
-      <td>12注</td><td style="color:var(--red)">24元</td>
-      <td>无</td><td>166.60元</td><td>✅</td>
-      <td>⭐⭐⭐</td>
-    </tr>
-    <tr>
-      <td style="color:var(--purple);font-weight:700">D 极简</td>
-      <td>单关</td><td>瑞士让球客胜</td>
-      <td>1注</td><td>2元</td>
-      <td>N/A</td><td>5.48元</td><td>✅</td>
-      <td>⭐⭐⭐</td>
-    </tr>
-  </table>
+<div class="parlay-item">
+    <span class="badge bg-green">场1</span>
+    <b>卡塔尔vs瑞士 · 半全场: 平负@3.60</b>
+    <span class="tag tag-b">单选</span>
+</div>
+<div class="parlay-item">
+    <span class="badge bg-blue">场2</span>
+    <b>海地vs苏格兰 · 半全场: 平负@3.60</b>
+    <span class="tag tag-b">单选</span>
+</div>
 
-  <div style="margin-top:14px;padding:12px;background:rgba(0,0,0,0.2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.8">
-    <b style="color:var(--gold)">🎯 策略思路：</b><br>
-    ① <b>逐场定方向</b>：瑞士=零封比分、苏格兰=小球总进球、土耳其=总进球、巴西=回避<br>
-    ② <b>同场复选</b>：瑞士比分3选(0:1/0:2/1:2)覆盖零封→2球区间 · 苏格兰总进球2选(1球/2球)覆盖低进球<br>
-    ③ <b>M串N回本</b>：方案B三串四最低二串一赔率15.96≥4 ✅ · 方案A二串三最低单关赔率5.00≥3 ✅<br>
-    ④ <b>跨玩法混合</b>：比分(高赔)+总进球(稳健)混合 — 收益与稳定性平衡<br>
-    <br>
-    <b style="color:var(--red)">⚠️ 重要提示：</b>本投注建议中比分/总进球/半全场赔率为分析模型估算值（lottery.gov.cn该等玩法尚未开售6月14日比赛）。开售后以实时赔率为准，但分析方向和策略保持不变。<br>
-    <b style="color:var(--gold)">💡 建议：</b>方案B为主力、方案A为补充、方案D为小额娱乐。
-  </div>
-</div></div>
+<div class="breakeven" style="margin-top: 12px;">
+<div class="breakeven-row"><span>最低单关赔率:</span> <span>3.60</span></div>
+<div class="breakeven-row"><span>二串一赔率:</span> <span>3.60 × 3.60 = 12.96</span></div>
+<div class="breakeven-row"><span>二串三单关最低回报:</span> <span class="breakeven-pass">3.60 × 2元 = 7.20元 ≥ 6元 ✅</span></div>
+<div class="breakeven-row"><span>二串一回报:</span> <span class="breakeven-pass">12.96 × 2元 = 25.92元 ✅</span></div>
+</div>
+<p style="color: var(--green); font-size: 0.85em; margin-top: 8px;">
+✅ 半全场玩法命中率最高，两队都是平负（上半平/下半客赢）模式。
+</p>
+</div>
 
+<!-- ========== 最终推荐 ========== -->
+<h2>🏆 四、最终推荐</h2>
+<div class="card" style="border-color: var(--green); background: linear-gradient(135deg, #1a2332 0%, #0a2a1a 100%);">
+<table class="odds-table">
+<tr><th>优先级</th><th>方案</th><th>类型</th><th>金额</th><th>最低回报</th><th>回本</th><th>推荐理由</th></tr>
+<tr>
+    <td><span class="badge bg-green">🥇 首选</span></td>
+    <td><b>方案B</b></td>
+    <td>三串四总进球</td>
+    <td>8元</td>
+    <td>30.80元</td>
+    <td class="breakeven-pass">✅✅</td>
+    <td style="text-align: left; font-size: 0.82em;">3场✓方向+容错1场+中2场回本4倍</td>
+</tr>
+<tr>
+    <td><span class="badge bg-blue">🥈 稳健</span></td>
+    <td><b>方案A</b></td>
+    <td>二串三总进球</td>
+    <td>6元</td>
+    <td>6.70元</td>
+    <td class="breakeven-pass">✅</td>
+    <td style="text-align: left; font-size: 0.82em;">中1场就回本+总进球容错率高</td>
+</tr>
+<tr>
+    <td><span class="badge bg-cyan">🥉 安全</span></td>
+    <td><b>方案D</b></td>
+    <td>二串三半全场</td>
+    <td>6元</td>
+    <td>7.20元</td>
+    <td class="breakeven-pass">✅</td>
+    <td style="text-align: left; font-size: 0.82em;">半全场命中率最高+搏0:0时机</td>
+</tr>
+<tr>
+    <td><span class="badge bg-orange">4️⃣ 搏击</span></td>
+    <td><b>方案C</b></td>
+    <td>复式三串一</td>
+    <td>8元</td>
+    <td>100.10元</td>
+    <td class="breakeven-pass">✅</td>
+    <td style="text-align: left; font-size: 0.82em;">全中12倍+无容错需全中</td>
+</tr>
+</table>
+</div>
+
+<!-- ========== 风险提示 ========== -->
+<h2>⚠️ 五、重要提示</h2>
+<div class="warning-box">
+<p style="margin: 4px 0;"><b>📌 实事求是声明</b></p>
+<ul style="margin: 4px 0; padding-left: 20px; font-size: 0.85em;">
+    <li><b>比分玩法</b>：在 lottery.gov.cn 上6月14日4场比赛的比分标签页全部显示<code>-- -- --</code>（未开售），本次投注建议不使用比分玩法。</li>
+    <li><b>总进球数和半全场</b>：赔率数据真实来自 lottery.gov.cn 竞彩计算器，获取时间 2026-06-10 11:18 CST。</li>
+    <li><b>卡塔尔vs瑞士 SPF未开售</b>：胜平负玩法不可用，改用让球SPF(+2)和总进球。</li>
+    <li><b>巴西vs摩洛哥</b>：分析报告明确标注"回避入串"（欧亚矛盾偏深2档），所有方案均不含此场。</li>
+</ul>
+</div>
+
+<div class="card" style="background: #1a1414; border-color: #ff3d3d22;">
+<p style="color: var(--red); font-weight: 700; margin: 0;">🚫 竞彩有风险，投注需谨慎。本报告仅供分析参考，不构成投注建议。请理性购彩，量力而行。</p>
+</div>
 
 <div class="footer">
-  <p><b>2026世界杯 · AI投注建议 v10.0</b></p>
-  <p>基于 v10.0 完整深度分析报告 · ELO+欧赔+亚盘+泊松 四维综合</p>
-  <p style="margin-top:8px;color:var(--red)">⚠️ 风险提示：足球比赛存在极大不确定性，所有分析仅供娱乐参考，不构成任何投注建议。请理性购彩，量力而行。彩票有风险，投注需谨慎。</p>
-  <p style="margin-top:4px;color:var(--text3)">数据源: lottery.gov.cn (胜平负/让球胜平负已开售) | 比分/总进球/半全场赔率为模型估算值 | 泊松引擎: src/analysis/poisson_score.py</p>
+<p>WorkBuddy World Cup 2026 Predictor · v11.0 实时赔率版</p>
+<p>数据源：<a href="https://www.lottery.gov.cn" style="color: var(--muted);">中国体育彩票官网</a> · 分析引擎：ELO + Poisson xG + 欧赔 + 亚盘</p>
+<p>生成时间：2026-06-10 11:18 CST · 实事求是，基于真实数据</p>
 </div>
 
 </body>
