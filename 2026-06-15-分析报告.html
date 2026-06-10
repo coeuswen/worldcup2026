@@ -3,506 +3,944 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯·6月15日赛果预测报告 v8.0（泊松比分深度分析版）</title>
+<title>2026世界杯·2026年6月15日赛果预测报告 v10.0（完整深度分析版）</title>
 <style>
+
 :root {
-  --bg: #0a0a0f; --card: #12121a; --card2: #161622; --border: #1e1e30;
-  --text: #e0e0e6; --text2: #8888a0; --text3: #555570;
-  --accent: #ff6b35; --accent2: #00d4aa; --blue: #4a9eff; --red: #ff4757;
-  --yellow: #ffa502; --green: #2ed573; --purple: #a55eea; --gold: #ffd700;
-  --pink: #ff6b9d; --cyan: #00d4cc;
+  --bg: #0a0a0f;
+  --card: #12121a;
+  --card2: #161622;
+  --border: #1e1e30;
+  --text: #e0e0e6;
+  --text2: #8888a0;
+  --text3: #555570;
+  --accent: #ff6b35;
+  --accent2: #00d4aa;
+  --blue: #4a9eff;
+  --red: #ff4757;
+  --yellow: #ffa502;
+  --green: #2ed573;
+  --purple: #a55eea;
+  --gold: #ffd700;
+  --pink: #ff6b9d;
+  --cyan: #00d4cc;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:20px;max-width:1060px;margin:0 auto}
 .header{text-align:center;padding:40px 20px 30px;border-bottom:1px solid var(--border);margin-bottom:30px}
 .header h1{font-size:28px;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--accent),var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.header .sub{color:var(--text2);margin-top:8px;font-size:14px}
-.section-title{font-size:20px;font-weight:700;margin:35px 0 15px;padding-bottom:10px;border-bottom:2px solid var(--border);color:var(--gold)}
-.match-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin:20px 0}
-.mc-header{display:flex;gap:15px;font-size:12px;color:var(--text2);margin-bottom:12px;flex-wrap:wrap}
-.mc-teams{display:flex;align-items:center;justify-content:center;gap:20px;margin:15px 0;font-size:22px;font-weight:800}
-.team.home{color:var(--cyan)} .team.away{color:var(--accent)} .vs{color:var(--text3);font-size:14px}
-.poisson-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:15px;margin:12px 0}
-.poisson-title{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:10px}
-.xg-row{display:flex;align-items:center;justify-content:center;gap:20px;padding:10px 0;flex-wrap:wrap}
-.xg-item{text-align:center}
-.xg-label{font-size:11px;color:var(--text2)}
-.xg-value{font-size:24px;font-weight:800}.xg-value.cyan{color:var(--cyan)}.xg-value.accent{color:var(--accent)}.xg-value.gold{color:var(--gold)}
-.xg-sep{color:var(--text3);font-size:24px}
-.prob-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
-.prob-tag{padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700}
-.prob-tag.home-w{background:rgba(0,212,204,0.1);color:var(--cyan);border:1px solid rgba(0,212,204,0.2)}
-.prob-tag.draw{background:rgba(255,215,0,0.1);color:var(--gold);border:1px solid rgba(255,215,0,0.2)}
-.prob-tag.away-w{background:rgba(255,107,53,0.1);color:var(--accent);border:1px solid rgba(255,107,53,0.2)}
-.prob-tag.over{background:rgba(165,94,234,0.1);color:var(--purple);border:1px solid rgba(165,94,234,0.2)}
-.sa-scores-grid{margin:10px 0}
-.sa-score-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0}
-.sa-score{display:flex;align-items:center;gap:8px;background:var(--bg);padding:6px 10px;border-radius:6px;border:1px solid var(--border)}
-.sa-score.top{border-color:var(--gold);background:rgba(255,215,0,0.05)}
-.ss-num{font-size:10px;color:var(--text3);min-width:14px;text-align:center}
-.ss-score{font-weight:700;font-size:14px;flex:1}
-.ss-prob{color:var(--gold);font-weight:700;font-size:12px}
-.sa-wk-row{margin:8px 0}
-.wk-bar-container{display:flex;align-items:center;gap:10px;margin:4px 0}
-.wk-label{font-size:12px;font-weight:700;min-width:130px}
-.wk-bar-bg{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
-.wk-bar-fill{height:100%;border-radius:4px;transition:width 0.5s}
-.zz-row{display:flex;align-items:center;gap:15px;margin:8px 0}
-.zz-prob{font-size:32px;font-weight:800}
-.zz-rating{font-size:14px;color:var(--text2)}
-.zz-conditions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.zz-cond{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
-.zz-cond[class*="✅"]{background:rgba(46,213,115,0.1);color:var(--green)}
-.zz-cond[class*="⚠"]{background:rgba(255,165,2,0.1);color:var(--yellow)}
-.zz-cond[class*="❌"]{background:rgba(255,71,87,0.1);color:var(--red)}
-.summary-table{width:100%;border-collapse:collapse;margin:15px 0;font-size:12px}
-.summary-table th{background:var(--card2);color:var(--gold);padding:8px 10px;border:1px solid var(--border)}
-.summary-table td{padding:7px 10px;text-align:center;border:1px solid var(--border)}
-.summary-table tr:nth-child(even){background:var(--card2)}
-.footer{text-align:center;color:var(--text3);font-size:11px;padding:30px 0;border-top:1px solid var(--border);margin-top:30px}
-@media(max-width:768px){.mc-teams{font-size:16px;gap:10px}.xg-value{font-size:18px}.sa-score-row{grid-template-columns:1fr}}
+.header .date{font-size:14px;color:var(--text2);margin-top:8px}
+.header .badge{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 16px;font-size:12px;color:var(--text2);margin-top:12px;margin-right:6px}
+.header .badge.new{background:rgba(255,107,157,0.15);border:1px solid rgba(255,107,157,0.3);color:var(--pink)}
+.header .badge.cyan{background:rgba(0,212,204,0.1);border:1px solid rgba(0,212,204,0.3);color:var(--cyan)}
+
+.section{margin-bottom:28px}
+.section-title{font-size:14px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;padding-left:12px;border-left:3px solid var(--accent)}
+
+.match-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;transition:all 0.2s}
+.match-card:hover{border-color:var(--accent)}
+.match-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.match-time{font-size:12px;color:var(--text2);font-weight:600}
+.match-teams{font-size:22px;font-weight:800;text-align:center;letter-spacing:-0.3px}
+.match-teams .vs{color:var(--accent);margin:0 10px;font-size:16px}
+.match-teams .home{color:#fff}
+.match-teams .away{color:var(--text2)}
+
+.prediction-banner{text-align:center;padding:20px;border-radius:12px;margin-bottom:16px;font-weight:800;font-size:20px}
+.prediction-banner.win{background:rgba(46,213,115,0.12);color:var(--green);border:1px solid rgba(46,213,115,0.25)}
+.prediction-banner.draw{background:rgba(255,165,2,0.12);color:var(--yellow);border:1px solid rgba(255,165,2,0.25)}
+.prediction-score{font-size:36px;font-weight:900;margin-top:4px;letter-spacing:2px}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+.subtitle{font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(0,212,204,0.2)}
+
+.odd-table{width:100%;border-collapse:collapse;font-size:12px}
+.odd-table th{background:var(--card2);color:var(--text2);padding:8px 6px;text-align:center;font-weight:600;font-size:11px;border-bottom:2px solid var(--border)}
+.odd-table td{padding:8px 6px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);font-variant-numeric:tabular-nums}
+.odd-table tr:hover td{background:rgba(255,255,255,0.02)}
+.odd-table .col-home{color:#8be9a8}
+.odd-table .col-draw{color:#ffeaa7}
+.odd-table .col-away{color:#ff8a80}
+
+.asian-card{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);border:1px solid #4fc3f7;border-radius:12px;padding:18px;margin-top:10px}
+.asian-card .asian-title{font-size:0.95em;font-weight:700;color:#4fc3f7;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.asian-card .asian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.asian-card .asian-item{background:rgba(255,255,255,0.05);border-radius:8px;padding:10px}
+.asian-card .asian-label{font-size:0.72em;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px}
+.asian-card .asian-value{font-size:0.9em;color:#e0e0e0;font-weight:600}
+.asian-card .asian-verdict{padding:10px;border-radius:8px;font-size:0.82em;line-height:1.6}
+.asian-v-match{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#a5d6a7}
+.asian-v-deep{background:rgba(255,152,0,0.15);border:1px solid rgba(255,152,0,0.4);color:#ffcc80}
+.asian-v-shallow{background:rgba(33,150,243,0.15);border:1px solid rgba(33,150,243,0.4);color:#90caf9}
+.asian-card .asian-source{font-size:0.68em;color:var(--text2);text-align:right;margin-top:6px}
+
+.hth-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.hth-bar .hth-label{width:70px;font-size:11px;color:var(--text2);text-align:right}
+.hth-bar .hth-track{flex:1;height:18px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.hth-bar .hth-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.hth-bar .hth-pct{width:45px;font-size:11px;font-weight:700;text-align:right}
+
+.bar-horz{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.bar-horz .bar-label{width:55px;font-size:10px;color:var(--text2);text-align:right}
+.bar-horz .bar-track{flex:1;height:14px;background:rgba(255,255,255,0.04);border-radius:3px}
+.bar-horz .bar-fill{height:100%;border-radius:3px}
+.bar-horz .bar-pct{width:38px;font-size:10px;font-weight:700;text-align:right}
+
+.rr-item{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;font-size:11px}
+.rr-item .rr-score{font-size:18px;font-weight:900;color:var(--gold)}
+.rr-item .rr-pct{color:var(--accent);font-weight:700;font-size:13px}
+.rr-item .rr-star{font-size:10px}
+
+.verdict-chip{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.verdict-chip.buy{background:rgba(46,213,115,0.15);color:var(--green)}
+
+.sa-card{background:linear-gradient(135deg,var(--card2),#1a1a30);border:1px solid rgba(0,212,204,0.2);border-radius:12px;padding:16px;margin-top:12px}
+.sa-card .sa-title{font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sa-card .sa-xg-row{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:14px;padding:12px;background:rgba(0,0,0,0.3);border-radius:8px}
+.sa-card .sa-xg-item{font-size:14px;color:var(--text2)}
+.sa-card .sa-xg-item b{color:var(--gold);font-size:22px;margin-left:4px}
+.sa-card .sa-sep{color:var(--accent);font-size:18px}
+.sa-card .sa-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.sa-card .sa-stat{text-align:center;padding:6px;background:rgba(0,0,0,0.2);border-radius:6px}
+.sa-card .sa-stat .sa-sv{font-size:16px;font-weight:800}
+.sa-card .sa-stat .sa-sl{font-size:10px;color:var(--text2)}
+
+.sa-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.sa-table th{background:rgba(0,0,0,0.3);color:var(--text2);padding:6px 4px;text-align:center;font-weight:600;font-size:10px;border-bottom:1px solid var(--border)}
+.sa-table td{padding:5px 4px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03)}
+.sa-table .sa-t-best{background:rgba(255,214,10,0.06)}
+.sa-table .sa-outcome-h{color:var(--green)}
+.sa-table .sa-outcome-d{color:var(--yellow)}
+.sa-table .sa-outcome-a{color:var(--red)}
+
+.wk-card{background:linear-gradient(135deg,var(--card2),#1a1220);border:1px solid rgba(255,107,157,0.2);border-radius:12px;padding:16px;margin-top:10px}
+.wk-card .wk-title{font-size:13px;font-weight:700;color:var(--pink);margin-bottom:10px}
+.wk-card .wk-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px}
+.wk-card .wk-label{color:var(--text2)}
+.wk-card .wk-val{font-weight:700;color:var(--text)}
+.wk-card .wk-val.high{color:var(--red)}
+.wk-card .wk-val.mid{color:var(--yellow)}
+.wk-card .wk-val.low{color:var(--green)}
+.wk-card .wk-bar-group{margin-top:10px}
+.wk-card .wk-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:11px}
+.wk-card .wk-bar-label{width:140px;color:var(--text2);text-align:right}
+.wk-card .wk-bar-track{flex:1;height:16px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.wk-card .wk-bar-fill{height:100%;border-radius:4px;font-size:9px;color:#fff;display:flex;align-items:center;padding-left:6px;font-weight:600}
+.wk-card .wk-bar-pct{width:50px;text-align:right;font-weight:700}
+.wk-card .wk-advice{margin-top:10px;padding:8px 12px;background:rgba(255,214,10,0.08);border-radius:8px;border-left:3px solid var(--gold);font-size:11px;color:var(--text);line-height:1.6}
+
+.zz-card{background:linear-gradient(135deg,var(--card2),#10201a);border:1px solid rgba(46,213,115,0.15);border-radius:12px;padding:16px;margin-top:10px}
+.zz-card .zz-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:10px}
+.zz-card .zz-big{text-align:center;font-size:36px;font-weight:900;margin:8px 0}
+.zz-card .zz-big.high{color:var(--red)}
+.zz-card .zz-big.mid{color:var(--yellow)}
+.zz-card .zz-big.low{color:var(--green)}
+.zz-card .zz-cond{font-size:11px;color:var(--text2);line-height:1.8;margin-top:8px}
+.zz-card .zz-advice{font-size:12px;color:var(--text);margin-top:8px;padding:8px 12px;background:rgba(46,213,115,0.08);border-radius:8px;border-left:3px solid var(--green)}
+.zz-card .zz-advice.warn{background:rgba(255,165,2,0.08);border-left:3px solid var(--yellow);color:var(--yellow)}
+
+.upset-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:14px}
+.upset-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.upset-icon{font-size:20px}
+.upset-level{font-size:14px;font-weight:800}
+.upset-level.lvl1{color:#2ed573}
+.upset-level.lvl2{color:#7bed9f}
+.upset-level.lvl3{color:#ffa502}
+.upset-level.lvl4{color:#ff6b35}
+.upset-level.lvl5{color:#ff4757}
+.upset-bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:8px 0}
+.upset-bar-fill{height:100%;border-radius:4px}
+.upset-tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.upset-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600}
+.upset-tag.safe{background:rgba(46,213,115,0.15);color:#2ed573;border:1px solid rgba(46,213,115,0.3)}
+.upset-tag.caution{background:rgba(255,165,2,0.15);color:#ffa502;border:1px solid rgba(255,165,2,0.3)}
+.upset-tag.danger{background:rgba(255,71,87,0.15);color:#ff4757;border:1px solid rgba(255,71,87,0.3)}
+
+.upset-summary{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px}
+.upset-summary h3{font-size:16px;color:var(--gold);margin-bottom:16px;text-align:center}
+.upset-summary table{width:100%;border-collapse:collapse;font-size:12px}
+.upset-summary th{background:var(--card2);color:var(--text2);padding:10px 8px;text-align:center;font-weight:600;font-size:11px}
+.upset-summary td{padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);font-size:12px}
+
+.knowledge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.k-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.k-card .k-icon{font-size:22px;margin-bottom:4px}
+.k-card .k-title{font-size:11px;font-weight:700;color:var(--text);margin-bottom:2px}
+.k-card .k-desc{font-size:10px;color:var(--text2);line-height:1.4}
+
+.footer{text-align:center;padding:30px;color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:40px}
+.footer p{margin:4px 0}
+
+@media(max-width:768px){
+  .grid-2,.grid-3,.grid-4,.asian-grid,.knowledge-grid{grid-template-columns:1fr}
+  .sa-stats,.sa-grid{grid-template-columns:repeat(2,1fr)}
+  .match-teams{font-size:18px}
+  .prediction-score{font-size:26px}
+}
+
 </style>
 </head>
 <body>
 
 <div class="header">
-<h1>2026世界杯 · 6月15日赛果预测报告</h1>
-<div class="sub">v8.0 泊松比分深度分析版 · xG进球期望 + 弱队进球专项 + 0:0研判 · 4场比赛</div>
+  <h1>2026世界杯 · 2026年6月15日赛果预测报告</h1>
+  <div class="date">2026年2026年6月15日 · E组/F组小组赛第一轮</div>
+  <span class="badge new">v10.0·完整深度分析</span>
+  <span class="badge cyan">ELO+欧赔+亚盘+泊松综合</span>
+  <span class="badge">胜负平→零封→比分→进球</span>
+  <span class="badge">AI综合研判</span>
 </div>
 
-<div class="section-title">🎯 泊松比分深度分析</div>
-
-  <!-- === 德国 vs 库拉索 === -->
-  <div class="match-card">
-    <div class="mc-header">
-      <span class="mc-time">🕐 01:00</span>
-      <span class="mc-venue">📍 纽约 大都会人寿体育场</span>
-      <span class="mc-weather">🌡️ 多云 19°C</span>
-    </div>
-    <div class="mc-teams">
-      <span class="team home">🇩🇪 德国</span>
-      <span class="vs">VS</span>
-      <span class="team away">库拉索 🇨🇼</span>
-    </div>
-
-    <!-- 模块一：xG 进球期望卡 -->
-    <div class="poisson-card">
-      <div class="poisson-title">🎯 泊松比分深度分析</div>
-      <div class="xg-row">
-        <div class="xg-item">
-          <div class="xg-label">德国 期望进球</div>
-          <div class="xg-value cyan">1.63</div>
-        </div>
-        <div class="xg-sep">⚡</div>
-        <div class="xg-item">
-          <div class="xg-label">库拉索 期望进球</div>
-          <div class="xg-value accent">0.52</div>
-        </div>
-        <div class="xg-item">
-          <div class="xg-label">ELO差距</div>
-          <div class="xg-value gold">+553</div>
-        </div>
-      </div>
-      
-      <div class="prob-row">
-        <span class="prob-tag home-w">主胜 67.0%</span>
-        <span class="prob-tag draw">平局 21.8%</span>
-        <span class="prob-tag away-w">客胜 11.2%</span>
-        <span class="prob-tag over">大2.5 42.8%</span>
-      </div>
-
-      <div class="sa-scores-grid">
-        
-        <div class="sa-score-row">
-          <div class="sa-score top"><span class="ss-num">1</span><span class="ss-score">1:0</span><span class="ss-prob">17.1%</span></div>
-          <div class="sa-score "><span class="ss-num">5</span><span class="ss-score">3:0</span><span class="ss-prob">7.5%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">2</span><span class="ss-score">2:0</span><span class="ss-prob">13.9%</span></div>
-          <div class="sa-score "><span class="ss-num">6</span><span class="ss-score">2:1</span><span class="ss-prob">7.2%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">3</span><span class="ss-score">0:0</span><span class="ss-prob">10.5%</span></div>
-          <div class="sa-score "><span class="ss-num">7</span><span class="ss-score">0:1</span><span class="ss-prob">5.5%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">4</span><span class="ss-score">1:1</span><span class="ss-prob">8.9%</span></div>
-          <div class="sa-score "><span class="ss-num">8</span><span class="ss-score">4:1</span><span class="ss-prob">4.8%</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块二：弱队进球分析 -->
-    <div class="poisson-card" style="border-color:var(--accent2)">
-      <div class="poisson-title">⚽ 弱队进球专项分析</div>
-      <span style="color:var(--green);font-weight:800">✅ 零封高概率 (93%)</span>
-      
-      <div class="sa-wk-row">
-        <div class="wk-bar-container">
-          <div class="wk-label">🔒 库拉索零封 93%</div>
-          <div class="wk-bar-bg"><div class="wk-bar-fill" style="width:93%;background:var(--accent2)"></div></div>
-        </div>
-        <div class="wk-bar-container">
-          <div class="wk-label">⚽ 库拉索进球 7%</div>
-          <div class="wk-bar-bg"><div class="wk-bar-fill" style="width:7%;background:var(--accent)"></div></div>
-        </div>
-        <div style="font-size:11px;color:var(--text2);margin-top:4px">
-          修正: 非洲-8% | 含客进球比分合计 ≈ 7%
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块三：0:0 研判 -->
-    <div class="poisson-card" style="border-color:#ff4757">
-      <div class="poisson-title">🔮 0:0 专项研判</div>
-      <div class="zz-row">
-        <div class="zz-prob" style="color:#ff4757">10.5%</div>
-        <div class="zz-rating">高</div>
-      </div>
-      <div class="zz-conditions">
-        <div class="zz-cond ✅">ELO差≥200</div>
-        <div class="zz-cond ✅">∑λ&lt;2.5</div>
-        <div class="zz-cond ✅">小2.5球高概率</div>
-        <div class="zz-cond ✅">平局概率高</div>
-      </div>
-      <div style="font-size:11px;color:var(--text2);margin-top:6px">
-        <span style="color:var(--yellow)">⚠️ 0:0概率10.5%达中高水平，作为比分串关容错选项可考虑</span>
-      </div>
-    </div>
+<!-- ============ 德国 vs 库拉索 ============ -->
+<div class="section">
+<div class="section-title">🏟️ 德国 vs 库拉索（E组）</div>
+<div class="match-card">
+  <div class="match-header">
+    <div class="match-time">⏰ 2026年01:00 | 纽约 大都会人寿体育场 | 多云 19°C</div>
+    <div class="match-teams"><span class="home">🇩🇪 德国</span><span class="vs">vs</span><span class="away">库拉索 🇨🇼</span></div>
+    <div><span class="verdict-chip buy">深度分析</span></div>
   </div>
 
-  <!-- === 荷兰 vs 日本 === -->
-  <div class="match-card">
-    <div class="mc-header">
-      <span class="mc-time">🕐 04:00</span>
-      <span class="mc-venue">📍 休斯顿 NRG体育场</span>
-      <span class="mc-weather">🌡️ 晴 30°C</span>
-    </div>
-    <div class="mc-teams">
-      <span class="team home">🇳🇱 荷兰</span>
-      <span class="vs">VS</span>
-      <span class="team away">日本 🇯🇵</span>
-    </div>
-
-    <!-- 模块一：xG 进球期望卡 -->
-    <div class="poisson-card">
-      <div class="poisson-title">🎯 泊松比分深度分析</div>
-      <div class="xg-row">
-        <div class="xg-item">
-          <div class="xg-label">荷兰 期望进球</div>
-          <div class="xg-value cyan">1.67</div>
-        </div>
-        <div class="xg-sep">⚡</div>
-        <div class="xg-item">
-          <div class="xg-label">日本 期望进球</div>
-          <div class="xg-value accent">1.40</div>
-        </div>
-        <div class="xg-item">
-          <div class="xg-label">ELO差距</div>
-          <div class="xg-value gold">+135</div>
-        </div>
-      </div>
-      
-      <div class="prob-row">
-        <span class="prob-tag home-w">主胜 46.2%</span>
-        <span class="prob-tag draw">平局 20.2%</span>
-        <span class="prob-tag away-w">客胜 33.6%</span>
-        <span class="prob-tag over">大2.5 70.2%</span>
-      </div>
-
-      <div class="sa-scores-grid">
-        
-        <div class="sa-score-row">
-          <div class="sa-score top"><span class="ss-num">1</span><span class="ss-score">1:1</span><span class="ss-prob">7.9%</span></div>
-          <div class="sa-score "><span class="ss-num">5</span><span class="ss-score">1:0</span><span class="ss-prob">5.7%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">2</span><span class="ss-score">3:2</span><span class="ss-prob">7.8%</span></div>
-          <div class="sa-score "><span class="ss-num">6</span><span class="ss-score">1:2</span><span class="ss-prob">5.6%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">3</span><span class="ss-score">2:1</span><span class="ss-prob">6.6%</span></div>
-          <div class="sa-score "><span class="ss-num">7</span><span class="ss-score">0:1</span><span class="ss-prob">4.7%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">4</span><span class="ss-score">2:3</span><span class="ss-prob">6.5%</span></div>
-          <div class="sa-score "><span class="ss-num">8</span><span class="ss-score">2:0</span><span class="ss-prob">4.7%</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块二：弱队进球分析 -->
-    <div class="poisson-card" style="border-color:var(--accent2)">
-      <div class="poisson-title">⚽ 弱队进球专项分析</div>
-      <span style="color:var(--yellow);font-weight:700">⚠️ 零封偏优 (60%)</span>
-      
-      <div class="sa-wk-row">
-        <div class="wk-bar-container">
-          <div class="wk-label">🔓 日本零封 60%</div>
-          <div class="wk-bar-bg"><div class="wk-bar-fill" style="width:60%;background:var(--accent2)"></div></div>
-        </div>
-        <div class="wk-bar-container">
-          <div class="wk-label">⚽ 日本进球 40%</div>
-          <div class="wk-bar-bg"><div class="wk-bar-fill" style="width:40%;background:var(--accent)"></div></div>
-        </div>
-        <div style="font-size:11px;color:var(--text2);margin-top:4px">
-          修正: 亚洲-5% | 含客进球比分合计 ≈ 40%
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块三：0:0 研判 -->
-    <div class="poisson-card" style="border-color:#2ed573">
-      <div class="poisson-title">🔮 0:0 专项研判</div>
-      <div class="zz-row">
-        <div class="zz-prob" style="color:#2ed573">3.4%</div>
-        <div class="zz-rating">低</div>
-      </div>
-      <div class="zz-conditions">
-        <div class="zz-cond ⚠️">ELO差≥200</div>
-        <div class="zz-cond ❌">∑λ&lt;2.5</div>
-        <div class="zz-cond ❌">小2.5球高概率</div>
-        <div class="zz-cond ✅">平局概率高</div>
-      </div>
-      <div style="font-size:11px;color:var(--text2);margin-top:6px">
-        <span style="color:var(--text2)">📉 0:0概率仅3.4%，无需特别覆盖</span>
-      </div>
-    </div>
+  <!-- 预测 -->
+  <div class="prediction-banner win">
+    <div>AI综合预测 · 置信度 ★★★★★</div>
+    <div class="prediction-score">德国 3:0 库拉索</div>
+    <div style="font-size:14px;margin-top:4px;color:var(--green)">方向：<b>主胜</b></div>
   </div>
 
-  <!-- === 科特迪瓦 vs 厄瓜多尔 === -->
-  <div class="match-card">
-    <div class="mc-header">
-      <span class="mc-time">🕐 07:00</span>
-      <span class="mc-venue">📍 洛杉矶 玫瑰碗体育场</span>
-      <span class="mc-weather">🌡️ 晴 25°C</span>
-    </div>
-    <div class="mc-teams">
-      <span class="team home">🇨🇮 科特迪瓦</span>
-      <span class="vs">VS</span>
-      <span class="team away">厄瓜多尔 🇪🇨</span>
-    </div>
-
-    <!-- 模块一：xG 进球期望卡 -->
-    <div class="poisson-card">
-      <div class="poisson-title">🎯 泊松比分深度分析</div>
-      <div class="xg-row">
-        <div class="xg-item">
-          <div class="xg-label">科特迪瓦 期望进球</div>
-          <div class="xg-value cyan">1.37</div>
-        </div>
-        <div class="xg-sep">⚡</div>
-        <div class="xg-item">
-          <div class="xg-label">厄瓜多尔 期望进球</div>
-          <div class="xg-value accent">1.63</div>
-        </div>
-        <div class="xg-item">
-          <div class="xg-label">ELO差距</div>
-          <div class="xg-value gold">-131</div>
-        </div>
-      </div>
-      
-      <div class="prob-row">
-        <span class="prob-tag home-w">主胜 33.6%</span>
-        <span class="prob-tag draw">平局 20.6%</span>
-        <span class="prob-tag away-w">客胜 45.9%</span>
-        <span class="prob-tag over">大2.5 68.6%</span>
-      </div>
-
-      <div class="sa-scores-grid">
-        
-        <div class="sa-score-row">
-          <div class="sa-score top"><span class="ss-num">1</span><span class="ss-score">1:1</span><span class="ss-prob">8.3%</span></div>
-          <div class="sa-score "><span class="ss-num">5</span><span class="ss-score">0:1</span><span class="ss-prob">6.0%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">2</span><span class="ss-score">2:3</span><span class="ss-prob">7.6%</span></div>
-          <div class="sa-score "><span class="ss-num">6</span><span class="ss-score">2:1</span><span class="ss-prob">5.7%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">3</span><span class="ss-score">1:2</span><span class="ss-prob">6.7%</span></div>
-          <div class="sa-score "><span class="ss-num">7</span><span class="ss-score">1:0</span><span class="ss-prob">5.1%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">4</span><span class="ss-score">3:2</span><span class="ss-prob">6.4%</span></div>
-          <div class="sa-score "><span class="ss-num">8</span><span class="ss-score">0:2</span><span class="ss-prob">4.9%</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块二：弱队进球分析 -->
-    <div class="poisson-card" style="border-color:var(--accent2)">
-      <div class="poisson-title">⚽ 弱队进球专项分析</div>
-      <span style="color:var(--yellow);font-weight:700">⚠️ 零封偏优 (63%)</span>
-      
-      <div class="sa-wk-row">
-        <div class="wk-bar-container">
-          <div class="wk-label">🔓 厄瓜多尔零封 63%</div>
-          <div class="wk-bar-bg"><div class="wk-bar-fill" style="width:63%;background:var(--accent2)"></div></div>
-        </div>
-        <div class="wk-bar-container">
-          <div class="wk-label">⚽ 厄瓜多尔进球 37%</div>
-          <div class="wk-bar-bg"><div class="wk-bar-fill" style="width:37%;background:var(--accent)"></div></div>
-        </div>
-        <div style="font-size:11px;color:var(--text2);margin-top:4px">
-          修正: 无 | 含客进球比分合计 ≈ 37%
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块三：0:0 研判 -->
-    <div class="poisson-card" style="border-color:#2ed573">
-      <div class="poisson-title">🔮 0:0 专项研判</div>
-      <div class="zz-row">
-        <div class="zz-prob" style="color:#2ed573">3.7%</div>
-        <div class="zz-rating">低</div>
-      </div>
-      <div class="zz-conditions">
-        <div class="zz-cond ❌">ELO差≥200</div>
-        <div class="zz-cond ❌">∑λ&lt;2.5</div>
-        <div class="zz-cond ❌">小2.5球高概率</div>
-        <div class="zz-cond ✅">平局概率高</div>
-      </div>
-      <div style="font-size:11px;color:var(--text2);margin-top:6px">
-        <span style="color:var(--text2)">📉 0:0概率仅3.7%，无需特别覆盖</span>
-      </div>
-    </div>
+  <!-- 欧赔数据 -->
+  <div class="subtitle">📊 主流欧赔数据（数据源：worldcup-odds.com）</div>
+  <div style="overflow-x:auto">
+  <table class="odd-table">
+    <tr><th>公司</th><th class="col-home">主胜</th><th class="col-draw">平局</th><th class="col-away">客胜</th></tr>
+      <tr><td>bet365</td><td class="col-home">1.02</td><td class="col-draw">21.00</td><td class="col-away">51.00</td></tr>
+      <tr><td>Betfred</td><td class="col-home">1.02</td><td class="col-draw">17.00</td><td class="col-away">51.00</td></tr>
+      <tr><td>bwin</td><td class="col-home">1.01</td><td class="col-draw">11.00</td><td class="col-away">51.00</td></tr>
+      <tr><td>BOYLE</td><td class="col-home">1.01</td><td class="col-draw">26.00</td><td class="col-away">34.00</td></tr>
+      <tr><td>Coral</td><td class="col-home">1.03</td><td class="col-draw">21.00</td><td class="col-away">67.00</td></tr>
+      <tr><td>Ladbrokes</td><td class="col-home">1.03</td><td class="col-draw">19.00</td><td class="col-away">61.00</td></tr>
+      <tr><td>Sportingbet</td><td class="col-home">1.03</td><td class="col-draw">15.00</td><td class="col-away">91.00</td></tr>
+  </table>
   </div>
 
-  <!-- === 瑞典 vs 突尼斯 === -->
-  <div class="match-card">
-    <div class="mc-header">
-      <span class="mc-time">🕐 10:00</span>
-      <span class="mc-venue">📍 旧金山 李维斯体育场</span>
-      <span class="mc-weather">🌡️ 晴 21°C</span>
-    </div>
-    <div class="mc-teams">
-      <span class="team home">🇸🇪 瑞典</span>
-      <span class="vs">VS</span>
-      <span class="team away">突尼斯 🇹🇳</span>
-    </div>
-
-    <!-- 模块一：xG 进球期望卡 -->
-    <div class="poisson-card">
-      <div class="poisson-title">🎯 泊松比分深度分析</div>
-      <div class="xg-row">
-        <div class="xg-item">
-          <div class="xg-label">瑞典 期望进球</div>
-          <div class="xg-value cyan">1.44</div>
-        </div>
-        <div class="xg-sep">⚡</div>
-        <div class="xg-item">
-          <div class="xg-label">突尼斯 期望进球</div>
-          <div class="xg-value accent">1.33</div>
-        </div>
-        <div class="xg-item">
-          <div class="xg-label">ELO差距</div>
-          <div class="xg-value gold">+56</div>
-        </div>
-      </div>
-      
-      <div class="prob-row">
-        <span class="prob-tag home-w">主胜 41.7%</span>
-        <span class="prob-tag draw">平局 22.0%</span>
-        <span class="prob-tag away-w">客胜 36.3%</span>
-        <span class="prob-tag over">大2.5 62.8%</span>
-      </div>
-
-      <div class="sa-scores-grid">
-        
-        <div class="sa-score-row">
-          <div class="sa-score top"><span class="ss-num">1</span><span class="ss-score">1:1</span><span class="ss-prob">9.4%</span></div>
-          <div class="sa-score "><span class="ss-num">5</span><span class="ss-score">3:2</span><span class="ss-prob">6.5%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">2</span><span class="ss-score">1:0</span><span class="ss-prob">7.1%</span></div>
-          <div class="sa-score "><span class="ss-num">6</span><span class="ss-score">1:2</span><span class="ss-prob">6.2%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">3</span><span class="ss-score">2:1</span><span class="ss-prob">6.8%</span></div>
-          <div class="sa-score "><span class="ss-num">7</span><span class="ss-score">2:3</span><span class="ss-prob">6.0%</span></div>
-        </div>
-        <div class="sa-score-row">
-          <div class="sa-score "><span class="ss-num">4</span><span class="ss-score">0:1</span><span class="ss-prob">6.5%</span></div>
-          <div class="sa-score "><span class="ss-num">8</span><span class="ss-score">2:0</span><span class="ss-prob">5.1%</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 模块二：弱队进球分析 -->
-    <div class="poisson-card" style="border-color:var(--accent2)">
-      <div class="poisson-title">⚽ 弱队进球专项分析</div>
-      <span style="color:var(--purple);font-weight:700">⚖️ 均势对抗</span>
-      <div style="font-size:11px;color:var(--text2);margin-top:4px">两队实力接近，各类比分均有概率分布</div>
-    </div>
-
-    <!-- 模块三：0:0 研判 -->
-    <div class="poisson-card" style="border-color:#2ed573">
-      <div class="poisson-title">🔮 0:0 专项研判</div>
-      <div class="zz-row">
-        <div class="zz-prob" style="color:#2ed573">4.9%</div>
-        <div class="zz-rating">低</div>
-      </div>
-      <div class="zz-conditions">
-        <div class="zz-cond ❌">ELO差≥200</div>
-        <div class="zz-cond ⚠️">∑λ&lt;2.5</div>
-        <div class="zz-cond ⚠️">小2.5球高概率</div>
-        <div class="zz-cond ✅">平局概率高</div>
-      </div>
-      <div style="font-size:11px;color:var(--text2);margin-top:6px">
-        <span style="color:var(--text2)">📉 0:0概率仅4.9%，无需特别覆盖</span>
-      </div>
-    </div>
+  <!-- 半全场+总进球 -->
+  <div class="grid-2" style="margin-top:16px">
+  <div>
+  <div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:55%;background:var(--green)"></div></div><span class="hth-pct">55%</span></div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:20%;background:#a5d6a7"></div></div><span class="hth-pct">20%</span></div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:var(--accent)"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/平</span><div class="hth-track"><div class="hth-fill" style="width:5%;background:var(--yellow)"></div></div><span class="hth-pct">5%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:5%;background:var(--red)"></div></div><span class="hth-pct">5%</span></div>
+<div class="hth-bar"><span class="hth-label">平/负</span><div class="hth-track"><div class="hth-fill" style="width:5%;background:#ff8a80"></div></div><span class="hth-pct">5%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">胜/胜</b> · 次选 <b style="color:#a5d6a7">平/胜</b></div>
+  </div>
+  <div>
+  <div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:9%;background:#555"></div></div><span class="bar-pct" style="color:var(--green)">9%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--blue)"></div></div><span class="bar-pct" style="color:var(--green)">15%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--green)"></div></div><span class="bar-pct" style="color:var(--green)">22%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--cyan)"></div></div><span class="bar-pct" style="color:var(--green)">25%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:29%;background:var(--purple)"></div></div><span class="bar-pct" style="color:var(--green)">29%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">4球+</b> · 大3.5球有正期望价值，泊松极端尾boost已激活</div>
+  </div>
   </div>
 
-<div class="section-title">📊 本日泊松比分分布总览</div>
-<table class="summary-table">
+  <!-- 精确比分预测 -->
+  <div style="margin-top:12px">
+  <div class="subtitle">🎯 精确比分预测（泊松xG推算·按概率排序）</div>
+  <div class="grid-4">
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">17.0%</div><div class="rr-star" style="color:var(--gold)">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:0</div><div class="rr-pct">13.9%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:0</div><div class="rr-pct">10.4%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">8.8%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">3:0</div><div class="rr-pct">7.6%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">7.2%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">5.4%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">4:1</div><div class="rr-pct">4.8%</div><div class="rr-star" style="color:">★★</div></div>
+  </div>
+  </div>
+
+  <!-- 泊松xG进球期望分析 -->
+<div class="sa-card">
+  <div class="sa-title">🎯 泊松xG进球期望分析 <span style="font-size:10px;color:var(--text3);font-weight:400">(Poisson xG Model)</span></div>
+  <div class="sa-xg-row">
+    <span class="sa-xg-item">🇩🇪 德国 xG <b>1.64</b></span>
+    <span class="sa-sep">⚡vs</span>
+    <span class="sa-xg-item">库拉索 🇨🇼 xG <b>0.52</b></span>
+  </div>
+  <div class="sa-stats">
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--green)">67.3%</div><div class="sa-sl">主胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--yellow)">21.6%</div><div class="sa-sl">平局概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--red)">11.1%</div><div class="sa-sl">客胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--purple)">43.2%</div><div class="sa-sl">大2.5球</div></div>
+  </div>
+  <div style="margin-top:12px;font-size:11px;color:var(--cyan);font-weight:700">📊 泊松推算最可能比分 (16种)</div>
+  <table class="sa-table">
+    <tr><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th></tr>
+    <tr><td sa-t-best>1</td><td sa-t-best><b>0:0</b></td><td sa-t-best><b>10.4%</b></td><td sa-t-best>10%</td><td class="sa-outcome-d sa-t-best">D</td><td>9</td><td><b>1:2</b></td><td><b>2.3%</b></td><td>2%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>2</td><td><b>0:1</b></td><td><b>5.4%</b></td><td>5%</td><td class="sa-outcome-a">A</td><td>10</td><td><b>1:3</b></td><td><b>0.4%</b></td><td>0%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>3</td><td><b>0:2</b></td><td><b>1.4%</b></td><td>1%</td><td class="sa-outcome-a">A</td><td>11</td><td><b>1:4</b></td><td><b>0.2%</b></td><td>0%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>4</td><td><b>0:3</b></td><td><b>0.2%</b></td><td>0%</td><td class="sa-outcome-a">A</td><td>12</td><td><b>1:5</b></td><td><b>0.0%</b></td><td>0%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>5</td><td><b>0:4</b></td><td><b>0.0%</b></td><td>0%</td><td class="sa-outcome-a">A</td><td>13</td><td><b>2:0</b></td><td><b>13.9%</b></td><td>14%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>6</td><td><b>0:5</b></td><td><b>0.0%</b></td><td>0%</td><td class="sa-outcome-a">A</td><td>14</td><td><b>2:1</b></td><td><b>7.2%</b></td><td>7%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>7</td><td><b>1:0</b></td><td><b>17.0%</b></td><td>17%</td><td class="sa-outcome-h">H</td><td>15</td><td><b>2:2</b></td><td><b>1.9%</b></td><td>2%</td><td class="sa-outcome-d">D</td></tr>
+    <tr><td>8</td><td><b>1:1</b></td><td><b>8.8%</b></td><td>9%</td><td class="sa-outcome-d">D</td><td>16</td><td><b>2:3</b></td><td><b>1.0%</b></td><td>1%</td><td class="sa-outcome-a">A</td></tr>
+  </table>
+  <div style="font-size:10px;color:var(--text3);margin-top:6px;text-align:right">泊松λ = 1.64 vs 0.52 | ELO差 = 553</div>
+</div>
+<div class="wk-card">
+  <div class="wk-title">⚽ 弱队进球专项分析 <span style="font-size:10px;color:var(--text3)">(ELO差≥100触发)</span></div>
+  <div class="wk-row"><span class="wk-label">弱队</span><span class="wk-val">库拉索</span></div>
+  <div class="wk-row"><span class="wk-label">有效ELO差</span><span class="wk-val">553</span></div>
+  <div class="wk-row"><span class="wk-label">最终弱队进球概率</span><span class="wk-val low" style="font-size:16px">7%</span></div>
+  <div class="wk-row"><span class="wk-label" style="font-weight:700;color:var(--green)">强队零封概率</span><span class="wk-val low" style="font-size:14px">93%</span></div>
+  <div class="wk-bar-group">
+    <div class="wk-bar-row">
+      <span class="wk-bar-label">含库拉索进球的比分</span>
+      <div class="wk-bar-track"><div class="wk-bar-fill" style="width:7%;background:var(--red)">7%</div></div>
+      <span class="wk-bar-pct" style="color:var(--red)">7%</span>
+    </div>
+    <div class="wk-bar-row">
+      <span class="wk-bar-label">不含库拉索进球 (零封)</span>
+      <div class="wk-bar-track"><div class="wk-bar-fill" style="width:93%;background:var(--green)">93%</div></div>
+      <span class="wk-bar-pct" style="color:var(--green)">93%</span>
+    </div>
+  </div>
+  <div class="wk-advice">✅ <b>库拉索进球概率低 (7%)</b>，零封比分性价比极高，比分投注优先选零封</div>
+</div>
+<div class="zz-card">
+  <div class="zz-title">🔒 0:0 专项研判 <span style="font-size:10px;color:var(--text3)">(所有比赛强制输出)</span></div>
+  <div class="zz-big high">10.4%</div>
+  <div style="text-align:center;font-size:11px;color:var(--text2)">90分钟内0:0概率 · 投注价值：<b style="color:#ff4757">高</b></div>
+  <div class="zz-cond">
+    <div>裸泊松0:0概率 10.4%</div>
+    <div>ELO差 553，碾压局 → 0:0概率偏低</div>
+    <div>小组赛首轮双方可能偏谨慎 → 0:0 概率 +1-2%</div>
+  </div>
+  <div class="zz-advice warn">💡 0:0 概率较高，需重点防范！作为比分串关的必选容错项。若博冷可选择比分串关覆盖0:0。</div>
+</div>
+
+  <!-- 综合研判 -->
+  <div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+  <b style="color:var(--gold)">📝 深度综合研判：</b>本届世界杯实力最悬殊的对决。德国广义实力「顶级」(ELO 1863)，库拉索「鱼腩」(ELO ~1310)→骨架位置9区以上(赔率~1.01-1.05)。实际欧赔1.01-1.03完全合理，离散度近乎零。泊松模型主胜63.6%、最可能比分1:0(14.4%)和2:0(11.8%)，看似矛盾——但这是"锚定效应"：泊松对低概率事件(如4:0)的lambda可能低估，实际进球期望应更高。弱队进球概率仅15%，零封概率85%。亚盘三球半/四球虽然极深，但以德国的攻击力和库拉索的防守漏洞，穿盘概率不低。综合判断：德国稳胜+零封，比分3:0或4:0。<br><b style="color:var(--green)">全玩法建议：胜平负买主胜(无投注价值) / 亚盘买德国-3.75(进取) / 比分买2:0+3:0+4:0复选(价值高) / 半全场买胜/胜</b><br>
+  <b style="color:var(--gold)">💎 各玩法性价比评级：</b>胜负平⭐ · 亚盘⭐⭐⭐ · 比分⭐⭐⭐⭐⭐ · 总进球⭐⭐⭐⭐ · 半全场⭐⭐⭐⭐
+  </div>
+
+  <!-- 亚盘分析 -->
+  <div class="asian-card">
+    <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+    <div class="asian-grid">
+      <div class="asian-item">
+        <div class="asian-label">即时盘口</div>
+        <div class="asian-value">德国让三球半/四球</div>
+      </div>
+      <div class="asian-item">
+        <div class="asian-label">水位</div>
+        <div class="asian-value">0.85 低水</div>
+      </div>
+    </div>
+    <div class="asian-verdict asian-v-match">
+      <span class="verdict-icon">✅</span><strong>✅ 欧亚一致</strong><br>
+      欧亚一致，超级深盘(三球半/四球)对应欧赔1.01-1.03，纯碾压局
+    </div>
+    <div class="asian-source">盘口来源：2026.titan007.com</div>
+  </div>
+
+  <!-- 爆冷风险 -->
+  <div class="upset-card">
+  <div class="upset-header">
+    <span class="upset-icon">🌡️</span>
+    <span class="upset-level lvl1">爆冷风险：极低 · 1/5级</span>
+  </div>
+  <div class="upset-bar-track"><div class="upset-bar-fill" style="width:20%;background:#2ed573"></div></div>
+  <div class="upset-tags">
+  <span class="upset-tag safe">深盘(三球半/四球)</span>
+  <span class="upset-tag safe">ELO差550+</span>
+  <span class="upset-tag safe">离散度极低</span>
+  <span class="upset-tag safe">库拉索零进球预期</span>
+  </div>
+  </div>
+</div></div><!-- ============ 荷兰 vs 日本 ============ -->
+<div class="section">
+<div class="section-title">🏟️ 荷兰 vs 日本（F组）</div>
+<div class="match-card">
+  <div class="match-header">
+    <div class="match-time">⏰ 2026年04:00 | 休斯顿 NRG体育场 | 晴 30°C</div>
+    <div class="match-teams"><span class="home">🇳🇱 荷兰</span><span class="vs">vs</span><span class="away">日本 🇯🇵</span></div>
+    <div><span class="verdict-chip buy">深度分析</span></div>
+  </div>
+
+  <!-- 预测 -->
+  <div class="prediction-banner win">
+    <div>AI综合预测 · 置信度 ★★★★☆</div>
+    <div class="prediction-score">荷兰 2:1 日本</div>
+    <div style="font-size:14px;margin-top:4px;color:var(--green)">方向：<b>主胜</b></div>
+  </div>
+
+  <!-- 欧赔数据 -->
+  <div class="subtitle">📊 主流欧赔数据（数据源：worldcup-odds.com）</div>
+  <div style="overflow-x:auto">
+  <table class="odd-table">
+    <tr><th>公司</th><th class="col-home">主胜</th><th class="col-draw">平局</th><th class="col-away">客胜</th></tr>
+      <tr><td>bet365</td><td class="col-home">1.95</td><td class="col-draw">3.50</td><td class="col-away">3.30</td></tr>
+      <tr><td>Betfred</td><td class="col-home">1.95</td><td class="col-draw">3.60</td><td class="col-away">3.75</td></tr>
+      <tr><td>bwin</td><td class="col-home">1.95</td><td class="col-draw">3.40</td><td class="col-away">3.50</td></tr>
+      <tr><td>BOYLE</td><td class="col-home">1.87</td><td class="col-draw">3.50</td><td class="col-away">3.50</td></tr>
+      <tr><td>Coral</td><td class="col-home">2.00</td><td class="col-draw">3.50</td><td class="col-away">3.50</td></tr>
+      <tr><td>Ladbrokes</td><td class="col-home">2.00</td><td class="col-draw">3.50</td><td class="col-away">3.50</td></tr>
+      <tr><td>Sportingbet</td><td class="col-home">1.95</td><td class="col-draw">3.40</td><td class="col-away">3.50</td></tr>
+  </table>
+  </div>
+
+  <!-- 半全场+总进球 -->
+  <div class="grid-2" style="margin-top:16px">
+  <div>
+  <div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:28%;background:var(--green)"></div></div><span class="hth-pct">28%</span></div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:22%;background:#a5d6a7"></div></div><span class="hth-pct">22%</span></div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:15%;background:var(--accent)"></div></div><span class="hth-pct">15%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:12%;background:var(--red)"></div></div><span class="hth-pct">12%</span></div>
+<div class="hth-bar"><span class="hth-label">平/负</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:#ff8a80"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/平</span><div class="hth-track"><div class="hth-fill" style="width:8%;background:var(--yellow)"></div></div><span class="hth-pct">8%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/负</span><div class="hth-track"><div class="hth-fill" style="width:5%;background:#ffab91"></div></div><span class="hth-pct">5%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">胜/胜</b> · 次选 <b style="color:#a5d6a7">平/胜</b></div>
+  </div>
+  <div>
+  <div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:3%;background:#555"></div></div><span class="bar-pct" style="color:var(--green)">3%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--blue)"></div></div><span class="bar-pct" style="color:var(--green)">10%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--green)"></div></div><span class="bar-pct" style="color:var(--green)">22%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--cyan)"></div></div><span class="bar-pct" style="color:var(--green)">30%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--purple)"></div></div><span class="bar-pct" style="color:var(--green)">35%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">3-4球+</b> · 大2.5球概率70.7%，强烈大球方向</div>
+  </div>
+  </div>
+
+  <!-- 精确比分预测 -->
+  <div style="margin-top:12px">
+  <div class="subtitle">🎯 精确比分预测（泊松xG推算·按概率排序）</div>
+  <div class="grid-4">
+<div class="rr-item"><div class="rr-score">3:2</div><div class="rr-pct">7.9%</div><div class="rr-star" style="color:var(--gold)">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">7.8%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">6.6%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:3</div><div class="rr-pct">6.6%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">5.6%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:2</div><div class="rr-pct">5.5%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">4:1</div><div class="rr-pct">4.7%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">2:0</div><div class="rr-pct">4.7%</div><div class="rr-star" style="color:">★★</div></div>
+  </div>
+  </div>
+
+  <!-- 泊松xG进球期望分析 -->
+<div class="sa-card">
+  <div class="sa-title">🎯 泊松xG进球期望分析 <span style="font-size:10px;color:var(--text3);font-weight:400">(Poisson xG Model)</span></div>
+  <div class="sa-xg-row">
+    <span class="sa-xg-item">🇳🇱 荷兰 xG <b>1.69</b></span>
+    <span class="sa-sep">⚡vs</span>
+    <span class="sa-xg-item">日本 🇯🇵 xG <b>1.41</b></span>
+  </div>
+  <div class="sa-stats">
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--green)">46.5%</div><div class="sa-sl">主胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--yellow)">20.1%</div><div class="sa-sl">平局概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--red)">33.4%</div><div class="sa-sl">客胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--purple)">70.7%</div><div class="sa-sl">大2.5球</div></div>
+  </div>
+  <div style="margin-top:12px;font-size:11px;color:var(--cyan);font-weight:700">📊 泊松推算最可能比分 (16种)</div>
+  <table class="sa-table">
+    <tr><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th></tr>
+    <tr><td sa-t-best>1</td><td sa-t-best><b>0:0</b></td><td sa-t-best><b>3.3%</b></td><td sa-t-best>3%</td><td class="sa-outcome-d sa-t-best">D</td><td>9</td><td><b>1:2</b></td><td><b>5.5%</b></td><td>6%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>2</td><td><b>0:1</b></td><td><b>4.6%</b></td><td>5%</td><td class="sa-outcome-a">A</td><td>10</td><td><b>1:3</b></td><td><b>2.6%</b></td><td>3%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>3</td><td><b>0:2</b></td><td><b>3.3%</b></td><td>3%</td><td class="sa-outcome-a">A</td><td>11</td><td><b>1:4</b></td><td><b>2.7%</b></td><td>3%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>4</td><td><b>0:3</b></td><td><b>1.5%</b></td><td>2%</td><td class="sa-outcome-a">A</td><td>12</td><td><b>1:5</b></td><td><b>0.8%</b></td><td>1%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>5</td><td><b>0:4</b></td><td><b>0.5%</b></td><td>0%</td><td class="sa-outcome-a">A</td><td>13</td><td><b>2:0</b></td><td><b>4.7%</b></td><td>5%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>6</td><td><b>0:5</b></td><td><b>0.5%</b></td><td>0%</td><td class="sa-outcome-a">A</td><td>14</td><td><b>2:1</b></td><td><b>6.6%</b></td><td>7%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>7</td><td><b>1:0</b></td><td><b>5.6%</b></td><td>6%</td><td class="sa-outcome-h">H</td><td>15</td><td><b>2:2</b></td><td><b>4.7%</b></td><td>5%</td><td class="sa-outcome-d">D</td></tr>
+    <tr><td>8</td><td><b>1:1</b></td><td><b>7.8%</b></td><td>8%</td><td class="sa-outcome-d">D</td><td>16</td><td><b>2:3</b></td><td><b>6.6%</b></td><td>7%</td><td class="sa-outcome-a">A</td></tr>
+  </table>
+  <div style="font-size:10px;color:var(--text3);margin-top:6px;text-align:right">泊松λ = 1.69 vs 1.41 | ELO差 = 135</div>
+</div>
+<div class="wk-card">
+  <div class="wk-title">⚽ 弱队进球专项分析 <span style="font-size:10px;color:var(--text3)">(ELO差≥100触发)</span></div>
+  <div class="wk-row"><span class="wk-label">弱队</span><span class="wk-val">日本</span></div>
+  <div class="wk-row"><span class="wk-label">有效ELO差</span><span class="wk-val">135</span></div>
+  <div class="wk-row"><span class="wk-label">最终弱队进球概率</span><span class="wk-val high" style="font-size:16px">40%</span></div>
+  <div class="wk-row"><span class="wk-label" style="font-weight:700;color:var(--green)">强队零封概率</span><span class="wk-val mid" style="font-size:14px">60%</span></div>
+  <div class="wk-bar-group">
+    <div class="wk-bar-row">
+      <span class="wk-bar-label">含日本进球的比分</span>
+      <div class="wk-bar-track"><div class="wk-bar-fill" style="width:40%;background:var(--red)">40%</div></div>
+      <span class="wk-bar-pct" style="color:var(--red)">40%</span>
+    </div>
+    <div class="wk-bar-row">
+      <span class="wk-bar-label">不含日本进球 (零封)</span>
+      <div class="wk-bar-track"><div class="wk-bar-fill" style="width:60%;background:var(--green)">60%</div></div>
+      <span class="wk-bar-pct" style="color:var(--green)">60%</span>
+    </div>
+  </div>
+  <div class="wk-advice">⚠️ <b>日本进球概率中等 (40%)</b>，需防范双方进球，比分投注应覆盖双方进球选项</div>
+</div>
+<div class="zz-card">
+  <div class="zz-title">🔒 0:0 专项研判 <span style="font-size:10px;color:var(--text3)">(所有比赛强制输出)</span></div>
+  <div class="zz-big low">3.3%</div>
+  <div style="text-align:center;font-size:11px;color:var(--text2)">90分钟内0:0概率 · 投注价值：<b style="color:#2ed573">低</b></div>
+  <div class="zz-cond">
+    <div>裸泊松0:0概率 3.3%</div>
+    <div>ELO差 135，差距适中 → 0:0可能性中等</div>
+    <div>小组赛首轮双方可能偏谨慎 → 0:0 概率 +1-2%</div>
+  </div>
+  <div class="zz-advice ">💡 0:0 概率较低，常规比分投注无需覆盖。若博冷可选择比分串关覆盖0:0。</div>
+</div>
+
+  <!-- 综合研判 -->
+  <div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+  <b style="color:var(--gold)">📝 深度综合研判：</b>荷兰广义实力「准强」(ELO 1887)，日本需扣除亚洲修正-20分(实际ELO~1732)→骨架位置5-6区(标准赔率~1.87-2.00)。欧赔主胜1.87-2.00完全在合理区间，离散度仅0.06。泊松模型主胜46.5%、最可能比分3:2(7.9%)和1:1(7.8%)，高比分指向明显。日本进球概率45%、零封概率仅55%——这是一场双方都会进球的比赛。大小球70.7%超大2.5球概率极强。Betfred客胜开到3.75高于同行，对日本爆冷信心不足。综合判断：荷兰小胜方向，但日本必进球，比分2:1或3:1。<br><b style="color:var(--green)">全玩法建议：胜平负买主胜 / 亚盘买荷兰-0.5 / 总进球买大2.5球 / 比分买2:1+3:1</b><br>
+  <b style="color:var(--gold)">💎 各玩法性价比评级：</b>胜负平⭐⭐⭐⭐ · 亚盘⭐⭐⭐ · 比分⭐⭐⭐ · 总进球⭐⭐⭐⭐⭐ · 半全场⭐⭐⭐⭐
+  </div>
+
+  <!-- 亚盘分析 -->
+  <div class="asian-card">
+    <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+    <div class="asian-grid">
+      <div class="asian-item">
+        <div class="asian-label">即时盘口</div>
+        <div class="asian-value">荷兰让半球</div>
+      </div>
+      <div class="asian-item">
+        <div class="asian-label">水位</div>
+        <div class="asian-value">0.94 中水</div>
+      </div>
+    </div>
+    <div class="asian-verdict asian-v-match">
+      <span class="verdict-icon">✅</span><strong>✅ 欧亚一致</strong><br>
+      欧亚一致，半球盘对应欧赔主胜1.87-2.00区间，盘口深度合理。日本受让半球回报有吸引力。
+    </div>
+    <div class="asian-source">盘口来源：2026.titan007.com</div>
+  </div>
+
+  <!-- 爆冷风险 -->
+  <div class="upset-card">
+  <div class="upset-header">
+    <span class="upset-icon">🌡️</span>
+    <span class="upset-level lvl3">爆冷风险：中等 · 3/5级</span>
+  </div>
+  <div class="upset-bar-track"><div class="upset-bar-fill" style="width:60%;background:#ffa502"></div></div>
+  <div class="upset-tags">
+  <span class="upset-tag safe">ELO差<150</span>
+  <span class="upset-tag safe">半球盘中浅</span>
+  <span class="upset-tag caution">日本zen冷门博</span>
+  <span class="upset-tag safe">欧赔离散度0.06</span>
+  </div>
+  </div>
+</div></div><!-- ============ 科特迪瓦 vs 厄瓜多尔 ============ -->
+<div class="section">
+<div class="section-title">🏟️ 科特迪瓦 vs 厄瓜多尔（F组）</div>
+<div class="match-card">
+  <div class="match-header">
+    <div class="match-time">⏰ 2026年07:00 | 洛杉矶 玫瑰碗体育场 | 晴 25°C</div>
+    <div class="match-teams"><span class="home">🇨🇮 科特迪瓦</span><span class="vs">vs</span><span class="away">厄瓜多尔 🇪🇨</span></div>
+    <div><span class="verdict-chip buy">深度分析</span></div>
+  </div>
+
+  <!-- 预测 -->
+  <div class="prediction-banner win">
+    <div>AI综合预测 · 置信度 ★★★☆☆</div>
+    <div class="prediction-score">科特迪瓦 1:2 厄瓜多尔</div>
+    <div style="font-size:14px;margin-top:4px;color:var(--green)">方向：<b>客胜</b></div>
+  </div>
+
+  <!-- 欧赔数据 -->
+  <div class="subtitle">📊 主流欧赔数据（数据源：worldcup-odds.com）</div>
+  <div style="overflow-x:auto">
+  <table class="odd-table">
+    <tr><th>公司</th><th class="col-home">主胜</th><th class="col-draw">平局</th><th class="col-away">客胜</th></tr>
+      <tr><td>bet365</td><td class="col-home">2.80</td><td class="col-draw">3.20</td><td class="col-away">2.40</td></tr>
+      <tr><td>bwin</td><td class="col-home">2.85</td><td class="col-draw">3.15</td><td class="col-away">2.35</td></tr>
+      <tr><td>Coral</td><td class="col-home">2.90</td><td class="col-draw">3.25</td><td class="col-away">2.45</td></tr>
+      <tr><td>Ladbrokes</td><td class="col-home">2.88</td><td class="col-draw">3.20</td><td class="col-away">2.45</td></tr>
+      <tr><td>BOYLE</td><td class="col-home">2.75</td><td class="col-draw">3.20</td><td class="col-away">2.40</td></tr>
+      <tr><td>Sportingbet</td><td class="col-home">2.80</td><td class="col-draw">3.10</td><td class="col-away">2.38</td></tr>
+  </table>
+  </div>
+
+  <!-- 半全场+总进球 -->
+  <div class="grid-2" style="margin-top:16px">
+  <div>
+  <div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">平/负</span><div class="hth-track"><div class="hth-fill" style="width:25%;background:#ff8a80"></div></div><span class="hth-pct">25%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:20%;background:var(--red)"></div></div><span class="hth-pct">20%</span></div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:18%;background:var(--accent)"></div></div><span class="hth-pct">18%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:12%;background:var(--green)"></div></div><span class="hth-pct">12%</span></div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:#a5d6a7"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/平</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:var(--yellow)"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/负</span><div class="hth-track"><div class="hth-fill" style="width:5%;background:#ffab91"></div></div><span class="hth-pct">5%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">平/负</b> · 次选 <b style="color:#a5d6a7">负/负</b></div>
+  </div>
+  <div>
+  <div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:4%;background:#555"></div></div><span class="bar-pct" style="color:var(--green)">4%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--blue)"></div></div><span class="bar-pct" style="color:var(--green)">15%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--green)"></div></div><span class="bar-pct" style="color:var(--green)">25%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--cyan)"></div></div><span class="bar-pct" style="color:var(--green)">28%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--purple)"></div></div><span class="bar-pct" style="color:var(--green)">28%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">3-4球+</b> · 大2.5球概率69.0%，强烈大球方向</div>
+  </div>
+  </div>
+
+  <!-- 精确比分预测 -->
+  <div style="margin-top:12px">
+  <div class="subtitle">🎯 精确比分预测（泊松xG推算·按概率排序）</div>
+  <div class="grid-4">
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">8.2%</div><div class="rr-star" style="color:var(--gold)">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:3</div><div class="rr-pct">7.6%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:2</div><div class="rr-pct">6.7%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">3:2</div><div class="rr-pct">6.4%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">5.9%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">5.6%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">5.0%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">0:2</div><div class="rr-pct">4.9%</div><div class="rr-star" style="color:">★★</div></div>
+  </div>
+  </div>
+
+  <!-- 泊松xG进球期望分析 -->
+<div class="sa-card">
+  <div class="sa-title">🎯 泊松xG进球期望分析 <span style="font-size:10px;color:var(--text3);font-weight:400">(Poisson xG Model)</span></div>
+  <div class="sa-xg-row">
+    <span class="sa-xg-item">🇨🇮 科特迪瓦 xG <b>1.38</b></span>
+    <span class="sa-sep">⚡vs</span>
+    <span class="sa-xg-item">厄瓜多尔 🇪🇨 xG <b>1.65</b></span>
+  </div>
+  <div class="sa-stats">
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--green)">33.4%</div><div class="sa-sl">主胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--yellow)">20.5%</div><div class="sa-sl">平局概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--red)">46.1%</div><div class="sa-sl">客胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--purple)">69.0%</div><div class="sa-sl">大2.5球</div></div>
+  </div>
+  <div style="margin-top:12px;font-size:11px;color:var(--cyan);font-weight:700">📊 泊松推算最可能比分 (16种)</div>
+  <table class="sa-table">
+    <tr><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th></tr>
+    <tr><td sa-t-best>1</td><td sa-t-best><b>0:0</b></td><td sa-t-best><b>3.6%</b></td><td sa-t-best>4%</td><td class="sa-outcome-d sa-t-best">D</td><td>9</td><td><b>1:2</b></td><td><b>6.7%</b></td><td>7%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>2</td><td><b>0:1</b></td><td><b>5.9%</b></td><td>6%</td><td class="sa-outcome-a">A</td><td>10</td><td><b>1:3</b></td><td><b>3.7%</b></td><td>4%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>3</td><td><b>0:2</b></td><td><b>4.9%</b></td><td>5%</td><td class="sa-outcome-a">A</td><td>11</td><td><b>1:4</b></td><td><b>4.6%</b></td><td>5%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>4</td><td><b>0:3</b></td><td><b>2.7%</b></td><td>3%</td><td class="sa-outcome-a">A</td><td>12</td><td><b>1:5</b></td><td><b>1.5%</b></td><td>2%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>5</td><td><b>0:4</b></td><td><b>1.1%</b></td><td>1%</td><td class="sa-outcome-a">A</td><td>13</td><td><b>2:0</b></td><td><b>3.4%</b></td><td>3%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>6</td><td><b>0:5</b></td><td><b>1.1%</b></td><td>1%</td><td class="sa-outcome-a">A</td><td>14</td><td><b>2:1</b></td><td><b>5.6%</b></td><td>6%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>7</td><td><b>1:0</b></td><td><b>5.0%</b></td><td>5%</td><td class="sa-outcome-h">H</td><td>15</td><td><b>2:2</b></td><td><b>4.6%</b></td><td>5%</td><td class="sa-outcome-d">D</td></tr>
+    <tr><td>8</td><td><b>1:1</b></td><td><b>8.2%</b></td><td>8%</td><td class="sa-outcome-d">D</td><td>16</td><td><b>2:3</b></td><td><b>7.6%</b></td><td>8%</td><td class="sa-outcome-a">A</td></tr>
+  </table>
+  <div style="font-size:10px;color:var(--text3);margin-top:6px;text-align:right">泊松λ = 1.38 vs 1.65 | ELO差 = 131</div>
+</div>
+<div class="wk-card">
+  <div class="wk-title">⚽ 弱队进球专项分析 <span style="font-size:10px;color:var(--text3)">(ELO差≥100触发)</span></div>
+  <div class="wk-row"><span class="wk-label">弱队</span><span class="wk-val">厄瓜多尔</span></div>
+  <div class="wk-row"><span class="wk-label">有效ELO差</span><span class="wk-val">131</span></div>
+  <div class="wk-row"><span class="wk-label">最终弱队进球概率</span><span class="wk-val mid" style="font-size:16px">37%</span></div>
+  <div class="wk-row"><span class="wk-label" style="font-weight:700;color:var(--green)">强队零封概率</span><span class="wk-val mid" style="font-size:14px">63%</span></div>
+  <div class="wk-bar-group">
+    <div class="wk-bar-row">
+      <span class="wk-bar-label">含厄瓜多尔进球的比分</span>
+      <div class="wk-bar-track"><div class="wk-bar-fill" style="width:37%;background:var(--red)">37%</div></div>
+      <span class="wk-bar-pct" style="color:var(--red)">37%</span>
+    </div>
+    <div class="wk-bar-row">
+      <span class="wk-bar-label">不含厄瓜多尔进球 (零封)</span>
+      <div class="wk-bar-track"><div class="wk-bar-fill" style="width:63%;background:var(--green)">63%</div></div>
+      <span class="wk-bar-pct" style="color:var(--green)">63%</span>
+    </div>
+  </div>
+  <div class="wk-advice">⚠️ <b>厄瓜多尔进球概率中等 (37%)</b>，零封概率偏大但不足够安全，建议复选</div>
+</div>
+<div class="zz-card">
+  <div class="zz-title">🔒 0:0 专项研判 <span style="font-size:10px;color:var(--text3)">(所有比赛强制输出)</span></div>
+  <div class="zz-big low">3.6%</div>
+  <div style="text-align:center;font-size:11px;color:var(--text2)">90分钟内0:0概率 · 投注价值：<b style="color:#2ed573">低</b></div>
+  <div class="zz-cond">
+    <div>裸泊松0:0概率 3.6%</div>
+    <div>ELO差 131，差距适中 → 0:0可能性中等</div>
+    <div>小组赛首轮双方可能偏谨慎 → 0:0 概率 +1-2%</div>
+  </div>
+  <div class="zz-advice ">💡 0:0 概率较低，常规比分投注无需覆盖。若博冷可选择比分串关覆盖0:0。</div>
+</div>
+
+  <!-- 综合研判 -->
+  <div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+  <b style="color:var(--gold)">📝 深度综合研判：</b>厄瓜多尔广义实力「中游偏上」(ELO 1867)，科特迪瓦需扣除非洲修正-20分(实际ELO~1716)→骨架位置5-6区。欧赔客胜2.35-2.50区间略高于标准(标准~2.20-2.35)，庄家对厄瓜多尔的信心并不特别强——平/半浅盘也印证了这一点。泊松模型客胜46.1%、主胜33.4%，最可能比分1:1(8.2%)和2:3(7.6%)，比赛极可能进入高比分模式。科特迪瓦进球概率45%，双方都进球概率高。大小球69.0%大2.5球概率。综合判断：厄瓜多尔不败概率~67%，但平/半浅盘+欧赔区间偏宽说明悬念大。首选客胜，但平局不可忽视。<br><b style="color:var(--green)">全玩法建议：胜平负买客胜(谨慎) / 亚盘买厄瓜多尔-0.25 / 总进球买大2.5球 / 比分1:2+2:2</b><br>
+  <b style="color:var(--gold)">💎 各玩法性价比评级：</b>胜负平⭐⭐⭐ · 亚盘⭐⭐⭐⭐ · 比分⭐⭐⭐ · 总进球⭐⭐⭐⭐⭐ · 半全场⭐⭐⭐
+  </div>
+
+  <!-- 亚盘分析 -->
+  <div class="asian-card">
+    <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+    <div class="asian-grid">
+      <div class="asian-item">
+        <div class="asian-label">即时盘口</div>
+        <div class="asian-value">科特迪瓦受让平手/半球</div>
+      </div>
+      <div class="asian-item">
+        <div class="asian-label">水位</div>
+        <div class="asian-value">0.91 中水</div>
+      </div>
+    </div>
+    <div class="asian-verdict asian-v-match">
+      <span class="verdict-icon">✅</span><strong>✅ 欧亚一致</strong><br>
+      欧亚一致，平/半浅盘对应欧赔客胜2.35-2.50区间。庄家对厄瓜多尔支持有限，浅盘有爆冷空间
+    </div>
+    <div class="asian-source">盘口来源：2026.titan007.com</div>
+  </div>
+
+  <!-- 爆冷风险 -->
+  <div class="upset-card">
+  <div class="upset-header">
+    <span class="upset-icon">🌡️</span>
+    <span class="upset-level lvl3">爆冷风险：中等 · 3/5级</span>
+  </div>
+  <div class="upset-bar-track"><div class="upset-bar-fill" style="width:60%;background:#ffa502"></div></div>
+  <div class="upset-tags">
+  <span class="upset-tag safe">ELO差<150</span>
+  <span class="upset-tag danger">浅盘(平/半)</span>
+  <span class="upset-tag safe">非洲修正-20分</span>
+  <span class="upset-tag caution">欧赔离散度偏高</span>
+  </div>
+  </div>
+</div></div><!-- ============ 瑞典 vs 突尼斯 ============ -->
+<div class="section">
+<div class="section-title">🏟️ 瑞典 vs 突尼斯（F组）</div>
+<div class="match-card">
+  <div class="match-header">
+    <div class="match-time">⏰ 2026年10:00 | 旧金山 李维斯体育场 | 晴 21°C</div>
+    <div class="match-teams"><span class="home">🇸🇪 瑞典</span><span class="vs">vs</span><span class="away">突尼斯 🇹🇳</span></div>
+    <div><span class="verdict-chip buy">深度分析</span></div>
+  </div>
+
+  <!-- 预测 -->
+  <div class="prediction-banner win">
+    <div>AI综合预测 · 置信度 ★★★☆☆</div>
+    <div class="prediction-score">瑞典 2:1 突尼斯</div>
+    <div style="font-size:14px;margin-top:4px;color:var(--green)">方向：<b>主胜</b></div>
+  </div>
+
+  <!-- 欧赔数据 -->
+  <div class="subtitle">📊 主流欧赔数据（数据源：worldcup-odds.com）</div>
+  <div style="overflow-x:auto">
+  <table class="odd-table">
+    <tr><th>公司</th><th class="col-home">主胜</th><th class="col-draw">平局</th><th class="col-away">客胜</th></tr>
+      <tr><td>bet365</td><td class="col-home">1.85</td><td class="col-draw">3.50</td><td class="col-away">3.70</td></tr>
+      <tr><td>Betfred</td><td class="col-home">1.95</td><td class="col-draw">3.30</td><td class="col-away">4.00</td></tr>
+      <tr><td>bwin</td><td class="col-home">1.85</td><td class="col-draw">3.20</td><td class="col-away">4.10</td></tr>
+      <tr><td>BOYLE</td><td class="col-home">1.87</td><td class="col-draw">3.30</td><td class="col-away">4.00</td></tr>
+      <tr><td>Coral</td><td class="col-home">1.91</td><td class="col-draw">3.40</td><td class="col-away">4.33</td></tr>
+      <tr><td>Ladbrokes</td><td class="col-home">1.91</td><td class="col-draw">3.30</td><td class="col-away">4.20</td></tr>
+      <tr><td>Sportingbet</td><td class="col-home">1.83</td><td class="col-draw">3.50</td><td class="col-away">3.75</td></tr>
+  </table>
+  </div>
+
+  <!-- 半全场+总进球 -->
+  <div class="grid-2" style="margin-top:16px">
+  <div>
+  <div class="subtitle">⚡ 半全场预测</div>
+<div class="hth-bar"><span class="hth-label">平/胜</span><div class="hth-track"><div class="hth-fill" style="width:25%;background:#a5d6a7"></div></div><span class="hth-pct">25%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/胜</span><div class="hth-track"><div class="hth-fill" style="width:22%;background:var(--green)"></div></div><span class="hth-pct">22%</span></div>
+<div class="hth-bar"><span class="hth-label">平/平</span><div class="hth-track"><div class="hth-fill" style="width:20%;background:var(--accent)"></div></div><span class="hth-pct">20%</span></div>
+<div class="hth-bar"><span class="hth-label">平/负</span><div class="hth-track"><div class="hth-fill" style="width:15%;background:#ff8a80"></div></div><span class="hth-pct">15%</span></div>
+<div class="hth-bar"><span class="hth-label">负/负</span><div class="hth-track"><div class="hth-fill" style="width:10%;background:var(--red)"></div></div><span class="hth-pct">10%</span></div>
+<div class="hth-bar"><span class="hth-label">胜/平</span><div class="hth-track"><div class="hth-fill" style="width:8%;background:var(--yellow)"></div></div><span class="hth-pct">8%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">平/胜</b> · 次选 <b style="color:#a5d6a7">胜/胜</b></div>
+  </div>
+  <div>
+  <div class="subtitle">⚽ 总进球预测</div>
+<div class="bar-horz"><span class="bar-label">0球</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:#555"></div></div><span class="bar-pct" style="color:var(--green)">5%</span></div>
+<div class="bar-horz"><span class="bar-label">1球</span><div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--blue)"></div></div><span class="bar-pct" style="color:var(--green)">22%</span></div>
+<div class="bar-horz"><span class="bar-label">2球</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--green)"></div></div><span class="bar-pct" style="color:var(--green)">30%</span></div>
+<div class="bar-horz"><span class="bar-label">3球</span><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--cyan)"></div></div><span class="bar-pct" style="color:var(--green)">23%</span></div>
+<div class="bar-horz"><span class="bar-label">4球+</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--purple)"></div></div><span class="bar-pct" style="color:var(--green)">20%</span></div>
+  <div style="font-size:11px;color:var(--text2);margin-top:6px">🎯 首选 <b style="color:var(--green)">2球</b> · 大小球2.25均水，2球概率最高</div>
+  </div>
+  </div>
+
+  <!-- 精确比分预测 -->
+  <div style="margin-top:12px">
+  <div class="subtitle">🎯 精确比分预测（泊松xG推算·按概率排序）</div>
+  <div class="grid-4">
+<div class="rr-item"><div class="rr-score">1:1</div><div class="rr-pct">9.3%</div><div class="rr-star" style="color:var(--gold)">★★★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:0</div><div class="rr-pct">7.0%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">2:1</div><div class="rr-pct">6.8%</div><div class="rr-star" style="color:">★★★★</div></div>
+<div class="rr-item"><div class="rr-score">3:2</div><div class="rr-pct">6.5%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">0:1</div><div class="rr-pct">6.4%</div><div class="rr-star" style="color:">★★★</div></div>
+<div class="rr-item"><div class="rr-score">1:2</div><div class="rr-pct">6.2%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">2:3</div><div class="rr-pct">6.0%</div><div class="rr-star" style="color:">★★</div></div>
+<div class="rr-item"><div class="rr-score">2:0</div><div class="rr-pct">5.1%</div><div class="rr-star" style="color:">★★</div></div>
+  </div>
+  </div>
+
+  <!-- 泊松xG进球期望分析 -->
+<div class="sa-card">
+  <div class="sa-title">🎯 泊松xG进球期望分析 <span style="font-size:10px;color:var(--text3);font-weight:400">(Poisson xG Model)</span></div>
+  <div class="sa-xg-row">
+    <span class="sa-xg-item">🇸🇪 瑞典 xG <b>1.45</b></span>
+    <span class="sa-sep">⚡vs</span>
+    <span class="sa-xg-item">突尼斯 🇹🇳 xG <b>1.34</b></span>
+  </div>
+  <div class="sa-stats">
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--green)">41.8%</div><div class="sa-sl">主胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--yellow)">22.0%</div><div class="sa-sl">平局概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--red)">36.2%</div><div class="sa-sl">客胜概率</div></div>
+    <div class="sa-stat"><div class="sa-sv" style="color:var(--purple)">63.0%</div><div class="sa-sl">大2.5球</div></div>
+  </div>
+  <div style="margin-top:12px;font-size:11px;color:var(--cyan);font-weight:700">📊 泊松推算最可能比分 (16种)</div>
+  <table class="sa-table">
+    <tr><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th><th>#</th><th>比分</th><th>概率</th><th>累计</th><th>结果</th></tr>
+    <tr><td sa-t-best>1</td><td sa-t-best><b>0:0</b></td><td sa-t-best><b>4.8%</b></td><td sa-t-best>5%</td><td class="sa-outcome-d sa-t-best">D</td><td>9</td><td><b>1:2</b></td><td><b>6.2%</b></td><td>6%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>2</td><td><b>0:1</b></td><td><b>6.4%</b></td><td>6%</td><td class="sa-outcome-a">A</td><td>10</td><td><b>1:3</b></td><td><b>2.8%</b></td><td>3%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>3</td><td><b>0:2</b></td><td><b>4.3%</b></td><td>4%</td><td class="sa-outcome-a">A</td><td>11</td><td><b>1:4</b></td><td><b>2.8%</b></td><td>3%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>4</td><td><b>0:3</b></td><td><b>1.9%</b></td><td>2%</td><td class="sa-outcome-a">A</td><td>12</td><td><b>1:5</b></td><td><b>0.7%</b></td><td>1%</td><td class="sa-outcome-a">A</td></tr>
+    <tr><td>5</td><td><b>0:4</b></td><td><b>0.6%</b></td><td>1%</td><td class="sa-outcome-a">A</td><td>13</td><td><b>2:0</b></td><td><b>5.1%</b></td><td>5%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>6</td><td><b>0:5</b></td><td><b>0.5%</b></td><td>0%</td><td class="sa-outcome-a">A</td><td>14</td><td><b>2:1</b></td><td><b>6.8%</b></td><td>7%</td><td class="sa-outcome-h">H</td></tr>
+    <tr><td>7</td><td><b>1:0</b></td><td><b>7.0%</b></td><td>7%</td><td class="sa-outcome-h">H</td><td>15</td><td><b>2:2</b></td><td><b>4.5%</b></td><td>4%</td><td class="sa-outcome-d">D</td></tr>
+    <tr><td>8</td><td><b>1:1</b></td><td><b>9.3%</b></td><td>9%</td><td class="sa-outcome-d">D</td><td>16</td><td><b>2:3</b></td><td><b>6.0%</b></td><td>6%</td><td class="sa-outcome-a">A</td></tr>
+  </table>
+  <div style="font-size:10px;color:var(--text3);margin-top:6px;text-align:right">泊松λ = 1.45 vs 1.34 | ELO差 = 56</div>
+</div>
+
+<div class="zz-card">
+  <div class="zz-title">🔒 0:0 专项研判 <span style="font-size:10px;color:var(--text3)">(所有比赛强制输出)</span></div>
+  <div class="zz-big low">4.8%</div>
+  <div style="text-align:center;font-size:11px;color:var(--text2)">90分钟内0:0概率 · 投注价值：<b style="color:#2ed573">低</b></div>
+  <div class="zz-cond">
+    <div>裸泊松0:0概率 4.8%</div>
+    <div>ELO差 56，实力接近 → 僵局概率上升</div>
+    <div>小组赛首轮双方可能偏谨慎 → 0:0 概率 +1-2%</div>
+  </div>
+  <div class="zz-advice ">💡 0:0 概率较低，常规比分投注无需覆盖。若博冷可选择比分串关覆盖0:0。</div>
+</div>
+
+  <!-- 综合研判 -->
+  <div style="margin-top:14px;padding:14px;background:var(--card2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+  <b style="color:var(--gold)">📝 深度综合研判：</b>瑞典广义实力约「中游偏上」(ELO 1771)，突尼斯需扣除非洲修正-20分(实际ELO~1695)→骨架位置5-6区。欧赔主胜1.83-1.95区间合理，离散度0.07。泊松模型主胜41.8%、客胜36.2%差距不大，最可能比分1:1(9.3%)和1:0(7.0%)。这场比赛的泊松特征表明双方差距不大——主胜概率仅高出客胜5.6个百分点。突尼斯tao"柔弱胜刚强"信号亮起，欧赔客胜Coral开到4.33说明冷门空间存在。综合判断：瑞典小优但绝无稳胆，1球分胜负或平局都有可能。五星推荐买平局对冲。<br><b style="color:var(--green)">全玩法建议：胜平负买主胜(谨慎)+平局对冲 / 亚盘买突尼斯+0.5 / 总进球买1-2球 / 比分1:0+1:1</b><br>
+  <b style="color:var(--gold)">💎 各玩法性价比评级：</b>胜负平⭐⭐⭐ · 亚盘⭐⭐⭐⭐ · 比分⭐⭐⭐⭐ · 总进球⭐⭐⭐ · 半全场⭐⭐⭐
+  </div>
+
+  <!-- 亚盘分析 -->
+  <div class="asian-card">
+    <div class="asian-title">🏧 亚盘分析（数据源：titan007.com）</div>
+    <div class="asian-grid">
+      <div class="asian-item">
+        <div class="asian-label">即时盘口</div>
+        <div class="asian-value">瑞典让半球</div>
+      </div>
+      <div class="asian-item">
+        <div class="asian-label">水位</div>
+        <div class="asian-value">0.93 中水</div>
+      </div>
+    </div>
+    <div class="asian-verdict asian-v-match">
+      <span class="verdict-icon">✅</span><strong>✅ 欧亚一致</strong><br>
+      欧亚一致，半球盘对应欧赔主胜1.83-1.95区间，属合理让球。中水不设防说明庄家对瑞典信心一般。
+    </div>
+    <div class="asian-source">盘口来源：2026.titan007.com</div>
+  </div>
+
+  <!-- 爆冷风险 -->
+  <div class="upset-card">
+  <div class="upset-header">
+    <span class="upset-icon">🌡️</span>
+    <span class="upset-level lvl3">爆冷风险：中等 · 3/5级</span>
+  </div>
+  <div class="upset-bar-track"><div class="upset-bar-fill" style="width:60%;background:#ffa502"></div></div>
+  <div class="upset-tags">
+  <span class="upset-tag danger">ELO差<100</span>
+  <span class="upset-tag safe">半球盘中浅</span>
+  <span class="upset-tag caution">突尼斯zen冷门博</span>
+  <span class="upset-tag safe">tao柔弱胜刚强</span>
+  </div>
+  </div>
+</div></div>
+
+<!-- 本日泊松比分分布总览 -->
+<div class="upset-summary">
+<h3>📊 本日泊松比分分布总览</h3>
+<table>
   <tr><th>比赛</th><th>λ₁ (主)</th><th>λ₂ (客)</th><th>最可能比分</th><th>0:0概率</th><th>弱队进球</th><th>大2.5球</th><th>ELO差</th></tr>
-      <tr>
-        <td><b>🇩🇪 德国 vs 库拉索 🇨🇼</b></td>
-        <td style="color:var(--cyan)">1.63</td>
-        <td style="color:var(--accent)">0.52</td>
-        <td style="color:var(--gold);font-weight:800">1:0</td>
-        <td style="color:#ff4757">10.5%</td>
-        <td>7% (库拉索)</td>
-        <td style="color:var(--purple)">42.8%</td>
-        <td>+553</td>
-      </tr>
-      <tr>
-        <td><b>🇳🇱 荷兰 vs 日本 🇯🇵</b></td>
-        <td style="color:var(--cyan)">1.67</td>
-        <td style="color:var(--accent)">1.40</td>
-        <td style="color:var(--gold);font-weight:800">1:1</td>
-        <td style="color:#2ed573">3.4%</td>
-        <td>40% (日本)</td>
-        <td style="color:var(--purple)">70.2%</td>
-        <td>+135</td>
-      </tr>
-      <tr>
-        <td><b>🇨🇮 科特迪瓦 vs 厄瓜多尔 🇪🇨</b></td>
-        <td style="color:var(--cyan)">1.37</td>
-        <td style="color:var(--accent)">1.63</td>
-        <td style="color:var(--gold);font-weight:800">1:1</td>
-        <td style="color:#2ed573">3.7%</td>
-        <td>37% (科特迪瓦)</td>
-        <td style="color:var(--purple)">68.6%</td>
-        <td>-131</td>
-      </tr>
-      <tr>
-        <td><b>🇸🇪 瑞典 vs 突尼斯 🇹🇳</b></td>
-        <td style="color:var(--cyan)">1.44</td>
-        <td style="color:var(--accent)">1.33</td>
-        <td style="color:var(--gold);font-weight:800">1:1</td>
-        <td style="color:#2ed573">4.9%</td>
-        <td>N/A</td>
-        <td style="color:var(--purple)">62.8%</td>
-        <td>+56</td>
-      </tr>
-</table>
+  <tr>
+    <td><b>🇩🇪 德国 vs 库拉索 🇨🇼</b></td>
+    <td style="color:var(--cyan)">1.64</td>
+    <td style="color:var(--accent)">0.52</td>
+    <td style="color:var(--gold);font-weight:800">1:0</td>
+    <td style="color:#ff4757">10.4%</td>
+    <td>7% (库拉索)</td>
+    <td style="color:var(--purple)">43.2%</td>
+    <td>553</td>
+  </tr>
+  <tr>
+    <td><b>🇳🇱 荷兰 vs 日本 🇯🇵</b></td>
+    <td style="color:var(--cyan)">1.69</td>
+    <td style="color:var(--accent)">1.41</td>
+    <td style="color:var(--gold);font-weight:800">3:2</td>
+    <td style="color:#2ed573">3.3%</td>
+    <td>40% (日本)</td>
+    <td style="color:var(--purple)">70.7%</td>
+    <td>135</td>
+  </tr>
+  <tr>
+    <td><b>🇨🇮 科特迪瓦 vs 厄瓜多尔 🇪🇨</b></td>
+    <td style="color:var(--cyan)">1.38</td>
+    <td style="color:var(--accent)">1.65</td>
+    <td style="color:var(--gold);font-weight:800">1:1</td>
+    <td style="color:#2ed573">3.6%</td>
+    <td>37% (厄瓜多尔)</td>
+    <td style="color:var(--purple)">69.0%</td>
+    <td>131</td>
+  </tr>
+  <tr>
+    <td><b>🇸🇪 瑞典 vs 突尼斯 🇹🇳</b></td>
+    <td style="color:var(--cyan)">1.45</td>
+    <td style="color:var(--accent)">1.34</td>
+    <td style="color:var(--gold);font-weight:800">1:1</td>
+    <td style="color:#2ed573">4.8%</td>
+    <td>N/A</td>
+    <td style="color:var(--purple)">63.0%</td>
+    <td>56</td>
+  </tr>
+</table></div>
+
+<!-- v10.0 模块说明 -->
+<div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:28px">
+<h3 style="font-size:16px;color:var(--gold);margin-bottom:16px;text-align:center">🆕 v10.0 完整分析框架：胜负平→零封→比分→进球</h3>
+<div class="knowledge-grid">
+  <div class="k-card">
+    <div class="k-icon">📊</div>
+    <div class="k-title">① 胜负平走向</div>
+    <div class="k-desc">欧赔7家公司对比 + 离散度分析 + 骨架区定位 → 确定比赛大方向</div>
+  </div>
+  <div class="k-card">
+    <div class="k-icon">🔒</div>
+    <div class="k-title">② 零封分析</div>
+    <div class="k-desc">弱队进球概率专项 + 强队零封概率 + 泊松含/不含进球分组</div>
+  </div>
+  <div class="k-card">
+    <div class="k-icon">🎯</div>
+    <div class="k-title">③ 比分预测</div>
+    <div class="k-desc">泊松16种比分精准量化 + 欧赔倒推验证 + 0:0专项研判</div>
+  </div>
+  <div class="k-card">
+    <div class="k-icon">⚽</div>
+    <div class="k-title">④ 进球分析</div>
+    <div class="k-desc">xG期望进球 + 半全场 + 总进球 + 大小球概率 + 策略评级</div>
+  </div>
+</div>
+<div style="margin-top:16px;font-size:11px;color:var(--text2);text-align:center;line-height:1.8">
+  <b>四大数据源综合：</b>ELO模型 | 欧洲赔率(7家) | 亚洲盘口 | 泊松xG分布<br>
+  <b>分析路径：</b>广实定位→骨架位置→赔率方向→离散度验证→欧亚交叉验证→泊松比分→弱队进球→0:0研判→综合研判
+</div>
+</div>
 
 <div class="footer">
-<p>© 2026 世界杯预测系统 · 泊松比分深度分析 v8.0 · 数据来源：本地ELO模型 + 泊松推算</p>
-<p style="margin-top:5px">⚠️ 比分预测基于数学模型推算，仅供参考。实际比赛结果受多种因素影响。投注请通过官方渠道。</p>
+  <p><b>2026世界杯 · AI赛果预测 v10.0 完整深度分析版</b></p>
+  <p>Powered by Poisson xG + 欧赔深度分析 + 亚盘交叉验证 + 六因子模型 + 东方玄学</p>
+  <p style="margin-top:8px;color:var(--red)">⚠️ 风险提示：足球比赛存在极大不确定性，本报告仅供娱乐参考，不构成任何投注建议。请理性购彩，量力而行。</p>
+  <p style="margin-top:4px">泊松计算引擎: src/analysis/poisson_score.py | ELO数据: localhost:7862 | 欧赔: worldcup-odds.com | 亚盘: titan007.com</p>
 </div>
 
 </body>
