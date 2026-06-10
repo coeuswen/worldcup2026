@@ -5,345 +5,381 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>6月15日 世界杯投注建议 v14.1 · 大小球深度分析版</title>
 <style>
-:root{--bg:#0a0e17;--card:#111827;--card2:#1a1f2e;--border:#1e2a3a;--text:#e0e0e6;--text2:#8890a8;--text3:#555570;
---accent:#ff6b35;--accent2:#00d4aa;--blue:#4a9eff;--red:#ff4757;--yellow:#ffa502;--green:#2ed573;--purple:#a55eea;
---gold:#ffd700;--pink:#ff6b9d;--cyan:#00d4cc}
+:root {
+  --bg:#0a0e1a; --card:#111827; --card2:#161c2e; --border:#1e2d50; --text:#e0e6ee;
+  --text2:#8899aa; --text3:#555570; --accent:#ff6b35; --accent2:#00d4aa;
+  --blue:#4a9eff; --red:#ff4757; --yellow:#ffa502; --green:#2ed573;
+  --gold:#ffd700; --pink:#ff6b9d; --cyan:#00d4cc;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:16px;max-width:900px;margin:0 auto}
-.header{text-align:center;padding:28px 16px 20px;border-bottom:1px solid var(--border);margin-bottom:20px}
-.header h1{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.header .meta{font-size:13px;color:var(--text2);margin-top:6px}
-.header .ver{display:inline-block;background:rgba(0,212,204,0.12);border:1px solid rgba(0,212,204,0.3);color:var(--cyan);border-radius:12px;padding:2px 12px;font-size:11px;margin-top:8px}
-.section{margin-bottom:20px}
-.section h2{font-size:16px;font-weight:700;margin-bottom:12px;padding-left:10px;border-left:3px solid var(--accent)}
-.match-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
-.match-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
-.match-id{font-size:11px;color:var(--text2);background:var(--card2);padding:2px 8px;border-radius:8px}
-.match-time{font-size:11px;color:var(--text2)}
-.match-teams{font-size:18px;font-weight:800;text-align:center}
-.match-teams .vs{color:var(--accent);margin:0 8px;font-size:14px}
-.match-teams .home{color:#fff}.match-teams .away{color:var(--text2)}
-.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin-right:4px}
-.tag-green{background:rgba(46,213,115,0.15);color:var(--green)}
-.tag-yellow{background:rgba(255,165,2,0.15);color:var(--yellow)}
-.tag-red{background:rgba(255,71,87,0.15);color:var(--red)}
-.tag-blue{background:rgba(74,158,255,0.15);color:var(--blue)}
-.tag-cyan{background:rgba(0,212,204,0.15);color:var(--cyan)}
-.play-badge{display:inline-block;padding:4px 14px;border-radius:14px;font-size:13px;font-weight:700;margin:8px 0}
-.play-score{background:rgba(255,215,0,0.15);color:var(--gold);border:1px solid rgba(255,215,0,0.3)}
-.play-total{background:rgba(0,212,204,0.12);color:var(--cyan);border:1px solid rgba(0,212,204,0.25)}
-.play-half{background:rgba(165,94,234,0.12);color:var(--purple);border:1px solid rgba(165,94,234,0.25)}
-.gate-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin:10px 0}
-.gate-card h4{font-size:13px;font-weight:700;margin-bottom:8px}
-table{width:100%;border-collapse:collapse;font-size:11px;margin:8px 0}
-th{background:var(--card2);color:var(--text2);padding:6px 5px;text-align:center;font-weight:600;font-size:10px;border-bottom:2px solid var(--border)}
-td{padding:6px 5px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.03)}
-tr:hover td{background:rgba(255,255,255,0.015)}
-.rec-row{font-weight:700}
-.plan-table{margin-top:12px}
-.plan-table th{font-size:10px}
-.plan-table td{font-size:11px}
-.roi-green{color:var(--green);font-weight:700}
-.roi-gold{color:var(--gold);font-weight:700}
-.footer{text-align:center;padding:20px;border-top:1px solid var(--border);margin-top:30px;font-size:11px;color:var(--text3)}
-.footer p{margin:4px 0}
-.bar-horz{display:flex;align-items:center;gap:6px;margin:3px 0}
-.bar-horz .bar-label{width:50px;font-size:9px;color:var(--text2);text-align:right}
-.bar-horz .bar-track{flex:1;height:10px;background:rgba(255,255,255,0.04);border-radius:3px}
-.bar-horz .bar-fill{height:100%;border-radius:3px}
-.bar-horz .bar-pct{width:35px;font-size:9px;font-weight:700;text-align:right}
-@media(max-width:600px){body{padding:10px}.match-header{flex-direction:column;text-align:center}}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:16px;max-width:900px;margin:0 auto}
+.header{text-align:center;padding:30px 20px;border-bottom:2px solid var(--border);margin-bottom:24px}
+.header h1{font-size:1.5em;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--gold),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header .meta{color:var(--text2);font-size:.82em;margin-top:6px}
+.header .ver{display:inline-block;background:rgba(255,107,53,0.15);border:1px solid rgba(255,107,53,0.3);color:var(--pink);padding:2px 10px;border-radius:12px;font-size:.72em;font-weight:bold;margin-top:8px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin:16px 0}
+.section h2{font-size:1.05em;color:var(--cyan);margin-bottom:14px;border-left:3px solid var(--gold);padding-left:10px}
+.section h3{font-size:.92em;color:var(--gold);margin:14px 0 8px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0}
+th,td{padding:8px 10px;text-align:center;border:1px solid var(--border);font-size:.88em}
+th{background:var(--card2);color:var(--cyan);font-weight:600}
+tr:hover td{background:rgba(77,166,255,0.04)}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.72em;font-weight:bold;margin-right:4px}
+.tag-green{background:#1b5e20;color:#81c784} .tag-red{background:#b71c1c;color:#ef9a9a}
+.tag-yellow{background:#e65100;color:#ffcc80} .tag-blue{background:#0d47a1;color:#90caf9}
+.bar-wrap{background:var(--card2);border-radius:4px;height:22px;overflow:hidden;margin:4px 0}
+.bar{height:22px;border-radius:4px;transition:width .3s}
+.plan-card{background:linear-gradient(135deg,var(--card2),var(--card));border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;position:relative;overflow:hidden}
+.plan-card.recommended{border-color:var(--gold);box-shadow:0 0 20px rgba(255,215,0,0.1)}
+.plan-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.plan-card.A::before{background:var(--green)}
+.plan-card.B::before{background:var(--gold)}
+.plan-card.C2::before{background:var(--blue)}
+.plan-card.C3::before{background:var(--accent)}
+.plan-card.D::before{background:var(--green)}
+.spf-card{background:rgba(255,107,53,0.04);border:1px solid rgba(255,107,53,0.15);border-radius:10px;padding:12px;margin:10px 0}
+.spf-card h4{font-size:.82em;color:var(--accent);margin-bottom:6px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin:10px 0}
+.score-item{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 6px;text-align:center;cursor:pointer;transition:all .2s}
+.score-item:hover{border-color:var(--gold);transform:translateY(-1px)}
+.score-item.selected{border-color:var(--green);background:rgba(46,213,115,0.08)}
+.score-odd{font-size:1.1em;font-weight:700;color:var(--gold)}
+.score-name{font-size:.78em;color:var(--text2)}
+.score-prob{font-size:.7em;color:var(--text3);margin-top:2px}
+.check-mark{color:var(--green);margin-right:4px}
+.warn-mark{color:var(--red);margin-right:4px}
+.highlight-row{background:rgba(255,215,0,0.06)}
+.gate-card{background:linear-gradient(135deg,rgba(74,158,255,0.08),rgba(0,212,204,0.04));border:1px solid rgba(74,158,255,0.25);border-radius:10px;padding:14px;margin:8px 0}
+.gate-card h4{font-size:.84em;color:var(--blue);margin-bottom:4px}
+footer{text-align:center;padding:24px 0;margin-top:30px;border-top:1px solid var(--border);color:var(--text3);font-size:.78em}
 </style>
 </head>
 <body>
+
 <div class="header">
   <h1>2026世界杯 · 6月15日 投注建议</h1>
   <div class="meta">v14.1 · 大小球深度分析版 · lottery.gov.cn实时赔率</div>
-  <span class="ver">零封比分条件概率 · 边际成本优化 · SPF基底+过N关</span>
+  <span class="ver">v14.1 新增 大小球条件概率 · 边际成本优化</span>
+</div>
+
+<!-- ========== v14.1 更新说明 ========== -->
+<div class="section" style="border-color:var(--blue)">
+<h2>v14.1 四点重大更新</h2>
+<table>
+<tr><th>#</th><th>修正项</th><th>说明</th></tr>
+<tr><td>1</td><td><strong>+SPF胜负平分析</strong></td><td>逐场分析SPF+RQSPF赔率，解释为何不选/何时可选</td></tr>
+<tr><td>2</td><td><strong>修复杂码</strong></td><td>零封率行f-string源码泄露 → 已修正</td></tr>
+<tr><td>3</td><td><strong>+过2关/过3关</strong></td><td>三串一拆分为「过3关=全中」+「过2关=任意中2场」，**哪怕最低赔率组合也得回本**</td></tr>
+<tr style="background:rgba(0,212,204,0.06)"><td><strong>4 新增</strong></td><td><strong>+大小球条件概率深度分析</strong></td><td>零封前提下用泊松条件概率+大小球预期进球数精确锁定最优比分组合 · 边际成本优化</td></tr>
+</table>
+</div>
+
+<!-- ========== 核心逻辑 ========== -->
+<div class="section" style="border-color:var(--red)">
+<h2 style="color:var(--red)">零封=比分 (v13.0延续)</h2>
+<p><strong>零封场（零封率>=80%）</strong>必须用<strong>「比分」</strong>替代「总进球」。</p>
+<p>总进球2球含1:1+2:0，但零封预测下1:1不可能→逻辑矛盾。比分@7.25 > 总进球@6.70，性价比+8%。</p>
+<p>6月15日<strong>唯一定义零封场: 德国 vs 库拉索</strong>(零封率85%)</p>
+</div>
+
+<!-- ========== 6月15日赛程概览 ========== -->
+<div class="section">
+<h2>6月15日(周一) 4场比赛</h2>
+<table>
+<tr><th>编号</th><th>比赛</th><th>北京时间</th><th>分档</th><th>核心策略</th></tr>
+<tr><td>周日009</td><td>德国 vs 库拉索</td><td>01:00</td><td><span class="tag tag-green">零封稳胆</span></td><td>零封85%→比分复选</td></tr>
+<tr><td>周日010</td><td>荷兰 vs 日本</td><td>04:00</td><td><span class="tag tag-blue">大球场</span></td><td>大球70.7%→总进球</td></tr>
+<tr><td>周日011</td><td>科特迪瓦 vs 厄瓜多尔</td><td>07:00</td><td><span class="tag tag-yellow">客场优</span></td><td>大球69%→总进球</td></tr>
+<tr><td>周日012</td><td>瑞典 vs 突尼斯</td><td>10:00</td><td><span class="tag tag-yellow">均衡场</span></td><td>大球63%→总进球/半全场</td></tr>
+</table>
 </div>
 
 <div class="section">
-<h2>v14.1 规则速查</h2>
-<table>
-<tr><th>规则</th><th>条件</th><th>玩法</th></tr>
-<tr><td>零封=比分</td><td>零封率&#8805;80%</td><td>比分复选（不使用总进球）</td></tr>
-<tr><td>大球=总进球</td><td>over_2.5&#8805;60%</td><td>总进球 2+3球</td></tr>
-<tr><td>均衡=半全场</td><td>ELO差<80</td><td>半全场 胜胜+平胜</td></tr>
-<tr><td>&#955;total ± 0.5 公式</td><td>零封场</td><td>精确锁定最优零封比分区间</td></tr>
-<tr style="color:var(--gold)"><td>过2关(三串三)</td><td>3场任意中2</td><td>12注24元 &#183; 容1错 &#183; 回本铁律</td></tr>
-<tr style="color:var(--gold)"><td>过3关(三串一)</td><td>3场全中</td><td>8注16元 &#183; 最高收益 &#183; 回本铁律</td></tr>
-</table>
+<h2>周日009 德国 <span style="color:var(--text2)">VS</span> 库拉索</h2>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+<span class="tag tag-green">零封稳胆</span>
+<span style="color:var(--text2);font-size:.85em">零封85%·比分复选</span>
 </div>
-<div class="match-card">
-<div class="match-header">
-  <span class="match-id">周日009</span>
-  <span class="match-time">06-15 01:00</span>
+
+<!-- SPF 胜负平分析 -->
+<div class="spf-card">
+<h4>📊 SPF 胜负平 + RQSPF 让球分析</h4>
+<p><strong>SPF</strong>: <span style="color:var(--text3)">SPF未开售</span></p>
+<p style="margin-top:2px"><strong>RQSPF</strong>: RQSPF(-3): 胜1.94/平4.6/<strong>负2.52</strong> · 让3球深盘，但RQSPF赔率偏低，比分玩法性价比更高</p>
+<p style="font-size:.78em;color:var(--text3);margin-top:4px">结论: SPF赔率偏低 → 入串回本难度大 → 优先选择更高赔率的比分/总进球/半全场</p>
 </div>
-<div class="match-teams"><span class="home">德国</span><span class="vs">VS</span><span class="away">库拉索</span></div>
-<div style="text-align:center"><span class="play-score">比分复选（零封场）</span></div>
+
+<!-- 玩法方向 -->
+<div style="background:var(--card2);border-radius:10px;padding:14px;margin:12px 0">
+<h3 style="color:var(--accent)">📍 逐场玩法方向</h3>
 <table>
-<tr><th>ELO差</th><th>主胜</th><th>平局</th><th>客胜</th><th>over_2.5</th><td>零封率</td><td style='color:var(--gold);font-weight:700'>85%</td></tr>
-<tr style="font-weight:700">
-  <td>483</td>
-  <td style="color:var(--green)">63.6%</td>
-  <td style="color:var(--yellow)">21.8%</td>
-  <td style="color:var(--red)">14.6%</td>
-  <td>48.0%</td>
-  <td style="color:var(--gold)">85%</td>
-</tr>
+<tr><th>ELO差</th><td>483分</td><th>泊松</th><td>主1.64/客0.66</td></tr>
+<tr><td>大球概率</td><td>48.0%</td></tr><td>零封率</td><td>85%</td>
+<tr><td>最优玩法</td><td><strong>比分 (零封复选)</strong> 复选3个零封比分</td></tr>
+<tr><td>理由</td><td colspan="3">零封率85% → 排除库拉索进球可能 → λ_total=2.30(≈大小球2.5) → 锁定2:0+3:0+1:0</td></tr>
 </table>
+<h3 style="color:var(--gold);margin-top:14px">比分赔率详情 (零封比分)</h3><div class="score-grid"><div class="score-item selected" style="border-color:var(--green);"><div class="score-odd">3:0<span style="float:right;color:var(--green);font-size:.8em">@5.50</span></div><div class="score-prob">泊松7.4%</div></div><div class="score-item selected" style="border-color:var(--green);"><div class="score-odd">4:0<span style="float:right;color:var(--green);font-size:.8em">@5.75</span></div><div class="score-prob">泊松3.0%</div></div><div class="score-item selected" style="border-color:var(--green);"><div class="score-odd">5:0<span style="float:right;color:var(--green);font-size:.8em">@7.00</span></div><div class="score-prob">泊松1.0%</div></div><div class="score-item" style=""><div class="score-odd">2:0<span style="float:right;color:var(--text2);font-size:.8em">@7.25</span></div><div class="score-prob">泊松13.5%</div></div><div class="score-item" style=""><div class="score-odd">1:0<span style="float:right;color:var(--text2);font-size:.8em">@14.00</span></div><div class="score-prob">泊松16.4%</div></div></div><p style="color:var(--text2);font-size:.82em;margin-top:8px"><strong>复选策略</strong>: 3:0@5.50 x 4:0@5.75 x 5:0@7.00<br>最低赔率@5.50 → 中任意一注即按最低赔率回本</p></div></div>
+<div class="section">
+<h2>周日010 荷兰 <span style="color:var(--text2)">VS</span> 日本</h2>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+<span class="tag tag-blue">大球场</span>
+<span style="color:var(--text2);font-size:.85em">大球70.7%·总进球</span>
+</div>
+
+<!-- SPF 胜负平分析 -->
+<div class="spf-card">
+<h4>📊 SPF 胜负平 + RQSPF 让球分析</h4>
+<p><strong>SPF</strong>: SPF: 胜1.75/平3.3/负3.92 · <span style="color:var(--accent)">胜1.75偏低</span>，入串回本需搭配高赔率场次</p>
+<p style="margin-top:2px"><strong>RQSPF</strong>: RQSPF(-1): 胜3.5/<strong>平3.45</strong>/负1.81 · 日本受让平3.45有竞争力，日韩队受让方向值得关注</p>
+<p style="font-size:.78em;color:var(--text3);margin-top:4px">结论: SPF赔率偏低 → 入串回本难度大 → 优先选择更高赔率的比分/总进球/半全场</p>
+</div>
+
+<!-- 玩法方向 -->
+<div style="background:var(--card2);border-radius:10px;padding:14px;margin:12px 0">
+<h3 style="color:var(--accent)">📍 逐场玩法方向</h3>
+<table>
+<tr><th>ELO差</th><td>135分</td><th>泊松</th><td>主1.69/客1.41</td></tr>
+<tr><td>大球概率</td><td>70.7%</td></tr><td>零封率</td><td>55%</td>
+<tr><td>最优玩法</td><td><strong>总进球</strong> 复选2球+3球</td></tr>
+<tr><td>理由</td><td colspan="3">大球概率70.7%·ELO差135·日韩队受让方向有竞争力</td></tr>
+</table>
+<h3 style="color:var(--gold);margin-top:14px">推荐选项</h3><div class="score-grid"><div class="score-item selected"><div class="score-odd">2球<span style="float:right;color:var(--green);font-size:.8em">@3.30</span></div></div><div class="score-item selected"><div class="score-odd">3球<span style="float:right;color:var(--green);font-size:.8em">@3.65</span></div></div></div></div></div>
+<div class="section">
+<h2>周日011 科特迪瓦 <span style="color:var(--text2)">VS</span> 厄瓜多尔</h2>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+<span class="tag tag-yellow">客场优</span>
+<span style="color:var(--text2);font-size:.85em">厄瓜多尔占优·总进球</span>
+</div>
+
+<!-- SPF 胜负平分析 -->
+<div class="spf-card">
+<h4>📊 SPF 胜负平 + RQSPF 让球分析</h4>
+<p><strong>SPF</strong>: SPF: 胜3.36/<strong>平2.65</strong>/负2.2 · 平赔2.65最低，庄家防范平局</p>
+<p style="margin-top:2px"><strong>RQSPF</strong>: RQSPF(+1): <strong>胜1.51</strong>/平3.6/负5.3 · 科特迪瓦受让胜1.51极低(庄家防范)，方向明确但赔率低</p>
+<p style="font-size:.78em;color:var(--text3);margin-top:4px">结论: SPF赔率偏低 → 入串回本难度大 → 优先选择更高赔率的比分/总进球/半全场</p>
+</div>
+
+<!-- 玩法方向 -->
+<div style="background:var(--card2);border-radius:10px;padding:14px;margin:12px 0">
+<h3 style="color:var(--accent)">📍 逐场玩法方向</h3>
+<table>
+<tr><th>ELO差</th><td>-131分</td><th>泊松</th><td>主1.38/客1.65</td></tr>
+<tr><td>大球概率</td><td>69.0%</td></tr><td>零封率</td><td>55%</td>
+<tr><td>最优玩法</td><td><strong>总进球</strong> 复选2球+3球</td></tr>
+<tr><td>理由</td><td colspan="3">厄瓜多尔客场占优·大球69%·λ_total=3.03→总进球2~3球最优区间</td></tr>
+</table>
+<h3 style="color:var(--gold);margin-top:14px">推荐选项</h3><div class="score-grid"><div class="score-item selected"><div class="score-odd">2球<span style="float:right;color:var(--green);font-size:.8em">@3.00</span></div></div><div class="score-item selected"><div class="score-odd">3球<span style="float:right;color:var(--green);font-size:.8em">@4.35</span></div></div></div></div></div>
+<div class="section">
+<h2>周日012 瑞典 <span style="color:var(--text2)">VS</span> 突尼斯</h2>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+<span class="tag tag-yellow">均衡场</span>
+<span style="color:var(--text2);font-size:.85em">63%大球·总进球</span>
+</div>
+
+<!-- SPF 胜负平分析 -->
+<div class="spf-card">
+<h4>📊 SPF 胜负平 + RQSPF 让球分析</h4>
+<p><strong>SPF</strong>: SPF: <strong>胜1.74</strong>/平3.1/负4.3 · 胜1.74偏低，直接串关回本困难</p>
+<p style="margin-top:2px"><strong>RQSPF</strong>: RQSPF(-1): 胜3.55/平3.3/<strong>负1.84</strong> · 突尼斯受让负1.84，均衡对抗下RQ方向模糊</p>
+<p style="font-size:.78em;color:var(--text3);margin-top:4px">结论: SPF赔率偏低 → 入串回本难度大 → 优先选择更高赔率的比分/总进球/半全场</p>
+</div>
+
+<!-- 玩法方向 -->
+<div style="background:var(--card2);border-radius:10px;padding:14px;margin:12px 0">
+<h3 style="color:var(--accent)">📍 逐场玩法方向</h3>
+<table>
+<tr><th>ELO差</th><td>56分</td><th>泊松</th><td>主1.45/客1.34</td></tr>
+<tr><td>大球概率</td><td>63.0%</td></tr><td>零封率</td><td>-</td>
+<tr><td>最优玩法</td><td><strong>总进球</strong> 复选2球+3球</td></tr>
+<tr><td>理由</td><td colspan="3">均衡对抗(ELO差56)·大球63%·SPF胜1.74偏低→半全场胜胜@2.80有替代价值</td></tr>
+</table>
+<h3 style="color:var(--gold);margin-top:14px">推荐选项</h3><div class="score-grid"><div class="score-item selected"><div class="score-odd">2球<span style="float:right;color:var(--green);font-size:.8em">@3.15</span></div></div><div class="score-item selected"><div class="score-odd">3球<span style="float:right;color:var(--green);font-size:.8em">@3.85</span></div></div></div></div></div>
+<div class="section" style="border-color:var(--cyan)">
+<h2 style="color:var(--cyan)">大小球条件概率深度分析: 德国零封比分的边际成本优化</h2>
 <div class="gate-card">
-<h4>SPF未开售 · RQSPF分析</h4>
-<p style="font-size:.82em">RQSPF(-3): <strong style="color:var(--gold)">1.94/4.6/2.52</strong></p>
-<p style="font-size:.75em;color:var(--text2)">SPF未开售，串关使用RQSPF或比分玩法替代</p>
+<h4>核心原理</h4>
+<p style="font-size:.88em;color:var(--text2)">零封不是单一比分，而是一个比分集合。每多选一个比分 = 成本+2元。用<strong>泊松条件概率（给定库拉索=0球 & 德国赢球）</strong> × <strong>大小球预期总进球</strong> 精确锁定最优覆盖边界。</p>
 </div>
-<div class="gate-card" style="border-color:var(--cyan)">
-<h4 style="color:var(--cyan)">大小球条件概率深度分析: 零封比分的边际成本优化</h4>
+
+<h3>德国 vs 库拉索 · 大小球交叉验证</h3>
 <table>
 <tr><th>参数</th><th>数值</th><th>解读</th></tr>
-<tr><td>&#955; 总预期进球</td><td><strong>2.30</strong></td><td>&approx; 大小球盘口 <strong>2/2.5球</strong></td></tr>
-<tr><td>over_2.5 概率</td><td><strong>48.0%</strong></td><td>总进球 2~3球最可能</td></tr>
-<tr><td>库拉索0球概率</td><td><strong>19.4%</strong></td><td>零封基线</td></tr>
+<tr><td>λ 总预期进球</td><td><strong>2.30</strong></td><td>≈ 大小球盘口 <strong>2.5球</strong></td></tr>
+<tr><td>over_2.5 概率</td><td><strong>48.0%</strong></td><td>大小球均衡，总进球 2~3球最可能</td></tr>
+<tr><td>库拉索0球概率</td><td><strong>41.3%</strong></td><td>零封基线 (含0:0平局和德国胜零封)</td></tr>
+<tr><td>德国赢球+零封概率</td><td><strong>41.3%</strong></td><td>排除0:0后，德国赢球且零封的总概率</td></tr>
 </table>
 
-<h4 style="margin-top:12px;font-size:12px">条件概率分布 (给定库拉索=0球)</h4>
+<h3>条件概率分布 (给定库拉索=0球 & 德国赢球)</h3>
 <table>
-<tr><th>比分</th><th>绝对概率</th><th style="color:var(--gold)">条件概率</th><th>赔率</th><th>建议</th></tr>
-<tr><td>0:0</td><td>10.0%</td><td style="color:var(--gold);font-weight:bold">51.7%</td><td>@55.00</td><td><span class="tag tag-yellow">平局不对冲</span></td></tr>
-<tr style="background:rgba(0,212,204,0.06)"><td>0:1</td><td>6.6%</td><td style="color:var(--gold);font-weight:bold">34.1%</td><td>@100.00</td><td><span class="tag tag-green">推荐</span></td></tr>
-<tr style="background:rgba(0,212,204,0.06)"><td>0:2</td><td>2.2%</td><td style="color:var(--gold);font-weight:bold">11.3%</td><td>@350.00</td><td><span class="tag tag-green">推荐</span></td></tr>
-<tr style="background:rgba(0,212,204,0.06)"><td>0:3</td><td>0.5%</td><td style="color:var(--gold);font-weight:bold">2.5%</td><td>@900.00</td><td><span class="tag tag-green">推荐</span></td></tr>
-<tr><td>0:4</td><td>0.1%</td><td style="color:var(--gold);font-weight:bold">0.4%</td><td>@1000.00</td><td></td></tr>
-<tr><td>0:5</td><td>0.0%</td><td style="color:var(--gold);font-weight:bold">0.1%</td><td>@1000.00</td><td></td></tr>
-
+<tr><th>比分</th><th>绝对概率</th><th style="color:var(--gold)">条件概率</th><th>累计覆盖</th><th>赔率</th><th>性价比</th><th>定位</th></tr><tr><td>1:0</td><td>16.4%</td><td style="color:var(--gold);font-weight:bold">39.8%</td><td>39.8%</td><td>@14.00</td><td>5.57</td><td><span class="tag tag-blue">高覆盖</span></td></tr>
+<tr style="background:rgba(0,212,204,0.06)"><td>2:0</td><td>13.5%</td><td style="color:var(--gold);font-weight:bold">32.6%</td><td>72.4%</td><td>@7.25</td><td>2.37</td><td><span class="tag tag-green">最优区</span></td></tr>
+<tr style="background:rgba(0,212,204,0.06)"><td>3:0</td><td>7.4%</td><td style="color:var(--gold);font-weight:bold">17.8%</td><td>90.3%</td><td>@5.50</td><td>0.98</td><td><span class="tag tag-green">最优区</span></td></tr>
+<tr><td>4:0</td><td>3.0%</td><td style="color:var(--gold);font-weight:bold">7.3%</td><td>97.6%</td><td>@5.75</td><td>0.42</td><td><span class="tag tag-yellow">尾端</span></td></tr>
+<tr><td>5:0</td><td>1.0%</td><td style="color:var(--gold);font-weight:bold">2.4%</td><td>100.0%</td><td>@7.00</td><td>0.17</td><td><span class="tag tag-red">尾端</span></td></tr>
 </table>
 
-<div class="gate-card" style="margin-top:10px">
-<h4>边际成本 vs 边际覆盖</h4>
+<div class="gate-card" style="margin-top:16px">
+<h4>边际成本 vs 边际覆盖分析</h4>
 <table>
-<tr><th>策略</th><th>比分</th><th>覆盖</th><th>注数</th><th>成本</th><th>最低回报</th><th>回报比</th><th>边际增益</th></tr>
-<tr><td>1选(仅2:0)</td><td>0:2</td><td>51.7%</td><td>1注</td><td>2元</td><td>14.5元</td><td>7.25x</td><td>+51.7%/2元</td></tr>
-<tr style="background:rgba(255,215,0,0.06);font-weight:bold"><td>2选 &#11088;最优</td><td>0:1+0:2</td><td>85.8%</td><td>2注</td><td>4元</td><td>14.5元</td><td>3.62x</td><td>+34.1%/2元</td></tr>
-<tr><td>3选(+3:0)</td><td>0:1+0:2+0:3</td><td>97.1%</td><td>3注</td><td>6元</td><td>11.0元</td><td>1.83x</td><td>+11.3%/2元</td></tr>
-<tr><td>4选(+4:0)</td><td>0:1+0:2+0:3+0:4</td><td>99.5%</td><td>4注</td><td>8元</td><td>11.0元</td><td>1.38x</td><td>+2.5%/2元</td></tr>
-
+<tr><th>策略</th><th>比分</th><th>累计覆盖</th><th>注数</th><th>成本</th><th>最低回报</th><th>回报比</th><th>边际增益</th></tr><tr><td>1选 (仅2:0)</td><td>2:0</td><td>32.6%</td><td>1注</td><td>2元</td><td>14.5元</td><td>7.25x</td><td>-</td></tr>
+<tr><td>2选 ⭐最优</td><td>2:0+3:0</td><td>50.5%</td><td>2注</td><td>4元</td><td>11.0元</td><td>2.75x</td><td>+17.8%/2元</td></tr>
+<tr style="background:rgba(255,215,0,0.08);font-weight:bold"><td>3选 (推荐)</td><td>2:0+3:0+1:0</td><td>90.3%</td><td>3注</td><td>6元</td><td>11.0元</td><td>1.83x</td><td>+39.8%/2元</td></tr>
+<tr><td>4选 (+4:0)</td><td>2:0+3:0+1:0+4:0</td><td>97.6%</td><td>4注</td><td>8元</td><td>11.0元</td><td>1.38x</td><td>+7.3%/2元</td></tr>
 </table>
 </div>
 
-<div class="gate-card" style="border-color:var(--gold);margin-top:10px">
-<h4 style="color:var(--gold)">结论</h4>
-<p style="font-size:.82em;margin:6px 0">&#955;total=2.30 &rarr; 最优零封比分区间: 0:1+0:2, 加0:3做安全边际</p>
-<p style="font-size:.75em;color:var(--green)">推荐2选: 0:1@100.00 + 0:2@350.00 · 2注4元最低回报200.0元</p>
+<div class="gate-card" style="margin-top:16px;border-color:var(--gold)">
+<h4 style="color:var(--gold)">结论: 3选 (2:0 + 3:0 + 1:0) 是最优解</h4>
+<ol style="font-size:.88em;line-height:1.8;margin:8px 0 8px 24px">
+  <li><strong>大小球预期总进球 2.30</strong> → 最可能的零封比分是 2:0 和 3:0 → 与总进球2~3球区间一致</li>
+  <li><strong>2:0 (32.6%) + 3:0 (17.9%) = 覆盖 50.5%</strong> 零封场景 → 2注4元 → 最低回报11.0元 → 2.75x回报比</li>
+  <li><strong>3选加1:0</strong>: 覆盖率升至90.3% (+39.8%)，成本+2元 → <strong style="color:var(--green)">边际增益极高，强烈推荐</strong></li>
+  <li><strong>不推荐加0:0</strong>: 0:0是平局非德国胜，与预测方向不一致 → 除非做对冲，否则不入零封比分复选</li>
+  <li><strong>4:0以上</strong>: 累计覆盖仅9.7%，每+1比分成本+2元但覆盖率增量递减 → <span style="color:var(--red)">边际递减，不划算</span></li>
+  <li><strong>核心口诀</strong>: <span style="color:var(--gold)">λ_total ≈ 大小球盘口 → 总进球±0.5的零封比分 = 最优区间</span></li>
+</ol>
 </div>
-</div><p style="font-size:.82em;margin-top:8px;color:var(--gold)">玩法方向: <strong>比分复选</strong> · 0:1@100.00 + 0:2@350.00</p>
-<p style="font-size:.75em;color:var(--text2);margin-top:6px">德国零封率85% · λ_total=2.30≈大小球2/2.5 · 零封场→比分复选</p>
-</div>
-<div class="match-card">
-<div class="match-header">
-  <span class="match-id">周日010</span>
-  <span class="match-time">06-15 04:00</span>
-</div>
-<div class="match-teams"><span class="home">荷兰</span><span class="vs">VS</span><span class="away">日本</span></div>
-<div style="text-align:center"><span class="play-total">总进球</span></div>
-<table>
-<tr><th>ELO差</th><th>主胜</th><th>平局</th><th>客胜</th><th>over_2.5</th><td>零封率</td><td style='color:var(--gold);font-weight:700'>55%</td></tr>
-<tr style="font-weight:700">
-  <td>135</td>
-  <td style="color:var(--green)">46.5%</td>
-  <td style="color:var(--yellow)">20.1%</td>
-  <td style="color:var(--red)">33.4%</td>
-  <td>70.7%</td>
-  <td style="color:var(--gold)">55%</td>
-</tr>
-</table>
-<div class="gate-card">
-<h4>SPF 胜平负分析</h4>
-<table>
-<tr><th></th><th>胜</th><th>平</th><th>负</th></tr>
-<tr><td>赔率</td><td style="color:var(--green)">1.75</td><td>3.3</td><td style="color:var(--red)">3.92</td></tr>
-<tr><td>隐含概率</td><td>50.6%</td><td>26.8%</td><td>22.6%</td></tr>
-</table>
-<p style="font-size:.82em;margin-top:6px;color:var(--text2)">RQSPF(-1): 3.5/3.45/1.81  <span class="tag tag-blue">可做SPF基底</span></p>
-</div>
-<div class="gate-card">
-<h4>大小球分析</h4>
-<table>
-<tr><th>参数</th><th>数值</th></tr>
-<tr><td>&#955; 总预期进球</td><td><strong>3.10</strong></td></tr>
-<tr><td>over_2.5</td><td><strong>70.7%</strong></td></tr>
-<tr><td>零封率</td><td><strong>55%</strong> ' ... 非零封场</td></tr>
-</table>
-<p style="font-size:.82em;margin-top:6px;color:var(--cyan)">玩法方向: <strong>总进球 2球@3.30 + 3球@3.65</strong></p>
-</div>
-<p style="font-size:.75em;color:var(--text2);margin-top:6px">荷兰占优但日本有进球能力(45%) · λ_total=3.10≈大小球3球 · 大球场→总进球</p>
-</div>
-<div class="match-card">
-<div class="match-header">
-  <span class="match-id">周日011</span>
-  <span class="match-time">06-15 07:00</span>
-</div>
-<div class="match-teams"><span class="home">科特迪瓦</span><span class="vs">VS</span><span class="away">厄瓜多尔</span></div>
-<div style="text-align:center"><span class="play-total">总进球</span></div>
-<table>
-<tr><th>ELO差</th><th>主胜</th><th>平局</th><th>客胜</th><th>over_2.5</th><td>零封率</td><td style='color:var(--gold);font-weight:700'>55%</td></tr>
-<tr style="font-weight:700">
-  <td>-131</td>
-  <td style="color:var(--green)">33.4%</td>
-  <td style="color:var(--yellow)">20.5%</td>
-  <td style="color:var(--red)">46.1%</td>
-  <td>69.0%</td>
-  <td style="color:var(--gold)">55%</td>
-</tr>
-</table>
-<div class="gate-card">
-<h4>SPF 胜平负分析</h4>
-<table>
-<tr><th></th><th>胜</th><th>平</th><th>负</th></tr>
-<tr><td>赔率</td><td style="color:var(--green)">3.36</td><td>2.65</td><td style="color:var(--red)">2.2</td></tr>
-<tr><td>隐含概率</td><td>26.3%</td><td>33.4%</td><td>40.2%</td></tr>
-</table>
-<p style="font-size:.82em;margin-top:6px;color:var(--text2)">RQSPF(1): 1.51/3.6/5.3  </p>
-</div>
-<div class="gate-card">
-<h4>大小球分析</h4>
-<table>
-<tr><th>参数</th><th>数值</th></tr>
-<tr><td>&#955; 总预期进球</td><td><strong>3.03</strong></td></tr>
-<tr><td>over_2.5</td><td><strong>69.0%</strong></td></tr>
-<tr><td>零封率</td><td><strong>55%</strong> ' ... 非零封场</td></tr>
-</table>
-<p style="font-size:.82em;margin-top:6px;color:var(--cyan)">玩法方向: <strong>总进球 2球@3.00 + 1球@3.20</strong></p>
-</div>
-<p style="font-size:.75em;color:var(--text2);margin-top:6px">厄瓜多尔略优 · λ_total=3.03≈大小球3球 · 大球→总进球 · 平局低赔2.65值得关注</p>
-</div>
-<div class="match-card">
-<div class="match-header">
-  <span class="match-id">周日012</span>
-  <span class="match-time">06-15 10:00</span>
-</div>
-<div class="match-teams"><span class="home">瑞典</span><span class="vs">VS</span><span class="away">突尼斯</span></div>
-<div style="text-align:center"><span class="play-half">半全场</span></div>
-<table>
-<tr><th>ELO差</th><th>主胜</th><th>平局</th><th>客胜</th><th>over_2.5</th></tr>
-<tr style="font-weight:700">
-  <td>56</td>
-  <td style="color:var(--green)">41.8%</td>
-  <td style="color:var(--yellow)">22.0%</td>
-  <td style="color:var(--red)">36.2%</td>
-  <td>63.0%</td>
-  
-</tr>
-</table>
-<div class="gate-card">
-<h4>SPF 胜平负分析</h4>
-<table>
-<tr><th></th><th>胜</th><th>平</th><th>负</th></tr>
-<tr><td>赔率</td><td style="color:var(--green)">1.74</td><td>3.1</td><td style="color:var(--red)">4.3</td></tr>
-<tr><td>隐含概率</td><td>50.9%</td><td>28.6%</td><td>20.6%</td></tr>
-</table>
-<p style="font-size:.82em;margin-top:6px;color:var(--text2)">RQSPF(-1): 3.55/3.3/1.84  <span class="tag tag-blue">可做SPF基底</span></p>
-</div>
-<div class="gate-card">
-<h4>均衡对抗分析</h4>
-<table>
-<tr><th>参数</th><th>数值</th></tr>
-<tr><td>&#955; 总预期进球</td><td><strong>2.79</strong></td></tr>
-<tr><td>ELO差</td><td><strong>56</strong> (均衡)</td></tr>
-<tr><td>over_2.5</td><td><strong>63.0%</strong></td></tr>
-</table>
-<p style="font-size:.82em;margin-top:6px;color:var(--purple)">玩法方向: <strong>半全场 胜胜@2.8 · 平胜@4.15 · 平平@4.6</strong></p>
-</div>
-<p style="font-size:.75em;color:var(--text2);margin-top:6px">均衡对抗(ELO差56) · λ_total=2.79≈大小球2.5/3球 · 半全场/总进球皆可</p>
-</div>
-<div class="section">
-<h2>M串N 方案总览</h2>
-<table class="plan-table">
-<tr><th>#</th><th>方案</th><th>类型</th><th>金额</th><th>注数</th><th>最低回报</th><th>回本</th><th>容错</th></tr>
-<tr>
-  <td>A</td><td>德国零封比分单关复选</td><td>比分&#215;3</td><td>6元</td><td>3</td>
-  <td class="roi-green">11.0元</td><td class="roi-green">&#x2705;</td><td>3中1回本</td>
-</tr>
-<tr style="background:rgba(255,215,0,0.06)">
-  <td><strong>B&#11088;</strong></td><td><strong>SPF&#215;比分 二串一</strong></td><td>混合</td><td>2元</td><td>1</td>
-  <td class="roi-gold">25.4元</td><td class="roi-gold">&#x2705;&#x2705;</td><td>无</td>
-</tr>
-<tr>
-  <td>C</td><td>德国比分&#215;荷兰总进球 二串一</td><td>混合</td><td>8元</td><td>4</td>
-  <td class="roi-green">36.3元</td><td class="roi-green">&#x2705;</td><td>无</td>
-</tr>
-<tr style="background:rgba(0,212,204,0.06)">
-  <td><strong>D</strong></td><td><strong>过2关 (三串三) 容1错</strong></td><td>混合</td><td>24元</td><td>12</td>
-  <td class="roi-green">19.8元</td><td class="roi-green">&#x2705;</td><td>容1错</td>
-</tr>
-<tr>
-  <td>E</td><td>过3关 (三串一) 全中</td><td>混合</td><td>16元</td><td>8</td>
-  <td class="roi-gold">108.9元</td><td class="roi-gold">&#x2705;&#x2705;</td><td>无</td>
-</tr>
-<tr>
-  <td>F</td><td>瑞典半全场&#215;荷兰总进球</td><td>混合</td><td>8元</td><td>4</td>
-  <td class="roi-green">18.5元</td><td class="roi-green">&#x2705;</td><td>无</td>
-</tr>
-</table>
 </div>
 
 <div class="section">
-<h2>方案详细</h2>
+<h2>M串N 投注方案 (v14.1 · 过N关版)</h2>
 
-<div class="gate-card">
-<h4>A · 德国零封比分单关复选（3注6元）</h4>
-<p style="font-size:.82em">比分: 1:0@14.0+2:0@7.25+3:0@5.5</p>
-<p style="font-size:.75em;color:var(--text2)">中最低赔率3:0@5.50 &rarr; 11.00元 > 6元 &#x2705; 核心口诀: &#955;total=2.30 &rarr; 最优零封区间2:0+3:0</p>
+<div style="background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:10px;padding:14px;margin:14px 0">
+<p style="color:var(--gold);font-weight:bold">设计原则</p>
+<ol style="margin:8px 0 8px 24px;font-size:.9em">
+  <li><strong>逐场定方向</strong>: 零封->比分 / 大球->总进球 / 均衡->总进球/半全场</li>
+  <li><strong>同场复选</strong>: 同一比赛同一玩法内多选结果</li>
+  <li><strong>跨玩法混合</strong>: 不同比赛自由选最优玩法</li>
+  <li><strong>回本铁律</strong>: 哪怕中的是最低赔率组合，本单也得回本</li>
+</ol>
 </div>
-
-<div class="gate-card" style="border-color:var(--gold)">
-<h4 style="color:var(--gold)">B&#11088; · SPF&#215;比分 二串一（1注2元）最佳性价比</h4>
-<p style="font-size:.82em">荷兰SPF胜@1.75 &#215; 德国2:0@7.25/3:0@5.5</p>
-<p style="font-size:.75em;color:var(--text2)">荷兰SPF 1.75做基底 &#215; 德国零封比分7.25=12.69倍 &rarr; 25.38元/2元 &#x2705; SPF高命中基底&#215;比分高赔加成=最佳性价比</p>
+<div class="plan-card A">
+<h3 style="color:var(--green)">方案A: 德国零封比分单关复选 <span style="font-size:.75em;color:var(--text2)">(最单纯)</span></h3>
+<table>
+<tr><th>场次</th><th>选择</th><th>玩法</th><th>赔率</th></tr>
+<tr><td>德国(主)</td><td>2:0@7.25 x 3:0@5.50 x 1:0@14.00</td><td>比分</td><td>复选3个</td></tr>
+</table>
+<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:12px">
+<span>总投 6元 (3注)</span>
+<span style="color:var(--green)">✅ 最低回报: 11.0元</span>
 </div>
-
-<div class="gate-card">
-<h4>C · 德国比分&#215;荷兰总进球 二串一（4注8元）</h4>
-<p style="font-size:.82em">德国2:0@7.25/3:0@5.5 &#215; 荷兰总进球2@3.3/3@3.65</p>
-<p style="font-size:.75em;color:var(--text2)">各取2选&#215;2=4注, 最低组合5.50&#215;3.30=18.15&#215;2=36.30元 > 8元 &#x2705;</p>
+<p style="color:var(--text2);font-size:.8em;margin-top:6px">德国零封85%，泊松2:0(13.5%)+3:0(7.4%)+1:0(16.4%)=37.3% · 性价比 5.50×0.373=2.05</p>
 </div>
-
-<div class="gate-card" style="border-color:var(--cyan)">
-<h4 style="color:var(--cyan)">D · 过2关 (三串三)（12注24元）容1错</h4>
-<p style="font-size:.82em">德(2选)&#215;荷(2选)&#215;科(2选) &#183; 任意中2</p>
-<p style="font-size:.75em;color:var(--text2)">
-  3组二串一: 德&#215;荷(4注) + 德&#215;科(4注) + 荷&#215;科(4注) = 12注<br>
-  最低二串一: 荷兰2球@3.30&#215;科特迪瓦2球@3.00 = 9.90&#215;2=19.80元 &lt; 24元<br>
-  <span style="color:var(--yellow)">&#9888; 最低组合略低于回本线! 推荐方案E替代或选丹麦&#215;荷组合(3.65&#215;4.35=15.88&#215;2=31.76)</span>
+<div class="plan-card B recommended">
+<h3 style="color:var(--gold)">方案B (推荐): 二串一复选 <span style="font-size:.75em;color:var(--text2)">(最佳性价比)</span></h3>
+<table>
+<tr><th>场次</th><th>玩法</th><th>选择</th><th>赔率</th></tr>
+<tr><td>德国(主)</td><td>比分</td><td>2:0@7.25 + 3:0@5.50</td><td>2选</td></tr>
+<tr><td>荷兰(主)</td><td>总进球</td><td>2球@3.30 + 3球@3.65</td><td>2选</td></tr>
+</table>
+<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:12px">
+<span>总投 16元 (8注 = 4单关+4串)</span>
+<span style="color:var(--gold)">✅ 最低二串一: 47.8元 | ❌ 最低单关: 6.6元</span>
+</div>
+<p style="color:var(--text2);font-size:.8em;margin-top:6px">
+二串一组合: 2×2=4个 · 最低: 2:0@7.25×2球@3.30=23.92 → 47.8元<br>
+单关安全垫: 各4注 · 中最低单关@3.30 → 6.6元<br>
+<strong style="color:var(--yellow)">德国零封70%+荷兰大球70% → 高概率双中</strong>
 </p>
 </div>
-
-<div class="gate-card">
-<h4>E · 过3关 (三串一)（8注16元）高收益</h4>
-<p style="font-size:.82em">德(2选)&#215;荷(2选)&#215;科(2选) &#183; 全中</p>
-<p style="font-size:.75em;color:var(--text2)">最低三串一: 5.50&#215;3.30&#215;3.00 = 54.45&#215;2=108.90元 &rarr; 16元 &#x2705;&#x2705; 回报比6.8x</p>
-</div>
-
-<div class="gate-card">
-<h4>F · 瑞典半全场&#215;荷兰总进球 二串一（4注8元）</h4>
-<p style="font-size:.82em">瑞典胜胜@2.8/平胜@4.15 &#215; 荷兰总进球2@3.3/3@3.65</p>
-<p style="font-size:.75em;color:var(--text2)">最低组合: 胜胜@2.80&#215;2球@3.30=9.24&#215;2=18.48元 > 8元 &#x2705;</p>
-</div>
-</div>
-
-<div class="section">
-<h2>跨玩法混合合规</h2>
+<div class="plan-card C2">
+<h3 style="color:var(--blue)">方案C-过2关: 三串三 (任意中2场即中奖) <span style="font-size:.75em;color:var(--text2)">(高容错)</span></h3>
 <table>
-<tr><th>规则</th><th>说明</th></tr>
-<tr><td>&#x2705; 同场单选一玩法</td><td>德国=比分, 荷兰=总进球, 科特迪瓦=总进球, 瑞典=半全场</td></tr>
-<tr><td>&#x2705; 跨场自由组合</td><td>德国(比分)&#215;荷兰(总进球)&#215;科特迪瓦(总进球) = 跨玩法混合 &#x2705;合规</td></tr>
-<tr><td>&#x2705; 回本铁律</td><td>所有方案最低赔率组合&#215;2 &#8805; 总投入</td></tr>
-<tr><td>&#x26A0; 德国SPF未开售</td><td>使用RQSPF(-3)或比分玩法替代串关中的SPF</td></tr>
+<tr><th>场次</th><th>玩法</th><th>选择</th><th>复选</th></tr>
+<tr><td>德国(主)</td><td>比分</td><td>2:0@7.25 · 3:0@5.50</td><td>2选</td></tr>
+<tr><td>荷兰(主)</td><td>总进球</td><td>2球@3.30 · 3球@3.65</td><td>2选</td></tr>
+<tr><td>瑞典(主)</td><td>总进球</td><td>2球@3.15 · 3球@3.85</td><td>2选</td></tr>
+</table>
+<p style="color:var(--cyan);font-weight:bold;margin-top:10px">过2关 = 3场中任意中2场即中奖</p>
+<table>
+<tr><th>二串一组</th><th>组合数</th><th>最低赔率</th><th>最低回报</th></tr>
+<tr><td>德国 × 荷兰</td><td>4注</td><td>23.92</td><td>47.8元</td></tr>
+<tr><td>德国 × 瑞典</td><td>4注</td><td>22.84</td><td>45.7元</td></tr>
+<tr><td>荷兰 × 瑞典</td><td>4注</td><td>10.39</td><td>20.8元</td></tr>
+<tr class="highlight-row"><td><strong>合计</strong></td><td><strong>12注</strong></td><td><strong>10.39</strong></td><td><strong>20.8元</strong></td></tr>
+</table>
+<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:12px">
+<span>总投 24元 (12注)</span>
+<span style="color:var(--blue);font-weight:bold">❌ 最低回报: 20.8元 vs 投入24元 · 未回本(荷兰×瑞典组赔率偏低)</span>
+</div>
+<p style="color:var(--text2);font-size:.8em;margin-top:6px">容错分析: 3场中任意2场对即中对应的二串一。德国组必回本，荷兰×瑞典为最弱链(即便中也仅覆盖部分成本)</p>
+</div>
+
+<div class="plan-card C3">
+<h3 style="color:var(--accent)">方案C-过3关: 三串一 (3场全中·极限赔率) <span style="font-size:.75em;color:var(--text2)">(高收益)</span></h3>
+<table>
+<tr><th>场次</th><th>玩法</th><th>选择</th><th>复选</th></tr>
+<tr><td>德国(主)</td><td>比分</td><td>2:0@7.25 · 3:0@5.50</td><td>2选</td></tr>
+<tr><td>荷兰(主)</td><td>总进球</td><td>2球@3.30 · 3球@3.65</td><td>2选</td></tr>
+<tr><td>瑞典(主)</td><td>总进球</td><td>2球@3.15 · 3球@3.85</td><td>2选</td></tr>
+</table>
+<p style="color:var(--accent);font-weight:bold;margin-top:10px">过3关 = 3场必须全中</p>
+<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:12px">
+<span>总投 16元 (8注 = 2×2×2)</span>
+<span style="color:var(--accent);font-weight:bold">✅ 最低回报: 150.7元</span>
+</div>
+<p style="color:var(--text2);font-size:.8em;margin-top:6px">
+最低三串一: 2:0@7.25 × 2球@3.30 × 2球@3.15 = 75.36 → 150.7元<br>
+风险: 1场错=全损，但赔率极高(全中最高可达77.3倍)
+</p>
+</div>
+<div class="plan-card D">
+<h3 style="color:var(--green)">方案D: 安全型 (单关+小串) <span style="font-size:.75em;color:var(--text2)">(高安全性)</span></h3>
+<table>
+<tr><th>子方案</th><th>内容</th><th>金额</th><th>回报</th><th>状态</th></tr>
+<tr><td>D1 单关</td><td>德国 比分 2:0@7.25</td><td>2元</td><td>14.5元</td><td style="color:var(--green)">稳</td></tr>
+<tr><td>D2 二串一</td><td>荷兰 半全场 胜胜@2.65 × 瑞典 半全场 胜胜@2.80</td><td>2元</td><td>14.8元</td><td style="color:var(--green)">冲</td></tr>
+</table>
+<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:12px">
+<span>总投 4元 (2注)</span>
+<span style="color:var(--green)">✅ 最低回报: 14.5元</span>
+</div>
+<p style="color:var(--text2);font-size:.8em;margin-top:6px">
+半全场胜胜方向一致性: 荷兰(大球倾向→主动进攻)+瑞典(主场占优→先发制人)<br>
+二串一赔率: 2.65×2.80=7.42倍
+</p>
+</div>
+</div>
+<div class="section">
+<h2>回本验证总表</h2>
+<table>
+<tr><th>方案</th><th>类型</th><th>过几关</th><th>金额</th><th>注数</th><th>最低回报</th><th>回本</th></tr>
+<tr><td>A</td><td>单关复选</td><td>-</td><td>6元</td><td>3</td><td>11.0元</td><td style="color:var(--green)">✅</td></tr>
+<tr style="background:rgba(255,215,0,0.06)"><td><strong>B (推荐)</strong></td><td>二串一复选</td><td>-</td><td>16元</td><td>8</td><td>47.8元</td><td style="color:var(--green)">✅</td></tr>
+<tr><td>C-过2关</td><td>三串三</td><td>任意中2场</td><td>24元</td><td>12</td><td>20.8元</td><td style="color:var(--red)">❌</td></tr>
+<tr><td>C-过3关</td><td>三串一</td><td>全中</td><td>16元</td><td>8</td><td>150.7元</td><td style="color:var(--green)">✅</td></tr>
+<tr><td>D</td><td>单关+二串一</td><td>-</td><td>4元</td><td>2</td><td>14.5元</td><td style="color:var(--green)">✅</td></tr>
 </table>
 </div>
-
-<div class="footer">
-<p>生成时间: 2026年6月10日 | v14.1 · 大小球深度分析版</p>
-<p>数据来源: lottery.gov.cn (混合过关实时赔率) · poisson_all.json (泊松模型)</p>
-<p style="color:var(--red);margin-top:6px">&#9888; 竞彩有风险 · 投注需谨慎 · 以上分析仅供参考 · 不构成投注建议</p>
+<div class="section" style="border-color:var(--gold)">
+<h2 style="color:var(--gold)">投资建议汇总</h2>
+<table>
+<tr><th>优先级</th><th>方案</th><th>适合人群</th><th>金额</th><th>风险</th><th>推荐理由</th></tr>
+<tr style="background:rgba(255,215,0,0.06)"><td><strong>🥇 第一</strong></td><td>方案B</td><td>追求性价比</td><td>16元</td><td>⭐⭐</td><td>德国零封+荷兰大球双高概率，最低二串一回本</td></tr>
+<tr><td>🥈 第二</td><td>方案A</td><td>追求稳健</td><td>6元</td><td>⭐</td><td>单场德国零封，3个比分覆盖90%零封场景</td></tr>
+<tr><td>🥉 第三</td><td>方案D</td><td>极度保守</td><td>4元</td><td>⭐</td><td>D1德国单关超稳，D2半全场小串博高赔</td></tr>
+<tr><td>4</td><td>方案C-过2关</td><td>进取型</td><td>24元</td><td>⭐⭐⭐</td><td>容错设计，德国组必回本</td></tr>
+<tr><td>5</td><td>方案C-过3关</td><td>激进型</td><td>16元</td><td>⭐⭐⭐⭐</td><td>3场全中高达77.28875倍，1场错=全损</td></tr>
+</table>
 </div>
-</body></html>
+<div class="section" style="border-color:var(--red)">
+<h2 style="color:var(--red)">风险提示与免责声明</h2>
+<ul style="font-size:.88em;line-height:1.8;color:var(--text2)">
+  <li>彩票有风险，投注需谨慎。本文仅为数据分析参考，不构成任何购彩建议。</li>
+  <li>科特迪瓦vs厄瓜多尔因客场占优方向不明，未纳入主力串关方案。</li>
+  <li>过2关(三串三)容错1场，安全性高于过3关(三串一)。</li>
+  <li>德国vs库拉索SPF未开售，RQSPF赔率偏低 → 比分玩法性价比最优。</li>
+  <li>实际投注请以开售时实时赔率为准。</li>
+  <li>SPF赔率普遍偏低，难以满足回本铁律，故优先选比分/总进球/半全场。</li>
+  <li>数据源: lottery.gov.cn + worldcup-odds.com + titan007.com + ELO + 泊松xG</li>
+</ul>
+</div>
+
+<footer>
+  <p>生成时间: 2026年6月10日 | v14.1 · 大小球深度分析版</p>
+  <p>Poisson Score Analyzer v2.0 | 欧赔核心思维 + 竞彩足球看盘技巧</p>
+</footer>
+
+</body>
+</html>
