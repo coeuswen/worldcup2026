@@ -1,176 +1,190 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>世界杯2026 · 6月15日 赛果预测分析</title>
-<style>
-:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--gold:#fbbf24;--pink:#ec4899}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.65}
-.container{max-width:960px;margin:0 auto;padding:20px}
-.header{text-align:center;padding:36px 20px 24px;background:linear-gradient(135deg,#1a0033,#0d1b3e,#0a0e17);border-bottom:3px solid var(--accent)}
-.header h1{font-size:1.9em;margin-bottom:6px;color:#fff}.header .sub{color:var(--accent);font-size:.9em}.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:18px}
-.card h2{font-size:1.15em;margin-bottom:14px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:6px}
-.card h3{font-size:1em;margin:14px 0 8px;color:#ccc}
-
-.match-row{display:flex;gap:12px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02);margin-bottom:10px;border:1px solid var(--border)}
-.match-row .info{flex:1}.match-row .teams{font-size:1.15em;font-weight:bold}
-.match-row .meta{font-size:.78em;color:var(--text2)}
-
-.prob-bar{height:22px;border-radius:11px;display:flex;overflow:hidden;margin:6px 0}
-.prob-bar span{display:flex;align-items:center;justify-content:center;font-size:.72em;font-weight:bold;color:#fff}
-.prob-bar .h{background:var(--blue)}.prob-bar .d{background:var(--gold);color:#111}.prob-bar .a{background:var(--red)}
-
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
-.g3{text-align:center;padding:12px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.g3 .v{font-size:1.2em;font-weight:bold;color:var(--accent)}.g3 .l{font-size:.72em;color:var(--text2)}
-
-table.d{width:100%;border-collapse:collapse;font-size:.78em;margin:8px 0}
-table.d th{text-align:left;padding:6px 10px;color:var(--text2);font-weight:normal;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
-table.d td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
-table.d .hi{color:var(--accent);font-weight:bold}
-
-.note{font-size:.82em;color:var(--text2);margin-top:6px}
-
-.summary-table{width:100%;border-collapse:collapse;font-size:.82em;margin:10px 0}
-.summary-table th{background:rgba(255,255,255,.03);padding:7px 10px;text-align:left;color:var(--text2);border-bottom:1px solid var(--border)}
-.summary-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
-
-.methodology{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-.mc{text-align:center;padding:12px 8px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.mc h4{font-size:.85em;margin-bottom:4px}.mc p{font-size:.7em;color:var(--text2)}
-
-.footer{text-align:center;padding:28px;color:var(--text2);font-size:.78em;border-top:1px solid var(--border)}
-@media(max-width:600px){.grid3{grid-template-columns:1fr}.methodology{grid-template-columns:1fr 1fr}.container{padding:10px}.header h1{font-size:1.4em}}
-</style>
-</head>
-<body>
-<div class="header">
-<h1>⚽ 2026世界杯 · 6月15日 赛果预测分析</h1>
-<p class="sub">v21.0 · 纸面32.5%+市场67.5% · ELO/欧赔/Polymarket三方验证 · 4场比赛</p>
-<p class="meta">数据: worldcup-odds.com · lottery.gov.cn · ELO模型 | 2026-06-11</p>
-</div>
-<div class="container">
-
-<!-- ═══ 汇总 ═══ -->
-<div class="card">
-<h2>📋 6月15日 比赛总览</h2>
-<table class="summary-table">
-<tr><th>时间</th><th>对阵</th><th>小组</th><th>方向</th><th>比分</th><th>λ</th><th>置信度</th></tr>
-<tr><td>01:00</td><td>德国 vs 库拉索</td><td>E组</td><td style="color:var(--blue);font-weight:bold">德国胜</td><td>3:0</td><td>2.52</td><td>⭐⭐⭐⭐⭐</td></tr>
-<tr><td>04:00</td><td>荷兰 vs 日本</td><td>F组</td><td style="color:var(--blue);font-weight:bold">荷兰不败</td><td>2:1</td><td>2.76</td><td>⭐⭐⭐½</td></tr>
-<tr><td>07:00</td><td>科特迪瓦 vs 厄瓜多尔</td><td>E组</td><td style="color:var(--gold);font-weight:bold">厄瓜多尔不败</td><td>1:1</td><td>2.75</td><td>⭐⭐⭐</td></tr>
-<tr><td>10:00</td><td>瑞典 vs 突尼斯</td><td>F组</td><td style="color:var(--blue);font-weight:bold">瑞典胜</td><td>1:0</td><td>2.47</td><td>⭐⭐⭐⭐</td></tr>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>世界杯2026 · 6月15日 赛果预测分析 v21.0</title>
+<style>:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--gold:#fbbf24;--pink:#ec4899}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.7}
+.container{max-width:1000px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:40px 20px 28px;background:linear-gradient(135deg,#1a0033 0%,#0d1b3e 50%,#0a0e17 100%);border-bottom:3px solid var(--accent)}
+.header h1{font-size:2em;margin-bottom:6px;color:#fff}.header .sub{color:var(--accent);font-size:.9em}.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card h2{font-size:1.2em;margin-bottom:16px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px}.card h3{font-size:1em;margin:16px 0 10px;color:#ccc}
+.st{width:100%;border-collapse:collapse;font-size:.85em;margin:12px 0}.st th{background:rgba(255,255,255,.03);padding:8px 12px;text-align:left;color:var(--text2);border-bottom:1px solid var(--border)}.st td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+.pbar{height:28px;border-radius:14px;display:flex;overflow:hidden;margin:10px 0}.pbar span{display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:bold;color:#fff}.pbar .h{background:var(--blue)}.pbar .d{background:var(--gold);color:#111}.pbar .a{background:var(--red)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.g3i{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}.g3i .v{font-size:1.3em;font-weight:bold;color:var(--accent)}.g3i .l{font-size:.72em;color:var(--text2);margin-top:4px}
+table.d{width:100%;border-collapse:collapse;font-size:.82em;margin:10px 0}table.d th{text-align:left;padding:7px 12px;color:var(--text2);font-weight:400;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}table.d td{padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.04)}table.d .hi{color:var(--accent);font-weight:700}
+.verdict{display:flex;align-items:center;gap:16px;padding:18px;border-radius:12px;margin:12px 0;border:1px solid var(--border)}.vinfo{flex:1}.vinfo .top{font-size:1.15em;font-weight:700}.vinfo .detail{font-size:.85em;color:var(--text2);margin-top:6px;line-height:1.6}.vscore{text-align:center;font-size:1.5em;font-weight:700;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,.05)}.vscore .stars{font-size:.5em;color:var(--accent);display:block}
+.note{font-size:.82em;color:var(--text2);margin-top:6px;line-height:1.6}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}.sc{text-align:center;padding:10px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}.sc.hl{border-color:var(--accent);background:rgba(245,158,11,.08)}.sc .s{font-size:1.2em;font-weight:700;color:var(--accent)}.sc .pr{font-size:.72em;color:var(--text2)}
+.risk-box{padding:16px;border-radius:10px;margin:12px 0;font-size:.85em;border:1px dashed var(--border)}.risk-box.green{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.2)}.risk-box.orange{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.2)}.risk-box.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}
+.methodology{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}.mc{text-align:center;padding:14px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}.mc h4{font-size:.9em;margin-bottom:6px}.mc p{font-size:.75em;color:var(--text2);line-height:1.4}
+.footer{text-align:center;padding:32px;color:var(--text2);font-size:.8em;border-top:1px solid var(--border)}
+@media(max-width:700px){.g3,.sgrid,.methodology{grid-template-columns:1fr 1fr}.container{padding:10px}.header h1{font-size:1.4em}}
+</style></head><body>
+<div class="header"><h1>⚽ 2026世界杯 · 6月15日 赛果预测分析</h1>
+<p class="sub">v21.0 · 纸面32.5%+市场67.5%(Poly50%+欧赔30%+亚盘20%) · 四步分析 · 4场比赛全覆盖</p>
+<p class="meta">数据: worldcup-odds.com · titan007.com(15家) · Polymarket · lottery.gov.cn · ELO | 2026-06-11 16:22 CST</p></div><div class="container">
+<div class="card"><h2>📐 框架说明 · 总览</h2><p><b>v21.0权重</b>: 纸面32.5% + 市场67.5%(Poly50%+欧赔30%+亚盘20%) | <b>四步</b>: 方向→进球→总进球→比分</p>
+<table class="st"><tr><th>时间</th><th>对阵</th><th>小组</th><th>方向</th><th>比分</th><th>λ</th><th>置信度</th></tr><tr><td>01:00</td><td>德国 vs 库拉索</td><td>E组</td><td style="font-weight:bold">德国胜</td><td>3:0</td><td>2.52</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td>04:00</td><td>荷兰 vs 日本</td><td>F组</td><td style="font-weight:bold">荷兰胜</td><td>2:1</td><td>2.76</td><td>⭐⭐⭐½</td></tr>
+<tr><td>07:00</td><td>科特迪瓦 vs 厄瓜多尔</td><td>E组</td><td style="font-weight:bold">厄瓜多尔不败</td><td>1:1</td><td>2.75</td><td>⭐⭐⭐</td></tr>
+<tr><td>10:00</td><td>瑞典 vs 突尼斯</td><td>F组</td><td style="font-weight:bold">瑞典胜</td><td>1:0</td><td>2.47</td><td>⭐⭐⭐⭐</td></tr>
+</table></div>
+<div class="card"><h2>🇩🇪 德国 vs 库拉索 🇨🇼</h2>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">E组 · 2026年6月15日 01:00 CST · 休斯顿体育场 · E组首轮</div>
+<div class="pbar"><span class="h" style="width:89%">德国 88.9%</span><span class="d" style="width:10%">平 10.4%</span><span class="a" style="width:5%">库拉索 1.4%</span></div>
+<table class="d" style="font-size:.75em;margin:8px 0 16px"><tr><th></th><th>德国</th><th>平局</th><th>库拉索</th></tr>
+<tr><td>ELO(32.5%)</td><td>81.6%</td><td>19.0%</td><td>0.5%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">92.4%</td><td>6.2%</td><td class="hi">1.9%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">88.9%</td><td>10.4%</td><td>1.4%</td></tr></table>
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3><div class="g3">
+<div class="g3i"><div class="v">1809 vs 1550</div><div class="l">原始ELO · 差+259</div></div>
+<div class="g3i"><div class="v">1875 vs 1620</div><div class="l">修正ELO</div></div>
+<div class="g3i"><div class="v">+255</div><div class="l">修正差距</div></div></div>
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3><table class="d"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>1.02</td><td>21.00</td><td>51.00</td></tr>
+<tr><td>Betfred</td><td>1.02</td><td>17.00</td><td>51.00</td></tr>
+<tr><td>Bwin</td><td>1.01</td><td>11.00</td><td>51.00</td></tr>
+<tr><td>BOYLE</td><td>1.01</td><td>26.00</td><td>34.00</td></tr>
+<tr><td>Coral</td><td class="hi">1.03</td><td>21.00</td><td>67.00</td></tr>
+<tr><td>Ladbrokes</td><td class="hi">1.03</td><td>19.00</td><td>61.00</td></tr>
+<tr><td>Sportingbet</td><td class="hi">1.03</td><td>15.00</td><td class="hi">91.00</td></tr>
 </table>
+<p class="note">📌 均价 <b>1.02/18.57/58.00</b> · 隐含 德国93.2%/平5.1%/库拉索1.6% · <b>7区（深盘碾压）</b> · 离散1.1%(低 · 一致) · 强队碾压</p>
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3><div class="g3">
+<div class="g3i"><div class="v" style="color:var(--red)">升0/降13</div><div class="l">升盘/降盘</div></div>
+<div class="g3i"><div class="v">三球半</div><div class="l">当前盘口</div></div>
+<div class="g3i"><div class="v">0.96/0.87</div><div class="l">水位均值(主/客)</div></div></div>
+<p style="font-size:.8em;color:var(--text2)">水位: 主0.76~1.02 | 客0.84~0.91 | 变: 主+0.03/客-0.01</p><p class="note">📉 <strong>多数降盘</strong>：13家降盘，市场信心下降</p>
+<p class="note">🔒 <strong>三球半</strong>：德国水位0.76~1.02，库拉索水位0.84~0.91</p>
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3><div class="g3">
+<div class="g3i"><div class="v">92%</div><div class="l">德国胜</div></div><div class="g3i"><div class="v">7%</div><div class="l">平局</div></div><div class="g3i"><div class="v">2%</div><div class="l">库拉索胜</div></div></div>
+<p class="note">📊 成交量 <b>$2,500,000</b> · 置信度高 · O/U 2.5: Over50%/Under51% · BTTS Yes20% · 德国进球>0.5:97%/库拉索进球>0.5:15%</p>
+<h3>⚖️ 综合研判（第一步·方向）</h3><div class="verdict" style="border-left:4px solid var(--green)"><div class="vinfo"><div class="top">德国胜</div><div class="detail">综合(32.5%ELO+67.5%市场): 德国88.9%/平10.4%/库拉索1.4% · ELO贡献德国81.6%/市场贡献德国92.4%</div></div><div class="vscore">3:0<span class="stars">⭐⭐⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替2:0</span></div></div>
+<h3>🎯 进球/零封（第二步）</h3><div class="g3"><div class="g3i"><div class="v">1.52</div><div class="l">德国 λ</div></div><div class="g3i"><div class="v">1.00</div><div class="l">库拉索 λ</div></div><div class="g3i"><div class="v">68%</div><div class="l">零封概率</div></div></div>
+<h3>⚽ 总进球（第三步）</h3><div class="g3"><div class="g3i"><div class="v">2.52</div><div class="l">λ_total</div></div><div class="g3i"><div class="v">2~3球</div><div class="l">最优区间</div></div><div class="g3i"><div class="v">O50%/U51%</div><div class="l">Poly O/U 2.5</div></div></div>
+<h3>📝 精确比分（第四步）</h3><div class="sgrid"><div class="sc"><div class="s">1:0</div><div class="pr">12.2%</div></div>
+<div class="sc"><div class="s">1:1</div><div class="pr">12.2%</div></div>
+<div class="sc hl"><div class="s">2:0</div><div class="pr">9.3%</div></div>
+<div class="sc"><div class="s">2:1</div><div class="pr">9.3%</div></div>
+</div><p class="note"><b>推荐比分</b>: 3:0（首选）· 2:0（次选）· 4:0</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 风险可控</b> · ELO差259分</div>
 </div>
-
-<!-- ═══ 德国vs库拉索 ═══ -->
-<div class="card">
-<h2>🇩🇪 德国 vs 库拉索 🇨🇼</h2>
-<div class="match-row"><div class="info"><div class="teams">德国 vs 库拉索</div><div class="meta">E组 · 6月15日 01:00 CST · 休斯顿体育场</div></div></div>
-
-<div class="prob-bar"><span class="h" style="width:89.5%">德国 89.5%</span><span class="d" style="width:9.6%">平 9.6%</span><span class="a" style="width:0.9%">库拉索 0.9%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1809 vs 1550</div><div class="l">ELO (差距+259)</div></div>
-<div class="g3"><div class="v">2.52</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">3:0</div><div class="l">比分预测 ⭐⭐⭐⭐⭐</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td class="hi">1.02</td><td>21.0</td><td>51</td></tr>
-<tr><td>Betfred</td><td>1.02</td><td>17.0</td><td>51</td></tr>
-<tr><td>Coral</td><td>1.03</td><td>21.0</td><td>67</td></tr>
-<tr><td>Sportingbet</td><td>1.03</td><td>15.0</td><td>91</td></tr>
+<div class="card"><h2>🇳🇱 荷兰 vs 日本 🇯🇵</h2>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">F组 · 2026年6月15日 04:00 CST · 达拉斯体育场 · F组首轮</div>
+<div class="pbar"><span class="h" style="width:55%">荷兰 54.8%</span><span class="d" style="width:27%">平 26.7%</span><span class="a" style="width:19%">日本 18.9%</span></div>
+<table class="d" style="font-size:.75em;margin:8px 0 16px"><tr><th></th><th>荷兰</th><th>平局</th><th>日本</th></tr>
+<tr><td>ELO(32.5%)</td><td>66.6%</td><td>26.0%</td><td>7.4%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">49.1%</td><td>27.0%</td><td class="hi">24.4%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">54.8%</td><td>26.7%</td><td>18.9%</td></tr></table>
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3><div class="g3">
+<div class="g3i"><div class="v">1799 vs 1679</div><div class="l">原始ELO · 差+120</div></div>
+<div class="g3i"><div class="v">1865 vs 1720</div><div class="l">修正ELO</div></div>
+<div class="g3i"><div class="v">+145</div><div class="l">修正差距</div></div></div>
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3><table class="d"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>1.95</td><td>3.50</td><td>3.30</td></tr>
+<tr><td>Betfred</td><td>1.95</td><td>3.60</td><td class="hi">3.75</td></tr>
+<tr><td>Bwin</td><td>1.95</td><td>3.40</td><td>3.50</td></tr>
+<tr><td>BOYLE</td><td>1.87</td><td>3.50</td><td>3.50</td></tr>
+<tr><td>Coral</td><td class="hi">2.00</td><td>3.50</td><td>3.50</td></tr>
+<tr><td>Ladbrokes</td><td class="hi">2.00</td><td>3.50</td><td>3.50</td></tr>
+<tr><td>Sportingbet</td><td>1.95</td><td>3.40</td><td>3.50</td></tr>
 </table>
-<p class="note">绝对碾压局 · 德国让球-3 · λ=2.52→2~3球 · 零封概率极高 · 3:0最合理 · E组首战德国需捞净胜球</p>
+<p class="note">📌 均价 <b>1.95/3.49/3.51</b> · 隐含 荷兰47.2%/平26.5%/日本26.3% · <b>3区（平半）</b> · 离散4.2%(低 · 一致) · 实力接近</p>
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3><div class="g3">
+<div class="g3i"><div class="v" style="color:var(--text2)">升0/降4</div><div class="l">升盘/降盘</div></div>
+<div class="g3i"><div class="v">半球</div><div class="l">当前盘口</div></div>
+<div class="g3i"><div class="v">1.00/0.85</div><div class="l">水位均值(主/客)</div></div></div>
+<p style="font-size:.8em;color:var(--text2)">水位: 主0.70~1.12 | 客0.68~1.18 | 变: 主+0.05/客-0.03</p><p class="note">📉 <strong>退盘信号</strong>：4家降盘</p>
+<p class="note">🔒 <strong>半球</strong>：荷兰水位0.70~1.12，日本水位0.68~1.18</p>
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3><div class="g3">
+<div class="g3i"><div class="v">53%</div><div class="l">荷兰胜</div></div><div class="g3i"><div class="v">27%</div><div class="l">平局</div></div><div class="g3i"><div class="v">21%</div><div class="l">日本胜</div></div></div>
+<p class="note">📊 成交量 <b>$1,200,000</b> · 置信度高 · O/U 2.5: Over52%/Under49% · BTTS Yes55% · 荷兰进球>0.5:72%/日本进球>0.5:68%</p>
+<h3>⚖️ 综合研判（第一步·方向）</h3><div class="verdict" style="border-left:4px solid var(--blue)"><div class="vinfo"><div class="top">荷兰胜</div><div class="detail">综合(32.5%ELO+67.5%市场): 荷兰54.8%/平26.7%/日本18.9% · ELO贡献荷兰66.6%/市场贡献荷兰49.1%</div></div><div class="vscore">2:1<span class="stars">⭐⭐⭐½</span><span style="font-size:.45em;color:var(--text2)">替1:1</span></div></div>
+<h3>🎯 进球/零封（第二步）</h3><div class="g3"><div class="g3i"><div class="v">1.50</div><div class="l">荷兰 λ</div></div><div class="g3i"><div class="v">1.26</div><div class="l">日本 λ</div></div><div class="g3i"><div class="v">25%</div><div class="l">零封概率</div></div></div>
+<h3>⚽ 总进球（第三步）</h3><div class="g3"><div class="g3i"><div class="v">2.76</div><div class="l">λ_total</div></div><div class="g3i"><div class="v">2~3球</div><div class="l">最优区间</div></div><div class="g3i"><div class="v">O52%/U49%</div><div class="l">Poly O/U 2.5</div></div></div>
+<h3>📝 精确比分（第四步）</h3><div class="sgrid"><div class="sc hl"><div class="s">1:1</div><div class="pr">12.0%</div></div>
+<div class="sc"><div class="s">1:0</div><div class="pr">9.5%</div></div>
+<div class="sc hl"><div class="s">2:1</div><div class="pr">9.0%</div></div>
+<div class="sc"><div class="s">0:1</div><div class="pr">8.0%</div></div>
+</div><p class="note"><b>推荐比分</b>: 2:1（首选）· 1:1（次选）· 1:0</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 方向明确</b> · ELO差120分</div>
 </div>
-
-<!-- ═══ 荷兰vs日本 ═══ -->
-<div class="card">
-<h2>🇳🇱 荷兰 vs 日本 🇯🇵</h2>
-<div class="match-row"><div class="info"><div class="teams">荷兰 vs 日本</div><div class="meta">F组 · 6月15日 04:00 CST · 达拉斯体育场</div></div></div>
-
-<div class="prob-bar"><span class="h" style="width:53.5%">荷兰 53.5%</span><span class="d" style="width:26.3%">平 26.3%</span><span class="a" style="width:20.2%">日本 20.2%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1799 vs 1679</div><div class="l">ELO (差距+120)</div></div>
-<div class="g3"><div class="v">2.76</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">2:1</div><div class="l">比分预测 ⭐⭐⭐½</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>1.95</td><td>3.50</td><td>3.30</td></tr>
-<tr><td>Betfred</td><td>1.95</td><td>3.60</td><td>3.75</td></tr>
-<tr><td>Coral</td><td>2.00</td><td>3.50</td><td>3.50</td></tr>
-</table>
-<p class="note">荷兰ELO+120但日本亚洲-20广实修正→实际差距更大 · λ=2.76→2~3球 · 双方进球概率均~70% · 2:1合理 · 日本世界杯经验丰富不可轻视</p>
-</div>
-
-<!-- ═══ 科特迪瓦vs厄瓜多尔 ═══ -->
-<div class="card">
-<h2>🇨🇮 科特迪瓦 vs 厄瓜多尔 🇪🇨</h2>
-<div class="match-row"><div class="info"><div class="teams">科特迪瓦 vs 厄瓜多尔</div><div class="meta">E组 · 6月15日 07:00 CST · 费城体育场</div></div></div>
-
-<div class="prob-bar"><span class="h" style="width:30.8%">科特迪瓦 30.8%</span><span class="d" style="width:28.7%">平 28.7%</span><span class="a" style="width:40.5%">厄瓜多尔 40.5%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1676 vs 1800</div><div class="l">ELO (差距-124)</div></div>
-<div class="g3"><div class="v">2.75</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">1:1</div><div class="l">比分预测 ⭐⭐⭐</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>2.90</td><td>3.20</td><td class="hi">2.30</td></tr>
-<tr><td>Betfred</td><td>3.25</td><td>3.10</td><td class="hi">2.30</td></tr>
+<div class="card"><h2>🇨🇮 科特迪瓦 vs 厄瓜多尔 🇪🇨</h2>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">E组 · 2026年6月15日 07:00 CST · 费城体育场 · E组首轮</div>
+<div class="pbar"><span class="h" style="width:31%">科特迪瓦 30.6%</span><span class="d" style="width:28%">平 27.8%</span><span class="a" style="width:42%">厄瓜多尔 41.7%</span></div>
+<table class="d" style="font-size:.75em;margin:8px 0 16px"><tr><th></th><th>科特迪瓦</th><th>平局</th><th>厄瓜多尔</th></tr>
+<tr><td>ELO(32.5%)</td><td>32.9%</td><td>25.8%</td><td>41.3%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">29.4%</td><td>28.7%</td><td class="hi">41.8%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">30.6%</td><td>27.8%</td><td>41.7%</td></tr></table>
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3><div class="g3">
+<div class="g3i"><div class="v">1676 vs 1800</div><div class="l">原始ELO · 差-124</div></div>
+<div class="g3i"><div class="v">1725 vs 1850</div><div class="l">修正ELO</div></div>
+<div class="g3i"><div class="v">-125</div><div class="l">修正差距</div></div></div>
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3><table class="d"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>2.90</td><td>3.20</td><td class="hi">2.30</td></tr>
+<tr><td>Betfred</td><td class="hi">3.25</td><td>3.10</td><td class="hi">2.30</td></tr>
+<tr><td>Bwin</td><td>3.12</td><td>2.90</td><td class="hi">2.30</td></tr>
+<tr><td>BOYLE</td><td>3.20</td><td>2.80</td><td class="hi">2.30</td></tr>
 <tr><td>Coral</td><td>3.20</td><td>3.25</td><td class="hi">2.30</td></tr>
+<tr><td>Ladbrokes</td><td>3.10</td><td>3.20</td><td class="hi">2.30</td></tr>
+<tr><td>Sportingbet</td><td>2.90</td><td>3.00</td><td class="hi">2.30</td></tr>
 </table>
-<p class="note">厄瓜多尔ELO+124 · 所有公司客胜一致2.30(极罕见) · 科特迪瓦非洲-20分 → 实际差距更大 · 平局28.7%不低 · 五五开偏厄瓜多尔</p>
+<p class="note">📌 均价 <b>3.10/3.06/2.30</b> · 隐含 科特迪瓦29.8%/平30.1%/厄瓜多尔40.1% · <b>2区（平手~平半）</b> · 离散6.3%(中) · 势均力敌</p>
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3><div class="g3">
+<div class="g3i"><div class="v" style="color:var(--text2)">升0/降1</div><div class="l">升盘/降盘</div></div>
+<div class="g3i"><div class="v">受让平手/半球</div><div class="l">当前盘口</div></div>
+<div class="g3i"><div class="v">0.90/0.95</div><div class="l">水位均值(主/客)</div></div></div>
+<p style="font-size:.8em;color:var(--text2)">水位: 主0.75~1.39 | 客0.57~1.06 | 变: 主+0.04/客-0.01</p><p class="note">🔒 <strong>受让平手/半球</strong>：厄瓜多尔让球，科特迪瓦水位0.75~1.39</p>
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3><div class="g3">
+<div class="g3i"><div class="v">31%</div><div class="l">科特迪瓦胜</div></div><div class="g3i"><div class="v">29%</div><div class="l">平局</div></div><div class="g3i"><div class="v">40%</div><div class="l">厄瓜多尔胜</div></div></div>
+<p class="note">📊 成交量 <b>$450,000</b> · 置信度中 · O/U 2.5: Over48%/Under53% · BTTS Yes52% · 科特迪瓦进球>0.5:65%/厄瓜多尔进球>0.5:70%</p>
+<h3>⚖️ 综合研判（第一步·方向）</h3><div class="verdict" style="border-left:4px solid var(--gold)"><div class="vinfo"><div class="top">厄瓜多尔不败</div><div class="detail">综合(32.5%ELO+67.5%市场): 科特迪瓦30.6%/平27.8%/厄瓜多尔41.7% · ELO贡献科特迪瓦32.9%/市场贡献科特迪瓦29.4%</div></div><div class="vscore">1:1<span class="stars">⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替0:1</span></div></div>
+<h3>🎯 进球/零封（第二步）</h3><div class="g3"><div class="g3i"><div class="v">1.25</div><div class="l">科特迪瓦 λ</div></div><div class="g3i"><div class="v">1.50</div><div class="l">厄瓜多尔 λ</div></div><div class="g3i"><div class="v">20%</div><div class="l">零封概率</div></div></div>
+<h3>⚽ 总进球（第三步）</h3><div class="g3"><div class="g3i"><div class="v">2.75</div><div class="l">λ_total</div></div><div class="g3i"><div class="v">2~3球</div><div class="l">最优区间</div></div><div class="g3i"><div class="v">O48%/U53%</div><div class="l">Poly O/U 2.5</div></div></div>
+<h3>📝 精确比分（第四步）</h3><div class="sgrid"><div class="sc hl"><div class="s">1:1</div><div class="pr">12.0%</div></div>
+<div class="sc hl"><div class="s">0:1</div><div class="pr">9.6%</div></div>
+<div class="sc"><div class="s">1:2</div><div class="pr">9.0%</div></div>
+<div class="sc"><div class="s">1:0</div><div class="pr">8.0%</div></div>
+</div><p class="note"><b>推荐比分</b>: 1:1（首选）· 0:1（次选）· 1:2</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 方向明确</b> · ELO差124分</div>
 </div>
-
-<!-- ═══ 瑞典vs突尼斯 ═══ -->
-<div class="card">
-<h2>🇸🇪 瑞典 vs 突尼斯 🇹🇳</h2>
-<div class="match-row"><div class="info"><div class="teams">瑞典 vs 突尼斯</div><div class="meta">F组 · 6月15日 10:00 CST · 蒙特雷体育场</div></div></div>
-
-<div class="prob-bar"><span class="h" style="width:52.5%">瑞典 52.5%</span><span class="d" style="width:28.0%">平 28.0%</span><span class="a" style="width:19.5%">突尼斯 19.5%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1700 vs 1636</div><div class="l">ELO (差距+64)</div></div>
-<div class="g3"><div class="v">2.47</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">1:0</div><div class="l">比分预测 ⭐⭐⭐⭐</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>1.85</td><td>3.50</td><td>3.70</td></tr>
-<tr><td>Betfred</td><td>1.95</td><td>3.30</td><td>4.00</td></tr>
-<tr><td>Coral</td><td>1.91</td><td>3.40</td><td>4.33</td></tr>
+<div class="card"><h2>🇸🇪 瑞典 vs 突尼斯 🇹🇳</h2>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">F组 · 2026年6月15日 10:00 CST · 蒙特雷体育场 · F组首轮</div>
+<div class="pbar"><span class="h" style="width:53%">瑞典 52.7%</span><span class="d" style="width:28%">平 28.2%</span><span class="a" style="width:19%">突尼斯 19.4%</span></div>
+<table class="d" style="font-size:.75em;margin:8px 0 16px"><tr><th></th><th>瑞典</th><th>平局</th><th>突尼斯</th></tr>
+<tr><td>ELO(32.5%)</td><td>59.1%</td><td>28.8%</td><td>12.1%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">49.7%</td><td>27.9%</td><td class="hi">22.9%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">52.7%</td><td>28.2%</td><td>19.4%</td></tr></table>
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3><div class="g3">
+<div class="g3i"><div class="v">1700 vs 1636</div><div class="l">原始ELO · 差+64</div></div>
+<div class="g3i"><div class="v">1765 vs 1680</div><div class="l">修正ELO</div></div>
+<div class="g3i"><div class="v">+85</div><div class="l">修正差距</div></div></div>
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3><table class="d"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>1.85</td><td>3.50</td><td>3.70</td></tr>
+<tr><td>Betfred</td><td class="hi">1.95</td><td>3.30</td><td>4.00</td></tr>
+<tr><td>Bwin</td><td>1.85</td><td>3.20</td><td>4.10</td></tr>
+<tr><td>BOYLE</td><td>1.87</td><td>3.30</td><td>4.00</td></tr>
+<tr><td>Coral</td><td>1.91</td><td>3.40</td><td class="hi">4.33</td></tr>
+<tr><td>Ladbrokes</td><td>1.91</td><td>3.30</td><td>4.20</td></tr>
+<tr><td>Sportingbet</td><td>1.83</td><td>3.50</td><td>3.75</td></tr>
 </table>
-<p class="note">瑞典ELO+64小优 · 突尼斯非洲-20分 → 瑞典优势扩大 · λ=2.47倾向低比分 · 瑞典北欧稳健风格 · 1:0小胜最合理</p>
+<p class="note">📌 均价 <b>1.88/3.36/4.01</b> · 隐含 瑞典49.3%/平27.6%/突尼斯23.1% · <b>3区（平半）</b> · 离散3.6%(低 · 一致) · 实力接近</p>
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3><div class="g3">
+<div class="g3i"><div class="v" style="color:var(--text2)">升1/降0</div><div class="l">升盘/降盘</div></div>
+<div class="g3i"><div class="v">半球</div><div class="l">当前盘口</div></div>
+<div class="g3i"><div class="v">0.89/0.96</div><div class="l">水位均值(主/客)</div></div></div>
+<p style="font-size:.8em;color:var(--text2)">水位: 主0.64~1.03 | 客0.75~1.28 | 变: 主-0.01/客+0.02</p><p class="note">🔒 <strong>半球</strong>：瑞典水位0.64~1.03，突尼斯水位0.75~1.28</p>
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3><div class="g3">
+<div class="g3i"><div class="v">53%</div><div class="l">瑞典胜</div></div><div class="g3i"><div class="v">28%</div><div class="l">平局</div></div><div class="g3i"><div class="v">20%</div><div class="l">突尼斯胜</div></div></div>
+<p class="note">📊 成交量 <b>$380,000</b> · 置信度中 · O/U 2.5: Over45%/Under56% · BTTS Yes42% · 瑞典进球>0.5:70%/突尼斯进球>0.5:50%</p>
+<h3>⚖️ 综合研判（第一步·方向）</h3><div class="verdict" style="border-left:4px solid var(--blue)"><div class="vinfo"><div class="top">瑞典胜</div><div class="detail">综合(32.5%ELO+67.5%市场): 瑞典52.7%/平28.2%/突尼斯19.4% · ELO贡献瑞典59.1%/市场贡献瑞典49.7%</div></div><div class="vscore">1:0<span class="stars">⭐⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替2:0</span></div></div>
+<h3>🎯 进球/零封（第二步）</h3><div class="g3"><div class="g3i"><div class="v">1.30</div><div class="l">瑞典 λ</div></div><div class="g3i"><div class="v">1.17</div><div class="l">突尼斯 λ</div></div><div class="g3i"><div class="v">38%</div><div class="l">零封概率</div></div></div>
+<h3>⚽ 总进球（第三步）</h3><div class="g3"><div class="g3i"><div class="v">2.47</div><div class="l">λ_total</div></div><div class="g3i"><div class="v">2球</div><div class="l">最优区间</div></div><div class="g3i"><div class="v">O45%/U56%</div><div class="l">Poly O/U 2.5</div></div></div>
+<h3>📝 精确比分（第四步）</h3><div class="sgrid"><div class="sc"><div class="s">1:1</div><div class="pr">12.9%</div></div>
+<div class="sc hl"><div class="s">1:0</div><div class="pr">11.0%</div></div>
+<div class="sc"><div class="s">0:1</div><div class="pr">9.9%</div></div>
+<div class="sc"><div class="s">2:1</div><div class="pr">8.4%</div></div>
+</div><p class="note"><b>推荐比分</b>: 1:0（首选）· 2:0（次选）· 2:1</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 方向明确</b> · ELO差64分</div>
 </div>
-
-<!-- ═══ 方法论 ═══ -->
-<div class="card">
-<h2>📐 方法论 · v21.0权重体系</h2>
-<div class="methodology">
+<div class="card"><h2>📐 方法论 · 权重体系</h2><div class="methodology">
 <div class="mc"><h4 style="color:var(--blue)">ELO模型 (32.5%)</h4><p>因子修正ELO · Poisson λ, xG, 比分概率</p></div>
 <div class="mc"><h4 style="color:var(--pink)">Polymarket (33.75%)</h4><p>预测市场 · 市场权重50% (绝对33.75%)</p></div>
 <div class="mc"><h4 style="color:var(--gold)">欧洲赔率 (20.25%)</h4><p>7家公司 · 市场权重30% (绝对20.25%)</p></div>
-<div class="mc"><h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4><p>titan007 · 市场权重20% (绝对13.5%)</p></div>
-</div>
-</div>
-
-<div class="footer"><p>数据来源: worldcup-odds.com · lottery.gov.cn · ELO模型 | 仅供娱乐参考</p><p style="margin-top:4px">v21.0 · WorkBuddy AI · 2026-06-11</p></div>
-</div>
-</body>
-</html>
+<div class="mc"><h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4><p>titan007 15家 · 市场权重20% (绝对13.5%)</p></div>
+</div></div>
+<div class="footer"><p>数据: worldcup-odds.com · titan007.com · Polymarket · ELO | 仅供娱乐参考</p><p>v21.0 · WorkBuddy AI · 2026-06-11</p></div></div></body></html>
