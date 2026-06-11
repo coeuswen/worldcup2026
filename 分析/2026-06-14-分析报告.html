@@ -1,180 +1,393 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>世界杯2026 · 6月14日 赛果预测分析</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>世界杯2026 · 6月14日 赛果预测分析 v21.0</title>
 <style>
 :root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--gold:#fbbf24;--pink:#ec4899}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.65}
-.container{max-width:960px;margin:0 auto;padding:20px}
-.header{text-align:center;padding:36px 20px 24px;background:linear-gradient(135deg,#1a0033,#0d1b3e,#0a0e17);border-bottom:3px solid var(--accent)}
-.header h1{font-size:1.9em;margin-bottom:6px;color:#fff}.header .sub{color:var(--accent);font-size:.9em;opacity:.85}.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:18px}
-.card h2{font-size:1.15em;margin-bottom:14px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:6px}
-.card h3{font-size:1em;margin:14px 0 8px;color:#ccc}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.7}
+.container{max-width:1000px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:40px 20px 28px;background:linear-gradient(135deg,#1a0033 0%,#0d1b3e 50%,#0a0e17 100%);border-bottom:3px solid var(--accent)}
+.header h1{font-size:2em;margin-bottom:6px;color:#fff}.header .sub{color:var(--accent);font-size:.9em}.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
 
-.match-row{display:flex;gap:12px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02);margin-bottom:10px;border:1px solid var(--border)}
-.match-row .info{flex:1}.match-row .teams{font-size:1.15em;font-weight:bold}
-.match-row .meta{font-size:.78em;color:var(--text2)}
-
-.prob-bar{height:22px;border-radius:11px;display:flex;overflow:hidden;margin:6px 0}
-.prob-bar span{display:flex;align-items:center;justify-content:center;font-size:.72em;font-weight:bold;color:#fff}
-.prob-bar .h{background:var(--blue)}.prob-bar .d{background:var(--gold);color:#111}.prob-bar .a{background:var(--red)}
-
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
-.g3{text-align:center;padding:12px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.g3 .v{font-size:1.2em;font-weight:bold;color:var(--accent)}.g3 .l{font-size:.72em;color:var(--text2)}
-
-table.d{width:100%;border-collapse:collapse;font-size:.78em;margin:8px 0}
-table.d th{text-align:left;padding:6px 10px;color:var(--text2);font-weight:normal;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
-table.d td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
-table.d .hi{color:var(--accent);font-weight:bold}
-
-.verdict{padding:14px;border-radius:10px;margin:10px 0;border:1px solid var(--border);font-size:.85em}
-.verdict.p1{border-left:4px solid var(--blue)}.verdict.p2{border-left:4px solid var(--green)}.verdict.p3{border-left:4px solid var(--gold)}.verdict.p4{border-left:4px solid var(--pink)}
-.note{font-size:.82em;color:var(--text2);margin-top:6px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.card h2{font-size:1.2em;margin-bottom:16px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px}
+.card h3{font-size:1em;margin:16px 0 10px;color:#ccc}
 
 .summary-table{width:100%;border-collapse:collapse;font-size:.85em;margin:12px 0}
 .summary-table th{background:rgba(255,255,255,.03);padding:8px 12px;text-align:left;color:var(--text2);border-bottom:1px solid var(--border)}
 .summary-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
-.summary-table .dir{font-weight:bold}
 
-.methodology{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-.mc{text-align:center;padding:12px 8px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.mc h4{font-size:.85em;margin-bottom:4px}.mc p{font-size:.7em;color:var(--text2)}
+.pbar{height:28px;border-radius:14px;display:flex;overflow:hidden;margin:10px 0}
+.pbar span{display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:bold;color:#fff}
+.pbar .h{background:var(--blue)}.pbar .d{background:var(--gold);color:#111}.pbar .a{background:var(--red)}
 
-.footer{text-align:center;padding:28px;color:var(--text2);font-size:.78em;border-top:1px solid var(--border)}
-@media(max-width:600px){.grid3{grid-template-columns:1fr}.methodology{grid-template-columns:1fr 1fr}.container{padding:10px}.header h1{font-size:1.4em}}
-</style>
-</head>
-<body>
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.g3i{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.g3i .v{font-size:1.3em;font-weight:bold;color:var(--accent)}.g3i .l{font-size:.72em;color:var(--text2);margin-top:4px}
+
+table.data{width:100%;border-collapse:collapse;font-size:.82em;margin:10px 0}
+table.data th{text-align:left;padding:7px 12px;color:var(--text2);font-weight:400;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+table.data td{padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+table.data .hi{color:var(--accent);font-weight:700}
+
+.verdict{display:flex;align-items:center;gap:16px;padding:18px;border-radius:12px;margin:12px 0;border:1px solid var(--border)}
+.vinfo{flex:1}.vinfo .top{font-size:1.15em;font-weight:700}
+.vinfo .detail{font-size:.85em;color:var(--text2);margin-top:6px;line-height:1.6}
+.vscore{text-align:center;font-size:1.5em;font-weight:700;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,.05)}
+.vscore .stars{font-size:.5em;color:var(--accent);display:block}
+
+.note{font-size:.82em;color:var(--text2);margin-top:6px;line-height:1.6}
+
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.sc{text-align:center;padding:10px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.sc.hl{border-color:var(--accent);background:rgba(245,158,11,.08)}
+.sc .s{font-size:1.2em;font-weight:700;color:var(--accent)}.sc .pr{font-size:.72em;color:var(--text2)}
+
+.risk-box{padding:16px;border-radius:10px;margin:12px 0;font-size:.85em;border:1px dashed var(--border)}
+.risk-box.green{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.2)}
+.risk-box.orange{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.2)}
+.risk-box.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}
+
+.methodology{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.mc{text-align:center;padding:14px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.mc h4{font-size:.9em;margin-bottom:6px}.mc p{font-size:.75em;color:var(--text2);line-height:1.4}
+
+.footer{text-align:center;padding:32px;color:var(--text2);font-size:.8em;border-top:1px solid var(--border)}
+@media(max-width:700px){.g3,.sgrid,.methodology{grid-template-columns:1fr 1fr}.container{padding:10px}.header h1{font-size:1.4em}}
+</style></head><body>
 <div class="header">
 <h1>⚽ 2026世界杯 · 6月14日 赛果预测分析</h1>
-<p class="sub">v21.0 · 纸面32.5%+市场67.5% · ELO/欧赔/Polymarket三方验证 · 4场比赛</p>
-<p class="meta">数据: worldcup-odds.com · lottery.gov.cn · ELO模型 | 2026-06-11</p>
-</div>
-<div class="container">
+<p class="sub">v21.0 · 纸面32.5%+市场67.5%(Poly50%+欧赔30%+亚盘20%) · 四步分析 · 4场比赛全覆盖</p>
+<p class="meta">数据: worldcup-odds.com · titan007.com(15家) · Polymarket · lottery.gov.cn · ELO | 2026-06-11 16:15 CST</p>
+</div><div class="container">
 
-<!-- ═══ 汇总 ═══ -->
-<div class="card">
-<h2>📋 6月14日 比赛总览</h2>
+<div class="card"><h2>📐 框架说明 · 总览</h2>
+<p><b>v21.0权重</b>: 纸面32.5% + 市场67.5%(Poly50%+欧赔30%+亚盘20%) | <b>四步</b>: 方向→进球→总进球→比分</p>
 <table class="summary-table">
 <tr><th>时间</th><th>对阵</th><th>小组</th><th>方向</th><th>比分</th><th>λ</th><th>置信度</th></tr>
-<tr><td>03:00</td><td>卡塔尔 vs 瑞士</td><td>B组</td><td class="dir" style="color:var(--green)">瑞士胜</td><td>0:2</td><td>2.31</td><td>⭐⭐⭐⭐⭐</td></tr>
-<tr><td>06:00</td><td>巴西 vs 摩洛哥</td><td>C组</td><td class="dir" style="color:var(--blue)">巴西胜</td><td>2:0</td><td>2.99</td><td>⭐⭐⭐⭐</td></tr>
-<tr><td>09:00</td><td>海地 vs 苏格兰</td><td>C组</td><td class="dir" style="color:var(--green)">苏格兰胜</td><td>0:1</td><td>2.30</td><td>⭐⭐⭐⭐</td></tr>
-<tr><td>12:00</td><td>澳大利亚 vs 土耳其</td><td>D组</td><td class="dir" style="color:var(--gold)">土耳其不败</td><td>1:2</td><td>2.47</td><td>⭐⭐⭐½</td></tr>
-</table>
-</div>
+<tr><td>03:00</td><td>卡塔尔 vs 瑞士</td><td>B组</td><td style="font-weight:bold">瑞士胜</td><td>0:2</td><td>2.31</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td>06:00</td><td>巴西 vs 摩洛哥</td><td>C组</td><td style="font-weight:bold">巴西胜</td><td>2:0</td><td>2.99</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td>09:00</td><td>海地 vs 苏格兰</td><td>C组</td><td style="font-weight:bold">苏格兰胜</td><td>0:1</td><td>2.30</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td>12:00</td><td>澳大利亚 vs 土耳其</td><td>D组</td><td style="font-weight:bold">土耳其不败</td><td>1:2</td><td>2.47</td><td>⭐⭐⭐½</td></tr>
+</table></div>
 
-<!-- ═══ 卡塔尔vs瑞士 ═══ -->
 <div class="card">
 <h2>🇶🇦 卡塔尔 vs 瑞士 🇨🇭</h2>
-<div class="match-row"><div class="info"><div class="teams">卡塔尔 vs 瑞士</div><div class="meta">B组 · 6月14日 03:00 CST · 旧金山湾区体育场</div></div></div>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">
+B组 · 2026年6月14日 03:00 CST · 旧金山湾区体育场 · B组次轮</div>
 
-<div class="prob-bar"><span class="h" style="width:9.4%">卡塔尔 9.4%</span><span class="d" style="width:15.9%">平 15.9%</span><span class="a" style="width:74.7%">瑞士 74.7%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1427 vs 1830</div><div class="l">ELO (差距-403)</div></div>
-<div class="g3"><div class="v">2.31</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">0:2</div><div class="l">比分预测 ⭐⭐⭐⭐⭐</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>9.00</td><td>5.25</td><td class="hi">1.27</td></tr>
-<tr><td>Betfred</td><td>11.0</td><td>5.50</td><td class="hi">1.29</td></tr>
-<tr><td>Bwin</td><td>10.5</td><td>5.25</td><td class="hi">1.22</td></tr>
-<tr><td>Coral</td><td>9.50</td><td>5.50</td><td class="hi">1.30</td></tr>
+<div class="pbar"><span class="h" style="width:8%">卡塔尔 8.4%</span><span class="d" style="width:15%">平 15.2%</span><span class="a" style="width:77%">瑞士 76.8%</span></div>
+<table class="data" style="font-size:.75em;margin:8px 0 16px">
+<tr><th></th><th>卡塔尔</th><th>平局</th><th>瑞士</th></tr>
+<tr><td>ELO(32.5%)</td><td>8.9%</td><td>15.0%</td><td>76.1%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">8.1%</td><td>15.3%</td><td class="hi">77.1%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">8.4%</td><td>15.2%</td><td>76.8%</td></tr>
 </table>
-<p class="note">ELO差-403(碾压级) · 瑞士74.7%绝对优势 · λ=2.31低比分 · 瑞士零封概率高 · 比分0:2最合理，瑞士让球胜</p>
+
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1427 vs 1830</div><div class="l">原始ELO · 差-403</div></div>
+<div class="g3i"><div class="v">1492 vs 1895</div><div class="l">修正ELO · 年龄/经验/状态</div></div>
+<div class="g3i"><div class="v">-403</div><div class="l">修正差距</div></div>
 </div>
 
-<!-- ═══ 巴西vs摩洛哥 ═══ -->
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3>
+<table class="data"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>9.00</td><td>5.25</td><td>1.27</td></tr>
+<tr><td>Betfred</td><td class="hi">11.00</td><td>5.50</td><td>1.29</td></tr>
+<tr><td>Bwin</td><td>10.50</td><td>5.25</td><td>1.22</td></tr>
+<tr><td>BOYLE</td><td>9.50</td><td>5.00</td><td>1.29</td></tr>
+<tr><td>Coral</td><td>9.50</td><td>5.50</td><td class="hi">1.30</td></tr>
+<tr><td>Ladbrokes</td><td>9.00</td><td>5.50</td><td class="hi">1.30</td></tr>
+<tr><td>Sportingbet</td><td>9.00</td><td>4.75</td><td>1.29</td></tr>
+</table>
+<p class="note">📌 均价 <b>9.64/5.25/1.28</b> · 隐含 卡塔尔9.6%/平17.7%/瑞士72.6% · <b>2区（平手~平半）</b> · 离散6.7%(中) · 势均力敌</p>
+
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v" style="color:var(--green)">升12/降0</div><div class="l">升盘/降盘家数</div></div>
+<div class="g3i"><div class="v">受让球半/两球</div><div class="l">当前盘口众数</div></div>
+<div class="g3i"><div class="v">0.97/0.87</div><div class="l">水位均值(主/客)</div></div>
+</div>
+<p style="font-size:.8em;color:var(--text2)">水位范围: 主队0.80~1.10 | 客队0.67~0.98 | 水位变化: 主+0.03/客-0.00</p><p class="note">⚡ <strong>全线升盘</strong>：12家升盘/0家降盘，市场极度看好瑞士</p>
+<p class="note">🔒 <strong>受让球半/两球盘</strong>：瑞士让球，卡塔尔水位0.80~1.10，瑞士水位0.67~0.98</p>
+<p class="note">⚠️ <strong>Interwet*滞后</strong>：维持受让球半盘(1.1/0.67)未跟随</p>
+
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">8%</div><div class="l">卡塔尔胜</div></div>
+<div class="g3i"><div class="v">16%</div><div class="l">平局</div></div>
+<div class="g3i"><div class="v">77%</div><div class="l">瑞士胜</div></div>
+</div>
+<p class="note">📊 成交量 <b>$600,000</b> · 置信度中 · O/U 2.5: Over42%/Under59% · BTTS Yes38% · 卡塔尔进球>0.5:42%/瑞士进球>0.5:85%</p>
+
+<h3>⚖️ 综合研判（第一步·方向）</h3>
+<div class="verdict" style="border-left:4px solid var(--green)">
+<div class="vinfo"><div class="top">瑞士胜</div><div class="detail">综合(32.5%ELO+67.5%市场): 卡塔尔8.4%/平15.2%/瑞士76.8% · ELO贡献卡塔尔8.9%/市场贡献卡塔尔8.1%</div></div>
+<div class="vscore">0:2<span class="stars">⭐⭐⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替0:1</span></div>
+</div>
+
+<h3>🎯 进球/零封（第二步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">0.75</div><div class="l">卡塔尔 λ</div></div>
+<div class="g3i"><div class="v">1.56</div><div class="l">瑞士 λ</div></div>
+<div class="g3i"><div class="v">55%</div><div class="l">零封概率</div></div>
+</div>
+
+<h3>⚽ 总进球（第三步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">2.31</div><div class="l">λ_total</div></div>
+<div class="g3i"><div class="v">2球（26%）</div><div class="l">最优区间</div></div>
+<div class="g3i"><div class="v">O42%/U59%</div><div class="l">Poly O/U 2.5</div></div>
+</div>
+
+<h3>📝 精确比分（第四步）</h3>
+<div class="sgrid"><div class="sc hl"><div class="s">0:1</div><div class="pr">15.5%</div></div>
+<div class="sc hl"><div class="s">0:2</div><div class="pr">12.1%</div></div>
+<div class="sc"><div class="s">1:1</div><div class="pr">11.6%</div></div>
+<div class="sc"><div class="s">1:2</div><div class="pr">9.1%</div></div>
+</div><p class="note"><b>推荐比分</b>: 0:2（首选）· 0:1（次选）· 0:3</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 低风险</b> · ELO差403分</div>
+</div>
+
 <div class="card">
 <h2>🇧🇷 巴西 vs 摩洛哥 🇲🇦</h2>
-<div class="match-row"><div class="info"><div class="teams">巴西 vs 摩洛哥</div><div class="meta">C组 · 6月14日 06:00 CST · 格林威治时间23:00场</div></div></div>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">
+C组 · 2026年6月14日 06:00 CST · 西雅图体育场 · C组首轮</div>
 
-<div class="prob-bar"><span class="h" style="width:66.2%">巴西 66.2%</span><span class="d" style="width:22.6%">平 22.6%</span><span class="a" style="width:11.2%">摩洛哥 11.2%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1913 vs 1682</div><div class="l">ELO (差距+231)</div></div>
-<div class="g3"><div class="v">2.99</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">2:0</div><div class="l">比分预测 ⭐⭐⭐⭐</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>1.48</td><td>4.00</td><td>6.00</td></tr>
-<tr><td>Betfred</td><td>1.53</td><td>4.00</td><td>6.00</td></tr>
-<tr><td>Coral</td><td>1.60</td><td>4.00</td><td>5.50</td></tr>
-<tr><td>Sportingbet</td><td>1.55</td><td>4.00</td><td>6.00</td></tr>
+<div class="pbar"><span class="h" style="width:69%">巴西 69.3%</span><span class="d" style="width:21%">平 21.2%</span><span class="a" style="width:10%">摩洛哥 9.9%</span></div>
+<table class="data" style="font-size:.75em;margin:8px 0 16px">
+<tr><th></th><th>巴西</th><th>平局</th><th>摩洛哥</th></tr>
+<tr><td>ELO(32.5%)</td><td>79.1%</td><td>20.4%</td><td>0.5%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">64.5%</td><td>21.6%</td><td class="hi">14.4%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">69.3%</td><td>21.2%</td><td>9.9%</td></tr>
 </table>
-<p class="note">巴西ELO+231明显优势 · 欧赔主胜1.48~1.60 · λ=2.99→2~3球 · 摩洛哥非洲-20分广实修正 · 摩洛哥曾进世界杯四强不可轻视</p>
+
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1913 vs 1682</div><div class="l">原始ELO · 差+231</div></div>
+<div class="g3i"><div class="v">1980 vs 1750</div><div class="l">修正ELO · 年龄/经验/状态</div></div>
+<div class="g3i"><div class="v">+230</div><div class="l">修正差距</div></div>
 </div>
 
-<!-- ═══ 海地vs苏格兰 ═══ -->
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3>
+<table class="data"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>1.48</td><td>4.00</td><td class="hi">6.00</td></tr>
+<tr><td>Betfred</td><td>1.53</td><td>4.00</td><td class="hi">6.00</td></tr>
+<tr><td>Bwin</td><td>1.53</td><td>3.80</td><td>5.75</td></tr>
+<tr><td>BOYLE</td><td>1.55</td><td>3.80</td><td>5.00</td></tr>
+<tr><td>Coral</td><td class="hi">1.60</td><td>4.00</td><td>5.50</td></tr>
+<tr><td>Ladbrokes</td><td class="hi">1.60</td><td>4.00</td><td>5.50</td></tr>
+<tr><td>Sportingbet</td><td>1.55</td><td>4.00</td><td class="hi">6.00</td></tr>
+</table>
+<p class="note">📌 均价 <b>1.55/3.94/5.68</b> · 隐含 巴西60.0%/平23.6%/摩洛哥16.4% · <b>5区（半一~一球）</b> · 离散158.3%(中) · 有明显优势</p>
+
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v" style="color:var(--red)">升0/降11</div><div class="l">升盘/降盘家数</div></div>
+<div class="g3i"><div class="v">半球/一球</div><div class="l">当前盘口众数</div></div>
+<div class="g3i"><div class="v">0.91/0.94</div><div class="l">水位均值(主/客)</div></div>
+</div>
+<p style="font-size:.8em;color:var(--text2)">水位范围: 主队0.70~1.51 | 客队0.54~1.05 | 水位变化: 主-0.01/客+0.05</p><p class="note">📉 <strong>多数降盘</strong>：11家降盘，市场看衰主队</p>
+<p class="note">🔒 <strong>半球/一球盘</strong>：巴西水位0.70~1.51，摩洛哥水位0.54~1.05</p>
+
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">67%</div><div class="l">巴西胜</div></div>
+<div class="g3i"><div class="v">21%</div><div class="l">平局</div></div>
+<div class="g3i"><div class="v">13%</div><div class="l">摩洛哥胜</div></div>
+</div>
+<p class="note">📊 成交量 <b>$1,800,000</b> · 置信度高 · O/U 2.5: Over55%/Under46% · BTTS Yes42% · 巴西进球>0.5:82%/摩洛哥进球>0.5:55%</p>
+
+<h3>⚖️ 综合研判（第一步·方向）</h3>
+<div class="verdict" style="border-left:4px solid var(--blue)">
+<div class="vinfo"><div class="top">巴西胜</div><div class="detail">综合(32.5%ELO+67.5%市场): 巴西69.3%/平21.2%/摩洛哥9.9% · ELO贡献巴西79.1%/市场贡献巴西64.5%</div></div>
+<div class="vscore">2:0<span class="stars">⭐⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替2:1</span></div>
+</div>
+
+<h3>🎯 进球/零封（第二步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1.73</div><div class="l">巴西 λ</div></div>
+<div class="g3i"><div class="v">1.26</div><div class="l">摩洛哥 λ</div></div>
+<div class="g3i"><div class="v">35%</div><div class="l">零封概率</div></div>
+</div>
+
+<h3>⚽ 总进球（第三步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">2.99</div><div class="l">λ_total</div></div>
+<div class="g3i"><div class="v">2~3球（2球22%/3球20%）</div><div class="l">最优区间</div></div>
+<div class="g3i"><div class="v">O55%/U46%</div><div class="l">Poly O/U 2.5</div></div>
+</div>
+
+<h3>📝 精确比分（第四步）</h3>
+<div class="sgrid"><div class="sc"><div class="s">1:1</div><div class="pr">11.0%</div></div>
+<div class="sc hl"><div class="s">2:1</div><div class="pr">9.5%</div></div>
+<div class="sc"><div class="s">1:0</div><div class="pr">8.7%</div></div>
+<div class="sc hl"><div class="s">2:0</div><div class="pr">7.5%</div></div>
+</div><p class="note"><b>推荐比分</b>: 2:0（首选）· 2:1（次选）· 1:0</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 风险可控</b> · ELO差231分</div>
+</div>
+
 <div class="card">
 <h2>🇭🇹 海地 vs 苏格兰 🏴󠁧󠁢󠁳󠁣󠁴󠁿</h2>
-<div class="match-row"><div class="info"><div class="teams">海地 vs 苏格兰</div><div class="meta">C组 · 6月14日 09:00 CST · 波士顿体育场</div></div></div>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">
+C组 · 2026年6月14日 09:00 CST · 波士顿体育场 · C组首轮</div>
 
-<div class="prob-bar"><span class="h" style="width:17.2%">海地 17.2%</span><span class="d" style="width:20.9%">平 20.9%</span><span class="a" style="width:61.9%">苏格兰 61.9%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1532 vs 1720</div><div class="l">ELO (差距-188)</div></div>
-<div class="g3"><div class="v">2.30</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">0:1</div><div class="l">比分预测 ⭐⭐⭐⭐</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>6.00</td><td>4.50</td><td class="hi">1.40</td></tr>
-<tr><td>Betfred</td><td>7.50</td><td>4.60</td><td class="hi">1.40</td></tr>
-<tr><td>Coral</td><td>7.00</td><td>5.00</td><td class="hi">1.40</td></tr>
+<div class="pbar"><span class="h" style="width:17%">海地 17.4%</span><span class="d" style="width:21%">平 20.8%</span><span class="a" style="width:62%">苏格兰 61.8%</span></div>
+<table class="data" style="font-size:.75em;margin:8px 0 16px">
+<tr><th></th><th>海地</th><th>平局</th><th>苏格兰</th></tr>
+<tr><td>ELO(32.5%)</td><td>25.3%</td><td>22.6%</td><td>52.1%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">13.6%</td><td>19.9%</td><td class="hi">66.5%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">17.4%</td><td>20.8%</td><td>61.8%</td></tr>
 </table>
-<p class="note">苏格兰ELO+188明显优势 · 客胜赔率1.36~1.40 · λ=2.30低比分 · 海地实力最弱球队之一 · 苏格兰零封概率高</p>
+
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1532 vs 1720</div><div class="l">原始ELO · 差-188</div></div>
+<div class="g3i"><div class="v">1600 vs 1785</div><div class="l">修正ELO · 年龄/经验/状态</div></div>
+<div class="g3i"><div class="v">-185</div><div class="l">修正差距</div></div>
 </div>
 
-<!-- ═══ 澳大利亚vs土耳其 ═══ -->
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3>
+<table class="data"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>6.00</td><td>4.50</td><td class="hi">1.40</td></tr>
+<tr><td>Betfred</td><td class="hi">7.50</td><td>4.60</td><td class="hi">1.40</td></tr>
+<tr><td>Bwin</td><td>7.00</td><td>4.33</td><td class="hi">1.40</td></tr>
+<tr><td>BOYLE</td><td>7.00</td><td>4.50</td><td>1.36</td></tr>
+<tr><td>Coral</td><td>7.00</td><td>5.00</td><td class="hi">1.40</td></tr>
+<tr><td>Ladbrokes</td><td>7.00</td><td>4.80</td><td class="hi">1.40</td></tr>
+<tr><td>Sportingbet</td><td>7.00</td><td>4.60</td><td>1.36</td></tr>
+</table>
+<p class="note">📌 均价 <b>6.93/4.62/1.39</b> · 隐含 海地13.4%/平20.0%/苏格兰66.6% · <b>2区（平手~平半）</b> · 离散13.4%(中) · 势均力敌</p>
+
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v" style="color:var(--red)">升0/降13</div><div class="l">升盘/降盘家数</div></div>
+<div class="g3i"><div class="v">受让一球</div><div class="l">当前盘口众数</div></div>
+<div class="g3i"><div class="v">0.93/0.92</div><div class="l">水位均值(主/客)</div></div>
+</div>
+<p style="font-size:.8em;color:var(--text2)">水位范围: 主队0.82~1.21 | 客队0.69~0.99 | 水位变化: 主-0.01/客+0.04</p><p class="note">📉 <strong>多数降盘</strong>：13家降盘，市场看衰客队</p>
+<p class="note">🔒 <strong>受让一球盘</strong>：苏格兰让球，海地水位0.82~1.21，苏格兰水位0.69~0.99</p>
+
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">12%</div><div class="l">海地胜</div></div>
+<div class="g3i"><div class="v">19%</div><div class="l">平局</div></div>
+<div class="g3i"><div class="v">69%</div><div class="l">苏格兰胜</div></div>
+</div>
+<p class="note">📊 成交量 <b>$400,000</b> · 置信度中 · O/U 2.5: Over50%/Under51% · BTTS Yes35% · 海地进球>0.5:52%/苏格兰进球>0.5:82%</p>
+
+<h3>⚖️ 综合研判（第一步·方向）</h3>
+<div class="verdict" style="border-left:4px solid var(--green)">
+<div class="vinfo"><div class="top">苏格兰胜</div><div class="detail">综合(32.5%ELO+67.5%市场): 海地17.4%/平20.8%/苏格兰61.8% · ELO贡献海地25.3%/市场贡献海地13.6%</div></div>
+<div class="vscore">0:1<span class="stars">⭐⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替0:2</span></div>
+</div>
+
+<h3>🎯 进球/零封（第二步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">0.96</div><div class="l">海地 λ</div></div>
+<div class="g3i"><div class="v">1.34</div><div class="l">苏格兰 λ</div></div>
+<div class="g3i"><div class="v">50%</div><div class="l">零封概率</div></div>
+</div>
+
+<h3>⚽ 总进球（第三步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">2.30</div><div class="l">λ_total</div></div>
+<div class="g3i"><div class="v">2球（26%）</div><div class="l">最优区间</div></div>
+<div class="g3i"><div class="v">O50%/U51%</div><div class="l">Poly O/U 2.5</div></div>
+</div>
+
+<h3>📝 精确比分（第四步）</h3>
+<div class="sgrid"><div class="sc hl"><div class="s">0:1</div><div class="pr">13.4%</div></div>
+<div class="sc"><div class="s">1:1</div><div class="pr">12.9%</div></div>
+<div class="sc"><div class="s">1:0</div><div class="pr">9.6%</div></div>
+<div class="sc hl"><div class="s">0:2</div><div class="pr">9.0%</div></div>
+</div><p class="note"><b>推荐比分</b>: 0:1（首选）· 0:2（次选）· 1:2</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 风险可控</b> · ELO差188分</div>
+</div>
+
 <div class="card">
 <h2>🇦🇺 澳大利亚 vs 土耳其 🇹🇷</h2>
-<div class="match-row"><div class="info"><div class="teams">澳大利亚 vs 土耳其</div><div class="meta">D组 · 6月14日 12:00 CST · BC Place体育场</div></div></div>
+<div style="padding:12px;margin-bottom:16px;border-radius:8px;background:rgba(255,255,255,.02);font-size:.82em;color:var(--text2)">
+D组 · 2026年6月14日 12:00 CST · BC Place体育场 · D组首轮</div>
 
-<div class="prob-bar"><span class="h" style="width:26.0%">澳大利亚 26.0%</span><span class="d" style="width:26.7%">平 26.7%</span><span class="a" style="width:47.3%">土耳其 47.3%</span></div>
-
-<div class="grid3">
-<div class="g3"><div class="v">1613 vs 1720</div><div class="l">ELO (差距-107)</div></div>
-<div class="g3"><div class="v">2.47</div><div class="l">λ_total</div></div>
-<div class="g3"><div class="v">1:2</div><div class="l">比分预测 ⭐⭐⭐½</div></div>
-</div>
-
-<h3>欧赔</h3>
-<table class="d">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>3.75</td><td>3.50</td><td class="hi">1.85</td></tr>
-<tr><td>Betfred</td><td>4.33</td><td>3.40</td><td class="hi">1.83</td></tr>
-<tr><td>Coral</td><td>5.00</td><td>3.60</td><td>1.70</td></tr>
+<div class="pbar"><span class="h" style="width:27%">澳大利亚 26.9%</span><span class="d" style="width:27%">平 26.7%</span><span class="a" style="width:46%">土耳其 46.4%</span></div>
+<table class="data" style="font-size:.75em;margin:8px 0 16px">
+<tr><th></th><th>澳大利亚</th><th>平局</th><th>土耳其</th></tr>
+<tr><td>ELO(32.5%)</td><td>35.0%</td><td>26.6%</td><td>38.4%</td></tr>
+<tr><td>市场(67.5%)</td><td class="hi">23.0%</td><td>26.7%</td><td class="hi">50.2%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">26.9%</td><td>26.7%</td><td>46.4%</td></tr>
 </table>
-<p class="note">土耳其ELO+107优势 · 但澳大利亚主场(亚洲队无-20广实修正) · 平局概率26.7%不低 · 1:2略倾向土耳其 · 谨慎</p>
+
+<h3>⚔️ 纸面实力 · ELO（32.5%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1613 vs 1720</div><div class="l">原始ELO · 差-107</div></div>
+<div class="g3i"><div class="v">1680 vs 1785</div><div class="l">修正ELO · 年龄/经验/状态</div></div>
+<div class="g3i"><div class="v">-105</div><div class="l">修正差距</div></div>
 </div>
 
-<!-- ═══ 方法论 ═══ -->
-<div class="card">
-<h2>📐 方法论 · v21.0权重体系</h2>
+<h3>💰 欧洲赔率 · 7家（市场30%）</h3>
+<table class="data"><tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr><tr><td>Bet365</td><td>3.75</td><td>3.50</td><td class="hi">1.85</td></tr>
+<tr><td>Betfred</td><td>4.33</td><td>3.40</td><td>1.83</td></tr>
+<tr><td>Bwin</td><td>4.00</td><td>3.30</td><td class="hi">1.85</td></tr>
+<tr><td>BOYLE</td><td>4.00</td><td>3.30</td><td>1.83</td></tr>
+<tr><td>Coral</td><td class="hi">5.00</td><td>3.60</td><td>1.70</td></tr>
+<tr><td>Ladbrokes</td><td class="hi">5.00</td><td>3.60</td><td>1.70</td></tr>
+<tr><td>Sportingbet</td><td>3.75</td><td>3.50</td><td>1.83</td></tr>
+</table>
+<p class="note">📌 均价 <b>4.26/3.46/1.80</b> · 隐含 澳大利亚21.7%/平26.8%/土耳其51.5% · <b>2区（平手~平半）</b> · 离散12.0%(中) · 势均力敌</p>
+
+<h3>📊 亚洲盘口 · titan007 15家（市场20%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v" style="color:var(--text2)">升3/降0</div><div class="l">升盘/降盘家数</div></div>
+<div class="g3i"><div class="v">受让半球/一球</div><div class="l">当前盘口众数</div></div>
+<div class="g3i"><div class="v">0.95/0.90</div><div class="l">水位均值(主/客)</div></div>
+</div>
+<p style="font-size:.8em;color:var(--text2)">水位范围: 主队0.80~1.15 | 客队0.70~0.96 | 水位变化: 主+0.01/客+0.03</p><p class="note">🔒 <strong>受让半球/一球盘</strong>：土耳其让球，澳大利亚水位0.80~1.15，土耳其水位0.70~0.96</p>
+<p class="note">⚠️ <strong>Interwet*滞后</strong>：维持受让半球盘(1.15/0.7)未跟随</p>
+
+<h3>🔮 Polymarket（市场50% · 绝对33.75%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">23%</div><div class="l">澳大利亚胜</div></div>
+<div class="g3i"><div class="v">27%</div><div class="l">平局</div></div>
+<div class="g3i"><div class="v">50%</div><div class="l">土耳其胜</div></div>
+</div>
+<p class="note">📊 成交量 <b>$350,000</b> · 置信度中 · O/U 2.5: Over48%/Under53% · BTTS Yes46% · 澳大利亚进球>0.5:63%/土耳其进球>0.5:72%</p>
+
+<h3>⚖️ 综合研判（第一步·方向）</h3>
+<div class="verdict" style="border-left:4px solid var(--gold)">
+<div class="vinfo"><div class="top">土耳其不败</div><div class="detail">综合(32.5%ELO+67.5%市场): 澳大利亚26.9%/平26.7%/土耳其46.4% · ELO贡献澳大利亚35.0%/市场贡献澳大利亚23.0%</div></div>
+<div class="vscore">1:2<span class="stars">⭐⭐⭐½</span><span style="font-size:.45em;color:var(--text2)">替0:1</span></div>
+</div>
+
+<h3>🎯 进球/零封（第二步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1.13</div><div class="l">澳大利亚 λ</div></div>
+<div class="g3i"><div class="v">1.34</div><div class="l">土耳其 λ</div></div>
+<div class="g3i"><div class="v">28%</div><div class="l">零封概率</div></div>
+</div>
+
+<h3>⚽ 总进球（第三步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">2.47</div><div class="l">λ_total</div></div>
+<div class="g3i"><div class="v">2~3球（2球24%/3球19%）</div><div class="l">最优区间</div></div>
+<div class="g3i"><div class="v">O48%/U53%</div><div class="l">Poly O/U 2.5</div></div>
+</div>
+
+<h3>📝 精确比分（第四步）</h3>
+<div class="sgrid"><div class="sc"><div class="s">1:1</div><div class="pr">12.8%</div></div>
+<div class="sc hl"><div class="s">0:1</div><div class="pr">11.3%</div></div>
+<div class="sc"><div class="s">1:0</div><div class="pr">9.6%</div></div>
+<div class="sc hl"><div class="s">1:2</div><div class="pr">8.6%</div></div>
+</div><p class="note"><b>推荐比分</b>: 1:2（首选）· 0:1（次选）· 1:1</p>
+<h3>⚠️ 爆冷风险</h3><div class="risk-box green"><b>🟢 方向明确</b> · ELO差107分</div>
+</div>
+
+<div class="card"><h2>📐 方法论 · 权重体系</h2>
 <div class="methodology">
 <div class="mc"><h4 style="color:var(--blue)">ELO模型 (32.5%)</h4><p>因子修正ELO · Poisson λ, xG, 比分概率</p></div>
-<div class="mc"><h4 style="color:var(--pink)">Polymarket (33.75%)</h4><p>预测市场 · 市场权重50%(绝对33.75%)</p></div>
-<div class="mc"><h4 style="color:var(--gold)">欧洲赔率 (20.25%)</h4><p>7家公司 · 市场权重30%(绝对20.25%)</p></div>
-<div class="mc"><h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4><p>titan007 · 市场权重20%(绝对13.5%)</p></div>
-</div>
-</div>
-
-<div class="footer"><p>数据来源: worldcup-odds.com · titan007.com · Polymarket · ELO模型 | 仅供娱乐参考</p><p style="margin-top:4px">v21.0 · WorkBuddy AI · 2026-06-11</p></div>
-</div>
-</body>
-</html>
+<div class="mc"><h4 style="color:var(--pink)">Polymarket (33.75%)</h4><p>预测市场 · 市场权重50% (绝对33.75%)</p></div>
+<div class="mc"><h4 style="color:var(--gold)">欧洲赔率 (20.25%)</h4><p>7家公司 · 市场权重30% (绝对20.25%)</p></div>
+<div class="mc"><h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4><p>titan007 15家 · 市场权重20% (绝对13.5%)</p></div>
+</div></div>
+<div class="footer"><p>数据: worldcup-odds.com · titan007.com · Polymarket · ELO | 仅供娱乐参考</p><p>v21.0 · WorkBuddy AI · 2026-06-11</p></div>
+</div></body></html>
