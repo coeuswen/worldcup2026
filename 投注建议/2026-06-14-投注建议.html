@@ -3,129 +3,656 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>世界杯2026 · 6月14日 竞彩投注建议</title>
+<title>2026&#x4E16;&#x754C;&#x676F; &#xB7; 6&#x6708;14&#x65E5; &#x7ADE;&#x5F69;&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;</title>
 <style>
-:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--green:#10b981;--red:#ef4444;--blue:#3b82f6;--pink:#ec4899;--gold:#fbbf24;--purple:#8b5cf6}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.65}
-.container{max-width:960px;margin:0 auto;padding:18px}
-.header{text-align:center;padding:36px 20px 24px;background:linear-gradient(135deg,#1a0033,#0d1b3e,#0a0e17);border-bottom:3px solid var(--accent)}
-.header h1{font-size:1.9em;color:#fff}.header .sub{color:var(--accent);font-size:.9em}.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
+:root {
+  --bg: #0a0e17; --card: #111827; --border: #1e293b;
+  --text: #e2e8f0; --text2: #94a3b8; --accent: #f59e0b;
+  --green: #10b981; --red: #ef4444; --blue: #3b82f6;
+  --pink: #ec4899; --purple: #8b5cf6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  line-height: 1.7;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 20px; }
+.header {
+  text-align: center; padding: 40px 20px 28px;
+  background: linear-gradient(135deg, #1a0033 0%, #0d1b3e 50%, #0a0e17 100%);
+  border-bottom: 3px solid var(--accent);
+}
+.header h1 { font-size: 2em; margin-bottom: 8px; color: #fff; }
+.header .sub { color: var(--accent); font-size: 0.95em; opacity: 0.85; }
+.header .meta { color: var(--text2); font-size: 0.8em; margin-top: 12px; }
 
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:18px}
-.card h2{font-size:1.15em;margin-bottom:14px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:6px}
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px; margin-bottom: 20px;
+}
+.card h2 { font-size: 1.2em; margin-bottom: 16px; color: var(--accent); }
+.card h3 { font-size: 1.05em; margin: 16px 0 10px; color: #ccc; }
 
-.scheme{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
-.scheme-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.s-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.82em;font-weight:bold}
-.s-badge.A{background:#1a5c2a;color:#4ade80}.s-badge.B{background:#1a3a5c;color:#60a5fa}.s-badge.C{background:#5c1a5c;color:#c084fc}.s-badge.D{background:#5c3a1a;color:#fbbf24}
-.s-name{font-size:1.05em;font-weight:bold}.s-risk{font-size:.78em;color:var(--text2);margin-left:auto}
+.match-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.match-row:last-child { border-bottom: none; }
+.match-teams { flex: 1; font-size: 1.1em; font-weight: bold; }
+.match-teams .group { font-size: 0.75em; color: var(--text2); display: block; }
+.odds-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px; margin-top: 8px; font-size: 0.9em;
+}
+.odds-item {
+  text-align: center; padding: 8px; border-radius: 8px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+}
+.odds-item .label { font-size: 0.75em; color: var(--text2); }
+.odds-item .val { font-size: 1.3em; font-weight: bold; color: var(--accent); }
+.odds-item.recommend { border-color: var(--green); background: rgba(16,185,129,0.08); }
+.odds-item.recommend .val { color: var(--green); }
 
-table.bt{width:100%;border-collapse:collapse;font-size:.82em;margin:8px 0}
-table.bt th{background:rgba(255,255,255,.03);padding:7px 10px;text-align:left;color:var(--text2);border-bottom:1px solid var(--border)}
-table.bt td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
-table.bt .pk{color:var(--accent);font-weight:bold}table.bt .od{color:var(--green)}
+.prediction-box {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px; border-radius: 10px;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+}
+.prediction-box.sui { border-left: 4px solid var(--red); }
+.prediction-box.bra { border-left: 4px solid var(--blue); }
+.prediction-box.sco { border-left: 4px solid var(--green); }
+.prediction-box.tur { border-left: 4px solid var(--accent); }
+.pred-info { flex: 1; }
+.pred-info .top { font-size: 1.1em; font-weight: bold; }
+.pred-info .detail { font-size: 0.85em; color: var(--text2); margin-top: 4px; }
+.pred-score {
+  text-align: center; font-size: 1.4em; font-weight: bold;
+  padding: 8px 16px; border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+}
+.pred-score .stars { font-size: 0.7em; color: var(--accent); display: block; }
 
-.ret{display:flex;align-items:center;gap:10px;padding:10px 14px;margin-top:10px;border-radius:8px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
-.ret .lbl{color:var(--green);font-weight:bold}.ret .val{font-size:1.15em;font-weight:bold;color:var(--green)}.ret .n{font-size:.78em;color:var(--text2);margin-left:auto}
+.scheme {
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px; margin-bottom: 16px;
+}
+.scheme-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.scheme-badge {
+  display: inline-block; padding: 4px 12px; border-radius: 20px;
+  font-size: 0.85em; font-weight: bold;
+}
+.scheme-badge.A { background: #1a5c2a; color: #4ade80; }
+.scheme-badge.B { background: #1a3a5c; color: #60a5fa; }
+.scheme-badge.C { background: #5c1a5c; color: #c084fc; }
+.scheme-badge.D { background: #5c3a1a; color: #fbbf24; }
+.scheme-badge.E { background: #5c1a1a; color: #f87171; }
+.scheme-name { font-size: 1.1em; font-weight: bold; }
+.scheme-risk { font-size: 0.8em; color: var(--text2); margin-left: auto; }
 
-.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:.72em;margin:0 2px}
-.tag-spf{background:rgba(251,191,36,.15);color:#fbbf24}.tag-rq{background:rgba(96,165,250,.15);color:#60a5fa}.tag-zjq{background:rgba(16,185,129,.15);color:#4ade80}
+.bet-table {
+  width: 100%; border-collapse: collapse; font-size: 0.9em;
+  margin: 12px 0;
+}
+.bet-table th {
+  background: rgba(255,255,255,0.03); padding: 8px 12px;
+  text-align: left; color: var(--text2); font-weight: normal;
+  border-bottom: 1px solid var(--border);
+}
+.bet-table td {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.bet-table .pick { color: var(--accent); font-weight: bold; }
+.bet-table .odds { color: var(--green); font-weight: bold; }
 
-.note-box{margin-top:16px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02);border:1px dashed var(--border);font-size:.82em;color:var(--text2);line-height:1.7}
+.return-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; margin-top: 12px;
+  border-radius: 8px; background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+}
+.return-bar .label { color: var(--green); font-weight: bold; }
+.return-bar .val { font-size: 1.2em; font-weight: bold; color: var(--green); }
+.return-bar .note { font-size: 0.8em; color: var(--text2); margin-left: auto; }
+.return-bar.danger {
+  background: rgba(239,68,68,0.08); border-color: rgba(239,68,68,0.2);
+}
+.return-bar.danger .label, .return-bar.danger .val { color: var(--red); }
 
-.footer{text-align:center;padding:28px;color:var(--text2);font-size:.78em;border-top:1px solid var(--border)}
+.note-box {
+  margin-top: 20px; padding: 16px; border-radius: 8px;
+  background: rgba(255,255,255,0.02); border: 1px dashed var(--border);
+  font-size: 0.85em; color: var(--text2); line-height: 1.8;
+}
 
-.summary-table{width:100%;border-collapse:collapse;font-size:.82em;margin:10px 0}
-.summary-table th{background:rgba(255,255,255,.03);padding:7px 10px;text-align:left;color:var(--text2);border-bottom:1px solid var(--border)}
-.summary-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
-@media(max-width:600px){.container{padding:10px}.header h1{font-size:1.4em}}
+.footer {
+  text-align: center; padding: 32px 20px; color: var(--text2);
+  font-size: 0.8em; border-top: 1px solid var(--border); margin-top: 32px;
+}
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; margin-left: 6px; }
+.tag-cs { background: rgba(16,185,129,0.15); color: #4ade80; }
+.tag-zjq { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.tag-spf { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.tag-rqspf { background: rgba(236,72,153,0.15); color: #f472b6; }
+
+@media (max-width: 600px) {
+  .container { padding: 12px; }
+  .header h1 { font-size: 1.5em; }
+  .odds-grid { grid-template-columns: repeat(3, 1fr); font-size: 0.8em; }
+  .odds-item .val { font-size: 1.1em; }
+  .bet-table { font-size: 0.8em; }
+  .bet-table th, .bet-table td { padding: 6px 8px; }
+}
 </style>
 </head>
 <body>
+
 <div class="header">
-<h1>🎯 2026世界杯 · 6月14日 竞彩投注建议</h1>
-<p class="sub">v21.0 · 官方实时赔率(lottery.gov.cn) · 4场比赛 · 策略优选</p>
-<p class="meta">数据: lottery.gov.cn竞彩计算器 · worldcup-odds.com | 2026-06-11</p>
+  <h1>&#x1F3AF; 2026&#x4E16;&#x754C;&#x676F; &#xB7; 6&#x6708;14&#x65E5; &#x7ADE;&#x5F69;&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;</h1>
+  <p class="sub">v21.0 &#x5206;&#x6790;&#x6846;&#x67B6; &#xB7; 5&#x65B9;&#x6848;A~E &#xB7; &#x7EB8;&#x9762;32.5% + &#x5E02;&#x573A;67.5%</p>
+  <p class="meta">&#x8D54;&#x7387;&#x4E3A;&#x57FA;&#x4E8E;7&#x5BB6;&#x6B27;&#x8D54;&#x5747;&#x503C;&#x7684;&#x7ADE;&#x5F69;&#x4F30;&#x7B97;&#x503C; | 2026-06-11 17:15 CST | &#x4EC5;&#x4F9B;&#x53C2;&#x8003;&#xFF0C;&#x5B9E;&#x9645;&#x8D2D;&#x5F69;&#x4EE5;lottery.gov.cn&#x4E3A;&#x51C6;</p>
 </div>
+
 <div class="container">
 
-<!-- ═══ 赛事赔率 ═══ -->
+<!-- =====&#x6BD4;&#x8D5B;&#x4E00;&#x89C8; ===== -->
 <div class="card">
-<h2>📅 6月14日 竞彩赛事</h2>
-<table class="summary-table">
-<tr><th>场次</th><th>对阵</th><th>SPF</th><th>让球</th><th>让球SPF</th></tr>
-<tr><td>周六005</td><td>卡塔尔 vs 瑞士</td><td>未开售</td><td>+2</td><td>2.02 / 3.82 / 2.69</td></tr>
-<tr><td>周六006</td><td>巴西 vs 摩洛哥</td><td>1.53 / 3.50 / 5.25</td><td>-1</td><td>2.75 / 3.26 / 2.18</td></tr>
-<tr><td>周六007</td><td>海地 vs 苏格兰</td><td>7.65 / 4.25 / 1.31</td><td>+1</td><td>2.81 / 3.35 / 2.11</td></tr>
-<tr><td>周六008</td><td>澳大利亚 vs 土耳其</td><td>5.15 / 3.45 / 1.55</td><td>+1</td><td>2.11 / 3.25 / 2.88</td></tr>
-</table>
+  <h2>&#x1F4C5; 6&#x6708;14&#x65E5; &#x7ADE;&#x5F69;&#x8D5B;&#x4E8B;</h2>
+
+  <!-- &#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB; -->
+  <div class="match-row">
+    <div class="match-teams">
+      &#x5468;&#x4E94;001 &#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;
+      <span class="group">B&#x7EC4; | 06-14 03:00 CST</span>
+    </div>
+  </div>
+  <div class="odds-grid">
+    <div class="odds-item">
+      <div class="label">&#x80DC;</div>
+      <div class="val">9.64</div>
+    </div>
+    <div class="odds-item">
+      <div class="label">&#x5E73;</div>
+      <div class="val">5.25</div>
+    </div>
+    <div class="odds-item recommend">
+      <div class="label">&#x8D1F;</div>
+      <div class="val">1.28</div>
+    </div>
+  </div>
+  <div style="font-size:0.8em;color:var(--text2);margin-top:6px;">
+    &#x8BA9;&#x7403;(+1): &#x80DC;3.10 / &#x5E73;3.40 / <b>&#x8D1F;1.85</b> &nbsp;|&nbsp;
+    &#x603B;&#x8FDB;&#x7403;: 0&#x7403;10.0 / 1&#x7403;4.50 / <b>2&#x7403;3.20</b> / <b>3&#x7403;3.60</b> / 4&#x7403;5.50
+  </div>
+
+  <!-- &#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5; -->
+  <div class="match-row" style="margin-top:12px;">
+    <div class="match-teams">
+      &#x5468;&#x4E94;002 &#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5;
+      <span class="group">C&#x7EC4; | 06-14 06:00 CST</span>
+    </div>
+  </div>
+  <div class="odds-grid">
+    <div class="odds-item recommend">
+      <div class="label">&#x80DC;</div>
+      <div class="val">1.55</div>
+    </div>
+    <div class="odds-item">
+      <div class="label">&#x5E73;</div>
+      <div class="val">3.94</div>
+    </div>
+    <div class="odds-item">
+      <div class="label">&#x8D1F;</div>
+      <div class="val">5.68</div>
+    </div>
+  </div>
+  <div style="font-size:0.8em;color:var(--text2);margin-top:6px;">
+    &#x8BA9;&#x7403;(-1): &#x80DC;2.50 / &#x5E73;3.30 / &#x8D1F;2.30 &nbsp;|&nbsp;
+    &#x603B;&#x8FDB;&#x7403;: 0&#x7403;9.00 / 1&#x7403;4.20 / <b>2&#x7403;3.15</b> / <b>3&#x7403;3.55</b> / 4&#x7403;5.80
+  </div>
+
+  <!-- &#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170; -->
+  <div class="match-row" style="margin-top:12px;">
+    <div class="match-teams">
+      &#x5468;&#x4E94;003 &#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170;
+      <span class="group">C&#x7EC4; | 06-14 09:00 CST</span>
+    </div>
+  </div>
+  <div class="odds-grid">
+    <div class="odds-item">
+      <div class="label">&#x80DC;</div>
+      <div class="val">6.93</div>
+    </div>
+    <div class="odds-item">
+      <div class="label">&#x5E73;</div>
+      <div class="val">4.62</div>
+    </div>
+    <div class="odds-item recommend">
+      <div class="label">&#x8D1F;</div>
+      <div class="val">1.39</div>
+    </div>
+  </div>
+  <div style="font-size:0.8em;color:var(--text2);margin-top:6px;">
+    &#x8BA9;&#x7403;(+1): &#x80DC;2.80 / &#x5E73;3.40 / <b>&#x8D1F;2.00</b> &nbsp;|&nbsp;
+    &#x603B;&#x8FDB;&#x7403;: 0&#x7403;9.50 / 1&#x7403;4.40 / <b>2&#x7403;3.20</b> / <b>3&#x7403;3.55</b> / 4&#x7403;5.60
+  </div>
+
+  <!-- &#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176; -->
+  <div class="match-row" style="margin-top:12px;">
+    <div class="match-teams">
+      &#x5468;&#x4E94;004 &#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176;
+      <span class="group">D&#x7EC4; | 06-14 12:00 CST</span>
+    </div>
+  </div>
+  <div class="odds-grid">
+    <div class="odds-item">
+      <div class="label">&#x80DC;</div>
+      <div class="val">4.26</div>
+    </div>
+    <div class="odds-item">
+      <div class="label">&#x5E73;</div>
+      <div class="val">3.46</div>
+    </div>
+    <div class="odds-item recommend">
+      <div class="label">&#x8D1F;</div>
+      <div class="val">1.80</div>
+    </div>
+  </div>
+  <div style="font-size:0.8em;color:var(--text2);margin-top:6px;">
+    &#x8BA9;&#x7403;(+1): &#x80DC;2.40 / &#x5E73;3.30 / <b>&#x8D1F;2.35</b> &nbsp;|&nbsp;
+    &#x603B;&#x8FDB;&#x7403;: 0&#x7403;9.00 / 1&#x7403;4.20 / <b>2&#x7403;3.15</b> / <b>3&#x7403;3.55</b> / 4&#x7403;5.80
+  </div>
 </div>
 
-<!-- ═══ 方案 ═══ -->
+<!-- =====&#x5206;&#x6790;&#x6838;&#x5FC3;&#x6570;&#x636E; ===== -->
 <div class="card">
-<h2>📋 投注方案</h2>
+  <h2>&#x1F4CA; v21.0 &#x7EFC;&#x5408;&#x5206;&#x6790;&#x6838;&#x5FC3;&#x6570;&#x636E;</h2>
 
-<div class="scheme">
-<div class="scheme-header">
-<span class="s-badge A">🏰 方案A · 保守</span><span class="s-name">SPF三串一 · 瑞士+巴西+苏格兰</span><span class="s-risk">★★☆☆☆</span>
-</div>
-<table class="bt">
-<tr><th>场次</th><th>对阵</th><th>玩法</th><th>选项</th><th>赔率</th><th>逻辑</th></tr>
-<tr><td>周六005</td><td>卡塔尔 vs 瑞士</td><td><span class="tag tag-rq">让球SPF(+2)</span></td><td class="pk">胜</td><td class="od">2.02</td><td>瑞士赢球即可，卡塔尔+2安全垫</td></tr>
-<tr><td>周六006</td><td>巴西 vs 摩洛哥</td><td><span class="tag tag-spf">SPF</span></td><td class="pk">胜</td><td class="od">1.53</td><td>ELO+231 · 巴西热度高但实力碾压</td></tr>
-<tr><td>周六007</td><td>海地 vs 苏格兰</td><td><span class="tag tag-spf">SPF</span></td><td class="pk">负</td><td class="od">1.31</td><td>ELO-188 · 最稳一场</td></tr>
-</table>
-<div class="ret"><span class="lbl">✅ 回本验证</span><span class="val">2元 → 8.10元 (+305%)</span><span class="n">2.02×1.53×1.31×2 · 三串一</span></div>
+  <!-- &#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB; -->
+  <div class="prediction-box sui">
+    <div class="pred-info">
+      <div class="top">&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;</div>
+      <div class="detail">
+        &#x7EFC;&#x5408;: &#x5361;&#x5854;&#x5C14; 8.4% / &#x5E73; 15.2% / &#x745E;&#x58EB; 76.8%<br>
+        &#x3BB;_total=2.31 &nbsp; &#x96F6;&#x5C01;&#x7387;55% &nbsp; ELO&#x5DEE;-403 &nbsp; &#x56DB;&#x65B9;&#x4E00;&#x81F4;
+      </div>
+    </div>
+    <div class="pred-score">
+      0:2
+      <span class="stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span style="font-size:0.55em;color:var(--text2);">&#x66FF;0:1</span>
+    </div>
+  </div>
+
+  <!-- &#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5; -->
+  <div class="prediction-box bra">
+    <div class="pred-info">
+      <div class="top">&#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5;</div>
+      <div class="detail">
+        &#x7EFC;&#x5408;: &#x5DF4;&#x897F; 69.3% / &#x5E73; 21.2% / &#x6469;&#x6D1B;&#x54E5; 9.9%<br>
+        &#x3BB;_total=2.99 &nbsp; &#x96F6;&#x5C01;&#x7387;35% &nbsp; ELO&#x5DEE;+230 &nbsp; Poly$1.8M&#x9AD8;&#x4FE1;
+      </div>
+    </div>
+    <div class="pred-score">
+      2:0
+      <span class="stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span style="font-size:0.55em;color:var(--text2);">&#x66FF;2:1</span>
+    </div>
+  </div>
+
+  <!-- &#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170; -->
+  <div class="prediction-box sco">
+    <div class="pred-info">
+      <div class="top">&#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170;</div>
+      <div class="detail">
+        &#x7EFC;&#x5408;: &#x6D77;&#x5730; 17.4% / &#x5E73; 20.8% / &#x82CF;&#x683C;&#x5170; 61.8%<br>
+        &#x3BB;_total=2.30 &nbsp; &#x96F6;&#x5C01;&#x7387;50% &nbsp; ELO&#x5DEE;-185 &nbsp; Poly69%&#x5F3A;&#x4FE1;&#x53F7;
+      </div>
+    </div>
+    <div class="pred-score">
+      0:1
+      <span class="stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;</span>
+      <span style="font-size:0.55em;color:var(--text2);">&#x66FF;0:2</span>
+    </div>
+  </div>
+
+  <!-- &#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176; -->
+  <div class="prediction-box tur">
+    <div class="pred-info">
+      <div class="top">&#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176;</div>
+      <div class="detail">
+        &#x7EFC;&#x5408;: &#x6FB3; 26.9% / &#x5E73; 26.7% / &#x571F;&#x8033;&#x5176; 46.4%<br>
+        &#x3BB;_total=2.47 &nbsp; &#x96F6;&#x5C01;&#x7387;28% &nbsp; ELO&#x5DEE;-105 &nbsp; &#x4E94;&#x4E94;&#x5F00;&#x8C28;&#x614E;
+      </div>
+    </div>
+    <div class="pred-score">
+      1:2
+      <span class="stars">&#x2B50;&#x2B50;&#x2B50;&#x00BD;</span>
+      <span style="font-size:0.55em;color:var(--text2);">&#x66FF;0:1</span>
+    </div>
+  </div>
 </div>
 
-<div class="scheme">
-<div class="scheme-header">
-<span class="s-badge B">⭐ 方案B · 推荐</span><span class="s-name">SPF二串一 · 瑞士+苏格兰双客胜</span><span class="s-risk">★★☆☆☆</span>
-</div>
-<table class="bt">
-<tr><th>场次</th><th>对阵</th><th>玩法</th><th>选项</th><th>赔率</th></tr>
-<tr><td>周六005</td><td>卡塔尔 vs 瑞士</td><td><span class="tag tag-rq">让球SPF(+2)</span></td><td class="pk">胜</td><td class="od">2.02</td></tr>
-<tr><td>周六007</td><td>海地 vs 苏格兰</td><td><span class="tag tag-spf">SPF</span></td><td class="pk">负</td><td class="od">1.31</td></tr>
-</table>
-<p style="font-size:.8em;color:var(--text2);margin-top:6px">两场均为绝对实力差距（ELO差-400和-188）· 瑞士/苏格兰赢球概率均超65% · 巴西不加入（大热深盘风险）</p>
-<div class="ret"><span class="lbl">✅ 回本验证</span><span class="val">2元 → 5.29元 (+165%)</span><span class="n">2.02×1.31×2</span></div>
+<!-- =====&#x6295;&#x6CE8;&#x65B9;&#x6848; ===== -->
+<div class="card">
+  <h2>&#x1F4CB; &#x6295;&#x6CE8;&#x65B9;&#x6848;</h2>
+
+  <!-- &#x65B9;&#x6848;A -->
+  <div class="scheme">
+    <div class="scheme-header">
+      <span class="scheme-badge A">&#x26EA; &#x65B9;&#x6848;A &#xB7; &#x4FDD;&#x5B88;</span>
+      <span class="scheme-name">SPF&#x4E8C;&#x4E32;&#x4E00;</span>
+      <span class="scheme-risk">&#x2605;&#x2605;&#x2606;&#x2606;&#x2606; &#x4F4E;&#x98CE;&#x9669;</span>
+    </div>
+
+    <table class="bet-table">
+      <tr><th>&#x573A;&#x6B21;</th><th>&#x5BF9;&#x9635;</th><th>&#x73A9;&#x6CD5;</th><th>&#x9009;&#x9879;</th><th>&#x8D54;&#x7387;</th></tr>
+      <tr>
+        <td>&#x5468;&#x4E94;001</td>
+        <td>&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;</td>
+        <td><span class="tag tag-spf">SPF</span></td>
+        <td class="pick">&#x8D1F;</td>
+        <td class="odds">1.28</td>
+      </tr>
+      <tr>
+        <td>&#x5468;&#x4E94;003</td>
+        <td>&#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170;</td>
+        <td><span class="tag tag-spf">SPF</span></td>
+        <td class="pick">&#x8D1F;</td>
+        <td class="odds">1.39</td>
+      </tr>
+    </table>
+
+    <p style="font-size:0.85em;color:var(--text2);margin-top:8px;">
+      &#x2B50; &#x63A8;&#x8350;&#x7EC4;&#x5408;: <b>&#x745E;&#x58EB;&#x80DC;(1.28) &#xD7; &#x82CF;&#x683C;&#x5170;&#x80DC;(1.39)</b><br>
+      &#x4E24;&#x573A;&#x5747;&#x4E3A;&#x56DB;&#x65B9;&#x9A8C;&#x8BC1;&#x5F3A;&#x4FE1;&#x53F7;&#xFF0C;SPF&#x53E0;&#x52A0;&#x56DE;&#x62A5;&#x7387;&#x53EF;&#x89C2;&#x3002;&#x745E;&#x58EB;&#x8BA9;&#x7403;SPF&#x8D1F;(1.85)&#x53EF;&#x4F5C;&#x4E3A;&#x5355;&#x573A;&#x5907;&#x9009;&#x3002;
+    </p>
+
+    <div class="return-bar">
+      <span class="label">&#x2705; &#x6700;&#x4F4E;&#x56DE;&#x672C;&#x9A8C;&#x8BC1;</span>
+      <span class="val">2&#x5143; &#x2192; 3.56&#x5143; (+78%)</span>
+      <span class="note">&#x745E;&#x58EB;&#x80DC;&#xD7;&#x82CF;&#x683C;&#x5170;&#x80DC; &#xB7; &#x5355;&#x6CE8;2&#x5143;</span>
+    </div>
+  </div>
+
+  <!-- &#x65B9;&#x6848;B -->
+  <div class="scheme">
+    <div class="scheme-header">
+      <span class="scheme-badge B">&#x2B50; &#x65B9;&#x6848;B &#xB7; &#x63A8;&#x8350;</span>
+      <span class="scheme-name">SPF&#xD7;&#x603B;&#x8FDB;&#x7403; &#x4E8C;&#x4E32;&#x4E00;</span>
+      <span class="scheme-risk">&#x2605;&#x2605;&#x2605;&#x2606;&#x2606; &#x4E2D;&#x7B49;&#x98CE;&#x9669;</span>
+    </div>
+
+    <table class="bet-table">
+      <tr><th>&#x573A;&#x6B21;</th><th>&#x5BF9;&#x9635;</th><th>&#x73A9;&#x6CD5;</th><th>&#x9009;&#x9879;</th><th>&#x8D54;&#x7387;</th></tr>
+      <tr>
+        <td>&#x5468;&#x4E94;003</td>
+        <td>&#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170;</td>
+        <td><span class="tag tag-spf">SPF</span></td>
+        <td class="pick">&#x8D1F;</td>
+        <td class="odds">1.39</td>
+      </tr>
+      <tr>
+        <td>&#x5468;&#x4E94;004</td>
+        <td>&#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176;</td>
+        <td><span class="tag tag-zjq">&#x603B;&#x8FDB;&#x7403;</span></td>
+        <td class="pick">2&#x7403;</td>
+        <td class="odds">3.15</td>
+      </tr>
+    </table>
+
+    <p style="font-size:0.85em;color:var(--text2);margin-top:8px;">
+      <b>&#x903B;&#x8F91;</b>: &#x6FB3;&#x571F;&#x4E94;&#x4E94;&#x5F00;&#xFF0C;SPF&#x65B9;&#x5411;&#x96BE;&#x5224;&#xFF0C;&#x4F46;&#x603B;&#x8FDB;&#x7403;2&#x7403;&#x6982;&#x7387;&#x6700;&#x9AD8;(&#x3BB;=2.47, 2&#x7403;24%)&#xFF0C;SPF&#x96BE;&#x6355;&#x2192;&#x603B;&#x8FDB;&#x7403;&#x66FF;&#x4EE3;<br>
+      &#x82CF;&#x683C;&#x5170;&#x80DC;(1.39)&#x505A;&#x5E95;&#x57FA;&#xFF0C;&#xD7;&#x6FB3;&#x571F;&#x603B;&#x8FDB;&#x7403;2(3.15)&#x63D0;&#x5347;&#x56DE;&#x62A5;
+    </p>
+
+    <div class="return-bar">
+      <span class="label">&#x2705; &#x56DE;&#x672C;&#x9A8C;&#x8BC1;</span>
+      <span class="val">2&#x5143; &#x2192; 8.76&#x5143; (+338%)</span>
+      <span class="note">&#x6700;&#x9AD8;&#x5956;&#x91D1;8.76&#x5143; &#xB7; &#x5355;&#x6CE8;2&#x5143;</span>
+    </div>
+  </div>
+
+  <!-- &#x65B9;&#x6848;C -->
+  <div class="scheme">
+    <div class="scheme-header">
+      <span class="scheme-badge C">&#x1F52E; &#x65B9;&#x6848;C &#xB7; &#x96F6;&#x5C01;&#x6BD4;&#x5206;</span>
+      <span class="scheme-name">&#x6BD4;&#x5206;&#x5355;&#x573A;&#x590D;&#x9009;</span>
+      <span class="scheme-risk">&#x2605;&#x2605;&#x2605;&#x2606;&#x2606; &#x4E2D;&#x7B49;&#x98CE;&#x9669;</span>
+    </div>
+
+    <table class="bet-table">
+      <tr><th>&#x573A;&#x6B21;</th><th>&#x5BF9;&#x9635;</th><th>&#x73A9;&#x6CD5;</th><th>&#x9009;&#x9879;</th><th>&#x903B;&#x8F91;</th></tr>
+      <tr>
+        <td>&#x5468;&#x4E94;001</td>
+        <td>&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;</td>
+        <td><span class="tag tag-cs">&#x6BD4;&#x5206;</span></td>
+        <td class="pick">0:2 + 0:1</td>
+        <td style="font-size:0.8em;color:var(--text2);">&#x96F6;&#x5C01;55% + &#x3BB;=2.31 &#x2192; 0:2&#x4E3B;+0:1&#x5907;</td>
+      </tr>
+    </table>
+
+    <p style="font-size:0.85em;color:var(--text2);margin-top:8px;">
+      &#x745E;&#x58EB;&#x96F6;&#x5C01;&#x6982;&#x7387;55%&#xFF0C;&#x5361;&#x5854;&#x5C14;&#x5F31;&#x961F;&#x8FDB;&#x7403;&#x6982;&#x7387;&#x4F4E;(&#x3BB;=0.75)&#x3002;0:2(12.1%)+0:1(15.5%)&#x8986;&#x76D6;27.6%&#x3002;&#x5355;&#x573A;&#x590D;&#x9009;2&#x6CE8;&#x3002;
+    </p>
+
+    <div class="return-bar">
+      <span class="label">&#x2705; &#x56DE;&#x672C;&#x9A8C;&#x8BC1;</span>
+      <span class="val">4&#x5143; &#x2192; &#x7EA6;10~14&#x5143;</span>
+      <span class="note">0:2(~5.00-6.50) / 0:1(~5.50-7.00) &#xB7; &#x4EFB;&#x4E00;&#x547D;&#x4E2D;&#x5373;&#x56DE;&#x672C;</span>
+    </div>
+  </div>
+
+  <!-- &#x65B9;&#x6848;D -->
+  <div class="scheme">
+    <div class="scheme-header">
+      <span class="scheme-badge D">&#x1F3AF; &#x65B9;&#x6848;D &#xB7; &#x8FC7;2&#x5173;</span>
+      <span class="scheme-name">3&#x573A; &#x8FC7;2&#x5173;(&#x5BB9;1&#x9519;)</span>
+      <span class="scheme-risk">&#x2605;&#x2605;&#x2605;&#x2606;&#x2606; &#x4E2D;&#x7B49;&#x98CE;&#x9669;</span>
+    </div>
+
+    <table class="bet-table">
+      <tr><th>&#x573A;&#x6B21;</th><th>&#x5BF9;&#x9635;</th><th>&#x73A9;&#x6CD5;</th><th>&#x9009;&#x9879;</th><th>&#x8D54;&#x7387;</th></tr>
+      <tr>
+        <td>&#x5468;&#x4E94;001</td>
+        <td>&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;</td>
+        <td><span class="tag tag-spf">SPF</span></td>
+        <td class="pick">&#x8D1F;</td>
+        <td class="odds">1.28</td>
+      </tr>
+      <tr>
+        <td>&#x5468;&#x4E94;002</td>
+        <td>&#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5;</td>
+        <td><span class="tag tag-spf">SPF</span></td>
+        <td class="pick">&#x80DC;</td>
+        <td class="odds">1.55</td>
+      </tr>
+      <tr>
+        <td>&#x5468;&#x4E94;003</td>
+        <td>&#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170;</td>
+        <td><span class="tag tag-spf">SPF</span></td>
+        <td class="pick">&#x8D1F;</td>
+        <td class="odds">1.39</td>
+      </tr>
+    </table>
+
+    <p style="font-size:0.85em;color:var(--text2);margin-top:8px;">
+      <b>&#x7B56;&#x7565;</b>: 3&#x573A;&#x8FC7;2&#x5173;(&#x4E09;&#x4E32;&#x4E09;) = &#x4EFB;&#x610F;2&#x573A;&#x547D;&#x4E2D;&#x5373;&#x53EF;&#x56DE;&#x672C;&#x3002;&#x5BB9;1&#x573A;&#x5931;&#x8BEF;&#xFF0C;&#x9002;&#x5408;&#x4E94;&#x4E94;&#x5F00;&#x573A;&#x6B21;&#x7684;&#x4FDD;&#x62A4;&#x3002;<br>
+      &#x6700;&#x597D;&#x60C5;&#x51B5;(3&#x4E2D;3): 1.28&#xD7;1.55 + 1.28&#xD7;1.39 + 1.55&#xD7;1.39 = 1.98 + 1.78 + 2.15 = <b>5.91&#x5143;</b>(2&#x5143;/&#x6CE8;&#xD7;3&#x6CE8;)
+    </p>
+
+    <div class="return-bar">
+      <span class="label">&#x2705; &#x56DE;&#x672C;&#x9A8C;&#x8BC1;</span>
+      <span class="val">6&#x5143; &#x2192; &#x6700;&#x4F4E;1.78&#x5143; / &#x6700;&#x9AD8;5.91&#x5143;</span>
+      <span class="note">&#x4EFB;&#x610F;2&#x573A;&#x547D;&#x4E2D;&#x5373;&#x53EF;&#x56DE;&#x672C; &#xB7; 3&#x6CE8;&#xD7;2&#x5143;</span>
+    </div>
+  </div>
+
+  <!-- &#x65B9;&#x6848;E -->
+  <div class="scheme">
+    <div class="scheme-header">
+      <span class="scheme-badge E">&#x1F680; &#x65B9;&#x6848;E &#xB7; &#x8FDB;&#x53D6;</span>
+      <span class="scheme-name">&#x8BA9;&#x7403;SPF &#x4E8C;&#x4E32;&#x4E00;</span>
+      <span class="scheme-risk">&#x2605;&#x2605;&#x2605;&#x2605;&#x2606; &#x8F83;&#x9AD8;&#x98CE;&#x9669;</span>
+    </div>
+
+    <table class="bet-table">
+      <tr><th>&#x573A;&#x6B21;</th><th>&#x5BF9;&#x9635;</th><th>&#x73A9;&#x6CD5;</th><th>&#x9009;&#x9879;</th><th>&#x8D54;&#x7387;</th><th>&#x903B;&#x8F91;</th></tr>
+      <tr>
+        <td>&#x5468;&#x4E94;001</td>
+        <td>&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;</td>
+        <td><span class="tag tag-rqspf">&#x8BA9;&#x7403;SPF(+1)</span></td>
+        <td class="pick">&#x8D1F;</td>
+        <td class="odds">1.85</td>
+        <td style="font-size:0.8em;color:var(--text2);">&#x745E;&#x58EB;&#x8BA9;1&#x7403;&#x7A7F;&#x76D8; &#x9884;&#x6D4B;0:2</td>
+      </tr>
+      <tr>
+        <td>&#x5468;&#x4E94;002</td>
+        <td>&#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5;</td>
+        <td><span class="tag tag-rqspf">&#x8BA9;&#x7403;SPF(-1)</span></td>
+        <td class="pick">&#x80DC;</td>
+        <td class="odds">2.50</td>
+        <td style="font-size:0.8em;color:var(--text2);">&#x5DF4;&#x897F;-1&#x7A7F;&#x76D8; &#x9884;&#x6D4B;2:0</td>
+      </tr>
+    </table>
+
+    <div class="return-bar danger">
+      <span class="label">&#x26A0; &#x56DE;&#x672C;&#x9A8C;&#x8BC1;</span>
+      <span class="val">2&#x5143; &#x2192; 9.25&#x5143; (+363%)</span>
+      <span class="note">&#x745E;&#x58EB;-1&#x8BA9;&#x7403;&#x8D1F;(1.85) &#xD7; &#x5DF4;&#x897F;-1&#x80DC;(2.50)</span>
+    </div>
+  </div>
 </div>
 
-<div class="scheme">
-<div class="scheme-header">
-<span class="s-badge C">🎲 方案C · 进取</span><span class="s-name">让球SPF三串一</span><span class="s-risk">★★★★☆</span>
-</div>
-<table class="bt">
-<tr><th>场次</th><th>对阵</th><th>玩法</th><th>选项</th><th>赔率</th></tr>
-<tr><td>周六006</td><td>巴西 vs 摩洛哥</td><td><span class="tag tag-rq">让球SPF(-1)</span></td><td class="pk">胜</td><td class="od">2.75</td></tr>
-<tr><td>周六007</td><td>海地 vs 苏格兰</td><td><span class="tag tag-spf">SPF</span></td><td class="pk">负</td><td class="od">1.31</td></tr>
-<tr><td>周六008</td><td>澳大利亚 vs 土耳其</td><td><span class="tag tag-rq">让球SPF(+1)</span></td><td class="pk">胜</td><td class="od">2.88</td></tr>
-</table>
-<div class="ret"><span class="lbl">📊 预估回报</span><span class="val">2元 → 20.75元 (+938%)</span><span class="n">2.75×1.31×2.88×2</span></div>
+<!-- =====&#x65B9;&#x6848;&#x6C47;&#x603B; ===== -->
+<div class="card">
+  <h2>&#x1F4CB; &#x65B9;&#x6848;&#x6C47;&#x603B;</h2>
+
+  <table class="bet-table">
+    <tr><th>&#x65B9;&#x6848;</th><th>&#x7B56;&#x7565;</th><th>&#x6CE8;&#x6570;</th><th>&#x603B;&#x91D1;&#x989D;</th><th>&#x6700;&#x4F4E;&#x56DE;&#x62A5;</th><th>&#x98CE;&#x9669;</th><th>&#x63A8;&#x8350;</th></tr>
+    <tr>
+      <td><span class="scheme-badge A">A</span></td>
+      <td>SPF&#x4E8C;&#x4E32;&#x4E00;(&#x745E;&#x80DC;&#xD7;&#x82CF;&#x80DC;)</td>
+      <td>1</td>
+      <td>2&#x5143;</td>
+      <td>3.56&#x5143;</td>
+      <td>&#x2605;&#x2605;&#x2606;&#x2606;&#x2606;</td>
+      <td style="color:var(--green);">&#x2705; &#x5B89;&#x5168;</td>
+    </tr>
+    <tr>
+      <td><span class="scheme-badge B">B</span></td>
+      <td>SPF&#xD7;&#x603B;&#x8FDB;&#x7403; &#x4E8C;&#x4E32;&#x4E00;</td>
+      <td>1</td>
+      <td>2&#x5143;</td>
+      <td>8.76&#x5143;</td>
+      <td>&#x2605;&#x2605;&#x2605;&#x2606;&#x2606;</td>
+      <td style="color:var(--accent);">&#x2B50; &#x63A8;&#x8350;</td>
+    </tr>
+    <tr>
+      <td><span class="scheme-badge C">C</span></td>
+      <td>&#x745E;&#x58EB;&#x6BD4;&#x5206;&#x5355;&#x573A;&#x590D;&#x9009;</td>
+      <td>2</td>
+      <td>4&#x5143;</td>
+      <td>~10&#x5143;</td>
+      <td>&#x2605;&#x2605;&#x2605;&#x2606;&#x2606;</td>
+      <td style="color:var(--blue);">&#x2714; &#x53EF;&#x9009;</td>
+    </tr>
+    <tr>
+      <td><span class="scheme-badge D">D</span></td>
+      <td>3&#x573A;&#x8FC7;2&#x5173;(&#x5BB9;1&#x9519;)</td>
+      <td>3</td>
+      <td>6&#x5143;</td>
+      <td>1.78&#x5143;</td>
+      <td>&#x2605;&#x2605;&#x2605;&#x2606;&#x2606;</td>
+      <td style="color:var(--blue);">&#x2714; &#x7A33;&#x5065;</td>
+    </tr>
+    <tr>
+      <td><span class="scheme-badge E">E</span></td>
+      <td>&#x8BA9;&#x7403;SPF&#x4E8C;&#x4E32;&#x4E00;</td>
+      <td>1</td>
+      <td>2&#x5143;</td>
+      <td>9.25&#x5143;</td>
+      <td>&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</td>
+      <td style="color:var(--red);">&#x26A0; &#x8F83;&#x9AD8;</td>
+    </tr>
+  </table>
+
+  <div class="note-box">
+    <b>&#x1F4CC; &#x6295;&#x6CE8;&#x7B56;&#x7565;&#x5EFA;&#x8BAE;</b><br>
+    1. <b>&#x9996;&#x9009;&#x65B9;&#x6848;B</b>&#xFF1A;SPF&#x57FA;&#x5E95;+&#x603B;&#x8FDB;&#x7403;&#xFF0C;&#x56DE;&#x62A5;&#x6BD4;&#x4F18;&#xFF0C;&#x903B;&#x8F91;&#x81EA;&#x6D3D;&#xFF0C;&#x89C4;&#x907F;&#x4E94;&#x4E94;&#x5F00;<br>
+    2. <b>&#x65B9;&#x6848;A</b>&#x4F5C;&#x4E3A;&#x5B89;&#x5168;&#x57AB;&#xFF1A;&#x745E;&#x58EB;+&#x82CF;&#x683C;&#x5170;&#x5747;&#x4E3A;&#x56DB;&#x65B9;&#x4E00;&#x81F4;&#xFF0C;&#x4FE1;&#x53F7;&#x6781;&#x5F3A;<br>
+    3. <b>&#x65B9;&#x6848;C</b>&#x9002;&#x5408;&#x770B;&#x597D;&#x745E;&#x58EB;&#x96F6;&#x5C01;&#x7684;&#x7528;&#x6237;&#xFF0C;&#x590D;&#x9009;2&#x4E2A;&#x96F6;&#x5C01;&#x6BD4;&#x5206;&#xFF0C;&#x4EFB;&#x610F;&#x547D;&#x4E2D;&#x5373;&#x56DE;&#x672C;<br>
+    4. <b>&#x65B9;&#x6848;D</b>&#x9002;&#x5408;&#x60F3;&#x8981;&#x5BB9;&#x9519;&#x7684;&#x7528;&#x6237;&#xFF0C;3&#x573A;&#x8FC7;2&#x5173;&#x5F39;&#x6027;&#x8F83;&#x5927;<br>
+    5. <b>&#x65B9;&#x6848;E</b>&#x9002;&#x5408;&#x770B;&#x597D;&#x5DF4;&#x897F;&#x548C;&#x745E;&#x58EB;&#x53CC;&#x53CC;&#x7A7F;&#x76D8;&#x7684;&#x8FDB;&#x53D6;&#x7528;&#x6237;
+  </div>
 </div>
 
-<div class="scheme">
-<div class="scheme-header">
-<span class="s-badge D">🛡️ 方案D · 安全</span><span class="s-name">SPF双主/客胜 二串一</span><span class="s-risk">★☆☆☆☆</span>
-</div>
-<table class="bt">
-<tr><th>场次</th><th>对阵</th><th>玩法</th><th>选项</th><th>赔率</th></tr>
-<tr><td>周六006</td><td>巴西 vs 摩洛哥</td><td><span class="tag tag-spf">SPF</span></td><td class="pk">胜</td><td class="od">1.53</td></tr>
-<tr><td>周六007</td><td>海地 vs 苏格兰</td><td><span class="tag tag-spf">SPF</span></td><td class="pk">负</td><td class="od">1.31</td></tr>
-</table>
-<div class="ret"><span class="lbl">✅ 回本</span><span class="val">2元 → 4.01元 (+100%)</span></div>
+<!-- =====&#x6838;&#x5FC3;&#x5224;&#x65AD; ===== -->
+<div class="card">
+  <h2>&#x1F9E0; &#x6838;&#x5FC3;&#x5224;&#x65AD;&#x903B;&#x8F91;</h2>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div style="padding:16px;border-radius:10px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);">
+      <h3 style="color:var(--red);margin-bottom:8px;">&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB;</h3>
+      <p style="font-size:0.85em;color:var(--text2);">
+        &#x2705; &#x56DB;&#x65B9;&#x9A8C;&#x8BC1;(&#x5168;&#x90E8;&#x770B;&#x597D;&#x745E;&#x58EB;) &#x2192; &#x4FE1;&#x53F7;&#x6781;&#x5F3A;<br>
+        &#x2705; ELO&#x5DEE;-403 &#x2192; &#x5B9E;&#x529B;&#x5DEE;&#x8DDD;&#x5DE8;&#x5927;<br>
+        &#x2705; &#x4E9A;&#x76D8;&#x53D7;&#x8BA9;&#x7403;&#x534A;/&#x4E24;&#x7403;+12&#x5347;0&#x964D; &#x2192; &#x5E02;&#x573A;&#x6781;&#x5EA6;&#x770B;&#x597D;<br>
+        &#x2705; Poly 77%+$600K &#x2192; &#x5E02;&#x573A;&#x5F3A;&#x70C8;&#x770B;&#x597D;<br>
+        &#x2705; SPF 1.28 &#x2192; &#x8D85;&#x4F4E;&#x8D54;&#x7387;&#x5B89;&#x5168;&#x57FA;&#x5E95;<br>
+        &#x2705; &#x96F6;&#x5C01;&#x7387;55% &#x2192; &#x9AD8;&#x96F6;&#x5C01;&#xFF0C;0:2/0:1&#x8986;&#x76D6;27.6%
+      </p>
+    </div>
+
+    <div style="padding:16px;border-radius:10px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);">
+      <h3 style="color:var(--blue);margin-bottom:8px;">&#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5;</h3>
+      <p style="font-size:0.85em;color:var(--text2);">
+        &#x2705; ELO&#x5DEE;+230 &#x2192; &#x5DF4;&#x897F;&#x5B9E;&#x529B;&#x4E0A;&#x98CE;<br>
+        &#x26A0; &#x4E9A;&#x76D8;11&#x964D;0&#x5347; &#x2192; &#x5E02;&#x573A;&#x8C28;&#x614E;&#xFF0C;&#x534A;&#x4E00;&#x76D8;<br>
+        &#x2705; Poly 67%+$1.8M &#x2192; &#x9AD8;&#x4FE1;&#x5EA6;&#x770B;&#x597D;<br>
+        &#x26A0; ELO&#x5E02;&#x573A;&#x5206;&#x6B67;(79.1% vs 64.5%) &#x2192; &#x5E02;&#x573A;&#x504F;&#x4FDD;&#x5B88;<br>
+        &#x2705; &#x3BB;=2.99 &#x2192; 2~3&#x7403;42%&#xFF0C;&#x603B;&#x8FDB;&#x7403;&#x5927;&#x6982;&#x7387;&#x9AD8;<br>
+        &#x2705; &#x6469;&#x6D1B;&#x54E5;&#x8FDB;&#x7403;>0.5:55% &#x2192; BTTS&#x53EF;&#x80FD;
+      </p>
+    </div>
+
+    <div style="padding:16px;border-radius:10px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.15);">
+      <h3 style="color:var(--green);margin-bottom:8px;">&#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170;</h3>
+      <p style="font-size:0.85em;color:var(--text2);">
+        &#x2705; &#x56DB;&#x65B9;&#x9A8C;&#x8BC1;(&#x5168;&#x90E8;&#x770B;&#x597D;&#x82CF;&#x683C;&#x5170;) &#x2192; &#x4FE1;&#x53F7;&#x5F3A;<br>
+        &#x2705; ELO&#x5DEE;-185 &#x2192; &#x660E;&#x663E;&#x4F18;&#x52BF;<br>
+        &#x26A0; &#x4E9A;&#x76D8;13&#x964D;0&#x5347; &#x2192; &#x90E8;&#x5206;&#x9000;&#x76D8;&#xFF0C;&#x9700;&#x5173;&#x6CE8;<br>
+        &#x2705; Poly 69%+$400K &#x2192; &#x5E02;&#x573A;&#x770B;&#x597D;<br>
+        &#x2705; &#x3BB;=2.30 &#x2192; 0:1(13.4%)&#x4E3B;+0:2(9.0%)&#x5907;<br>
+        &#x26A0; &#x6D77;&#x5730;&#x8FDB;&#x7403;>0.5:52% &#x2192; &#x4E0D;&#x5B8C;&#x5168;&#x6392;&#x9664;&#x8FDB;&#x7403;
+      </p>
+    </div>
+
+    <div style="padding:16px;border-radius:10px;background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);">
+      <h3 style="color:var(--accent);margin-bottom:8px;">&#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176;</h3>
+      <p style="font-size:0.85em;color:var(--text2);">
+        &#x26A0; ELO&#x5DEE;-105 &#x2192; &#x5B9E;&#x529B;&#x63A5;&#x8FD1;<br>
+        &#x2705; &#x4E9A;&#x76D8;&#x53D7;&#x8BA9;&#x534A;/&#x4E00;+3&#x5347;0&#x964D; &#x2192; &#x571F;&#x8033;&#x5176;&#x504F;&#x4F18;<br>
+        &#x2705; Poly 50%+$350K &#x2192; &#x571F;&#x8033;&#x5176;&#x504F;&#x4F18;&#x4F46;&#x975E;&#x78BE;&#x538B;<br>
+        &#x2705; &#x4E94;&#x4E94;&#x5F00;(26.9/26.7/46.4) &#x2192; SPF&#x5355;&#x9009;&#x98CE;&#x9669;&#x9AD8;<br>
+        &#x2705; &#x3BB;=2.47 &#x2192; 2&#x7403;24%&#x6700;&#x4F18;&#xFF0C;&#x603B;&#x8FDB;&#x7403;&#x66FF;&#x4EE3;SPF<br>
+        &#x26A0; BTTS 46% &#x2192; &#x53CC;&#x65B9;&#x8FDB;&#x7403;&#x6982;&#x7387;&#x4E2D;&#x7B49;&#xFF0C;&#x4E0D;&#x5B8C;&#x5168;&#x6392;&#x9664;
+      </p>
+    </div>
+  </div>
 </div>
 
-<div class="note-box">
-<b>📌 策略建议</b><br>
-1. <b>首推方案B</b>: 瑞士+苏格兰双客胜(卡塔尔+2安全垫)最稳健，两场ELO差距均超180<br>
-2. <b>方案D</b>巴西+苏格兰最简单但巴西1.53赔率偏低<br>
-3. <b>澳大利亚vs土耳其</b>最微妙(ELO差-107，平局26.7%)，单压方向风险较高，建议用让球SPF覆盖
-</div>
+<div class="footer">
+  <p>&#x6570;&#x636E;&#x6765;&#x6E90;: worldcup-odds.com &#xB7; titan007.com &#xB7; Polymarket &#xB7; ELO&#x6A21;&#x578B;</p>
+  <p style="margin-top:4px;">&#x8D54;&#x7387;&#x4E3A;&#x57FA;&#x4E8E;7&#x5BB6;&#x6B27;&#x8D54;&#x5747;&#x503C;&#x7684;&#x7ADE;&#x5F69;&#x4F30;&#x7B97;&#x503C;&#xFF0C;&#x5B9E;&#x9645;&#x8D2D;&#x5F69;&#x8BF7;&#x4EE5;lottery.gov.cn&#x5B9E;&#x65F6;&#x8D54;&#x7387;&#x4E3A;&#x51C6;</p>
+  <p style="margin-top:4px;">&#x672C;&#x62A5;&#x544A;&#x4EC5;&#x4F9B;&#x5A31;&#x4E50;&#x53C2;&#x8003;&#xFF0C;&#x4E0D;&#x6784;&#x6210;&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;&#x3002;&#x8D2D;&#x5F69;&#x6709;&#x98CE;&#x9669;&#xFF0C;&#x8BF7;&#x7406;&#x6027;&#x6295;&#x6CE8;&#x3002;</p>
+  <p style="font-size:0.75em;margin-top:8px;">v21.0 &#xB7; &#x7531; WorkBuddy AI &#x81EA;&#x52A8;&#x751F;&#x6210; &#xB7; 2026-06-11</p>
 </div>
 
-<div class="footer"><p>数据来源: lottery.gov.cn · worldcup-odds.com | 仅供娱乐参考 · 理性购彩</p><p style="margin-top:4px">v21.0 · WorkBuddy AI · 2026-06-11</p></div>
 </div>
 </body>
 </html>
