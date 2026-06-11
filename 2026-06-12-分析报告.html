@@ -180,7 +180,7 @@ tr:hover td { background:rgba(0,212,204,0.04); }
   <!-- ===== 第一步：胜负平方向 ===== -->
   <h3>&#x1F3AF; 第一步：胜负平方向分析</h3>
 
-  <h4>&#x1F4CA; A. 纸面实力&#xFF08;35%权重 &#xB7; ELO模型&#xFF09;</h4>
+  <h4>&#x1F4CA; A. 纸面实力&#xFF08;32.5%权重 &#xB7; ELO模型&#xFF09;</h4>
   <div class="matrix-grid">
     <div class="matrix-item">
       <div class="matrix-val">1689</div>
@@ -224,7 +224,7 @@ tr:hover td { background:rgba(0,212,204,0.04); }
     <strong>&#x1F4CA; 纸面实力结论：</strong>墨西哥mod_ELO领先约135分（1.35标准差）&#xFF0C;ELO领先119分。
     东道主+主场优势进一步放大差距。ELO标准胜率约65%&#xFF0C;<strong style="color:var(--blue)">墨西哥纸面优势明确</strong>。
   </div>
-  <h4>&#x1F4B0; B. 市场投注分析&#xFF08;65%权重&#xFF09;</h4>
+  <h4>&#x1F4B0; B. 市场投注分析&#xFF08;67.5%权重&#xFF09;</h4>
 
   <h5 style="color:var(--accent);">&#x2460; 欧洲赔率&#xFF08;7家主流公司&#xFF09;</h5>
   <table>
@@ -423,7 +423,7 @@ tr:hover td { background:rgba(0,212,204,0.04); }
   <!-- ===== 第一步：胜负平方向 ===== -->
   <h3>&#x1F3AF; 第一步：胜负平方向分析</h3>
 
-  <h4>&#x1F4CA; A. 纸面实力&#xFF08;35%权重 &#xB7; ELO模型&#xFF09;</h4>
+  <h4>&#x1F4CA; A. 纸面实力&#xFF08;32.5%权重 &#xB7; ELO模型&#xFF09;</h4>
   <div class="matrix-grid">
     <div class="matrix-item">
       <div class="matrix-val">1668</div>
@@ -468,7 +468,7 @@ tr:hover td { background:rgba(0,212,204,0.04); }
     捷克ELO略高22分但差距极小。韩国"阵容完美"叙事暗示巅峰期&#xFF0C;但缺乏大赛突破验证。
     <strong style="color:var(--gold)">纸面实力完全无法判断方向</strong>&#xFF0C;市场数据是关键。
   </div>
-  <h4>&#x1F4B0; B. 市场投注分析&#xFF08;65%权重&#xFF09;</h4>
+  <h4>&#x1F4B0; B. 市场投注分析&#xFF08;67.5%权重&#xFF09;</h4>
 
   <h5 style="color:var(--accent);">&#x2460; 欧洲赔率&#xFF08;7家主流公司&#xFF09;</h5>
   <table>
@@ -653,12 +653,10 @@ tr:hover td { background:rgba(0,212,204,0.04); }
   <h2>&#x1F4D0; 方法论说明</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
     <div><h4 style="color:var(--blue)">ELO模型&#xFF08;32.5%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">本地预测程序&#xFF1A;因子修正ELO&#xFF08;年龄+经验+状态+教练&#xFF09;&#x2192; Poisson &#x3BB;, xG, 比分概率分布</p></div>
-    <div><h4 style="color:var(--pink)">Polymarket&#xFF08;33.75%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">全球最大预测市场 &#x2192; $1M+成交量高置信度 &#x2192; Moneyline+Spread+O/U+BTTS全维度 &#x2192; 市场权重50%&#xFF08;绝对权重33.75%&#xFF09;</p></div>
-    <div><h4 style="color:var(--gold)">欧洲赔率&#xFF08;20.25%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">7家公司&#xFF08;Bet365/Betfred/Bwin/Coral/Ladbrokes/BOYLE/Sportingbet&#xFF09;&#x2192; 市场隐含概率 &#x2192; 广实骨架定位 &#x2192; 离散度验证 &#x2192; 市场权重30%</p></div>
-    <div><h4 style="color:var(--accent)">亚洲盘口&#xFF08;13.5%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">titan007.com 15家博彩公司真实盘口 &#x2192; 初盘/即时盘对比 &#x2192; 水位量化转换概率 &#x2192; 升盘/降盘信号 &#x2192; 市场权重20%</p></div>ELO&#xFF08;年龄+经验+状态+教练&#xFF09;&#x2192; Poisson &#x3BB;, xG, 比分概率分布</p></div>
-    <div><h4 style="color:var(--gold)">欧洲赔率&#xFF08;32.5%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">7家公司&#xFF08;Bet365/Betfred/Bwin/Coral/Ladbrokes/BOYLE/Sportingbet&#xFF09;&#x2192; 市场隐含概率 &#x2192; 广实骨架定位 &#x2192; 离散度验证</p></div>
-    <div><h4 style="color:var(--accent)">亚洲盘口&#xFF08;16.25%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">titan007.com 15家博彩公司真实盘口 &#x2192; 初盘/即时盘对比 &#x2192; 水位变化 &#x2192; 升盘/降盘信号 &#x2192; 欧亚交叉验证</p></div>
-    <div><h4 style="color:var(--pink)">Polymarket&#xFF08;16.25%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">全球最大预测市场 &#x2192; $1M+成交量高置信度 &#x2192; Moneyline+Spread+O/U+BTTS多维度交叉</p></div>
+    <div><h4 style="color:var(--pink)">Polymarket&#xFF08;33.75%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">全球最大预测市场 &#x2192; $1M+成交量高置信度 &#x2192; Moneyline+Spread+O/U+BTTS全维度 &#x2192; 市场权重50%&#xFF08;绝对33.75%&#xFF09;</p></div>
+    <div><h4 style="color:var(--gold)">欧洲赔率&#xFF08;20.25%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">7家公司&#xFF08;Bet365/Betfred/Bwin/Coral/Ladbrokes/BOYLE/Sportingbet&#xFF09;&#x2192; 市场隐含概率 &#x2192; 广实骨架定位 &#x2192; 离散度验证 &#x2192; 市场权重30%&#xFF08;绝对20.25%&#xFF09;</p></div>
+    <div><h4 style="color:var(--accent)">亚洲盘口&#xFF08;13.5%&#xFF09;</h4><p style="font-size:0.85em;color:var(--text2);">titan007.com 15家博彩公司真实盘口 &#x2192; 初盘/即时盘对比 &#x2192; 水位量化转换概率 &#x2192; 升盘/降盘信号 &#x2192; 市场权重20%&#xFF08;绝对13.5%&#xFF09;</p></div>
+
   </div>
   <div style="margin-top:16px;padding:12px;background:rgba(255,255,255,0.02);border-radius:8px;">
     <strong>&#x1F50D; 亚盘解读指南：</strong>
