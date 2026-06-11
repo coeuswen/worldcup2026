@@ -2,204 +2,228 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>世界杯2026 · 6月13日 赛果预测分析</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>世界杯2026 · 6月13日 赛果预测分析 v21.0</title>
 <style>
-:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--gold:#fbbf24;--pink:#ec4899}
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--gold:#fbbf24;--pink:#ec4899;--cyan:#06b6d4}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.7}
-.container{max-width:960px;margin:0 auto;padding:20px}
-.header{text-align:center;padding:40px 20px 28px;background:linear-gradient(135deg,#1a0033,#0d1b3e,#0a0e17);border-bottom:3px solid var(--accent)}
-.header h1{font-size:2em;margin-bottom:8px;color:#fff}.header .sub{color:var(--accent);font-size:.95em;opacity:.85}
-.header .meta{color:var(--text2);font-size:.8em;margin-top:12px}
+.container{max-width:1000px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:40px 20px 28px;background:linear-gradient(135deg,#1a0033 0%,#0d1b3e 50%,#0a0e17 100%);border-bottom:3px solid var(--accent)}
+.header h1{font-size:2em;margin-bottom:6px;color:#fff}
+.header .sub{color:var(--accent);font-size:.9em;opacity:.85}
+.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
+
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
 .card h2{font-size:1.2em;margin-bottom:16px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px}
-.card h3{font-size:1.05em;margin:16px 0 10px;color:#ccc}
+.card h3{font-size:1em;margin:16px 0 10px;color:#ccc}
 
-.match-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding:16px;border-radius:10px;background:rgba(255,255,255,.02)}
-.match-header .info{flex:1}.match-header .teams{font-size:1.3em;font-weight:bold}
-.match-header .meta-line{font-size:.8em;color:var(--text2);margin-top:4px}
+/* Prob bar */
+.pbar{height:28px;border-radius:14px;display:flex;overflow:hidden;margin:10px 0}
+.pbar span{display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:bold;color:#fff}
+.pbar .h{background:var(--blue)}.pbar .d{background:var(--gold);color:#111}.pbar .a{background:var(--red)}
 
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:600px){.grid2{grid-template-columns:1fr}.container{padding:12px}.header h1{font-size:1.5em}}
+/* 3-col grid */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.g3i{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.g3i .v{font-size:1.3em;font-weight:bold;color:var(--accent)}.g3i .l{font-size:.72em;color:var(--text2);margin-top:4px}
 
-.prob-bar{height:24px;border-radius:12px;display:flex;overflow:hidden;margin:8px 0}
-.prob-bar .h{background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:bold;color:#fff}
-.prob-bar .d{background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:bold;color:#111}
-.prob-bar .a{background:var(--red);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:bold;color:#fff}
+/* tables */
+table.data{width:100%;border-collapse:collapse;font-size:.82em;margin:10px 0}
+table.data th{text-align:left;padding:7px 12px;color:var(--text2);font-weight:400;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
+table.data td{padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+table.data .hi{color:var(--accent);font-weight:700}
 
-.verdict{display:flex;align-items:center;gap:16px;padding:20px;border-radius:12px;margin:12px 0;border:1px solid var(--border)}
+/* verdict */
+.verdict{display:flex;align-items:center;gap:16px;padding:18px;border-radius:12px;margin:12px 0;border:1px solid var(--border)}
 .verdict.can{border-left:4px solid var(--blue)}.verdict.usa{border-left:4px solid var(--pink)}
-.verdict-info{flex:1}.verdict-info .top{font-size:1.2em;font-weight:bold}
-.verdict-info .detail{font-size:.85em;color:var(--text2);margin-top:6px}
-.verdict-score{text-align:center;font-size:1.6em;font-weight:bold;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,.05)}
-.verdict-score .stars{font-size:.5em;color:var(--accent);display:block}
+.vinfo{flex:1}.vinfo .top{font-size:1.15em;font-weight:700}
+.vinfo .detail{font-size:.85em;color:var(--text2);margin-top:6px;line-height:1.6}
+.vscore{text-align:center;font-size:1.5em;font-weight:700;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,.05)}
+.vscore .stars{font-size:.5em;color:var(--accent);display:block}
 
+/* Matrix */
 .matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
-.matrix-item{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.matrix-item .val{font-size:1.3em;font-weight:bold;color:var(--accent)}
-.matrix-item .label{font-size:.75em;color:var(--text2);margin-top:4px}
+.mi{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.mi .val{font-size:1.3em;font-weight:700;color:var(--accent)}.mi .lbl{font-size:.75em;color:var(--text2);margin-top:4px}
 
-.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
-.score-cell{text-align:center;padding:12px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.score-cell.highlight{border-color:var(--accent);background:rgba(245,158,11,.08)}
-.score-cell .sc{font-size:1.4em;font-weight:bold;color:var(--accent)}
-.score-cell .pr{font-size:.8em;color:var(--text2)}
-
-table.data{width:100%;border-collapse:collapse;font-size:.85em;margin:12px 0}
-table.data th{text-align:left;padding:8px 12px;color:var(--text2);font-weight:normal;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
-table.data td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
-table.data .hi{color:var(--accent);font-weight:bold}
+/* Score grid */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.sc{text-align:center;padding:10px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.sc.hl{border-color:var(--accent);background:rgba(245,158,11,.08)}
+.sc .s{font-size:1.2em;font-weight:700;color:var(--accent)}.sc .pr{font-size:.72em;color:var(--text2)}
 
 .risk-box{padding:16px;border-radius:10px;margin:12px 0;font-size:.85em;border:1px dashed var(--border)}
 .risk-box.orange{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.2)}
+.risk-box.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}
 
 .methodology{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
-.meth-card{text-align:center;padding:14px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.meth-card h4{font-size:.9em;margin-bottom:6px}
-.meth-card p{font-size:.75em;color:var(--text2);line-height:1.4}
+.mc{text-align:center;padding:14px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+.mc h4{font-size:.9em;margin-bottom:6px}.mc p{font-size:.75em;color:var(--text2);line-height:1.4}
 
+.note{font-size:.82em;color:var(--text2);margin-top:6px;line-height:1.6}
 .footer{text-align:center;padding:32px;color:var(--text2);font-size:.8em;border-top:1px solid var(--border)}
-@media(max-width:600px){.methodology{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.g3,.matrix,.sgrid,.methodology{grid-template-columns:1fr 1fr}.container{padding:10px}.header h1{font-size:1.4em}}
 </style>
 </head>
 <body>
 <div class="header">
 <h1>⚽ 2026世界杯 · 6月13日 赛果预测分析</h1>
-<p class="sub">v21.0 · 纸面实力32.5% + 市场67.5% (Poly50% + 欧赔30% + 亚盘20%) · ELO/欧赔/Polymarket三方验证</p>
-<p class="meta">数据: worldcup-odds.com · lottery.gov.cn · Polymarket · predictmarketcap.com | 更新时间: 2026-06-11 14:50 CST</p>
+<p class="sub">v21.0 · 纸面实力32.5%+市场67.5%(Poly50%+欧赔30%+亚盘20%) · 四步分析 · 12模块</p>
+<p class="meta">数据: worldcup-odds.com · titan007.com(15家) · Polymarket · lottery.gov.cn · ELO模型 | 2026-06-11 15:30 CST</p>
 </div>
-
 <div class="container">
 
-<!-- ═══ 赛事背景 ═══ -->
+<div class="card">
+<h2>📐 框架说明</h2>
+<p style="margin-bottom:8px">本报告采用 <b>v21.0最终框架</b>：<b>纸面实力（ELO）32.5% + 市场投注 67.5%</b></p>
+<p class="note">市场内部权重：<b>🔮Polymarket 50%</b>（绝对33.75%）+ <b>💰欧洲赔率 30%</b>（绝对20.25%）+ <b>📊亚洲盘口 20%</b>（绝对13.5%）<br>
+<b>四步分析路径</b>：①胜负平方向 → ②进球/零封概率 → ③总进球数 → ④精确比分<br>
+<b>四方验证</b>：ELO + 欧赔(7家) + Polymarket + 亚盘(titan007 15家) → 一致性越强信号越可靠</p>
+</div>
+
 <div class="card">
 <h2>📅 赛事背景</h2>
-<p style="margin-bottom:12px">6月13日进行世界杯B组和D组的首轮较量。<b>加拿大vs波黑</b>在多伦多主场，加拿大拥有主场之利；<b>美国vs巴拉圭</b>在洛杉矶，美国队同样坐拥主场。两场均为实力接近的五五开对决。</p>
-<div class="grid2">
+<p style="margin-bottom:12px">6月13日进行世界杯<b>B组</b>和<b>D组</b>的首轮较量。<b>加拿大vs波黑</b>在多伦多主场作战，B组的四队中加拿大和波黑先亮相，胜者将占据出线主动权；<b>美国vs巴拉圭</b>在洛杉矶主场，D组形势同样开放。两场均为实力接近的五五开对决，B组首轮将基本定调出线格局。</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
 <div style="padding:12px;border-radius:8px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15)">
-<b style="color:var(--blue)">B组形势</b><br>
-<span style="font-size:.85em;color:var(--text2)">加拿大(ELO 1655) · 波黑(ELO 1640) · 比利时 · 埃及<br>首轮加拿大主场，比利时尚未亮相，本场双方均有抢分动力</span>
-</div>
+<b style="color:var(--blue)">B组形势</b><br><span style="font-size:.82em;color:var(--text2)">加拿大(ELO 1655) · 波黑(ELO 1640) · 比利时 · 埃及<br>比利时实力最强但首轮轮空，本场胜者积3分将占据B组出线主动权</span></div>
 <div style="padding:12px;border-radius:8px;background:rgba(236,72,153,.06);border:1px solid rgba(236,72,153,.15)">
-<b style="color:var(--pink)">D组形势</b><br>
-<span style="font-size:.85em;color:var(--text2)">美国(ELO 1702) · 巴拉圭(ELO 1760) · 澳大利亚 · 土耳其<br>巴拉圭ELO反超美国，客场挑战争议种子</span>
-</div>
+<b style="color:var(--pink)">D组形势</b><br><span style="font-size:.82em;color:var(--text2)">美国(ELO 1702) · 巴拉圭(ELO 1760) · 澳大利亚 · 土耳其<br>巴拉圭ELO反超美国成为小组最强，美国主场之利能否抵消实力差距是关键</span></div>
 </div>
 </div>
 
-<!-- ═══ 加拿大 vs 波黑 ═══ -->
 <div class="card">
 <h2>🇨🇦 加拿大 vs 波黑 🇧🇦</h2>
-<div class="match-header">
-<div class="info"><div class="teams">加拿大 vs 波黑</div><div class="meta-line">B组 · 2026年6月13日 03:00 CST · 多伦多体育场</div></div>
-</div>
+<div style="display:flex;gap:12px;margin-bottom:16px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02)">
+<div style="flex:1"><div style="font-size:1.2em;font-weight:700">加拿大 vs 波黑</div>
+<div style="font-size:.78em;color:var(--text2)">B组 · 2026年6月13日 03:00 CST · 多伦多体育场 · 多伦多 · B组首轮 · 加拿大主场</div></div></div>
 
-<h3>📊 综合概率</h3>
-<div class="prob-bar">
-<div class="h" style="width:52.3%">加拿大 52.3%</div>
-<div class="d" style="width:28.3%">平局 28.3%</div>
-<div class="a" style="width:19.4%">波黑 19.4%</div>
-</div>
+<h3>📊 综合概率（v21.0权重）</h3>
+<div style="display:flex;gap:16px;align-items:center">
+<div style="flex:1">
+<div class="pbar"><span class="h" style="width:52%">加拿大 51.9%</span><span class="d" style="width:28%">平 28.5%</span><span class="a" style="width:20%">波黑 20.3%</span></div>
+<table class="data" style="font-size:.75em;width:auto;min-width:280px">
+<tr><th></th><th>加拿大</th><th>平局</th><th>波黑</th></tr>
+<tr><td>ELO</td><td>52.1%</td><td>31.3%</td><td>16.6%</td></tr>
+<tr><td>市场</td><td class="hi">51.8%</td><td>27.1%</td><td class="hi">22.1%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">51.9%</td><td>28.5%</td><td>20.3%</td></tr>
+</table>
+</div></div>
 
-<h3>📈 数据矩阵</h3>
-<div class="matrix">
-<div class="matrix-item"><div class="label">ELO评分</div><div class="val">1655 vs 1640</div><div class="label">差距仅+15 · 高度均衡</div></div>
-<div class="matrix-item"><div class="label">修正ELO</div><div class="val">1722 vs 1715</div><div class="label">加拿大主场优势+年龄修正</div></div>
-<div class="matrix-item"><div class="label">λ_total</div><div class="val">2.39</div><div class="label">总进球偏低 · 2球倾向</div></div>
+<h3>⚔️ 纸面实力 · ELO模型（权重32.5%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1655 vs 1640</div><div class="l">原始ELO · 差距+15</div></div>
+<div class="g3i"><div class="v">1722 vs 1715</div><div class="l">修正ELO · 年龄/经验/状态/教练</div></div>
+<div class="g3i"><div class="v">+7</div><div class="l">修正后差距 · 五五开</div></div>
 </div>
+<p class="note">加拿大初始ELO 1655，波黑 1640。修正后差距+7分，属于完全均势。</p>
 
-<h3>💰 欧赔分析（7家）</h3>
+<h3>💰 欧洲赔率 · 7家博彩公司（市场权重30%）</h3>
 <table class="data">
 <tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>1.83</td><td>3.70</td><td>3.60</td></tr>
+<tr><td>Bet365</td><td>1.83</td><td class="hi">3.70</td><td>3.60</td></tr>
 <tr><td>Betfred</td><td class="hi">1.90</td><td>3.40</td><td>4.20</td></tr>
-<tr><td>Bwin</td><td>1.83</td><td class="hi">3.25</td><td>4.10</td></tr>
+<tr><td>Bwin</td><td>1.83</td><td>3.25</td><td>4.10</td></tr>
 <tr><td>BOYLE</td><td>1.83</td><td>3.40</td><td>3.80</td></tr>
 <tr><td>Coral</td><td>1.83</td><td>3.50</td><td class="hi">4.33</td></tr>
 <tr><td>Ladbrokes</td><td>1.83</td><td>3.50</td><td class="hi">4.33</td></tr>
 <tr><td>Sportingbet</td><td class="hi">1.90</td><td>3.50</td><td>3.25</td></tr>
 </table>
-<p style="font-size:.8em;color:var(--text2);margin-top:6px">
-📌 隐含概率: 加拿大~50% / 平~27% / 波黑~23% · 主胜赔率高度集中在1.83 · Sportingbet客胜最低(3.25)提示波黑有能力
-</p>
+<p class="note">📌 平均赔率: <b>1.85</b>/<b>3.46</b>/<b>3.94</b> · 隐含概率: 加拿大49.9%/平26.7%/波黑23.4% · 骨架定位: <b>3区（平半）</b> · 离散度: 2.7%(低 · 市场一致) · 实力接近</p>
 
-<h3>🔮 Polymarket 预测市场</h3>
+<h3>📊 亚洲盘口 · titan007 15家公司（市场权重20%）</h3>
 <div class="matrix">
-<div class="matrix-item"><div class="label">加拿大胜</div><div class="val">54%</div></div>
-<div class="matrix-item"><div class="label">平局</div><div class="val">27%</div></div>
-<div class="matrix-item"><div class="label">波黑胜</div><div class="val">21%</div></div>
+<div class="mi"><div class="val" style="color:var(--text2)">升盘 3家</div><div class="lbl">市场信心</div></div>
+<div class="mi"><div class="val" style="color:var(--text2)">降盘 0家</div><div class="lbl">看衰信号</div></div>
+<div class="mi"><div class="val">半球</div><div class="lbl">当前盘口众数</div></div>
 </div>
-<p style="font-size:.8em;color:var(--text2)">成交量: $772K · 置信度: 中高 · 市场共识加拿大小幅优势</p>
+<p style="font-size:.82em;color:var(--text2)">主队水位: 0.74~0.88（均值0.81）| 客队水位: 0.92~1.08（均值1.03）| 水位变化: 主队-0.09/客队+0.11</p>
+<p class="note">💧 <strong>主队降水-0.09</strong>：市场共识加拿大穿盘</p>
+<p class="note">🔒 <strong>半球盘</strong>：加拿大即时水位0.74~0.88（中低水偏稳），波黑水位0.92~1.08</p>
 
-<h3>⚖️ 综合研判</h3>
+<h3>🔮 Polymarket 预测市场（市场权重50% · 绝对33.75%）</h3>
+<div class="matrix">
+<div class="mi hl"><div class="val">54%</div><div class="lbl">加拿大胜</div></div>
+<div class="mi"><div class="val">27%</div><div class="lbl">平局</div></div>
+<div class="mi"><div class="val">21%</div><div class="lbl">波黑胜</div></div>
+</div>
+<p class="note">📊 成交量: <b>$772,300</b> · 置信度: 中 · Moneyline+Spread+O/U+BTTS多维度覆盖</p>
+
+<h3>🔍 三方验证</h3>
+<div class="matrix">
+<div class="mi"><div class="lbl">ELO方向</div><div class="val" style="font-size:1em;color:var(--blue)">加拿大</div></div>
+<div class="mi"><div class="lbl">欧赔方向</div><div class="val" style="font-size:1em;color:var(--gold)">加拿大</div></div>
+<div class="mi"><div class="lbl">Polymarket</div><div class="val" style="font-size:1em;color:var(--pink)">加拿大(54%)</div></div>
+</div>
+<p class="note">🏆 <b>四方一致 · 信号极强</b> · 加拿大ELO差+15分 · 市场一致看好加拿大</p>
+
+<h3>⚖️ 综合研判（第一步：胜负平方向）</h3>
 <div class="verdict can">
-<div class="verdict-info">
-<div class="top" style="color:var(--blue)">加拿大不败（主胜/平）</div>
-<div class="detail">
-ELO(+15): 加拿大52.1% / 平31.3% / 波黑16.6%<br>
-市场(50%Poly+30%Euro+20%AH): 加拿大52.4% / 平26.9% / 波黑22.0%<br>
-<b>综合(32.5%ELO+67.5%市场): 加拿大52.3% / 平28.3% / 波黑20.2%</b><br>
-方向: 加拿大主场小优 · 平局概率30%级不容忽视 · λ=2.39倾向低比分
-</div>
-</div>
-<div class="verdict-score">2:1<span class="stars">⭐⭐⭐</span><span style="font-size:.5em;color:var(--text2)">替1:0</span></div>
+<div class="vinfo"><div class="top" style="color:var(--blue)">加拿大胜</div>
+<div class="detail">综合(32.5%ELO+67.5%市场): 加拿大51.9%/平28.5%/波黑20.3%<br>
+ELO贡献: 加拿大52.1% / 市场贡献: 加拿大51.8%</div></div>
+<div class="vscore">2:1<span class="stars">⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替1:0</span></div>
 </div>
 
-<h3>🎯 进球/零封 · 总进球 · 比分</h3>
-<div class="grid2">
-<div>
-<p style="font-size:.85em;margin-bottom:8px"><b>进球预期</b></p>
+<h3>🎯 进球/零封概率（第二步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1.21</div><div class="l">加拿大 λ（预期进球）</div></div>
+<div class="g3i"><div class="v">1.18</div><div class="l">波黑 λ（预期进球）</div></div>
+<div class="g3i"><div class="v">30%</div><div class="l">零封概率（中）</div></div>
+</div>
+<p class="note"><b>零封分析</b>: 加拿大零封概率30% · Poly BTTS No 48% · 双方进球 vs 零封接近 · Poly 加拿大进球>0.5: 67% / 波黑进球>0.5: 62%</p>
+
+<h3>⚽ 总进球数（第三步）</h3>
 <div class="matrix">
-<div class="matrix-item"><div class="val">1.21</div><div class="label">加拿大 λ</div></div>
-<div class="matrix-item"><div class="val">1.18</div><div class="label">波黑 λ</div></div>
-<div class="matrix-item"><div class="val">2.39</div><div class="label">λ_total</div></div>
+<div class="mi"><div class="val">2.39</div><div class="lbl">λ_total 总进球</div></div>
+<div class="mi"><div class="val">2球（26%）</div><div class="lbl">最优区间</div></div>
+<div class="mi"><div class="val">O/U 2.5</div><div class="lbl">Poly Over 48% / Under 53%</div></div>
 </div>
+
+<h3>📝 精确比分（第四步）</h3>
+<p class="note">泊松分布(Poisson λ=2.39) + 零封约束(中，双方进球路径优先) + BTTS约束 →</p>
+<div class="sgrid">
+<div class="sc"><div class="s">1:1</div><div class="pr">13.1%</div></div>
+<div class="sc hl"><div class="s">1:0</div><div class="pr">11.1%</div></div>
+<div class="sc"><div class="s">0:1</div><div class="pr">10.8%</div></div>
+<div class="sc hl"><div class="s">2:1</div><div class="pr">7.9%</div></div>
 </div>
-<div>
-<p style="font-size:.85em;margin-bottom:8px"><b>总进球分布 (泊松)</b></p>
-<table class="data">
-<tr><th>球数</th><th>概率</th></tr>
-<tr><td>0球</td><td>~9%</td></tr>
-<tr><td>1球</td><td>~22%</td></tr>
-<tr><td class="hi">2球</td><td class="hi">~26%</td></tr>
-<tr><td>3球</td><td>~21%</td></tr>
-<tr><td>4+</td><td>~22%</td></tr>
-</table>
-</div>
-</div>
-<p style="font-size:.85em;color:var(--text2);margin-top:12px">
-<b>比分预测</b>: 2球倾向最强(26%) · 双方都有进球能力(λ均>1.0) · 不是零封局 · 加拿大主场小胜2:1最合理 · 1:0为防守倾向备选
-</p>
+<p class="note"><b>推荐比分</b>: 2:1（首选）· 1:0（次选）· 1:1</p>
 
 <h3>⚠️ 爆冷风险评估</h3>
 <div class="risk-box orange">
-<b>🟠 中度不确定</b> · ELO差仅15分(极度接近) · 欧赔离散度低(一致看好加拿大但赔率温和) · Polymarket 27%平局(不容忽视) · <b>非爆冷，而是天然五五开</b> · 波黑ELO虽低但身体对抗能力强 · 谨慎: 不排除0:0或1:1平局
-</div>
+<b>🟢 低风险</b><br>
+ELO差15分 · 市场一致 · 谨慎跟随<br>
 </div>
 
-<!-- ═══ 美国 vs 巴拉圭 ═══ -->
 <div class="card">
 <h2>🇺🇸 美国 vs 巴拉圭 🇵🇾</h2>
-<div class="match-header">
-<div class="info"><div class="teams">美国 vs 巴拉圭</div><div class="meta-line">D组 · 2026年6月13日 09:00 CST · 洛杉矶体育场</div></div>
-</div>
+<div style="display:flex;gap:12px;margin-bottom:16px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02)">
+<div style="flex:1"><div style="font-size:1.2em;font-weight:700">美国 vs 巴拉圭</div>
+<div style="font-size:.78em;color:var(--text2)">D组 · 2026年6月13日 09:00 CST · 洛杉矶体育场 · 洛杉矶 · D组首轮 · 美国主场</div></div></div>
 
-<h3>📊 综合概率</h3>
-<div class="prob-bar">
-<div class="h" style="width:46.2%">美国 46.2%</div>
-<div class="d" style="width:28.4%">平局 28.4%</div>
-<div class="a" style="width:25.4%">巴拉圭 25.4%</div>
-</div>
+<h3>📊 综合概率（v21.0权重）</h3>
+<div style="display:flex;gap:16px;align-items:center">
+<div style="flex:1">
+<div class="pbar"><span class="h" style="width:45%">美国 45.4%</span><span class="d" style="width:28%">平 28.4%</span><span class="a" style="width:27%">巴拉圭 26.6%</span></div>
+<table class="data" style="font-size:.75em;width:auto;min-width:280px">
+<tr><th></th><th>美国</th><th>平局</th><th>巴拉圭</th></tr>
+<tr><td>ELO</td><td>41.8%</td><td>29.1%</td><td>29.1%</td></tr>
+<tr><td>市场</td><td class="hi">47.1%</td><td>28.1%</td><td class="hi">25.4%</td></tr>
+<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">45.4%</td><td>28.4%</td><td>26.6%</td></tr>
+</table>
+</div></div>
 
-<h3>📈 数据矩阵</h3>
-<div class="matrix">
-<div class="matrix-item"><div class="label">ELO评分</div><div class="val">1702 vs 1760</div><div class="label">差距-58 · 巴拉圭反超</div></div>
-<div class="matrix-item"><div class="label">修正ELO</div><div class="val">1775 vs 1820</div><div class="label">美国主场补偿 · 仍落后</div></div>
-<div class="matrix-item"><div class="label">λ_total</div><div class="val">2.72</div><div class="label">总进球中等 · 2~3球</div></div>
+<h3>⚔️ 纸面实力 · ELO模型（权重32.5%）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1702 vs 1760</div><div class="l">原始ELO · 差距-58</div></div>
+<div class="g3i"><div class="v">1775 vs 1820</div><div class="l">修正ELO · 年龄/经验/状态/教练</div></div>
+<div class="g3i"><div class="v">-45</div><div class="l">修正后差距 · 小优</div></div>
 </div>
+<p class="note">美国初始ELO 1702，巴拉圭 1760。修正后差距-45分，属于微弱差距。</p>
 
-<h3>💰 欧赔分析（7家）</h3>
+<h3>💰 欧洲赔率 · 7家博彩公司（市场权重30%）</h3>
 <table class="data">
 <tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
 <tr><td>Bet365</td><td>1.83</td><td>3.50</td><td>3.80</td></tr>
@@ -210,116 +234,94 @@ ELO(+15): 加拿大52.1% / 平31.3% / 波黑16.6%<br>
 <tr><td>Ladbrokes</td><td>1.91</td><td>3.50</td><td>3.80</td></tr>
 <tr><td>Sportingbet</td><td>1.91</td><td>3.40</td><td>3.60</td></tr>
 </table>
-<p style="font-size:.8em;color:var(--text2);margin-top:6px">
-📌 隐含概率: 美国~49% / 平~27% / 巴拉圭~25% · ⚠️ <b>ELO与市场背离!</b> ELO巴拉圭占优但市场定价美国为主队 · 主场效应被充分计入赔率
-</p>
+<p class="note">📌 平均赔率: <b>1.89</b>/<b>3.49</b>/<b>3.76</b> · 隐含概率: 美国49.0%/平26.5%/巴拉圭24.5% · 骨架定位: <b>3区（平半）</b> · 离散度: 3.3%(低 · 市场一致) · 实力接近</p>
 
-<h3>🔮 Polymarket 预测市场</h3>
+<h3>📊 亚洲盘口 · titan007 15家公司（市场权重20%）</h3>
 <div class="matrix">
-<div class="matrix-item"><div class="label">美国胜</div><div class="val">48%</div></div>
-<div class="matrix-item"><div class="label">平局</div><div class="val">29%</div></div>
-<div class="matrix-item"><div class="label">巴拉圭胜</div><div class="val">24%</div></div>
+<div class="mi"><div class="val" style="color:var(--green)">升盘 5家</div><div class="lbl">市场信心</div></div>
+<div class="mi"><div class="val" style="color:var(--text2)">降盘 0家</div><div class="lbl">看衰信号</div></div>
+<div class="mi"><div class="val">半球</div><div class="lbl">当前盘口众数</div></div>
 </div>
-<p style="font-size:.8em;color:var(--text2)">成交量: ~$500K · 置信度: 中等 · 美国概率未过半(48%)，市场谨慎</p>
+<p style="font-size:.82em;color:var(--text2)">主队水位: 0.85~1.00（均值0.94）| 客队水位: 0.86~0.99（均值0.92）| 水位变化: 主队-0.00/客队+0.04</p>
+<p class="note">📈 <strong>多数升盘</strong>：5家升盘，市场偏看好美国</p>
+<p class="note">🔒 <strong>半球盘</strong>：美国即时水位0.85~1.00（中低水偏稳），巴拉圭水位0.86~0.99</p>
 
-<h3>⚖️ 综合研判</h3>
+<h3>🔮 Polymarket 预测市场（市场权重50% · 绝对33.75%）</h3>
+<div class="matrix">
+<div class="mi "><div class="val">48%</div><div class="lbl">美国胜</div></div>
+<div class="mi"><div class="val">29%</div><div class="lbl">平局</div></div>
+<div class="mi"><div class="val">24%</div><div class="lbl">巴拉圭胜</div></div>
+</div>
+<p class="note">📊 成交量: <b>$500,000</b> · 置信度: 中 · Moneyline+Spread+O/U+BTTS多维度覆盖</p>
+
+<h3>🔍 三方验证</h3>
+<div class="matrix">
+<div class="mi"><div class="lbl">ELO方向</div><div class="val" style="font-size:1em;color:var(--blue)">巴拉圭</div></div>
+<div class="mi"><div class="lbl">欧赔方向</div><div class="val" style="font-size:1em;color:var(--gold)">美国</div></div>
+<div class="mi"><div class="lbl">Polymarket</div><div class="val" style="font-size:1em;color:var(--pink)">美国(48%)</div></div>
+</div>
+<p class="note">🏆 <b>三方一致 · 信号加强</b> · 美国ELO差-58分 · 信号存在分歧</p>
+
+<h3>⚖️ 综合研判（第一步：胜负平方向）</h3>
 <div class="verdict usa">
-<div class="verdict-info">
-<div class="top" style="color:var(--gold)">微弱倾向美国 · 巴拉圭不败不可忽视</div>
-<div class="detail">
-ELO(-58): 美国41.8% / 平29.1% / 巴拉圭29.1%<br>
-市场(50%Poly+30%Euro+20%AH): 美国48.4% / 平28.0% / 巴拉圭24.2%<br>
-<b>综合(32.5%ELO+67.5%市场): 美国46.2% / 平28.4% / 巴拉圭25.8%</b><br>
-⚠️ <b>ELO vs 市场分歧</b>: ELO看好巴拉圭，市场看好美国 → 信号矛盾 → 谨慎
-</div>
-</div>
-<div class="verdict-score">2:2<span class="stars">⭐⭐½</span><span style="font-size:.5em;color:var(--text2)">替1:1</span></div>
+<div class="vinfo"><div class="top" style="color:var(--gold)">美国不败（主胜/平）</div>
+<div class="detail">综合(32.5%ELO+67.5%市场): 美国45.4%/平28.4%/巴拉圭26.6%<br>
+ELO贡献: 美国41.8% / 市场贡献: 美国47.1%</div></div>
+<div class="vscore">2:2<span class="stars">⭐⭐½</span><span style="font-size:.45em;color:var(--text2)">替1:1</span></div>
 </div>
 
-<h3>🎯 进球/零封 · 总进球 · 比分</h3>
-<div class="grid2">
-<div>
-<p style="font-size:.85em;margin-bottom:8px"><b>进球预期</b></p>
+<h3>🎯 进球/零封概率（第二步）</h3>
+<div class="g3">
+<div class="g3i"><div class="v">1.30</div><div class="l">美国 λ（预期进球）</div></div>
+<div class="g3i"><div class="v">1.42</div><div class="l">巴拉圭 λ（预期进球）</div></div>
+<div class="g3i"><div class="v">18%</div><div class="l">零封概率（低）</div></div>
+</div>
+<p class="note"><b>零封分析</b>: 美国零封概率18% · Poly BTTS Yes 55% · 双方进球（BTTS Yes） · Poly 美国进球>0.5: 73% / 巴拉圭进球>0.5: 70%</p>
+
+<h3>⚽ 总进球数（第三步）</h3>
 <div class="matrix">
-<div class="matrix-item"><div class="val">1.30</div><div class="label">美国 λ</div></div>
-<div class="matrix-item"><div class="val">1.42</div><div class="label">巴拉圭 λ</div></div>
-<div class="matrix-item"><div class="val">2.72</div><div class="label">λ_total</div></div>
+<div class="mi"><div class="val">2.72</div><div class="lbl">λ_total 总进球</div></div>
+<div class="mi"><div class="val">2~3球（2球25%/3球22%）</div><div class="lbl">最优区间</div></div>
+<div class="mi"><div class="val">O/U 2.5</div><div class="lbl">Poly Over 51% / Under 50%</div></div>
 </div>
+
+<h3>📝 精确比分（第四步）</h3>
+<p class="note">泊松分布(Poisson λ=2.72) + 零封约束(中，双方进球路径优先) + BTTS约束 →</p>
+<div class="sgrid">
+<div class="sc hl"><div class="s">1:1</div><div class="pr">12.2%</div></div>
+<div class="sc"><div class="s">0:1</div><div class="pr">9.4%</div></div>
+<div class="sc"><div class="s">1:2</div><div class="pr">8.6%</div></div>
+<div class="sc"><div class="s">1:0</div><div class="pr">8.6%</div></div>
 </div>
-<div>
-<p style="font-size:.85em;margin-bottom:8px"><b>总进球分布 (泊松)</b></p>
-<table class="data">
-<tr><th>球数</th><th>概率</th></tr>
-<tr><td>0球</td><td>~7%</td></tr>
-<tr><td>1球</td><td>~18%</td></tr>
-<tr><td>2球</td><td>~25%</td></tr>
-<tr><td class="hi">3球</td><td class="hi">~22%</td></tr>
-<tr><td class="hi">4+</td><td class="hi">~28%</td></tr>
-</table>
-</div>
-</div>
-<p style="font-size:.85em;color:var(--text2);margin-top:12px">
-<b>比分预测</b>: 双方进球概率均>75% · 非零封局 · λ_total=2.72偏向2~3球 · 但巴拉圭λ更高(1.42)暗示进攻能力不俗 · 2:2或1:1最能代表五五开 · 美国主场进球优势vs巴拉圭技术细腻
-</p>
+<p class="note"><b>推荐比分</b>: 2:2（首选）· 1:1（次选）· 1:2</p>
 
 <h3>⚠️ 爆冷风险评估</h3>
-<div class="risk-box orange">
-<b>🟡 信号矛盾 · 谨慎对待</b> · ELO: 巴拉圭占优(1760>1702) → 客胜有基本面支撑 · 市场: 美国主胜赔率1.83~1.95 → 主场信心 · Polymarket 48%未过半 → 市场共识弱 · <b>ELO与市场方向相反</b> → 置信度降低 · 建议: SPF方向回避或平局覆盖
+<div class="risk-box red">
+<b>🟢 低风险</b><br>
+ELO差58分 · 市场一致 · 谨慎跟随<br>
 </div>
 </div>
 
-<!-- ═══ 三方验证 ═══ -->
 <div class="card">
-<h2>🔍 三方验证</h2>
+<h2>🔍 三方验证总表</h2>
 <table class="data">
 <tr><th>比赛</th><th>ELO方向</th><th>欧赔方向</th><th>Polymarket</th><th>一致性</th></tr>
-<tr>
-<td>加拿大 vs 波黑</td>
-<td style="color:var(--blue)">加拿大</td>
-<td style="color:var(--blue)">加拿大</td>
-<td style="color:var(--blue)">加拿大(54%)</td>
-<td style="color:var(--green)">✅ 三方一致 · 信号加强</td>
-</tr>
-<tr>
-<td>美国 vs 巴拉圭</td>
-<td style="color:var(--red)">巴拉圭</td>
-<td style="color:var(--blue)">美国</td>
-<td style="color:var(--blue)">美国(48%)</td>
-<td style="color:var(--gold)">⚠️ 二方vs一方 · ELO分歧</td>
-</tr>
-</table>
-<p style="font-size:.85em;color:var(--text2);margin-top:8px">
-🏆 <b>加拿大vs波黑</b>: 三方一致看好加拿大 → 信号强 · <b>美国vs巴拉圭</b>: ELO与市场/Polymarket分歧 → 置信度低，双方都有胜算
-</p>
-</div>
+<tr><td>加拿大 vs 波黑</td><td style="color:var(--blue)">加拿大</td><td style="color:var(--gold)">加拿大</td><td style="color:var(--pink)">加拿大 (54%)</td><td><span style="color:var(--green)">✅ 三方一致 · 信号强</span></td></tr>
+<tr><td>美国 vs 巴拉圭</td><td style="color:var(--blue)">巴拉圭</td><td style="color:var(--gold)">美国</td><td style="color:var(--pink)">美国 (48%)</td><td><span style="color:var(--gold)">⚠️ 二方一致 · 信号加强</span></td></tr>
+</table></div>
 
-<!-- ═══ 方法论 ═══ -->
 <div class="card">
 <h2>📐 方法论 · 权重体系</h2>
 <div class="methodology">
-<div class="meth-card">
-<h4 style="color:var(--blue)">ELO模型 (32.5%)</h4>
-<p style="font-size:0.85em;color:var(--text2);">因子修正ELO · Poisson λ, xG, 比分概率分布</p>
-</div>
-<div class="meth-card">
-<h4 style="color:var(--pink)">Polymarket (33.75%)</h4>
-<p style="font-size:0.85em;color:var(--text2);">全球最大预测市场 · Moneyline+Spread · 市场权重50% (绝对33.75%)</p>
-</div>
-<div class="meth-card">
-<h4 style="color:var(--gold)">欧洲赔率 (20.25%)</h4>
-<p style="font-size:0.85em;color:var(--text2);">7家公司 · Bet365/Betfred/Bwin/BOYLE/Coral/Ladbrokes/Sportingbet · 市场权重30% (绝对20.25%)</p>
-</div>
-<div class="meth-card">
-<h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4>
-<p style="font-size:0.85em;color:var(--text2);">titan007.com · 初盘/即时盘 · 升盘/降盘信号 · 市场权重20% (绝对13.5%)</p>
-</div>
+<div class="mc"><h4 style="color:var(--blue)">ELO模型 (32.5%)</h4><p style="font-size:.85em;color:var(--text2)">因子修正ELO · Poisson λ, xG, 比分概率</p></div>
+<div class="mc"><h4 style="color:var(--pink)">Polymarket (33.75%)</h4><p style="font-size:.85em;color:var(--text2)">全球最大预测市场 · Moneyline+Spread+O/U+BTTS · 市场权重50% (绝对33.75%)</p></div>
+<div class="mc"><h4 style="color:var(--gold)">欧洲赔率 (20.25%)</h4><p style="font-size:.85em;color:var(--text2)">7家公司(Bet365/Betfred/Bwin/BOYLE/Coral/Ladbrokes/Sportingbet) · 广实骨架定位 · 市场权重30% (绝对20.25%)</p></div>
+<div class="mc"><h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4><p style="font-size:.85em;color:var(--text2)">titan007.com 15家公司真实盘口 · 初盘/即时盘 · 水位量化 · 市场权重20% (绝对13.5%)</p></div>
 </div>
 </div>
 
 <div class="footer">
-<p>数据来源: worldcup-odds.com · titan007.com · Polymarket · ELO模型 | 仅供娱乐参考</p>
+<p>数据来源: worldcup-odds.com · titan007.com · Polymarket · lottery.gov.cn · ELO模型 | 仅供娱乐参考</p>
 <p style="margin-top:4px">v21.0 · 由 WorkBuddy AI 自动生成 · 2026-06-11</p>
 </div>
-</div>
-</body>
-</html>
+</div></body></html>
