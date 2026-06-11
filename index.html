@@ -176,8 +176,8 @@ function renderCard(r, group) {
   document.getElementById("totalMatches").textContent = totalM;
   document.getElementById("analysisCount").textContent = ANALYSIS.length;
   document.getElementById("bettingCount").textContent = BETTING.length;
-  document.getElementById("analysisCount2").textContent = ANALYSIS.length + " &#x4EFD;&#x62A5;&#x544A;";
-  document.getElementById("bettingCount2").textContent = BETTING.length + " &#x4EFD;&#x62A5;&#x544A;";
+  document.getElementById("analysisCount2").innerHTML = ANALYSIS.length + " &#x4EFD;&#x62A5;&#x544A;";
+  document.getElementById("bettingCount2").innerHTML = BETTING.length + " &#x4EFD;&#x62A5;&#x544A;";
 
   // Render analysis
   document.getElementById("analysisList").innerHTML = ANALYSIS.map(function(r) {
