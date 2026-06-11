@@ -12,6 +12,8 @@
   --accent: #f5a623;
   --accent2: #d32f2f;
   --green: #4caf50;
+  --blue: #42a5f5;
+  --pink: #e91e90;
   --muted: #888;
   --border: #2a2a2a;
 }
@@ -29,162 +31,163 @@ body {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   border-bottom: 3px solid var(--accent);
 }
-.header h1 {
-  font-size: 2.2em;
-  color: #fff;
-  margin-bottom: 8px;
-}
-.header .subtitle {
-  color: var(--accent);
-  font-size: 1.1em;
-  opacity: 0.9;
-}
+.header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; }
+.header .subtitle { color: var(--accent); font-size: 1.1em; opacity: 0.9; }
 .header .emoji { font-size: 1.4em; }
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
+.container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
 .stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin: 20px 0 32px;
-  flex-wrap: wrap;
+  display: flex; justify-content: center; gap: 24px;
+  margin: 20px 0 32px; flex-wrap: wrap;
 }
 .stat {
-  text-align: center;
-  background: var(--card-bg);
-  padding: 16px 28px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
+  text-align: center; background: var(--card-bg);
+  padding: 14px 24px; border-radius: 12px; border: 1px solid var(--border);
 }
-.stat .num {
-  font-size: 2em;
-  font-weight: bold;
-  color: var(--accent);
-}
+.stat .num { font-size: 1.8em; font-weight: bold; color: var(--accent); }
 .stat .label { color: var(--muted); font-size: 0.85em; margin-top: 4px; }
+
+.section-header {
+  display: flex; align-items: center; gap: 10px;
+  margin: 28px 0 14px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.section-header .icon { font-size: 1.4em; }
+.section-header h3 { color: #ccc; font-size: 1.1em; }
+.section-header .count {
+  color: var(--muted); font-size: 0.85em;
+  margin-left: auto;
+}
+
 .report-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px; margin-bottom: 14px;
   transition: transform 0.2s, border-color 0.2s;
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  color: var(--text);
+  cursor: pointer; display: block; text-decoration: none; color: var(--text);
 }
-.report-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-}
+.report-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.report-card.analysis:hover { border-color: var(--blue); }
+.report-card.betting:hover { border-color: var(--pink); }
 .report-card .date {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--accent);
+  font-size: 1.1em; font-weight: bold; color: var(--accent);
 }
-.report-card .title {
-  font-size: 1em;
-  margin-top: 6px;
-  color: #ccc;
-}
-.report-card .arrow {
-  float: right;
-  color: var(--muted);
-  font-size: 1.2em;
-}
+.report-card.analysis .date { color: var(--blue); }
+.report-card.betting .date { color: var(--pink); }
+.report-card .title { font-size: 0.95em; margin-top: 6px; color: #ccc; }
+.report-card .arrow { float: right; color: var(--muted); font-size: 1.2em; }
 .report-card .matches {
-  font-size: 0.85em;
-  color: var(--muted);
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
+  font-size: 0.85em; color: var(--muted); margin-top: 8px;
+  padding-top: 8px; border-top: 1px solid var(--border);
 }
-.empty {
-  text-align: center;
-  color: var(--muted);
-  padding: 60px 20px;
+.report-card .tag {
+  display: inline-block; font-size: 0.75em; padding: 2px 8px;
+  border-radius: 4px; margin-right: 6px;
 }
+.tag-latest { background: #2e7d32; color: #a5d6a7; }
+.tag-hist { background: #424242; color: #9e9e9e; }
+
+.empty { text-align: center; color: var(--muted); padding: 60px 20px; }
 .footer {
-  text-align: center;
-  padding: 32px 20px;
-  color: var(--muted);
-  font-size: 0.85em;
-  border-top: 1px solid var(--border);
-  margin-top: 40px;
+  text-align: center; padding: 32px 20px; color: var(--muted);
+  font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 40px;
 }
-@keyframes pulse {
-  0%,100% { opacity:1; }
-  50% { opacity:0.5; }
-}
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
 .loading { animation: pulse 1.5s infinite; }
 @media (max-width: 600px) {
   .header h1 { font-size: 1.6em; }
-  .stats-bar { gap: 16px; }
-  .stat { padding: 12px 20px; }
-  .stat .num { font-size: 1.5em; }
+  .stats-bar { gap: 12px; }
+  .stat { padding: 10px 16px; }
+  .stat .num { font-size: 1.4em; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1><span class="emoji">⚽</span> 世界杯2026 赛果预测</h1>
-  <p class="subtitle">v21.0 · 纸面实力32.5%+市场投注67.5% · Polymarket+欧赔+亚盘三方验证</p>
+  <h1><span class="emoji">&#x26BD;</span> &#x4E16;&#x754C;&#x676F;2026 &#x8D5B;&#x679C;&#x9884;&#x6D4B;</h1>
+  <p class="subtitle">v21.0 &#xB7; &#x7EB8;&#x9762;&#x5B9E;&#x529B;32.5%+&#x5E02;&#x573A;&#x6295;&#x6CE8;67.5% &#xB7; Polymarket+&#x6B27;&#x8D54;+&#x4E9A;&#x76D8;&#x56DB;&#x65B9;&#x9A8C;&#x8BC1;</p>
 </div>
 
 <div class="container">
   <div class="stats-bar">
-    <div class="stat"><div class="num" id="totalCount">—</div><div class="label">📊 已分析比赛日</div></div>
-    <div class="stat"><div class="num" id="totalMatches">—</div><div class="label">🏟️ 预测场次</div></div>
-    <div class="stat"><div class="num" id="latestDate">—</div><div class="label">📅 最新报告</div></div>
+    <div class="stat"><div class="num" id="totalDays">—</div><div class="label">&#x1F4C5; &#x5DF2;&#x5206;&#x6790;&#x6BD4;&#x8D5B;&#x65E5;</div></div>
+    <div class="stat"><div class="num" id="totalMatches">—</div><div class="label">&#x1F3DF; &#x9884;&#x6D4B;&#x573A;&#x6B21;</div></div>
+    <div class="stat"><div class="num" id="analysisCount">—</div><div class="label">&#x1F4CA; &#x5206;&#x6790;&#x62A5;&#x544A;</div></div>
+    <div class="stat"><div class="num" id="bettingCount">—</div><div class="label">&#x1F3AF; &#x6295;&#x6CE8;&#x5EFA;&#x8BAE;</div></div>
   </div>
-  <h3 style="margin-bottom:16px;color:#ccc;">📋 预测报告列表</h3>
-  <div id="reportList"><p class="empty loading">加载中...</p></div>
+
+  <!-- &#x5206;&#x6790;&#x62A5;&#x544A;&#x5206;&#x7EC4; -->
+  <div class="section-header">
+    <span class="icon">&#x1F4CA;</span>
+    <h3>&#x8D5B;&#x679C;&#x5206;&#x6790;</h3>
+    <span class="count" id="analysisCount2">—</span>
+  </div>
+  <div id="analysisList"><p class="empty loading">&#x52A0;&#x8F7D;&#x4E2D;...</p></div>
+
+  <!-- &#x6295;&#x6CE8;&#x5EFA;&#x8BAE;&#x5206;&#x7EC4; -->
+  <div class="section-header">
+    <span class="icon">&#x1F3AF;</span>
+    <h3>&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;</h3>
+    <span class="count" id="bettingCount2">—</span>
+  </div>
+  <div id="bettingList"><p class="empty loading">&#x52A0;&#x8F7D;&#x4E2D;...</p></div>
 </div>
 
 <div class="footer">
-  <p>数据来源：worldcup-odds.com · titan007.com · Polymarket · ELO模型 | 仅供娱乐参考</p>
-  <p style="margin-top:4px;">由 WorkBuddy AI 自动生成并发布</p>
+  <p>&#x6570;&#x636E;&#x6765;&#x6E90;&#xFF1A;worldcup-odds.com &#xB7; titan007.com &#xB7; Polymarket &#xB7; ELO&#x6A21;&#x578B; | &#x4EC5;&#x4F9B;&#x5A31;&#x4E50;&#x53C2;&#x8003;</p>
+  <p style="margin-top:4px;">&#x7531; WorkBuddy AI &#x81EA;&#x52A8;&#x751F;&#x6210;&#x5E76;&#x53D1;&#x5E03;</p>
 </div>
 
 <script>
-// 报告列表 — 每次新增报告在此添加一行
-const REPORTS = [
-  { date:"6/15 投注 v14.1", file:"2026-06-15-投注建议.html", matches:"德国vs库拉索 | 荷兰vs日本 | 科特迪瓦vs厄瓜多尔 | 瑞典vs突尼斯", summary:"🆕v14.1 德国零封比分3选覆盖90% · 大小球条件概率边际成本优化 · 方案B推荐(德国比分×荷兰总进球8注16元) · 过2关/过3关双模式 · 方案A/B/D回本✅" },
-  { date:"6/14 投注 v14.0", file:"2026-06-14-投注建议.html", matches:"卡塔尔vs瑞士 | 巴西vs摩洛哥 | 海地vs苏格兰 | 澳大利亚vs土耳其", summary:"🆕v14.0 SPF+过N关 · 新增SPF胜负平分析+6方案 · 三串一过2关(容错)+过3关(全中)双模式 · SPF基底×比分加成最佳性价比 · 乱码修复" },
-  { date:"6/12-13 投注", file:"2026-06-12-13-投注建议.html", matches:"墨西哥vs南非 | 韩国vs捷克 | 加拿大vs波黑 | 美国vs巴拉圭", summary:"🏆v9.0 复选比分+大小球联动 · 零封场次多比分覆盖(1:0+2:0+3:0) · 泊松交叉验证 · 四方案A~D层层递进 · 中最低必回本" },
-  { date:"6/12 分析 v21.0", file:"2026-06-12-分析报告.html", matches:"墨西哥 vs 南非 | 韩国 vs 捷克", summary:"🆕v21.0 全新框架 · 纸面32.5%+市场67.5%(Poly50%+欧30%+亚20%) · ELO/欧赔/Polymarket/titan007亚盘四方验证 · 四步分析路径 · 亚盘量化" },
-  { date:"6/15 分析 v8", file:"2026-06-15-分析报告.html", matches:"德国 vs 库拉索 | 荷兰 vs 日本 | 科特迪瓦 vs 厄瓜多尔 | 瑞典 vs 突尼斯", summary:"🆕v8.0 泊松分析 · 德国xG碾压局(λ4.0+) · 荷兰vs日本亚洲修正 · 科特迪瓦非洲-20分 · 瑞典北欧稳健 · 四大模块全" },
-  { date:"6/14 分析 v8", file:"2026-06-14-分析报告.html", matches:"卡塔尔 vs 瑞士 | 巴西 vs 摩洛哥 | 海地 vs 苏格兰 | 澳大利亚 vs 土耳其", summary:"🆕v8.0 泊松分析 · 瑞士ELO+400碾压 · 巴西大热深盘检验 · 海地vs苏格兰低比分 · 澳大利亚主场劣势" },
-  { date:"6/13 分析 v8", file:"2026-06-13-分析报告.html", matches:"加拿大 vs 波黑 | 美国 vs 巴拉圭", summary:"🆕v8.0 泊松分析 · 加拿大零封55%偏优 · 美国vs巴拉圭大球倾向69% · 0:0研判+弱队进球+欧赔倒推" },
-  { date:"6/12 分析 v5", file:"2026-06-12-赛果预测报告.html", matches:"墨西哥 vs 南非 | 韩国 vs 捷克", summary:"欧亚联合v5.0 · 墨西哥深盘双保险 · 韩国vs捷克平手盘欧亚一致·任意方向可出" }
+// ====== &#x5206;&#x6790;&#x62A5;&#x544A; ======
+const ANALYSIS = [
+  { date:"6/12 v21.0&#x2605;", file:"&#x5206;&#x6790;/2026-06-12-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x58A8;&#x897F;&#x54E5; vs &#x5357;&#x975E; | &#x97E9;&#x56FD; vs &#x6377;&#x514B;", tag:"latest", summary:"v21.0 &#x5168;&#x65B0;&#x6846;&#x67B6; &#xB7; &#x7EB8;&#x9762;32.5%+&#x5E02;&#x573A;67.5%(Poly50%+&#x6B27;30%+&#x4E9A;20%) &#xB7; ELO/&#x6B27;&#x8D54;/Polymarket/titan007&#x56DB;&#x65B9;&#x9A8C;&#x8BC1; &#xB7; &#x56DB;&#x6B65;&#x5206;&#x6790;&#x8DEF;&#x5F84;" },
+  { date:"6/15 v8", file:"&#x5206;&#x6790;/2026-06-15-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x5FB7;&#x56FD; vs &#x5E93;&#x62C9;&#x7D22; | &#x8377;&#x5170; vs &#x65E5;&#x672C; | &#x79D1;&#x7279;&#x8FEA;&#x74E6; vs &#x5384;&#x74DC;&#x591A;&#x5C14; | &#x745E;&#x5178; vs &#x7A81;&#x5C3C;&#x65AF;", tag:"", summary:"v8.0 &#x6CCA;&#x677E;&#x5206;&#x6790; &#xB7; &#x5FB7;&#x56FD;xG&#x78BE;&#x538B;&#x5C40;(&#x3BB;4.0+) &#xB7; &#x8377;&#x5170;vs&#x65E5;&#x672C;&#x4E9A;&#x6D32;&#x4FEE;&#x6B63; &#xB7; &#x79D1;&#x7279;&#x8FEA;&#x74E6;&#x975E;&#x6D32;-20&#x5206; &#xB7; &#x745E;&#x5178;&#x5317;&#x6B27;&#x7A33;&#x5065;" },
+  { date:"6/14 v8", file:"&#x5206;&#x6790;/2026-06-14-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB; | &#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5; | &#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170; | &#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176;", tag:"", summary:"v8.0 &#x6CCA;&#x677E;&#x5206;&#x6790; &#xB7; &#x745E;&#x58EB;ELO+400&#x78BE;&#x538B; &#xB7; &#x5DF4;&#x897F;&#x5927;&#x70ED;&#x6DF1;&#x76D8;&#x68C0;&#x9A8C; &#xB7; &#x6D77;&#x5730;vs&#x82CF;&#x683C;&#x5170;&#x4F4E;&#x6BD4;&#x5206; &#xB7; &#x6FB3;&#x5927;&#x5229;&#x4E9A;&#x4E3B;&#x573A;&#x52A3;&#x52BF;" },
+  { date:"6/13 v8", file:"&#x5206;&#x6790;/2026-06-13-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x52A0;&#x62FF;&#x5927; vs &#x6CE2;&#x9ED1; | &#x7F8E;&#x56FD; vs &#x5DF4;&#x62C9;&#x572D;", tag:"", summary:"v8.0 &#x6CCA;&#x677E;&#x5206;&#x6790; &#xB7; &#x52A0;&#x62FF;&#x5927;&#x96F6;&#x5C01;55%&#x504F;&#x4F18; &#xB7; &#x7F8E;&#x56FD;vs&#x5DF4;&#x62C9;&#x572D;&#x5927;&#x7403;&#x503E;&#x5411;69% &#xB7; 0:0&#x7814;&#x5224;+&#x5F31;&#x961F;&#x8FDB;&#x7403;+&#x6B27;&#x8D54;&#x5012;&#x63A8;" },
+  { date:"6/12 v5", file:"&#x5206;&#x6790;/2026-06-12-&#x8D5B;&#x679C;&#x9884;&#x6D4B;&#x62A5;&#x544A;.html", matches:"&#x58A8;&#x897F;&#x54E5; vs &#x5357;&#x975E; | &#x97E9;&#x56FD; vs &#x6377;&#x514B;", tag:"hist", summary:"v5.0 &#x6B27;&#x4E9A;&#x8054;&#x5408; &#xB7; &#x58A8;&#x897F;&#x54E5;&#x6DF1;&#x76D8;&#x53CC;&#x4FDD;&#x9669; &#xB7; &#x97E9;&#x56FD;vs&#x6377;&#x514B;&#x5E73;&#x624B;&#x76D8;&#x6B27;&#x4E9A;&#x4E00;&#x81F4; &#xB7; &#x4EFB;&#x610F;&#x65B9;&#x5411;&#x53EF;&#x51FA;" }
 ];
 
-(function(){
-  document.getElementById("totalCount").textContent = REPORTS.length;
-  let totalM = 0;
-  REPORTS.forEach(r => { totalM += (r.matches.match(/vs/g)||[]).length; });
-  document.getElementById("totalMatches").textContent = totalM;
-  if(REPORTS.length > 0) document.getElementById("latestDate").textContent = REPORTS[0].date;
-  else document.getElementById("latestDate").textContent = "暂无";
+// ====== &#x6295;&#x6CE8;&#x5EFA;&#x8BAE; ======
+const BETTING = [
+  { date:"6/15 v14.1", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-15-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x5FB7;&#x56FD;vs&#x5E93;&#x62C9;&#x7D22; | &#x8377;&#x5170;vs&#x65E5;&#x672C; | &#x79D1;&#x7279;&#x8FEA;&#x74E6;vs&#x5384;&#x74DC;&#x591A;&#x5C14; | &#x745E;&#x5178;vs&#x7A81;&#x5C3C;&#x65AF;", tag:"latest", summary:"v14.1 &#x5FB7;&#x56FD;&#x96F6;&#x5C01;&#x6BD4;&#x5206;3&#x9009;&#x8986;&#x76D6;90% &#xB7; &#x5927;&#x5C0F;&#x7403;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x8FB9;&#x9645;&#x6210;&#x672C;&#x4F18;&#x5316; &#xB7; &#x65B9;&#x6848;B&#x63A8;&#x8350; &#xB7; &#x8FC7;2&#x5173;/&#x8FC7;3&#x5173;&#x53CC;&#x6A21;&#x5F0F;" },
+  { date:"6/14 v14.0", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-14-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x5361;&#x5854;&#x5C14;vs&#x745E;&#x58EB; | &#x5DF4;&#x897F;vs&#x6469;&#x6D1B;&#x54E5; | &#x6D77;&#x5730;vs&#x82CF;&#x683C;&#x5170; | &#x6FB3;&#x5927;&#x5229;&#x4E9A;vs&#x571F;&#x8033;&#x5176;", tag:"", summary:"v14.0 SPF+&#x8FC7;N&#x5173; &#xB7; &#x65B0;&#x589E;SPF&#x80DC;&#x8D1F;&#x5E73;&#x5206;&#x6790;+6&#x65B9;&#x6848; &#xB7; &#x4E09;&#x4E32;&#x4E00;&#x8FC7;2&#x5173;(&#x5BB9;&#x9519;)+&#x8FC7;3&#x5173;(&#x5168;&#x4E2D;)&#x53CC;&#x6A21;&#x5F0F; &#xB7; SPF&#x57FA;&#x5E95;&#xD7;&#x6BD4;&#x5206;&#x52A0;&#x6210;" },
+  { date:"6/12-13 v9", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-12-13-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x58A8;&#x897F;&#x54E5;vs&#x5357;&#x975E; | &#x97E9;&#x56FD;vs&#x6377;&#x514B; | &#x52A0;&#x62FF;&#x5927;vs&#x6CE2;&#x9ED1; | &#x7F8E;&#x56FD;vs&#x5DF4;&#x62C9;&#x572D;", tag:"", summary:"v9.0 &#x590D;&#x9009;&#x6BD4;&#x5206;+&#x5927;&#x5C0F;&#x7403;&#x8054;&#x52A8; &#xB7; &#x96F6;&#x5C01;&#x573A;&#x6B21;&#x591A;&#x6BD4;&#x5206;&#x8986;&#x76D6;(1:0+2:0+3:0) &#xB7; &#x6CCA;&#x677E;&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1; &#xB7; &#x56DB;&#x65B9;&#x6848;A~D" }
+];
 
-  const list = document.getElementById("reportList");
-  if(REPORTS.length === 0) {
-    list.innerHTML = '<p class="empty">暂无预测报告</p>';
-  } else {
-    list.innerHTML = REPORTS.map(r => `
-      <a class="report-card" href="${encodeURI(r.file)}">
-        <span class="arrow">→</span>
-        <div class="date">📅 ${r.date}</div>
-        <div class="title">${r.summary}</div>
-        <div class="matches">🏟️ ${r.matches}</div>
-      </a>
-    `).join("");
-  }
+function renderCard(r, group) {
+  var tagClass = r.tag === 'latest' ? 'tag-latest' : (r.tag === 'hist' ? 'tag-hist' : '');
+  var tagHtml = tagClass ? '<span class="tag ' + tagClass + '">' + (r.tag === 'latest' ? '&#x2605;&#x6700;&#x65B0;' : '&#x5386;&#x53F2;') + '</span>' : '';
+  var c = group === 'analysis' ? 'analysis' : 'betting';
+  return '<a class="report-card ' + c + '" href="' + encodeURI(r.file) + '">' +
+    '<span class="arrow">&#x2192;</span>' +
+    '<div class="date">' + tagHtml + '&#x1F4C5; ' + r.date + '</div>' +
+    '<div class="title">' + r.summary + '</div>' +
+    '<div class="matches">&#x1F3DF; ' + r.matches + '</div>' +
+    '</a>';
+}
+
+(function(){
+  // Stats
+  document.getElementById("totalDays").textContent = "4";
+  var totalM = 0;
+  ANALYSIS.concat(BETTING).forEach(function(r) {
+    totalM += (r.matches.match(/vs/g)||[]).length;
+  });
+  document.getElementById("totalMatches").textContent = totalM;
+  document.getElementById("analysisCount").textContent = ANALYSIS.length;
+  document.getElementById("bettingCount").textContent = BETTING.length;
+  document.getElementById("analysisCount2").textContent = ANALYSIS.length + " &#x4EFD;&#x62A5;&#x544A;";
+  document.getElementById("bettingCount2").textContent = BETTING.length + " &#x4EFD;&#x62A5;&#x544A;";
+
+  // Render analysis
+  document.getElementById("analysisList").innerHTML = ANALYSIS.map(function(r) {
+    return renderCard(r, 'analysis');
+  }).join("");
+
+  // Render betting
+  document.getElementById("bettingList").innerHTML = BETTING.map(function(r) {
+    return renderCard(r, 'betting');
+  }).join("");
 })();
 </script>
 </body>
