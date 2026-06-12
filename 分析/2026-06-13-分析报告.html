@@ -2,326 +2,405 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>世界杯2026 · 6月13日 赛果预测分析 v21.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026&#19990;&#30028;&#26479; 6&#26376;13&#26085; &#20998;&#26512;&#25253;&#21578; | v23.0</title>
 <style>
-:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--blue:#3b82f6;--green:#10b981;--red:#ef4444;--gold:#fbbf24;--pink:#ec4899;--cyan:#06b6d4}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;line-height:1.7}
-.container{max-width:1000px;margin:0 auto;padding:20px}
-.header{text-align:center;padding:40px 20px 28px;background:linear-gradient(135deg,#1a0033 0%,#0d1b3e 50%,#0a0e17 100%);border-bottom:3px solid var(--accent)}
-.header h1{font-size:2em;margin-bottom:6px;color:#fff}
-.header .sub{color:var(--accent);font-size:.9em;opacity:.85}
-.header .meta{color:var(--text2);font-size:.78em;margin-top:10px}
-
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
-.card h2{font-size:1.2em;margin-bottom:16px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:8px}
-.card h3{font-size:1em;margin:16px 0 10px;color:#ccc}
-
-/* Prob bar */
-.pbar{height:28px;border-radius:14px;display:flex;overflow:hidden;margin:10px 0}
-.pbar span{display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:bold;color:#fff}
-.pbar .h{background:var(--blue)}.pbar .d{background:var(--gold);color:#111}.pbar .a{background:var(--red)}
-
-/* 3-col grid */
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
-.g3i{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.g3i .v{font-size:1.3em;font-weight:bold;color:var(--accent)}.g3i .l{font-size:.72em;color:var(--text2);margin-top:4px}
-
-/* tables */
-table.data{width:100%;border-collapse:collapse;font-size:.82em;margin:10px 0}
-table.data th{text-align:left;padding:7px 12px;color:var(--text2);font-weight:400;border-bottom:1px solid var(--border);background:rgba(255,255,255,.02)}
-table.data td{padding:7px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
-table.data .hi{color:var(--accent);font-weight:700}
-
-/* verdict */
-.verdict{display:flex;align-items:center;gap:16px;padding:18px;border-radius:12px;margin:12px 0;border:1px solid var(--border)}
-.verdict.can{border-left:4px solid var(--blue)}.verdict.usa{border-left:4px solid var(--pink)}
-.vinfo{flex:1}.vinfo .top{font-size:1.15em;font-weight:700}
-.vinfo .detail{font-size:.85em;color:var(--text2);margin-top:6px;line-height:1.6}
-.vscore{text-align:center;font-size:1.5em;font-weight:700;padding:8px 20px;border-radius:8px;background:rgba(255,255,255,.05)}
-.vscore .stars{font-size:.5em;color:var(--accent);display:block}
-
-/* Matrix */
-.matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
-.mi{text-align:center;padding:14px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.mi .val{font-size:1.3em;font-weight:700;color:var(--accent)}.mi .lbl{font-size:.75em;color:var(--text2);margin-top:4px}
-
-/* Score grid */
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-.sc{text-align:center;padding:10px;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.sc.hl{border-color:var(--accent);background:rgba(245,158,11,.08)}
-.sc .s{font-size:1.2em;font-weight:700;color:var(--accent)}.sc .pr{font-size:.72em;color:var(--text2)}
-
-.risk-box{padding:16px;border-radius:10px;margin:12px 0;font-size:.85em;border:1px dashed var(--border)}
-.risk-box.orange{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.2)}
-.risk-box.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2)}
-
-.methodology{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
-.mc{text-align:center;padding:14px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
-.mc h4{font-size:.9em;margin-bottom:6px}.mc p{font-size:.75em;color:var(--text2);line-height:1.4}
-
-.note{font-size:.82em;color:var(--text2);margin-top:6px;line-height:1.6}
-.footer{text-align:center;padding:32px;color:var(--text2);font-size:.8em;border-top:1px solid var(--border)}
-@media(max-width:700px){.g3,.matrix,.sgrid,.methodology{grid-template-columns:1fr 1fr}.container{padding:10px}.header h1{font-size:1.4em}}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0e17; color: #e0e6ed; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #1a1f35 0%, #0d1120 100%); border-bottom: 2px solid #2a3a5c; margin-bottom: 30px; }
+.header h1 { font-size: 2em; color: #4fc3f7; margin-bottom: 8px; }
+.header .subtitle { color: #8899aa; font-size: 0.9em; }
+.header .version { display: inline-block; background: #ff6b35; color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; margin-left: 8px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; margin-right: 4px; }
+.badge-green { background: #1b5e20; color: #69f0ae; }
+.badge-yellow { background: #5d4037; color: #ffcc02; }
+.badge-red { background: #4a0f0f; color: #ff5252; }
+.badge-blue { background: #0d3b66; color: #4fc3f7; }
+.card { background: #141a26; border: 1px solid #1e2d45; border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+.card-header { font-size: 1.15em; font-weight: bold; color: #4fc3f7; border-bottom: 1px solid #1e2d45; padding-bottom: 10px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.card-header .icon { font-size: 1.3em; }
+.match-title { font-size: 1.5em; color: #fff; text-align: center; margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th { background: #1a2540; color: #8899aa; padding: 10px 12px; text-align: center; font-size: 0.85em; border-bottom: 2px solid #2a3a5c; }
+td { padding: 8px 12px; text-align: center; border-bottom: 1px solid #1a2540; font-size: 0.9em; }
+tr:hover { background: rgba(79, 195, 247, 0.05); }
+.highlight { color: #ffcc02; font-weight: bold; }
+.highlight-green { color: #69f0ae; font-weight: bold; }
+.highlight-red { color: #ff5252; font-weight: bold; }
+.prob-row { display: flex; justify-content: center; gap: 20px; margin: 20px 0; }
+.prob-box { text-align: center; padding: 16px 24px; background: #1a2540; border-radius: 8px; min-width: 100px; }
+.prob-box.win { border-top: 3px solid #69f0ae; }
+.prob-box.draw { border-top: 3px solid #ffcc02; }
+.prob-box.loss { border-top: 3px solid #ff5252; }
+.prob-box .label { font-size: 0.85em; color: #8899aa; }
+.prob-box .value { font-size: 1.8em; font-weight: bold; }
+.step-section { margin: 16px 0; }
+.step-title { font-size: 1.05em; color: #ff6b35; font-weight: bold; margin-bottom: 8px; }
+.score-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.score-name { width: 50px; text-align: right; font-family: monospace; font-size: 0.9em; color: #c0c8d0; }
+.bar-bg { flex: 1; height: 20px; background: #1a2540; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #ff6b35, #ff9800); border-radius: 10px; transition: width 0.5s; }
+.score-pct { width: 55px; font-size: 0.85em; color: #ff9800; font-weight: bold; }
+.verdict-box { background: linear-gradient(135deg, #1b5e20, #0d3320); border: 1px solid #2e7d32; border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0; }
+.verdict-box h3 { color: #69f0ae; margin-bottom: 8px; }
+.verdict-box .score-big { font-size: 2.5em; font-weight: bold; color: #fff; }
+.warning-box { background: #1a1510; border: 1px solid #5d4037; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.warning-box h4 { color: #ffcc02; }
+.ou-table td { font-family: monospace; }
+.consensus { display: flex; gap: 8px; justify-content: center; margin: 8px 0; }
+.consensus-dot { width: 12px; height: 12px; border-radius: 50%; }
+.consensus-dot.agree { background: #69f0ae; }
+.consensus-dot.disagree { background: #ff5252; }
+.methodology { margin-top: 40px; }
+.method-card { background: #1a2540; border-radius: 8px; padding: 16px; text-align: center; }
+.method-card h4 { color: #4fc3f7; font-size: 0.9em; }
+.method-card .big { font-size: 1.5em; font-weight: bold; color: #fff; }
+.method-card .sub { font-size: 0.75em; color: #8899aa; margin-top: 4px; }
+.footer { text-align: center; color: #556677; font-size: 0.8em; padding: 30px 0; }
+.signal { font-size: 1.1em; padding: 4px 12px; border-radius: 6px; display: inline-block; }
+.signal-strong { background: #1b5e20; color: #69f0ae; }
+.signal-moderate { background: #5d4037; color: #ffcc02; }
+@media (max-width: 768px) {
+    .prob-row { flex-direction: column; align-items: center; }
+    .container { padding: 10px; }
+}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>⚽ 2026世界杯 · 6月13日 赛果预测分析</h1>
-<p class="sub">v21.0 · 纸面实力32.5%+市场67.5%(Poly50%+欧赔30%+亚盘20%) · 四步分析 · 12模块</p>
-<p class="meta">数据: worldcup-odds.com · titan007.com(15家) · Polymarket · lottery.gov.cn · ELO模型 | 2026-06-11 15:30 CST</p>
-</div>
 <div class="container">
 
+<div class="header">
+    <h1>&#127758; 2026&#19990;&#30028;&#26479; &#20998;&#26512;&#25253;&#21578;</h1>
+    <div class="subtitle">6&#26376;13&#26085; &#27604;&#36187; &#183; &#21457;&#24067;&#26102;&#38388;: 2026-06-12</div>
+    <span class="version">v23.0</span>
+    <span class="badge badge-blue">&#26032;&#26694;&#26550;</span>
+</div>
+
+<!-- Methodology -->
+<div class="card methodology">
+    <div class="card-header"><span class="icon">&#9881;&#65039;</span>v23.0 &#20998;&#26512;&#26694;&#26550;</div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+        <div class="method-card" style="flex:1;min-width:180px;">
+            <h4>&#128202; ELO&#23454;&#21147;</h4>
+            <div class="big">30%</div>
+            <div class="sub">&#32477;&#23545;&#26435;&#37325;</div>
+        </div>
+        <div class="method-card" style="flex:1;min-width:180px;">
+            <h4>&#128176; &#24066;&#22330;&#25237;&#27880;</h4>
+            <div class="big">70%</div>
+            <div class="sub">&#32477;&#23545;&#26435;&#37325;</div>
+        </div>
+        <div class="method-card" style="flex:1;min-width:180px;">
+            <h4>&#128483;&#65039; Polymarket</h4>
+            <div class="big">60%</div>
+            <div class="sub">&#24066;&#22330;&#20869;&#26435;&#37325; | &#32477;&#23545; 42%</div>
+        </div>
+        <div class="method-card" style="flex:1;min-width:180px;">
+            <h4>&#8364; &#27431;&#36180;</h4>
+            <div class="big">40%</div>
+            <div class="sub">&#24066;&#22330;&#20869;&#26435;&#37325; | &#32477;&#23545; 28%</div>
+        </div>
+    </div>
+    <div style="text-align:center;margin-top:12px;color:#8899aa;font-size:0.85em;">
+        p<sub>c</sub> = 0.30 &#215; p<sub>elo</sub> + 0.70 &#215; (0.60 &#215; p<sub>poly</sub> + 0.40 &#215; p<sub>euro</sub>)
+    </div>
+</div>
+
+<!-- ============ MATCH 1: CANADA vs BOSNIA ============ -->
+<div class="match-title">&#127464;&#127462; &#21152;&#25343;&#22823; vs &#27874;&#26031;&#23612;&#20122;&#21644;&#40657;&#22622;&#21733;&#32500;&#37027; &#127463;&#127462;</div>
+
+<!-- Background -->
 <div class="card">
-<h2>📐 框架说明</h2>
-<p style="margin-bottom:8px">本报告采用 <b>v21.0最终框架</b>：<b>纸面实力（ELO）32.5% + 市场投注 67.5%</b></p>
-<p class="note">市场内部权重：<b>🔮Polymarket 50%</b>（绝对33.75%）+ <b>💰欧洲赔率 30%</b>（绝对20.25%）+ <b>📊亚洲盘口 20%</b>（绝对13.5%）<br>
-<b>四步分析路径</b>：①胜负平方向 → ②进球/零封概率 → ③总进球数 → ④精确比分<br>
-<b>四方验证</b>：ELO + 欧赔(7家) + Polymarket + 亚盘(titan007 15家) → 一致性越强信号越可靠</p>
+    <div class="card-header"><span class="icon">&#127991;&#65039;</span>&#36187;&#20107;&#32972;&#26223;</div>
+    <table>
+        <tr><th style="width:150px;">&#39033;&#30446;</th><th>&#35814;&#24773;</th></tr>
+        <tr><td>&#27604;&#36187;&#26102;&#38388;</td><td>2026&#24180;6&#26376;12&#26085; (&#21271;&#20140;6&#26376;13&#26085; 03:00)</td></tr>
+        <tr><td>&#27604;&#36187;&#22330;&#22320;</td><td>&#22810;&#20262;&#22810;&#20307;&#32946;&#22330; (&#21152;&#25343;&#22823;)</td></tr>
+        <tr><td>&#23567;&#32452;</td><td>B&#32452;</td></tr>
+        <tr><td>ELO&#24046;</td><td>1655 vs 1640 (&#24046;15) <span class="badge badge-yellow">&#25509;&#36817;</span></td></tr>
+        <tr><td>&#24418;&#24577;</td><td>&#21152;&#25343;&#22823;&#20027;&#22330;&#20316;&#25112;&#65292;&#27874;&#40657;&#23454;&#21147;&#19981;&#21487;&#23567;&#35281;</td></tr>
+    </table>
 </div>
 
+<!-- Five-Step Analysis -->
 <div class="card">
-<h2>📅 赛事背景</h2>
-<p style="margin-bottom:12px">6月13日进行世界杯<b>B组</b>和<b>D组</b>的首轮较量。<b>加拿大vs波黑</b>在多伦多主场作战，B组的四队中加拿大和波黑先亮相，胜者将占据出线主动权；<b>美国vs巴拉圭</b>在洛杉矶主场，D组形势同样开放。两场均为实力接近的五五开对决，B组首轮将基本定调出线格局。</p>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div style="padding:12px;border-radius:8px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15)">
-<b style="color:var(--blue)">B组形势</b><br><span style="font-size:.82em;color:var(--text2)">加拿大(ELO 1655) · 波黑(ELO 1640) · 比利时 · 埃及<br>比利时实力最强但首轮轮空，本场胜者积3分将占据B组出线主动权</span></div>
-<div style="padding:12px;border-radius:8px;background:rgba(236,72,153,.06);border:1px solid rgba(236,72,153,.15)">
-<b style="color:var(--pink)">D组形势</b><br><span style="font-size:.82em;color:var(--text2)">美国(ELO 1702) · 巴拉圭(ELO 1760) · 澳大利亚 · 土耳其<br>巴拉圭ELO反超美国成为小组最强，美国主场之利能否抵消实力差距是关键</span></div>
-</div>
-</div>
+    <div class="card-header"><span class="icon">&#128270;</span>Polymarket &#20116;&#27493;&#31934;&#23494;&#20998;&#26512;</div>
+    
+    <div class="step-section">
+        <div class="step-title">Step 1: Moneyline &#26041;&#21521;&#24378;&#24230;</div>
+        <div class="prob-row">
+            <div class="prob-box win"><div class="label">&#21152;&#25343;&#22823;&#32988;</div><div class="value" style="color:#69f0ae;">53.5%</div></div>
+            <div class="prob-box draw"><div class="label">&#24179;&#23616;</div><div class="value" style="color:#ffcc02;">27.5%</div></div>
+            <div class="prob-box loss"><div class="label">&#27874;&#40657;&#32988;</div><div class="value" style="color:#ff5252;">20.5%</div></div>
+        </div>
+        <p style="text-align:center;color:#8899aa;font-size:0.85em;">&#21152;&#25343;&#22823;&#39046;&#20808; 33.0&#20010;&#30334;&#20998;&#28857; &#8594; &#20027;&#38431;&#26126;&#26174;&#20248;&#21183;</p>
+    </div>
 
-<div class="card">
-<h2>🇨🇦 加拿大 vs 波黑 🇧🇦</h2>
-<div style="display:flex;gap:12px;margin-bottom:16px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02)">
-<div style="flex:1"><div style="font-size:1.2em;font-weight:700">加拿大 vs 波黑</div>
-<div style="font-size:.78em;color:var(--text2)">B组 · 2026年6月13日 03:00 CST · 多伦多体育场 · 多伦多 · B组首轮 · 加拿大主场</div></div></div>
+    <div class="step-section">
+        <div class="step-title">Step 2: O/U Ladder &#24635;&#36827;&#29699;</div>
+        <table class="ou-table">
+            <tr><th>&#38408;&#20540;</th><th>&gt;0.5</th><th>&gt;1.5</th><th>&gt;2.5</th><th>&gt;3.5</th></tr>
+            <tr>
+                <td>Over</td>
+                <td class="highlight-green">82.0%</td>
+                <td class="highlight-green">60.4%</td>
+                <td>35.3%</td>
+                <td class="highlight-red">14.0%</td>
+            </tr>
+            <tr>
+                <td>Under</td>
+                <td class="highlight-red">18.0%</td>
+                <td>39.6%</td>
+                <td>64.7%</td>
+                <td class="highlight-green">86.0%</td>
+            </tr>
+        </table>
+        <p style="color:#8899aa;font-size:0.85em;text-align:center;margin-top:8px;">&#24635;&#36827;&#29699;&#27010;&#29575;&#26368;&#39640;: 2&#29699; &#183; &#33539;&#22260;: 1-3&#29699;</p>
+    </div>
 
-<h3>📊 综合概率（v21.0权重）</h3>
-<div style="display:flex;gap:16px;align-items:center">
-<div style="flex:1">
-<div class="pbar"><span class="h" style="width:52%">加拿大 51.9%</span><span class="d" style="width:28%">平 28.5%</span><span class="a" style="width:20%">波黑 20.3%</span></div>
-<table class="data" style="font-size:.75em;width:auto;min-width:280px">
-<tr><th></th><th>加拿大</th><th>平局</th><th>波黑</th></tr>
-<tr><td>ELO</td><td>52.1%</td><td>31.3%</td><td>16.6%</td></tr>
-<tr><td>市场</td><td class="hi">51.8%</td><td>27.1%</td><td class="hi">22.1%</td></tr>
-<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">51.9%</td><td>28.5%</td><td>20.3%</td></tr>
-</table>
-</div></div>
+    <div class="step-section">
+        <div class="step-title">Step 3: BTTS &#20004;&#38431;&#36827;&#29699;</div>
+        <p>BTTS Yes: <span class="highlight">46.2%</span> | BTTS No: <span class="highlight-green">53.8%</span></p>
+        <p style="color:#8899aa;font-size:0.85em;">&#21152;&#25343;&#22823;&#38646;&#23553;&#27010;&#29575;: 38.2% | &#27874;&#40657;&#38646;&#23553;&#27010;&#29575;: 19.4%</p>
+    </div>
 
-<h3>⚔️ 纸面实力 · ELO模型（权重32.5%）</h3>
-<div class="g3">
-<div class="g3i"><div class="v">1655 vs 1640</div><div class="l">原始ELO · 差距+15</div></div>
-<div class="g3i"><div class="v">1722 vs 1715</div><div class="l">修正ELO · 年龄/经验/状态/教练</div></div>
-<div class="g3i"><div class="v">+7</div><div class="l">修正后差距 · 五五开</div></div>
-</div>
-<p class="note">加拿大初始ELO 1655，波黑 1640。修正后差距+7分，属于完全均势。</p>
+    <div class="step-section">
+        <div class="step-title">Step 4: &#29699;&#38431;&#36827;&#29699;&#20998;&#24067;</div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:200px;">
+                <strong>&#21152;&#25343;&#22823;&#36827;&#29699;</strong>
+<div class="score-row"><span class="score-name">0&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:19%"></div></div><span class="score-pct">19.4%</span></div><div class="score-row"><span class="score-name">1&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:33%"></div></div><span class="score-pct">33.5%</span></div><div class="score-row"><span class="score-name">2&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:25%"></div></div><span class="score-pct">25.7%</span></div><div class="score-row"><span class="score-name">3&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:11%"></div></div><span class="score-pct">11.9%</span></div></div><div style="flex:1;min-width:200px;"><strong>&#27874;&#40657;&#36827;&#29699;</strong><div class="score-row"><span class="score-name">0&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:38%"></div></div><span class="score-pct">38.2%</span></div><div class="score-row"><span class="score-name">1&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:33%"></div></div><span class="score-pct">33.6%</span></div><div class="score-row"><span class="score-name">2&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:13%"></div></div><span class="score-pct">14.0%</span></div><div class="score-row"><span class="score-name">3&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:4%"></div></div><span class="score-pct">4.8%</span></div></div></div></div>
+    <div class="step-section">
+        <div class="step-title">Step 5: &#32508;&#21512;&#27604;&#20998;</div>
+        <p style="text-align:center;color:#8899aa;font-size:0.85em;">&#25353;Polymarket&#31934;&#30830;&#27604;&#20998;&#24066;&#22330;&#27010;&#29575;&#25490;&#24207;</p>
 
-<h3>💰 欧洲赔率 · 7家博彩公司（市场权重30%）</h3>
-<table class="data">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>1.83</td><td class="hi">3.70</td><td>3.60</td></tr>
-<tr><td>Betfred</td><td class="hi">1.90</td><td>3.40</td><td>4.20</td></tr>
-<tr><td>Bwin</td><td>1.83</td><td>3.25</td><td>4.10</td></tr>
-<tr><td>BOYLE</td><td>1.83</td><td>3.40</td><td>3.80</td></tr>
-<tr><td>Coral</td><td>1.83</td><td>3.50</td><td class="hi">4.33</td></tr>
-<tr><td>Ladbrokes</td><td>1.83</td><td>3.50</td><td class="hi">4.33</td></tr>
-<tr><td>Sportingbet</td><td class="hi">1.90</td><td>3.50</td><td>3.25</td></tr>
-</table>
-<p class="note">📌 平均赔率: <b>1.85</b>/<b>3.46</b>/<b>3.94</b> · 隐含概率: 加拿大49.9%/平26.7%/波黑23.4% · 骨架定位: <b>3区（平半）</b> · 离散度: 2.7%(低 · 市场一致) · 实力接近</p>
-
-<h3>📊 亚洲盘口 · titan007 15家公司（市场权重20%）</h3>
-<div class="matrix">
-<div class="mi"><div class="val" style="color:var(--text2)">升盘 3家</div><div class="lbl">市场信心</div></div>
-<div class="mi"><div class="val" style="color:var(--text2)">降盘 0家</div><div class="lbl">看衰信号</div></div>
-<div class="mi"><div class="val">半球</div><div class="lbl">当前盘口众数</div></div>
-</div>
-<p style="font-size:.82em;color:var(--text2)">主队水位: 0.74~0.88（均值0.81）| 客队水位: 0.92~1.08（均值1.03）| 水位变化: 主队-0.09/客队+0.11</p>
-<p class="note">💧 <strong>主队降水-0.09</strong>：市场共识加拿大穿盘</p>
-<p class="note">🔒 <strong>半球盘</strong>：加拿大即时水位0.74~0.88（中低水偏稳），波黑水位0.92~1.08</p>
-
-<h3>🔮 Polymarket 预测市场（市场权重50% · 绝对33.75%）</h3>
-<div class="matrix">
-<div class="mi hl"><div class="val">54%</div><div class="lbl">加拿大胜</div></div>
-<div class="mi"><div class="val">27%</div><div class="lbl">平局</div></div>
-<div class="mi"><div class="val">21%</div><div class="lbl">波黑胜</div></div>
-</div>
-<p class="note">📊 成交量: <b>$772,300</b> · 置信度: 中 · Moneyline+Spread+O/U+BTTS多维度覆盖</p>
-
-<h3>🔍 三方验证</h3>
-<div class="matrix">
-<div class="mi"><div class="lbl">ELO方向</div><div class="val" style="font-size:1em;color:var(--blue)">加拿大</div></div>
-<div class="mi"><div class="lbl">欧赔方向</div><div class="val" style="font-size:1em;color:var(--gold)">加拿大</div></div>
-<div class="mi"><div class="lbl">Polymarket</div><div class="val" style="font-size:1em;color:var(--pink)">加拿大(54%)</div></div>
-</div>
-<p class="note">🏆 <b>四方一致 · 信号极强</b> · 加拿大ELO差+15分 · 市场一致看好加拿大</p>
-
-<h3>⚖️ 综合研判（第一步：胜负平方向）</h3>
-<div class="verdict can">
-<div class="vinfo"><div class="top" style="color:var(--blue)">加拿大胜</div>
-<div class="detail">综合(32.5%ELO+67.5%市场): 加拿大51.9%/平28.5%/波黑20.3%<br>
-ELO贡献: 加拿大52.1% / 市场贡献: 加拿大51.8%</div></div>
-<div class="vscore">2:1<span class="stars">⭐⭐⭐</span><span style="font-size:.45em;color:var(--text2)">替1:0</span></div>
-</div>
-
-<h3>🎯 进球/零封概率（第二步）</h3>
-<div class="g3">
-<div class="g3i"><div class="v">1.21</div><div class="l">加拿大 λ（预期进球）</div></div>
-<div class="g3i"><div class="v">1.18</div><div class="l">波黑 λ（预期进球）</div></div>
-<div class="g3i"><div class="v">30%</div><div class="l">零封概率（中）</div></div>
-</div>
-<p class="note"><b>零封分析</b>: 加拿大零封概率30% · Poly BTTS No 48% · 双方进球 vs 零封接近 · Poly 加拿大进球>0.5: 67% / 波黑进球>0.5: 62%</p>
-
-<h3>⚽ 总进球数（第三步）</h3>
-<div class="matrix">
-<div class="mi"><div class="val">2.39</div><div class="lbl">λ_total 总进球</div></div>
-<div class="mi"><div class="val">2球（26%）</div><div class="lbl">最优区间</div></div>
-<div class="mi"><div class="val">O/U 2.5</div><div class="lbl">Poly Over 48% / Under 53%</div></div>
-</div>
-
-<h3>📝 精确比分（第四步）</h3>
-<p class="note">泊松分布(Poisson λ=2.39) + 零封约束(中，双方进球路径优先) + BTTS约束 →</p>
-<div class="sgrid">
-<div class="sc"><div class="s">1:1</div><div class="pr">13.1%</div></div>
-<div class="sc hl"><div class="s">1:0</div><div class="pr">11.1%</div></div>
-<div class="sc"><div class="s">0:1</div><div class="pr">10.8%</div></div>
-<div class="sc hl"><div class="s">2:1</div><div class="pr">7.9%</div></div>
-</div>
-<p class="note"><b>推荐比分</b>: 2:1（首选）· 1:0（次选）· 1:1</p>
-
-<h3>⚠️ 爆冷风险评估</h3>
-<div class="risk-box orange">
-<b>🟢 低风险</b><br>
-ELO差15分 · 市场一致 · 谨慎跟随<br>
-</div>
-
-<div class="card">
-<h2>🇺🇸 美国 vs 巴拉圭 🇵🇾</h2>
-<div style="display:flex;gap:12px;margin-bottom:16px;padding:14px;border-radius:8px;background:rgba(255,255,255,.02)">
-<div style="flex:1"><div style="font-size:1.2em;font-weight:700">美国 vs 巴拉圭</div>
-<div style="font-size:.78em;color:var(--text2)">D组 · 2026年6月13日 09:00 CST · 洛杉矶体育场 · 洛杉矶 · D组首轮 · 美国主场</div></div></div>
-
-<h3>📊 综合概率（v21.0权重）</h3>
-<div style="display:flex;gap:16px;align-items:center">
-<div style="flex:1">
-<div class="pbar"><span class="h" style="width:45%">美国 45.4%</span><span class="d" style="width:28%">平 28.4%</span><span class="a" style="width:27%">巴拉圭 26.6%</span></div>
-<table class="data" style="font-size:.75em;width:auto;min-width:280px">
-<tr><th></th><th>美国</th><th>平局</th><th>巴拉圭</th></tr>
-<tr><td>ELO</td><td>41.8%</td><td>29.1%</td><td>29.1%</td></tr>
-<tr><td>市场</td><td class="hi">47.1%</td><td>28.1%</td><td class="hi">25.4%</td></tr>
-<tr style="font-weight:700"><td>综合</td><td style="color:var(--accent)">45.4%</td><td>28.4%</td><td>26.6%</td></tr>
-</table>
-</div></div>
-
-<h3>⚔️ 纸面实力 · ELO模型（权重32.5%）</h3>
-<div class="g3">
-<div class="g3i"><div class="v">1702 vs 1760</div><div class="l">原始ELO · 差距-58</div></div>
-<div class="g3i"><div class="v">1775 vs 1820</div><div class="l">修正ELO · 年龄/经验/状态/教练</div></div>
-<div class="g3i"><div class="v">-45</div><div class="l">修正后差距 · 小优</div></div>
-</div>
-<p class="note">美国初始ELO 1702，巴拉圭 1760。修正后差距-45分，属于微弱差距。</p>
-
-<h3>💰 欧洲赔率 · 7家博彩公司（市场权重30%）</h3>
-<table class="data">
-<tr><th>公司</th><th>主胜</th><th>平局</th><th>客胜</th></tr>
-<tr><td>Bet365</td><td>1.83</td><td>3.50</td><td>3.80</td></tr>
-<tr><td>Betfred</td><td class="hi">1.95</td><td>3.50</td><td>3.75</td></tr>
-<tr><td>Bwin</td><td>1.83</td><td>3.40</td><td class="hi">3.90</td></tr>
-<tr><td>BOYLE</td><td>1.83</td><td>3.50</td><td>3.60</td></tr>
-<tr><td>Coral</td><td class="hi">1.95</td><td class="hi">3.60</td><td class="hi">3.90</td></tr>
-<tr><td>Ladbrokes</td><td>1.91</td><td>3.50</td><td>3.80</td></tr>
-<tr><td>Sportingbet</td><td>1.91</td><td>3.40</td><td>3.60</td></tr>
-</table>
-<p class="note">📌 平均赔率: <b>1.89</b>/<b>3.49</b>/<b>3.76</b> · 隐含概率: 美国49.0%/平26.5%/巴拉圭24.5% · 骨架定位: <b>3区（平半）</b> · 离散度: 3.3%(低 · 市场一致) · 实力接近</p>
-
-<h3>📊 亚洲盘口 · titan007 15家公司（市场权重20%）</h3>
-<div class="matrix">
-<div class="mi"><div class="val" style="color:var(--green)">升盘 5家</div><div class="lbl">市场信心</div></div>
-<div class="mi"><div class="val" style="color:var(--text2)">降盘 0家</div><div class="lbl">看衰信号</div></div>
-<div class="mi"><div class="val">半球</div><div class="lbl">当前盘口众数</div></div>
-</div>
-<p style="font-size:.82em;color:var(--text2)">主队水位: 0.85~1.00（均值0.94）| 客队水位: 0.86~0.99（均值0.92）| 水位变化: 主队-0.00/客队+0.04</p>
-<p class="note">📈 <strong>多数升盘</strong>：5家升盘，市场偏看好美国</p>
-<p class="note">🔒 <strong>半球盘</strong>：美国即时水位0.85~1.00（中低水偏稳），巴拉圭水位0.86~0.99</p>
-
-<h3>🔮 Polymarket 预测市场（市场权重50% · 绝对33.75%）</h3>
-<div class="matrix">
-<div class="mi "><div class="val">48%</div><div class="lbl">美国胜</div></div>
-<div class="mi"><div class="val">29%</div><div class="lbl">平局</div></div>
-<div class="mi"><div class="val">24%</div><div class="lbl">巴拉圭胜</div></div>
-</div>
-<p class="note">📊 成交量: <b>$500,000</b> · 置信度: 中 · Moneyline+Spread+O/U+BTTS多维度覆盖</p>
-
-<h3>🔍 三方验证</h3>
-<div class="matrix">
-<div class="mi"><div class="lbl">ELO方向</div><div class="val" style="font-size:1em;color:var(--blue)">巴拉圭</div></div>
-<div class="mi"><div class="lbl">欧赔方向</div><div class="val" style="font-size:1em;color:var(--gold)">美国</div></div>
-<div class="mi"><div class="lbl">Polymarket</div><div class="val" style="font-size:1em;color:var(--pink)">美国(48%)</div></div>
-</div>
-<p class="note">🏆 <b>三方一致 · 信号加强</b> · 美国ELO差-58分 · 信号存在分歧</p>
-
-<h3>⚖️ 综合研判（第一步：胜负平方向）</h3>
-<div class="verdict usa">
-<div class="vinfo"><div class="top" style="color:var(--gold)">美国不败（主胜/平）</div>
-<div class="detail">综合(32.5%ELO+67.5%市场): 美国45.4%/平28.4%/巴拉圭26.6%<br>
-ELO贡献: 美国41.8% / 市场贡献: 美国47.1%</div></div>
-<div class="vscore">2:2<span class="stars">⭐⭐½</span><span style="font-size:.45em;color:var(--text2)">替1:1</span></div>
-</div>
-
-<h3>🎯 进球/零封概率（第二步）</h3>
-<div class="g3">
-<div class="g3i"><div class="v">1.30</div><div class="l">美国 λ（预期进球）</div></div>
-<div class="g3i"><div class="v">1.42</div><div class="l">巴拉圭 λ（预期进球）</div></div>
-<div class="g3i"><div class="v">18%</div><div class="l">零封概率（低）</div></div>
-</div>
-<p class="note"><b>零封分析</b>: 美国零封概率18% · Poly BTTS Yes 55% · 双方进球（BTTS Yes） · Poly 美国进球>0.5: 73% / 巴拉圭进球>0.5: 70%</p>
-
-<h3>⚽ 总进球数（第三步）</h3>
-<div class="matrix">
-<div class="mi"><div class="val">2.72</div><div class="lbl">λ_total 总进球</div></div>
-<div class="mi"><div class="val">2~3球（2球25%/3球22%）</div><div class="lbl">最优区间</div></div>
-<div class="mi"><div class="val">O/U 2.5</div><div class="lbl">Poly Over 51% / Under 50%</div></div>
-</div>
-
-<h3>📝 精确比分（第四步）</h3>
-<p class="note">泊松分布(Poisson λ=2.72) + 零封约束(中，双方进球路径优先) + BTTS约束 →</p>
-<div class="sgrid">
-<div class="sc hl"><div class="s">1:1</div><div class="pr">12.2%</div></div>
-<div class="sc"><div class="s">0:1</div><div class="pr">9.4%</div></div>
-<div class="sc"><div class="s">1:2</div><div class="pr">8.6%</div></div>
-<div class="sc"><div class="s">1:0</div><div class="pr">8.6%</div></div>
-</div>
-<p class="note"><b>推荐比分</b>: 2:2（首选）· 1:1（次选）· 1:2</p>
-
-<h3>⚠️ 爆冷风险评估</h3>
-<div class="risk-box red">
-<b>🟢 低风险</b><br>
-ELO差58分 · 市场一致 · 谨慎跟随<br>
-</div>
+    <div class="score-row">
+        <span class="score-name">1-0</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="score-pct">16.5%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">1-1</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div>
+        <span class="score-pct">13.5%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">2-1</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
+        <span class="score-pct">11.5%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">2-0</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:66%"></div></div>
+        <span class="score-pct">11.0%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">other</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:63%"></div></div>
+        <span class="score-pct">10.5%</span>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:#1a2540;border-radius:8px;text-align:center;">
+        <span style="color:#8899aa;">ML vs ES&#20132;&#21449;&#39564;&#35777;: </span>
+        <div class="consensus">
+            <div class="consensus-dot agree"></div><div class="consensus-dot agree"></div><div class="consensus-dot agree"></div>
+        </div>
+        <span class="signal signal-strong">3/3 &#19968;&#33268; &#10004; &#39640;</span>
+    </div>
+    </div>
 </div>
 
 <div class="card">
-<h2>🔍 三方验证总表</h2>
-<table class="data">
-<tr><th>比赛</th><th>ELO方向</th><th>欧赔方向</th><th>Polymarket</th><th>一致性</th></tr>
-<tr><td>加拿大 vs 波黑</td><td style="color:var(--blue)">加拿大</td><td style="color:var(--gold)">加拿大</td><td style="color:var(--pink)">加拿大 (54%)</td><td><span style="color:var(--green)">✅ 三方一致 · 信号强</span></td></tr>
-<tr><td>美国 vs 巴拉圭</td><td style="color:var(--blue)">巴拉圭</td><td style="color:var(--gold)">美国</td><td style="color:var(--pink)">美国 (48%)</td><td><span style="color:var(--gold)">⚠️ 二方一致 · 信号加强</span></td></tr>
-</table></div>
+    <div class="card-header"><span class="icon">&#8364;</span>&#27431;&#36180;&#20998;&#26512; (7&#23478;&#21338;&#24425;&#20844;&#21496;)</div>
+    <table>
+        <tr><th>&#21338;&#24425;&#20844;&#21496;</th><th>&#21152;&#25343;&#22823;&#32988;</th><th>&#24179;&#23616;</th><th>&#27874;&#40657;&#32988;</th></tr><tr><td>Bet365</td><td>1.83</td><td>3.70</td><td>3.60</td></tr><tr><td>Betfred</td><td>1.90</td><td>3.40</td><td>4.20</td></tr><tr><td>Bwin</td><td>1.83</td><td>3.25</td><td>4.10</td></tr><tr><td>BOYLE</td><td>1.83</td><td>3.40</td><td>3.80</td></tr><tr><td>Coral</td><td>1.83</td><td>3.50</td><td>4.33</td></tr><tr><td>Ladbrokes</td><td>1.83</td><td>3.50</td><td>4.33</td></tr><tr><td>Sportingbet</td><td>1.90</td><td>3.50</td><td>3.25</td></tr><tr style="background:#1b3a20;">
+        <td class="highlight-green">&#26368;&#20339;</td>
+        <td class="highlight-green">1.90</td>
+        <td class="highlight">3.70</td>
+        <td class="highlight-red">4.33</td>
+    </tr></table>
+    <div style="text-align:center;margin-top:10px;color:#8899aa;font-size:0.85em;">
+        &#38544;&#21547;&#27010;&#29575;(&#21435;&#36793;&#38469;): &#20027;49.8% / &#24179;26.6% / &#23458;23.6%
+    </div>
+</div>
 
 <div class="card">
-<h2>📐 方法论 · 权重体系</h2>
-<div class="methodology">
-<div class="mc"><h4 style="color:var(--blue)">ELO模型 (32.5%)</h4><p style="font-size:.85em;color:var(--text2)">因子修正ELO · Poisson λ, xG, 比分概率</p></div>
-<div class="mc"><h4 style="color:var(--pink)">Polymarket (33.75%)</h4><p style="font-size:.85em;color:var(--text2)">全球最大预测市场 · Moneyline+Spread+O/U+BTTS · 市场权重50% (绝对33.75%)</p></div>
-<div class="mc"><h4 style="color:var(--gold)">欧洲赔率 (20.25%)</h4><p style="font-size:.85em;color:var(--text2)">7家公司(Bet365/Betfred/Bwin/BOYLE/Coral/Ladbrokes/Sportingbet) · 广实骨架定位 · 市场权重30% (绝对20.25%)</p></div>
-<div class="mc"><h4 style="color:var(--accent)">亚洲盘口 (13.5%)</h4><p style="font-size:.85em;color:var(--text2)">titan007.com 15家公司真实盘口 · 初盘/即时盘 · 水位量化 · 市场权重20% (绝对13.5%)</p></div>
+    <div class="card-header"><span class="icon">&#9878;&#65039;</span>&#32508;&#21512;&#30740;&#21028;</div>
+    <table>
+        <tr><th>&#25968;&#25454;&#28304;</th><th>&#21152;&#25343;&#22823;&#32988;</th><th>&#24179;&#23616;</th><th>&#27874;&#40657;&#32988;</th></tr>
+        <tr><td>&#128202; ELO &#23454;&#21147;</td><td>52.1%</td><td>27.0%</td><td>20.9%</td></tr>
+        <tr><td>&#128483;&#65039; Polymarket</td><td class="highlight-green">53.5%</td><td>27.5%</td><td>20.5%</td></tr>
+        <tr><td>&#8364; &#27431;&#36180;</td><td>49.8%</td><td>26.6%</td><td>23.6%</td></tr>
+        <tr><td>&#128176; &#24066;&#22330;&#22797;&#21512;</td><td>52.0%</td><td>27.2%</td><td>21.7%</td></tr>
+        <tr style="background:#1b3a20;font-weight:bold;">
+            <td class="highlight-green">&#9733; &#32508;&#21512;&#39044;&#27979;</td>
+            <td class="highlight-green">52.1%</td>
+            <td class="highlight">27.1%</td>
+            <td>21.5%</td>
+        </tr>
+    </table>
+    
+    <div class="verdict-box">
+        <h3>&#127942; &#26368;&#32456;&#39044;&#27979;</h3>
+        <div class="score-big">1-0 &#25110; 1-1 &#25110; 2-1</div>
+        <p style="color:#8899aa;margin-top:8px;">&#21152;&#25343;&#22823;&#19981;&#36133; &#183; &#24635;&#36827;&#29699;1-3&#29699; &#183; &#20449;&#21495;&#24378;&#24230;: &#9733;&#9733;&#9733;&#9733;&#9734;</p>
+    </div>
+    
+    <div class="warning-box">
+        <h4>&#9888;&#65039; &#29190;&#20919;&#39118;&#38505;</h4>
+        <p>&#20013;&#31561;&#39118;&#38505;&#12290;&#21152;&#25343;&#22823;ELO&#20248;&#21183;&#20165;15&#20998;&#65292;&#23454;&#21147;&#25509;&#36817;&#12290;&#27874;&#40657;&#24179;&#23616;&#27010;&#29575;26.7%&#65292;&#23458;&#32988;21.5%&#65292;&#20116;&#20116;&#24320;&#27010;&#29575;&#36739;&#39640;&#12290;&#33509;&#21152;&#25343;&#22823;&#26089;&#26399;&#26080;&#27861;&#30772;&#38376;&#65292;&#25490;&#38500;&#19981;&#20102;&#20919;&#38376;&#21487;&#33021;&#12290;</p>
+    </div>
 </div>
+
+<!-- ============ MATCH 2: USA vs PARAGUAY ============ -->
+<div class="match-title">&#127482;&#127480; &#32654;&#22269; vs &#24052;&#25289;&#22317; &#127477;&#127486;</div>
+
+<div class="card">
+    <div class="card-header"><span class="icon">&#127991;&#65039;</span>&#36187;&#20107;&#32972;&#26223;</div>
+    <table>
+        <tr><th style="width:150px;">&#39033;&#30446;</th><th>&#35814;&#24773;</th></tr>
+        <tr><td>&#27604;&#36187;&#26102;&#38388;</td><td>2026&#24180;6&#26376;13&#26085; (&#21271;&#20140;6&#26376;14&#26085; 09:00)</td></tr>
+        <tr><td>&#27604;&#36187;&#22330;&#22320;</td><td>&#27931;&#26441;&#30707;&#20307;&#32946;&#22330; (&#32654;&#22269;)</td></tr>
+        <tr><td>&#23567;&#32452;</td><td>D&#32452;</td></tr>
+        <tr><td>ELO&#24046;</td><td>1702 vs 1645 (&#24046;57) <span class="badge badge-green">&#20248;&#21183;</span></td></tr>
+        <tr><td>&#24418;&#24577;</td><td>&#32654;&#22269;&#20027;&#22330;&#20316;&#25112;&#65292;&#24052;&#25289;&#22317;&#38450;&#23432;&#38829;&#23454;</td></tr>
+    </table>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="icon">&#128270;</span>Polymarket &#20116;&#27493;&#31934;&#23494;&#20998;&#26512;</div>
+    
+    <div class="step-section">
+        <div class="step-title">Step 1: Moneyline &#26041;&#21521;&#24378;&#24230;</div>
+        <div class="prob-row">
+            <div class="prob-box win"><div class="label">&#32654;&#22269;&#32988;</div><div class="value" style="color:#69f0ae;">47.5%</div></div>
+            <div class="prob-box draw"><div class="label">&#24179;&#23616;</div><div class="value" style="color:#ffcc02;">29.5%</div></div>
+            <div class="prob-box loss"><div class="label">&#24052;&#25289;&#22317;&#32988;</div><div class="value" style="color:#ff5252;">24.5%</div></div>
+        </div>
+        <p style="text-align:center;color:#8899aa;font-size:0.85em;">&#32654;&#22269;&#39046;&#20808; 23.0&#20010;&#30334;&#20998;&#28857; &#8594; &#20027;&#38431;&#20248;&#21183;</p>
+    </div>
+
+    <div class="step-section">
+        <div class="step-title">Step 2: O/U Ladder &#24635;&#36827;&#29699;</div>
+        <table class="ou-table">
+            <tr><th>&#38408;&#20540;</th><th>&gt;0.5</th><th>&gt;1.5</th><th>&gt;2.5</th><th>&gt;3.5</th></tr>
+            <tr>
+                <td>Over</td>
+                <td class="highlight-green">85.4%</td>
+                <td class="highlight-green">63.7%</td>
+                <td>38.0%</td>
+                <td class="highlight-red">15.4%</td>
+            </tr>
+            <tr>
+                <td>Under</td>
+                <td class="highlight-red">14.6%</td>
+                <td>36.3%</td>
+                <td>62.0%</td>
+                <td class="highlight-green">84.6%</td>
+            </tr>
+        </table>
+        <p style="color:#8899aa;font-size:0.85em;text-align:center;margin-top:8px;">&#24635;&#36827;&#29699;&#27010;&#29575;&#26368;&#39640;: 2&#29699; &#183; &#33539;&#22260;: 1-3&#29699;</p>
+    </div>
+
+    <div class="step-section">
+        <div class="step-title">Step 3: BTTS &#20004;&#38431;&#36827;&#29699;</div>
+        <p>BTTS Yes: <span class="highlight">47.1%</span> | BTTS No: <span class="highlight-green">52.9%</span></p>
+        <p style="color:#8899aa;font-size:0.85em;">&#32654;&#22269;&#38646;&#23553;&#27010;&#29575;: 37.1% | &#24052;&#25289;&#22317;&#38646;&#23553;&#27010;&#29575;: 21.6%</p>
+    </div>
+
+    <div class="step-section">
+        <div class="step-title">Step 4: &#29699;&#38431;&#36827;&#29699;&#20998;&#24067;</div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:200px;">
+                <strong>&#32654;&#22269;&#36827;&#29699;</strong><div class="score-row"><span class="score-name">0&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:21%"></div></div><span class="score-pct">21.6%</span></div><div class="score-row"><span class="score-name">1&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:33%"></div></div><span class="score-pct">33.8%</span></div><div class="score-row"><span class="score-name">2&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:25%"></div></div><span class="score-pct">26.0%</span></div><div class="score-row"><span class="score-name">3&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:12%"></div></div><span class="score-pct">12.8%</span></div></div><div style="flex:1;min-width:200px;"><strong>&#24052;&#25289;&#22317;&#36827;&#29699;</strong><div class="score-row"><span class="score-name">0&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:37%"></div></div><span class="score-pct">37.1%</span></div><div class="score-row"><span class="score-name">1&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div><span class="score-pct">35.6%</span></div><div class="score-row"><span class="score-name">2&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:15%"></div></div><span class="score-pct">15.0%</span></div><div class="score-row"><span class="score-name">3&#29699;</span><div class="bar-bg"><div class="bar-fill" style="width:6%"></div></div><span class="score-pct">6.3%</span></div></div></div></div>
+    <div class="step-section">
+        <div class="step-title">Step 5: &#32508;&#21512;&#27604;&#20998;</div>
+        <p style="text-align:center;color:#8899aa;font-size:0.85em;">&#25353;Polymarket&#31934;&#30830;&#27604;&#20998;&#24066;&#22330;&#27010;&#29575;&#25490;&#24207;</p>
+
+    <div class="score-row">
+        <span class="score-name">1-0</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="score-pct">16.5%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">1-1</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
+        <span class="score-pct">15.0%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">2-1</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div>
+        <span class="score-pct">13.0%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">2-0</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:69%"></div></div>
+        <span class="score-pct">11.5%</span>
+    </div>
+    <div class="score-row">
+        <span class="score-name">0-0</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:63%"></div></div>
+        <span class="score-pct">10.5%</span>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:#1a2540;border-radius:8px;text-align:center;">
+        <span style="color:#8899aa;">ML vs ES&#20132;&#21449;&#39564;&#35777;: </span>
+        <div class="consensus">
+            <div class="consensus-dot agree"></div><div class="consensus-dot agree"></div><div class="consensus-dot agree"></div>
+        </div>
+        <span class="signal signal-strong">3/3 &#19968;&#33268; &#10004; &#39640;</span>
+    </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="icon">&#8364;</span>&#27431;&#36180;&#20998;&#26512; (7&#23478;&#21338;&#24425;&#20844;&#21496;)</div>
+    <table>
+        <tr><th>&#21338;&#24425;&#20844;&#21496;</th><th>&#32654;&#22269;&#32988;</th><th>&#24179;&#23616;</th><th>&#24052;&#25289;&#22317;&#32988;</th></tr><tr><td>Bet365</td><td>1.83</td><td>3.50</td><td>3.80</td></tr><tr><td>Betfred</td><td>1.95</td><td>3.50</td><td>3.75</td></tr><tr><td>Bwin</td><td>1.83</td><td>3.40</td><td>3.90</td></tr><tr><td>BOYLE</td><td>1.83</td><td>3.50</td><td>3.60</td></tr><tr><td>Coral</td><td>1.95</td><td>3.60</td><td>3.90</td></tr><tr><td>Ladbrokes</td><td>1.91</td><td>3.50</td><td>3.80</td></tr><tr><td>Sportingbet</td><td>1.91</td><td>3.40</td><td>3.60</td></tr><tr style="background:#1b3a20;">
+        <td class="highlight-green">&#26368;&#20339;</td>
+        <td class="highlight-green">1.95</td>
+        <td class="highlight">3.60</td>
+        <td class="highlight-red">3.90</td>
+    </tr></table>
+    <div style="text-align:center;margin-top:10px;color:#8899aa;font-size:0.85em;">
+        &#38544;&#21547;&#27010;&#29575;(&#21435;&#36793;&#38469;): &#20027;49.0% / &#24179;26.5% / &#23458;24.5%
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><span class="icon">&#9878;&#65039;</span>&#32508;&#21512;&#30740;&#21028;</div>
+    <table>
+        <tr><th>&#25968;&#25454;&#28304;</th><th>&#32654;&#22269;&#32988;</th><th>&#24179;&#23616;</th><th>&#24052;&#25289;&#22317;&#32988;</th></tr>
+        <tr><td>&#128202; ELO &#23454;&#21147;</td><td>58.2%</td><td>25.0%</td><td>16.8%</td></tr>
+        <tr><td>&#128483;&#65039; Polymarket</td><td class="highlight-green">47.5%</td><td>29.5%</td><td>24.5%</td></tr>
+        <tr><td>&#8364; &#27431;&#36180;</td><td>49.0%</td><td>26.5%</td><td>24.5%</td></tr>
+        <tr><td>&#128176; &#24066;&#22330;&#22797;&#21512;</td><td>48.1%</td><td>28.3%</td><td>24.5%</td></tr>
+        <tr style="background:#1b3a20;font-weight:bold;">
+            <td class="highlight-green">&#9733; &#32508;&#21512;&#39044;&#27979;</td>
+            <td class="highlight-green">51.1%</td>
+            <td class="highlight">27.3%</td>
+            <td>22.2%</td>
+        </tr>
+    </table>
+    
+    <div class="verdict-box">
+        <h3>&#127942; &#26368;&#32456;&#39044;&#27979;</h3>
+        <div class="score-big">1-0 &#25110; 1-1 &#25110; 2-1</div>
+        <p style="color:#8899aa;margin-top:8px;">&#32654;&#22269;&#19981;&#36133; &#183; &#24635;&#36827;&#29699;1-3&#29699; &#183; &#20449;&#21495;&#24378;&#24230;: &#9733;&#9733;&#9733;&#9734;&#9734;</p>
+    </div>
+    
+    <div class="warning-box">
+        <h4>&#9888;&#65039; &#29190;&#20919;&#39118;&#38505;</h4>
+        <p>&#20013;&#31561;&#39118;&#38505;&#12290;&#32654;&#22269;ELO&#20248;&#21183;57&#20998;&#65292;&#24066;&#22330;&#23545;&#32654;&#22269;&#32988;&#29575;&#20165;&#23450;&#20215;48.1%&#65292;&#26126;&#26174;&#20302;&#20110;ELO&#39044;&#26399;58.2%&#12290;&#24066;&#22330;&#23545;&#32654;&#22269;&#39047;&#20026;&#35880;&#24910;&#65292;&#24179;&#23616;&#21644;&#23458;&#32988;&#27010;&#29575;&#19981;&#20302;&#12290;</p>
+    </div>
 </div>
 
 <div class="footer">
-<p>数据来源: worldcup-odds.com · titan007.com · Polymarket · lottery.gov.cn · ELO模型 | 仅供娱乐参考</p>
-<p style="margin-top:4px">v21.0 · 由 WorkBuddy AI 自动生成 · 2026-06-11</p>
+    <p>2026&#19990;&#30028;&#26479; v23.0 &#20998;&#26512;&#26694;&#26550; | ELO 30% + &#24066;&#22330; 70% (Poly 60% + &#27431;&#36180; 40%)</p>
+    <p>Polymarket&#25968;&#25454;&#26469;&#28304;: Gamma API | &#27431;&#36180;&#26469;&#28304;: worldcup-odds.com (7&#23478;)</p>
+    <p>&#20116;&#27493;&#20998;&#26512;: ML &#8594; O/U &#8594; BTTS &#8594; &#29699;&#38431;&#36827;&#29699; &#8594; &#32508;&#21512;&#27604;&#20998;</p>
+    <p>&#20813;&#36131;&#22768;&#26126;: &#20165;&#20379;&#21442;&#32771;&#65292;&#19981;&#26500;&#25104;&#25237;&#27880;&#24314;&#35758;</p>
 </div>
-</div></body></html>
+
+</div>
+</body>
+</html>
