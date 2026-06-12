@@ -20,55 +20,64 @@ body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","M
 .header .badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: .75em; margin: 0 4px; }
 .badge-official { background: rgba(255,107,157,.2); color: var(--pink); }
 .badge-data { background: rgba(0,212,170,.15); color: var(--accent); }
-.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.badge-new { background: rgba(46,213,115,.15); color: var(--green); }
+.container { max-width: 940px; margin: 0 auto; padding: 20px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
 .card h2 { font-size: 1.2em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
 .card h3 { font-size: .95em; color: var(--gold); margin: 16px 0 8px; }
-.card h4 { font-size: .85em; color: var(--text2); margin: 12px 0 6px; }
 .scheme-label { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .78em; font-weight: 700; margin-right: 6px; }
 .scheme-a { background: rgba(46,213,115,.15); color: var(--green); }
 .scheme-b { background: rgba(240,160,80,.15); color: var(--gold); }
 .scheme-c { background: rgba(77,166,255,.15); color: var(--blue); }
 .scheme-d { background: rgba(255,107,157,.15); color: var(--pink); }
 .scheme-e { background: rgba(0,212,170,.15); color: var(--accent); }
-table.odds { width: 100%; border-collapse: collapse; font-size: .82em; margin: 8px 0 16px; }
-table.odds th { background: var(--bg3); color: var(--text2); padding: 8px 10px; text-align: center; font-weight: 500; font-size: .8em; white-space: nowrap; }
-table.odds td { padding: 8px 10px; text-align: center; border-bottom: 1px solid var(--border); }
-table.odds tr:hover td { background: rgba(255,255,255,.02); }
-.odd-val { font-weight: 600; font-size: 1.05em; }
-.odd-best { color: var(--accent); }
-.match-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
-.match-info { flex: 1; min-width: 200px; }
-.match-pred { flex: 0 0 auto; background: var(--bg2); border-radius: 10px; padding: 14px 18px; text-align: center; min-width: 140px; }
-.match-pred .score { font-size: 1.6em; font-weight: 800; color: var(--accent); }
-.match-pred .detail { font-size: .72em; color: var(--text2); margin-top: 4px; }
-.pred-bar { width: 100%; height: 20px; border-radius: 10px; background: var(--bg3); display: flex; overflow: hidden; margin: 12px 0; }
-.pred-bar .h { background: var(--blue); height: 100%; display: flex; align-items: center; justify-content: center; font-size: .65em; color: #fff; font-weight: 600; }
-.pred-bar .d { background: var(--gold); height: 100%; display: flex; align-items: center; justify-content: center; font-size: .65em; color: #fff; font-weight: 600; }
-.pred-bar .a { background: var(--pink); height: 100%; display: flex; align-items: center; justify-content: center; font-size: .65em; color: #fff; font-weight: 600; }
-.rec-box { background: var(--bg2); border-radius: 12px; padding: 20px; margin: 12px 0; border-left: 4px solid var(--accent); }
-.rec-box h4 { color: var(--accent); margin-bottom: 10px; font-size: .9em; }
-.bet-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--border); }
-.bet-item:last-child { border-bottom: none; }
-.bet-item .label { font-size: .85em; color: var(--text); }
-.bet-item .price { font-weight: 700; color: var(--accent); font-size: .9em; }
-.total-row { background: var(--bg3); padding: 10px 14px; border-radius: 8px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; }
-.total-row .ttl { font-weight: 700; color: var(--gold); font-size: 1.05em; }
-.warn { background: rgba(255,71,87,.1); border: 1px solid rgba(255,71,87,.3); border-radius: 10px; padding: 14px; margin: 12px 0; font-size: .82em; color: var(--red); }
-.info { background: rgba(77,166,255,.08); border: 1px solid rgba(77,166,255,.2); border-radius: 10px; padding: 14px; margin: 12px 0; font-size: .82em; }
-.resp { color: var(--accent); font-weight: 600; }
-.note { font-size: .78em; color: var(--text2); padding: 8px 0; font-style: italic; }
-.footer { text-align: center; padding: 30px 20px; color: var(--text3); font-size: .78em; border-top: 1px solid var(--border); margin-top: 20px; }
-.scheme-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.meta-row { display: flex; gap: 16px; flex-wrap: wrap; font-size: .78em; color: var(--text2); margin-bottom: 12px; }
-.meta-row span { background: var(--bg3); padding: 3px 10px; border-radius: 10px; }
-.arrow { color: var(--gold); }
-@media (max-width: 600px) {
-  .container { padding: 10px; }
-  .card { padding: 16px; }
-  .match-header { flex-direction: column; }
-  table.odds { font-size: .72em; }
-  table.odds th, table.odds td { padding: 6px 4px; }
+table.odds { width:100%; border-collapse:collapse; font-size:.82em; margin:8px 0 16px; }
+table.odds th { background:var(--bg3); color:var(--text2); padding:8px 6px; text-align:center; font-weight:500; font-size:.78em; white-space:nowrap; }
+table.odds td { padding:7px 6px; text-align:center; border-bottom:1px solid var(--border); }
+table.odds tr:hover td { background:rgba(255,255,255,.02); }
+.odd-val { font-weight:600; font-size:1.04em; }
+.odd-best { color:var(--accent); }
+.hi { color:var(--gold); }
+.match-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
+.match-info { flex:1; min-width:200px; }
+.match-pred { flex:0 0 auto; background:var(--bg2); border-radius:10px; padding:14px 18px; text-align:center; min-width:140px; }
+.match-pred .score { font-size:1.6em; font-weight:800; color:var(--accent); }
+.match-pred .detail { font-size:.72em; color:var(--text2); margin-top:4px; }
+.pred-bar { width:100%; height:20px; border-radius:10px; background:var(--bg3); display:flex; overflow:hidden; margin:12px 0; }
+.pred-bar .h { background:var(--blue); height:100%; display:flex; align-items:center; justify-content:center; font-size:.65em; color:#fff; font-weight:600; }
+.pred-bar .d { background:var(--gold); height:100%; display:flex; align-items:center; justify-content:center; font-size:.65em; color:#fff; font-weight:600; }
+.pred-bar .a { background:var(--pink); height:100%; display:flex; align-items:center; justify-content:center; font-size:.65em; color:#fff; font-weight:600; }
+.rec-box { background:var(--bg2); border-radius:12px; padding:20px; margin:12px 0; border-left:4px solid var(--accent); }
+.rec-box h4 { color:var(--accent); margin-bottom:10px; font-size:.9em; }
+.bet-item { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px dashed var(--border); }
+.bet-item:last-child { border-bottom:none; }
+.bet-item .label { font-size:.85em; color:var(--text); }
+.bet-item .price { font-weight:700; color:var(--accent); font-size:.9em; }
+.total-row { background:var(--bg3); padding:10px 14px; border-radius:8px; margin-top:8px; display:flex; justify-content:space-between; align-items:center; }
+.total-row .ttl { font-weight:700; color:var(--gold); font-size:1.05em; }
+.warn { background:rgba(255,71,87,.1); border:1px solid rgba(255,71,87,.3); border-radius:10px; padding:14px; margin:12px 0; font-size:.82em; color:var(--red); }
+.info { background:rgba(77,166,255,.08); border:1px solid rgba(77,166,255,.2); border-radius:10px; padding:14px; margin:12px 0; font-size:.82em; }
+.note { font-size:.78em; color:var(--text2); padding:8px 0; font-style:italic; }
+.footer { text-align:center; padding:30px 20px; color:var(--text3); font-size:.78em; border-top:1px solid var(--border); margin-top:20px; }
+.scheme-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.meta-row { display:flex; gap:16px; flex-wrap:wrap; font-size:.78em; color:var(--text2); margin-bottom:12px; }
+.meta-row span { background:var(--bg3); padding:3px 10px; border-radius:10px; }
+.crs-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:12px 0; font-size:.78em; }
+.crs-col { background:var(--bg3); border-radius:8px; padding:12px; }
+.crs-col h5 { margin:0 0 8px; font-size:.8em; }
+.crs-col h5.w { color:var(--blue); }
+.crs-col h5.d { color:var(--gold); }
+.crs-col h5.l { color:var(--pink); }
+.crs-col .s { display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.crs-col .s .sc { color:var(--text2); }
+.crs-col .s .pr { color:var(--accent); }
+@media (max-width:600px) {
+  .container { padding:10px; }
+  .card { padding:16px; }
+  .match-header { flex-direction:column; }
+  table.odds { font-size:.7em; }
+  table.odds th, table.odds td { padding:5px 3px; }
+  .crs-grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -76,139 +85,124 @@ table.odds tr:hover td { background: rgba(255,255,255,.02); }
 
 <div class="header">
   <h1>&#127942; 2026&#19990;&#30028;&#26479; &#31454;&#24425;&#25237;&#27880;&#24314;&#35758;</h1>
-  <div class="date">2026&#24180;6&#26376;15&#26085; &#65288;&#21608;&#26085;&#65289; 4&#22330;&#27604;&#36187;</div>
+  <div class="date">2026&#24180;6&#26376;15&#26085; &#65288;&#21608;&#26085;&#65289; &#183; 4&#22330;&#27604;&#36187;</div>
   <div style="margin-top:12px">
     <span class="badge badge-official">&#23448;&#26041;&#36180;&#29575;: sporttery.cn</span>
     <span class="badge badge-data">v21.0 &#26435;&#37325;&#20307;&#31995;</span>
+    <span class="badge badge-new">&#26032;&#65281;&#28151;&#21512;&#36807;&#20851;&#20840;&#29609;&#27861;</span>
   </div>
 </div>
 
 <div class="container">
 
-<!-- &#36187;&#20107;&#27010;&#35272; -->
+<!-- &#36187;&#20107;&#27010;&#35272;+SPF/RSPF -->
 <div class="card">
-  <h2>&#128203; 6&#26376;15&#26085;&#36187;&#20107;&#27010;&#35272;</h2>
+  <h2>&#128203; &#23448;&#26041;&#36180;&#29575;&#24635;&#35272; &#8212; &#32988;&#24179;&#36127; &amp; &#35753;&#29699;</h2>
+  <p class="note">&#8251; &#25968;&#25454;&#28304;: sporttery.cn &#28151;&#21512;&#36807;&#20851; &#8212; &#21516;&#26102;&#21246;&#36873;&#32988;&#24179;&#36127;+&#27604;&#20998;+&#24635;&#36827;&#29699;+&#21322;&#20840;&#22330;</p>
   <div style="overflow-x:auto">
     <table class="odds">
-      <tr><th>&#32534;&#21495;</th><th>&#24320;&#36187;&#26102;&#38388;</th><th>&#23545;&#38453;</th><th>&#32988;</th><th>&#24179;</th><th>&#36127;</th><th>&#35753;&#29699;</th><th>&#35753;&#29699;&#32988;</th><th>&#35753;&#29699;&#24179;</th><th>&#35753;&#29699;&#36127;</th></tr>
-      <tr>
-        <td>&#21608;&#26085;009</td><td>01:00</td>
-        <td><b>&#24503;&#22269; vs &#24211;&#25289;&#32034;</b></td>
+      <tr><th>&#32534;&#21495;</th><th>&#24320;&#36187;</th><th>&#23545;&#38453;</th><th>&#32988;</th><th>&#24179;</th><th>&#36127;</th><th>&#35753;&#29699;</th><th>&#35753;&#32988;</th><th>&#35753;&#24179;</th><th>&#35753;&#36127;</th></tr>
+      <tr><td>009</td><td>01:00</td><td><b>&#127465;&#127466; &#24503;&#22269; vs &#24211;&#25289;&#32034; &#127268;&#127271;</b></td>
         <td style="color:#888">&#26410;&#24320;&#21806;</td><td style="color:#888">--</td><td style="color:#888">--</td>
-        <td>-3</td><td class="odd-val">1.90</td><td>4.60</td><td>2.59</td>
-      </tr>
-      <tr>
-        <td>&#21608;&#26085;010</td><td>04:00</td>
-        <td><b>&#33655;&#20848; vs &#26085;&#26412;</b></td>
+        <td>-3</td><td class="odd-val">1.90</td><td>4.60</td><td>2.59</td></tr>
+      <tr><td>010</td><td>04:00</td><td><b>&#127475;&#127473; &#33655;&#20848; vs &#26085;&#26412; &#127471;&#127477;</b></td>
         <td class="odd-val odd-best">1.75</td><td>3.30</td><td>3.92</td>
-        <td>-1</td><td>3.50</td><td>3.45</td><td class="odd-best">1.81</td>
-      </tr>
-      <tr>
-        <td>&#21608;&#26085;011</td><td>07:00</td>
-        <td><b>&#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572;</b></td>
+        <td>-1</td><td>3.50</td><td>3.45</td><td class="odd-best">1.81</td></tr>
+      <tr><td>011</td><td>07:00</td><td><b>&#127464;&#127462; &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; &#127466;&#127464;</b></td>
         <td>3.36</td><td>2.65</td><td class="odd-val odd-best">2.20</td>
-        <td>+1</td><td class="odd-best">1.51</td><td>3.60</td><td>5.30</td>
-      </tr>
-      <tr>
-        <td>&#21608;&#26085;012</td><td>10:00</td>
-        <td><b>&#29791;&#20856; vs &#31361;&#23612;&#26031;</b></td>
+        <td>+1</td><td class="odd-best">1.51</td><td>3.60</td><td>5.30</td></tr>
+      <tr><td>012</td><td>10:00</td><td><b>&#127480;&#127466; &#29791;&#20856; vs &#31361;&#23612;&#26031; &#127483;&#127475;</b></td>
         <td class="odd-val odd-best">1.74</td><td>3.10</td><td>4.30</td>
-        <td>-1</td><td>3.55</td><td>3.30</td><td class="odd-best">1.84</td>
-      </tr>
+        <td>-1</td><td>3.55</td><td>3.30</td><td class="odd-best">1.84</td></tr>
     </table>
   </div>
-  <p class="note">&#8251; &#24503;&#22269;vs&#24211;&#25289;&#32034;SPF&#26410;&#24320;&#21806;&#65292;&#20165;RSPF(-3)&#21487;&#29992;&#12290;&#27604;&#20998;(CRS)&#26242;&#26410;&#24320;&#21806;&#65292;&#26041;&#26696;BC&#20013;&#26631;&#27880;&#12290;</p>
 </div>
 
 <!-- &#20998;&#26512;&#39044;&#27979;&#27719;&#24635; -->
 <div class="card">
   <h2>&#128200; v21.0 &#32508;&#21512;&#39044;&#27979;&#27719;&#24635;</h2>
 
-  <!-- &#24503;&#22269; -->
   <div class="match-header">
-    <div class="match-info">
-      <h3>&#127465;&#127466; &#24503;&#22269; vs &#24211;&#25289;&#32034; &#127268;&#127271; <span style="font-size:.75em;color:var(--text2)">E&#32452; &#183; 01:00 CST</span></h3>
-      <div class="pred-bar"><span class="h" style="width:90.6%">&#24503;&#22269; 90.6%</span><span class="d" style="width:5.6%">&#24179;5.6%</span><span class="a" style="width:3.8%">&#24211;&#25289;&#32034;3.8%</span></div>
+    <div class="match-info"><h3>&#127465;&#127466; &#24503;&#22269; vs &#24211;&#25289;&#32034; &#127268;&#127271; <span style="font-size:.75em;color:var(--text2)">E&#32452; &#183; 01:00</span></h3>
+      <div class="pred-bar"><span class="h" style="width:90.6%">&#24503;&#22269;90.6%</span><span class="d" style="width:5.6%">&#24179;5.6%</span><span class="a" style="width:3.8%">&#24211;&#25289;&#32034;3.8%</span></div>
     </div>
-    <div class="match-pred"><div class="score">3:0</div><div class="detail">&#39318;&#36873; &#183; &#38646;&#23553;59% &#183; &#955;=2.15</div></div>
+    <div class="match-pred"><div class="score">3:0</div><div class="detail">&#39318;&#36873; &#183; 4:0&#27425;&#36873; &#183; &#955;=2.15 &#183; &#38646;&#23553;59%</div></div>
   </div>
 
-  <!-- &#33655;&#20848; -->
-  <div class="match-header" style="margin-top:20px">
-    <div class="match-info">
-      <h3>&#127475;&#127473; &#33655;&#20848; vs &#26085;&#26412; &#127471;&#127477; <span style="font-size:.75em;color:var(--text2)">F&#32452; &#183; 04:00 CST</span></h3>
-      <div class="pred-bar"><span class="h" style="width:47.4%">&#33655;&#20848; 47.4%</span><span class="d" style="width:28.1%">&#24179;28.1%</span><span class="a" style="width:24.5%">&#26085;&#26412;24.5%</span></div>
+  <div class="match-header">
+    <div class="match-info"><h3>&#127475;&#127473; &#33655;&#20848; vs &#26085;&#26412; &#127471;&#127477; <span style="font-size:.75em;color:var(--text2)">F&#32452; &#183; 04:00</span></h3>
+      <div class="pred-bar"><span class="h" style="width:47.4%">&#33655;&#20848;47.4%</span><span class="d" style="width:28.1%">&#24179;28.1%</span><span class="a" style="width:24.5%">&#26085;&#26412;24.5%</span></div>
     </div>
-    <div class="match-pred"><div class="score">2:1</div><div class="detail">&#39318;&#36873; &#183; &#38646;&#23553;8% &#183; &#955;=3.03</div></div>
+    <div class="match-pred"><div class="score">2:1</div><div class="detail">&#39318;&#36873; &#183; 1:1&#27425;&#36873; &#183; &#955;=3.03 &#183; BTTS&#39640;</div></div>
   </div>
 
-  <!-- &#31185;&#29305;&#36842;&#29926; -->
-  <div class="match-header" style="margin-top:20px">
-    <div class="match-info">
-      <h3>&#127464;&#127462; &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; &#127466;&#127464; <span style="font-size:.75em;color:var(--text2)">E&#32452; &#183; 07:00 CST</span></h3>
+  <div class="match-header">
+    <div class="match-info"><h3>&#127464;&#127462; &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; &#127466;&#127464; <span style="font-size:.75em;color:var(--text2)">E&#32452; &#183; 07:00</span></h3>
       <div class="pred-bar"><span class="h" style="width:30.6%">&#31185;30.6%</span><span class="d" style="width:27.8%">&#24179;27.8%</span><span class="a" style="width:41.7%">&#21380;&#29916;&#22810;&#23572;41.7%</span></div>
     </div>
-    <div class="match-pred"><div class="score">1:1</div><div class="detail">&#39318;&#36873; &#183; &#38646;&#23553;20% &#183; &#955;=2.75</div></div>
+    <div class="match-pred"><div class="score">1:1</div><div class="detail">&#39318;&#36873; &#183; 0:1&#27425;&#36873; &#183; &#955;=2.75 &#183; &#21183;&#22343;&#21147;&#25932;</div></div>
   </div>
 
-  <!-- &#29791;&#20856; -->
-  <div class="match-header" style="margin-top:20px">
-    <div class="match-info">
-      <h3>&#127480;&#127466; &#29791;&#20856; vs &#31361;&#23612;&#26031; &#127483;&#127475; <span style="font-size:.75em;color:var(--text2)">F&#32452; &#183; 10:00 CST</span></h3>
-      <div class="pred-bar"><span class="h" style="width:52.7%">&#29791;&#20856; 52.7%</span><span class="d" style="width:28.2%">&#24179;28.2%</span><span class="a" style="width:19.4%">&#31361;&#23612;&#26031;19.4%</span></div>
+  <div class="match-header">
+    <div class="match-info"><h3>&#127480;&#127466; &#29791;&#20856; vs &#31361;&#23612;&#26031; &#127483;&#127475; <span style="font-size:.75em;color:var(--text2)">F&#32452; &#183; 10:00</span></h3>
+      <div class="pred-bar"><span class="h" style="width:52.7%">&#29791;&#20856;52.7%</span><span class="d" style="width:28.2%">&#24179;28.2%</span><span class="a" style="width:19.4%">&#31361;&#23612;&#26031;19.4%</span></div>
     </div>
-    <div class="match-pred"><div class="score">1:0</div><div class="detail">&#39318;&#36873; &#183; &#38646;&#23553;38% &#183; &#955;=2.47</div></div>
+    <div class="match-pred"><div class="score">1:0</div><div class="detail">&#39318;&#36873; &#183; 2:0&#27425;&#36873; &#183; &#955;=2.47 &#183; &#38646;&#23553;38%</div></div>
   </div>
 </div>
 
-<!-- &#24635;&#36827;&#29699;&#25968;&#36180;&#29575; -->
+<!-- &#27604;&#20998;&#36180;&#29575; -->
 <div class="card">
-  <h2>&#9917; &#24635;&#36827;&#29699;&#25968; (TOT) &#23448;&#26041;&#36180;&#29575;</h2>
+  <h2>&#127919; &#27604;&#20998;&#29609;&#27861; (CRS) &#8212; &#23448;&#26041;&#36180;&#29575;</h2>
+
+  <h3>&#127465;&#127466; &#24503;&#22269; vs &#24211;&#25289;&#32034; &#127268;&#127271; <span style="font-size:.75em;color:var(--text2)">&#39044;&#27979;3:0/4:0</span></h3>
+  <div class="crs-grid">
+    <div class="crs-col"><h5 class="w">&#32988;</h5><div class="s"><span class="sc">1:0</span><span class="pr">14.00</span></div><div class="s"><span class="sc">2:0</span><span class="pr">7.25</span></div><div class="s"><span class="sc">2:1</span><span class="pr">15.00</span></div><div class="s hi"><span class="sc">3:0</span><span class="pr">5.50</span></div><div class="s"><span class="sc">3:1</span><span class="pr">13.00</span></div><div class="s"><span class="sc">3:2</span><span class="pr">60.00</span></div><div class="s hi"><span class="sc">4:0</span><span class="pr">5.75</span></div><div class="s"><span class="sc">4:1</span><span class="pr">14.00</span></div><div class="s"><span class="sc">5:0</span><span class="pr">7.00</span></div><div class="s"><span class="sc">&#32988;&#20854;&#23427;</span><span class="pr">3.75</span></div></div>
+    <div class="crs-col"><h5 class="d">&#24179;</h5><div class="s"><span class="sc">0:0</span><span class="pr">55.00</span></div><div class="s"><span class="sc">1:1</span><span class="pr">27.00</span></div><div class="s"><span class="sc">2:2</span><span class="pr">50.00</span></div><div class="s"><span class="sc">3:3</span><span class="pr">200.0</span></div><div class="s"><span class="sc">&#24179;&#20854;&#23427;</span><span class="pr">900.0</span></div></div>
+    <div class="crs-col"><h5 class="l">&#36127;</h5><div class="s"><span class="sc">0:1</span><span class="pr">100.0</span></div><div class="s"><span class="sc">0:2</span><span class="pr">350.0</span></div><div class="s"><span class="sc">1:2</span><span class="pr">110.0</span></div><div class="s"><span class="sc">0:3</span><span class="pr">900.0</span></div><div class="s"><span class="sc">&#36127;&#20854;&#23427;</span><span class="pr">900.0</span></div></div>
+  </div>
+
+  <h3>&#127475;&#127473; &#33655;&#20848; vs &#26085;&#26412; &#127471;&#127477; <span style="font-size:.75em;color:var(--text2)">&#39044;&#27979;2:1/1:1</span></h3>
+  <div class="crs-grid">
+    <div class="crs-col"><h5 class="w">&#32988;</h5><div class="s"><span class="sc">1:0</span><span class="pr">6.40</span></div><div class="s"><span class="sc">2:0</span><span class="pr">7.50</span></div><div class="s hi"><span class="sc">2:1</span><span class="pr">7.00</span></div><div class="s"><span class="sc">3:0</span><span class="pr">14.00</span></div><div class="s"><span class="sc">3:1</span><span class="pr">13.50</span></div><div class="s"><span class="sc">3:2</span><span class="pr">27.00</span></div><div class="s"><span class="sc">&#32988;&#20854;&#23427;</span><span class="pr">60.00</span></div></div>
+    <div class="crs-col"><h5 class="d">&#24179;</h5><div class="s"><span class="sc">0:0</span><span class="pr">10.00</span></div><div class="s hi"><span class="sc">1:1</span><span class="pr">6.00</span></div><div class="s"><span class="sc">2:2</span><span class="pr">14.00</span></div><div class="s"><span class="sc">3:3</span><span class="pr">70.00</span></div><div class="s"><span class="sc">&#24179;&#20854;&#23427;</span><span class="pr">400.0</span></div></div>
+    <div class="crs-col"><h5 class="l">&#36127;</h5><div class="s"><span class="sc">0:1</span><span class="pr">10.50</span></div><div class="s"><span class="sc">0:2</span><span class="pr">21.00</span></div><div class="s"><span class="sc">1:2</span><span class="pr">11.50</span></div><div class="s"><span class="sc">0:3</span><span class="pr">60.00</span></div><div class="s"><span class="sc">&#36127;&#20854;&#23427;</span><span class="pr">200.0</span></div></div>
+  </div>
+
+  <h3>&#127464;&#127462; &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; &#127466;&#127464; <span style="font-size:.75em;color:var(--text2)">&#39044;&#27979;1:1/0:1</span></h3>
+  <div class="crs-grid">
+    <div class="crs-col"><h5 class="w">&#32988;</h5><div class="s"><span class="sc">1:0</span><span class="pr">8.20</span></div><div class="s"><span class="sc">2:0</span><span class="pr">5.60</span></div><div class="s"><span class="sc">2:1</span><span class="pr">9.00</span></div><div class="s"><span class="sc">3:0</span><span class="pr">5.70</span></div><div class="s"><span class="sc">3:1</span><span class="pr">10.00</span></div><div class="s"><span class="sc">&#32988;&#20854;&#23427;</span><span class="pr">7.80</span></div></div>
+    <div class="crs-col"><h5 class="d">&#24179;</h5><div class="s"><span class="sc">0:0</span><span class="pr">28.00</span></div><div class="s hi"><span class="sc">1:1</span><span class="pr">16.00</span></div><div class="s"><span class="sc">2:2</span><span class="pr">40.00</span></div><div class="s"><span class="sc">3:3</span><span class="pr">200.0</span></div><div class="s"><span class="sc">&#24179;&#20854;&#23427;</span><span class="pr">700.0</span></div></div>
+    <div class="crs-col"><h5 class="l">&#36127;</h5><div class="s"><span class="sc">0:1</span><span class="pr">60.00</span></div><div class="s"><span class="sc">0:2</span><span class="pr">175.0</span></div><div class="s"><span class="sc">1:2</span><span class="pr">60.00</span></div><div class="s"><span class="sc">0:3</span><span class="pr">600.0</span></div><div class="s"><span class="sc">&#36127;&#20854;&#23427;</span><span class="pr">800.0</span></div></div>
+  </div>
+
+  <h3>&#127480;&#127466; &#29791;&#20856; vs &#31361;&#23612;&#26031; &#127483;&#127475; <span style="font-size:.75em;color:var(--text2)">&#39044;&#27979;1:0/2:0</span></h3>
+  <div class="crs-grid">
+    <div class="crs-col"><h5 class="w">&#32988;</h5><div class="s hi"><span class="sc">1:0</span><span class="pr">5.60</span></div><div class="s hi"><span class="sc">2:0</span><span class="pr">7.50</span></div><div class="s"><span class="sc">2:1</span><span class="pr">7.00</span></div><div class="s"><span class="sc">3:0</span><span class="pr">14.00</span></div><div class="s"><span class="sc">3:1</span><span class="pr">14.50</span></div><div class="s"><span class="sc">3:2</span><span class="pr">32.00</span></div><div class="s"><span class="sc">&#32988;&#20854;&#23427;</span><span class="pr">90.00</span></div></div>
+    <div class="crs-col"><h5 class="d">&#24179;</h5><div class="s"><span class="sc">0:0</span><span class="pr">8.00</span></div><div class="s"><span class="sc">1:1</span><span class="pr">5.70</span></div><div class="s"><span class="sc">2:2</span><span class="pr">16.00</span></div><div class="s"><span class="sc">3:3</span><span class="pr">100.0</span></div><div class="s"><span class="sc">&#24179;&#20854;&#23427;</span><span class="pr">600.0</span></div></div>
+    <div class="crs-col"><h5 class="l">&#36127;</h5><div class="s"><span class="sc">0:1</span><span class="pr">9.50</span></div><div class="s"><span class="sc">0:2</span><span class="pr">21.00</span></div><div class="s"><span class="sc">1:2</span><span class="pr">12.50</span></div><div class="s"><span class="sc">0:3</span><span class="pr">70.00</span></div><div class="s"><span class="sc">&#36127;&#20854;&#23427;</span><span class="pr">300.0</span></div></div>
+  </div>
+</div>
+
+<!-- &#24635;&#36827;&#29699;+&#21322;&#20840;&#22330; -->
+<div class="card">
+  <h2>&#9917; &#24635;&#36827;&#29699; (TOT) &amp; &#9201; &#21322;&#20840;&#22330; (HFT) &#23448;&#26041;&#36180;&#29575;</h2>
   <div style="overflow-x:auto">
     <table class="odds">
-      <tr><th>&#23545;&#38453;</th><th>0&#29699;</th><th>1&#29699;</th><th>2&#29699;</th><th>3&#29699;</th><th>4&#29699;</th><th>5&#29699;</th><th>6&#29699;</th><th>7+&#29699;</th></tr>
-      <tr>
-        <td>&#24503;&#22269;vs&#24211;&#25289;&#32034;</td>
-        <td>55.00</td><td>13.50</td><td>6.70</td><td class="odd-best">4.35</td><td>4.20</td><td>4.80</td><td>6.50</td><td>5.50</td>
-      </tr>
-      <tr>
-        <td>&#33655;&#20848;vs&#26085;&#26412;</td>
-        <td>10.00</td><td>4.30</td><td class="odd-best">3.30</td><td>3.65</td><td>5.80</td><td>11.00</td><td>20.00</td><td>32.00</td>
-      </tr>
-      <tr>
-        <td>&#31185;&#29305;&#36842;&#29926;vs&#21380;&#29916;&#22810;&#23572;</td>
-        <td>6.00</td><td>3.20</td><td class="odd-best">3.00</td><td>4.35</td><td>8.50</td><td>21.00</td><td>35.00</td><td>55.00</td>
-      </tr>
-      <tr>
-        <td>&#29791;&#20856;vs&#31361;&#23612;&#26031;</td>
-        <td>8.00</td><td>3.85</td><td class="odd-best">3.15</td><td>3.85</td><td>6.75</td><td>13.00</td><td>25.00</td><td>36.00</td>
-      </tr>
+      <tr><th>&#23545;&#38453;</th><th>0&#29699;</th><th>1&#29699;</th><th>2&#29699;</th><th>3&#29699;</th><th>4&#29699;</th><th>5&#29699;</th><th>6&#29699;</th><th>7+</th></tr>
+      <tr><td>&#24503;&#22269;vs&#24211;&#25289;&#32034;</td><td>55.00</td><td>13.50</td><td>6.70</td><td class="odd-best">4.35</td><td>4.20</td><td>4.80</td><td>6.50</td><td>5.50</td></tr>
+      <tr><td>&#33655;&#20848;vs&#26085;&#26412;</td><td>10.00</td><td>4.30</td><td class="odd-best">3.30</td><td>3.65</td><td>5.80</td><td>11.00</td><td>20.00</td><td>32.00</td></tr>
+      <tr><td>&#31185;&#29305;&#36842;&#29926;vs&#21380;&#29916;&#22810;&#23572;</td><td>6.00</td><td>3.20</td><td class="odd-best">3.00</td><td>4.35</td><td>8.50</td><td>21.00</td><td>35.00</td><td>55.00</td></tr>
+      <tr><td>&#29791;&#20856;vs&#31361;&#23612;&#26031;</td><td>8.00</td><td>3.85</td><td class="odd-best">3.15</td><td>3.85</td><td>6.75</td><td>13.00</td><td>25.00</td><td>36.00</td></tr>
     </table>
   </div>
-</div>
-
-<!-- &#21322;&#20840;&#22330;&#36180;&#29575; -->
-<div class="card">
-  <h2>&#9201; &#21322;&#20840;&#22330; (HFT) &#23448;&#26041;&#36180;&#29575;</h2>
-  <div style="overflow-x:auto">
+  <div style="overflow-x:auto; margin-top:16px">
     <table class="odds">
       <tr><th>&#23545;&#38453;</th><th>&#32988;&#32988;</th><th>&#32988;&#24179;</th><th>&#32988;&#36127;</th><th>&#24179;&#32988;</th><th>&#24179;&#24179;</th><th>&#24179;&#36127;</th><th>&#36127;&#32988;</th><th>&#36127;&#24179;</th><th>&#36127;&#36127;</th></tr>
-      <tr>
-        <td>&#24503;&#22269;vs&#24211;&#25289;&#32034;</td>
-        <td colspan="9" style="color:#888">&#26410;&#24320;&#21806;</td>
-      </tr>
-      <tr>
-        <td>&#33655;&#20848;vs&#26085;&#26412;</td>
-        <td class="odd-best">2.65</td><td>15.00</td><td>40.00</td><td>4.40</td><td>5.10</td><td>9.00</td><td>26.00</td><td>15.00</td><td>6.90</td>
-      </tr>
-      <tr>
-        <td>&#31185;&#29305;&#36842;&#29926;vs&#21380;&#29916;&#22810;&#23572;</td>
-        <td>5.85</td><td>15.50</td><td>33.00</td><td>6.70</td><td>3.60</td><td>4.80</td><td>39.00</td><td>15.50</td><td class="odd-best">3.80</td>
-      </tr>
-      <tr>
-        <td>&#29791;&#20856;vs&#31361;&#23612;&#26031;</td>
-        <td class="odd-best">2.80</td><td>16.00</td><td>40.00</td><td>4.15</td><td>4.60</td><td>8.75</td><td>28.00</td><td>16.00</td><td>7.20</td>
-      </tr>
+      <tr><td>&#24503;&#22269;vs&#24211;&#25289;&#32034;</td><td colspan="9" style="color:#888">&#26410;&#24320;&#21806;</td></tr>
+      <tr><td>&#33655;&#20848;vs&#26085;&#26412;</td><td class="odd-best">2.65</td><td>15.00</td><td>40.00</td><td>4.40</td><td>5.10</td><td>9.00</td><td>26.00</td><td>15.00</td><td>6.90</td></tr>
+      <tr><td>&#31185;&#29305;&#36842;&#29926;vs&#21380;&#29916;&#22810;&#23572;</td><td>5.85</td><td>15.50</td><td>33.00</td><td>6.70</td><td>3.60</td><td>4.80</td><td>39.00</td><td>15.50</td><td class="odd-best">3.80</td></tr>
+      <tr><td>&#29791;&#20856;vs&#31361;&#23612;&#26031;</td><td class="odd-best">2.80</td><td>16.00</td><td>40.00</td><td>4.15</td><td>4.60</td><td>8.75</td><td>28.00</td><td>16.00</td><td>7.20</td></tr>
     </table>
   </div>
 </div>
@@ -218,111 +212,77 @@ table.odds tr:hover td { background: rgba(255,255,255,.02); }
   <h2>&#127922; &#25237;&#27880;&#26041;&#26696; (5&#22871;)</h2>
 
   <!-- &#26041;&#26696;A -->
-  <div class="rec-box" style="border-left-color: var(--green)">
-    <div class="scheme-header">
-      <span class="scheme-label scheme-a">&#26041;&#26696;A &#183; &#20445;&#23432;</span>
-      <span style="font-size:.78em;color:var(--text2)">SPF&#20108;&#20018;&#19968; &#183; 1&#27880; &#183; &#19981;&#23481;&#38169;</span>
-    </div>
-    <div class="meta-row">
-      <span>&#127922; &#29609;&#27861;: &#32988;&#24179;&#36127;(SPF)</span>
-      <span>&#128176; &#38144;&#21806;&#25130;&#27490;: 6/14 22:00</span>
-    </div>
+  <div class="rec-box" style="border-left-color:var(--green)">
+    <div class="scheme-header"><span class="scheme-label scheme-a">&#26041;&#26696;A &#183; &#20445;&#23432;</span><span style="font-size:.78em;color:var(--text2)">SPF&#20108;&#20018;&#19968; &#183; 1&#27880;</span></div>
+    <div class="meta-row"><span>&#127922; &#29609;&#27861;: &#32988;&#24179;&#36127;(SPF)</span><span>&#128176; &#38144;&#21806;&#25130;&#27490;: 6/14 22:00</span></div>
     <div class="bet-item"><span class="label">&#21608;&#26085;012 &#29791;&#20856; vs &#31361;&#23612;&#26031;</span><span class="price">&#32988; 1.74</span></div>
     <div class="bet-item"><span class="label">&#21608;&#26085;011 &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; (&#35753;&#29699;+1)</span><span class="price">&#32988; 1.51</span></div>
     <div class="total-row"><span>&#24635;&#36180;&#29575;</span><span class="ttl">1.74 &#215; 1.51 = 2.63</span></div>
-    <p class="note" style="margin-top:10px">&#29791;&#20856;ELO+85&#65292;&#24066;&#22330;&#19968;&#33268;&#30475;&#22909;&#65307;&#31185;&#29305;&#36842;&#29926;&#21463;&#35753;+1&#65292;&#21363;&#20351;&#36755;1&#29699;&#20173;&#28982;&#36180;&#20184;&#12290;&#20004;&#22330;&#26041;&#21521;&#26126;&#30830;&#65292;&#39118;&#38505;&#36739;&#20302;&#12290;</p>
+    <p class="note">&#29791;&#20856;ELO+85&#65292;52.7%&#32988;&#29575;&#65292;&#24066;&#22330;&#19968;&#33268;&#30475;&#22909;&#65307;&#31185;&#29305;&#36842;&#29926;&#21463;&#35753;+1&#65292;&#21363;&#20351;&#36755;1&#29699;&#20173;&#28982;&#36180;&#20184;&#65292;&#23433;&#20840;&#22443;&#36739;&#21402;&#12290;</p>
   </div>
 
   <!-- &#26041;&#26696;B -->
-  <div class="rec-box" style="border-left-color: var(--gold)">
-    <div class="scheme-header">
-      <span class="scheme-label scheme-b">&#26041;&#26696;B &#183; &#36827;&#21462;</span>
-      <span style="font-size:.78em;color:var(--text2)">RSPF&#19977;&#20018;&#22235; &#183; 4&#27880; &#183; &#23481;1&#38169;</span>
-    </div>
-    <div class="meta-row">
-      <span>&#127922; &#29609;&#27861;: &#35753;&#29699;&#32988;&#24179;&#36127;(RSPF)</span>
-      <span>&#128176; &#24635;&#25237;&#20837;: 4&#21333;&#20301;</span>
-    </div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;009 &#24503;&#22269; vs &#24211;&#25289;&#32034; (-3)</span><span class="price">&#32988; 1.90</span></div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;011 &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; (+1)</span><span class="price">&#32988; 1.51</span></div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;012 &#29791;&#20856; vs &#31361;&#23612;&#26031; (0)</span><span class="price">&#32988; 1.74</span></div>
+  <div class="rec-box" style="border-left-color:var(--gold)">
+    <div class="scheme-header"><span class="scheme-label scheme-b">&#26041;&#26696;B &#183; &#36827;&#21462;</span><span style="font-size:.78em;color:var(--text2)">RSPF&#19977;&#20018;&#22235; &#183; 4&#27880; &#183; &#23481;1&#38169;</span></div>
+    <div class="meta-row"><span>&#127922; &#29609;&#27861;: &#35753;&#29699;&#32988;&#24179;&#36127;(RSPF)</span><span>&#128176; &#24635;&#25237;&#20837;: 4&#21333;&#20301;</span></div>
+    <div class="bet-item"><span class="label">&#24503;&#22269; vs &#24211;&#25289;&#32034; (-3)</span><span class="price">&#32988; 1.90</span></div>
+    <div class="bet-item"><span class="label">&#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; (+1)</span><span class="price">&#32988; 1.51</span></div>
+    <div class="bet-item"><span class="label">&#29791;&#20856; vs &#31361;&#23612;&#26031; (0)</span><span class="price">&#32988; 1.74</span></div>
     <div class="total-row"><span>&#19977;&#20018;&#19968;&#36180;&#29575;</span><span class="ttl">1.90 &#215; 1.51 &#215; 1.74 = 4.99</span></div>
-    <div class="total-row" style="margin-top:4px"><span>&#26368;&#20302;&#22238;&#26412;&#26465;&#20214;</span><span style="color:var(--accent);font-weight:600">&#20219;&#24847;2&#22330;&#20013;&#21363;&#21487;&#22238;&#26412;</span></div>
-    <p class="note" style="margin-top:10px">&#23481;1&#38169;&#35774;&#35745;&#12290;&#24503;&#22269;-3&#32988;&#65306;&#38656;&#20928;&#32988;4&#29699;&#20197;&#19978;&#65292;&#39044;&#27979;3:0&#21387;&#32447;&#65292;&#39118;&#38505;&#20013;&#31561;&#12290;&#31185;&#29305;&#36842;&#29926;+1&#32988;&#65306;&#23433;&#20840;&#22443;&#36739;&#21402;&#12290;&#29791;&#20856;&#32988;&#65306;&#26041;&#21521;&#26126;&#30830;&#12290;</p>
+    <div class="total-row" style="margin-top:4px"><span>&#22238;&#26412;&#26465;&#20214;</span><span style="color:var(--accent);font-weight:600">4&#27880;&#20013;&#20219;&#24847;2&#22330;&#21363;&#22238;&#26412;</span></div>
+    <p class="note">&#23481;1&#38169;&#35774;&#35745;&#12290;&#24503;&#22269;-3&#32988;&#38656;&#20928;&#32988;4&#29699;&#65292;&#39044;&#27979;3:0&#21387;&#32447;&#39118;&#38505;&#20013;&#31561;&#12290;&#31185;&#29305;&#36842;&#29926;+1&#32988;&#23433;&#20840;&#22443;&#21402;&#12290;&#29791;&#20856;&#26041;&#21521;&#26126;&#30830;&#12290;</p>
   </div>
 
   <!-- &#26041;&#26696;C -->
-  <div class="rec-box" style="border-left-color: var(--blue)">
-    <div class="scheme-header">
-      <span class="scheme-label scheme-c">&#26041;&#26696;C &#183; &#25512;&#33616;</span>
-      <span style="font-size:.78em;color:var(--text2)">SPF&#215;TOT&#20108;&#20018;&#19968; &#183; 1&#27880; &#183; &#19981;&#23481;&#38169;</span>
-    </div>
-    <div class="meta-row">
-      <span>&#127922; &#29609;&#27861;: SPF + &#24635;&#36827;&#29699;(TOT)</span>
-      <span>&#9888; &#36328;&#29609;&#27861;=&#24223;&#65292;&#26412;&#26041;&#26696;&#20004;&#22330;&#19981;&#21516;&#29609;&#27861;</span>
-    </div>
-    <div class="warn">&#9888;&#65039; &#26681;&#25454;&#36328;&#29609;&#27861;&#38081;&#24459;&#65292;&#21516;&#19968;&#22330;&#21482;&#33021;&#27515;&#30933;&#19968;&#20010;&#29609;&#27861;&#65292;&#19981;&#21516;&#22330;&#21487;&#33258;&#30001;&#36873;&#12290;&#26412;&#26041;&#26696;&#20026;&#20004;&#22330;&#19981;&#21516;&#29609;&#27861;&#20018;&#20851;&#12290;</div>
+  <div class="rec-box" style="border-left-color:var(--blue)">
+    <div class="scheme-header"><span class="scheme-label scheme-c">&#26041;&#26696;C &#183; &#25512;&#33616;</span><span style="font-size:.78em;color:var(--text2)">SPF&#215;CRS&#20108;&#20018;&#19968; &#183; 1&#27880;</span></div>
+    <div class="meta-row"><span>&#127922; &#29609;&#27861;: &#32988;&#24179;&#36127; + &#27604;&#20998;(CRS)</span></div>
+    <div class="warn">&#9888;&#65039; &#36328;&#29609;&#27861;&#38081;&#24459;&#65306;&#21516;&#19968;&#22330;&#27515;&#30933;&#19968;&#20010;&#29609;&#27861;&#65292;&#19981;&#21516;&#22330;&#33258;&#30001;&#36873;&#12290;&#26412;&#26041;&#26696;&#20004;&#22330;&#19981;&#21516;&#29609;&#27861;&#12290;</div>
     <div class="bet-item"><span class="label">&#21608;&#26085;012 &#29791;&#20856; vs &#31361;&#23612;&#26031; - SPF</span><span class="price">&#32988; 1.74</span></div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;011 &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572; - TOT 2&#29699;</span><span class="price">3.00</span></div>
-    <div class="total-row"><span>&#24635;&#36180;&#29575;</span><span class="ttl">1.74 &#215; 3.00 = 5.22</span></div>
-    <p class="note" style="margin-top:10px">&#29791;&#20856;&#32988;+&#31185;&#29305;&#36842;&#29926;vs&#21380;&#29916;&#22810;&#23572;&#24635;&#36827;&#29699;2&#29699;&#12290;&#39044;&#27979;&#27604;&#20998;1:1&#65292;&#20840;&#22330;2&#29699;&#27010;&#29575;&#36739;&#39640;&#65292;&#36180;&#29575;3.00&#24615;&#20215;&#19981;&#38169;&#12290;</p>
+    <div class="bet-item"><span class="label">&#21608;&#26085;009 &#24503;&#22269; vs &#24211;&#25289;&#32034; - CRS 3:0</span><span class="price">5.50</span></div>
+    <div class="total-row"><span>&#24635;&#36180;&#29575;</span><span class="ttl">1.74 &#215; 5.50 = 9.57</span></div>
+    <p class="note">&#29791;&#20856;&#32988;(&#27010;&#29575;52.7%,SPF1.74) + &#24503;&#22269;3:0(&#39318;&#36873;&#27604;&#20998;&#65292;CRS 5.50)&#12290;&#24615;&#20215;&#27604;&#39640;&#65292;&#20004;&#22330;&#26041;&#21521;&#19968;&#33268;&#12290;</p>
   </div>
 
   <!-- &#26041;&#26696;D -->
-  <div class="rec-box" style="border-left-color: var(--pink)">
-    <div class="scheme-header">
-      <span class="scheme-label scheme-d">&#26041;&#26696;D &#183; TOT&#20018;&#20851;</span>
-      <span style="font-size:.78em;color:var(--text2)">&#24635;&#36827;&#29699;&#25968;&#19977;&#20018;&#19977; &#183; 3&#27880; &#183; &#36807;2&#20851;</span>
-    </div>
-    <div class="meta-row">
-      <span>&#127922; &#29609;&#27861;: &#24635;&#36827;&#29699;&#25968;(TOT)</span>
-      <span>&#128176; &#24635;&#25237;&#20837;: 3&#21333;&#20301;</span>
-    </div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;009 &#24503;&#22269; vs &#24211;&#25289;&#32034;</span><span class="price">3&#29699; 4.35</span></div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;011 &#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572;</span><span class="price">2&#29699; 3.00</span></div>
-    <div class="bet-item"><span class="label">&#21608;&#26085;012 &#29791;&#20856; vs &#31361;&#23612;&#26031;</span><span class="price">2&#29699; 3.15</span></div>
-    <div class="total-row"><span>&#19977;&#20018;&#19968;&#36180;&#29575;</span><span class="ttl">4.35 &#215; 3.00 &#215; 3.15 = 41.11</span></div>
-    <div class="total-row" style="margin-top:4px"><span>&#26368;&#20302;&#22238;&#26412;&#26465;&#20214;</span><span style="color:var(--accent);font-weight:600">&#20219;2&#22330;&#20013;&#21363;&#26377;&#25910;&#30410;</span></div>
-    <p class="note" style="margin-top:10px">&#24503;&#22269;3&#29699;(&#955;=2.15&#65292;3:0&#39044;&#27979;) + &#31185;&#29305;&#36842;&#29926;2&#29699;(&#955;=2.75) + &#29791;&#20856;2&#29699;(&#955;=2.47)&#12290;&#36807;2&#20851;&#21363;&#23481;1&#38169;&#12290;</p>
+  <div class="rec-box" style="border-left-color:var(--pink)">
+    <div class="scheme-header"><span class="scheme-label scheme-d">&#26041;&#26696;D &#183; CRS&#22797;&#36873;</span><span style="font-size:.78em;color:var(--text2)">&#27604;&#20998;&#20004;&#20018; &#183; 4~6&#27880;</span></div>
+    <div class="meta-row"><span>&#127922; &#29609;&#27861;: &#27604;&#20998;(CRS)</span><span>&#128176; &#21333;&#22330;&#21387;2-3&#20010;&#27604;&#20998;&#22797;&#36873;</span></div>
+    <div class="bet-item"><span class="label">&#24503;&#22269; vs &#24211;&#25289;&#32034;</span><span class="price">3:0(5.50) + 4:0(5.75) + 2:0(7.25)</span></div>
+    <div class="bet-item"><span class="label">&#29791;&#20856; vs &#31361;&#23612;&#26031;</span><span class="price">1:0(5.60) + 2:0(7.50) + 1:1(5.70)</span></div>
+    <div class="total-row"><span>&#26368;&#20339;&#21333;&#27880;</span><span class="ttl">5.50 &#215; 5.60 = 30.80</span></div>
+    <p class="note">&#20004;&#22330;&#22797;&#36873;&#31574;&#30053;&#12290;&#24503;&#22269;&#39044;&#27979;&#22823;&#32988;&#38646;&#23553;&#65292;&#36873;3:0+4:0+2:0&#65307;&#29791;&#20856;&#39044;&#27979;&#31364;&#32988;&#65292;&#36873;1:0+2:0&#65292;&#21152;1:1&#38450;&#24179;&#12290;&#20004;&#22330;3&#215;3=9&#27880;&#65292;&#20219;&#24847;&#32452;&#21512;&#20013;&#22870;&#21363;&#22238;&#26412;&#12290;</p>
   </div>
 
   <!-- &#26041;&#26696;E -->
-  <div class="rec-box" style="border-left-color: var(--accent)">
-    <div class="scheme-header">
-      <span class="scheme-label scheme-e">&#26041;&#26696;E &#183; &#28151;&#21512;</span>
-      <span style="font-size:.78em;color:var(--text2)">SPF+HFT&#20004;&#22330; &#183; 2&#27880; &#183; &#19968;&#22330;SPF+&#19968;&#22330;HFT</span>
-    </div>
-    <div class="meta-row">
-      <span>&#127922; &#29609;&#27861;: SPF + HFT</span>
-      <span>&#128176; &#24635;&#25237;&#20837;: 2&#21333;&#20301;</span>
-    </div>
+  <div class="rec-box" style="border-left-color:var(--accent)">
+    <div class="scheme-header"><span class="scheme-label scheme-e">&#26041;&#26696;E &#183; &#28151;&#21512;</span><span style="font-size:.78em;color:var(--text2)">SPF+HFT&#20108;&#20018;&#19968; &#183; 1&#27880;</span></div>
+    <div class="meta-row"><span>&#127922; &#29609;&#27861;: SPF + HFT</span></div>
     <div class="bet-item"><span class="label">&#21608;&#26085;012 &#29791;&#20856; vs &#31361;&#23612;&#26031; - SPF</span><span class="price">&#32988; 1.74</span></div>
     <div class="bet-item"><span class="label">&#21608;&#26085;010 &#33655;&#20848; vs &#26085;&#26412; - HFT &#32988;&#32988;</span><span class="price">2.65</span></div>
     <div class="total-row"><span>&#24635;&#36180;&#29575;</span><span class="ttl">1.74 &#215; 2.65 = 4.61</span></div>
-    <p class="note" style="margin-top:10px">&#29791;&#20856;&#32988; + &#33655;&#20848;&#21322;&#20840;&#22330;&#32988;&#32988;&#12290;&#33655;&#20848;&#39044;&#27979;2:1&#65292;&#21322;&#22330;&#39046;&#20808;&#27169;&#24335;&#21487;&#33021;&#12290;&#36180;&#29575;4.61&#65292;&#24615;&#20215;&#27604;&#19981;&#38169;&#12290;</p>
+    <p class="note">&#29791;&#20856;&#32988; + &#33655;&#20848;&#21322;&#20840;&#22330;&#32988;&#32988;&#12290;&#33655;&#20848;&#39044;&#27979;2:1&#65292;&#19978;&#21322;&#22330;&#39046;&#20808;&#27169;&#24335;&#21487;&#33021;&#12290;&#36180;&#29575;4.61&#65292;&#20013;&#31561;&#39118;&#38505;&#21487;&#25509;&#21463;&#12290;</p>
   </div>
 </div>
 
 <!-- &#39118;&#38505;&#25552;&#31034; -->
 <div class="card">
   <h2>&#9888;&#65039; &#39118;&#38505;&#25552;&#31034;</h2>
-
   <div class="warn">
     <b>&#128308; &#39640;&#39118;&#38505;&#35686;&#21578;:</b>
-    <ul style="margin:8px 0 0 16px; line-height:1.8">
-      <li><b>&#24503;&#22269; vs &#24211;&#25289;&#32034;</b>: SPF&#26410;&#24320;&#21806;&#65292;&#20165;RSPF(-3)&#21487;&#29992;&#12290;-3&#35753;&#29699;&#38656;&#20928;&#32988;4&#29699;&#25165;&#33021;&#36180;&#20184;&#65292;&#39044;&#27979;&#27604;&#20998;3:0&#21387;&#32447;&#65292;&#23378;&#36755;&#39118;&#38505;&#39640;&#12290;</li>
-      <li><b>&#33655;&#20848; vs &#26085;&#26412;</b>: &#32508;&#21512;&#27010;&#29575;47.4%/28.1%/24.5%&#65292;&#20116;&#20116;&#24320;&#26684;&#23616;&#65292;&#20219;&#20309;&#32467;&#26524;&#37117;&#19981;&#24847;&#22806;&#12290;&#33655;&#20848;&#32988;&#38750;&#39640;&#30830;&#23450;&#24615;&#12290;</li>
-      <li><b>&#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572;</b>: &#21380;&#29916;&#22810;&#23572;&#20165;41.7%&#32988;&#29575;&#65292;&#24179;&#23616;27.8%&#19981;&#20302;&#12290;&#21183;&#22343;&#21147;&#25932;&#65292;&#24179;&#23616;&#39118;&#38505;&#20013;&#31561;&#12290;</li>
+    <ul style="margin:8px 0 0 16px;line-height:1.8">
+      <li><b>&#24503;&#22269; vs &#24211;&#25289;&#32034;</b>: SPF&#26410;&#24320;&#21806;&#65292;RSPF(-3)&#38656;&#20928;&#32988;4&#29699;&#12290;&#39044;&#27979;3:0&#21387;&#32447;&#65292;&#23378;&#36755;&#39118;&#38505;&#22312;&#12290;</li>
+      <li><b>&#33655;&#20848; vs &#26085;&#26412;</b>: 47.4%/28.1%/24.5%&#65292;&#20116;&#20116;&#24320;&#26684;&#23616;&#12290;&#33655;&#20848;&#32988;&#38750;&#39640;&#30830;&#23450;&#24615;&#65292;&#20219;&#20309;&#32467;&#26524;&#37117;&#19981;&#24847;&#22806;&#12290;</li>
+      <li><b>&#31185;&#29305;&#36842;&#29926; vs &#21380;&#29916;&#22810;&#23572;</b>: &#21380;&#29916;&#22810;&#23572;&#20165;41.7%&#65292;&#24179;&#23616;27.8%&#12290;&#21183;&#22343;&#21147;&#25932;&#65292;&#24179;&#23616;&#39118;&#38505;&#20013;&#31561;&#12290;</li>
     </ul>
   </div>
-
   <div class="info">
     <b>&#128161; &#31574;&#30053;&#24314;&#35758;:</b>
-    <ul style="margin:8px 0 0 16px; line-height:1.8">
-      <li><b>&#20248;&#20808;&#25512;&#33616;:</b> &#26041;&#26696;A (SPF&#20108;&#20018;&#19968; &#36180;&#29575;2.63) &#8212; &#26368;&#23433;&#20840;</li>
-      <li><b>&#24615;&#20215;&#27604;&#26368;&#20339;:</b> &#26041;&#26696;C (SPF&#215;TOT &#36180;&#29575;5.22) &#8212; &#20013;&#31561;&#39118;&#38505;&#39640;&#22238;&#25253;</li>
+    <ul style="margin:8px 0 0 16px;line-height:1.8">
+      <li><b>&#20248;&#20808;&#25512;&#33616;:</b> &#26041;&#26696;A (SPF&#20108;&#20018;&#19968; 2.63) &#8212; &#26368;&#23433;&#20840;&#65292;&#20004;&#22330;&#26041;&#21521;&#26126;&#30830;</li>
+      <li><b>&#24615;&#20215;&#27604;&#26368;&#20339;:</b> &#26041;&#26696;C (SPF&#215;CRS 9.57) &#8212; &#29791;&#20856;&#32988;+&#24503;&#22269;3:0&#65292;&#20108;&#20018;&#19968;&#36180;&#29575;9.57</li>
       <li><b>&#26368;&#31283;&#20581;:</b> &#26041;&#26696;B (RSPF&#19977;&#20018;&#22235;&#23481;1&#38169;) &#8212; &#38450;&#24481;&#24615;&#26368;&#20339;</li>
-      <li>&#20165;&#20379;&#23089;&#20048;&#21442;&#32771;&#65292;&#29702;&#24615;&#25237;&#27880;&#65292;&#37327;&#21147;&#32780;&#20026;&#12290;</li>
+      <li><b>&#26368;&#23433;&#20840;:</b> &#26041;&#26696;A &#8212; &#23450;&#20301;&#33021;&#21147;&#24378;&#21183;&#26041;&#65292;&#19981;&#21463;&#35753;&#29699;&#24433;&#21709;</li>
     </ul>
   </div>
 </div>
@@ -331,25 +291,14 @@ table.odds tr:hover td { background: rgba(255,255,255,.02); }
 <div class="card">
   <h2>&#128202; &#26041;&#27861;&#35770;</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px">
-    <div style="background:var(--bg3);border-radius:10px;padding:14px">
-      <h4 style="color:var(--blue);margin:0 0 6px">ELO&#27169;&#22411; (32.5%)</h4>
-      <p style="font-size:.75em;color:var(--text2);margin:0">&#22240;&#23376;&#20462;&#27491;ELO &#183; Poisson &#955;, xG, &#27604;&#20998;&#27010;&#29575;</p>
-    </div>
-    <div style="background:var(--bg3);border-radius:10px;padding:14px">
-      <h4 style="color:var(--pink);margin:0 0 6px">Polymarket (33.75%)</h4>
-      <p style="font-size:.75em;color:var(--text2);margin:0">&#39044;&#27979;&#24066;&#22330; &#183; &#24066;&#22330;&#26435;&#37325;50% (&#32477;&#23545;33.75%)</p>
-    </div>
-    <div style="background:var(--bg3);border-radius:10px;padding:14px">
-      <h4 style="color:var(--gold);margin:0 0 6px">&#27431;&#27954;&#36180;&#29575; (20.25%)</h4>
-      <p style="font-size:.75em;color:var(--text2);margin:0">7&#23478;&#20844;&#21496; &#183; &#24066;&#22330;&#26435;&#37325;30% (&#32477;&#23545;20.25%)</p>
-    </div>
-    <div style="background:var(--bg3);border-radius:10px;padding:14px">
-      <h4 style="color:var(--accent);margin:0 0 6px">&#20122;&#27954;&#30424;&#21475; (13.5%)</h4>
-      <p style="font-size:.75em;color:var(--text2);margin:0">titan007 15&#23478; &#183; &#24066;&#22330;&#26435;&#37325;20% (&#32477;&#23545;13.5%)</p>
-    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:14px"><h4 style="color:var(--blue);margin:0 0 6px">ELO&#27169;&#22411; (32.5%)</h4><p style="font-size:.75em;color:var(--text2);margin:0">&#22240;&#23376;&#20462;&#27491;ELO &#183; Poisson &#955;, xG, &#27604;&#20998;&#27010;&#29575;</p></div>
+    <div style="background:var(--bg3);border-radius:10px;padding:14px"><h4 style="color:var(--pink);margin:0 0 6px">Polymarket (33.75%)</h4><p style="font-size:.75em;color:var(--text2);margin:0">&#39044;&#27979;&#24066;&#22330; &#183; &#24066;&#22330;&#26435;&#37325;50% (&#32477;&#23545;33.75%)</p></div>
+    <div style="background:var(--bg3);border-radius:10px;padding:14px"><h4 style="color:var(--gold);margin:0 0 6px">&#27431;&#27954;&#36180;&#29575; (20.25%)</h4><p style="font-size:.75em;color:var(--text2);margin:0">7&#23478;&#20844;&#21496; &#183; &#24066;&#22330;&#26435;&#37325;30% (&#32477;&#23545;20.25%)</p></div>
+    <div style="background:var(--bg3);border-radius:10px;padding:14px"><h4 style="color:var(--accent);margin:0 0 6px">&#20122;&#27954;&#30424;&#21475; (13.5%)</h4><p style="font-size:.75em;color:var(--text2);margin:0">titan007 15&#23478; &#183; &#24066;&#22330;&#26435;&#37325;20% (&#32477;&#23545;13.5%)</p></div>
   </div>
   <p style="font-size:.75em;color:var(--text2);margin-top:16px;text-align:center">
-    &#32508;&#21512;&#27010;&#29575;: p = 0.325&#215;ELO + 0.675&#215;(0.50&#215;Poly + 0.30&#215;&#27431;&#36180; + 0.20&#215;&#20122;&#30424;) &#183; &#22235;&#27493;&#20998;&#26512;: &#32988;&#36127;&#24179;&#8594;&#36827;&#29699;/&#38646;&#23553;&#8594;&#24635;&#36827;&#29699;&#8594;&#27604;&#20998;
+    &#32508;&#21512;&#27010;&#29575;: p = 0.325&#215;ELO + 0.675&#215;(0.50&#215;Poly + 0.30&#215;&#27431;&#36180; + 0.20&#215;&#20122;&#30424;) &#183; &#22235;&#27493;&#20998;&#26512;: &#32988;&#36127;&#24179;&#8594;&#36827;&#29699;/&#38646;&#23553;&#8594;&#24635;&#36827;&#29699;&#8594;&#27604;&#20998;<br>
+    &#36180;&#29575;&#26469;&#28304;: sporttery.cn &#28151;&#21512;&#36807;&#20851; &#8212; &#21516;&#26102;&#21246;&#36873;&#32988;&#24179;&#36127;+&#27604;&#20998;+&#24635;&#36827;&#29699;+&#21322;&#20840;&#22330;
   </p>
 </div>
 
@@ -357,7 +306,7 @@ table.odds tr:hover td { background: rgba(255,255,255,.02); }
 
 <div class="footer">
   <p>&#25968;&#25454;&#26469;&#28304;: sporttery.cn &#183; worldcup-odds.com &#183; titan007.com &#183; Polymarket &#183; ELO&#27169;&#22411;</p>
-  <p>&#20165;&#20379;&#23089;&#20048;&#21442;&#32771; &#183; v21.0 &#183; WorkBuddy AI &#183; 2026-06-11</p>
+  <p>&#20165;&#20379;&#23089;&#20048;&#21442;&#32771; &#183; v21.0 &#183; WorkBuddy AI &#183; 2026-06-12</p>
 </div>
 
 </body>
