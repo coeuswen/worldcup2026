@@ -1,211 +1,109 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月14日 全面分析报告 v24.9</title>
+<title>2026世界杯 6月14日 全面分析报告 v26.1</title>
 <style>:root {
-    --bg: #0a0e17;
-    --card-bg: #111827;
-    --card-inner: #1a1f2e;
-    --border: #1e293b;
-    --text: #e2e8f0;
-    --text-secondary: #94a3b8;
-    --green: #22c55e;
-    --red: #ef4444;
-    --gold: #eab308;
-    --blue: #3b82f6;
-    --purple: #a855f7;
-    --teal: #14b8a6;
-    --orange: #f97316;
+  --bg: #0a0e17; --card-bg: #111827; --card-inner: #1a1f2e;
+  --text: #e2e8f0; --text-secondary: #8b95a5;
+  --teal: #14b8a6; --red: #ef4444; --orange: #f97316;
+  --blue: #3b82f6; --purple: #a855f7; --gold: #f59e0b;
+  --green: #22c55e; --risk-1: #dc2626; --risk-2: #f59e0b; --risk-3: #3b82f6;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    line-height: 1.6;
-    padding: 15px;
-}
-.container { max-width: 1500px; margin: 0 auto; }
-
-/* 标题区 */
-.header-section {
-    text-align: center;
-    margin-bottom: 25px;
-    padding: 20px;
-    background: linear-gradient(135deg, #111827, #1a1a2e);
-    border-radius: 16px;
-    border: 1px solid var(--border);
-}
-.header-section h1 {
-    font-size: 2em;
-    background: linear-gradient(135deg, #22c55e, #3b82f6, #a855f7, #14b8a6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 6px;
-}
-.subtitle { color: var(--text-secondary); font-size: 0.9em; }
-.badge-row { display:flex; justify-content:center; gap:10px; margin-top:10px; flex-wrap:wrap; }
-.badge {
-    padding: 3px 12px; border-radius: 14px; font-size: 0.8em; font-weight: 600;
-}
-.badge-v246 { background:rgba(20,184,166,0.2); color:#14b8a6; border:1px solid #14b8a6; }
-.badge-knowledge { background:rgba(168,85,247,0.2); color:#a855f7; border:1px solid #a855f7; }
-.badge-data { background:rgba(34,197,94,0.2); color:#22c55e; border:1px solid #22c55e; }
-.badge-skill { background:rgba(234,179,8,0.2); color:#eab308; border:1px solid #eab308; }
-
-/* 知识源说明 */
-.knowledge-bar {
-    display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
-    margin-bottom:20px;
-}
-.knowledge-item {
-    background: var(--card-bg); border-radius:10px; padding:10px;
-    text-align:center; border:1px solid var(--border); font-size:0.8em;
-}
-.knowledge-item .src { font-weight:700; color: var(--gold); font-size:0.85em; }
-.knowledge-item .desc { color: var(--text-secondary); font-size:0.75em; margin-top:4px; }
-
-/* 汇总表 */
-.summary-section {
-    background: var(--card-bg); border-radius:14px; padding:20px;
-    margin-bottom:20px; border:1px solid var(--border);
-}
-.summary-table { width:100%; border-collapse:collapse; font-size:0.9em; }
-.summary-table th {
-    background:#0a0e17; padding:10px 8px; text-align:center;
-    font-weight:600; color:var(--text-secondary); border-bottom:2px solid var(--border);
-    font-size:0.85em;
-}
-.summary-table td { padding:10px 8px; text-align:center; border-bottom:1px solid var(--border); }
-.match-cell { text-align:left !important; font-weight:600; font-size:0.95em; }
-.score-main { font-size:1.2em; font-weight:700; color:#14b8a6; }
-.score-second { color:var(--text-secondary); }
-.conf-badge {
-    display:inline-block; padding:2px 10px; border-radius:10px; font-weight:700; font-size:0.8em;
-}
-.conf-high { background:rgba(34,197,94,0.2); color:#22c55e; }
-.conf-med { background:rgba(234,179,8,0.2); color:#eab308; }
-.conf-low { background:rgba(239,68,68,0.2); color:#ef4444; }
-.risk-badge {
-    display:inline-block; padding:2px 8px; border-radius:8px;
-    font-weight:600; font-size:0.75em;
-}
-.risk-t1 { background:rgba(239,68,68,0.25); color:#ef4444; }
-.risk-t2 { background:rgba(249,115,22,0.25); color:#f97316; }
-.risk-t3 { background:rgba(234,179,8,0.2); color:#eab308; }
-.risk-low { background:rgba(34,197,94,0.15); color:#22c55e; }
-
-/* 比赛卡片 (v24.4风格) */
-.match-card {
-    background: var(--card-bg); border-radius:14px; padding:20px;
-    margin-bottom:20px; border:1px solid var(--border);
-}
-.match-header {
-    display:flex; justify-content:space-between; align-items:center;
-    margin-bottom:15px; padding-bottom:12px; border-bottom:1px solid var(--border);
-}
-.match-header h2 { font-size:1.3em; }
-.match-score-rec {
-    background: rgba(20,184,166,0.1); border-radius:10px; padding:10px 15px;
-    text-align:center;
-}
-.match-score-rec .main-score { font-size:1.4em; font-weight:700; color:#14b8a6; }
-.match-score-rec .sec-score { color: var(--text-secondary); font-size:0.9em; }
-
-/* 三列面板布局 (v24.4风格核心) */
-.panel-grid {
-    display:grid; grid-template-columns:1fr 1fr 1fr;
-    gap:12px; margin-bottom:15px;
-}
-@media (max-width:1000px) { .panel-grid { grid-template-columns:1fr; } }
-.panel {
-    background: var(--card-inner); border-radius:10px; padding:14px;
-    border:1px solid var(--border);
-}
-.panel h4 {
-    font-size:0.85em; color: var(--gold); margin-bottom:8px;
-    padding-bottom:6px; border-bottom:1px solid var(--border);
-}
-.panel-row { display:flex; justify-content:space-between; margin-bottom:4px; font-size:0.82em; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 12px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.header-section { text-align: center; padding: 16px 0 10px; }
+h1 { font-size: 1.5em; color: var(--orange); }
+.subtitle { color: var(--text-secondary); font-size: 0.78em; margin-top: 4px; }
+.badge-row { margin-top: 8px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.badge { padding: 3px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 600; }
+.badge-v246 { background: #1e3a5a; color: #4ade80; }
+.badge-v260 { background: #312e81; color: #a5b4fc; }
+.badge-knowledge { background: #1e3a5a; color: #4ade80; }
+.badge-skill { background: #312e81; color: #a5b4fc; }
+.badge-data { background: #451a03; color: #fcd34d; }
+.method-bar { background: var(--card-inner); padding: 8px 14px; border-radius: 8px;
+  margin: 10px 0; font-size: 0.75em; color: var(--text-secondary); line-height: 1.6; }
+.knowledge-bar { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
+.knowledge-item { background: var(--card-inner); padding: 8px 12px; border-radius: 8px; flex: 1; min-width: 180px; }
+.knowledge-item .src { color: var(--teal); font-weight: 700; font-size: 0.8em; }
+.knowledge-item .desc { color: var(--text-secondary); font-size: 0.7em; margin-top: 2px; }
+.auto-bar { background: #1a1f2e; padding: 6px 14px; border-radius: 8px;
+  margin: 8px 0; font-size: 0.73em; color: var(--blue); }
+.summary-section { margin: 14px 0; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: 0.78em; }
+.summary-table th { background: var(--card-inner); padding: 6px 8px; text-align: left;
+  color: var(--text-secondary); font-weight: 600; border-bottom: 1px solid #2d3a4a; }
+.summary-table td { padding: 6px 8px; border-bottom: 1px solid #1e2a3a; }
+.score-main { color: var(--teal); font-weight: 700; font-size: 1.05em; }
+.score-second { color: var(--orange); }
+.match-card { background: var(--card-bg); border-radius: 10px; padding: 14px; margin: 12px 0; }
+.match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.match-header h2 { font-size: 1.05em; }
+.match-score-rec { text-align: right; }
+.main-score { color: var(--teal); font-size: 1.2em; font-weight: 700; }
+.sec-score { color: var(--text-secondary); font-size: 0.82em; margin-left: 6px; }
+.panel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media(max-width: 800px) { .panel-grid { grid-template-columns: 1fr; } }
+.panel { background: var(--card-inner); padding: 10px; border-radius: 8px; }
+.panel h4 { font-size: 0.82em; color: var(--orange); margin-bottom: 8px; }
+.panel-row { display: flex; justify-content: space-between; font-size: 0.78em; padding: 3px 0; }
 .panel-row .label { color: var(--text-secondary); }
-.panel-row .value { font-weight:600; }
-.progress-bar-bg { background:#1e293b; border-radius:6px; height:16px; margin:6px 0; overflow:hidden; }
-.progress-bar-fill { height:100%; border-radius:6px; transition:width 0.3s; }
-.fill-green { background:linear-gradient(90deg,#22c55e,#4ade80); }
-.fill-blue { background:linear-gradient(90deg,#3b82f6,#60a5fa); }
-.fill-purple { background:linear-gradient(90deg,#a855f7,#c084fc); }
+.panel-row .value { color: var(--text); font-weight: 600; }
+.progress-bar-bg { background: #0f1a2a; border-radius: 6px; height: 16px; margin: 6px 0; overflow: hidden; }
+.progress-bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s; }
+.fill-green { background: linear-gradient(90deg, #059669, #22c55e); }
+.fill-blue { background: linear-gradient(90deg, #0d9488, #2dd4bf); }
+.fill-purple { background: linear-gradient(90deg, #8b5cf6, #d8b4fe); }
 
-/* 分析区 */
-.analysis-panel {
-    background: var(--card-inner); border-radius:10px; padding:14px;
-    margin-bottom:12px; border:1px solid var(--border);
-}
-.analysis-panel h4 {
-    font-size:0.85em; margin-bottom:10px; padding-bottom:6px;
-    border-bottom:1px solid var(--border);
-}
-.analysis-panel h4 .step-num { color: var(--teal); font-weight:700; }
-.analysis-item {
-    font-size:0.82em; margin-bottom:6px; line-height:1.5;
-}
-.analysis-item .tag {
-    display:inline-block; padding:1px 7px; border-radius:6px;
-    font-size:0.75em; font-weight:600; margin-right:4px;
-}
-.tag-warn { background:rgba(239,68,68,0.15); color:#ef4444; }
-.tag-info { background:rgba(59,130,246,0.15); color:#3b82f6; }
-.tag-good { background:rgba(34,197,94,0.15); color:#22c55e; }
-.tag-hot { background:rgba(249,115,22,0.15); color:#f97316; }
-
-/* 增强: AI思考区块 */
-.ai-thought-block {
-    background: rgba(20,184,166,0.05); border-left: 3px solid #14b8a6;
-    border-radius:6px; padding:10px 12px; margin:6px 0; font-size:0.8em;
-}
-.ai-thought-block .thought-title {
-    color: #14b8a6; font-weight:600; margin-bottom:4px; font-size:0.9em;
-}
-
-/* 增强: 赛事情报面板 */
-.intel-panel {
-    background: rgba(59,130,246,0.06); border-radius:8px; padding:10px 14px;
-    margin:8px 0; border: 1px solid rgba(59,130,246,0.2); font-size:0.8em;
-}
-.intel-panel h5 { color: #3b82f6; margin-bottom:6px; font-size:0.85em; }
-.intel-row { margin:3px 0; color: var(--text-secondary); }
-.intel-row strong { color: var(--text); }
-
-/* 底部 */
-.footer {
-    text-align:center; color:var(--text-secondary); margin-top:30px;
-    padding-top:15px; border-top:1px solid var(--border); font-size:0.8em;
-}
-
-/* 自动化状态条 */
-.auto-bar {
-    background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2);
-    border-radius: 8px; padding: 8px 14px; margin-bottom: 15px;
-    text-align: center; font-size:0.78em; color: #22c55e;
-}
+/* v26.3 近期状态面板 */
+.form-panel { background: var(--card-inner); padding: 10px; border-radius: 8px; margin: 10px 0;
+  border-left: 3px solid var(--gold); }
+.form-grid { display: flex; align-items: stretch; gap: 12px; margin-top:6px; }
+.form-team { flex: 1; min-width: 120px; }
+.form-divider { width: 1px; background: #2d3a4a; border-radius: 2px; margin: 4px 0; }
+.form-badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:0.72em; font-weight:600; }
+.form-hot { background:#451a03; color:#fbbf24; }      /* 🔥 火热状态 */
+.form-warm { background:#064e3b; color:#34d399; }    /* 温暖状态 */
+.form-cool { background:#1e3a5f; color:#60a5fa; }    /* 偏冷状态 */
+.form-cold { background:#450a0a; color:#f87171; }    /* 冰冷状态 */
+.intel-panel { background: var(--card-inner); padding: 10px; border-radius: 8px; margin: 8px 0; font-size: 0.78em; }
+.intel-row { display: flex; gap: 10px; margin: 3px 0; flex-wrap: wrap; }
+.analysis-panel { background: var(--card-inner); padding: 10px; border-radius: 8px; margin: 8px 0; font-size: 0.78em; }
+.analysis-item { margin: 3px 0; }
+.conf-high { color: var(--teal); font-weight: 700; }
+.conf-med { color: var(--orange); }
+.conf-low { color: var(--text-secondary); }
+.conf-badge { padding: 2px 8px; border-radius: 10px; font-size: 0.75em; }
+.risk-low { background: #052e16; color: #4ade80; }
+.risk-t1 { background: #7f1d1d; color: #f87171; }
+.risk-t2 { background: #451a03; color: #fbbf24; }
+.risk-t3 { background: #172554; color: #60a5fa; }
+.step-num { color: var(--blue); font-size: 0.75em; }
+.footer { text-align: center; padding: 14px; color: var(--text-secondary); font-size: 0.73em; }
+.highlight { color: var(--orange); font-weight: 700; }
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header-section">
-<h1>🏆 2026世界杯 全面分析报告 v24.9</h1>
-<div class="subtitle">v24.6 视觉框架 + v24.8 丰富内容 = 四源融合AI驱动 | 生成时间：2026-06-13 02:04</div>
-<div class="badge-row">
-<span class="badge badge-v246">v24.9 框架融合</span>
-<span class="badge badge-knowledge">📚 两书精华</span>
-<span class="badge badge-skill">🧠 双Skill+AI</span>
-<span class="badge badge-data">📊 实时+缓存</span>
+  <h1>🏆 2026世界杯 全面分析报告 v26.4</h1>
+  <div class="subtitle">v24.9 视觉框架 + AI智能比分推荐 + 近期6场状态因子 + BTTS校正 | 生成时间：2026-06-13 14:05</div>
+  <div class="badge-row">
+    <span class="badge badge-v246">v24.9 框架</span>
+    <span class="badge badge-v260">🧠 v26.4 AI比分引擎</span>
+    <span class="badge badge-knowledge">📚 两书精华</span>
+    <span class="badge badge-skill">🧠 双Skill+AI</span>
+    <span class="badge badge-data">📊 234场历史MLE</span>
+  </div>
 </div>
-</div>
-
-<div class="auto-bar">
-✅ 全自动流水线: Polymarket+Pinnacle(API优先/缓存回退) | WebSearch赛事情报 | AI思考驱动分析 | v24.6三列面板卡片
+<div class="method-bar">
+🧠 <strong>v26.4 核心升级 — AI智能比分推荐引擎：</strong>
+不再简单按概率排列比分！AI综合BTTS一致性、进攻因子、状态趋势、O2.5市场信号等6维因子，对每个比分进行逻辑一致性评分。
+<br>◆核心原则: 如果BTTS>45%且双方攻击因子>1.0 → 0:0即使概率最高也要降权；双方进球比分(如1:1/1:2)获得升权。
+<br>◆状态因子: 基于真实国际赛近6场战绩 → attack_mult × defense_mult → λ调整
 </div>
 <div class="knowledge-bar">
 <div class="knowledge-item">
@@ -218,7 +116,7 @@ body {
 </div>
 <div class="knowledge-item">
   <div class="src">足球量化分析预测</div>
-  <div class="desc">ELO先验 · Poisson · 爆冷三层 · 蒙特卡洛</div>
+  <div class="desc">ELO先验 · NegBin · 爆冷三层 · 蒙特卡洛</div>
 </div>
 <div class="knowledge-item">
   <div class="src">足球贝叶斯分析</div>
@@ -226,64 +124,65 @@ body {
 </div>
 </div>
 <div class="summary-section">
-<h3 style="margin-bottom:12px;">📊 推荐比分一览（v24.9 框架融合版）</h3>
+<h3 style="margin-bottom:12px;">📊 AI智能推荐比分一览（v26.4 — 6维因子逻辑一致性排序，不再机械概率排列）</h3>
 <table class="summary-table">
 <thead><tr>
-<th>对阵</th><th>ELO差距</th><th>主推比分</th><th>次选比分</th><th>总进球λ</th>
-<th>实力定位</th><th>分布类型</th><th>爆冷等级</th><th>O2.5</th>
+<th>对阵</th><th>🤖 AI主推</th><th>次选</th><th>AI概率</th><th>纯概率Top1</th>
+<th>总进球λ</th><th>O2.5</th><th>AI推理核心逻辑</th>
 </tr></thead>
 <tbody>
 <tr>
-<td class="match-cell">卡塔尔 vs 瑞士</td>
-<td>-403</td>
-<td class="score-main">0:2</td>
-<td class="score-second">0:1</td>
-<td>2.83</td>
-<td style="font-size:0.8em;">一边倒 (差距>300分)</td>
-<td style="font-size:0.8em;">一边倒分布</td>
-<td><span class="risk-badge risk-low">Tier2（中度风险）</span></td>
-<td>57%</td>
+  <td class="match-cell"><strong>卡塔尔 vs 瑞士</strong></td>
+  <td class="score-main">0:2</td>
+  <td class="score-second">0:3</td>
+  <td>12.1% / 10.7%</td>
+  <td style="color:var(--text-secondary);font-size:0.75em;">0:2(12.1%)</td>
+  <td style="color:var(--teal);">3.26</td>
+  <td>57%</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.19 | AI综合15维数据分析后，主推 <strong>0:2</strong>（概率1...</td>
 </tr>
 <tr>
-<td class="match-cell">巴西 vs 摩洛哥</td>
-<td>124</td>
-<td class="score-main">1:0</td>
-<td class="score-second">1:1</td>
-<td>2.62</td>
-<td style="font-size:0.8em;">中强优势 (差距80-150分)</td>
-<td style="font-size:0.8em;">强倾向分布</td>
-<td><span class="risk-badge risk-low">Tier1（高度风险）</span></td>
-<td>47%</td>
+  <td class="match-cell"><strong>巴西 vs 摩洛哥</strong></td>
+  <td class="score-main">1:1</td>
+  <td class="score-second">2:1</td>
+  <td>8.3% / 6.8%</td>
+  <td style="color:var(--text-secondary);font-size:0.75em;">0:0(11.0%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:0)</span></td>
+  <td style="color:var(--teal);">3.04</td>
+  <td>47%</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.36 | AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8...</td>
 </tr>
 <tr>
-<td class="match-cell">海地 vs 苏格兰</td>
-<td>-168</td>
-<td class="score-main">0:1</td>
-<td class="score-second">1:1</td>
-<td>2.62</td>
-<td style="font-size:0.8em;">明显优势 (差距150-300分)</td>
-<td style="font-size:0.8em;">强倾向分布</td>
-<td><span class="risk-badge risk-low">Tier1（高度风险）</span></td>
-<td>52%</td>
+  <td class="match-cell"><strong>海地 vs 苏格兰</strong></td>
+  <td class="score-main">1:1</td>
+  <td class="score-second">1:2</td>
+  <td>8.4% / 7.4%</td>
+  <td style="color:var(--text-secondary);font-size:0.75em;">0:1(11.7%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:1)</span></td>
+  <td style="color:var(--teal);">2.92</td>
+  <td>52%</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.25 | AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8...</td>
 </tr>
 <tr>
-<td class="match-cell">澳大利亚 vs 土耳其</td>
-<td>-107</td>
-<td class="score-main">1:1</td>
-<td class="score-second">0:1</td>
-<td>2.54</td>
-<td style="font-size:0.8em;">中强优势 (差距80-150分)</td>
-<td style="font-size:0.8em;">混沌分布</td>
-<td><span class="risk-badge risk-low">Tier1（高度风险）</span></td>
-<td>47%</td>
+  <td class="match-cell"><strong>澳大利亚 vs 土耳其</strong></td>
+  <td class="score-main">1:1</td>
+  <td class="score-second">1:2</td>
+  <td>9.3% / 7.9%</td>
+  <td style="color:var(--text-secondary);font-size:0.75em;">0:0(11.1%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:0)</span></td>
+  <td style="color:var(--teal);">2.68</td>
+  <td>51%</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.30 | AI综合15维数据分析后，主推 <strong>1:1</strong>（概率9...</td>
 </tr>
 </tbody></table></div>
 <div class="match-card">
 <div class="match-header">
   <h2>⚽ 卡塔尔 vs 瑞士</h2>
   <div class="match-score-rec">
-    <span class="main-score">⭐ 0:2</span>
-    <span class="sec-score"> | 次选: 0:1</span>
+    <span class="main-score">🤖 0:2</span>
+    <span class="sec-score"> | 次选: 0:3</span>
+    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
+      AI逻辑一致性评分 ×1.19 | 概率: 12.1%+10.7%
+    </div>
+    <!-- 纯概率Top1 vs AI主推对比 -->
+    <div style="font-size:0.68em; color:#22c55e; margin-top:1px;">✓ AI与概率一致</div>
   </div>
 </div>
 
@@ -292,92 +191,193 @@ body {
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
-    <div class="panel-row"><span class="label">ELO差距</span><span class="value">-403 (一边倒 (差距>300分))</span></div>
+    <div class="panel-row"><span class="label">ELO差距</span><span class="value">-403 (弱队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">9% / 5% / 86%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">7% / 14% / 79%</span></div>
-    <div class="panel-row"><span class="label">分布类型</span><span class="value" style="color:var(--gold);">一边倒分布</span></div>
-    <div class="panel-row"><span class="label">让球估计</span><span class="value">预计让1-1.5球</span></div>
-    <div class="panel-row"><span class="label">⚡ 心理预期</span><span class="value" style="color:var(--gold); font-size:0.78em;">市场与ELO一致。偏差仅-2%，无过热信号。</span></div>
-    <div class="panel-row"><span class="label">📈 市场P0偏差</span><span class="value" style="font-size:0.85em;">-2%</span></div>
-  </div>
-
-  <!-- 中：主/客队独立进球 -->
-  <div class="panel">
-    <h4>🎯 卡塔尔 vs 瑞士 独立进球能力</h4>
-    <div class="panel-row"><span class="label">卡塔尔 O0.5</span><span class="value">50%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:50.3%;"></div></div>
-    <div class="panel-row"><span class="label">卡塔尔 O1.5</span><span class="value">16%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:15.6%;"></div></div>
-    <div class="panel-row"><span class="label">卡塔尔 O2.5</span><span class="value">3%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:3.4%;"></div></div>
-    <div style="margin-top:8px;"></div>
-    <div class="panel-row"><span class="label">瑞士 O0.5</span><span class="value">88%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:88.1%;"></div></div>
-    <div class="panel-row"><span class="label">瑞士 O1.5</span><span class="value">63%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:62.8%;"></div></div>
-    <div class="panel-row"><span class="label">瑞士 O2.5</span><span class="value">36%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:35.8%;"></div></div>
-  </div>
-
-  <!-- 右：O/U双源融合 -->
-  <div class="panel">
-    <h4>📈 进球预测（O/U双源融合）</h4>
-    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">2.83</span></div>
-    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">0.70</span></div>
-    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">2.13</span></div>
+    <div class="panel-row"><span class="label">市场胜率</span><span class="value">19% / 20% / 61%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">57%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">47%</span></div>
-    <div style="margin-top:8px; font-size:0.78em; color:var(--text-secondary);">
-      卡塔尔 O0.5: 50% | 瑞士 O0.5: 88%
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">45%</span></div>
+  </div>
+
+  <!-- 中：主/客队独立进球（O/X.5驱动） -->
+  <div class="panel">
+    <h4>🎯 卡塔尔 vs 瑞士 独立进球能力（市场O0.5锚点 + NB形状）</h4>
+    <div class="panel-row"><span class="label">卡塔尔 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">32%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:32.0%;"></div></div>
+    <div class="panel-row"><span class="label">卡塔尔 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">10%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:9.8%;"></div></div>
+    <div class="panel-row"><span class="label">卡塔尔 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">2%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:2.5%;"></div></div>
+    <div style="margin-top:8px;"></div>
+    <div class="panel-row"><span class="label">瑞士 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">79%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:79.0%;"></div></div>
+    <div class="panel-row"><span class="label">瑞士 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">62%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:61.7%;"></div></div>
+    <div class="panel-row"><span class="label">瑞士 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">42%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:41.5%;"></div></div>
+  </div>
+
+  <!-- 右：O/U双源融合 + 高比分 -->
+  <div class="panel">
+    <h4>📈 进球预测（O/X.5驱动 + NB融合）</h4>
+    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">3.26</span></div>
+    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">0.607 (NB r=4.156)</span></div>
+    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">2.650 (NB r=11.002)</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">57%</span></div>
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">45%</span></div>
+    <div style="margin-top:8px; font-size:0.78em;">
+      <span style="color:#f97316;">融合≥4球: 37.6%</span>
+      <span style="color:var(--text-secondary); margin-left:6px;">Poisson≥4球: 39.9%</span>
     </div>
     <div style="margin-top:4px; font-size:0.75em; color:var(--blue);">
-      双源融合方法: Polymarket(60%) + Pinnacle(40%)
+      v26.3: 状态因子+市场锚+BTTS(70%) + NB(30%)
+    </div>
+  </div>
+
+  <!-- v26.3: 近期状态面板（真实国际赛战绩） -->
+  <div class="form-panel">
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <div class="form-grid">
+      <div class="form-team">
+        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">卡塔尔</div>
+        <span class="form-badge form-cold">0胜2平4负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进2</span>
+          <span style="color:var(--red); margin-left:8px;">丢8</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均0.33</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×0.81(攻)×1.07(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">极差进攻线，6场仅进2球</div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="form-team" style="text-align:right;">
+        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">瑞士</div>
+        <span class="form-badge form-warm">2胜3平1负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进13</span>
+          <span style="color:var(--red); margin-left:8px;">丢8</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均2.17</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×1.17(攻)×1.07(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">进攻火力充足但不稳定</div>
+      </div>
+    </div>
+    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
+      数据源: 用户截图(卡/瑞/海/苏) + liansai.500.com(巴/澳/土) + 搜狐(摩) | 
+      λ原→λ调: 1.00/1.54 → 0.61/2.65
+    </div>
+  </div>
+
+  <!-- AI推理分析面板 -->
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    
+    <!-- AI推理说明 -->
+    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
+      AI综合15维数据分析后，主推 <strong>0:2</strong>（概率12.1%，AI评分×1.19）<br>卡塔尔攻击力不足（攻×0.81），零封合理；瑞士得2球符合其进攻水平<br>加分项：卡塔尔近期低迷零封合理；🔥瑞士近期2胜状态火热；卡塔尔攻×0.81零封合理<br>次选 <strong>0:3</strong>（概率10.7%，AI评分×1.19）
+    </div>
+
+    <!-- AI排名Top5详细表格 -->
+    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
+      <strong style="color:#f97316;">AI排序Top5（概率 × 逻辑一致性因子）:</strong> 0:2(12.1%) → 0:3(10.7%) → 0:1(10.4%) → 0:0(9.7%) → 0:4(7.3%)
+    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
+        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
+        <tr>
+          <td style="color:#14b8a6;font-weight:700;">1.</td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>0:2</strong></td>
+          <td style="text-align:right;">12.1%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.19</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#f97316;">2.</td>
+          <td style="color:#f97316;"><strong>0:3</strong></td>
+          <td style="text-align:right;">10.7%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.19</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">3.</td>
+          <td style="color:#94a3b8;"><strong>0:1</strong></td>
+          <td style="text-align:right;">10.4%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.98</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span> <span style="color:#f87171;">O2.5=57%↘总球1矛盾</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">4.</td>
+          <td style="color:#94a3b8;"><strong>0:4</strong></td>
+          <td style="text-align:right;">7.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.19</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">5.</td>
+          <td style="color:#94a3b8;"><strong>1:2</strong>✓</td>
+          <td style="text-align:right;">6.6%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.19</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 45%倾向双方进球 🔥瑞士近期2胜状态火热</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
+      💡 市场锚点驱动 [已应用BTTS双方进球校正]: 瑞士O0.5=79%支持其进球；卡塔尔O0.5仅32%，零封合理
+    </div>
+    <div class="analysis-item" style="margin-top:6px;">
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">0:2</strong> (12.1%)
+      | 次选: <strong>0:3</strong> (10.7%)
+      | 置信度: <span class="conf-badge conf-med">中高</span>
+    </div>
+    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
+      融合高分优势: ≥4球概率从Poisson的39.9%提升至37.6% (+-2.3%)
     </div>
   </div>
 </div>
 <div class="intel-panel">
-<h5>🔍 自动搜索情报（WebSearch + 多引擎交叉验证）</h5>
-<div class="intel-row"><strong>🏥 伤停：</strong>卡塔尔：无关键伤病，阵容齐整；瑞士：无关键伤病，阵容齐整</div>
-<div class="intel-row"><strong>📋 预计首发：</strong>卡塔尔442防守阵型；瑞士3-4-2-1，阿坎吉领衔防线+扎卡中场调度+恩博洛锋线</div>
-<div class="intel-row"><strong>📈 近期状态：</strong>卡塔尔：LLDLLD（2平4负，无胜绩）；瑞士：WDLDWD（3胜2平1负，状态稳定）</div>
-<div class="intel-row"><strong>🤝 历史交锋：</strong>两队此前无正式比赛交锋记录</div>
-<div class="intel-row"><strong>💡 要点：</strong>卡塔尔作为东道主之一但实力差距明显(ELO差403)。瑞士经验丰富。</div>
+  <h4>📰 赛事情报（WebSearch）</h4>
+  <div class="intel-row"><strong>伤停：</strong><span>卡塔尔：无关键伤病，阵容齐整；瑞士：无关键伤病，阵容齐整</span></div>
+  <div class="intel-row"><strong>预计首发：</strong><span>卡塔尔442防守阵型；瑞士3-4-2-1，阿坎吉领衔防线+扎卡中场调度+恩博洛锋线</span></div>
+  <div class="intel-row"><strong>近期状态：</strong><span>卡塔尔：LLDLLD（2平4负，无胜绩）；瑞士：WDLDWD（3胜2平1负，状态稳定）</span></div>
+  <div class="intel-row"><strong>交锋记录：</strong><span>两队此前无正式比赛交锋记录</span></div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
-  <div class="analysis-item">瑞士ELO 1845 vs 卡塔尔1442，差距403分。这是四场比赛里实力差距最大的一场！瑞士是欧洲一线强队，卡塔尔是亚洲冠军但世界排名较低。从广义实力定位：瑞士明显更强，属于'一边倒'格局。403分的差距意味着即使瑞士只使出80%实力，仍然强于卡塔尔。</div>
+  <div class="analysis-item">
+    瑞士ELO 1845 vs 卡塔尔1442，差距403分。这是四场比赛里实力差距最大的一场！瑞士是欧洲一线强队，卡塔尔是亚洲冠军但世界排名较低。从广义实力定位：瑞士明显更强，属于'一边倒'格局。403分的差距意味着即使瑞士只使出80%实力，仍然强于卡塔尔。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
-  <div class="analysis-item">市场概率：瑞士胜79%，平14%，卡塔尔胜7%。这属于'一边倒'分布（市场严重倾向一方）。根据欧赔核心思维的'分布理论'：一边倒市场需警惕'大热必死'，但7%的卡塔尔胜率确实太低，不属于'价值爆冷'。79%的瑞士胜率虽然高，但基于实力差距是合理的。结论：这不是'大热必死'场景，而是'实力碾压'场景。</div>
+  <div class="analysis-item">
+    市场概率：瑞士胜79%，平14%，卡塔尔胜7%。这属于'一边倒'分布（市场严重倾向一方）。根据欧赔核心思维的'分布理论'：一边倒市场需警惕'大热必死'，但7%的卡塔尔胜率确实太低，不属于'价值爆冷'。79%的瑞士胜率虽然高，但基于实力差距是合理的。结论：这不是'大热必死'场景，而是'实力碾压'场景。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-  <div class="analysis-item">市场认为瑞士赢是'理所当然'。心理预期值：瑞士支持者期望2-0或3-0。卡塔尔支持者期望'少输当赢'，心理预期是'能进1球就好'。根据竞彩看盘技巧的'五大原则'：'信赔不信变'：Polymarket的79%是稳定的，不是突然变化的；'信小不信大'：79%虽然高，但不是'离谱高'（90%+才是）。结论：市场心理预期合理，不需过度抵制。</div>
+  <div class="analysis-item">
+    市场认为瑞士赢是'理所当然'。心理预期值：瑞士支持者期望2-0或3-0。卡塔尔支持者期望'少输当赢'，心理预期是'能进1球就好'。根据竞彩看盘技巧的'五大原则'：'信赔不信变'：Polymarket的79%是稳定的，不是突然变化的；'信小不信大'：79%虽然高，但不是'离谱高'（90%+才是）。结论：市场心理预期合理，不需过度抵制。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
-  <div class="analysis-item">Polymarket数据：O2.5 = 57%（期望进球偏多），O1.5 = 79.5%（期望至少2球），BTTS = 47%（双方进球概率接近五五开）。赔率骨架位置推断：如果O2.5=57%，说明市场期望'至少2球'；瑞士让球：应该是让1球或1.5球；如果让1.5球，市场期望瑞士赢2球（0:2或0:3）；如果让1球，市场期望瑞士赢1-2球（0:1或0:2）。</div>
+  <div class="analysis-item">
+    Polymarket数据：O2.5 = 57%（期望进球偏多），O1.5 = 79.5%（期望至少2球），BTTS = 47%（双方进球概率接近五五开）。赔率骨架位置推断：如果O2.5=57%，说明市场期望'至少2球'；瑞士让球：应该是让1球或1.5球；如果让1.5球，市场期望瑞士赢2球（0:2或0:3）；如果让1球，市场期望瑞士赢1-2球（0:1或0:2）。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-  <div class="analysis-item">从博彩公司角度思考（欧赔核心思维'最优解'理论）：瑞士胜是'既定事实'（79%概率），博彩公司不需要防范瑞士胜。博彩公司需要防范的是'瑞士赢几个球'：如果瑞士只赢1球（0:1），让1.5球的投注者全输；如果瑞士赢2球（0:2），让1.5球的投注者全赢；如果瑞士赢3球（0:3），让2球的投注者全赢。'最优解'：设置瑞士让1.5球，这样平衡了'瑞士赢1球'和'瑞士赢2+球'两种可能。如果瑞士赢1球，博彩公司利润最大化；如果瑞士赢2+球，博彩公司吸引更多人投注瑞士。结论：瑞士最可能赢2球（0:2）。</div>
+  <div class="analysis-item">
+    从博彩公司角度思考（欧赔核心思维'最优解'理论）：瑞士胜是'既定事实'（79%概率），博彩公司不需要防范瑞士胜。博彩公司需要防范的是'瑞士赢几个球'：如果瑞士只赢1球（0:1），让1.5球的投注者全输；如果瑞士赢2球（0:2），让1.5球的投注者全赢；如果瑞士赢3球（0:3），让2球的投注者全赢。'最优解'：设置瑞士让1.5球，这样平衡了'瑞士赢1球'和'瑞士赢2+球'两种可能。如果瑞士赢1球，博
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-  <div class="analysis-item">赛会制首轮保守因子：瑞士可能不敢全力进攻（担心伤病或红牌）；卡塔尔可能'摆大巴'（tactical defensive）；但403分的实力差距实在太大，即使瑞士只使出80%实力，仍然强于卡塔尔。首轮因子调整：λ_瑞士 -= 10%（保守估计）。调整后λ_瑞士 = 2.13 * 0.9 = 1.92。调整后λ_总 = 0.70 + 1.92 = 2.62。结论：首轮保守因子存在，但不足以改变'瑞士赢2球'的判断。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤6] 伤停似然更新（贝叶斯分析）</span></h4>
-  <div class="analysis-item">伤停信息（来自SportsMole）：卡塔尔：无关键伤病，阵容齐整；瑞士：无关键伤病，阵容齐整；预计首发：瑞士（3-4-2-1）经验丰富，阿坎吉+扎卡+恩博洛。影响评估：无关键伤停 → 实力差距403分完全体现；瑞士经验丰富 → 不会'浪投'，会控制比赛节奏。结论：伤停不影响'瑞士赢2球'的判断。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 近期状态贝叶斯修正</span></h4>
-  <div class="analysis-item">近期状态（最近6场）：卡塔尔：LLDLLD（2平4负，无胜绩）；瑞士：WDLDWD（3胜2平1负，状态稳定）。状态对比：卡塔尔状态极差，士气低落；瑞士状态稳定，士气正常。结论：状态对比进一步支持'瑞士赢2球'。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 后验概率合成</span></h4>
-  <div class="analysis-item">贝叶斯后验更新（足球贝叶斯分析Skill框架）：先验P0：瑞士胜79%，平14%，卡塔尔胜7%；似然L：近期状态（瑞士↑，卡塔尔↓）→ 支持先验；后验P1：瑞士胜82%，平12%，卡塔尔胜6%。更新结论：瑞士胜概率从79%上升到82%；进一步支持'瑞士赢2球'。</div>
+  <div class="analysis-item">
+    赛会制首轮保守因子：瑞士可能不敢全力进攻（担心伤病或红牌）；卡塔尔可能'摆大巴'（tactical defensive）；但403分的实力差距实在太大，即使瑞士只使出80%实力，仍然强于卡塔尔。首轮因子调整：λ_瑞士 -= 10%（保守估计）。调整后λ_瑞士 = 2.13 * 0.9 = 1.92。调整后λ_总 = 0.70 + 1.92 = 2.62。结论：首轮保守因子存在，但不足以改变'瑞士赢
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
@@ -390,23 +390,34 @@ body {
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-  <div class="analysis-item">主推: <strong style="color:#14b8a6; font-size:1.1em;">0:2</strong> (概率 13.7%)</div>
-  <div class="analysis-item">次选: <strong>0:1</strong></div>
   <div class="analysis-item">
-    置信度: <span class="conf-badge conf-high">高</span>
-    <span style="margin-left:10px;"></span>
-  </div>
-  <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-    Top 5比分: 0:2(13.7%), 0:1(12.9%), 0:3(9.7%), 1:2(9.6%), 1:1(9.0%)
+    最终分析结论：卡塔尔 vs 瑞士。推荐比分：0:2（瑞士赢2球）。次选比分：0:1（瑞士赢1球）。核心逻辑：1. 实力差距403分，瑞士明显更强；2. 市场79%支持瑞士胜，不是'大热必死'；3. 赔率骨架显示瑞士让1.5球，期望赢2球；4. 博彩公司'最优解'是瑞士赢2球；5. 伤停不影响实力差距；6. 近期状态进一步支持瑞士；7. 贝叶斯更新后瑞士胜概率82%；8. 爆冷风险22%（Tier2
   </div>
 </div>
+<div class="analysis-panel">
+  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <div class="analysis-item">
+    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">0:2</strong> 
+    (概率 12.1%, AI因子×1.19)
+  </div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>0:3</strong> (概率 10.7%)</div>
+  
+  <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
+    最终分析结论：卡塔尔 vs 瑞士。推荐比分：0:2（瑞士赢2球）。次选比分：0:1（瑞士赢1球）。核心逻辑：1. 实力差距403分，瑞士明显更强；2. 市场79%支持瑞士胜，不是'大热必死'；3. 赔率骨架显示瑞士让1.5球，期望赢2球；4. 博彩公司'最优解'是瑞士赢2球；5. 伤停不影响实力差距；6. 近期状态进一步支持瑞士；7. 贝叶斯更新后瑞士胜概率82%；8. 爆冷风险22%（Tier2），需防范0:1。置信度：高。关键风险：瑞士可能'大热必死'只赢1球（0:1）。
+  </div>
 </div>
 <div class="match-card">
 <div class="match-header">
   <h2>⚽ 巴西 vs 摩洛哥</h2>
   <div class="match-score-rec">
-    <span class="main-score">⭐ 1:0</span>
-    <span class="sec-score"> | 次选: 1:1</span>
+    <span class="main-score">🤖 1:1</span>
+    <span class="sec-score"> | 次选: 2:1</span>
+    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
+      AI逻辑一致性评分 ×1.36 | 概率: 8.3%+6.8%
+    </div>
+    <!-- 纯概率Top1 vs AI主推对比 -->
+    <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:0(11.0%) → AI已调整</div>
   </div>
 </div>
 
@@ -415,93 +426,193 @@ body {
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
-    <div class="panel-row"><span class="label">ELO差距</span><span class="value">124 (中强优势 (差距80-150分))</span></div>
+    <div class="panel-row"><span class="label">ELO差距</span><span class="value">124 (强队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">64% / 5% / 31%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">61% / 23% / 16%</span></div>
-    <div class="panel-row"><span class="label">分布类型</span><span class="value" style="color:var(--gold);">强倾向分布</span></div>
-    <div class="panel-row"><span class="label">让球估计</span><span class="value">预计让0-0.5球</span></div>
-    <div class="panel-row"><span class="label">⚡ 心理预期</span><span class="value" style="color:var(--gold); font-size:0.78em;">市场与ELO一致。偏差仅-3%，无过热信号。</span></div>
-    <div class="panel-row"><span class="label">📈 市场P0偏差</span><span class="value" style="font-size:0.85em;">-3%</span></div>
-  </div>
-
-  <!-- 中：主/客队独立进球 -->
-  <div class="panel">
-    <h4>🎯 巴西 vs 摩洛哥 独立进球能力</h4>
-    <div class="panel-row"><span class="label">巴西 O0.5</span><span class="value">81%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:80.8%;"></div></div>
-    <div class="panel-row"><span class="label">巴西 O1.5</span><span class="value">49%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:49.1%;"></div></div>
-    <div class="panel-row"><span class="label">巴西 O2.5</span><span class="value">23%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:23.0%;"></div></div>
-    <div style="margin-top:8px;"></div>
-    <div class="panel-row"><span class="label">摩洛哥 O0.5</span><span class="value">62%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:62.1%;"></div></div>
-    <div class="panel-row"><span class="label">摩洛哥 O1.5</span><span class="value">25%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:25.3%;"></div></div>
-    <div class="panel-row"><span class="label">摩洛哥 O2.5</span><span class="value">8%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:7.5%;"></div></div>
-  </div>
-
-  <!-- 右：O/U双源融合 -->
-  <div class="panel">
-    <h4>📈 进球预测（O/U双源融合）</h4>
-    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">2.62</span></div>
-    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">1.65</span></div>
-    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">0.97</span></div>
+    <div class="panel-row"><span class="label">市场胜率</span><span class="value">42% / 28% / 30%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">47%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">52%</span></div>
-    <div style="margin-top:8px; font-size:0.78em; color:var(--text-secondary);">
-      巴西 O0.5: 81% | 摩洛哥 O0.5: 62%
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">50%</span></div>
+  </div>
+
+  <!-- 中：主/客队独立进球（O/X.5驱动） -->
+  <div class="panel">
+    <h4>🎯 巴西 vs 摩洛哥 独立进球能力（市场O0.5锚点 + NB形状）</h4>
+    <div class="panel-row"><span class="label">巴西 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">70%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:70.0%;"></div></div>
+    <div class="panel-row"><span class="label">巴西 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">47%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:46.6%;"></div></div>
+    <div class="panel-row"><span class="label">巴西 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">27%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:27.3%;"></div></div>
+    <div style="margin-top:8px;"></div>
+    <div class="panel-row"><span class="label">摩洛哥 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">52%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:52.0%;"></div></div>
+    <div class="panel-row"><span class="label">摩洛哥 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">24%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:23.5%;"></div></div>
+    <div class="panel-row"><span class="label">摩洛哥 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">8%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:8.3%;"></div></div>
+  </div>
+
+  <!-- 右：O/U双源融合 + 高比分 -->
+  <div class="panel">
+    <h4>📈 进球预测（O/X.5驱动 + NB融合）</h4>
+    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">3.04</span></div>
+    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">1.962 (NB r=4.156)</span></div>
+    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">1.074 (NB r=11.002)</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">47%</span></div>
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">50%</span></div>
+    <div style="margin-top:8px; font-size:0.78em;">
+      <span style="color:#f97316;">融合≥4球: 32.5%</span>
+      <span style="color:var(--text-secondary); margin-left:6px;">Poisson≥4球: 35.8%</span>
     </div>
     <div style="margin-top:4px; font-size:0.75em; color:var(--blue);">
-      双源融合方法: Polymarket(60%) + Pinnacle(40%)
+      v26.3: 状态因子+市场锚+BTTS(70%) + NB(30%)
+    </div>
+  </div>
+
+  <!-- v26.3: 近期状态面板（真实国际赛战绩） -->
+  <div class="form-panel">
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <div class="form-grid">
+      <div class="form-team">
+        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">巴西</div>
+        <span class="form-badge form-hot">4胜1平1负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进15</span>
+          <span style="color:var(--red); margin-left:8px;">丢7</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均2.50</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×1.23(攻)×0.97(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">3连胜士气高涨，场均2.5球</div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="form-team" style="text-align:right;">
+        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">摩洛哥</div>
+        <span class="form-badge form-warm">3胜2平1负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进10</span>
+          <span style="color:var(--red); margin-left:8px;">丢5</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.67</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×1.07(攻)×1.03(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">稳定输出，防守坚韧（45场仅2负）</div>
+      </div>
+    </div>
+    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
+      数据源: 用户截图(卡/瑞/海/苏) + liansai.500.com(巴/澳/土) + 搜狐(摩) | 
+      λ原→λ调: 1.00/1.54 → 1.96/1.07
+    </div>
+  </div>
+
+  <!-- AI推理分析面板 -->
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    
+    <!-- AI推理说明 -->
+    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
+      AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8.3%，AI评分×1.36）<br>双方进球（市场BTTS=50%支持），巴西得1球（攻×1.23）、摩洛哥得1球（攻×1.07），进攻能力与比分匹配<br>加分项：✓BTTS 50%支持双方进球；🔥巴西近期4胜状态火热；摩洛哥状态温暖<br>次选 <strong>2:1</strong>（概率6.8%，AI评分×1.36）
+    </div>
+
+    <!-- AI排名Top5详细表格 -->
+    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
+      <strong style="color:#f97316;">AI排序Top5（概率 × 逻辑一致性因子）:</strong> 0:0(11.0%) → 1:0(10.0%) → 2:0(8.3%) → 1:1(8.3%) → 0:1(7.5%)
+    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
+        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
+        <tr>
+          <td style="color:#14b8a6;font-weight:700;">1.</td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
+          <td style="text-align:right;">8.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.36</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#f97316;">2.</td>
+          <td style="color:#f97316;"><strong>2:1</strong>✓</td>
+          <td style="text-align:right;">6.8%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.36</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">3.</td>
+          <td style="color:#94a3b8;"><strong>3:1</strong>✓</td>
+          <td style="text-align:right;">4.7%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.36</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">4.</td>
+          <td style="color:#94a3b8;"><strong>1:0</strong></td>
+          <td style="text-align:right;">10.0%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.62</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥巴西近期4胜状态火热</span> <span style="color:#f87171;">摩洛哥O0.5=52%↘被零封矛盾</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">5.</td>
+          <td style="color:#94a3b8;"><strong>1:2</strong>✓</td>
+          <td style="text-align:right;">4.4%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.36</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
+      💡 市场锚点驱动 [已应用BTTS双方进球校正]: 巴西O0.5=70%支持其进球；摩洛哥O0.5=52%支持其进球
+    </div>
+    <div class="analysis-item" style="margin-top:6px;">
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (8.3%)
+      | 次选: <strong>2:1</strong> (6.8%)
+      | 置信度: <span class="conf-badge conf-med">中</span>
+    </div>
+    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
+      融合高分优势: ≥4球概率从Poisson的35.8%提升至32.5% (+-3.3%)
     </div>
   </div>
 </div>
 <div class="intel-panel">
-<h5>🔍 自动搜索情报（WebSearch + 多引擎交叉验证）</h5>
-<div class="intel-row"><strong>🏥 伤停：</strong>巴西：Neymar保留淘汰赛阶段暂不首发（战术安排，非伤病）；Wesley伤退（边路深度受影响）。摩洛哥：无关键伤病</div>
-<div class="intel-row"><strong>📋 预计首发：</strong>巴西4-3-3（无Neymar），维尼修斯+罗德里戈+拉菲尼亚三叉戟；摩洛哥4-3-3防守反击，阿什拉夫+齐耶赫核心</div>
-<div class="intel-row"><strong>📈 近期状态：</strong>巴西：近6场3胜2平1负（状态中等）；摩洛哥：近6场4胜1平1负（状态不错）</div>
-<div class="intel-row"><strong>🤝 历史交锋：</strong>2022世界杯四强战摩洛哥0-1负于法国后；两队友谊赛交锋巴西2胜1平</div>
-<div class="intel-row"><strong>💡 要点：</strong>关键变数：Neymar不在首发→巴西攻击力下降10-15%。摩洛哥2022世界杯四强阵容基本保留。</div>
+  <h4>📰 赛事情报（WebSearch）</h4>
+  <div class="intel-row"><strong>伤停：</strong><span>巴西：Neymar保留淘汰赛阶段暂不首发（战术安排，非伤病）；Wesley伤退（边路深度受影响）。摩洛哥：无关键伤病</span></div>
+  <div class="intel-row"><strong>预计首发：</strong><span>巴西4-3-3（无Neymar），维尼修斯+罗德里戈+拉菲尼亚三叉戟；摩洛哥4-3-3防守反击，阿什拉夫+齐耶赫核心</span></div>
+  <div class="intel-row"><strong>近期状态：</strong><span>巴西：近6场3胜2平1负（状态中等）；摩洛哥：近6场4胜1平1负（状态不错）</span></div>
+  <div class="intel-row"><strong>交锋记录：</strong><span>2022世界杯四强战摩洛哥0-1负于法国后；两队友谊赛交锋巴西2胜1平</span></div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
-  <div class="analysis-item">巴西ELO 1948 vs 摩洛哥1824，差距124分。巴西是历史最强队（5届世界杯冠军），摩洛哥是非洲冠军（2022世界杯四强）。从广义实力定位：巴西更强，但差距没有瑞士vs卡塔尔那么大。这是'中强优势'格局，不是'一边倒'。</div>
+  <div class="analysis-item">
+    巴西ELO 1948 vs 摩洛哥1824，差距124分。巴西是历史最强队（5届世界杯冠军），摩洛哥是非洲冠军（2022世界杯四强）。从广义实力定位：巴西更强，但差距没有瑞士vs卡塔尔那么大。这是'中强优势'格局，不是'一边倒'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
-  <div class="analysis-item">市场概率：巴西胜61%，平23%，摩洛哥胜16%。这不是'一边倒'，而是'强倾向'分布。23%平局概率值得关注！根据竞彩看盘技巧的'五大原则'：'信冷不信热'：巴西是'热队'，需警惕平局；23%平局概率说明市场有疑虑；摩洛哥在2022世界杯表现惊艳，市场对他们有一定'敬畏'。结论：这不是'巴西稳胜'场景，平局（1:1）是重要选项。</div>
-  <div class="analysis-item" style="color:var(--red);">⚡ 平局概率≥20%，不可忽视</div>
+  <div class="analysis-item">
+    市场概率：巴西胜61%，平23%，摩洛哥胜16%。这不是'一边倒'，而是'强倾向'分布。23%平局概率值得关注！根据竞彩看盘技巧的'五大原则'：'信冷不信热'：巴西是'热队'，需警惕平局；23%平局概率说明市场有疑虑；摩洛哥在2022世界杯表现惊艳，市场对他们有一定'敬畏'。结论：这不是'巴西稳胜'场景，平局（1:1）是重要选项。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-  <div class="analysis-item">市场期望巴西胜，但23%平局说明市场有疑虑。巴西支持者期望2:0或2:1，但潜意识里担心'被逼平'。摩洛哥支持者期望'至少不输'，心理预期是'逼平或爆冷胜'。心理预期值偏差检测：如果巴西赢1球（1:0或2:1），市场心理预期'基本满足'；如果巴西赢2+球（0:2或0:3），市场心理预期'超额满足'；如果平局（1:1），市场心理预期'受挫'。结论：市场心理预期偏向'巴西小胜'，不是'巴西大胜'。</div>
+  <div class="analysis-item">
+    市场期望巴西胜，但23%平局说明市场有疑虑。巴西支持者期望2:0或2:1，但潜意识里担心'被逼平'。摩洛哥支持者期望'至少不输'，心理预期是'逼平或爆冷胜'。心理预期值偏差检测：如果巴西赢1球（1:0或2:1），市场心理预期'基本满足'；如果巴西赢2+球（0:2或0:3），市场心理预期'超额满足'；如果平局（1:1），市场心理预期'受挫'。结论：市场心理预期偏向'巴西小胜'，不是'巴西大胜'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
-  <div class="analysis-item">Polymarket数据：O2.5 = 47%（期望进球不多），O1.5 = 70.5%（期望至少2球），BTTS = 52%（双方进球概率略高于五五开）。赔率骨架位置推断：如果O2.5=47%，说明市场期望'1-2球'；巴西让球：应该是让0.5球或1球；如果让0.5球，巴西赢1球就赢盘；如果让1球，巴西需要赢2球才赢盘。结论：市场期望'巴西小胜'（1-2球），不是'巴西大胜'。</div>
+  <div class="analysis-item">
+    Polymarket数据：O2.5 = 47%（期望进球不多），O1.5 = 70.5%（期望至少2球），BTTS = 52%（双方进球概率略高于五五开）。赔率骨架位置推断：如果O2.5=47%，说明市场期望'1-2球'；巴西让球：应该是让0.5球或1球；如果让0.5球，巴西赢1球就赢盘；如果让1球，巴西需要赢2球才赢盘。结论：市场期望'巴西小胜'（1-2球），不是'巴西大胜'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-  <div class="analysis-item">从博彩公司角度思考：巴西胜是预期结果（61%概率），但平局有23%概率。'更优解'可能是设置巴西让0.5球：这样平衡了'巴西赢1球'和'平局'两种可能；如果巴西赢1球，让0.5球的投注者全赢；如果平局，让0.5球的投注者全输。博彩公司利润最大化：如果巴西让0.5球，60%投注巴西，40%投注平局/摩洛哥；平衡投注，博彩公司稳赚水钱。结论：巴西最可能赢1球（1:0或2:1）。</div>
+  <div class="analysis-item">
+    从博彩公司角度思考：巴西胜是预期结果（61%概率），但平局有23%概率。'更优解'可能是设置巴西让0.5球：这样平衡了'巴西赢1球'和'平局'两种可能；如果巴西赢1球，让0.5球的投注者全赢；如果平局，让0.5球的投注者全输。博彩公司利润最大化：如果巴西让0.5球，60%投注巴西，40%投注平局/摩洛哥；平衡投注，博彩公司稳赚水钱。结论：巴西最可能赢1球（1:0或2:1）。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-  <div class="analysis-item">赛会制首轮保守因子：巴西可能不敢全力进攻（担心伤病或红牌）；摩洛哥可能'摆大巴'（tactical defensive）；2022世界杯摩洛哥四强，他们有经验和信心。首轮因子调整：λ_巴西 -= 15%（保守估计）。调整后λ_巴西 = 1.65 * 0.85 = 1.40。调整后λ_总 = 1.40 + 0.97 = 2.37。结论：首轮保守因子显著，支持'巴西小胜'。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤6] 伤停似然更新（贝叶斯分析）</span></h4>
-  <div class="analysis-item">伤停信息：巴西：Neymar保留淘汰赛不首发（战术安排，不是伤病），Wesley伤退（对边路有影响，但巴西阵容深度足够）；摩洛哥：无关键伤病（2022世界杯四强阵容基本保留）。影响评估：Neymar不在首发 → 巴西攻击力下降10-15%；Wesley伤退 → 巴西边路深度下降；摩洛哥阵容齐整 → 有能力逼平巴西。结论：伤停让'巴西小胜'更可能，'巴西大胜'不太可能。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 近期状态贝叶斯修正</span></h4>
-  <div class="analysis-item">近期状态：巴西：近6场3胜2平1负（状态中等）；摩洛哥：近6场4胜1平1负（状态不错）。状态对比：巴西状态不算巅峰；摩洛哥状态不错，有信心逼平巴西。结论：状态对比支持'平局或巴西小胜'。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 后验概率合成</span></h4>
-  <div class="analysis-item">贝叶斯后验更新：先验P0：巴西胜61%，平23%，摩洛哥胜16%；似然L：Neymar不在首发 → 巴西攻击力下降 → 支持平局；后验P1：巴西胜55%，平28%，摩洛哥胜17%。更新结论：巴西胜概率从61%下降到55%；平局概率从23%上升到28%；进一步支持'平局或巴西小胜'。</div>
+  <div class="analysis-item">
+    赛会制首轮保守因子：巴西可能不敢全力进攻（担心伤病或红牌）；摩洛哥可能'摆大巴'（tactical defensive）；2022世界杯摩洛哥四强，他们有经验和信心。首轮因子调整：λ_巴西 -= 15%（保守估计）。调整后λ_巴西 = 1.65 * 0.85 = 1.40。调整后λ_总 = 1.40 + 0.97 = 2.37。结论：首轮保守因子显著，支持'巴西小胜'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
@@ -514,23 +625,34 @@ body {
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-  <div class="analysis-item">主推: <strong style="color:#14b8a6; font-size:1.1em;">1:0</strong> (概率 12.1%)</div>
-  <div class="analysis-item">次选: <strong>1:1</strong></div>
   <div class="analysis-item">
-    置信度: <span class="conf-badge conf-med">中高</span>
-    <span style="margin-left:10px;"></span>
-  </div>
-  <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-    Top 5比分: 1:0(12.1%), 1:1(11.7%), 2:0(10.0%), 2:1(9.7%), 0:0(7.3%)
+    最终分析结论：巴西 vs 摩洛哥。推荐比分：1:0（巴西赢1球）。次选比分：1:1（平局）。核心逻辑：1. 实力差距124分，巴西中强优势；2. 市场61%支持巴西胜，但23%平局需警惕；3. 赔率骨架显示巴西让0.5球，期望'小胜'；4. 博彩公司'更优解'是巴西赢1球；5. Neymar不在首发 → 巴西攻击力下降；6. 近期状态支持'平局或巴西小胜'；7. 贝叶斯更新后平局概率28%；8. 
   </div>
 </div>
+<div class="analysis-panel">
+  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <div class="analysis-item">
+    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> 
+    (概率 8.3%, AI因子×1.36)
+  </div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>2:1</strong> (概率 6.8%)</div>
+  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:0(11.0%)，AI已根据BTTS/状态/攻击力调整</div>
+  <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
+    最终分析结论：巴西 vs 摩洛哥。推荐比分：1:0（巴西赢1球）。次选比分：1:1（平局）。核心逻辑：1. 实力差距124分，巴西中强优势；2. 市场61%支持巴西胜，但23%平局需警惕；3. 赔率骨架显示巴西让0.5球，期望'小胜'；4. 博彩公司'更优解'是巴西赢1球；5. Neymar不在首发 → 巴西攻击力下降；6. 近期状态支持'平局或巴西小胜'；7. 贝叶斯更新后平局概率28%；8. 爆冷风险47%（Tier1），必须防范平局。置信度：中高。关键风险：摩洛哥可能逼平巴西（1:1）。⚠
+  </div>
 </div>
 <div class="match-card">
 <div class="match-header">
   <h2>⚽ 海地 vs 苏格兰</h2>
   <div class="match-score-rec">
-    <span class="main-score">⭐ 0:1</span>
-    <span class="sec-score"> | 次选: 1:1</span>
+    <span class="main-score">🤖 1:1</span>
+    <span class="sec-score"> | 次选: 1:2</span>
+    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
+      AI逻辑一致性评分 ×1.25 | 概率: 8.4%+7.4%
+    </div>
+    <!-- 纯概率Top1 vs AI主推对比 -->
+    <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:1(11.7%) → AI已调整</div>
   </div>
 </div>
 
@@ -539,93 +661,193 @@ body {
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
-    <div class="panel-row"><span class="label">ELO差距</span><span class="value">-168 (明显优势 (差距150-300分))</span></div>
+    <div class="panel-row"><span class="label">ELO差距</span><span class="value">-168 (弱队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">26% / 5% / 69%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">16% / 23% / 61%</span></div>
-    <div class="panel-row"><span class="label">分布类型</span><span class="value" style="color:var(--gold);">强倾向分布</span></div>
-    <div class="panel-row"><span class="label">让球估计</span><span class="value">预计让0.5-1球</span></div>
-    <div class="panel-row"><span class="label">⚡ 心理预期</span><span class="value" style="color:var(--red); font-size:0.78em;">注意偏差-10%</span></div>
-    <div class="panel-row"><span class="label">📈 市场P0偏差</span><span class="value" style="font-size:0.85em;">-10%</span></div>
-  </div>
-
-  <!-- 中：主/客队独立进球 -->
-  <div class="panel">
-    <h4>🎯 海地 vs 苏格兰 独立进球能力</h4>
-    <div class="panel-row"><span class="label">海地 O0.5</span><span class="value">61%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:60.9%;"></div></div>
-    <div class="panel-row"><span class="label">海地 O1.5</span><span class="value">24%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:24.2%;"></div></div>
-    <div class="panel-row"><span class="label">海地 O2.5</span><span class="value">7%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:7.0%;"></div></div>
-    <div style="margin-top:8px;"></div>
-    <div class="panel-row"><span class="label">苏格兰 O0.5</span><span class="value">81%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:81.4%;"></div></div>
-    <div class="panel-row"><span class="label">苏格兰 O1.5</span><span class="value">50%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:50.1%;"></div></div>
-    <div class="panel-row"><span class="label">苏格兰 O2.5</span><span class="value">24%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:23.8%;"></div></div>
-  </div>
-
-  <!-- 右：O/U双源融合 -->
-  <div class="panel">
-    <h4>📈 进球预测（O/U双源融合）</h4>
-    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">2.62</span></div>
-    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">0.94</span></div>
-    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">1.68</span></div>
+    <div class="panel-row"><span class="label">市场胜率</span><span class="value">32% / 26% / 42%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">52%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">51%</span></div>
-    <div style="margin-top:8px; font-size:0.78em; color:var(--text-secondary);">
-      海地 O0.5: 61% | 苏格兰 O0.5: 81%
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">48%</span></div>
+  </div>
+
+  <!-- 中：主/客队独立进球（O/X.5驱动） -->
+  <div class="panel">
+    <h4>🎯 海地 vs 苏格兰 独立进球能力（市场O0.5锚点 + NB形状）</h4>
+    <div class="panel-row"><span class="label">海地 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">52%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:52.0%;"></div></div>
+    <div class="panel-row"><span class="label">海地 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">24%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:23.7%;"></div></div>
+    <div class="panel-row"><span class="label">海地 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">9%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:9.1%;"></div></div>
+    <div style="margin-top:8px;"></div>
+    <div class="panel-row"><span class="label">苏格兰 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">77%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:77.0%;"></div></div>
+    <div class="panel-row"><span class="label">苏格兰 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">51%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:50.5%;"></div></div>
+    <div class="panel-row"><span class="label">苏格兰 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">27%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:27.4%;"></div></div>
+  </div>
+
+  <!-- 右：O/U双源融合 + 高比分 -->
+  <div class="panel">
+    <h4>📈 进球预测（O/X.5驱动 + NB融合）</h4>
+    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">2.92</span></div>
+    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">1.041 (NB r=4.156)</span></div>
+    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">1.880 (NB r=11.002)</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">52%</span></div>
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">48%</span></div>
+    <div style="margin-top:8px; font-size:0.78em;">
+      <span style="color:#f97316;">融合≥4球: 31.7%</span>
+      <span style="color:var(--text-secondary); margin-left:6px;">Poisson≥4球: 33.3%</span>
     </div>
     <div style="margin-top:4px; font-size:0.75em; color:var(--blue);">
-      双源融合方法: Polymarket(60%) + Pinnacle(40%)
+      v26.3: 状态因子+市场锚+BTTS(70%) + NB(30%)
+    </div>
+  </div>
+
+  <!-- v26.3: 近期状态面板（真实国际赛战绩） -->
+  <div class="form-panel">
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <div class="form-grid">
+      <div class="form-team">
+        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">海地</div>
+        <span class="form-badge form-warm">3胜1平2负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进9</span>
+          <span style="color:var(--red); margin-left:8px;">丢4</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.50</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×1.04(攻)×1.07(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">进攻有亮点，防守出乎意料地好</div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="form-team" style="text-align:right;">
+        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">苏格兰</div>
+        <span class="form-badge form-hot">3胜0平3负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进14</span>
+          <span style="color:var(--red); margin-left:8px;">丢8</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均2.33</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×1.20(攻)×0.93(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">大开大合，要么赢要么输，进球多</div>
+      </div>
+    </div>
+    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
+      数据源: 用户截图(卡/瑞/海/苏) + liansai.500.com(巴/澳/土) + 搜狐(摩) | 
+      λ原→λ调: 1.00/1.54 → 1.04/1.88
+    </div>
+  </div>
+
+  <!-- AI推理分析面板 -->
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    
+    <!-- AI推理说明 -->
+    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
+      AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8.4%，AI评分×1.25）<br>双方进球（市场BTTS=48%支持），海地得1球（攻×1.04）、苏格兰得1球（攻×1.20），进攻能力与比分匹配<br>加分项：BTTS 48%倾向双方进球；海地状态温暖；🔥苏格兰近期3胜状态火热<br>次选 <strong>1:2</strong>（概率7.4%，AI评分×1.25）
+    </div>
+
+    <!-- AI排名Top5详细表格 -->
+    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
+      <strong style="color:#f97316;">AI排序Top5（概率 × 逻辑一致性因子）:</strong> 0:1(11.7%) → 0:2(10.3%) → 0:0(9.2%) → 1:1(8.4%) → 1:2(7.4%)
+    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
+        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
+        <tr>
+          <td style="color:#14b8a6;font-weight:700;">1.</td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
+          <td style="text-align:right;">8.4%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.25</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span></td>
+        </tr>
+        <tr>
+          <td style="color:#f97316;">2.</td>
+          <td style="color:#f97316;"><strong>1:2</strong>✓</td>
+          <td style="text-align:right;">7.4%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.25</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">3.</td>
+          <td style="color:#94a3b8;"><strong>0:2</strong></td>
+          <td style="text-align:right;">10.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.79</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥苏格兰近期3胜状态火热</span> <span style="color:#f87171;">海地O0.5=52%↘被零封矛盾</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">4.</td>
+          <td style="color:#94a3b8;"><strong>0:1</strong></td>
+          <td style="text-align:right;">11.7%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.65</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥苏格兰近期3胜状态火热</span> <span style="color:#f87171;">海地O0.5=52%↘被零封矛盾</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">5.</td>
+          <td style="color:#94a3b8;"><strong>1:3</strong>✓</td>
+          <td style="text-align:right;">4.7%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.25</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
+      💡 市场锚点驱动 [已应用BTTS双方进球校正]: 海地O0.5=52%支持其进球；苏格兰O0.5=77%支持其进球
+    </div>
+    <div class="analysis-item" style="margin-top:6px;">
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (8.4%)
+      | 次选: <strong>1:2</strong> (7.4%)
+      | 置信度: <span class="conf-badge conf-med">中</span>
+    </div>
+    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
+      融合高分优势: ≥4球概率从Poisson的33.3%提升至31.7% (+-1.6%)
     </div>
   </div>
 </div>
 <div class="intel-panel">
-<h5>🔍 自动搜索情报（WebSearch + 多引擎交叉验证）</h5>
-<div class="intel-row"><strong>🏥 伤停：</strong>海地：无关键伤病，阵容齐整；苏格兰：比利·吉尔摩（中场核心）膝盖受伤已确认退出世界杯；斯科特·麦肯纳因撞伤缺席训练出战成疑；麦克托米奈已归队大概率首发</div>
-<div class="intel-row"><strong>📋 预计首发：</strong>海地5-4-1防守反击；苏格兰4-2-3-1，罗伯逊队长+麦克托米奈中场+亚当斯锋线</div>
-<div class="intel-row"><strong>📈 近期状态：</strong>海地：胜胜负平胜负（状态起伏）；苏格兰：负胜负负胜胜（近期回升，最后2场全胜）</div>
-<div class="intel-row"><strong>🤝 历史交锋：</strong>两队此前无正式比赛交锋记录。海地首次参加世界杯。</div>
-<div class="intel-row"><strong>💡 要点：</strong>吉尔摩缺席是关键→苏格兰中场创造力下降15%。海地'新军红利'不容小觑。</div>
+  <h4>📰 赛事情报（WebSearch）</h4>
+  <div class="intel-row"><strong>伤停：</strong><span>海地：无关键伤病，阵容齐整；苏格兰：比利·吉尔摩（中场核心）膝盖受伤已确认退出世界杯；斯科特·麦肯纳因撞伤缺席训练出战成疑；麦克托米奈已归队大概率首发</span></div>
+  <div class="intel-row"><strong>预计首发：</strong><span>海地5-4-1防守反击；苏格兰4-2-3-1，罗伯逊队长+麦克托米奈中场+亚当斯锋线</span></div>
+  <div class="intel-row"><strong>近期状态：</strong><span>海地：胜胜负平胜负（状态起伏）；苏格兰：负胜负负胜胜（近期回升，最后2场全胜）</span></div>
+  <div class="intel-row"><strong>交锋记录：</strong><span>两队此前无正式比赛交锋记录。海地首次参加世界杯。</span></div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
-  <div class="analysis-item">苏格兰ELO 1735 vs 海地1567，差距168分。苏格兰是欧洲队，海地是加勒比新军（首次参加世界杯）。从广义实力定位：苏格兰更强，但海地可能有'新军红利'。这是'中强优势'格局，但差距没有巴西vs摩洛哥那么大。</div>
+  <div class="analysis-item">
+    苏格兰ELO 1735 vs 海地1567，差距168分。苏格兰是欧洲队，海地是加勒比新军（首次参加世界杯）。从广义实力定位：苏格兰更强，但海地可能有'新军红利'。这是'中强优势'格局，但差距没有巴西vs摩洛哥那么大。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
-  <div class="analysis-item">市场概率：苏格兰胜61%，平23%，海地胜16%。类似巴西vs摩洛哥的分布。但海地作为'新军'，市场可能低估他们的'超常发挥'潜力。'新军红利'理论：海地球员没有心理包袱；'光脚的不怕穿鞋的'；可能超水平发挥。结论：苏格兰胜61%可能被高估，海地胜16%可能被低估。</div>
-  <div class="analysis-item" style="color:var(--red);">⚡ 平局概率≥20%，不可忽视</div>
+  <div class="analysis-item">
+    市场概率：苏格兰胜61%，平23%，海地胜16%。类似巴西vs摩洛哥的分布。但海地作为'新军'，市场可能低估他们的'超常发挥'潜力。'新军红利'理论：海地球员没有心理包袱；'光脚的不怕穿鞋的'；可能超水平发挥。结论：苏格兰胜61%可能被高估，海地胜16%可能被低估。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-  <div class="analysis-item">海地球员可能没有心理包袱，'光脚的不怕穿鞋的'。苏格兰则有'必须赢'的压力（首轮对弱队拿3分是目标）。心理预期值偏差：市场可能高估苏格兰（61% vs 真实概率50%？）；海地可能'超常发挥'。根据竞彩看盘技巧：'信升不信降'：如果苏格兰赔率下降，可能是'诱盘'；需要警惕'苏格兰大热'。结论：心理预期值偏差存在，需防范海地逼平。</div>
+  <div class="analysis-item">
+    海地球员可能没有心理包袱，'光脚的不怕穿鞋的'。苏格兰则有'必须赢'的压力（首轮对弱队拿3分是目标）。心理预期值偏差：市场可能高估苏格兰（61% vs 真实概率50%？）；海地可能'超常发挥'。根据竞彩看盘技巧：'信升不信降'：如果苏格兰赔率下降，可能是'诱盘'；需要警惕'苏格兰大热'。结论：心理预期值偏差存在，需防范海地逼平。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
-  <div class="analysis-item">Polymarket数据：O2.5 = 52%（期望进球中等），O1.5 = 77.6%（期望至少2球），BTTS = 51%（双方进球概率五五开）。赔率骨架位置推断：如果O2.5=52%，说明市场期望'2球左右'；苏格兰让球：应该是让0.5球或1球；如果让0.5球，苏格兰赢1球就赢盘。结论：市场期望'苏格兰小胜'（1-2球）。</div>
+  <div class="analysis-item">
+    Polymarket数据：O2.5 = 52%（期望进球中等），O1.5 = 77.6%（期望至少2球），BTTS = 51%（双方进球概率五五开）。赔率骨架位置推断：如果O2.5=52%，说明市场期望'2球左右'；苏格兰让球：应该是让0.5球或1球；如果让0.5球，苏格兰赢1球就赢盘。结论：市场期望'苏格兰小胜'（1-2球）。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-  <div class="analysis-item">从博彩公司角度思考：苏格兰胜是预期结果（61%概率），但海地胜16%不容忽视。'最优解'可能是设置苏格兰让0.5球：这样平衡了'苏格兰赢1球'和'平局/海地爆冷'两种可能。结论：苏格兰最可能赢1球（0:1或1:2）。</div>
+  <div class="analysis-item">
+    从博彩公司角度思考：苏格兰胜是预期结果（61%概率），但海地胜16%不容忽视。'最优解'可能是设置苏格兰让0.5球：这样平衡了'苏格兰赢1球'和'平局/海地爆冷'两种可能。结论：苏格兰最可能赢1球（0:1或1:2）。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-  <div class="analysis-item">赛会制首轮保守因子：海地可能'超常发挥'（没有压力）；苏格兰可能紧张（怕输，'必须赢'的压力）。首轮因子调整：λ_苏格兰 -= 5%（紧张因子）。调整后λ_苏格兰 = 1.68 * 0.95 = 1.60。结论：首轮因子让'海地逼平'更可能。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤6] 伤停似然更新（贝叶斯分析）</span></h4>
-  <div class="analysis-item">伤停信息（来自SportsMole）：海地：无关键伤病，阵容齐整；苏格兰：比利·吉尔摩（中场核心）膝盖受伤，已确认退出世界杯；斯科特·麦肯纳因撞伤缺席训练，本场出战成疑；斯科特·麦克托米奈（中场核心）已归队，大概率首发。影响评估：吉尔摩缺席 → 苏格兰中场创造力下降15%；麦肯纳存疑 → 防线稳定性下降；麦克托米奈归队 → 中场拦截能力保留。结论：伤停让'苏格兰小胜'更不确定，海地逼平概率上升。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 近期状态贝叶斯修正</span></h4>
-  <div class="analysis-item">近期状态（最近6场）：海地：胜、胜、负、平、胜、负（状态起伏）；苏格兰：负、胜、负、负、胜、胜（状态回升）。状态对比：海地状态起伏较大；苏格兰近期状态回升（最后2场全胜）。结论：状态对比略支持苏格兰，但优势不明显。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 后验概率合成</span></h4>
-  <div class="analysis-item">贝叶斯后验更新：先验P0：苏格兰胜61%，平23%，海地胜16%；似然L：吉尔摩缺席 → 苏格兰中场创造力下降 → 支持海地；后验P1：苏格兰胜55%，平27%，海地胜18%。更新结论：苏格兰胜概率从61%下降到55%；平局概率从23%上升到27%；海地胜概率从16%上升到18%。</div>
+  <div class="analysis-item">
+    赛会制首轮保守因子：海地可能'超常发挥'（没有压力）；苏格兰可能紧张（怕输，'必须赢'的压力）。首轮因子调整：λ_苏格兰 -= 5%（紧张因子）。调整后λ_苏格兰 = 1.68 * 0.95 = 1.60。结论：首轮因子让'海地逼平'更可能。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
@@ -638,23 +860,34 @@ body {
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-  <div class="analysis-item">主推: <strong style="color:#14b8a6; font-size:1.1em;">0:1</strong> (概率 12.3%)</div>
-  <div class="analysis-item">次选: <strong>1:1</strong></div>
   <div class="analysis-item">
-    置信度: <span class="conf-badge conf-med">中高</span>
-    <span style="margin-left:10px;"></span>
-  </div>
-  <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-    Top 5比分: 0:1(12.3%), 1:1(11.6%), 0:2(10.4%), 1:2(9.7%), 0:0(7.3%)
+    最终分析结论：海地 vs 苏格兰。推荐比分：0:1（苏格兰赢1球）。次选比分：1:1（平局）。核心逻辑：1. 实力差距168分，苏格兰中强优势；2. 市场61%支持苏格兰胜，但海地'新军红利'需考虑；3. 赔率骨架显示苏格兰让0.5球，期望'小胜'；4. 博彩公司'最优解'是苏格兰赢1球；5. 吉尔摩缺席 → 苏格兰中场创造力下降；6. 苏格兰有'必须赢'的压力，可能紧张；7. 贝叶斯更新后平局概
   </div>
 </div>
+<div class="analysis-panel">
+  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <div class="analysis-item">
+    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> 
+    (概率 8.4%, AI因子×1.25)
+  </div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:2</strong> (概率 7.4%)</div>
+  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:1(11.7%)，AI已根据BTTS/状态/攻击力调整</div>
+  <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
+    最终分析结论：海地 vs 苏格兰。推荐比分：0:1（苏格兰赢1球）。次选比分：1:1（平局）。核心逻辑：1. 实力差距168分，苏格兰中强优势；2. 市场61%支持苏格兰胜，但海地'新军红利'需考虑；3. 赔率骨架显示苏格兰让0.5球，期望'小胜'；4. 博彩公司'最优解'是苏格兰赢1球；5. 吉尔摩缺席 → 苏格兰中场创造力下降；6. 苏格兰有'必须赢'的压力，可能紧张；7. 贝叶斯更新后平局概率27%；8. 爆冷风险47%（Tier1），必须防范平局。置信度：中高。关键风险：海地可能逼平苏格
+  </div>
 </div>
 <div class="match-card">
 <div class="match-header">
   <h2>⚽ 澳大利亚 vs 土耳其</h2>
   <div class="match-score-rec">
-    <span class="main-score">⭐ 1:1</span>
-    <span class="sec-score"> | 次选: 0:1</span>
+    <span class="main-score">🤖 1:1</span>
+    <span class="sec-score"> | 次选: 1:2</span>
+    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
+      AI逻辑一致性评分 ×1.30 | 概率: 9.3%+7.9%
+    </div>
+    <!-- 纯概率Top1 vs AI主推对比 -->
+    <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:0(11.1%) → AI已调整</div>
   </div>
 </div>
 
@@ -663,93 +896,193 @@ body {
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
-    <div class="panel-row"><span class="label">ELO差距</span><span class="value">-107 (中强优势 (差距80-150分))</span></div>
+    <div class="panel-row"><span class="label">ELO差距</span><span class="value">-107 (弱队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">33% / 5% / 62%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">18% / 27% / 55%</span></div>
-    <div class="panel-row"><span class="label">分布类型</span><span class="value" style="color:var(--gold);">混沌分布</span></div>
-    <div class="panel-row"><span class="label">让球估计</span><span class="value">预计让0-0.5球</span></div>
-    <div class="panel-row"><span class="label">⚡ 心理预期</span><span class="value" style="color:var(--red); font-size:0.78em;">注意偏差-15%</span></div>
-    <div class="panel-row"><span class="label">📈 市场P0偏差</span><span class="value" style="font-size:0.85em;">-15%</span></div>
+    <div class="panel-row"><span class="label">市场胜率</span><span class="value">34% / 27% / 39%</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">51%</span></div>
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">49%</span></div>
   </div>
 
-  <!-- 中：主/客队独立进球 -->
+  <!-- 中：主/客队独立进球（O/X.5驱动） -->
   <div class="panel">
-    <h4>🎯 澳大利亚 vs 土耳其 独立进球能力</h4>
-    <div class="panel-row"><span class="label">澳大利亚 O0.5</span><span class="value">63%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:63.2%;"></div></div>
-    <div class="panel-row"><span class="label">澳大利亚 O1.5</span><span class="value">26%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:26.4%;"></div></div>
-    <div class="panel-row"><span class="label">澳大利亚 O2.5</span><span class="value">8%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:8.0%;"></div></div>
+    <h4>🎯 澳大利亚 vs 土耳其 独立进球能力（市场O0.5锚点 + NB形状）</h4>
+    <div class="panel-row"><span class="label">澳大利亚 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">54%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:54.0%;"></div></div>
+    <div class="panel-row"><span class="label">澳大利亚 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">22%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:21.9%;"></div></div>
+    <div class="panel-row"><span class="label">澳大利亚 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">7%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:7.4%;"></div></div>
     <div style="margin-top:8px;"></div>
-    <div class="panel-row"><span class="label">土耳其 O0.5</span><span class="value">79%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:78.6%;"></div></div>
-    <div class="panel-row"><span class="label">土耳其 O1.5</span><span class="value">46%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:45.5%;"></div></div>
-    <div class="panel-row"><span class="label">土耳其 O2.5</span><span class="value">20%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:20.1%;"></div></div>
+    <div class="panel-row"><span class="label">土耳其 O0.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">69%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:69.0%;"></div></div>
+    <div class="panel-row"><span class="label">土耳其 O1.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">44%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:44.3%;"></div></div>
+    <div class="panel-row"><span class="label">土耳其 O2.5<span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span></span><span class="value">23%</span></div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:23.3%;"></div></div>
   </div>
 
-  <!-- 右：O/U双源融合 -->
+  <!-- 右：O/U双源融合 + 高比分 -->
   <div class="panel">
-    <h4>📈 进球预测（O/U双源融合）</h4>
-    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">2.54</span></div>
-    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">1.00</span></div>
-    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">1.54</span></div>
-    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">47%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">54%</span></div>
-    <div style="margin-top:8px; font-size:0.78em; color:var(--text-secondary);">
-      澳大利亚 O0.5: 63% | 土耳其 O0.5: 79%
+    <h4>📈 进球预测（O/X.5驱动 + NB融合）</h4>
+    <div class="panel-row"><span class="label">预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.1em;">2.68</span></div>
+    <div class="panel-row"><span class="label">  └ 主队λ</span><span class="value">0.877 (NB r=4.156)</span></div>
+    <div class="panel-row"><span class="label">  └ 客队λ</span><span class="value">1.807 (NB r=11.002)</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">51%</span></div>
+    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">49%</span></div>
+    <div style="margin-top:8px; font-size:0.78em;">
+      <span style="color:#f97316;">融合≥4球: 28.1%</span>
+      <span style="color:var(--text-secondary); margin-left:6px;">Poisson≥4球: 28.1%</span>
     </div>
     <div style="margin-top:4px; font-size:0.75em; color:var(--blue);">
-      双源融合方法: Polymarket(60%) + Pinnacle(40%)
+      v26.3: 状态因子+市场锚+BTTS(70%) + NB(30%)
+    </div>
+  </div>
+
+  <!-- v26.3: 近期状态面板（真实国际赛战绩） -->
+  <div class="form-panel">
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <div class="form-grid">
+      <div class="form-team">
+        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">澳大利亚</div>
+        <span class="form-badge form-cool">2胜1平3负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进7</span>
+          <span style="color:var(--red); margin-left:8px;">丢7</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.17</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×0.97(攻)×0.90(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">状态偏低，攻守都一般</div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="form-team" style="text-align:right;">
+        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">土耳其</div>
+        <span class="form-badge form-hot">5胜1平0负</span>
+        <div style="margin-top:4px;">
+          <span style="color:var(--green);">进12</span>
+          <span style="color:var(--red); margin-left:8px;">丢3</span>
+          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均2.00</span>
+        </div>
+        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
+          λ调整: ×1.13(攻)×1.03(对防)
+        </div>
+        <div style="font-size:0.68em; color:var(--text-secondary); margin-top:2px;">🔥全队状态爆表！6场不败攻防俱佳</div>
+      </div>
+    </div>
+    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
+      数据源: 用户截图(卡/瑞/海/苏) + liansai.500.com(巴/澳/土) + 搜狐(摩) | 
+      λ原→λ调: 1.00/1.54 → 0.88/1.81
+    </div>
+  </div>
+
+  <!-- AI推理分析面板 -->
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    
+    <!-- AI推理说明 -->
+    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
+      AI综合15维数据分析后，主推 <strong>1:1</strong>（概率9.3%，AI评分×1.30）<br>双方进球（市场BTTS=49%支持），澳大利亚得1球（攻×0.97）、土耳其得1球（攻×1.13），进攻能力与比分匹配<br>加分项：✓BTTS 49%支持双方进球；🔥土耳其近期5胜状态火热<br>次选 <strong>1:2</strong>（概率7.9%，AI评分×1.30）
+    </div>
+
+    <!-- AI排名Top5详细表格 -->
+    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
+      <strong style="color:#f97316;">AI排序Top5（概率 × 逻辑一致性因子）:</strong> 0:0(11.1%) → 0:1(11.0%) → 0:2(9.3%) → 1:1(9.3%) → 1:0(8.2%)
+    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
+        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
+        <tr>
+          <td style="color:#14b8a6;font-weight:700;">1.</td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
+          <td style="text-align:right;">9.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.30</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#f97316;">2.</td>
+          <td style="color:#f97316;"><strong>1:2</strong>✓</td>
+          <td style="text-align:right;">7.9%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.30</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">3.</td>
+          <td style="color:#94a3b8;"><strong>0:2</strong></td>
+          <td style="text-align:right;">9.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.79</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥土耳其近期5胜状态火热</span> <span style="color:#f87171;">澳大利亚O0.5=54%↘被零封矛盾</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">4.</td>
+          <td style="color:#94a3b8;"><strong>0:1</strong></td>
+          <td style="text-align:right;">11.0%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.65</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥土耳其近期5胜状态火热</span> <span style="color:#f87171;">澳大利亚O0.5=54%↘被零封矛盾</span></td>
+        </tr>
+        <tr>
+          <td style="color:#94a3b8;">5.</td>
+          <td style="color:#94a3b8;"><strong>1:3</strong>✓</td>
+          <td style="text-align:right;">4.9%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.30</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
+      💡 市场锚点驱动 [已应用BTTS双方进球校正]: 澳大利亚O0.5=54%支持其进球；土耳其O0.5=69%支持其进球
+    </div>
+    <div class="analysis-item" style="margin-top:6px;">
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (9.3%)
+      | 次选: <strong>1:2</strong> (7.9%)
+      | 置信度: <span class="conf-badge conf-med">中</span>
+    </div>
+    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
+      融合高分优势: ≥4球概率从Poisson的28.1%提升至28.1% (+0.1%)
     </div>
   </div>
 </div>
 <div class="intel-panel">
-<h5>🔍 自动搜索情报（WebSearch + 多引擎交叉验证）</h5>
-<div class="intel-row"><strong>🏥 伤停：</strong>澳大利亚：无关键伤病，阵容齐整；土耳其：肯南·耶尔德兹（中场核心）因小腿伤病大概率缺席；阿尔达·居勒已从伤病康复可正常参赛</div>
-<div class="intel-row"><strong>📋 预计首发：</strong>澳大利亚4-4-2务实防守反击；土耳其4-2-3-1攻击阵型，恰尔汗奥卢领衔组织</div>
-<div class="intel-row"><strong>📈 近期状态：</strong>澳大利亚：负负胜胜负（状态起伏）；土耳其：平胜胜胜胜胜（近8场7胜，状态火热）</div>
-<div class="intel-row"><strong>🤝 历史交锋：</strong>两队此前无正式比赛交锋记录</div>
-<div class="intel-row"><strong>💡 要点：</strong>关键变数：耶尔德兹缺席→土耳其攻击创造力下降15-20%。但居勒复出+土耳其近期状态火热。</div>
+  <h4>📰 赛事情报（WebSearch）</h4>
+  <div class="intel-row"><strong>伤停：</strong><span>澳大利亚：无关键伤病，阵容齐整；土耳其：肯南·耶尔德兹（中场核心）因小腿伤病大概率缺席；阿尔达·居勒已从伤病康复可正常参赛</span></div>
+  <div class="intel-row"><strong>预计首发：</strong><span>澳大利亚4-4-2务实防守反击；土耳其4-2-3-1攻击阵型，恰尔汗奥卢领衔组织</span></div>
+  <div class="intel-row"><strong>近期状态：</strong><span>澳大利亚：负负胜胜负（状态起伏）；土耳其：平胜胜胜胜胜（近8场7胜，状态火热）</span></div>
+  <div class="intel-row"><strong>交锋记录：</strong><span>两队此前无正式比赛交锋记录</span></div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
-  <div class="analysis-item">土耳其ELO 1817 vs 澳大利亚1710，差距107分。这是四场比赛中差距最小的一组！土耳其是欧洲强队，澳大利亚是亚洲顶级强队（2022世界杯十六强）。从广义实力定位：土耳其稍强，但差距很小。这是'接近实力'格局，不是'中强优势'。</div>
+  <div class="analysis-item">
+    土耳其ELO 1817 vs 澳大利亚1710，差距107分。这是四场比赛中差距最小的一组！土耳其是欧洲强队，澳大利亚是亚洲顶级强队（2022世界杯十六强）。从广义实力定位：土耳其稍强，但差距很小。这是'接近实力'格局，不是'中强优势'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
-  <div class="analysis-item">市场概率：土耳其胜55%，平27%，澳大利亚胜18%。平局概率27%是四场最高！根据欧赔核心思维的'分布理论'：这场属于'混沌赛事'（市场不确定，平局概率高）；27%平局概率意味着'平局'是重要选项；这不是'土耳其稳胜'场景。结论：这场最可能不是土耳其赢2球，而是平局或土耳其小胜。</div>
-  <div class="analysis-item" style="color:var(--red);">⚠️ 平局概率≥25%，需重点关注平局可能性</div>
+  <div class="analysis-item">
+    市场概率：土耳其胜55%，平27%，澳大利亚胜18%。平局概率27%是四场最高！根据欧赔核心思维的'分布理论'：这场属于'混沌赛事'（市场不确定，平局概率高）；27%平局概率意味着'平局'是重要选项；这不是'土耳其稳胜'场景。结论：这场最可能不是土耳其赢2球，而是平局或土耳其小胜。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-  <div class="analysis-item">这场最'混沌'，市场不确定。心理预期值：土耳其支持者期望赢球，但不确定能赢几个；澳大利亚支持者期望'至少不输'；双方球迷都有'怕输'心理。心理预期值偏差检测：如果土耳其赢1球（0:1或1:0），市场心理预期'基本满足'；如果平局（1:1），市场心理预期'受挫'；如果澳大利亚胜（0:1或1:2），市场心理预期'崩溃'。结论：市场心理预期偏向'土耳其小胜或平局'。</div>
+  <div class="analysis-item">
+    这场最'混沌'，市场不确定。心理预期值：土耳其支持者期望赢球，但不确定能赢几个；澳大利亚支持者期望'至少不输'；双方球迷都有'怕输'心理。心理预期值偏差检测：如果土耳其赢1球（0:1或1:0），市场心理预期'基本满足'；如果平局（1:1），市场心理预期'受挫'；如果澳大利亚胜（0:1或1:2），市场心理预期'崩溃'。结论：市场心理预期偏向'土耳其小胜或平局'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
-  <div class="analysis-item">Polymarket数据：O2.5 = 47%（期望进球不多），O1.5 = 69.9%（期望至少2球），BTTS = 54%（双方进球概率略高于五五开）。赔率骨架位置推断：如果O2.5=47%，说明市场期望'1-2球'；土耳其让球：应该是让0.25球或0.5球；如果让0.25球（平手盘），平局是重要选项。结论：市场期望'平局或土耳其小胜'，不是'土耳其大胜'。</div>
+  <div class="analysis-item">
+    Polymarket数据：O2.5 = 47%（期望进球不多），O1.5 = 69.9%（期望至少2球），BTTS = 54%（双方进球概率略高于五五开）。赔率骨架位置推断：如果O2.5=47%，说明市场期望'1-2球'；土耳其让球：应该是让0.25球或0.5球；如果让0.25球（平手盘），平局是重要选项。结论：市场期望'平局或土耳其小胜'，不是'土耳其大胜'。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-  <div class="analysis-item">从博彩公司角度思考：这场最难设置盘口！'最优解'可能是'平手盘'（即不让球）：这样让市场自己选择；27%平局概率意味着'平局'是重要选项。如果是'平手盘'：平局 = 退款；土耳其胜 = 全赢；澳大利亚胜 = 全输。博彩公司利润最大化：如果设置'土耳其让0.25球'，平衡了'土耳其小胜'和'平局'两种可能。结论：最可能'平局'（1:1）或'土耳其赢1球'（0:1）。</div>
+  <div class="analysis-item">
+    从博彩公司角度思考：这场最难设置盘口！'最优解'可能是'平手盘'（即不让球）：这样让市场自己选择；27%平局概率意味着'平局'是重要选项。如果是'平手盘'：平局 = 退款；土耳其胜 = 全赢；澳大利亚胜 = 全输。博彩公司利润最大化：如果设置'土耳其让0.25球'，平衡了'土耳其小胜'和'平局'两种可能。结论：最可能'平局'（1:1）或'土耳其赢1球'（0:1）。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-  <div class="analysis-item">赛会制首轮保守因子：澳大利亚历来是'务实派'（防守反击）；土耳其也可能不敢冒进；双方都可能保守。首轮因子调整：λ_总 -= 10%（双方保守）。调整后λ_总 = 2.54 * 0.9 = 2.29。结论：首轮保守因子显著，支持'低比分平局'（0:0或1:1）。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤6] 伤停似然更新（贝叶斯分析）</span></h4>
-  <div class="analysis-item">伤停信息（来自SportsMole）：澳大利亚：无关键伤病，阵容齐整；土耳其：肯南·耶尔德兹（中场核心）因小腿伤病大概率缺席；阿尔达·居勒已从伤病中康复，可正常参赛。影响评估：耶尔德兹缺席 → 土耳其攻击创造力下降15-20%；居勒复出 → 土耳其中场保留一定创造力；澳大利亚阵容齐整 → 可以全力防守反击。结论：伤停让'平局'更可能，'土耳其大胜'不太可能。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 近期状态贝叶斯修正</span></h4>
-  <div class="analysis-item">近期状态（最近6场）：澳大利亚：负、负、胜、胜、平、负（状态起伏）；土耳其：平、胜、胜、胜、胜、胜（近8场7胜，状态火热）。状态对比：澳大利亚状态起伏较大；土耳其状态火热（近8场7胜）。结论：状态对比支持土耳其，但耶尔德兹缺席抵消部分优势。</div>
-</div>
-<div class="analysis-panel">
-  <h4><span class="step-num">[步骤9] 后验概率合成</span></h4>
-  <div class="analysis-item">贝叶斯后验更新：先验P0：土耳其胜55%，平27%，澳大利亚胜18%；似然L：耶尔德兹缺席 → 土耳其攻击创造力下降 → 支持平局；后验P1：土耳其胜50%，平32%，澳大利亚胜18%。更新结论：土耳其胜概率从55%下降到50%；平局概率从27%上升到32%！平局成为'非常重要的选项'。</div>
+  <div class="analysis-item">
+    赛会制首轮保守因子：澳大利亚历来是'务实派'（防守反击）；土耳其也可能不敢冒进；双方都可能保守。首轮因子调整：λ_总 -= 10%（双方保守）。调整后λ_总 = 2.54 * 0.9 = 2.29。结论：首轮保守因子显著，支持'低比分平局'（0:0或1:1）。
+  </div>
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
@@ -762,34 +1095,28 @@ body {
 </div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-  <div class="analysis-item">主推: <strong style="color:#14b8a6; font-size:1.1em;">1:1</strong> (概率 12.2%)</div>
-  <div class="analysis-item">次选: <strong>0:1</strong></div>
   <div class="analysis-item">
-    置信度: <span class="conf-badge conf-med">中</span>
-    <span style="margin-left:10px;"></span>
-  </div>
-  <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-    Top 5比分: 0:1(12.2%), 1:1(12.2%), 0:2(9.4%), 1:2(9.4%), 0:0(7.9%)
+    最终分析结论：澳大利亚 vs 土耳其。推荐比分：1:1（平局）。次选比分：0:1（土耳其赢1球）。核心逻辑：1. 实力差距107分，是四场最小！；2. 市场27%平局概率是四场最高；3. 赔率骨架显示'平手盘'或'土耳其让0.25球'；4. 博彩公司'最优解'是'平局或土耳其小胜'；6. 双方都可能保守 → 低比分；7. 贝叶斯更新后平局概率32%！；8. 爆冷风险52%（Tier1），平局应该是
   </div>
 </div>
+<div class="analysis-panel">
+  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <div class="analysis-item">
+    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> 
+    (概率 9.3%, AI因子×1.30)
+  </div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:2</strong> (概率 7.9%)</div>
+  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:0(11.1%)，AI已根据BTTS/状态/攻击力调整</div>
+  <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
+    最终分析结论：澳大利亚 vs 土耳其。推荐比分：1:1（平局）。次选比分：0:1（土耳其赢1球）。核心逻辑：1. 实力差距107分，是四场最小！；2. 市场27%平局概率是四场最高；3. 赔率骨架显示'平手盘'或'土耳其让0.25球'；4. 博彩公司'最优解'是'平局或土耳其小胜'；6. 双方都可能保守 → 低比分；7. 贝叶斯更新后平局概率32%！；8. 爆冷风险52%（Tier1），平局应该是主推！置信度：中。关键风险：这场比赛结果最不确定，平局（1:1）是最需要防范的选项。⚠️ 关键判断：
+  </div>
 </div>
-<div class="summary-section">
-<h3 style="margin-bottom:12px;">🔄 四场交叉验证</h3>
-<table class="summary-table">
-<thead><tr><th>维度</th><th>卡塔尔vs瑞士</th><th>巴西vs摩洛哥</th><th>海地vs苏格兰</th><th>澳大利亚vs土耳其</th></tr></thead>
-<tbody>
-<tr><td class="match-cell">ELO差距</td><td>-403</td><td>124</td><td>-168</td><td>-107</td></tr>
-<tr><td class="match-cell">最强方胜率</td><td>79%</td><td>61%</td><td>61%</td><td>55%</td></tr>
-<tr><td class="match-cell">平局概率</td><td>14%</td><td>23%</td><td>23%</td><td>27%</td></tr>
-<tr><td class="match-cell">预估总进球λ</td><td>2.83</td><td>2.62</td><td>2.62</td><td>2.54</td></tr>
-<tr><td class="match-cell">O2.5概率</td><td>57%</td><td>47%</td><td>52%</td><td>47%</td></tr>
-<tr><td class="match-cell">BTTS</td><td>47%</td><td>52%</td><td>51%</td><td>54%</td></tr>
-<tr><td class="match-cell">爆冷等级</td><td><span class="risk-badge risk-low">低风险(12%)</span></td><td><span class="risk-badge risk-t1">Tier1 (高度风险 39%)</span></td><td><span class="risk-badge risk-t2">Tier2 (中度风险 31%)</span></td><td><span class="risk-badge risk-t1">Tier1 (高度风险 38%)</span></td></tr>
-</tbody></table></div>
 <div class="footer">
-<p>2026世界杯预测 v24.9 | v24.6视觉框架 + v24.8丰富内容 | 基于公开数据的概率分析，不构成投注建议</p>
-<p>知识源：欧赔核心思维 (449K字) + 竞彩看盘技巧 (43K字) + 足球量化分析预测Skill + 足球贝叶斯分析Skill</p>
-<p style="margin-top:5px; font-size:0.78em;">数据: Polymarket Gamma API + OddsPapi.io Pinnacle + WebSearch赛事情报 | 分析: AI思考驱动(非规则系统)</p>
+  <p>2026世界杯预测 v26.4 | v24.9框架 + AI智能比分推荐 + 状态因子 + BTTS校正 | 不构成投注建议</p>
+  <p style="margin-top:5px; color:#f97316; font-size:0.78em;">
+    v26.4 核心升级: AI 6维因子(BTTS/攻击力/状态/O2.5/弱队/双方进球) → 智能排序 → 不再机械推荐0:0
+  </p>
 </div>
 </div>
 </body>
