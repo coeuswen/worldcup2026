@@ -89,21 +89,21 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <body>
 <div class="container">
 <div class="header-section">
-  <h1>🏆 2026世界杯 全面分析报告 v26.4</h1>
-  <div class="subtitle">v24.9 视觉框架 + AI智能比分推荐 + 近期6场状态因子 + BTTS校正 | 生成时间：2026-06-13 14:05</div>
+  <h1>🏆 2026世界杯 全面分析报告 v26.5</h1>
+  <div class="subtitle">v24.9 视觉框架 + AI 7维比分引擎(含实力差) + 状态因子 + BTTS校正 | 生成时间：2026-06-13 14:20</div>
   <div class="badge-row">
     <span class="badge badge-v246">v24.9 框架</span>
-    <span class="badge badge-v260">🧠 v26.4 AI比分引擎</span>
+    <span class="badge badge-v260">🧠 v26.5 AI 7D引擎</span>
     <span class="badge badge-knowledge">📚 两书精华</span>
     <span class="badge badge-skill">🧠 双Skill+AI</span>
     <span class="badge badge-data">📊 234场历史MLE</span>
   </div>
 </div>
 <div class="method-bar">
-🧠 <strong>v26.4 核心升级 — AI智能比分推荐引擎：</strong>
-不再简单按概率排列比分！AI综合BTTS一致性、进攻因子、状态趋势、O2.5市场信号等6维因子，对每个比分进行逻辑一致性评分。
-<br>◆核心原则: 如果BTTS>45%且双方攻击因子>1.0 → 0:0即使概率最高也要降权；双方进球比分(如1:1/1:2)获得升权。
-<br>◆状态因子: 基于真实国际赛近6场战绩 → attack_mult × defense_mult → λ调整
+🧠 <strong>v26.5 核心升级 — AI 7维比分引擎（含实力差一致性）：</strong>
+<br>◆<b>第7因子-实力差一致性(v26.5新增)</b>: 综合λ差(60%)+状态差(25%)+攻击因子差(15%)→判断哪队该赢，胜负方向对齐的比分升权、方向矛盾的比分降权
+<br>◆解决"土耳其更强却推1:1"问题 → 1:2(与实力方向一致)应高于1:1(平局与方向矛盾)
+<br>◆搜索范围从Top15扩至Top20 | O2.5高时主动奖励大球(总≥3球×1.10)
 </div>
 <div class="knowledge-bar">
 <div class="knowledge-item">
@@ -124,11 +124,11 @@ h1 { font-size: 1.5em; color: var(--orange); }
 </div>
 </div>
 <div class="summary-section">
-<h3 style="margin-bottom:12px;">📊 AI智能推荐比分一览（v26.4 — 6维因子逻辑一致性排序，不再机械概率排列）</h3>
+<h3 style="margin-bottom:12px;">📊 AI 7维因子智能推荐比分一览（v26.5 — 含实力差一致性，不再机械概率排列）</h3>
 <table class="summary-table">
 <thead><tr>
 <th>对阵</th><th>🤖 AI主推</th><th>次选</th><th>AI概率</th><th>纯概率Top1</th>
-<th>总进球λ</th><th>O2.5</th><th>AI推理核心逻辑</th>
+<th>实力方向</th><th>总球λ</th><th>AI推理核心逻辑</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -137,39 +137,39 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <td class="score-second">0:3</td>
   <td>12.1% / 10.7%</td>
   <td style="color:var(--text-secondary);font-size:0.75em;">0:2(12.1%)</td>
+  <td><span style="color:#f97316;font-size:0.75em;">→瑞士优</span></td>
   <td style="color:var(--teal);">3.26</td>
-  <td>57%</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.19 | AI综合15维数据分析后，主推 <strong>0:2</strong>（概率1...</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.43 | AI综合20维数据分析后，主推 <strong>0:2</strong>（概率1...</td>
 </tr>
 <tr>
   <td class="match-cell"><strong>巴西 vs 摩洛哥</strong></td>
-  <td class="score-main">1:1</td>
-  <td class="score-second">2:1</td>
-  <td>8.3% / 6.8%</td>
+  <td class="score-main">2:1</td>
+  <td class="score-second">1:1</td>
+  <td>6.8% / 8.3%</td>
   <td style="color:var(--text-secondary);font-size:0.75em;">0:0(11.0%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:0)</span></td>
+  <td><span style="color:#f97316;font-size:0.75em;">→巴西优</span></td>
   <td style="color:var(--teal);">3.04</td>
-  <td>47%</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.36 | AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8...</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.60 | AI综合20维数据分析后，主推 <strong>2:1</strong>（概率6...</td>
 </tr>
 <tr>
   <td class="match-cell"><strong>海地 vs 苏格兰</strong></td>
-  <td class="score-main">1:1</td>
-  <td class="score-second">1:2</td>
-  <td>8.4% / 7.4%</td>
+  <td class="score-main">1:2</td>
+  <td class="score-second">1:1</td>
+  <td>7.4% / 8.4%</td>
   <td style="color:var(--text-secondary);font-size:0.75em;">0:1(11.7%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:1)</span></td>
+  <td><span style="color:#f97316;font-size:0.75em;">→苏格兰优</span></td>
   <td style="color:var(--teal);">2.92</td>
-  <td>52%</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.25 | AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8...</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.52 | AI综合20维数据分析后，主推 <strong>1:2</strong>（概率7...</td>
 </tr>
 <tr>
   <td class="match-cell"><strong>澳大利亚 vs 土耳其</strong></td>
-  <td class="score-main">1:1</td>
-  <td class="score-second">1:2</td>
-  <td>9.3% / 7.9%</td>
+  <td class="score-main">1:2</td>
+  <td class="score-second">1:1</td>
+  <td>7.9% / 9.3%</td>
   <td style="color:var(--text-secondary);font-size:0.75em;">0:0(11.1%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:0)</span></td>
+  <td><span style="color:#f97316;font-size:0.75em;">→土耳其优</span></td>
   <td style="color:var(--teal);">2.68</td>
-  <td>51%</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.30 | AI综合15维数据分析后，主推 <strong>1:1</strong>（概率9...</td>
+  <td style="font-size:0.68em; color:var(--blue);">AI×1.60 | AI综合20维数据分析后，主推 <strong>1:2</strong>（概率7...</td>
 </tr>
 </tbody></table></div>
 <div class="match-card">
@@ -179,7 +179,7 @@ h1 { font-size: 1.5em; color: var(--orange); }
     <span class="main-score">🤖 0:2</span>
     <span class="sec-score"> | 次选: 0:3</span>
     <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑一致性评分 ×1.19 | 概率: 12.1%+10.7%
+      AI逻辑一致性评分 ×1.43 | 概率: 12.1%+10.7%
     </div>
     <!-- 纯概率Top1 vs AI主推对比 -->
     <div style="font-size:0.68em; color:#22c55e; margin-top:1px;">✓ AI与概率一致</div>
@@ -273,11 +273,11 @@ h1 { font-size: 1.5em; color: var(--orange); }
 
   <!-- AI推理分析面板 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    <h4><span class="step-num">[v26.5 AI 7D引擎] 实力差一致性推荐</span></h4>
     
     <!-- AI推理说明 -->
     <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合15维数据分析后，主推 <strong>0:2</strong>（概率12.1%，AI评分×1.19）<br>卡塔尔攻击力不足（攻×0.81），零封合理；瑞士得2球符合其进攻水平<br>加分项：卡塔尔近期低迷零封合理；🔥瑞士近期2胜状态火热；卡塔尔攻×0.81零封合理<br>次选 <strong>0:3</strong>（概率10.7%，AI评分×1.19）
+      AI综合20维数据分析后，主推 <strong>0:2</strong>（概率12.1%，AI评分×1.43）<br>卡塔尔攻击力不足（攻×0.81），零封合理；瑞士得2球符合其进攻水平<br>加分项：卡塔尔近期低迷零封合理；🔥瑞士近期2胜状态火热；卡塔尔攻×0.81零封合理；✓实力差(λ+2.04,状+12,攻+0.35)→瑞士胜对齐<br>次选 <strong>0:3</strong>（概率10.7%，AI评分×1.57）
     </div>
 
     <!-- AI排名Top5详细表格 -->
@@ -290,36 +290,36 @@ h1 { font-size: 1.5em; color: var(--orange); }
           <td style="color:#14b8a6;font-weight:700;">1.</td>
           <td style="color:#14b8a6;font-weight:700;"><strong>0:2</strong></td>
           <td style="text-align:right;">12.1%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.19</td>
+          <td style="text-align:center;color:#60a5fa;">×1.43</td>
           <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span></td>
         </tr>
         <tr>
           <td style="color:#f97316;">2.</td>
           <td style="color:#f97316;"><strong>0:3</strong></td>
           <td style="text-align:right;">10.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.19</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span></td>
+          <td style="text-align:center;color:#60a5fa;">×1.57</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=57%支持总3球大球 卡塔尔近期低迷零封合理</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">3.</td>
           <td style="color:#94a3b8;"><strong>0:1</strong></td>
           <td style="text-align:right;">10.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.98</td>
+          <td style="text-align:center;color:#60a5fa;">×1.17</td>
           <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span> <span style="color:#f87171;">O2.5=57%↘总球1矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">4.</td>
           <td style="color:#94a3b8;"><strong>0:4</strong></td>
           <td style="text-align:right;">7.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.19</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">卡塔尔近期低迷零封合理 🔥瑞士近期2胜状态火热</span></td>
+          <td style="text-align:center;color:#60a5fa;">×1.57</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=57%支持总4球大球 卡塔尔近期低迷零封合理</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">5.</td>
           <td style="color:#94a3b8;"><strong>1:2</strong>✓</td>
           <td style="text-align:right;">6.6%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.19</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 45%倾向双方进球 🔥瑞士近期2胜状态火热</span></td>
+          <td style="text-align:center;color:#60a5fa;">×1.57</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=57%支持总3球大球 BTTS 45%倾向双方进球</span></td>
         </tr>
       </table>
     </div>
@@ -395,11 +395,11 @@ h1 { font-size: 1.5em; color: var(--orange); }
   </div>
 </div>
 <div class="analysis-panel">
-  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <h4><span class="step-num">[v26.5 最终结论] AI 7维因子推荐</span></h4>
   <div class="analysis-item">
-    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
+    <span style="color:#f97316; font-weight:600;">🤖 v26.5 AI主推:</span>
     <strong style="color:#14b8a6; font-size:1.15em;">0:2</strong> 
-    (概率 12.1%, AI因子×1.19)
+    (概率 12.1%, AI因子×1.43)
   </div>
   <div class="analysis-item" style="font-size:0.78em;">次选: <strong>0:3</strong> (概率 10.7%)</div>
   
@@ -411,10 +411,10 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="match-header">
   <h2>⚽ 巴西 vs 摩洛哥</h2>
   <div class="match-score-rec">
-    <span class="main-score">🤖 1:1</span>
-    <span class="sec-score"> | 次选: 2:1</span>
+    <span class="main-score">🤖 2:1</span>
+    <span class="sec-score"> | 次选: 1:1</span>
     <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑一致性评分 ×1.36 | 概率: 8.3%+6.8%
+      AI逻辑一致性评分 ×1.60 | 概率: 6.8%+8.3%
     </div>
     <!-- 纯概率Top1 vs AI主推对比 -->
     <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:0(11.0%) → AI已调整</div>
@@ -508,11 +508,11 @@ h1 { font-size: 1.5em; color: var(--orange); }
 
   <!-- AI推理分析面板 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    <h4><span class="step-num">[v26.5 AI 7D引擎] 实力差一致性推荐</span></h4>
     
     <!-- AI推理说明 -->
     <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8.3%，AI评分×1.36）<br>双方进球（市场BTTS=50%支持），巴西得1球（攻×1.23）、摩洛哥得1球（攻×1.07），进攻能力与比分匹配<br>加分项：✓BTTS 50%支持双方进球；🔥巴西近期4胜状态火热；摩洛哥状态温暖<br>次选 <strong>2:1</strong>（概率6.8%，AI评分×1.36）
+      AI综合20维数据分析后，主推 <strong>2:1</strong>（概率6.8%，AI评分×1.60）<br>双方进球（市场BTTS=50%支持），巴西得2球（攻×1.23）、摩洛哥得1球（攻×1.07），进攻能力与比分匹配<br>加分项：O2.5=47%倾向大球；✓BTTS 50%支持双方进球；🔥巴西近期4胜状态火热；摩洛哥状态温暖；✓实力差(λ-0.89,状-7,攻-0.16)→巴西胜对齐<br>次选 <strong>1:1</strong>（概率8.3%，AI评分×1.23）
     </div>
 
     <!-- AI排名Top5详细表格 -->
@@ -523,38 +523,38 @@ h1 { font-size: 1.5em; color: var(--orange); }
         <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
         <tr>
           <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
-          <td style="text-align:right;">8.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.36</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>2:1</strong>✓</td>
+          <td style="text-align:right;">6.8%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.60</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=47%倾向大球 ✓BTTS 50%支持双方进球</span></td>
         </tr>
         <tr>
           <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>2:1</strong>✓</td>
-          <td style="text-align:right;">6.8%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.36</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+          <td style="color:#f97316;"><strong>1:1</strong>✓</td>
+          <td style="text-align:right;">8.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.23</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span> <span style="color:#f87171;">实力差λ-0.89偏向巴西↘平局略矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">3.</td>
           <td style="color:#94a3b8;"><strong>3:1</strong>✓</td>
           <td style="text-align:right;">4.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.36</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+          <td style="text-align:center;color:#60a5fa;">×1.60</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=47%倾向大球 ✓BTTS 50%支持双方进球</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">4.</td>
           <td style="color:#94a3b8;"><strong>1:0</strong></td>
           <td style="text-align:right;">10.0%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.62</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥巴西近期4胜状态火热</span> <span style="color:#f87171;">摩洛哥O0.5=52%↘被零封矛盾</span></td>
+          <td style="text-align:center;color:#60a5fa;">×0.74</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥巴西近期4胜状态火热 ✓实力差(λ-0.89,状-7,攻-0.16)→巴西胜对齐</span> <span style="color:#f87171;">摩洛哥O0.5=52%↘被零封矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">5.</td>
-          <td style="color:#94a3b8;"><strong>1:2</strong>✓</td>
-          <td style="text-align:right;">4.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.36</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 50%支持双方进球 🔥巴西近期4胜状态火热</span></td>
+          <td style="color:#94a3b8;"><strong>2:0</strong></td>
+          <td style="text-align:right;">8.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×0.74</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥巴西近期4胜状态火热 ✓实力差(λ-0.89,状-7,攻-0.16)→巴西胜对齐</span> <span style="color:#f87171;">摩洛哥O0.5=52%↘被零封矛盾</span></td>
         </tr>
       </table>
     </div>
@@ -562,8 +562,8 @@ h1 { font-size: 1.5em; color: var(--orange); }
       💡 市场锚点驱动 [已应用BTTS双方进球校正]: 巴西O0.5=70%支持其进球；摩洛哥O0.5=52%支持其进球
     </div>
     <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (8.3%)
-      | 次选: <strong>2:1</strong> (6.8%)
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">2:1</strong> (6.8%)
+      | 次选: <strong>1:1</strong> (8.3%)
       | 置信度: <span class="conf-badge conf-med">中</span>
     </div>
     <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
@@ -630,14 +630,14 @@ h1 { font-size: 1.5em; color: var(--orange); }
   </div>
 </div>
 <div class="analysis-panel">
-  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <h4><span class="step-num">[v26.5 最终结论] AI 7维因子推荐</span></h4>
   <div class="analysis-item">
-    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
-    <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> 
-    (概率 8.3%, AI因子×1.36)
+    <span style="color:#f97316; font-weight:600;">🤖 v26.5 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">2:1</strong> 
+    (概率 6.8%, AI因子×1.60)
   </div>
-  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>2:1</strong> (概率 6.8%)</div>
-  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:0(11.0%)，AI已根据BTTS/状态/攻击力调整</div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:1</strong> (概率 8.3%)</div>
+  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:0(11.0%)，AI已根据7维因子(含实力差)调整</div>
   <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
     最终分析结论：巴西 vs 摩洛哥。推荐比分：1:0（巴西赢1球）。次选比分：1:1（平局）。核心逻辑：1. 实力差距124分，巴西中强优势；2. 市场61%支持巴西胜，但23%平局需警惕；3. 赔率骨架显示巴西让0.5球，期望'小胜'；4. 博彩公司'更优解'是巴西赢1球；5. Neymar不在首发 → 巴西攻击力下降；6. 近期状态支持'平局或巴西小胜'；7. 贝叶斯更新后平局概率28%；8. 爆冷风险47%（Tier1），必须防范平局。置信度：中高。关键风险：摩洛哥可能逼平巴西（1:1）。⚠
   </div>
@@ -646,10 +646,10 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="match-header">
   <h2>⚽ 海地 vs 苏格兰</h2>
   <div class="match-score-rec">
-    <span class="main-score">🤖 1:1</span>
-    <span class="sec-score"> | 次选: 1:2</span>
+    <span class="main-score">🤖 1:2</span>
+    <span class="sec-score"> | 次选: 1:1</span>
     <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑一致性评分 ×1.25 | 概率: 8.4%+7.4%
+      AI逻辑一致性评分 ×1.52 | 概率: 7.4%+8.4%
     </div>
     <!-- 纯概率Top1 vs AI主推对比 -->
     <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:1(11.7%) → AI已调整</div>
@@ -743,11 +743,11 @@ h1 { font-size: 1.5em; color: var(--orange); }
 
   <!-- AI推理分析面板 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    <h4><span class="step-num">[v26.5 AI 7D引擎] 实力差一致性推荐</span></h4>
     
     <!-- AI推理说明 -->
     <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合15维数据分析后，主推 <strong>1:1</strong>（概率8.4%，AI评分×1.25）<br>双方进球（市场BTTS=48%支持），海地得1球（攻×1.04）、苏格兰得1球（攻×1.20），进攻能力与比分匹配<br>加分项：BTTS 48%倾向双方进球；海地状态温暖；🔥苏格兰近期3胜状态火热<br>次选 <strong>1:2</strong>（概率7.4%，AI评分×1.25）
+      AI综合20维数据分析后，主推 <strong>1:2</strong>（概率7.4%，AI评分×1.52）<br>双方进球（市场BTTS=48%支持），海地得1球（攻×1.04）、苏格兰得2球（攻×1.20），进攻能力与比分匹配<br>加分项：O2.5=52%倾向大球；BTTS 48%倾向双方进球；海地状态温暖；🔥苏格兰近期3胜状态火热；✓实力差(λ+0.84,状+3,攻+0.16)→苏格兰胜对齐<br>次选 <strong>1:1</strong>（概率8.4%，AI评分×1.12）
     </div>
 
     <!-- AI排名Top5详细表格 -->
@@ -758,38 +758,38 @@ h1 { font-size: 1.5em; color: var(--orange); }
         <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
         <tr>
           <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
-          <td style="text-align:right;">8.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.25</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span></td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>1:2</strong>✓</td>
+          <td style="text-align:right;">7.4%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.52</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=52%倾向大球 BTTS 48%倾向双方进球</span></td>
         </tr>
         <tr>
           <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>1:2</strong>✓</td>
-          <td style="text-align:right;">7.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.25</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span></td>
+          <td style="color:#f97316;"><strong>1:1</strong>✓</td>
+          <td style="text-align:right;">8.4%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.12</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span> <span style="color:#f87171;">实力差λ+0.84偏向苏格兰↘平局略矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">3.</td>
           <td style="color:#94a3b8;"><strong>0:2</strong></td>
           <td style="text-align:right;">10.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.79</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥苏格兰近期3胜状态火热</span> <span style="color:#f87171;">海地O0.5=52%↘被零封矛盾</span></td>
+          <td style="text-align:center;color:#60a5fa;">×0.92</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥苏格兰近期3胜状态火热 ✓实力差(λ+0.84,状+3,攻+0.16)→苏格兰胜对齐</span> <span style="color:#f87171;">海地O0.5=52%↘被零封矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">4.</td>
           <td style="color:#94a3b8;"><strong>0:1</strong></td>
           <td style="text-align:right;">11.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.65</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥苏格兰近期3胜状态火热</span> <span style="color:#f87171;">海地O0.5=52%↘被零封矛盾</span></td>
+          <td style="text-align:center;color:#60a5fa;">×0.75</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥苏格兰近期3胜状态火热 ✓实力差(λ+0.84,状+3,攻+0.16)→苏格兰胜对齐</span> <span style="color:#f87171;">海地O0.5=52%↘被零封矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">5.</td>
           <td style="color:#94a3b8;"><strong>1:3</strong>✓</td>
           <td style="text-align:right;">4.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.25</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 海地状态温暖</span></td>
+          <td style="text-align:center;color:#60a5fa;">×1.52</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=52%倾向大球 BTTS 48%倾向双方进球</span></td>
         </tr>
       </table>
     </div>
@@ -797,8 +797,8 @@ h1 { font-size: 1.5em; color: var(--orange); }
       💡 市场锚点驱动 [已应用BTTS双方进球校正]: 海地O0.5=52%支持其进球；苏格兰O0.5=77%支持其进球
     </div>
     <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (8.4%)
-      | 次选: <strong>1:2</strong> (7.4%)
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:2</strong> (7.4%)
+      | 次选: <strong>1:1</strong> (8.4%)
       | 置信度: <span class="conf-badge conf-med">中</span>
     </div>
     <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
@@ -865,14 +865,14 @@ h1 { font-size: 1.5em; color: var(--orange); }
   </div>
 </div>
 <div class="analysis-panel">
-  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <h4><span class="step-num">[v26.5 最终结论] AI 7维因子推荐</span></h4>
   <div class="analysis-item">
-    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
-    <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> 
-    (概率 8.4%, AI因子×1.25)
+    <span style="color:#f97316; font-weight:600;">🤖 v26.5 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">1:2</strong> 
+    (概率 7.4%, AI因子×1.52)
   </div>
-  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:2</strong> (概率 7.4%)</div>
-  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:1(11.7%)，AI已根据BTTS/状态/攻击力调整</div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:1</strong> (概率 8.4%)</div>
+  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:1(11.7%)，AI已根据7维因子(含实力差)调整</div>
   <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
     最终分析结论：海地 vs 苏格兰。推荐比分：0:1（苏格兰赢1球）。次选比分：1:1（平局）。核心逻辑：1. 实力差距168分，苏格兰中强优势；2. 市场61%支持苏格兰胜，但海地'新军红利'需考虑；3. 赔率骨架显示苏格兰让0.5球，期望'小胜'；4. 博彩公司'最优解'是苏格兰赢1球；5. 吉尔摩缺席 → 苏格兰中场创造力下降；6. 苏格兰有'必须赢'的压力，可能紧张；7. 贝叶斯更新后平局概率27%；8. 爆冷风险47%（Tier1），必须防范平局。置信度：中高。关键风险：海地可能逼平苏格
   </div>
@@ -881,10 +881,10 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="match-header">
   <h2>⚽ 澳大利亚 vs 土耳其</h2>
   <div class="match-score-rec">
-    <span class="main-score">🤖 1:1</span>
-    <span class="sec-score"> | 次选: 1:2</span>
+    <span class="main-score">🤖 1:2</span>
+    <span class="sec-score"> | 次选: 1:1</span>
     <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑一致性评分 ×1.30 | 概率: 9.3%+7.9%
+      AI逻辑一致性评分 ×1.60 | 概率: 7.9%+9.3%
     </div>
     <!-- 纯概率Top1 vs AI主推对比 -->
     <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:0(11.1%) → AI已调整</div>
@@ -978,11 +978,11 @@ h1 { font-size: 1.5em; color: var(--orange); }
 
   <!-- AI推理分析面板 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[v26.4 AI引擎] 智能比分推荐</span></h4>
+    <h4><span class="step-num">[v26.5 AI 7D引擎] 实力差一致性推荐</span></h4>
     
     <!-- AI推理说明 -->
     <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合15维数据分析后，主推 <strong>1:1</strong>（概率9.3%，AI评分×1.30）<br>双方进球（市场BTTS=49%支持），澳大利亚得1球（攻×0.97）、土耳其得1球（攻×1.13），进攻能力与比分匹配<br>加分项：✓BTTS 49%支持双方进球；🔥土耳其近期5胜状态火热<br>次选 <strong>1:2</strong>（概率7.9%，AI评分×1.30）
+      AI综合20维数据分析后，主推 <strong>1:2</strong>（概率7.9%，AI评分×1.60）<br>双方进球（市场BTTS=49%支持），澳大利亚得1球（攻×0.97）、土耳其得2球（攻×1.13），进攻能力与比分匹配<br>加分项：O2.5=51%倾向大球；✓BTTS 49%支持双方进球；🔥土耳其近期5胜状态火热；✓实力差(λ+0.93,状+10,攻+0.16)→土耳其胜对齐<br>次选 <strong>1:1</strong>（概率9.3%，AI评分×1.17）
     </div>
 
     <!-- AI排名Top5详细表格 -->
@@ -993,38 +993,38 @@ h1 { font-size: 1.5em; color: var(--orange); }
         <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
         <tr>
           <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
-          <td style="text-align:right;">9.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.30</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span></td>
+          <td style="color:#14b8a6;font-weight:700;"><strong>1:2</strong>✓</td>
+          <td style="text-align:right;">7.9%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.60</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=51%倾向大球 ✓BTTS 49%支持双方进球</span></td>
         </tr>
         <tr>
           <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>1:2</strong>✓</td>
-          <td style="text-align:right;">7.9%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.30</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span></td>
+          <td style="color:#f97316;"><strong>1:1</strong>✓</td>
+          <td style="text-align:right;">9.3%</td>
+          <td style="text-align:center;color:#60a5fa;">×1.17</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span> <span style="color:#f87171;">实力差λ+0.93偏向土耳其↘平局略矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">3.</td>
           <td style="color:#94a3b8;"><strong>0:2</strong></td>
           <td style="text-align:right;">9.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.79</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥土耳其近期5胜状态火热</span> <span style="color:#f87171;">澳大利亚O0.5=54%↘被零封矛盾</span></td>
+          <td style="text-align:center;color:#60a5fa;">×0.95</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥土耳其近期5胜状态火热 ✓实力差(λ+0.93,状+10,攻+0.16)→土耳其胜对齐</span> <span style="color:#f87171;">澳大利亚O0.5=54%↘被零封矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">4.</td>
           <td style="color:#94a3b8;"><strong>0:1</strong></td>
           <td style="text-align:right;">11.0%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.65</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥土耳其近期5胜状态火热</span> <span style="color:#f87171;">澳大利亚O0.5=54%↘被零封矛盾</span></td>
+          <td style="text-align:center;color:#60a5fa;">×0.78</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥土耳其近期5胜状态火热 ✓实力差(λ+0.93,状+10,攻+0.16)→土耳其胜对齐</span> <span style="color:#f87171;">澳大利亚O0.5=54%↘被零封矛盾</span></td>
         </tr>
         <tr>
           <td style="color:#94a3b8;">5.</td>
           <td style="color:#94a3b8;"><strong>1:3</strong>✓</td>
           <td style="text-align:right;">4.9%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.30</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 49%支持双方进球 🔥土耳其近期5胜状态火热</span></td>
+          <td style="text-align:center;color:#60a5fa;">×1.60</td>
+          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=51%倾向大球 ✓BTTS 49%支持双方进球</span></td>
         </tr>
       </table>
     </div>
@@ -1032,8 +1032,8 @@ h1 { font-size: 1.5em; color: var(--orange); }
       💡 市场锚点驱动 [已应用BTTS双方进球校正]: 澳大利亚O0.5=54%支持其进球；土耳其O0.5=69%支持其进球
     </div>
     <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (9.3%)
-      | 次选: <strong>1:2</strong> (7.9%)
+      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:2</strong> (7.9%)
+      | 次选: <strong>1:1</strong> (9.3%)
       | 置信度: <span class="conf-badge conf-med">中</span>
     </div>
     <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
@@ -1100,22 +1100,22 @@ h1 { font-size: 1.5em; color: var(--orange); }
   </div>
 </div>
 <div class="analysis-panel">
-  <h4><span class="step-num">[v26.4 最终结论] AI智能推荐</span></h4>
+  <h4><span class="step-num">[v26.5 最终结论] AI 7维因子推荐</span></h4>
   <div class="analysis-item">
-    <span style="color:#f97316; font-weight:600;">🤖 v26.4 AI主推:</span>
-    <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> 
-    (概率 9.3%, AI因子×1.30)
+    <span style="color:#f97316; font-weight:600;">🤖 v26.5 AI主推:</span>
+    <strong style="color:#14b8a6; font-size:1.15em;">1:2</strong> 
+    (概率 7.9%, AI因子×1.60)
   </div>
-  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:2</strong> (概率 7.9%)</div>
-  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:0(11.1%)，AI已根据BTTS/状态/攻击力调整</div>
+  <div class="analysis-item" style="font-size:0.78em;">次选: <strong>1:1</strong> (概率 9.3%)</div>
+  <div class="analysis-item" style="font-size:0.75em; color:#f97316;">⚠️ 纯概率最高为 0:0(11.1%)，AI已根据7维因子(含实力差)调整</div>
   <div class="analysis-item" style="margin-top:6px; font-size:0.78em;">
     最终分析结论：澳大利亚 vs 土耳其。推荐比分：1:1（平局）。次选比分：0:1（土耳其赢1球）。核心逻辑：1. 实力差距107分，是四场最小！；2. 市场27%平局概率是四场最高；3. 赔率骨架显示'平手盘'或'土耳其让0.25球'；4. 博彩公司'最优解'是'平局或土耳其小胜'；6. 双方都可能保守 → 低比分；7. 贝叶斯更新后平局概率32%！；8. 爆冷风险52%（Tier1），平局应该是主推！置信度：中。关键风险：这场比赛结果最不确定，平局（1:1）是最需要防范的选项。⚠️ 关键判断：
   </div>
 </div>
 <div class="footer">
-  <p>2026世界杯预测 v26.4 | v24.9框架 + AI智能比分推荐 + 状态因子 + BTTS校正 | 不构成投注建议</p>
+  <p>2026世界杯预测 v26.5 | v24.9框架 + AI 7D比分引擎 + 状态因子 + BTTS校正 | 不构成投注建议</p>
   <p style="margin-top:5px; color:#f97316; font-size:0.78em;">
-    v26.4 核心升级: AI 6维因子(BTTS/攻击力/状态/O2.5/弱队/双方进球) → 智能排序 → 不再机械推荐0:0
+    v26.5 核心升级: 第7因子(实力差一致性) → 综合λ/状态/攻击→判断哪队该赢 → 土耳其1:2取代1:1
   </p>
 </div>
 </div>
