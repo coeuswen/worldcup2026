@@ -89,21 +89,21 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <body>
 <div class="container">
 <div class="header-section">
-  <h1>🏆 2026世界杯 全面分析报告 v26.5</h1>
-  <div class="subtitle">v24.9 视觉框架 + AI 7维比分引擎(含实力差) + 状态因子 + BTTS校正 | 生成时间：2026-06-13 14:20</div>
+  <h1>🏆 2026世界杯 全面分析报告 v26.6</h1>
+  <div class="subtitle">v24.9 视觉框架 + FIFA排名/小组形势 + AI 7维比分引擎 + 状态因子 | 生成时间：2026-06-13 17:59</div>
   <div class="badge-row">
     <span class="badge badge-v246">v24.9 框架</span>
-    <span class="badge badge-v260">🧠 v26.5 AI 7D引擎</span>
+    <span class="badge badge-v260">🧠 v26.6 AI 7D引擎</span>
     <span class="badge badge-knowledge">📚 两书精华</span>
     <span class="badge badge-skill">🧠 双Skill+AI</span>
     <span class="badge badge-data">📊 234场历史MLE</span>
   </div>
 </div>
 <div class="method-bar">
-🧠 <strong>v26.5 核心升级 — AI 7维比分引擎（含实力差一致性）：</strong>
-<br>◆<b>第7因子-实力差一致性(v26.5新增)</b>: 综合λ差(60%)+状态差(25%)+攻击因子差(15%)→判断哪队该赢，胜负方向对齐的比分升权、方向矛盾的比分降权
-<br>◆解决"土耳其更强却推1:1"问题 → 1:2(与实力方向一致)应高于1:1(平局与方向矛盾)
-<br>◆搜索范围从Top15扩至Top20 | O2.5高时主动奖励大球(总≥3球×1.10)
+🧠 <strong>v26.6 升级 — FIFA排名/小组形势 + 市场数据一致化：</strong>
+<br>◆<b>新增实力&市场分析卡片:</b> FIFA世界排名、所属小组及对手、比赛目标（首轮抢分/争头名/保出线）
+<br>◆<b>市场胜率一致化:</b> AI推理文字中引用的市场概率已自动替换为Polymarket实时数据，不再显示过期旧值
+<br>◆<b>市场数据更新提示:</b> 每个分析面板顶部醒目提示当前实时市场胜率，防止用户混淆
 </div>
 <div class="knowledge-bar">
 <div class="knowledge-item">
@@ -191,9 +191,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
+    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#55 vs #19</span></div>
+    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">B组: 加拿大/波黑/瑞士</span></div>
+    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">卡塔尔: 洗刷上届3战全败耻辱，抢分即突破<br>瑞士: B组最强，首轮稳拿3分确立优势</span></div>
     <div class="panel-row"><span class="label">ELO差距</span><span class="value">-403 (弱队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">9% / 5% / 86%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">19% / 20% / 61%</span></div>
+    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">19% / 20% / 61%</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">57%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">57%</span></div>
     <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">45%</span></div>
   </div>
@@ -343,6 +347,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <div class="intel-row"><strong>近期状态：</strong><span>卡塔尔：LLDLLD（2平4负，无胜绩）；瑞士：WDLDWD（3胜2平1负，状态稳定）</span></div>
   <div class="intel-row"><strong>交锋记录：</strong><span>两队此前无正式比赛交锋记录</span></div>
 </div>
+<div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
+  <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
+  <div class="analysis-item" style="font-size:0.78em;">
+    <strong>Polymarket实时市场胜率:</strong> 卡塔尔胜<span style="color:#22c55e;font-weight:700;">19%</span> / 平<span style="color:#fbbf24;font-weight:700;">20%</span> / 瑞士胜<span style="color:#f97316;font-weight:700;">61%</span><br>
+    <span style="color:#94a3b8;font-size:0.85em;">以下AI分析步骤中引用的市场概率数值可能过时，以本卡片顶部"市场胜率(Poly实时)"为准。</span>
+  </div>
+</div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
   <div class="analysis-item">
@@ -352,7 +363,7 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
   <div class="analysis-item">
-    市场概率：瑞士胜79%，平14%，卡塔尔胜7%。这属于'一边倒'分布（市场严重倾向一方）。根据欧赔核心思维的'分布理论'：一边倒市场需警惕'大热必死'，但7%的卡塔尔胜率确实太低，不属于'价值爆冷'。79%的瑞士胜率虽然高，但基于实力差距是合理的。结论：这不是'大热必死'场景，而是'实力碾压'场景。
+    市场概率：瑞士胜61%，平20%，卡塔尔胜19%。这属于'一边倒'分布（市场严重倾向一方）。根据欧赔核心思维的'分布理论'：一边倒市场需警惕'大热必死'，但7%的卡塔尔胜率确实太低，不属于'价值爆冷'。79%的瑞士胜率虽然高，但基于实力差距是合理的。结论：这不是'大热必死'场景，而是'实力碾压'场景。
   </div>
 </div>
 <div class="analysis-panel">
@@ -426,9 +437,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
+    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#6 vs #7</span></div>
+    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">C组: 摩洛哥/海地/苏格兰</span></div>
+    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">巴西: 争C组头名，对摩洛哥是关键战<br>摩洛哥: 力拼巴西争头名，底线拿分</span></div>
     <div class="panel-row"><span class="label">ELO差距</span><span class="value">124 (强队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">64% / 5% / 31%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">42% / 28% / 30%</span></div>
+    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">42% / 28% / 30%</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">47%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">47%</span></div>
     <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">50%</span></div>
   </div>
@@ -578,6 +593,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <div class="intel-row"><strong>近期状态：</strong><span>巴西：近6场3胜2平1负（状态中等）；摩洛哥：近6场4胜1平1负（状态不错）</span></div>
   <div class="intel-row"><strong>交锋记录：</strong><span>2022世界杯四强战摩洛哥0-1负于法国后；两队友谊赛交锋巴西2胜1平</span></div>
 </div>
+<div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
+  <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
+  <div class="analysis-item" style="font-size:0.78em;">
+    <strong>Polymarket实时市场胜率:</strong> 巴西胜<span style="color:#22c55e;font-weight:700;">42%</span> / 平<span style="color:#fbbf24;font-weight:700;">28%</span> / 摩洛哥胜<span style="color:#f97316;font-weight:700;">30%</span><br>
+    <span style="color:#94a3b8;font-size:0.85em;">以下AI分析步骤中引用的市场概率数值可能过时，以本卡片顶部"市场胜率(Poly实时)"为准。</span>
+  </div>
+</div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
   <div class="analysis-item">
@@ -587,7 +609,7 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
   <div class="analysis-item">
-    市场概率：巴西胜61%，平23%，摩洛哥胜16%。这不是'一边倒'，而是'强倾向'分布。23%平局概率值得关注！根据竞彩看盘技巧的'五大原则'：'信冷不信热'：巴西是'热队'，需警惕平局；23%平局概率说明市场有疑虑；摩洛哥在2022世界杯表现惊艳，市场对他们有一定'敬畏'。结论：这不是'巴西稳胜'场景，平局（1:1）是重要选项。
+    市场概率：巴西胜42%，平28%，摩洛哥胜30%。这不是'一边倒'，而是'强倾向'分布。23%平局概率值得关注！根据竞彩看盘技巧的'五大原则'：'信冷不信热'：巴西是'热队'，需警惕平局；23%平局概率说明市场有疑虑；摩洛哥在2022世界杯表现惊艳，市场对他们有一定'敬畏'。结论：这不是'巴西稳胜'场景，平局（1:1）是重要选项。
   </div>
 </div>
 <div class="analysis-panel">
@@ -661,9 +683,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
+    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#83 vs #43</span></div>
+    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">C组: 巴西/摩洛哥/苏格兰</span></div>
+    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">海地: 52年首返世界杯，拼一个奇迹<br>苏格兰: 28年重返世界杯，首战海地必须赢</span></div>
     <div class="panel-row"><span class="label">ELO差距</span><span class="value">-168 (弱队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">26% / 5% / 69%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">32% / 26% / 42%</span></div>
+    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">32% / 26% / 42%</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">52%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">52%</span></div>
     <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">48%</span></div>
   </div>
@@ -813,6 +839,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <div class="intel-row"><strong>近期状态：</strong><span>海地：胜胜负平胜负（状态起伏）；苏格兰：负胜负负胜胜（近期回升，最后2场全胜）</span></div>
   <div class="intel-row"><strong>交锋记录：</strong><span>两队此前无正式比赛交锋记录。海地首次参加世界杯。</span></div>
 </div>
+<div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
+  <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
+  <div class="analysis-item" style="font-size:0.78em;">
+    <strong>Polymarket实时市场胜率:</strong> 海地胜<span style="color:#22c55e;font-weight:700;">32%</span> / 平<span style="color:#fbbf24;font-weight:700;">26%</span> / 苏格兰胜<span style="color:#f97316;font-weight:700;">42%</span><br>
+    <span style="color:#94a3b8;font-size:0.85em;">以下AI分析步骤中引用的市场概率数值可能过时，以本卡片顶部"市场胜率(Poly实时)"为准。</span>
+  </div>
+</div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
   <div class="analysis-item">
@@ -822,7 +855,7 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
   <div class="analysis-item">
-    市场概率：苏格兰胜61%，平23%，海地胜16%。类似巴西vs摩洛哥的分布。但海地作为'新军'，市场可能低估他们的'超常发挥'潜力。'新军红利'理论：海地球员没有心理包袱；'光脚的不怕穿鞋的'；可能超水平发挥。结论：苏格兰胜61%可能被高估，海地胜16%可能被低估。
+    市场概率：苏格兰胜42%，平26%，海地胜32%。类似巴西vs摩洛哥的分布。但海地作为'新军'，市场可能低估他们的'超常发挥'潜力。'新军红利'理论：海地球员没有心理包袱；'光脚的不怕穿鞋的'；可能超水平发挥。结论：苏格兰胜61%可能被高估，海地胜16%可能被低估。
   </div>
 </div>
 <div class="analysis-panel">
@@ -896,9 +929,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <!-- 左：实力&市场分析 -->
   <div class="panel">
     <h4>📊 实力 & 市场分析</h4>
+    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#27 vs #22</span></div>
+    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">D组: 美国/土耳其/+1</span></div>
+    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">澳大利亚: 力拼土耳其抢分，保出线希望<br>土耳其: 24年首返世界杯，首战即决战</span></div>
     <div class="panel-row"><span class="label">ELO差距</span><span class="value">-107 (弱队优势)</span></div>
     <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">33% / 5% / 62%</span></div>
-    <div class="panel-row"><span class="label">市场胜率</span><span class="value">34% / 27% / 39%</span></div>
+    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">34% / 27% / 39%</span></div>
+    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">51%</span></div>
     <div class="panel-row"><span class="label">O2.5概率</span><span class="value">51%</span></div>
     <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">49%</span></div>
   </div>
@@ -1048,6 +1085,13 @@ h1 { font-size: 1.5em; color: var(--orange); }
   <div class="intel-row"><strong>近期状态：</strong><span>澳大利亚：负负胜胜负（状态起伏）；土耳其：平胜胜胜胜胜（近8场7胜，状态火热）</span></div>
   <div class="intel-row"><strong>交锋记录：</strong><span>两队此前无正式比赛交锋记录</span></div>
 </div>
+<div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
+  <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
+  <div class="analysis-item" style="font-size:0.78em;">
+    <strong>Polymarket实时市场胜率:</strong> 澳大利亚胜<span style="color:#22c55e;font-weight:700;">34%</span> / 平<span style="color:#fbbf24;font-weight:700;">27%</span> / 土耳其胜<span style="color:#f97316;font-weight:700;">39%</span><br>
+    <span style="color:#94a3b8;font-size:0.85em;">以下AI分析步骤中引用的市场概率数值可能过时，以本卡片顶部"市场胜率(Poly实时)"为准。</span>
+  </div>
+</div>
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
   <div class="analysis-item">
@@ -1057,7 +1101,7 @@ h1 { font-size: 1.5em; color: var(--orange); }
 <div class="analysis-panel">
   <h4><span class="step-num">[步骤3] 分布分析（欧赔核心思维Ch.8）</span></h4>
   <div class="analysis-item">
-    市场概率：土耳其胜55%，平27%，澳大利亚胜18%。平局概率27%是四场最高！根据欧赔核心思维的'分布理论'：这场属于'混沌赛事'（市场不确定，平局概率高）；27%平局概率意味着'平局'是重要选项；这不是'土耳其稳胜'场景。结论：这场最可能不是土耳其赢2球，而是平局或土耳其小胜。
+    市场概率：土耳其胜39%，平27%，澳大利亚胜34%。平局概率27%是四场最高！根据欧赔核心思维的'分布理论'：这场属于'混沌赛事'（市场不确定，平局概率高）；27%平局概率意味着'平局'是重要选项；这不是'土耳其稳胜'场景。结论：这场最可能不是土耳其赢2球，而是平局或土耳其小胜。
   </div>
 </div>
 <div class="analysis-panel">
@@ -1113,9 +1157,9 @@ h1 { font-size: 1.5em; color: var(--orange); }
   </div>
 </div>
 <div class="footer">
-  <p>2026世界杯预测 v26.5 | v24.9框架 + AI 7D比分引擎 + 状态因子 + BTTS校正 | 不构成投注建议</p>
+  <p>2026世界杯预测 v26.6 | v24.9框架 + FIFA排名/小组形势 + AI 7D引擎 | 不构成投注建议</p>
   <p style="margin-top:5px; color:#f97316; font-size:0.78em;">
-    v26.5 核心升级: 第7因子(实力差一致性) → 综合λ/状态/攻击→判断哪队该赢 → 土耳其1:2取代1:1
+    v26.6 升级: FIFA排名+小组形势卡片 + 市场数据一致化(旧概率→实时Poly) + 市场数据更新提示
   </p>
 </div>
 </div>
