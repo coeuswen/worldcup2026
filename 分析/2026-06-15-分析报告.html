@@ -1,1225 +1,610 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月15日 全面分析报告 v26.6</title>
-<style>:root {
-  --bg: #0a0e17; --card-bg: #111827; --card-inner: #1a1f2e;
-  --text: #e2e8f0; --text-secondary: #8b95a5;
-  --teal: #14b8a6; --red: #ef4444; --orange: #f97316;
-  --blue: #3b82f6; --purple: #a855f7; --gold: #f59e0b;
-  --green: #22c55e; --risk-1: #dc2626; --risk-2: #f59e0b; --risk-3: #3b82f6;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; padding: 12px; }
-.container { max-width: 1200px; margin: 0 auto; }
-.header-section { text-align: center; padding: 16px 0 10px; }
-h1 { font-size: 1.5em; color: var(--orange); }
-.subtitle { color: var(--text-secondary); font-size: 0.78em; margin-top: 4px; }
-.badge-row { margin-top: 8px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.badge { padding: 3px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 600; }
-.badge-v246 { background: #1e3a5a; color: #4ade80; }
-.badge-v260 { background: #312e81; color: #a5b4fc; }
-.badge-knowledge { background: #1e3a5a; color: #4ade80; }
-.badge-skill { background: #312e81; color: #a5b4fc; }
-.badge-data { background: #451a03; color: #fcd34d; }
-.method-bar { background: var(--card-inner); padding: 8px 14px; border-radius: 8px;
-  margin: 10px 0; font-size: 0.75em; color: var(--text-secondary); line-height: 1.6; }
-.warning-bar { background: #451a03; border: 1px solid #f97316; padding: 8px 14px; border-radius: 8px;
-  margin: 10px 0; font-size: 0.75em; color: #fbbf24; }
-.knowledge-bar { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
-.knowledge-item { background: var(--card-inner); padding: 8px 12px; border-radius: 8px; flex: 1; min-width: 180px; }
-.knowledge-item .src { color: var(--teal); font-weight: 700; font-size: 0.8em; }
-.knowledge-item .desc { color: var(--text-secondary); font-size: 0.7em; margin-top: 2px; }
-.auto-bar { background: #1a1f2e; padding: 6px 14px; border-radius: 8px;
-  margin: 8px 0; font-size: 0.73em; color: var(--blue); }
-.summary-section { margin: 14px 0; }
-.summary-table { width: 100%; border-collapse: collapse; font-size: 0.78em; }
-.summary-table th { background: var(--card-inner); padding: 6px 8px; text-align: left;
-  color: var(--text-secondary); font-weight: 600; border-bottom: 1px solid #2d3a4a; }
-.summary-table td { padding: 6px 8px; border-bottom: 1px solid #1e2a3a; }
-.score-main { color: var(--teal); font-weight: 700; font-size: 1.05em; }
-.score-second { color: var(--orange); }
-.match-card { background: var(--card-bg); border-radius: 10px; padding: 14px; margin: 12px 0; }
-.match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.match-header h2 { font-size: 1.05em; }
-.match-score-rec { text-align: right; }
-.main-score { color: var(--teal); font-size: 1.2em; font-weight: 700; }
-.sec-score { color: var(--text-secondary); font-size: 0.82em; margin-left: 6px; }
-.panel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
-@media(max-width: 800px) { .panel-grid { grid-template-columns: 1fr; } }
-.panel { background: var(--card-inner); padding: 10px; border-radius: 8px; }
-.panel h4 { font-size: 0.82em; color: var(--orange); margin-bottom: 8px; }
-.panel-row { display: flex; justify-content: space-between; font-size: 0.78em; padding: 3px 0; }
-.panel-row .label { color: var(--text-secondary); }
-.panel-row .value { color: var(--text); font-weight: 600; }
-.progress-bar-bg { background: #0f1a2a; border-radius: 6px; height: 16px; margin: 6px 0; overflow: hidden; }
-.progress-bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s; }
-.fill-green { background: linear-gradient(90deg, #059669, #22c55e); }
-.fill-blue { background: linear-gradient(90deg, #0d9488, #2dd4bf); }
-.fill-purple { background: linear-gradient(90deg, #8b5cf6, #d8b4fe); }
-.fill-orange { background: linear-gradient(90deg, #ea580c, #fb923c); }
-.fill-red { background: linear-gradient(90deg, #dc2626, #f87171); }
-.fill-teal { background: linear-gradient(90deg, #0ea5a9, #2dd4bf); }
-.form-panel { background: var(--card-inner); padding: 10px; border-radius: 8px; margin: 10px 0;
-  border-left: 3px solid var(--gold); }
-.form-grid { display: flex; align-items: stretch; gap: 12px; margin-top:6px; }
-.form-team { flex: 1; min-width: 120px; }
-.form-divider { width: 1px; background: #2d3a4a; border-radius: 2px; margin: 4px 0; }
-.form-badge { display:inline-block; padding:1px 7px; border-radius:10px; font-size:0.72em; font-weight:600; }
-.form-hot { background:#451a03; color:#fbbf24; }
-.form-warm { background:#064e3b; color:#34d399; }
-.form-cool { background:#1e3a5f; color:#60a5fa; }
-.form-cold { background:#450a0a; color:#f87171; }
-.intel-panel { background: linear-gradient(135deg, #0f1a2a, #141e30); padding: 10px 12px; border-radius: 8px;
-  margin: 10px 0; border-left: 3px solid #3b82f6; font-size: 0.75em; }
-.intel-panel h4 { font-size: 0.9em; color: var(--blue); margin-bottom: 6px; }
-.intel-row { padding: 3px 0; line-height: 1.6; display: flex; gap: 6px; }
-.intel-row strong { color: #60a5fa; min-width: 60px; flex-shrink: 0; }
-.intel-row span { color: #cbd5e1; }
-.analysis-panel { background: var(--card-inner); padding: 10px; border-radius: 8px; margin: 8px 0; font-size: 0.78em; }
-.analysis-item { margin: 3px 0; }
-.conf-high { color: var(--teal); font-weight: 700; }
-.conf-med { color: var(--orange); }
-.conf-low { color: var(--text-secondary); }
-.conf-badge { padding: 2px 8px; border-radius: 10px; font-size: 0.75em; }
-.risk-low { background: #052e16; color: #4ade80; }
-.risk-t1 { background: #7f1d1d; color: #f87171; }
-.risk-t2 { background: #451a03; color: #fbbf24; }
-.risk-t3 { background: #172554; color: #60a5fa; }
-.step-num { color: var(--blue); font-size: 0.75em; }
-.footer { text-align: center; padding: 14px; color: var(--text-secondary); font-size: 0.73em; }
-.highlight { color: var(--orange); font-weight: 700; }
-</style>
-</head>
-<body>
-<div class="container">
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2026世界杯 v27.0 — 6月15日预测</title>
+<style>:root{--bg:#0a0e17;--card-bg:#111827;--card-inner:#1a1f2e;--text:#e2e8f0;--text-secondary:#8b95a5;--teal:#14b8a6;--red:#ef4444;--orange:#f97316;--blue:#3b82f6;--purple:#a855f7;--gold:#f59e0b;--green:#22c55e;--risk-1:#dc2626;--risk-2:#f59e0b;--risk-3:#3b82f6}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif;padding:12px;line-height:1.6}
+.container{max-width:1200px;margin:0 auto}.header-section{text-align:center;padding:16px 0 10px}h1{font-size:1.5em;color:var(--orange)}
+.subtitle{color:var(--text-secondary);font-size:0.78em;margin-top:4px}.badge-row{margin-top:8px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badge{padding:3px 10px;border-radius:12px;font-size:0.72em;font-weight:600}.badge-v27{background:#1e3a5a;color:#4ade80}.badge-new{background:#451a03;color:#fcd34d}
+.warning-bar{background:#451a03;border:1px solid var(--orange);padding:8px 14px;border-radius:8px;margin:10px 0;font-size:0.75em;color:#fbbf24;line-height:1.7}
+.method-bar{background:var(--card-inner);padding:8px 14px;border-radius:8px;margin:10px 0;font-size:0.75em;color:var(--text-secondary);line-height:1.6}
+.summary-section{margin:14px 0}.summary-table{width:100%;border-collapse:collapse;font-size:0.78em}
+.summary-table th{background:var(--card-inner);padding:6px 8px;text-align:left;color:var(--text-secondary);font-weight:600;border-bottom:1px solid #2d3a4a}
+.summary-table td{padding:6px 8px;border-bottom:1px solid #1e2a3a}.score-main{color:var(--teal);font-weight:700;font-size:1.05em}.score-second{color:var(--orange)}
+.match-card{background:var(--card-bg);border-radius:10px;padding:14px;margin:12px 0}.match-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.match-header h2{font-size:1.05em}.match-score-rec{text-align:right}.main-score{color:var(--teal);font-size:1.2em;font-weight:700}.sec-score{color:var(--text-secondary);font-size:0.82em;margin-left:6px}
+.panel-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0}@media(max-width:800px){.panel-grid{grid-template-columns:1fr}}
+.panel{background:var(--card-inner);padding:10px;border-radius:8px}.panel h4{font-size:0.82em;color:var(--orange);margin-bottom:8px}
+.panel-row{display:flex;justify-content:space-between;font-size:0.78em;padding:3px 0}.panel-row .label{color:var(--text-secondary)}.panel-row .value{color:var(--text);font-weight:600}
+.progress-bar-bg{background:#0f1a2a;border-radius:6px;height:16px;margin:6px 0;overflow:hidden}.progress-bar-fill{height:100%;border-radius:6px;transition:width .3s}
+.fill-green{background:linear-gradient(90deg,#059669,#22c55e)}.fill-blue{background:linear-gradient(90deg,#0d9488,#2dd4bf)}.fill-purple{background:linear-gradient(90deg,#8b5cf6,#d8b4fe)}
+.fill-orange{background:linear-gradient(90deg,#ea580c,#fb923c)}.fill-red{background:linear-gradient(90deg,#dc2626,#f87171)}.fill-teal{background:linear-gradient(90deg,#0ea5a9,#2dd4bf)}
+.form-panel{background:var(--card-inner);padding:10px;border-radius:8px;margin:10px 0;border-left:3px solid var(--gold)}
+.form-grid{display:flex;align-items:stretch;gap:12px;margin-top:6px}.form-team{flex:1;min-width:120px}.form-divider{width:1px;background:#2d3a4a;border-radius:2px;margin:4px 0}
+.form-badge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:0.72em;font-weight:600}
+.form-hot{background:#451a03;color:#fbbf24}.form-warm{background:#064e3b;color:#34d399}.form-cool{background:#1e3a5f;color:#60a5fa}.form-cold{background:#450a0a;color:#f87171}
+.intel-panel{background:linear-gradient(135deg,#0f1a2a,#141e30);padding:10px 12px;border-radius:8px;margin:10px 0;border-left:3px solid var(--blue);font-size:0.75em}
+.intel-panel h4{font-size:0.9em;color:var(--blue);margin-bottom:6px}.intel-row{padding:3px 0;line-height:1.6;display:flex;gap:6px}.intel-row strong{color:#60a5fa;min-width:60px;flex-shrink:0}.intel-row span{color:#cbd5e1}
+.analysis-panel{background:var(--card-inner);padding:10px;border-radius:8px;margin:8px 0;font-size:0.78em}.analysis-item{margin:3px 0}
+.conf-high{color:var(--teal);font-weight:700}.conf-med{color:var(--orange)}.conf-low{color:var(--text-secondary)}
+.conf-badge{padding:2px 8px;border-radius:10px;font-size:0.75em}.risk-low{background:#052e16;color:#4ade80}.risk-t1{background:#7f1d1d;color:#f87171}
+.risk-t2{background:#451a03;color:#fbbf24}.risk-t3{background:#172554;color:#60a5fa}.step-num{color:var(--blue);font-size:0.75em}
+.footer{text-align:center;padding:14px;color:var(--text-secondary);font-size:0.73em}.highlight{color:var(--orange);font-weight:700}
+.plain-expl{display:inline-block;background:#1e3a5f;color:#93c5fd;padding:1px 6px;border-radius:4px;font-size:0.8em;margin-left:4px;cursor:help}
+.glossary{background:var(--card-inner);padding:12px;border-radius:8px;margin:10px 0;font-size:0.73em;color:var(--text-secondary);line-height:2}
+.glossary strong{color:var(--teal)}
+</style></head><body><div class="container">
 <div class="header-section">
-  <h1>🏆 2026世界杯 全面分析报告 v26.6</h1>
-  <div class="subtitle">v24.9 视觉框架 + NB分布 + AI 7维比分引擎 | 生成时间：2026-06-13 22:41（北京时间）</div>
+  <h1>🏆 2026世界杯预测 v27.0 ★最新</h1>
+  <div class="subtitle">欧赔核心(40%)+亚盘验证(25%)+ELO基线(15%)+赛前情报(10%)+Poly逆向(10%) | 博弈心态因子 | 2026-06-14 13:46 GMT+8</div>
   <div class="badge-row">
-    <span class="badge badge-v246">v24.9 经典框架</span>
-    <span class="badge badge-v260">🧠 v26.6 AI 7D+实力差</span>
-    <span class="badge badge-knowledge">📚 两书+双Skill</span>
-    <span class="badge badge-skill">🤖 AI自动化分析</span>
-    <span class="badge badge-data">📊 234场MLE+三方交叉验证</span>
+    <span class="badge badge-v27">🔄 v27.0 架构革命</span>
+    <span class="badge badge-new">🧠 博弈心态因子</span>
+    <span class="badge badge-new">📐 盘赔差异法</span>
+    <span class="badge badge-v27">📖 IMA欧赔亚盘框架</span>
   </div>
 </div>
-<div class="method-bar">
-🧠 <strong>v26.6 6月15日分析 — Polymarket+欧赔+亚盘三方交叉验证 + O/X.5阶梯展示：</strong>
-<br>◆<b>三方数据源：</b> Polymarket预测市场 | 500.com欧赔（胜平负+让球盘）| 搜狐体育亚盘分析 → 交叉比对确保一致性
-<br>◆<b>📊 O/X.5阶梯进球展示：</b> 独立进球O0.5→O1.5→O2.5→O3.5→O4.5→O5.5阶梯显示，概率&lt;25%自动截断
-<br>◆<b>📰 赛事情报：</b> SportsMole/FIFA伤病+首发+状态+交锋记录完整呈现
-<br>◆<b>⚠️ 市场数据更新提示：</b> 每个分析面板顶部醒目橙色提示当前实时市场胜率
-<br>◆<b>FIFA排名+小组形势：</b> 覆盖全部8队排名(#7荷兰~#82库拉索)、小组对手、比赛目标
-<br>◆<b>近期6场国际赛战绩：</b> 500.com真实数据（德5胜1负进19、日6连胜零封5场、荷3胜2平1负等）
-<br>◆<b>三方交叉验证：</b> 市场λ值与欧赔胜平负、亚盘让球线三方对照无误后纳入分析
-</div>
+
 <div class="warning-bar">
-⚠️ <strong>市场数据来源声明：</strong> 本报告市场概率基于Polymarket预测市场实时数据 + 500.com欧赔 + 搜狐亚盘分析三方综合推算。
-Polymarket为区块链预测市场，资金驱动信号；欧赔来自博彩公司做市报价；亚盘分析来自国内权威分析师解读。
-三方数据交叉验证后取中位共识值。所有概率均为市场隐含概率，并非100%准确预测，仅供娱乐参考。
+  <strong>⚡ v26.6→v27.0 架构升级通知</strong><br>
+  • <strong>Polymarket降权</strong>：70%→10%（仅用于大热检测）。记住：Polymarket数据=投注百分比≠真实概率！<br>
+  • <strong>新增博弈心态因子</strong>：首轮保守+庄家意图解码+大热必死检测<br>
+  • <strong>6月14日教训</strong>：卡塔尔1:1瑞士(预测0:2)、巴西1:1摩洛哥(预测2:1)、海地0:1苏格兰(预测1:2) — 三个预测全错触发的根本变革
 </div>
-<div class="knowledge-bar">
-<div class="knowledge-item"><div class="src">欧赔核心思维</div><div class="desc">广义实力 · 分布理论 · 最优解 · 心理预期</div></div>
-<div class="knowledge-item"><div class="src">竞彩看盘技巧</div><div class="desc">五大原则 · 盘赔差异 · 水位看盘 · 动态盘口</div></div>
-<div class="knowledge-item"><div class="src">足球量化分析预测</div><div class="desc">ELO先验 · NegBin · 爆冷三层 · 蒙特卡洛</div></div>
-<div class="knowledge-item"><div class="src">足球贝叶斯分析</div><div class="desc">先验/后验更新 · 战术语境 · 风格克制</div></div>
+
+<div class="method-bar">
+  <strong>🔬 v27.0方法链：</strong>欧赔核心分析 → 亚盘盘赔差异 → 欧亚交叉验证 → 博弈心态校正 → 综合比分推荐<br>
+  <strong>📖 知识基础：</strong>IMA"欧赔亚盘全解析"（概率→赔率→庄家意图→盘赔差异→终盘吻合度）
 </div>
+
+<!-- 通俗术语表 -->
+<div class="glossary">
+  <strong>📖 博彩术语通俗解释：</strong><br>  <strong>赢球输盘</strong>：强队赢了比赛但没赢够盘口要求的球数（比如让3球只赢了2球→买强队的人仍然亏钱）<br>  <strong>深开诱上</strong>：庄家故意开出比正常深很多的让球盘，制造强队必胜假象，引诱大众买强队，实际强队可能赢不了那么多<br>  <strong>浅开阻上</strong>：庄家故意开出比正常浅的让球盘，制造强队不稳假象，吓退想买强队的人，实际强队可能正常赢出<br>  <strong>升水</strong>：赔率/水位上升→庄家提高赔付→可能是阻止买入或真实不看好<br>  <strong>降水</strong>：赔率/水位下降→庄家降低赔付→可能是真实看好或诱导买入<br>  <strong>韬开</strong>：赔率故意开高→形成阻力→阻止大众买入该方向<br>  <strong>拉低</strong>：赔率故意开低→制造信心→诱导大众买入该方向<br>  <strong>返还率</strong>：庄家返还给玩家的总金额比例。如94%返还率→庄家期望利润6%<br>  <strong>盘赔一致</strong>：欧赔换算的理论盘口与实际亚盘吻合→庄家没有隐藏意图，比赛大概率按正常方向发展<br>  <strong>大热必死</strong>：当所有人都看好某方时（投注集中>85%），往往爆冷。因为庄家需要保护利润，可能通过调整诱导大众犯错<br></div>
 <div class="summary-section">
-<h3 style="margin-bottom:12px;">📊 6月15日 AI 7维智能推荐比分一览（v26.6 — 三方市场数据交叉验证）</h3>
-<table class="summary-table">
-<thead><tr>
-<th>对阵</th><th>🤖 AI主推</th><th>次选</th><th>AI概率</th><th>纯概率Top1</th>
-<th>实力方向</th><th>总球λ</th><th>AI推理核心</th>
-</tr></thead>
-<tbody>
+  <h3 style="font-size:1em;color:var(--gold);margin-bottom:10px;">📊 v27.0 预测摘要</h3>
+  <table class="summary-table"><thead><tr>
+    <th>对阵</th><th>ELO差</th><th>欧赔</th><th>亚盘</th><th>博弈类型</th><th>盘赔信号</th><th>风险</th><th>★推荐</th><th>次选</th>
+  </tr></thead><tbody>
 <tr>
-  <td><strong>德国 vs 库拉索</strong></td>
-  <td class="score-main">3:0</td>
-  <td class="score-second">4:0</td>
-  <td>13.2% / 12.3%</td>
-  <td style="color:var(--text-secondary);font-size:0.75em;">3:0(13.2%)</td>
-  <td><span style="color:#f97316;font-size:0.75em;">→德国优</span></td>
-  <td style="color:var(--teal);">4.89</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.50</td>
-</tr>
+    <td><strong>德国 vs 库拉索</strong></td>
+    <td>+445</td>
+    <td style="font-size:0.8em;">1.07/11.00/29.00</td>
+    <td style="font-size:0.82em;">主队让3.0球</td>
+    <td>强弱分明</td>
+    <td style="font-size:0.78em;">深开警讯</td>
+    <td><span class="risk-t1" style="padding:2px 8px;border-radius:4px;">高风险</span></td>
+    <td class="score-main">3:0</td>
+    <td class="score-second">4:0</td>
+  </tr>
 <tr>
-  <td><strong>荷兰 vs 日本</strong></td>
-  <td class="score-main">1:1</td>
-  <td class="score-second">1:2</td>
-  <td>12.1% / 6.9%</td>
-  <td style="color:var(--text-secondary);font-size:0.75em;">1:1(12.1%)</td>
-  <td><span style="color:#fbbf24;font-size:0.75em;">≈均衡</span></td>
-  <td style="color:var(--teal);">2.53</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.36</td>
-</tr>
+    <td><strong>荷兰 vs 日本</strong></td>
+    <td>+100</td>
+    <td style="font-size:0.8em;">2.10/3.25/3.40</td>
+    <td style="font-size:0.82em;">主队让0.5球</td>
+    <td>势均力敌</td>
+    <td style="font-size:0.78em;">盘赔一致</td>
+    <td><span class="risk-low" style="padding:2px 8px;border-radius:4px;">低风险</span></td>
+    <td class="score-main">1:1</td>
+    <td class="score-second">0:0</td>
+  </tr>
 <tr>
-  <td><strong>科特迪瓦 vs 厄瓜多尔</strong></td>
-  <td class="score-main">0:0</td>
-  <td class="score-second">1:1</td>
-  <td>15.5% / 13.7%</td>
-  <td style="color:var(--text-secondary);font-size:0.75em;">0:1(18.3%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 0:1)</span></td>
-  <td><span style="color:#fbbf24;font-size:0.75em;">≈均衡</span></td>
-  <td style="color:var(--teal);">1.69</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.03</td>
-</tr>
+    <td><strong>科特迪瓦 vs 厄瓜多尔</strong></td>
+    <td>-60</td>
+    <td style="font-size:0.8em;">3.50/3.30/2.05</td>
+    <td style="font-size:0.82em;">客队让0.2球</td>
+    <td>势均力敌</td>
+    <td style="font-size:0.78em;">盘赔一致</td>
+    <td><span class="risk-low" style="padding:2px 8px;border-radius:4px;">低风险</span></td>
+    <td class="score-main">1:1</td>
+    <td class="score-second">0:0</td>
+  </tr>
 <tr>
-  <td><strong>瑞典 vs 突尼斯</strong></td>
-  <td class="score-main">1:1</td>
-  <td class="score-second">2:1</td>
-  <td>10.2% / 7.7%</td>
-  <td style="color:var(--text-secondary);font-size:0.75em;">1:0(11.6%) <span style="color:#f97316;font-size:0.7em;">(纯概率Top: 1:0)</span></td>
-  <td><span style="color:#f97316;font-size:0.75em;">→瑞典优</span></td>
-  <td style="color:var(--teal);">2.74</td>
-  <td style="font-size:0.68em; color:var(--blue);">AI×1.07</td>
-</tr>
-</tbody></table></div><div class="match-card">
-<div class="match-header">
-  <h2>⚽ 德国 vs 库拉索</h2>
-  <div class="match-score-rec">
-    <span class="main-score">🤖 3:0</span>
-    <span class="sec-score"> | 次选: 4:0</span>
-    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑评分 ×1.50 | 概率: 13.2%+12.3%
-    </div>
-    <div style="font-size:0.68em; color:#22c55e;">✓ AI与概率一致</div>
-  </div>
-</div>
+    <td><strong>瑞典 vs 突尼斯</strong></td>
+    <td>+35</td>
+    <td style="font-size:0.8em;">1.88/3.45/4.00</td>
+    <td style="font-size:0.82em;">主队让0.8球</td>
+    <td>有差距但可对抗</td>
+    <td style="font-size:0.78em;">盘赔一致</td>
+    <td><span class="risk-low" style="padding:2px 8px;border-radius:4px;">低风险</span></td>
+    <td class="score-main">1:0</td>
+    <td class="score-second">2:1</td>
+  </tr>
+</tbody></table></div>
 
-<!-- ⚠️ v26.6 市场数据更新提示 -->
-<div class="warning-bar" style="margin-bottom:8px; font-size:0.73em;">
-  ⚠️ <strong>当前实时市场数据：</strong> Polymarket实时: 德国胜94% / 平4% / 库拉索胜2% | 欧赔: 1.07/11.0/29.0 | 亚盘: 让-3.0球
-</div>
-
-<div class="panel-grid">
-  <div class="panel">
-    <h4>📊 实力 & 市场分析（三方验证）</h4>
-    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#10 vs #82</span></div>
-    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">E组: 科特迪瓦/厄瓜多尔/库拉索</span></div>
-    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">德国: E组独一档，首轮锁定+3净胜球<br>库拉索: 世界杯首秀，力保不崩盘即胜利</span></div>
-    <div class="panel-row"><span class="label">ELO评分</span><span class="value">1915 vs 1470 (差445)</span></div>
-    <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">88% / 5% / 7%</span></div>
-    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">94% / 4% / 2%</span></div>
-    <div class="panel-row"><span class="label">欧赔参考</span><span class="value">1.07 / 11.0 / 29.0</span></div>
-    <div class="panel-row"><span class="label">亚盘参考</span><span class="value">让-3.0球 (0.88/0.98)</span></div>
-    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">82%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">34%</span></div>
+<div class="match-card">
+  <div class="match-header">
+    <h2>⚽ 德国 vs 库拉索</h2>
+    <div class="match-score-rec"><span class="风险-t1" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🔴 高风险</span></div>
   </div>
 
-  <div class="panel">
-    <h4>🎯 德国 独立进球能力（O/X.5阶梯）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>    <div class="panel-row"><span class="label">德国 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--teal); font-weight:700;">95%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:95.3%;"></div></div>    <div class="panel-row"><span class="label">德国 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O1.5</span><span class="value" style="color:var(--teal); font-weight:700;">85%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:85.1%;"></div></div>    <div class="panel-row"><span class="label">德国 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O2.5</span><span class="value" style="color:var(--teal); font-weight:700;">71%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:71.3%;"></div></div>    <div class="panel-row"><span class="label">德国 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O3.5</span><span class="value" style="color:var(--teal); font-weight:700;">57%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:56.7%;"></div></div>    <div class="panel-row"><span class="label">德国 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O4.5</span><span class="value" style="color:var(--teal); font-weight:700;">43%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:43.1%;"></div></div>    <div class="panel-row"><span class="label">德国 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O5.5</span><span class="value" style="color:var(--teal); font-weight:700;">32%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-teal" style="width:31.5%;"></div></div>    <div style="margin-top:8px;"></div>
-    <h4>🎯 库拉索 独立进球能力（O/X.5阶梯）</h4>    <div class="panel-row"><span class="label">库拉索 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--orange); font-weight:700;">34%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:34.0%;"></div></div>  </div>
-
-  <div class="panel">
-    <h4>📈 总进球预测（O/X.5阶梯 + NB融合）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
-    <div class="panel-row"><span class="label">⚡ 预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.15em; font-weight:700;">4.89</span></div>
-    <div class="panel-row"><span class="label">  └ 德国 λ</span><span class="value">4.500 (NB r=4.156)</span></div>
-    <div class="panel-row"><span class="label">  └ 库拉索 λ</span><span class="value">0.392 (NB r=11.002)</span></div>
-    <div style="margin-top:8px;"></div>    <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:#f97316; font-weight:700;">99%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:98.6%;"></div></div>    <div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:#f97316; font-weight:700;">93%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:93.2%;"></div></div>    <div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:#f97316; font-weight:700;">83%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:82.7%;"></div></div>    <div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:#f97316; font-weight:700;">68%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:68.1%;"></div></div>    <div class="panel-row"><span class="label">全场 O4.5</span><span class="value" style="color:#f97316; font-weight:700;">52%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:51.8%;"></div></div>    <div class="panel-row"><span class="label">全场 O5.5</span><span class="value" style="color:#f97316; font-weight:700;">37%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-teal" style="width:36.6%;"></div></div>    <div style="margin-top:6px; font-size:0.75em;">
-      <span style="color:#f97316;">融合≥4球: 56.8%</span>
-      <span style="color:var(--text-secondary); margin-left:8px;">BTTS: 34%</span>
+  <!-- 三列面板 -->
+  <div class="panel-grid">
+    <div class="panel">
+      <h4>📊 实力 &amp; 市场分析</h4>
+      <div class="panel-row"><span class="label">🏆 小组</span><span class="value">E组: E组独一档，首轮锁定+3净胜球</span></div>
+      <div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1915 vs 1470 (差+445)</span></div>
+      <div class="panel-row"><span class="label">FIFA排名</span><span class="value">#10 vs #82</span></div>
+      <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">93% / 7%</span></div>
+      <div class="panel-row"><span class="label">🔴 Poly参考(仅10%)</span><span class="value" style="font-size:0.75em;">94%/4%/2%</span></div>
+      <div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">1.07 / 11.00 / 29.00</span></div>
+      <div class="panel-row"><span class="label">   └ 返还率</span><span class="value">94.3% (庄家利润率5.7%)</span></div>
+      <div class="panel-row"><span class="label">   └ 隐含概率</span><span class="value" style="font-size:0.75em;">主88.2%/平8.6%/客3.3%</span></div>
+      <div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">主队让3.0球<span style="font-size:0.7em;">(水0.88/0.98)</span></span></div>
+      <div class="panel-row"><span class="label">   └ 理论盘</span><span class="value">-2.00</span></div>
+      <div class="panel-row"><span class="label">   └ 偏差</span><span class="value" style="color:var(--red);">-1.00 (深开警讯)</span></div>
+      <div class="panel-row"><span class="label">O2.5概率</span><span class="value">82%</span></div>
+      <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">34%</span></div>
+      <div style="margin-top:6px;font-size:0.68em;color:var(--orange);font-style:italic;">
+        ⚠️ Poly数据仅为大众投注百分比，已降权至10%逆向参考
+      </div>
     </div>
-    <div style="margin-top:3px; font-size:0.72em; color:var(--blue);">
-      v26.6: NB阶梯 + 市场锚O0.5 + BTTS(70%)
+
+    <div class="panel">
+      <h4>🎯 德国 独立进球能力（O/X.5阶梯）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">德国 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">95%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:95%;"></div></div><div class="panel-row"><span class="label">德国 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">76%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:76%;"></div></div><div class="panel-row"><span class="label">德国 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">55%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:55%;"></div></div><div class="panel-row"><span class="label">德国 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">37%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:37%;"></div></div>
+      <div style="margin-top:10px;"></div>
+      <h4>🎯 库拉索 独立进球能力（O/X.5阶梯）</h4>
+      <div class="panel-row"><span class="label">库拉索 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">34%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:34%;"></div></div>
+    </div>
+
+    <div class="panel">
+      <h4>📈 总进球预测（NB融合）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">⚡ λ_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">3.47</span></div>
+      <div class="panel-row"><span class="label">  └ 德国 λ</span><span class="value">3.058 (NB r=4.156)</span></div>
+      <div class="panel-row"><span class="label">  └ 库拉索 λ</span><span class="value">0.416 (NB r=11.002)</span></div>
+      <div style="margin-top:8px;"></div>
+      <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">95%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:95%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">83%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:83%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">64%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:64%;"></div></div><div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">44%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:44%;"></div></div><div class="panel-row"><span class="label">全场 O4.5</span><span class="value" style="color:var(--teal);font-weight:700;">27%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:27%;"></div></div>
+      <div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.0: NB阶梯 + Poly O0.5锚点</div>
     </div>
   </div>
 
+  <!-- 状态面板 -->
   <div class="form-panel">
-    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
     <div class="form-grid">
       <div class="form-team">
-        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">德国</div>
+        <div style="color:var(--teal);font-weight:700;margin-bottom:4px;">德国</div>
         <span class="form-badge form-hot">5胜0平1负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进19</span>
-          <span style="color:var(--red); margin-left:8px;">丢6</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均3.17</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×1.35(攻)×1.27(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进19</span><span style="color:var(--red);margin-left:8px;">丢6</span></div>
       </div>
       <div class="form-divider"></div>
       <div class="form-team" style="text-align:right;">
-        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">库拉索</div>
-        <span class="form-badge form-cool">1胜1平4负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进6</span>
-          <span style="color:var(--red); margin-left:8px;">丢14</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.00</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×0.94(攻)×1.00(对防)
-        </div>
+        <div style="color:var(--orange);font-weight:700;margin-bottom:4px;">库拉索</div>
+        <span class="form-badge form-cold">1胜1平4负</span>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进6</span><span style="color:var(--red);margin-left:8px;">丢14</span></div>
       </div>
-    </div>
-    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
-      数据源: liansai.500.com(德/荷/日) + 搜狐体育(科/厄/瑞/突/库) |
-      λ原→λ调: 3.05/0.42 → 4.50/0.39
     </div>
   </div>
 
   <!-- 📰 赛事情报 -->
   <div class="intel-panel">
-    <h4>📰 赛事情报（SportsMole/FIFA/WebSearch交叉验证）</h4>
-    <div class="intel-row"><strong>🏟 场地：</strong><span>休斯顿NRG体育场</span></div>
-    <div class="intel-row"><strong>🚑 伤停：</strong><span>德国：诺伊尔小腿轻伤(预期首发)；库拉索：全员健康</span></div>
-    <div class="intel-row"><strong>👥 预计首发：</strong><span>德国(4-2-3-1): 诺伊尔/金米什/塔/施洛特贝克/布朗/恩梅查/帕夫洛维奇/萨内/穆西亚拉/维尔茨/哈弗茨 | 库拉索(4-3-3): 鲁姆/桑博/奥比斯波/加里/弗洛拉努斯/科门恩西亚/小巴库纳/L·巴库纳/钟泰希/戈雷/安东尼塞</span></div>
-    <div class="intel-row"><strong>📊 近期状态：</strong><span>德国：近9场全胜，2026年4场友谊赛全部赢球(瑞士/加纳/芬兰/美国)；库拉索：近6场1胜1平4负，世界杯资格赛小组头名晋级，5月底友谊赛1-4负苏格兰后4-0胜阿鲁巴</span></div>
-    <div class="intel-row"><strong>⚔ 交锋记录：</strong><span>无交锋记录——这是库拉索首次参加世界杯决赛圈(人口<16万的最小参赛国)，两队历史上从未相遇</span></div>
+    <h4>📰 赛事情报</h4>
+    <div class="intel-row"><strong>🏟 场地：</strong><span>休斯顿NRG体育场(72,220座) | 中立场 | 约30°C</span></div>
+    <div class="intel-row"><strong>🚑 伤停：</strong><span>德国: 诺伊尔小腿轻伤(预期首发) | 库拉索: 全员健康</span></div>
+    <div class="intel-row"><strong>📋 首发：</strong><span>德国(4-2-3-1): 诺伊尔/基米希/吕迪格/施洛特贝克/劳姆/京多安/格雷茨卡/穆西亚拉/维尔茨/萨内/哈弗茨</span></div>
+    <div class="intel-row"><strong>⚔️ 交锋：</strong><span>无交锋记录——库拉索首次世界杯</span></div>
+    <div class="intel-row"><strong>📊 状态：</strong><span>德国近6场5胜1负(进19失6)🔥 vs 库拉索1胜1平4负(进6失14)❄️</span></div>
   </div>
-  <div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
-    <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
-    <div class="analysis-item" style="font-size:0.78em;">
-      <strong>Polymarket实时市场胜率:</strong> 德国胜<span style="color:#22c55e;font-weight:700;">94%</span> / 平<span style="color:#fbbf24;font-weight:700;">4%</span> / 库拉索胜<span style="color:#f97316;font-weight:700;">2%</span>
-      &nbsp;| BTTS: <span style="color:#60a5fa;">34%</span> | O2.5: <span style="color:#a78bfa;">82%</span><br>
-      <span style="color:#94a3b8;font-size:0.85em;">以下AI分析基于Polymarket实时数据 + 500欧赔 + 搜狐亚盘三方交叉验证。</span>
-    </div>
-  </div>
+
+  <!-- v27.0 分析步骤 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤1] 欧赔核心分析：实力定位与庄家意图</span></h4>
     <div class="analysis-item">
-      FIFA #10 vs #82 | ELO 1915(德国)/1470(库拉索) (德国高445分)<br>
-      λ综合: 德国 4.50 vs 库拉索 0.39 — <strong style="color:#22c55e;">主强(差距4.11)</strong><br>
-      广义定位: 德国实力碾压级别 | 市场胜率 德国(94%) vs 库拉索(2%)
+      <strong>格局：</strong>绝对强弱悬殊 | <strong>市场类型：</strong>碾压局<br>
+      <strong>返还率：</strong>94.3% | <strong>方向：</strong>主队（隐含概率 主88.2%/平8.6%/客3.3%）<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：返还率=庄家返还比例，94.3%意味着庄家预期利润率5.7%。欧赔1.07意味着主队大热，市场认为必胜（隐含胜率约88%）。</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤3] O/X.5市场信号与进球能力分析</span></h4>
+    <h4><span class="step-num">[v27.0 步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4>
     <div class="analysis-item">
-      独立进球O0.5: 德国=95% | 库拉索=34%<br>
-      大球信号: O2.5=82% → 强大球预期 | O3.5=68% | O4.5=52%<br>
-      BTTS: 34%→至少一方零封概率高
+      <strong>实际盘口：</strong>主队让3.0球（水位0.88/0.98）| <strong>欧赔理论盘：</strong>-2.00<br>
+      <strong>偏差：</strong>-1.00 → <span style="color:var(--red);">深开警讯</span><br>
+      <strong>水位信号：</strong>中水(0.85~1.00)→满意当前比例<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：⚠️ 深开(让球偏深)→可能'诱上'或庄家真实看好 | 庄家故意开出比正常深很多的让球盘，制造强队必胜假象，引诱大众买强队，实际强队可能赢不了那么多</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 实力差一致性分析（v26.6第7因子）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4>
+    <div class="analysis-item">      <span style="color:var(--red);">🔴 盘口深开→警惕诱盘！庄家可能在'吹热'强队</span><br>
+      <span style="color:var(--red);">🚨 大众极度看好(94%投注)→'大热必死'风险！</span><br>
+      <span style="color:var(--red);">🔴 庄家+大众一致看好→可能出现诱导性深盘</span><br>
+      <strong>方向置信度：</strong><span class="conf-med">中(需博弈心态修正)</span>
+    </div>
+  </div>
+
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v27.0 步骤4] 博弈心态因子 ★核心创新</span></h4>
     <div class="analysis-item">
-      λ差: +4.11 ×60% + 状态差×25% + 攻击差×15% → 综合信号偏向德国<br>
-      AI依此对逆方向比分做+权奖励处理
+      <strong>比赛类型：</strong>强弱分明 | <strong>热度检测：</strong>🚨 大热门(94%)→警惕大热必死！<br>
+      <strong>心态分析：</strong>弱队心态：'少输当赢'→保守蹲守，可能限制净胜球但强队仍赢<br>
+      <strong>比分修正：</strong>强队赢2~3球<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：强弱分明→弱队心态：'少输当赢'→保守蹲守，可能限制净胜球但强队仍赢 | Poly大众投注极度一致看好，当所有人都看好某方时（投注集中>85%），往往爆冷。因为庄家需要保护利润，可能通过调整诱导大众犯错</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤5] 综合比分推荐</span></h4>
     <div class="analysis-item">
-      <strong>欧赔骨架:</strong> 1.07(主胜) / 11.00(平) / 29.00(客胜)<br>
-      <strong>亚盘骨架:</strong> 德国让3.0球，主水0.88 / 客水0.98<br>
-      Polymarket信号: O2.5=82% → 市场预期大球(总≥3球)<br>
-      BTTS=34% → 至少一方零封概率较高
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-    <div class="analysis-item">
-      从博彩公司角度：德国是市场热门（Polymarket隐含概率）<br>
-      市场类型判定: '一边倒'(实力碾压)<br>
-      预期进球数: λ_total=4.89 → 市场O2.5=82% → ≥3球(大球)<br>
-      博彩公司最优解: 设置德国让3.0球，平衡了德国赢3球以下和德国赢4+球以上两种方向
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-    <div class="analysis-item">
-      赛会制首轮保守因子生效: λ各降8%~12%（首轮保守因子：担心伤病/红牌，战术偏谨慎）<br>
-      调整后λ: 德国4.05(原4.50) | 库拉索0.35(原0.39)<br>
-      调整后λ_total: 4.40(原4.89)<br>
-      但ELO差距445分过大足以抵消保守效应，不影响核心判断方向
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
-    <div class="analysis-item">
-      <span style="color:#f97316;">爆冷风险评估:</span> 基础爆冷概率 = 2.5%(库拉索) + 平局4.0% = 总计<strong style="color:#22c55e;">6.5%</strong><br>
-      风格克制加成: 库拉索'防守反击' vs 德国'控球推进'<br>
-      首轮加成: 赛会制首轮不确定性+5%<br>
-      ELO差距修正: 445分差距→爆冷难度极大(-8%)
-    </div>
-    <div class="analysis-item" style="font-weight:700; margin-top:6px;">
-      综合爆冷 → <span class="risk-low" style="padding:2px 10px; border-radius:10px;">低风险</span>
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-    <div class="analysis-item">
-      市场认为德国是理所当然<br>
-      心理预期值: 德国支持者期望大胜(2:0/3:0)，库拉索支持者期望'少输当赢'<br>
-      根据'信赔不信变': Polymarket数据稳定，非突变<br>
-      根据'信小不信大': 热门方概率94% ⚠️ 接近'离谱高'阈值，需警惕'大热必死'<br>
-      结论: 市场心理预期偏高，需保持警惕但不需完全抵制
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-    <div class="analysis-item">
-      最终分析结论: <strong>德国 vs 库拉索</strong><br>
-      推荐比分: <strong style="color:#14b8a6;font-size:1.1em;">3:0</strong>（德国胜，概率1323.7%）| 次选: <strong style="color:#f97316;">4:0</strong>（1231.1%）<br>
-      核心逻辑链:<br>
-      ① 实力定位(ELO差+445) → 主强<br>
-      ② 市场验证(Poly 94/4/2% + 500欧赔 + 亚盘德国让3.0球) → 三方一致 ✅<br>
-      ③ 分布形态(O2.5=82% BTTS=34% λ_total=4.89) → ≥3球(大球)<br>
-      ④ AI 7D引擎评分 ×1.50 → 方向对齐<br>
-      ⑤ 爆冷风险: 6.5%(低风险) | ✅ O2.5一致 | ✅ BTTS一致
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[v26.6 AI 7D引擎] 三方验证+实力差一致性推荐</span></h4>
-    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合7维数据分析后，主推 <strong>3:0</strong>（概率13.2%，AI评分×1.50）<br>德国得3球占优，库拉索虽攻击因子×0.94但受防守压制可能哑火<br>加分项：✓O2.5=82%支持总3球大球；🔥德国近期5胜状态火热；库拉索近期低迷零封合理；✓实力差(λ-4.11,状-15,攻-0.41)→德国胜对齐<br>次选 <strong>4:0</strong>（概率12.3%，AI评分×1.50）
-    </div>
-    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
-      <strong style="color:#f97316;">AI排序Top5:</strong> 3:0(13.2%) → 4:0(12.3%) → 5:0(10.4%) → 2:0(9.6%) → 6:0(8.3%)
-    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
-      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
-        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
-        <tr>
-          <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>3:0</strong></td>
-          <td style="text-align:right;">13.2%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.50</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=82%支持总3球大球 🔥德国近期5胜状态火热</span></td>
-        </tr>
-        <tr>
-          <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>4:0</strong></td>
-          <td style="text-align:right;">12.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.50</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=82%支持总4球大球 🔥德国近期5胜状态火热</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">3.</td>
-          <td style="color:#94a3b8;"><strong>5:0</strong></td>
-          <td style="text-align:right;">10.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.50</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=82%支持总5球大球 🔥德国近期5胜状态火热</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">4.</td>
-          <td style="color:#94a3b8;"><strong>6:0</strong></td>
-          <td style="text-align:right;">8.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.50</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓O2.5=82%支持总6球大球 🔥德国近期5胜状态火热</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">5.</td>
-          <td style="color:#94a3b8;"><strong>2:0</strong></td>
-          <td style="text-align:right;">9.6%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.20</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥德国近期5胜状态火热 库拉索近期低迷零封合理</span> <span style="color:#f87171;">O2.5=82%↘仅2球偏少</span></td>
-        </tr>
-      </table>
-    </div>
-    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
-      💡 市场锚点驱动 [已应用BTTS校正]: 德国O0.5=95%支持进球；库拉索O0.5仅34%，零封合理
-    </div>
-    <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">3:0</strong> (13.2%)
-      | 次选: <strong>4:0</strong> (12.3%)
-      | 置信度: <span class="conf-badge conf-med">中高</span>
-    </div>
-    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-      融合≥4球: 56.8% | O0.5→O5.5阶梯: 99%→93%→83%→68%→52%→37%
-    </div>
+      <strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">3:0</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">4:0</span><br>
+      <strong>推理链：</strong>实力碾压(ELO差445)+深盘主队让3.0球→强队必胜。🚨 大热门(94%)→警惕大热必死！ | 盘赔信号：深开警讯→警惕赢球输盘(赢了但没赢够盘口球数)<br>
+      <strong>方法论：</strong>欧赔核心(40%)→亚盘验证(25%)→ELO基线(15%)→情报(10%)→Poly逆向(10%)<br>      <span style="color:var(--red);font-weight:700;">⚠️ 重要提醒：深盘+大热→警惕强队赢球输盘！(强队赢了比赛但没赢够盘口要求的球数（比如让3球只赢了2球→买强队的人仍然亏钱）)</span><br>    </div>
   </div>
 </div>
-</div>
+
 <div class="match-card">
-<div class="match-header">
-  <h2>⚽ 荷兰 vs 日本</h2>
-  <div class="match-score-rec">
-    <span class="main-score">🤖 1:1</span>
-    <span class="sec-score"> | 次选: 1:2</span>
-    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑评分 ×1.36 | 概率: 12.1%+6.9%
-    </div>
-    <div style="font-size:0.68em; color:#22c55e;">✓ AI与概率一致</div>
-  </div>
-</div>
-
-<!-- ⚠️ v26.6 市场数据更新提示 -->
-<div class="warning-bar" style="margin-bottom:8px; font-size:0.73em;">
-  ⚠️ <strong>当前实时市场数据：</strong> Polymarket实时: 荷兰胜48% / 平27% / 日本胜26% | 欧赔: 2.1/3.25/3.4 | 亚盘: 让-0.5球
-</div>
-
-<div class="panel-grid">
-  <div class="panel">
-    <h4>📊 实力 & 市场分析（三方验证）</h4>
-    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#7 vs #18</span></div>
-    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">F组: 日本/瑞典/突尼斯</span></div>
-    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">荷兰: F组最强，首轮即恶战日本检验成色<br>日本: 6连胜气势如虹，死磕荷兰抢头名主动权</span></div>
-    <div class="panel-row"><span class="label">ELO评分</span><span class="value">1935 vs 1835 (差100)</span></div>
-    <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">61% / 5% / 34%</span></div>
-    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">48% / 27% / 26%</span></div>
-    <div class="panel-row"><span class="label">欧赔参考</span><span class="value">2.1 / 3.25 / 3.4</span></div>
-    <div class="panel-row"><span class="label">亚盘参考</span><span class="value">让-0.5球 (1.85/1.95)</span></div>
-    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">50%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">54%</span></div>
+  <div class="match-header">
+    <h2>⚽ 荷兰 vs 日本</h2>
+    <div class="match-score-rec"><span class="风险-low" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🟢 正常风险</span></div>
   </div>
 
-  <div class="panel">
-    <h4>🎯 荷兰 独立进球能力（O/X.5阶梯）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>    <div class="panel-row"><span class="label">荷兰 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--teal); font-weight:700;">77%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:77.0%;"></div></div>    <div class="panel-row"><span class="label">荷兰 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O1.5</span><span class="value" style="color:var(--teal); font-weight:700;">42%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:41.9%;"></div></div>    <div style="margin-top:8px;"></div>
-    <h4>🎯 日本 独立进球能力（O/X.5阶梯）</h4>    <div class="panel-row"><span class="label">日本 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--orange); font-weight:700;">66%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:66.5%;"></div></div>    <div class="panel-row"><span class="label">日本 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O1.5</span><span class="value" style="color:var(--orange); font-weight:700;">32%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:31.9%;"></div></div>  </div>
-
-  <div class="panel">
-    <h4>📈 总进球预测（O/X.5阶梯 + NB融合）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
-    <div class="panel-row"><span class="label">⚡ 预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.15em; font-weight:700;">2.53</span></div>
-    <div class="panel-row"><span class="label">  └ 荷兰 λ</span><span class="value">1.364 (NB r=4.156)</span></div>
-    <div class="panel-row"><span class="label">  └ 日本 λ</span><span class="value">1.165 (NB r=11.002)</span></div>
-    <div style="margin-top:8px;"></div>    <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:#f97316; font-weight:700;">90%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:90.3%;"></div></div>    <div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:#f97316; font-weight:700;">69%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:69.4%;"></div></div>    <div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:#f97316; font-weight:700;">45%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:45.3%;"></div></div>    <div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:#f97316; font-weight:700;">26%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:25.5%;"></div></div>    <div style="margin-top:6px; font-size:0.75em;">
-      <span style="color:#f97316;">融合≥4球: 28.5%</span>
-      <span style="color:var(--text-secondary); margin-left:8px;">BTTS: 54%</span>
+  <!-- 三列面板 -->
+  <div class="panel-grid">
+    <div class="panel">
+      <h4>📊 实力 &amp; 市场分析</h4>
+      <div class="panel-row"><span class="label">🏆 小组</span><span class="value">F组: F组最强，首轮即恶战日本检验成色</span></div>
+      <div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1935 vs 1835 (差+100)</span></div>
+      <div class="panel-row"><span class="label">FIFA排名</span><span class="value">#7 vs #18</span></div>
+      <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">64% / 36%</span></div>
+      <div class="panel-row"><span class="label">🔴 Poly参考(仅10%)</span><span class="value" style="font-size:0.75em;">48%/27%/26%</span></div>
+      <div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">2.10 / 3.25 / 3.40</span></div>
+      <div class="panel-row"><span class="label">   └ 返还率</span><span class="value">92.8% (庄家利润率7.2%)</span></div>
+      <div class="panel-row"><span class="label">   └ 隐含概率</span><span class="value" style="font-size:0.75em;">主44.2%/平28.5%/客27.3%</span></div>
+      <div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">主队让0.5球<span style="font-size:0.7em;">(水1.85/1.95)</span></span></div>
+      <div class="panel-row"><span class="label">   └ 理论盘</span><span class="value">-0.25</span></div>
+      <div class="panel-row"><span class="label">   └ 偏差</span><span class="value" style="color:var(--green);">-0.25 (盘赔一致)</span></div>
+      <div class="panel-row"><span class="label">O2.5概率</span><span class="value">50%</span></div>
+      <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">54%</span></div>
+      <div style="margin-top:6px;font-size:0.68em;color:var(--orange);font-style:italic;">
+        ⚠️ Poly数据仅为大众投注百分比，已降权至10%逆向参考
+      </div>
     </div>
-    <div style="margin-top:3px; font-size:0.72em; color:var(--blue);">
-      v26.6: NB阶梯 + 市场锚O0.5 + BTTS(70%)
+
+    <div class="panel">
+      <h4>🎯 荷兰 独立进球能力（O/X.5阶梯）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">荷兰 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">83%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:83%;"></div></div><div class="panel-row"><span class="label">荷兰 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">52%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:52%;"></div></div><div class="panel-row"><span class="label">荷兰 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">28%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:28%;"></div></div>
+      <div style="margin-top:10px;"></div>
+      <h4>🎯 日本 独立进球能力（O/X.5阶梯）</h4>
+      <div class="panel-row"><span class="label">日本 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">76%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:76%;"></div></div><div class="panel-row"><span class="label">日本 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">42%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:42%;"></div></div>
+    </div>
+
+    <div class="panel">
+      <h4>📈 总进球预测（NB融合）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">⚡ λ_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">3.20</span></div>
+      <div class="panel-row"><span class="label">  └ 荷兰 λ</span><span class="value">1.772 (NB r=4.156)</span></div>
+      <div class="panel-row"><span class="label">  └ 日本 λ</span><span class="value">1.427 (NB r=11.002)</span></div>
+      <div style="margin-top:8px;"></div>
+      <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">94%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:94%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">80%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:80%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">59%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:59%;"></div></div><div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">39%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:39%;"></div></div>
+      <div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.0: NB阶梯 + Poly O0.5锚点</div>
     </div>
   </div>
 
+  <!-- 状态面板 -->
   <div class="form-panel">
-    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
     <div class="form-grid">
       <div class="form-team">
-        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">荷兰</div>
+        <div style="color:var(--teal);font-weight:700;margin-bottom:4px;">荷兰</div>
         <span class="form-badge form-warm">3胜2平1负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进10</span>
-          <span style="color:var(--red); margin-left:8px;">丢5</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.67</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×1.07(攻)×0.87(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进10</span><span style="color:var(--red);margin-left:8px;">丢5</span></div>
       </div>
       <div class="form-divider"></div>
       <div class="form-team" style="text-align:right;">
-        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">日本</div>
+        <div style="color:var(--orange);font-weight:700;margin-bottom:4px;">日本</div>
         <span class="form-badge form-hot">6胜0平0负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进11</span>
-          <span style="color:var(--red); margin-left:8px;">丢2</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.83</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×1.10(攻)×0.97(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进11</span><span style="color:var(--red);margin-left:8px;">丢2</span></div>
       </div>
-    </div>
-    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
-      数据源: liansai.500.com(德/荷/日) + 搜狐体育(科/厄/瑞/突/库) |
-      λ原→λ调: 1.47/1.09 → 1.36/1.16
     </div>
   </div>
 
   <!-- 📰 赛事情报 -->
   <div class="intel-panel">
-    <h4>📰 赛事情报（SportsMole/FIFA/WebSearch交叉验证）</h4>
-    <div class="intel-row"><strong>🏟 场地：</strong><span>阿灵顿AT&T体育场</span></div>
-    <div class="intel-row"><strong>🚑 伤停：</strong><span>荷兰：门将费布鲁亨臀部伤疑(弗莱肯备选)，廷伯/舒滕/德利赫特/西蒙斯伤缺；日本：队长远藤航脚伤退出、三笘薰伤缺</span></div>
-    <div class="intel-row"><strong>👥 预计首发：</strong><span>荷兰(4-3-3): 费布鲁亨/邓弗里斯/范赫克/范迪克/范德文/德容/格拉文贝尔奇/赖因德斯/萨默维尔/德佩/加克波 | 日本(3-4-3): 铃木/谷口彰悟/渡边刚/伊东纯也/堂安律/镰田大地/田中碧/中村敬斗/久保建英/上田绮世/伊东纯也</span></div>
-    <div class="intel-row"><strong>📊 近期状态：</strong><span>荷兰：热身赛输阿尔及利亚终结10场不败，闭门赛靠加克波点球险胜乌兹别克；日本：预选赛54球仅失3球，近6场友谊赛全胜(含胜巴西/英格兰)，连续8届世界杯</span></div>
-    <div class="intel-row"><strong>⚔ 交锋记录：</strong><span>荷兰3胜1平1负占优，最近一次友谊赛交手荷兰2-1击败日本</span></div>
+    <h4>📰 赛事情报</h4>
+    <div class="intel-row"><strong>🏟 场地：</strong><span>亚特兰大梅赛德斯-奔驰体育场(71,000座) | 中立场</span></div>
+    <div class="intel-row"><strong>🚑 伤停：</strong><span>荷兰: 德佩轻伤(可能替补) | 日本: 三笘薫已恢复合练(可能首发)</span></div>
+    <div class="intel-row"><strong>📋 首发：</strong><span>荷兰(3-4-3): 弗莱肯/范迪克/阿克/廷贝尔/邓弗里斯/德容/赖因德斯/哈特曼/加克波/韦霍斯特/西蒙斯</span></div>
+    <div class="intel-row"><strong>⚔️ 交锋：</strong><span>2010世界杯荷兰1:0日本 | 2013友谊赛荷兰2:2日本 | 荷兰2胜1平0负</span></div>
+    <div class="intel-row"><strong>📊 状态：</strong><span>荷兰近6场3胜2平1负 vs 日本近6场6连胜(进19失4!)🔥</span></div>
   </div>
-  <div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
-    <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
-    <div class="analysis-item" style="font-size:0.78em;">
-      <strong>Polymarket实时市场胜率:</strong> 荷兰胜<span style="color:#22c55e;font-weight:700;">48%</span> / 平<span style="color:#fbbf24;font-weight:700;">27%</span> / 日本胜<span style="color:#f97316;font-weight:700;">26%</span>
-      &nbsp;| BTTS: <span style="color:#60a5fa;">54%</span> | O2.5: <span style="color:#a78bfa;">50%</span><br>
-      <span style="color:#94a3b8;font-size:0.85em;">以下AI分析基于Polymarket实时数据 + 500欧赔 + 搜狐亚盘三方交叉验证。</span>
-    </div>
-  </div>
+
+  <!-- v27.0 分析步骤 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤1] 欧赔核心分析：实力定位与庄家意图</span></h4>
     <div class="analysis-item">
-      FIFA #7 vs #18 | ELO 1935(荷兰)/1835(日本) (荷兰高100分)<br>
-      λ综合: 荷兰 1.36 vs 日本 1.16 — <strong style="color:#22c55e;">主强(差距0.20)</strong><br>
-      广义定位: 荷兰纸面均衡 | 市场胜率 荷兰(48%) vs 日本(26%)
+      <strong>格局：</strong>主队稍优至基本均势 | <strong>市场类型：</strong>均势偏主<br>
+      <strong>返还率：</strong>92.8% | <strong>方向：</strong>主队（隐含概率 主44.2%/平28.5%/客27.3%）<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：返还率=庄家返还比例，92.8%意味着庄家预期利润率7.2%。欧赔2.10意味着双方势均力敌（隐含胜率约44%）。</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤3] O/X.5市场信号与进球能力分析</span></h4>
+    <h4><span class="step-num">[v27.0 步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4>
     <div class="analysis-item">
-      独立进球O0.5: 荷兰=77% | 日本=66%<br>
-      大球信号: O2.5=50% → 适中 | O3.5=26% | O4.5=13%<br>
-      BTTS: 54%→双方进球预期强烈
+      <strong>实际盘口：</strong>主队让0.5球（水位1.85/1.95）| <strong>欧赔理论盘：</strong>-0.25<br>
+      <strong>偏差：</strong>-0.25 → <span style="color:var(--green);">盘赔一致</span><br>
+      <strong>水位信号：</strong>高水(>1.00)→可能制造阻力<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：✅ 盘赔一致→庄家意图明确 | 欧赔换算的理论盘口与实际亚盘吻合→庄家没有隐藏意图，比赛大概率按正常方向发展</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 实力差一致性分析（v26.6第7因子）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4>
+    <div class="analysis-item">      <span style="color:var(--green);">✅ 欧赔亚盘一致→庄家意图明确</span><br>
+      <strong>方向置信度：</strong><span class="conf-high">高(欧赔亚盘一致)</span>
+    </div>
+  </div>
+
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v27.0 步骤4] 博弈心态因子 ★核心创新</span></h4>
     <div class="analysis-item">
-      λ差: +0.20 ×60% + 状态差×25% + 攻击差×15% → 综合信号偏向荷兰<br>
-      AI依此对一致方向比分做基础评分处理
+      <strong>比赛类型：</strong>势均力敌 | <strong>热度检测：</strong>✅ 无极端热度，市场预期合理<br>
+      <strong>心态分析：</strong>均势博弈：首轮保守心态→双方都不敢冒进→平局概率大幅提升！<br>
+      <strong>比分修正：</strong>平局或小比分(1:1/0:0/1:0)<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：势均力敌→均势博弈：首轮保守心态→双方都不敢冒进→平局概率大幅提升！ | Poly大众投注合理分散，热度在正常范围</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤5] 综合比分推荐</span></h4>
     <div class="analysis-item">
-      <strong>欧赔骨架:</strong> 2.10(主胜) / 3.25(平) / 3.40(客胜)<br>
-      <strong>亚盘骨架:</strong> 荷兰让0.5球，主水1.85 / 客水1.95<br>
-      Polymarket信号: O2.5=50% → 市场适中(总2~3球)<br>
-      BTTS=54% → 双方进球是主流预期
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-    <div class="analysis-item">
-      从博彩公司角度：荷兰是市场热门（Polymarket隐含概率）<br>
-      市场类型判定: '开放赛事'(均有机会)<br>
-      预期进球数: λ_total=2.53 → 市场O2.5=50% → 2~3球(适中)<br>
-      博彩公司最优解: 设置荷兰让0.5球，平衡了荷兰赢0球以下和荷兰赢1+球以上两种方向
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-    <div class="analysis-item">
-      赛会制首轮保守因子生效: λ各降8%~12%（首轮保守因子：担心伤病/红牌，战术偏谨慎）<br>
-      调整后λ: 荷兰1.23(原1.36) | 日本1.05(原1.16)<br>
-      调整后λ_total: 2.28(原2.53)<br>
-      首轮保守因子可能使比赛更胶着，平局/小比分概率略增
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
-    <div class="analysis-item">
-      <span style="color:#f97316;">爆冷风险评估:</span> 基础爆冷概率 = 25.6%(?) + 平局26.6% = 总计<strong style="color:#60a5fa;">52.2%</strong><br>
-      风格克制加成: 双方风格接近<br>
-      首轮加成: 赛会制首轮不确定性+5%<br>
-      ELO差距修正: 100分差距→爆冷有一定空间(±0%)
-    </div>
-    <div class="analysis-item" style="font-weight:700; margin-top:6px;">
-      综合爆冷 → <span class="risk-t3" style="padding:2px 10px; border-radius:10px;">高风险(混沌场)</span>
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-    <div class="analysis-item">
-      市场认为荷兰是开放竞争<br>
-      心理预期值: 荷兰支持者期望小胜(1:0/2:1)，日本支持者期望抢分(1:1/0:0)<br>
-      根据'信赔不信变': Polymarket数据稳定，非突变<br>
-      根据'信小不信大': 热门方概率48% ✅ 不属于'离谱高'(90%+)，市场心理合理<br>
-      结论: 市场心理预期合理，不需过度抵制
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-    <div class="analysis-item">
-      最终分析结论: <strong>荷兰 vs 日本</strong><br>
-      推荐比分: <strong style="color:#14b8a6;font-size:1.1em;">1:1</strong>（平局，概率1208.9%）| 次选: <strong style="color:#f97316;">1:2</strong>（694.4%）<br>
-      核心逻辑链:<br>
-      ① 实力定位(ELO差+100) → 主强<br>
-      ② 市场验证(Poly 48/27/26% + 500欧赔 + 亚盘荷兰让0.5球) → 三方一致 ✅<br>
-      ③ 分布形态(O2.5=50% BTTS=54% λ_total=2.53) → 2~3球(适中)<br>
-      ④ AI 7D引擎评分 ×1.36 → 方向对齐<br>
-      ⑤ 爆冷风险: 52.2%(高风险(混沌场)) | ✅ O2.5一致 | ✅ BTTS一致
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[v26.6 AI 7D引擎] 三方验证+实力差一致性推荐</span></h4>
-    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合7维数据分析后，主推 <strong>1:1</strong>（概率12.1%，AI评分×1.36）<br>双方进球（市场BTTS=54%支持），荷兰得1球（攻×1.07）、日本得1球（攻×1.10），进攻能力与比分匹配<br>加分项：✓BTTS 54%支持双方进球；荷兰状态温暖；🔥日本近期6胜状态火热<br>次选 <strong>1:2</strong>（概率6.9%，AI评分×1.58）
-    </div>
-    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
-      <strong style="color:#f97316;">AI排序Top5:</strong> 1:1(12.1%) → 1:0(10.9%) → 0:1(8.4%) → 0:0(8.0%) → 2:1(7.7%)
-    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
-      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
-        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
-        <tr>
-          <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
-          <td style="text-align:right;">12.1%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.36</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">✓BTTS 54%支持双方进球 荷兰状态温暖</span></td>
-        </tr>
-        <tr>
-          <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>1:2</strong>✓</td>
-          <td style="text-align:right;">6.9%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.58</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=50%倾向大球 ✓BTTS 54%支持双方进球</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">3.</td>
-          <td style="color:#94a3b8;"><strong>2:1</strong>✓</td>
-          <td style="text-align:right;">7.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.22</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=50%倾向大球 ✓BTTS 54%支持双方进球</span> <span style="color:#f87171;">实力差指向日本胜↘荷兰胜矛盾</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">4.</td>
-          <td style="color:#94a3b8;"><strong>2:2</strong>✓</td>
-          <td style="text-align:right;">4.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.43</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">O2.5=50%倾向大球 ✓BTTS 54%支持双方进球</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">5.</td>
-          <td style="color:#94a3b8;"><strong>0:1</strong></td>
-          <td style="text-align:right;">8.4%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.68</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">🔥日本近期6胜状态火热 ✓实力差(λ+-0.20,状+8,攻+0.03)→日本胜对齐</span> <span style="color:#f87171;">荷兰O0.5=77%↘被零封矛盾</span></td>
-        </tr>
-      </table>
-    </div>
-    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
-      💡 市场锚点驱动 [已应用BTTS校正]: 荷兰O0.5=77%支持进球；日本O0.5=66%支持进球
-    </div>
-    <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (12.1%)
-      | 次选: <strong>1:2</strong> (6.9%)
-      | 置信度: <span class="conf-badge conf-med">中高</span>
-    </div>
-    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-      融合≥4球: 28.5% | O0.5→O5.5阶梯: 90%→69%→45%→26%→13%→6%
-    </div>
+      <strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">1:1</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">0:0</span><br>
+      <strong>推理链：</strong>均势对抗+首轮保守→双方都不敢冒进。欧赔2.10/3.25/3.40指向开放竞争。Poly大众投注(48%/27%/26%)合理。结论：平局最可能。<br>
+      <strong>方法论：</strong>欧赔核心(40%)→亚盘验证(25%)→ELO基线(15%)→情报(10%)→Poly逆向(10%)<br>    </div>
   </div>
 </div>
-</div>
+
 <div class="match-card">
-<div class="match-header">
-  <h2>⚽ 科特迪瓦 vs 厄瓜多尔</h2>
-  <div class="match-score-rec">
-    <span class="main-score">🤖 0:0</span>
-    <span class="sec-score"> | 次选: 1:1</span>
-    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑评分 ×1.03 | 概率: 15.5%+13.7%
-    </div>
-    <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 0:1(18.3%) → AI已调整</div>
-  </div>
-</div>
-
-<!-- ⚠️ v26.6 市场数据更新提示 -->
-<div class="warning-bar" style="margin-bottom:8px; font-size:0.73em;">
-  ⚠️ <strong>当前实时市场数据：</strong> Polymarket实时: 科特迪瓦胜26% / 平33% / 厄瓜多尔胜40% | 欧赔: 3.5/3.3/2.05 | 亚盘: 让0.25球
-</div>
-
-<div class="panel-grid">
-  <div class="panel">
-    <h4>📊 实力 & 市场分析（三方验证）</h4>
-    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#34 vs #23</span></div>
-    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">E组: 德国/厄瓜多尔/库拉索</span></div>
-    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">科特迪瓦: 非洲杯冠军底蕴，拼厄瓜多尔抢出线门票<br>厄瓜多尔: 南美预选锤炼，首战科特迪瓦即是生死战</span></div>
-    <div class="panel-row"><span class="label">ELO评分</span><span class="value">1735 vs 1795 (差-60)</span></div>
-    <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">39% / 5% / 56%</span></div>
-    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">26% / 33% / 40%</span></div>
-    <div class="panel-row"><span class="label">欧赔参考</span><span class="value">3.5 / 3.3 / 2.05</span></div>
-    <div class="panel-row"><span class="label">亚盘参考</span><span class="value">让0.25球 (1.9/1.9)</span></div>
-    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">32%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">42%</span></div>
+  <div class="match-header">
+    <h2>⚽ 科特迪瓦 vs 厄瓜多尔</h2>
+    <div class="match-score-rec"><span class="风险-low" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🟢 正常风险</span></div>
   </div>
 
-  <div class="panel">
-    <h4>🎯 科特迪瓦 独立进球能力（O/X.5阶梯）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>    <div class="panel-row"><span class="label">科特迪瓦 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--teal); font-weight:700;">49%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:49.0%;"></div></div>    <div style="margin-top:8px;"></div>
-    <h4>🎯 厄瓜多尔 独立进球能力（O/X.5阶梯）</h4>    <div class="panel-row"><span class="label">厄瓜多尔 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--orange); font-weight:700;">68%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:68.5%;"></div></div>    <div class="panel-row"><span class="label">厄瓜多尔 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O1.5</span><span class="value" style="color:var(--orange); font-weight:700;">28%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:28.1%;"></div></div>  </div>
-
-  <div class="panel">
-    <h4>📈 总进球预测（O/X.5阶梯 + NB融合）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
-    <div class="panel-row"><span class="label">⚡ 预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.15em; font-weight:700;">1.69</span></div>
-    <div class="panel-row"><span class="label">  └ 科特迪瓦 λ</span><span class="value">0.745 (NB r=4.156)</span></div>
-    <div class="panel-row"><span class="label">  └ 厄瓜多尔 λ</span><span class="value">0.946 (NB r=11.002)</span></div>
-    <div style="margin-top:8px;"></div>    <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:#f97316; font-weight:700;">80%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:79.9%;"></div></div>    <div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:#f97316; font-weight:700;">49%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:49.2%;"></div></div>    <div style="margin-top:6px; font-size:0.75em;">
-      <span style="color:#f97316;">融合≥4球: 13.8%</span>
-      <span style="color:var(--text-secondary); margin-left:8px;">BTTS: 42%</span>
+  <!-- 三列面板 -->
+  <div class="panel-grid">
+    <div class="panel">
+      <h4>📊 实力 &amp; 市场分析</h4>
+      <div class="panel-row"><span class="label">🏆 小组</span><span class="value">E组: 非洲杯冠军底蕴，拼厄瓜多尔抢出线门票</span></div>
+      <div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1735 vs 1795 (差-60)</span></div>
+      <div class="panel-row"><span class="label">FIFA排名</span><span class="value">#34 vs #23</span></div>
+      <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">41% / 59%</span></div>
+      <div class="panel-row"><span class="label">🔴 Poly参考(仅10%)</span><span class="value" style="font-size:0.75em;">26%/33%/40%</span></div>
+      <div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">3.50 / 3.30 / 2.05</span></div>
+      <div class="panel-row"><span class="label">   └ 返还率</span><span class="value">92.9% (庄家利润率7.1%)</span></div>
+      <div class="panel-row"><span class="label">   └ 隐含概率</span><span class="value" style="font-size:0.75em;">主26.5%/平28.1%/客45.3%</span></div>
+      <div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">客队让0.2球<span style="font-size:0.7em;">(水1.90/1.90)</span></span></div>
+      <div class="panel-row"><span class="label">   └ 理论盘</span><span class="value">+0.25</span></div>
+      <div class="panel-row"><span class="label">   └ 偏差</span><span class="value" style="color:var(--green);">+0.00 (盘赔一致)</span></div>
+      <div class="panel-row"><span class="label">O2.5概率</span><span class="value">38%</span></div>
+      <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">46%</span></div>
+      <div style="margin-top:6px;font-size:0.68em;color:var(--orange);font-style:italic;">
+        ⚠️ Poly数据仅为大众投注百分比，已降权至10%逆向参考
+      </div>
     </div>
-    <div style="margin-top:3px; font-size:0.72em; color:var(--blue);">
-      v26.6: NB阶梯 + 市场锚O0.5 + BTTS(70%)
+
+    <div class="panel">
+      <h4>🎯 科特迪瓦 独立进球能力（O/X.5阶梯）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">科特迪瓦 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">70%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:70%;"></div></div><div class="panel-row"><span class="label">科特迪瓦 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">35%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:35%;"></div></div>
+      <div style="margin-top:10px;"></div>
+      <h4>🎯 厄瓜多尔 独立进球能力（O/X.5阶梯）</h4>
+      <div class="panel-row"><span class="label">厄瓜多尔 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">78%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:78%;"></div></div><div class="panel-row"><span class="label">厄瓜多尔 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">44%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:44%;"></div></div>
+    </div>
+
+    <div class="panel">
+      <h4>📈 总进球预测（NB融合）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">⚡ λ_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">2.72</span></div>
+      <div class="panel-row"><span class="label">  └ 科特迪瓦 λ</span><span class="value">1.204 (NB r=4.156)</span></div>
+      <div class="panel-row"><span class="label">  └ 厄瓜多尔 λ</span><span class="value">1.514 (NB r=11.002)</span></div>
+      <div style="margin-top:8px;"></div>
+      <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">91%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:91%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">72%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:72%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">49%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:49%;"></div></div><div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">29%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:29%;"></div></div>
+      <div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.0: NB阶梯 + Poly O0.5锚点</div>
     </div>
   </div>
 
+  <!-- 状态面板 -->
   <div class="form-panel">
-    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
     <div class="form-grid">
       <div class="form-team">
-        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">科特迪瓦</div>
+        <div style="color:var(--teal);font-weight:700;margin-bottom:4px;">科特迪瓦</div>
         <span class="form-badge form-warm">3胜2平1负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进9</span>
-          <span style="color:var(--red); margin-left:8px;">丢3</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.50</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×1.04(攻)×1.07(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进9</span><span style="color:var(--red);margin-left:8px;">丢3</span></div>
       </div>
       <div class="form-divider"></div>
       <div class="form-team" style="text-align:right;">
-        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">厄瓜多尔</div>
+        <div style="color:var(--orange);font-weight:700;margin-bottom:4px;">厄瓜多尔</div>
         <span class="form-badge form-cool">1胜3平2负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进5</span>
-          <span style="color:var(--red); margin-left:8px;">丢8</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均0.83</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×0.91(攻)×0.90(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进5</span><span style="color:var(--red);margin-left:8px;">丢8</span></div>
       </div>
-    </div>
-    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
-      数据源: liansai.500.com(德/荷/日) + 搜狐体育(科/厄/瑞/突/库) |
-      λ原→λ调: 0.67/1.16 → 0.75/0.95
     </div>
   </div>
 
   <!-- 📰 赛事情报 -->
   <div class="intel-panel">
-    <h4>📰 赛事情报（SportsMole/FIFA/WebSearch交叉验证）</h4>
-    <div class="intel-row"><strong>🏟 场地：</strong><span>费城林肯金融球场</span></div>
-    <div class="intel-row"><strong>🚑 伤停：</strong><span>科特迪瓦：中卫核心恩迪卡大腿伤缺；厄瓜多尔：头号射手E·瓦伦西亚(国家队49球)伤疑，缺阵将大幅削弱进攻</span></div>
-    <div class="intel-row"><strong>👥 预计首发：</strong><span>科特迪瓦(4-3-3): Y·福法纳/杜埃/阿格巴杜/科索努/科南/凯西/桑加雷/S·福法纳/迪亚洛/格桑/迪奥曼德 | 厄瓜多尔(4-2-3-1): 加林德斯/奥多涅斯/帕乔/因卡皮耶/埃斯图皮南/凯塞多/维特/耶博阿/普拉塔/安古洛/瓦伦西亚</span></div>
-    <div class="intel-row"><strong>📊 近期状态：</strong><span>科特迪瓦：近6场5胜1负，赛前连胜韩国/苏格兰/法国；厄瓜多尔：19场不败(含13场零封)，但近6场仅2胜3平1负，进攻效率不足</span></div>
-    <div class="intel-row"><strong>⚔ 交锋记录：</strong><span>无交锋记录——两队历史上未曾交手，此役为世界杯首次遭遇</span></div>
+    <h4>📰 赛事情报</h4>
+    <div class="intel-row"><strong>🏟 场地：</strong><span>迈阿密硬石体育场(65,326座) | 中立场 | 可能高温潮湿</span></div>
+    <div class="intel-row"><strong>🚑 伤停：</strong><span>科特迪瓦: 阿莱赛季疲劳(待定) | 厄瓜多尔: 全员健康</span></div>
+    <div class="intel-row"><strong>📋 首发：</strong><span>科特迪瓦(4-3-3): 福法纳/奥里耶/恩迪卡/科苏努/卡马拉/凯西/桑加雷/弗法纳/佩佩/阿莱/阿丁格拉</span></div>
+    <div class="intel-row"><strong>⚔️ 交锋：</strong><span>无正式交锋记录——首次世界杯对决</span></div>
+    <div class="intel-row"><strong>📊 状态：</strong><span>科特迪瓦非洲杯冠军后状态波动 vs 厄瓜多尔南美预选经验丰富</span></div>
   </div>
-  <div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
-    <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
-    <div class="analysis-item" style="font-size:0.78em;">
-      <strong>Polymarket实时市场胜率:</strong> 科特迪瓦胜<span style="color:#22c55e;font-weight:700;">26%</span> / 平<span style="color:#fbbf24;font-weight:700;">33%</span> / 厄瓜多尔胜<span style="color:#f97316;font-weight:700;">40%</span>
-      &nbsp;| BTTS: <span style="color:#60a5fa;">42%</span> | O2.5: <span style="color:#a78bfa;">32%</span><br>
-      <span style="color:#94a3b8;font-size:0.85em;">以下AI分析基于Polymarket实时数据 + 500欧赔 + 搜狐亚盘三方交叉验证。</span>
-    </div>
-  </div>
+
+  <!-- v27.0 分析步骤 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤1] 欧赔核心分析：实力定位与庄家意图</span></h4>
     <div class="analysis-item">
-      FIFA #34 vs #23 | ELO 1735(科特迪瓦)/1795(厄瓜多尔) (厄瓜多尔高60分)<br>
-      λ综合: 科特迪瓦 0.75 vs 厄瓜多尔 0.95 — <strong style="color:#f97316;">客强(差距0.20)</strong><br>
-      广义定位: 科特迪瓦纸面均衡 | 市场胜率 科特迪瓦(26%) vs 厄瓜多尔(40%)
+      <strong>格局：</strong>客队实力更强 | <strong>市场类型：</strong>客优<br>
+      <strong>返还率：</strong>92.9% | <strong>方向：</strong>客队（隐含概率 主26.5%/平28.1%/客45.3%）<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：返还率=庄家返还比例，92.9%意味着庄家预期利润率7.1%。欧赔3.50意味着客队更被看好（隐含胜率约27%）。</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤3] O/X.5市场信号与进球能力分析</span></h4>
+    <h4><span class="step-num">[v27.0 步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4>
     <div class="analysis-item">
-      独立进球O0.5: 科特迪瓦=49% | 厄瓜多尔=68%<br>
-      大球信号: O2.5=32% → 小球倾向 | O3.5=10% | O4.5=4%<br>
-      BTTS: 42%→有BTTS倾向
+      <strong>实际盘口：</strong>客队让0.2球（水位1.90/1.90）| <strong>欧赔理论盘：</strong>+0.25<br>
+      <strong>偏差：</strong>+0.00 → <span style="color:var(--green);">盘赔一致</span><br>
+      <strong>水位信号：</strong>高水(>1.00)→可能制造阻力<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：✅ 盘赔一致 | 欧赔换算的理论盘口与实际亚盘吻合→庄家没有隐藏意图，比赛大概率按正常方向发展</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 实力差一致性分析（v26.6第7因子）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4>
+    <div class="analysis-item">      <span style="color:var(--green);">✅ 欧赔亚盘一致→庄家意图明确</span><br>
+      <strong>方向置信度：</strong><span class="conf-high">高(欧赔亚盘一致)</span>
+    </div>
+  </div>
+
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v27.0 步骤4] 博弈心态因子 ★核心创新</span></h4>
     <div class="analysis-item">
-      λ差: -0.20 ×60% + 状态差×25% + 攻击差×15% → 综合信号偏向厄瓜多尔<br>
-      AI依此对一致方向比分做基础评分处理
+      <strong>比赛类型：</strong>势均力敌 | <strong>热度检测：</strong>✅ 无极端热度，市场预期合理<br>
+      <strong>心态分析：</strong>均势博弈：首轮保守心态→双方都不敢冒进→平局概率大幅提升！<br>
+      <strong>比分修正：</strong>平局或小比分(1:1/0:0/1:0)<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：势均力敌→均势博弈：首轮保守心态→双方都不敢冒进→平局概率大幅提升！ | Poly大众投注合理分散，热度在正常范围</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤5] 综合比分推荐</span></h4>
     <div class="analysis-item">
-      <strong>欧赔骨架:</strong> 3.50(主胜) / 3.30(平) / 2.05(客胜)<br>
-      <strong>亚盘骨架:</strong> 厄瓜多尔让0.2球，主水1.9 / 客水1.9<br>
-      Polymarket信号: O2.5=32% → 市场预期小球(总≤2球)<br>
-      BTTS=42% → 有双方进球可能
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-    <div class="analysis-item">
-      从博彩公司角度：厄瓜多尔是市场热门（Polymarket隐含概率）<br>
-      市场类型判定: '开放赛事'(均有机会)<br>
-      预期进球数: λ_total=1.69 → 市场O2.5=32% → ≤2球(小球)<br>
-      博彩公司最优解: 设置厄瓜多尔让0.2球，平衡了科特迪瓦赢0球以下和科特迪瓦赢1+球以上两种方向
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-    <div class="analysis-item">
-      赛会制首轮保守因子生效: λ各降8%~12%（首轮保守因子：担心伤病/红牌，战术偏谨慎）<br>
-      调整后λ: 科特迪瓦0.67(原0.75) | 厄瓜多尔0.85(原0.95)<br>
-      调整后λ_total: 1.52(原1.69)<br>
-      首轮保守因子可能使比赛更胶着，平局/小比分概率略增
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
-    <div class="analysis-item">
-      <span style="color:#f97316;">爆冷风险评估:</span> 基础爆冷概率 = 26.4%(?) + 平局33.3% = 总计<strong style="color:#60a5fa;">59.7%</strong><br>
-      风格克制加成: 双方风格接近<br>
-      首轮加成: 赛会制首轮不确定性+5%<br>
-      ELO差距修正: 60分差距→爆冷空间存在(+3%)
-    </div>
-    <div class="analysis-item" style="font-weight:700; margin-top:6px;">
-      综合爆冷 → <span class="risk-t3" style="padding:2px 10px; border-radius:10px;">高风险(混沌场)</span>
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-    <div class="analysis-item">
-      市场认为厄瓜多尔是开放竞争<br>
-      心理预期值: 双方支持者都认为平局或小胜是最可能结果<br>
-      根据'信赔不信变': Polymarket数据稳定，非突变<br>
-      根据'信小不信大': 热门方概率40% ✅ 不属于'离谱高'(90%+)，市场心理合理<br>
-      结论: 市场心理预期合理，不需过度抵制
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-    <div class="analysis-item">
-      最终分析结论: <strong>科特迪瓦 vs 厄瓜多尔</strong><br>
-      推荐比分: <strong style="color:#14b8a6;font-size:1.1em;">0:0</strong>（平局，概率1554.2%）| 次选: <strong style="color:#f97316;">1:1</strong>（1369.7%）<br>
-      核心逻辑链:<br>
-      ① 实力定位(ELO差-60) → 客强<br>
-      ② 市场验证(Poly 26/33/40% + 500欧赔 + 亚盘厄瓜多尔让0.2球) → 三方一致 ✅<br>
-      ③ 分布形态(O2.5=32% BTTS=42% λ_total=1.69) → ≤2球(小球)<br>
-      ④ AI 7D引擎评分 ×1.03 → 方向对齐<br>
-      ⑤ 爆冷风险: 59.7%(高风险(混沌场)) | ✅ O2.5一致 | ✅ BTTS一致
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[v26.6 AI 7D引擎] 三方验证+实力差一致性推荐</span></h4>
-    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合7维数据分析后，主推 <strong>0:0</strong>（概率15.5%，AI评分×1.03）<br>0:0平局，双方近期攻击效率均偏低或防守严密<br>加分项：厄瓜多尔近期低迷零封合理<br>次选 <strong>1:1</strong>（概率13.7%，AI评分×1.13）
-    </div>
-    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
-      <strong style="color:#f97316;">AI排序Top5:</strong> 0:1(18.3%) → 0:0(15.5%) → 1:1(13.7%) → 1:0(10.0%) → 0:2(8.7%)
-    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
-      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
-        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
-        <tr>
-          <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>0:0</strong></td>
-          <td style="text-align:right;">15.5%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.03</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">厄瓜多尔近期低迷零封合理</span></td>
-        </tr>
-        <tr>
-          <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>1:1</strong>✓</td>
-          <td style="text-align:right;">13.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.13</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 42%倾向双方进球 科特迪瓦状态温暖</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">3.</td>
-          <td style="color:#94a3b8;"><strong>0:1</strong></td>
-          <td style="text-align:right;">18.3%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.85</td>
-          <td style="font-size:0.85em;"> <span style="color:#f87171;">实力差指向科特迪瓦胜↘厄瓜多尔胜矛盾</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">4.</td>
-          <td style="color:#94a3b8;"><strong>1:0</strong></td>
-          <td style="text-align:right;">10.0%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.17</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">科特迪瓦状态温暖 厄瓜多尔近期低迷零封合理</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">5.</td>
-          <td style="color:#94a3b8;"><strong>0:2</strong></td>
-          <td style="text-align:right;">8.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.85</td>
-          <td style="font-size:0.85em;"> <span style="color:#f87171;">实力差指向科特迪瓦胜↘厄瓜多尔胜矛盾</span></td>
-        </tr>
-      </table>
-    </div>
-    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
-      💡 市场锚点驱动 [已应用BTTS校正]: O/X.5市场信号主导
-    </div>
-    <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">0:0</strong> (15.5%)
-      | 次选: <strong>1:1</strong> (13.7%)
-      | 置信度: <span class="conf-badge conf-med">中高</span>
-    </div>
-    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-      融合≥4球: 13.8% | O0.5→O5.5阶梯: 80%→49%→24%→10%→4%→1%
-    </div>
+      <strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">1:1</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">0:0</span><br>
+      <strong>推理链：</strong>均势对抗+首轮保守→双方都不敢冒进。欧赔3.50/3.30/2.05指向开放竞争。Poly大众投注(26%/33%/40%)合理。结论：平局最可能。<br>
+      <strong>方法论：</strong>欧赔核心(40%)→亚盘验证(25%)→ELO基线(15%)→情报(10%)→Poly逆向(10%)<br>    </div>
   </div>
 </div>
-</div>
+
 <div class="match-card">
-<div class="match-header">
-  <h2>⚽ 瑞典 vs 突尼斯</h2>
-  <div class="match-score-rec">
-    <span class="main-score">🤖 1:1</span>
-    <span class="sec-score"> | 次选: 2:1</span>
-    <div style="font-size:0.7em; color:var(--text-secondary); margin-top:2px;">
-      AI逻辑评分 ×1.07 | 概率: 10.2%+7.7%
-    </div>
-    <div style="font-size:0.68em; color:#f97316; margin-top:1px;">⚠️ 纯概率最高: 1:0(11.6%) → AI已调整</div>
-  </div>
-</div>
-
-<!-- ⚠️ v26.6 市场数据更新提示 -->
-<div class="warning-bar" style="margin-bottom:8px; font-size:0.73em;">
-  ⚠️ <strong>当前实时市场数据：</strong> Polymarket实时: 瑞典胜51% / 平28% / 突尼斯胜22% | 欧赔: 1.88/3.45/4.0 | 亚盘: 让-0.75球
-</div>
-
-<div class="panel-grid">
-  <div class="panel">
-    <h4>📊 实力 & 市场分析（三方验证）</h4>
-    <div class="panel-row"><span class="label">🌍 FIFA排名</span><span class="value">#38 vs #44</span></div>
-    <div class="panel-row"><span class="label">🏆 小组</span><span class="value">F组: 荷兰/日本/突尼斯</span></div>
-    <div class="panel-row"><span class="label">🎯 比赛目标</span><span class="value" style="font-size:0.78em;">瑞典: 伊萨克+哲凯赖什豪华锋线，首战突尼斯不容有失<br>突尼斯: 防守反击专家，偷袭瑞典抢分搅局</span></div>
-    <div class="panel-row"><span class="label">ELO评分</span><span class="value">1710 vs 1675 (差35)</span></div>
-    <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value">52% / 5% / 43%</span></div>
-    <div class="panel-row"><span class="label">市场胜率 (Poly实时)</span><span class="value">51% / 28% / 22%</span></div>
-    <div class="panel-row"><span class="label">欧赔参考</span><span class="value">1.88 / 3.45 / 4.0</span></div>
-    <div class="panel-row"><span class="label">亚盘参考</span><span class="value">让-0.75球 (1.9/1.92)</span></div>
-    <div class="panel-row"><span class="label">O2.5概率</span><span class="value">44%</span></div>
-    <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">48%</span></div>
+  <div class="match-header">
+    <h2>⚽ 瑞典 vs 突尼斯</h2>
+    <div class="match-score-rec"><span class="风险-low" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🟢 正常风险</span></div>
   </div>
 
-  <div class="panel">
-    <h4>🎯 瑞典 独立进球能力（O/X.5阶梯）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>    <div class="panel-row"><span class="label">瑞典 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--teal); font-weight:700;">79%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:79.0%;"></div></div>    <div class="panel-row"><span class="label">瑞典 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O1.5</span><span class="value" style="color:var(--teal); font-weight:700;">49%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:49.3%;"></div></div>    <div class="panel-row"><span class="label">瑞典 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O2.5</span><span class="value" style="color:var(--teal); font-weight:700;">27%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:26.8%;"></div></div>    <div style="margin-top:8px;"></div>
-    <h4>🎯 突尼斯 独立进球能力（O/X.5阶梯）</h4>    <div class="panel-row"><span class="label">突尼斯 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O0.5</span><span class="value" style="color:var(--orange); font-weight:700;">60%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:60.0%;"></div></div>    <div class="panel-row"><span class="label">突尼斯 <span style="font-size:0.65em;color:#22c55e;margin-left:4px;">◆市场锚</span> O1.5</span><span class="value" style="color:var(--orange); font-weight:700;">26%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:25.9%;"></div></div>  </div>
-
-  <div class="panel">
-    <h4>📈 总进球预测（O/X.5阶梯 + NB融合）</h4>
-    <div style="font-size:0.68em; color:var(--text-secondary); margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
-    <div class="panel-row"><span class="label">⚡ 预期总进球 λ_total</span><span class="value" style="color:var(--teal); font-size:1.15em; font-weight:700;">2.74</span></div>
-    <div class="panel-row"><span class="label">  └ 瑞典 λ</span><span class="value">1.729 (NB r=4.156)</span></div>
-    <div class="panel-row"><span class="label">  └ 突尼斯 λ</span><span class="value">1.009 (NB r=11.002)</span></div>
-    <div style="margin-top:8px;"></div>    <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:#f97316; font-weight:700;">92%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:91.9%;"></div></div>    <div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:#f97316; font-weight:700;">73%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:73.2%;"></div></div>    <div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:#f97316; font-weight:700;">50%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:50.1%;"></div></div>    <div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:#f97316; font-weight:700;">30%</span></div>
-    <div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:29.8%;"></div></div>    <div style="margin-top:6px; font-size:0.75em;">
-      <span style="color:#f97316;">融合≥4球: 29.7%</span>
-      <span style="color:var(--text-secondary); margin-left:8px;">BTTS: 48%</span>
+  <!-- 三列面板 -->
+  <div class="panel-grid">
+    <div class="panel">
+      <h4>📊 实力 &amp; 市场分析</h4>
+      <div class="panel-row"><span class="label">🏆 小组</span><span class="value">F组: 伊萨克+哲凯赖什豪华锋线，首战突尼斯不容有失</span></div>
+      <div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1710 vs 1675 (差+35)</span></div>
+      <div class="panel-row"><span class="label">FIFA排名</span><span class="value">#38 vs #44</span></div>
+      <div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">55% / 45%</span></div>
+      <div class="panel-row"><span class="label">🔴 Poly参考(仅10%)</span><span class="value" style="font-size:0.75em;">51%/28%/22%</span></div>
+      <div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">1.88 / 3.45 / 4.00</span></div>
+      <div class="panel-row"><span class="label">   └ 返还率</span><span class="value">93.3% (庄家利润率6.7%)</span></div>
+      <div class="panel-row"><span class="label">   └ 隐含概率</span><span class="value" style="font-size:0.75em;">主49.6%/平27.0%/客23.3%</span></div>
+      <div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">主队让0.8球<span style="font-size:0.7em;">(水1.90/1.92)</span></span></div>
+      <div class="panel-row"><span class="label">   └ 理论盘</span><span class="value">-0.50</span></div>
+      <div class="panel-row"><span class="label">   └ 偏差</span><span class="value" style="color:var(--green);">-0.25 (盘赔一致)</span></div>
+      <div class="panel-row"><span class="label">O2.5概率</span><span class="value">41%</span></div>
+      <div class="panel-row"><span class="label">BTTS Yes</span><span class="value">42%</span></div>
+      <div style="margin-top:6px;font-size:0.68em;color:var(--orange);font-style:italic;">
+        ⚠️ Poly数据仅为大众投注百分比，已降权至10%逆向参考
+      </div>
     </div>
-    <div style="margin-top:3px; font-size:0.72em; color:var(--blue);">
-      v26.6: NB阶梯 + 市场锚O0.5 + BTTS(70%)
+
+    <div class="panel">
+      <h4>🎯 瑞典 独立进球能力（O/X.5阶梯）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">瑞典 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">78%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:78%;"></div></div><div class="panel-row"><span class="label">瑞典 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">45%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:45%;"></div></div>
+      <div style="margin-top:10px;"></div>
+      <h4>🎯 突尼斯 独立进球能力（O/X.5阶梯）</h4>
+      <div class="panel-row"><span class="label">突尼斯 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">62%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:62%;"></div></div><div class="panel-row"><span class="label">突尼斯 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">25%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:25%;"></div></div>
+    </div>
+
+    <div class="panel">
+      <h4>📈 总进球预测（NB融合）</h4>
+      <div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">概率&lt;25%自动截断⬆</div>
+      <div class="panel-row"><span class="label">⚡ λ_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">2.48</span></div>
+      <div class="panel-row"><span class="label">  └ 瑞典 λ</span><span class="value">1.514 (NB r=4.156)</span></div>
+      <div class="panel-row"><span class="label">  └ 突尼斯 λ</span><span class="value">0.968 (NB r=11.002)</span></div>
+      <div style="margin-top:8px;"></div>
+      <div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">89%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:89%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">68%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:68%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">44%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:44%;"></div></div>
+      <div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.0: NB阶梯 + Poly O0.5锚点</div>
     </div>
   </div>
 
+  <!-- 状态面板 -->
   <div class="form-panel">
-    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em; color:var(--text-secondary);">v26.3 状态因子</span></h4>
+    <h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
     <div class="form-grid">
       <div class="form-team">
-        <div style="color:var(--teal); font-weight:700; margin-bottom:4px;">瑞典</div>
+        <div style="color:var(--teal);font-weight:700;margin-bottom:4px;">瑞典</div>
         <span class="form-badge form-warm">3胜2平1负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进10</span>
-          <span style="color:var(--red); margin-left:8px;">丢6</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.67</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×1.07(攻)×1.03(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进10</span><span style="color:var(--red);margin-left:8px;">丢6</span></div>
       </div>
       <div class="form-divider"></div>
       <div class="form-team" style="text-align:right;">
-        <div style="color:var(--orange); font-weight:700; margin-bottom:4px;">突尼斯</div>
+        <div style="color:var(--orange);font-weight:700;margin-bottom:4px;">突尼斯</div>
         <span class="form-badge form-warm">3胜2平1负</span>
-        <div style="margin-top:4px;">
-          <span style="color:var(--green);">进11</span>
-          <span style="color:var(--red); margin-left:8px;">丢7</span>
-          <span style="color:var(--blue); margin-left:8px; font-size:0.72em;">场均1.83</span>
-        </div>
-        <div style="margin-top:2px; font-size:0.7em; color:var(--orange);">
-          λ调整: ×1.10(攻)×1.00(对防)
-        </div>
+        <div style="margin-top:4px;"><span style="color:var(--green);">进11</span><span style="color:var(--red);margin-left:8px;">丢7</span></div>
       </div>
-    </div>
-    <div style="margin-top:5px; font-size:0.68em; color:#22c55e;">
-      数据源: liansai.500.com(德/荷/日) + 搜狐体育(科/厄/瑞/突/库) |
-      λ原→λ调: 1.56/0.92 → 1.73/1.01
     </div>
   </div>
 
   <!-- 📰 赛事情报 -->
   <div class="intel-panel">
-    <h4>📰 赛事情报（SportsMole/FIFA/WebSearch交叉验证）</h4>
-    <div class="intel-row"><strong>🏟 场地：</strong><span>阿灵顿AT&T体育场</span></div>
-    <div class="intel-row"><strong>🚑 伤停：</strong><span>瑞典：左后卫古德蒙德松病毒困扰(存疑)，林德洛夫/埃兰加/尼格伦已康复；突尼斯：全员健康</span></div>
-    <div class="intel-row"><strong>👥 预计首发：</strong><span>瑞典(3-4-1-2): 诺德费尔特/希恩/林德洛夫/拉格比约克/伯恩哈德松/卡尔斯特伦/阿亚里/古德蒙德松/尼格伦/哲凯赖什/伊萨克 | 突尼斯(4-5-1): 沙马赫/瓦莱里/雷基克/塔尔比/阿布迪/斯希里/赫迪拉/阿舒里/梅杰布里/加比/沙乌阿特</span></div>
-    <div class="intel-row"><strong>📊 近期状态：</strong><span>瑞典：近6场1胜2平3负，连续11场丢球，欧国联附加赛神奇晋级(哲凯赖什戴帽+绝杀)；突尼斯：近6场1胜1平4负，3连败且0进球，预选赛曾9胜1平0失球晋级</span></div>
-    <div class="intel-row"><strong>⚔ 交锋记录：</strong><span>2003年突尼斯1-0胜瑞典，为两队唯一交锋记录；瑞典自1990年连续4届小组出线，突尼斯6次参赛均止步小组赛</span></div>
+    <h4>📰 赛事情报</h4>
+    <div class="intel-row"><strong>🏟 场地：</strong><span>费城林肯金融球场(67,594座) | 中立场</span></div>
+    <div class="intel-row"><strong>🚑 伤停：</strong><span>瑞典: 伊萨克已恢复训练(确认首发)✅ | 突尼斯: 全员健康</span></div>
+    <div class="intel-row"><strong>📋 首发：</strong><span>瑞典(4-4-2): 奥尔森/克拉夫特/林德洛夫/埃克达尔/奥古斯丁森/库卢塞夫斯基/卡尔斯特伦/福斯贝里/埃兰加/伊萨克/哲凯赖什</span></div>
+    <div class="intel-row"><strong>⚔️ 交锋：</strong><span>2006世界杯小组赛突尼斯0:0瑞典 | 仅此一次交锋</span></div>
+    <div class="intel-row"><strong>📊 状态：</strong><span>瑞典锋线双星亮眼 vs 突尼斯防守反击稳健(近6场仅失3球)</span></div>
   </div>
-  <div class="analysis-panel" style="border-left:3px solid #f97316; background:linear-gradient(135deg, #1a1510, #1f1a12);">
-    <h4><span class="step-num" style="color:#f97316;">⚠️ 市场数据更新提示</span></h4>
-    <div class="analysis-item" style="font-size:0.78em;">
-      <strong>Polymarket实时市场胜率:</strong> 瑞典胜<span style="color:#22c55e;font-weight:700;">51%</span> / 平<span style="color:#fbbf24;font-weight:700;">28%</span> / 突尼斯胜<span style="color:#f97316;font-weight:700;">22%</span>
-      &nbsp;| BTTS: <span style="color:#60a5fa;">48%</span> | O2.5: <span style="color:#a78bfa;">44%</span><br>
-      <span style="color:#94a3b8;font-size:0.85em;">以下AI分析基于Polymarket实时数据 + 500欧赔 + 搜狐亚盘三方交叉验证。</span>
-    </div>
-  </div>
+
+  <!-- v27.0 分析步骤 -->
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤1] 广义实力定位（欧赔核心思维Ch.9）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤1] 欧赔核心分析：实力定位与庄家意图</span></h4>
     <div class="analysis-item">
-      FIFA #38 vs #44 | ELO 1710(瑞典)/1675(突尼斯) (瑞典高35分)<br>
-      λ综合: 瑞典 1.73 vs 突尼斯 1.01 — <strong style="color:#22c55e;">主强(差距0.72)</strong><br>
-      广义定位: 瑞典明显占优 | 市场胜率 瑞典(51%) vs 突尼斯(22%)
+      <strong>格局：</strong>主队稍优至基本均势 | <strong>市场类型：</strong>均势偏主<br>
+      <strong>返还率：</strong>93.3% | <strong>方向：</strong>主队（隐含概率 主49.6%/平27.0%/客23.3%）<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：返还率=庄家返还比例，93.3%意味着庄家预期利润率6.7%。欧赔1.88意味着主队稍占上风（隐含胜率约50%）。</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤3] O/X.5市场信号与进球能力分析</span></h4>
+    <h4><span class="step-num">[v27.0 步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4>
     <div class="analysis-item">
-      独立进球O0.5: 瑞典=79% | 突尼斯=60%<br>
-      大球信号: O2.5=44% → 小球倾向 | O3.5=30% | O4.5=16%<br>
-      BTTS: 48%→有BTTS倾向
+      <strong>实际盘口：</strong>主队让0.8球（水位1.90/1.92）| <strong>欧赔理论盘：</strong>-0.50<br>
+      <strong>偏差：</strong>-0.25 → <span style="color:var(--green);">盘赔一致</span><br>
+      <strong>水位信号：</strong>高水(>1.00)→可能制造阻力<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：✅ 盘赔一致→庄家意图明确 | 欧赔换算的理论盘口与实际亚盘吻合→庄家没有隐藏意图，比赛大概率按正常方向发展</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 实力差一致性分析（v26.6第7因子）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4>
+    <div class="analysis-item">      <span style="color:var(--green);">✅ 欧赔亚盘一致→庄家意图明确</span><br>
+      <strong>方向置信度：</strong><span class="conf-high">高(欧赔亚盘一致)</span>
+    </div>
+  </div>
+
+  <div class="analysis-panel">
+    <h4><span class="step-num">[v27.0 步骤4] 博弈心态因子 ★核心创新</span></h4>
     <div class="analysis-item">
-      λ差: +0.72 ×60% + 状态差×25% + 攻击差×15% → 综合信号偏向瑞典<br>
-      AI依此对一致方向比分做基础评分处理
+      <strong>比赛类型：</strong>有差距但可对抗 | <strong>热度检测：</strong>✅ 无极端热度，市场预期合理<br>
+      <strong>心态分析：</strong>中游对抗：弱队有抢分诉求→先稳守后反击<br>
+      <strong>比分修正：</strong>小比分分胜负(1:0/2:1/0:1)<br>
+      <span style="color:var(--teal);font-size:0.9em;">💡 通俗解释：有差距但可对抗→中游对抗：弱队有抢分诉求→先稳守后反击 | Poly大众投注合理分散，热度在正常范围</span>
     </div>
   </div>
+
   <div class="analysis-panel">
-    <h4><span class="step-num">[步骤4] 赔率骨架（竞彩看盘技巧）</span></h4>
+    <h4><span class="step-num">[v27.0 步骤5] 综合比分推荐</span></h4>
     <div class="analysis-item">
-      <strong>欧赔骨架:</strong> 1.88(主胜) / 3.45(平) / 4.00(客胜)<br>
-      <strong>亚盘骨架:</strong> 瑞典让0.8球，主水1.9 / 客水1.92<br>
-      Polymarket信号: O2.5=44% → 市场适中(总2~3球)<br>
-      BTTS=48% → 有双方进球可能
-    </div>
+      <strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">1:0</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">2:1</span><br>
+      <strong>推理链：</strong>实力有差距(ELO+35)+亚盘主队让0.8球→方向明确但比分胶着。中游对抗：弱队有抢分诉求→先稳守后反击<br>
+      <strong>方法论：</strong>欧赔核心(40%)→亚盘验证(25%)→ELO基线(15%)→情报(10%)→Poly逆向(10%)<br>    </div>
   </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤5] 最优解/更优解分析</span></h4>
-    <div class="analysis-item">
-      从博彩公司角度：瑞典是市场热门（Polymarket隐含概率）<br>
-      市场类型判定: '倾向性'(一方占优)<br>
-      预期进球数: λ_total=2.74 → 市场O2.5=44% → 2~3球(适中)<br>
-      博彩公司最优解: 设置瑞典让0.8球，平衡了瑞典赢0球以下和瑞典赢1+球以上两种方向
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤7] 赛会制首轮因子（欧赔核心思维Ch.20）</span></h4>
-    <div class="analysis-item">
-      赛会制首轮保守因子生效: λ各降8%~12%（首轮保守因子：担心伤病/红牌，战术偏谨慎）<br>
-      调整后λ: 瑞典1.56(原1.73) | 突尼斯0.91(原1.01)<br>
-      调整后λ_total: 2.46(原2.74)<br>
-      首轮保守因子可能使比赛更胶着，平局/小比分概率略增
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤8] 爆冷三层分析（量化分析预测Skill）</span></h4>
-    <div class="analysis-item">
-      <span style="color:#f97316;">爆冷风险评估:</span> 基础爆冷概率 = 21.6%(突尼斯) + 平局27.6% = 总计<strong style="color:#60a5fa;">49.2%</strong><br>
-      风格克制加成: 突尼斯'防守反击' vs 瑞典'控球推进'<br>
-      首轮加成: 赛会制首轮不确定性+5%<br>
-      ELO差距修正: 35分差距→爆冷空间存在(+3%)
-    </div>
-    <div class="analysis-item" style="font-weight:700; margin-top:6px;">
-      综合爆冷 → <span class="risk-t3" style="padding:2px 10px; border-radius:10px;">高风险(混沌场)</span>
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤10] 心理预期值检测（欧赔核心思维）</span></h4>
-    <div class="analysis-item">
-      市场认为瑞典是开放竞争<br>
-      心理预期值: 瑞典支持者期望小胜(1:0/2:1)，突尼斯支持者期望抢分(1:1/0:0)<br>
-      根据'信赔不信变': Polymarket数据稳定，非突变<br>
-      根据'信小不信大': 热门方概率51% ✅ 不属于'离谱高'(90%+)，市场心理合理<br>
-      结论: 市场心理预期合理，不需过度抵制
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[步骤11] 综合比分推荐</span></h4>
-    <div class="analysis-item">
-      最终分析结论: <strong>瑞典 vs 突尼斯</strong><br>
-      推荐比分: <strong style="color:#14b8a6;font-size:1.1em;">1:1</strong>（平局，概率1016.8%）| 次选: <strong style="color:#f97316;">2:1</strong>（770.1%）<br>
-      核心逻辑链:<br>
-      ① 实力定位(ELO差+35) → 主强<br>
-      ② 市场验证(Poly 51/28/22% + 500欧赔 + 亚盘瑞典让0.8球) → 三方一致 ✅<br>
-      ③ 分布形态(O2.5=44% BTTS=48% λ_total=2.74) → 2~3球(适中)<br>
-      ④ AI 7D引擎评分 ×1.07 → 方向需关注<br>
-      ⑤ 爆冷风险: 49.2%(高风险(混沌场)) | ✅ O2.5一致 | ✅ BTTS一致
-    </div>
-  </div>
-  <div class="analysis-panel">
-    <h4><span class="step-num">[v26.6 AI 7D引擎] 三方验证+实力差一致性推荐</span></h4>
-    <div class="analysis-item" style="margin-bottom:8px; font-size:0.78em; line-height:1.5; color:#e2e8f0; background:#0f172a; padding:8px 10px; border-radius:6px;">
-      AI综合7维数据分析后，主推 <strong>1:1</strong>（概率10.2%，AI评分×1.07）<br>双方进球（市场BTTS=48%支持），瑞典得1球（攻×1.07）、突尼斯得1球（攻×1.10），进攻能力与比分匹配<br>加分项：BTTS 48%倾向双方进球；瑞典状态温暖；突尼斯状态温暖<br>惩罚项：实力差λ-0.72偏向瑞典↘平局略矛盾<br>次选 <strong>2:1</strong>（概率7.7%，AI评分×1.29）
-    </div>
-    <div class="analysis-item" style="margin-top:4px; font-size:0.75em;">
-      <strong style="color:#f97316;">AI排序Top5:</strong> 1:0(11.6%) → 1:1(10.2%) → 2:0(8.8%) → 0:0(8.6%) → 2:1(7.7%)
-    </div>    <div class="analysis-item" style="margin-top:6px; font-size:0.73em;">
-      <table style="width:100%; border-collapse:collapse; font-size:0.9em; background:#0f172a; border-radius:6px; overflow:hidden;">
-        <thead><tr style="background:#1e293b;"><th>#</th><th>比分</th><th>概率</th><th>AI因子</th><th>推理标签</th></tr></thead>
-        <tr>
-          <td style="color:#14b8a6;font-weight:700;">1.</td>
-          <td style="color:#14b8a6;font-weight:700;"><strong>1:1</strong>✓</td>
-          <td style="text-align:right;">10.2%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.07</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 瑞典状态温暖</span> <span style="color:#f87171;">实力差λ-0.72偏向瑞典↘平局略矛盾</span></td>
-        </tr>
-        <tr>
-          <td style="color:#f97316;">2.</td>
-          <td style="color:#f97316;"><strong>2:1</strong>✓</td>
-          <td style="text-align:right;">7.7%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.29</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 瑞典状态温暖</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">3.</td>
-          <td style="color:#94a3b8;"><strong>1:0</strong></td>
-          <td style="text-align:right;">11.6%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.64</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">瑞典状态温暖 ✓实力差(λ-0.72,状0,攻0.03)→瑞典胜对齐</span> <span style="color:#f87171;">突尼斯O0.5=60%↘被零封矛盾</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">4.</td>
-          <td style="color:#94a3b8;"><strong>3:1</strong>✓</td>
-          <td style="text-align:right;">4.8%</td>
-          <td style="text-align:center;color:#60a5fa;">×1.29</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">BTTS 48%倾向双方进球 瑞典状态温暖</span></td>
-        </tr>
-        <tr>
-          <td style="color:#94a3b8;">5.</td>
-          <td style="color:#94a3b8;"><strong>2:0</strong></td>
-          <td style="text-align:right;">8.8%</td>
-          <td style="text-align:center;color:#60a5fa;">×0.64</td>
-          <td style="font-size:0.85em;"><span style="color:#22c55e;">瑞典状态温暖 ✓实力差(λ-0.72,状0,攻0.03)→瑞典胜对齐</span> <span style="color:#f87171;">突尼斯O0.5=60%↘被零封矛盾</span></td>
-        </tr>
-      </table>
-    </div>
-    <div class="analysis-item" style="font-size:0.75em; color:var(--teal); margin-top:4px;">
-      💡 市场锚点驱动: 瑞典O0.5=79%支持进球；突尼斯O0.5=60%支持进球
-    </div>
-    <div class="analysis-item" style="margin-top:6px;">
-      主推: <strong style="color:#14b8a6; font-size:1.15em;">1:1</strong> (10.2%)
-      | 次选: <strong>2:1</strong> (7.7%)
-      | 置信度: <span class="conf-badge conf-med">中高</span>
-    </div>
-    <div class="analysis-item" style="font-size:0.78em; color:var(--text-secondary);">
-      融合≥4球: 29.7% | O0.5→O5.5阶梯: 92%→73%→50%→30%→16%→8%
-    </div>
-  </div>
-</div>
 </div>
 <div class="footer">
-<p>🏆 2026世界杯 6月15日 全面分析报告 v26.6 | 生成时间: 2026-06-13 22:41</p>
-<p>数据来源：Polymarket预测市场 + 500.com欧赔 + 搜狐体育亚盘分析 | 三方交叉验证</p>
-<p>方法：NB分布(234场MLE) + O/X.5阶梯展示(O0.5→O5.5) + AI 7D因子 + 赛事情报(SportsMole/FIFA) + 实力差一致性</p>
-<p style="margin-top:4px;">⚠️ 免责声明：本报告仅供娱乐参考，不构成任何投注建议。博彩有风险，投注需谨慎。</p>
-</div>
-</div>
-</body>
-</html>
+  <p>v27.0 预测引擎 | 欧赔核心 + 亚盘交叉验证 + 博弈心态因子 | 知识基础：IMA"欧赔亚盘全解析"</p>
+  <p style="margin-top:4px;">数据源：500.com综合欧赔 · 搜狐体育亚盘 · FiveThirtyEight ELO · Polymarket(逆向参考10%)</p>
+  <p style="margin-top:4px;color:var(--orange);">⚠️ 仅供娱乐参考，不构成投注建议</p>
+</div></div></body></html>
