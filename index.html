@@ -104,7 +104,7 @@ body {
 
 <div class="header">
   <h1><span class="emoji">&#x26BD;</span> &#x4E16;&#x754C;&#x676F;2026 &#x8D5B;&#x679C;&#x9884;&#x6D4B;</h1>
-  <p class="subtitle">v28.3 · 体彩竞彩融合(胜平负+让球) · 推演精度升级(三位一体角色) · 6/17复盘修正 · 星级力量</p>
+  <p class="subtitle">v28.4 · 体彩融合+星级力量+战术推演 · 6/18分析(葡萄牙/英格兰/加纳/哥伦比亚) · 进球数修正</p>
 </div>
 
 <div class="container">
@@ -140,7 +140,7 @@ body {
 <script>
 // ====== &#x5206;&#x6790;&#x62A5;&#x544A; ======
 const ANALYSIS = [
-  { date:"6/18 v28.4&#x2605;", file:"&#x5206;&#x6790;/2026-06-18-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x8461;&#x8044;&#yac; vs &#x521a;&#x679;(&#x91d1;) | &#x82f1;&#x683c;&#x5170; vs &#x514b;&#x7f57;&#x5730;&#x4e9a; | &#x52a0;&#x7eb3; vs &#x5df4;&#x62ff;&#x9a6; | &#x4e4c;&#x5179\u522b\u65af\u65af\u65af vs &#x54e5\u4ed6\u6bd4\u4e9a", tag:"latest", summary:"v28.4 &#x4f53;&#x5f69;&#x9762;&#x677f;+&#x8fdb;&#x7403;&#x6570;&#x6b63;+&#x7a7f;&#x76d;&#x5206;&#x6790; &#x7ba1; CRO3&#x5927;&#x661f/B费/B席22&#x4eba;&#x4e94;&#x8054; &#x7ba1; &#x8fdb;7403;xG=4.7/1.8/1.3/0.7 &#x7ba1; &#x4f53;&#x5f69;&#x9762;&#x677f;&#x751f;&#x73b0;" },
+  { date:"6/18 v28.4★", file:"分析/2026-06-18-分析报告.html", matches:"葡萄牙 vs 刚果(金) | 英格兰 vs 克罗地亚 | 加纳 vs 巴拿马 | 乌兹别克斯坦 vs 哥伦比亚", tag:"latest", summary:"v28.4 体彩融合+战术推演 · C罗3巨星+英格兰霸气名单 · Kudus缺阵! · 哥伦比亚28场不败 · xG=3.6/1.6/1.2/0.7 · 3:0/2:1/1:0/0:2" },
   { date:"6/17 v28.3&#x2605;", file:"&#x5206;&#x6790;/2026-06-17-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x6CD5;&#x56FD; vs &#x585E;&#x5185;&#x52A0;&#x5C14; | &#x4F0A;&#x62C9;&#x514B; vs &#x632A;&#x5A01; | &#x963F;&#x6839;&#x5EF7; vs &#x963F;&#x5C14;&#x53CA;&#x5229;&#x4E9A; | &#x5965;&#x5730;&#x5229; vs &#x7EA6;&#x65E6;", tag:"", summary:"v28.3 &#x4f53;&#x5f69;&#x878d;&#x5408;+&#x63a8;&#x6f14;&#x7cbe;&#x5ea6;+&#x590d;&#x76d8;&#x4fee;&#x6b63; &#xB7; &#x6CD5;&#x56FD;3&#x5de8;&#x661f;20&#x4eba;&#x4E94;&#x8054; &#xB7; &#x632A;&#x62C9;14&#x4EBA;&#x4E94;&#x8054; &#xB7; &#x878D;&#x5408; 3:1&#x6CD5;&#x80DC;/4:1&#x632A;&#x80DC;/3:0&#x963F;&#x6839;&#x80DC;" },
   { date:"6/16 v27.2.1&#x2605;", file:"&#x5206;&#x6790;/2026-06-16-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x897F;&#x73ED;&#x7259; vs &#x4F5B;&#x5F97;&#x89D2; | &#x6BD4;&#x5229;&#x65F6; vs &#x57C3;&#x53CA; | &#x6C99;&#x7279;&#x963F;&#x62C9;&#x4F2F; vs &#x4E4C;&#x62C9;&#x572D; | &#x4F0A;&#x6717; vs &#x65B0;&#x897F;&#x5170;", tag:"", summary:"v27.2.1 四维参照 &#xB7; xG+四维(FIFA→GF+GA/后防→GF/进攻→GA/综合) &#xB7; 4:0/2:1/1:2/2:1" },
   { date:"6/15 v27.0&#x2605;", file:"&#x5206;&#x6790;/2026-06-15-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x5FB7;&#x56FD; vs &#x5E93;&#x62C9;&#x7D22; | &#x8377;&#x5170; vs &#x65E5;&#x672C; | &#x79D1;&#x7279;&#x8FEA;&#x74E6; vs &#x5384;&#x74DC;&#x591A;&#x5C14; | &#x745E;&#x5178; vs &#x7A81;&#x5C3C;&#x65AF;", tag:"", summary:"v27.0 &#x67B6;&#x6784;&#x9769;&#x547D; &#xB7; &#x6B27;&#x8D54;&#x6838;&#x5FC3;+&#x4E9A;&#x76D8;&#x9A8C;&#x8BC1;+&#x535A;&#x5F08;&#x5FC3;&#x6001; &#xB7; Poly&#x964D;&#x6743;10% &#xB7; 3:0/1:1/1:1/1:0" },
@@ -172,7 +172,7 @@ function renderCard(r, group) {
 
 (function(){
   // Stats
-  document.getElementById("totalDays").textContent = "5";
+  document.getElementById("totalDays").textContent = "7";
   var totalM = 0;
   ANALYSIS.concat(BETTING).forEach(function(r) {
     totalM += (r.matches.match(/vs/g)||[]).length;
