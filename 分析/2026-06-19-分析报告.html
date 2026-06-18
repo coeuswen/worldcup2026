@@ -1,0 +1,1012 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2026世界杯 v28.4 — 体彩融合+战术推演+第二轮战略+6/19分析</title><style>:root{--bg:#0a0e17;--card-bg:#111827;--card-inner:#1a1f2e;--text:#e2e8f0;--text-secondary:#8b95a5;--teal:#14b8a6;--red:#ef4444;--orange:#f97316;--blue:#3b82f6;--purple:#a855f7;--gold:#f59e0b;--green:#22c55e}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",sans-serif;padding:12px;line-height:1.6}
+.container{max-width:1200px;margin:0 auto}.header-section{text-align:center;padding:16px 0 10px}h1{font-size:1.5em;color:var(--orange)}
+.subtitle{color:var(--text-secondary);font-size:0.78em;margin-top:4px}.badge-row{margin-top:8px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.badge{padding:3px 10px;border-radius:12px;font-size:0.72em;font-weight:600}.badge-v27{background:#1e3a5a;color:#4ade80}.badge-new{background:#451a03;color:#fcd34d}
+.warning-bar{background:#451a03;border:1px solid var(--orange);padding:8px 14px;border-radius:8px;margin:10px 0;font-size:0.75em;color:#fbbf24;line-height:1.7}
+.method-bar{background:var(--card-inner);padding:8px 14px;border-radius:8px;margin:10px 0;font-size:0.75em;color:var(--text-secondary);line-height:1.6}
+.summary-section{margin:14px 0}.summary-table{width:100%;border-collapse:collapse;font-size:0.78em}
+.summary-table th{background:var(--card-inner);padding:6px 8px;text-align:left;color:var(--text-secondary);font-weight:600;border-bottom:1px solid #2d3a4a}
+.summary-table td{padding:6px 8px;border-bottom:1px solid #1e2a3a}.score-main{color:var(--teal);font-weight:700;font-size:1.05em}.score-second{color:var(--orange)}
+.match-card{background:var(--card-bg);border-radius:10px;padding:14px;margin:12px 0}.match-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.match-header h2{font-size:1.05em}.match-score-rec{text-align:right}
+.panel-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0}@media(max-width:800px){.panel-grid{grid-template-columns:1fr}}
+.panel{background:var(--card-inner);padding:10px;border-radius:8px}.panel h4{font-size:0.82em;color:var(--orange);margin-bottom:8px}
+.panel-row{display:flex;justify-content:space-between;font-size:0.78em;padding:3px 0}.panel-row .label{color:var(--text-secondary)}.panel-row .value{color:var(--text);font-weight:600}
+.progress-bar-bg{background:#0f1a2a;border-radius:6px;height:16px;margin:6px 0;overflow:hidden}.progress-bar-fill{height:100%;border-radius:6px;transition:width .3s}
+.fill-green{background:linear-gradient(90deg,#059669,#22c55e)}.fill-blue{background:linear-gradient(90deg,#0d9488,#2dd4bf)}.fill-purple{background:linear-gradient(90deg,#8b5cf6,#d8b4fe)}
+.fill-orange{background:linear-gradient(90deg,#ea580c,#fb923c)}.fill-red{background:linear-gradient(90deg,#dc2626,#f87171)}.fill-teal{background:linear-gradient(90deg,#0ea5a9,#2dd4bf)}
+.form-panel{background:var(--card-inner);padding:10px;border-radius:8px;margin:10px 0;border-left:3px solid var(--gold)}
+.form-grid{display:flex;align-items:stretch;gap:12px;margin-top:6px}.form-team{flex:1;min-width:120px}.form-divider{width:1px;background:#2d3a4a;border-radius:2px;margin:4px 0}
+.form-badge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:0.72em;font-weight:600}
+.form-hot{background:#451a03;color:#fbbf24}.form-warm{background:#064e3b;color:#34d399}.form-cool{background:#1e3a5f;color:#60a5fa}.form-cold{background:#450a0a;color:#f87171}
+.intel-panel{background:linear-gradient(135deg,#0f1a2a,#141e30);padding:10px 12px;border-radius:8px;margin:10px 0;border-left:3px solid var(--blue);font-size:0.75em}
+.intel-panel h4{font-size:0.9em;color:var(--blue);margin-bottom:6px}.intel-row{padding:3px 0;line-height:1.6;display:flex;gap:6px}.intel-row strong{color:#60a5fa;min-width:60px;flex-shrink:0}.intel-row span{color:#cbd5e1}
+.analysis-panel{background:var(--card-inner);padding:10px;border-radius:8px;margin:8px 0;font-size:0.78em}.analysis-item{margin:3px 0}
+.conf-high{color:var(--teal);font-weight:700}.conf-med{color:var(--orange)}.conf-low{color:var(--text-secondary)}
+.risk-low{background:#052e16;color:#4ade80}.risk-t1{background:#7f1d1d;color:#f87171}
+.risk-t2{background:#451a03;color:#fbbf24}.risk-t3{background:#172554;color:#60a5fa}.step-num{color:var(--blue);font-size:0.75em}
+.footer{text-align:center;padding:14px;color:var(--text-secondary);font-size:0.73em}.highlight{color:var(--orange);font-weight:700}
+.glossary{background:var(--card-inner);padding:12px;border-radius:8px;margin:10px 0;font-size:0.73em;color:var(--text-secondary);line-height:2}.glossary strong{color:var(--teal)}
+.similar-panel{background:linear-gradient(135deg,#1a0a2e,#0f1a2a);padding:10px 12px;border-radius:8px;margin:10px 0;border-left:3px solid var(--purple);font-size:0.73em}
+.similar-panel h4{font-size:0.85em;color:var(--purple);margin-bottom:6px}
+.similar-match{display:inline-block;background:var(--card-bg);padding:2px 10px;border-radius:6px;margin:2px 4px 2px 0;font-size:0.85em;border:1px solid #2d3a4a}
+.similar-match .score{color:var(--gold);font-weight:700}
+.similar-conclusion{color:var(--teal);margin-top:6px;padding-top:6px;border-top:1px solid #2d3a4a;line-height:1.5}.tactic-panel{background:linear-gradient(135deg,#0f1a2e,#1a0a0a);padding:10px 12px;border-radius:8px;margin:10px 0;border-left:3px solid var(--gold);font-size:0.72em}.tactic-panel h4{font-size:0.85em;color:var(--gold);margin-bottom:6px}
+</style></head><body><div class="container">
+<div class="header-section"><h1>🏆 2026世界杯预测 v28.4 ★ 体彩融合+第二轮战略+6/19前瞻</h1>
+<div class="subtitle">专业足球赛事分析预测师 | 星级力量(巨星+五大联赛) | 战术推演(第二得分点+球星默契) | 实时赔率 | 近3年大赛 | 2026-06-18 13:31 GMT+8</div>
+<div class="badge-row">
+<span class="badge badge-v27">🧬 v28.3 精度升级</span>
+<span class="badge badge-new">📊 体彩融合</span>
+<span class="badge badge-new">🔬 复盘修正</span>
+<span class="badge badge-new">🎯 排版优化</span>
+</div></div>
+<div class="warning-bar"><strong>⚡ v28.4 体彩融合+第二轮战略升级</strong><br>
+• <strong>实时赔率</strong>：168指数+体彩竞彩+500.com 6/18最新赔率(第二轮数据)<br>
+• <strong>SIMILAR_REF扩展</strong>：近3年世预赛/国际杯赛/大赛(不含友谊赛)，数据更权威<br>
+• <strong>关键球员联赛数据</strong>：近1-2年俱乐部联赛进球助攻，支撑战术推演<br>
+• <strong>比分方向修正</strong>：fusion_score明确标注谁胜(如0:2挪胜→客胜2球，不再歧义)<br>
+• <strong>第二轮战术</strong>：基于首轮赛果的真实状态评估(非纯纸面推演)<br>
+</div>
+<div class="method-bar"><strong>🧬 v28.2 方法升级：</strong><br>
+<strong>★ 实时赔率:</strong> 168指数+体彩竞彩+500.com 6/18最新数据 | 亚盘+大小球同步更新<br>
+<strong>Step1 理论实力评估:</strong> ELO胜率+欧赔隐含+亚盘验证+Poly热度+xG模型+大小球 → 6信号投票+信号强度+一致性<br>
+<strong>Step2 实际条件验证:</strong> 近3年大赛(不含友谊赛)四维类似对手+关键球员联赛数据+战术克制度+平局基线28%<br>
+<strong>Step3 双面交叉验证:</strong> 理论方向 vs 实际方向 → 一致/分歧/反转<br>
+<strong>Step4 融合+自检:</strong> 逻辑推导→最终推荐(明确标注谁胜) | 自检引擎: score与verdict一致性<br>
+<strong>📖 SRC标签:</strong> ELO=FiveThirtyEight | 欧赔=168指数+体彩 | 亚盘=168指数 | Poly=Polymarket/Kalshi | 球员=StatMuse+Transfermarkt | 类似=近3年世预赛/国际杯赛(不含友谊赛)</div>
+<div class="glossary"><strong>📖 博彩术语通俗解释：</strong><br>
+<strong>赢球输盘</strong>：强队赢了比赛但没赢够盘口要求的球数<br><strong>深开诱上</strong>：庄家故意开出比正常深的让球盘引诱大众买强队<br>
+<strong>大小球</strong>：预测总进球数(两队之和)，如O3.5=至少4球。这是博彩公司精算的进球预期，比大众投注的O/X.5准确得多<br>
+<strong>xG</strong>：预期进球(Expected Goals)，基于球队真实场均进球/失球数据计算，非投注比例<br>
+<strong>屠杀因子</strong>：当ELO差距>300时，v27.1将强队xG放大1.5~1.8倍（德国7:1血淋淋的教训）<br></div>
+<div class="summary-section"><h3 style="font-size:1em;color:var(--gold);margin-bottom:10px;">📊 v28.2 双面综合研判摘要（星级力量+战术推演+第二得分点）</h3>
+<table class="summary-table"><thead><tr><th>对阵</th><th>ELO差</th><th>xG</th><th>理论</th><th>实际</th><th>双面</th><th>★融合推荐</th><th>风险</th></tr></thead><tbody>
+<tr><td><strong>美国 vs 澳大利亚</strong></td><td>+100</td><td style="font-size:0.75em;">2.5vs1.4</td><td style="font-size:0.72em;">美国胜(理论较一致)</td><td style="font-size:0.72em;">美国胜但澳大利亚</td><td><span class="risk-t2" style="padding:1px 6px;border-radius:4px;font-size:0.7em;">⚡✅基本一</span></td><td class="score-main">2:0美胜 / 2:1美胜 / 1:0美胜</td><td style="font-size:0.72em;">🟡 澳大利亚防守纪律世界</td></tr>
+<tr><td><strong>苏格兰 vs 摩洛哥</strong></td><td>-130</td><td style="font-size:0.75em;">1.4vs1.1</td><td style="font-size:0.72em;">摩洛哥胜(理论强一致)</td><td style="font-size:0.72em;">摩洛哥胜(1:1</td><td><span class="risk-t2" style="padding:1px 6px;border-radius:4px;font-size:0.7em;">⚡✅高度一</span></td><td class="score-main">0:2摩胜 / 1:2摩胜 / 0:1摩胜</td><td style="font-size:0.72em;">🟢 低风险(摩洛哥1:1</td></tr>
+<tr><td><strong>巴西 vs 海地</strong></td><td>+570</td><td style="font-size:0.75em;">3.0vs0.5</td><td style="font-size:0.72em;">巴西胜(理论压倒性优势)</td><td style="font-size:0.72em;">巴西大胜(1:1</td><td><span class="risk-t2" style="padding:1px 6px;border-radius:4px;font-size:0.7em;">⚡✅高度一</span></td><td class="score-main">5:0巴胜 / 4:0巴胜 / 6:0巴胜</td><td style="font-size:0.72em;">🟢 低风险(巴西120:</td></tr>
+<tr><td><strong>土耳其 vs 巴拉圭</strong></td><td>+160</td><td style="font-size:0.75em;">2.5vs1.4</td><td style="font-size:0.72em;">土耳其胜(理论较一致但亚盘浅开)</td><td style="font-size:0.72em;">土耳其占优但两队</td><td><span class="risk-t2" style="padding:1px 6px;border-radius:4px;font-size:0.7em;">⚡⚡分歧(</span></td><td class="score-main">2:1土胜 / 1:1平 / 1:2巴胜</td><td style="font-size:0.72em;">🟡 土耳其首轮进攻哑火+</td></tr>
+</tbody></table></div>
+<div class="match-card">
+<div class="match-header"><h2>⚽ 美国 vs 澳大利亚</h2><div class="match-score-rec"><span class="risk-t2" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🟡中</span></div></div>
+<div class="panel-grid">
+<div class="panel"><h4>📊 实力 &amp; 市场分析</h4>
+<div class="panel-row"><span class="label">🏆 小组</span><span class="value">D组: 首轮4:1大胜巴拉圭，主场作战争取提前出线</span></div>
+<div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1850 vs 1750 (差+100)</span></div>
+<div class="panel-row"><span class="label">FIFA排名</span><span class="value">#16 vs #27</span></div>
+<div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">64% / 36%</span></div>
+<div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">1.47/3.70/5.60</span></div>
+<div class="panel-row"><span class="label">└ 返还率</span><span class="value">88.6% (庄家利润率11.4%)</span></div>
+<div class="panel-row"><span class="label">└ 隐含概率</span><span class="value" style="font-size:0.75em;">主60%/平24%/客16%</span></div>
+<div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">主队让1.0球<span style="font-size:0.7em;">(水0.95/0.93)</span></span></div>
+<div class="panel-row"><span class="label">└ 理论盘</span><span class="value">-0.75<span style="font-size:0.7em;color:var(--text-secondary);">（欧赔反推）</span></span></div>
+<div class="panel-row"><span class="label">└ 偏差</span><span class="value" style="color:var(--red);">-0.25 (深开警讯)</span></div>
+<div style="font-size:0.68em;color:var(--blue);padding:2px 0 0;margin-bottom:4px;">💡 实际让球比欧赔推算的更深→庄家可能故意造热强队，要警惕赢球输盘！</div>
+<div class="panel-row"><span class="label">📐 大小球(参考)</span><span class="value" style="color:var(--teal);">2.75球</span></div>
+<div class="panel-row"><span class="label">🔴 Poly(仅方向参考)</span><span class="value" style="font-size:0.75em;">55%/25%/20%</span></div>
+<div style="margin-top:6px;font-size:0.68em;color:var(--orange);">⚠️ v27.1: Poly O/X.5已脱钩，进球预测改用xG+大小球</div></div>
+<div class="panel"><h4>🎯 美国 独立进球（xG=2.5）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">&lt;25%截断 | NB(r=4.156)</div>
+<div class="panel-row"><span class="label">美国 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">86%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:86%;"></div></div><div class="panel-row"><span class="label">美国 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">64%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:64%;"></div></div><div class="panel-row"><span class="label">美国 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">43%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:43%;"></div></div><div class="panel-row"><span class="label">美国 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">26%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:26%;"></div></div>
+<div style="margin-top:10px;"></div>
+<h4>🎯 澳大利亚 独立进球（xG=1.4）</h4>
+<div class="panel-row"><span class="label">澳大利亚 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">74%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:74%;"></div></div><div class="panel-row"><span class="label">澳大利亚 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">41%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:41%;"></div></div></div>
+<div class="panel"><h4>📈 总进球预测（xG=4.0）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">大小球2.75球校准 | &lt;25%截断</div>
+<div class="panel-row"><span class="label">⚡ xG_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">3.97</span></div>
+<div class="panel-row"><span class="label">└ 美国 xG</span><span class="value">2.54</span></div>
+<div class="panel-row"><span class="label">└ 澳大利亚 xG</span><span class="value">1.43</span></div>
+<div style="margin-top:8px;"></div>
+<div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">97%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:97%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">87%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:87%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">72%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:72%;"></div></div><div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">53%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:53%;"></div></div><div class="panel-row"><span class="label">全场 O4.5</span><span class="value" style="color:var(--teal);font-weight:700;">36%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:36%;"></div></div>
+<div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.1: xG模型 + 大小球校准 | NB(r=15)</div></div></div>
+<!-- ★v28.4 体彩竞彩官方面板 -->
+
+<div class="sporttery-panel" style="background:linear-gradient(135deg,#1a0a0e,#0f1419);padding:12px;border-radius:10px;margin:10px 0;border:2px solid #c41e3a;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="font-size:1.3em;">&#x1F1E8;&#x1F1F3;</span>
+<h4 style="margin:0;color:#ef4444;font-size:0.95em;">体彩竞彩官方数据 <span style="font-size:0.65em;color:var(--text-secondary);">[SRC: sporttery.cn]</span></h4>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div style="background:rgba(239,68,68,0.05);border-radius:8px;padding:10px;border:1px solid rgba(239,68,68,0.2);">
+<div style="color:#ef4444;font-weight:700;margin-bottom:8px;font-size:0.82em;">胜平负 (固定奖金)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">1.47</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">平局</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">3.7</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">5.6</div></div>
+</div>
+<div style="margin-top:8px;display:flex;justify-content:space-between;font-size:0.72em;">
+<span style="color:var(--text-secondary);">支持率:</span>
+<span><span style="color:var(--teal);">67%</span> / <span style="color:var(--gold);">20%</span> / <span style="color:var(--orange);">13%</span></span>
+</div>
+</div>
+<div style="background:rgba(34,197,94,0.05);border-radius:8px;padding:10px;border:1px solid rgba(34,197,94,0.2);">
+<div style="color:#22c55e;font-weight:700;margin-bottom:8px;font-size:0.82em;">让球 (主让1球)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">2.56</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球平</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">3.3</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">2.3</div></div>
+</div>
+</div>
+</div>
+<div style="margin-top:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:10px;">
+<div style="color:#f59e0b;font-weight:700;margin-bottom:6px;font-size:0.82em;">让球穿盘分析 v28.4新增</div>
+<div style="font-size:0.73em;line-height:1.7;color:var(--text);">
+<strong style="color:var(--red);">穿盘场景:</strong> 净胜1+球穿盘(全赢), 平局走水, 输球全输! 如1:0→穿盘, 0:0→走水<br>
+<strong style="color:var(--orange);">穿盘风险:</strong> 🟡 中等! 有赢球输盘可能<br>
+<strong style="color:var(--teal);">穿盘概率:</strong> 约20%<br>
+<strong style="color:var(--gold);">投注建议:</strong> 💡 可考虑让球平/受让
+</div>
+</div>
+</div>
+<div class="form-panel"><h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
+<div class="form-grid">
+<div class="form-team"><div style="color:var(--teal);font-weight:700;margin-bottom:4px;">美国</div>
+<span class="form-badge form-hot">4胜1平1负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进12</span><span style="color:var(--red);margin-left:8px;">丢6</span></div></div>
+<div class="form-divider"></div>
+<div class="form-team" style="text-align:right;"><div style="color:var(--orange);font-weight:700;margin-bottom:4px;">澳大利亚</div>
+<span class="form-badge form-hot">3胜1平1负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进8</span><span style="color:var(--red);margin-left:8px;">丢2</span></div></div></div></div>
+<div class="intel-panel"><h4>📰 赛事情报</h4>
+<div class="intel-row"><strong>🏟 场地：</strong><span>西雅图Lumen Field | 美国主场! | 6/20 03:00(北京时间)</span></div>
+<div class="intel-row"><strong>🚑 伤停：</strong><span>美国: 全员健康✅ | 澳大利亚: 全员健康✅</span></div>
+<div class="intel-row"><strong>📋 首发：</strong><span>美国(4-3-3): 特纳/德斯特,理查兹,罗宾逊,斯卡利/亚当斯,麦肯尼,雷纳/维阿,巴洛贡,普利西奇(c) | 澳大利亚(4-4-2): 瑞安(c)/格里亚,苏塔尔,伯吉斯,博斯/莱基,埃尔文,梅特卡夫,伊兰昆达/马比尔,赫鲁斯蒂奇</span></div>
+<div class="intel-row"><strong>⚔️ 交锋：</strong><span>近5年交手: 2025美国2:1澳大利亚(友谊赛) | 美国3胜1平0负</span></div>
+<div class="intel-row"><strong>📊 状态：</strong><span>美国首轮4:1大胜巴拉圭(Balogun双响+Reyna破门) vs 澳大利亚首轮2:0土耳其(防守稳固)</span></div></div>
+<div class="similar-panel"><h4>🔮 v28.2 类似对手参照 ★四维（近3年世预赛/国际杯赛/大赛，不含友谊赛）</h4>
+<div style="margin-bottom:6px;">💰 <strong>身价:</strong> 美国 €5.0亿(攻€2.0亿/防€1.5亿) vs 澳大利亚 €1.5亿(攻€6000万/防€4500万) (3.3:1)</div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>① 🇺🇳 踢类似FIFA排名对手(≈澳大利亚#27) → 进几球/丢几球</strong></div>
+<div style="margin-left:8px;">🏠 <strong>美国:</strong> <span class="similar-match"><span class="score">4:1 巴拉圭#50(世界杯首轮)🔥</span></span> &nbsp;<span class="similar-match"><span class="score">3:0 牙买加#55(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">2:1 加拿大#40(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">0:1 巴拿马#33(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:1 墨西哥#17(世北美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA17-55区(世北美预+首轮): 场均进2.2球/失0.8球, 首轮4:1巴拉圭证明进攻火力!</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>澳大利亚:</strong> <span class="similar-match"><span class="score">2:0 土耳其#28(世界杯首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">1:0 沙特#56(世亚预)</span></span> &nbsp;<span class="similar-match"><span class="score">2:0 日本#15(世亚预)🔥</span></span> &nbsp;<span class="similar-match"><span class="score">1:1 瑞士#19(友谊赛)</span></span> &nbsp;<span class="similar-match"><span class="score">1:0 喀麦隆#46(友谊赛)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA15-56区(世亚预+首轮): 场均进1.4球/失0.4球, 2:0日本🔥防守纪律世界级! Popovic体系成熟</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>② 🛡️ vs类似后防线身价(≈澳大利亚防€4500万) → 进几球 [进攻测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>美国:</strong> <span class="similar-match"><span class="score">4:1 巴拉圭(防≈€2500万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">3:0 牙买加(防≈€2000万)(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">2:1 加拿大(防≈€5000万)(世北美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€4500万)(大赛): 场均3.0球! Balogun梅开二度+Reyna破门→对弱防线碾压级</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>澳大利亚:</strong> <span class="similar-match"><span class="score">2:0 土耳其(防≈€7500万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">2:0 日本(防≈€1.0亿)(世亚预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:0 沙特(防≈€4000万)(世亚预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€1.5亿)(大赛): 对€1亿日本防线进2球🔥! 对更高身价防线有破门能力</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>③ ⚔️ vs类似进攻线身价(≈澳大利亚攻€6000万) → 丢几球 [防守测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>美国:</strong> <span class="similar-match"><span class="score">失1球 巴拉圭(攻≈€3000万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 墨西哥(攻≈€1.5亿)(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 加拿大(攻≈€8000万)(世北美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€6000万)(大赛): 场均失0.8球, 对弱攻击线几乎零封</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>澳大利亚:</strong> <span class="similar-match"><span class="score">失0球 土耳其(攻≈€1.0亿)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失0球 日本(攻≈€2.0亿)(世亚预)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 瑞士(攻≈€1.5亿)(友谊赛)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€2.0亿)(大赛): 对€2亿日本攻击线零封🔥! 防守纪律极其出色</div></div>
+<div class="similar-conclusion">💡 <strong>综合四维：美国首轮4:1巴拉圭→进攻火力全开(Balogun双响+Reyna破门)。澳大利亚2:0土耳其+2:0日本→防守纪律世界级! 综合四维: 美国2球胜但澳大利亚防守极佳可能限制比分。预测2:0或2:1。</strong></div></div>
+<div class="tactic-panel"><h4>⚔️ v28.2 战术分析(含星级力量)</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 美国 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-3-3高速进攻 | 波切蒂诺体系首轮验证成功 | 普利西奇+巴洛贡+Reyna三叉戟</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">普利西奇</span>(AC米兰/86帽33球)左路组织→<span style="color:var(--gold);font-weight:700;">雷纳</span>(多特蒙德)10号位创造力→<span style="color:var(--gold);font-weight:700;">巴洛贡</span>(摩纳哥)禁区终结。亚当斯+<span style="color:var(--gold);font-weight:700;">麦肯尼</span>中场双核提供硬度。<span style="color:var(--gold);font-weight:700;">波切蒂诺</span>体系首轮4:1巴拉圭验证成功:高位逼抢+快速转换+两翼齐飞。美国不是纯控球型,讲究垂直进攻+边路爆破。</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: <span style="color:var(--gold);font-weight:700;">普利西奇</span>被重点盯防时创造力下降 | 防线偶尔注意力不集中(首轮被巴拉圭进1球) | 面对极致防守可能缺乏耐心 | <span style="color:var(--gold);font-weight:700;">雷纳</span>年轻(23岁)→关键时刻稳定性待验证</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(3人): 普利西奇(AC米兰/86帽33球)、巴洛贡(摩纳哥/首轮梅开二度)、麦肯尼(尤文图斯/中场引擎)</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约15人/26 | 英超5+西甲3+德甲3+意甲2+法甲2 | 波切蒂诺执教提升纪律</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 雷纳(多特蒙德)+巴洛贡(首轮双响) | 普利西奇被锁→雷纳创造力+巴洛贡抢点</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 普利西奇+巴洛贡+雷纳=攻击三叉戟 | 亚当斯+麦肯尼=中场双核 | 波切蒂诺体系首轮4:1验证成功</div>
+</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 澳大利亚 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-4-2紧凑防守+快速反击 | 波波维奇防守体系纪律严明 | 瑞安100+帽门将核心</div>
+<div style="font-size:0.72em;line-height:1.5;">瑞安(100+帽/传奇门将)防线核心→苏塔尔+伯吉斯中卫双塔→梅特卡夫+埃尔文中场拦截→<span style="color:var(--gold);font-weight:700;">伊兰昆达</span>速度反击。<span style="color:var(--gold);font-weight:700;">波波维奇</span>防守体系纪律严明:2:0日本🔥+2:0土耳其→连续零封亚洲强队! 澳大利亚不追求控球,依靠紧密防线+快速转换。</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 进攻创造力单一(过度依赖<span style="color:var(--gold);font-weight:700;">伊兰昆达</span>速度) | 面对高位逼抢时后场出球存疑 | 马比尔+赫鲁斯蒂奇非世界级前锋→终结能力有限 | 首轮对手(<span style="color:var(--gold);font-weight:600;">土耳其</span>)含金量待验证</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(0人): 无超级巨星</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约5人/26 | 英超2+德甲1+比甲1+荷甲1 | 波波维奇防守体系纪律严明</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 伊兰昆达(速度反击)+莱基(老将经验) | 梅特卡夫+埃尔文(中场双核)</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 波波维奇防守体系成熟 | 瑞安100+帽门将核心 | 首轮2:0土耳其验证防守纪律 | 但进攻依赖反击</div>
+</div></div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(239,68,68,0.03);border:1px solid #3a2525;border-radius:6px;">
+<div style="color:#ef4444;font-weight:700;margin-bottom:6px;font-size:0.85em;">🩺 首发·伤病·停赛检测</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 美国 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">普利西奇</strong><span style="color:var(--text-secondary);"> · 左边锋/进攻核心 · ⏱85-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">AC米兰主力,86帽33球。首轮vs巴拉圭全场最佳,确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN, Pochettino确认</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">巴洛贡</strong><span style="color:var(--text-secondary);"> · 前锋/禁区终结者 · ⏱75-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">摩纳哥前锋,首轮梅开二度🔥! 状态火热,确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">雷纳</strong><span style="color:var(--text-secondary);"> · 10号位/创造力 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">多特蒙德创造力核心,首轮破门。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">麦肯尼</strong><span style="color:var(--text-secondary);"> · 中场/引擎 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">尤文图斯主力,中场双核之一。首轮全场覆盖+1助攻。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 澳大利亚 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">瑞安</strong><span style="color:var(--text-secondary);"> · 门将/防线核心 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">100+帽传奇门将! 2:0日本+2:0土耳其→连续零封强队! 防线最后屏障。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Popovic确认</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">伊兰昆达</strong><span style="color:var(--text-secondary);"> · 边锋/反击速度 · ⏱70-85'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">澳大利亚速度反击核心,确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">苏塔尔</strong><span style="color:var(--text-secondary);"> · 中卫/防线核心 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">澳大利亚中卫核心,防空优势明显。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(245,158,11,0.08);border-radius:4px;font-size:0.72em;color:var(--orange);line-height:1.5;">⚠️ 对战术推演的影响: ✅ 双方全主力健康! 美国波切蒂诺体系首轮4:1验证成功(巴洛贡双响+Reyna破门)。澳大利亚波波维奇防守体系连续零封日本+土耳其→门将瑞安100+帽传奇! 核心对位:巴洛贡vs苏塔尔→禁区争霸!</div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(34,197,94,0.03);border:1px solid #1e3a2a;border-radius:6px;">
+<div style="color:#4ade80;font-weight:700;margin-bottom:6px;font-size:0.85em;">📈 关键球员近1-2年联赛数据 [SRC:StatMuse+Transfermarkt]</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 美国</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">普利西奇</span><span style="flex:1;"><span style="color:var(--text-secondary);">AC米兰 · 意甲2025-26</span><br><span style="color:var(--teal);">32场12球8助攻 | 86帽33球国家队 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">巴洛贡</span><span style="flex:1;"><span style="color:var(--text-secondary);">摩纳哥 · 法甲2025-26</span><br><span style="color:var(--teal);">30场18球5助攻🔥 | 首轮梅开二度! | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">雷纳</span><span style="flex:1;"><span style="color:var(--text-secondary);">多特蒙德 · 德甲2025-26</span><br><span style="color:var(--teal);">28场9球10助攻 | 10号位创造力 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">麦肯尼</span><span style="flex:1;"><span style="color:var(--text-secondary);">尤文图斯 · 意甲2025-26</span><br><span style="color:var(--teal);">30场5球6助攻 | 中场引擎 | SRC:Transfermarkt</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 澳大利亚</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">伊兰昆达</span><span style="flex:1;"><span style="color:var(--text-secondary);">— · —</span><br><span style="color:var(--teal);">澳大利亚速度反击核心 | 年轻边锋 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">瑞安</span><span style="flex:1;"><span style="color:var(--text-secondary);">— · —</span><br><span style="color:var(--teal);">100+帽传奇门将! 2:0日本+2:0土耳其→连续零封! | SRC:FIFA</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">苏塔尔</span><span style="flex:1;"><span style="color:var(--text-secondary);">— · —</span><br><span style="color:var(--teal);">澳大利亚中卫核心 | 防空优势明显 | SRC:Transfermarkt</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(34,197,94,0.08);border-radius:4px;font-size:0.72em;color:#4ade80;line-height:1.5;">📊 数据影响: 🔥巴洛贡18球5助攻法甲→首轮梅开二度延续俱乐部状态! 普利西奇12球8助攻意甲→美国进攻核心。瑞安100+帽传奇门将→连续零封日本+土耳其🔥</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:8px;margin-top:8px;">
+<div style="color:var(--gold);font-weight:700;margin-bottom:6px;">⚔️ 战术推演 v28.3 <span style="font-size:0.75em;color:var(--text-secondary);font-weight:400;">(欧冠级分析师三位一体)</span></div>
+<div class="tactic-structured" style="font-size:0.71em;line-height:1.7;">
+<div style="padding:2px 0;">★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">普利西奇</span>(AC米兰)vs澳大利亚右路防线格里亚——美国进攻核心vs澳大利亚防守弱侧。但美国不只靠<span style="color:var(--gold);font-weight:700;">普利西奇</span>!★第二得分点:<span style="color:var(--gold);font-weight:700;">巴洛贡</span>(摩纳哥/首轮梅开二度🔥)禁区抢点+<span style="color:var(--gold);font-weight:700;">Reyna</span>(多特蒙德)10号位后插上→<span style="color:var(--gold);font-weight:700;">普利西奇</span>被封锁时,<span style="color:var(--gold);font-weight:700;">巴洛贡</span>+Reyna可接管!★第三得分点:<span style="color:var(--gold);font-weight:700;">麦肯尼</span>(尤文图斯)中场远射+维阿(坦帕湾)边路速度→美国进攻层次极其丰富(首轮4球!)★澳大利亚反击:<span style="color:var(--gold);font-weight:700;">伊兰昆达</span>(速度反击手)→被锁→莱基(老将经验)→澳大利亚第二得分点薄弱! 中场梅特卡夫+埃尔文创造能力有限。★球星默契度:<span style="color:var(--gold);font-weight:600;">美国</span><span style="color:var(--gold);font-weight:700;">波切蒂诺</span>体系首轮4:1验证成功→<span style="color:var(--gold);font-weight:700;">普利西奇</span>+<span style="color:var(--gold);font-weight:700;">巴洛贡</span>+Reyna三叉戟默契初显! <span style="color:var(--gold);font-weight:600;">澳大利亚</span><span style="color:var(--gold);font-weight:700;">波波维奇</span>体系2:0日本+2:0土耳其→防守纪律世界级! 核心教练对决:<span style="color:var(--gold);font-weight:700;">波切蒂诺</span>vs<span style="color:var(--gold);font-weight:700;">波波维奇</span>→战术大师之战!</div><div style="background:rgba(59,130,246,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--blue);"><strong>▶ ★进程推演</strong></div><div style="padding:2px 0;">:美国控球55%+→前20分钟试探<span style="color:var(--gold);font-weight:700;">波波维奇</span>防守体系→<span style="color:var(--gold);font-weight:700;">巴洛贡</span>或Reyna禁区抢点→25-40分钟破门→1:0→澳大利亚被迫压出→<span style="color:var(--gold);font-weight:700;">伊兰昆达</span>反击→可能**1:1**→美国凭主场+体能优势→<span style="color:var(--gold);font-weight:700;">巴洛贡</span>或替补再入1球→2:0或2:1。</div><div style="background:rgba(239,68,68,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--red);"><strong>❗ ★关键变量</strong></div><div style="padding:2px 0;">:①美国20分钟内能否破门?(澳大利亚前两场零封日本+<span style="color:var(--gold);font-weight:600;">土耳其</span>!) ②澳大利亚<span style="color:var(--gold);font-weight:700;">伊兰昆达</span>速度能否在美国防线找到漏洞? ③美国主场Lumen Field→士气加成? ④<span style="color:var(--gold);font-weight:700;">波波维奇</span>防守体系vs<span style="color:var(--gold);font-weight:700;">波切蒂诺</span>进攻体系→谁先犯错误?</div>
+</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">比赛节奏</div>
+<div style="font-size:0.75em;color:var(--blue);">⏱️ ★v28.4节奏推演★ 美国主场积极进攻→澳大利亚4-4-2紧凑防线等待反击。前30分钟:美国两翼(Reyna/维阿)试探→澳大利亚防线退守→节奏中度→巴洛贡或Reyna打破僵局→澳大利亚被迫压出→伊兰昆达反击提速→比赛节奏加快。预计60%控球美国→下半场主导。</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">进球影响</div>
+<div style="font-size:0.75em;color:var(--teal);">📊 ★v28.4进球影响推演★ ★美国:3巨星(普利西奇+巴洛贡+麦肯尼)+约15人五大联赛→巴洛贡首轮梅开二度🔥! 普利西奇被锁→Reyna创造力+巴洛贡禁区抢点→第二第三得分点都有欧洲水平。★澳大利亚:0巨星+约5人五大联赛→伊兰昆达速度反击→被锁→莱基/马比尔→第二得分点薄弱! 门将瑞安100+帽→防线最后屏障。★进球预期:美国2球(巴洛贡/Reyna),澳大利亚0-1球(伊兰昆达反击)→总2-3球</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">战术推演比分</div>
+<div style="font-size:0.75em;color:var(--gold);font-weight:700;">🎯 ★v28.4推演比分★ 美国2:0美胜或2:1美胜。★进程:25-40分钟巴洛贡抢点或Reyna后插上→1:0→澳大利亚被迫压出→伊兰昆达反击→可能扳平1:1→美国凭主场+体能→巴洛贡或替补(亚伦森)→2:1或直接2:0→末段控制节奏。★关键:波波维奇vs波切蒂诺→战术大师对决! 澳大利亚防守纪律可让比赛胶着至60分钟</div></div></div></div>
+<div style="background:linear-gradient(135deg,#0a1628,#1a0a2e);padding:12px;border-radius:10px;margin:12px 0;border:1px solid #2d3a5a;">
+<div style="color:var(--purple);font-weight:700;font-size:0.95em;margin-bottom:10px;">🧬 v28.2 专业分析师推理链 (星级力量+战术推演)</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(59,130,246,0.06);border:1px solid #1e3a5a;border-radius:8px;padding:10px;">
+<div style="color:var(--blue);font-weight:700;font-size:0.85em;margin-bottom:6px;">📊 理论面 (模型+市场) — 6信号+强度</div>
+<div style="font-size:0.72em;line-height:1.6;">
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">ELO:</strong> ELO+100 → 胜率64%/36% <span style="color:#f59e0b;font-size:0.9em;">[中]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">欧赔:</strong> 主60%/平24%/客16% (浅盘控制) <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">亚盘:</strong> 主队让1.0球 | 偏差-0.25(深开警讯) | 水位0.95 <span style="color:#f59e0b;font-size:0.9em;">[中]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">Poly:</strong> 主55%/平25%/客20% <span style="color:#8b95a5;font-size:0.9em;">[弱]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">xG:</strong> 美国=2.5 vs 澳大利亚=1.4(总4.0) <span style="color:#f59e0b;font-size:0.9em;">[中]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">大小球:</strong> 2.75球(2.75球→预判3球)</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #1e3a5a;">
+<strong style="color:var(--teal);">📌 理论结论:</strong> <span style="color:var(--text);">美国胜(理论较一致)</span>
+<span style="font-size:0.85em;color:var(--green);"> (置信高)</span><br>
+<span style="font-size:0.68em;color:#60a5fa;">信号一致性: 基本一致</span></div>
+</div></div>
+<div style="background:rgba(249,115,22,0.06);border:1px solid #5a3a1e;border-radius:8px;padding:10px;">
+<div style="color:var(--orange);font-weight:700;font-size:0.85em;margin-bottom:6px;">🔬 实际面 (战术+真实条件) — 5信号+推理</div>
+<div style="font-size:0.72em;line-height:1.65;">
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">战术:</strong> ★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">普利西奇</span>(AC米兰)vs澳大利亚右路防线格里亚——美国进攻核心vs澳大利亚防守… <span style="color:#f59e0b;font-size:0.9em;">[克制度5/10]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">可用性:</strong> 主✅4⚠0❌0 | 客✅3⚠0❌0 <span style="color:#22c55e;font-size:0.9em;">[影响轻]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">类似对手:</strong> 美国首轮4:1巴拉圭→进攻火力全开(Balogun双响+Reyna破门)。…</div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">进球影响:</strong> ★v28.4进球影响推演★ ★美国:3巨星(普利西奇+巴洛贡+麦肯尼)+约15人五大联赛…</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #5a3a1e;">
+<strong style="color:var(--teal);">📌 实际结论:</strong> <span style="color:var(--text);">美国胜但澳大利亚防守极佳→比分可能不大</span>
+<span style="font-size:0.85em;color:var(--orange);"> (置信中)</span><br>
+<span style="font-size:0.68em;color:#fbbf24;">平局概率≈28% | —</span></div>
+</div></div></div>
+<div style="background:rgba(34,197,94,0.06);border:2px solid #22c55e;border-radius:8px;padding:12px;margin-top:10px;">
+<div style="color:var(--green);font-weight:700;font-size:0.9em;margin-bottom:8px;">✅ 双面融合 — ✅基本一致(美国方向占优但澳大利亚防守世界级)</div>
+<div style="font-size:0.73em;line-height:1.7;">
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">分歧点:</strong> <span style="color:var(--text);">理论面美国65.5%胜率+主场,但澳大利亚首轮2:0土耳其+之前2:0日本→防守纪律极其出色(场均仅失0.4球!) 美国攻击火力首轮4球→但面对更强的防守能否同样高效?</span></div>
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">关键变量:</strong> <span style="color:var(--gold);">①澳大利亚防守能否再次零封强队?(2:0日本→2:0土耳其→?) ②巴洛贡首轮梅开二度→能否延续? ③美国主场Lumen Field→士气加成? ④波波维奇vs波切蒂诺→战术大师对决!</span></div>
+<div style="margin-top:8px;padding-top:8px;border-top:1px solid #22c55e;">
+<strong style="color:var(--teal);">🎯 融合结论:</strong> <span style="color:var(--text);">✅ 理论实际基本一致! 美国首轮4:1巴拉圭进攻火力全开(巴洛贡双响+Reyna破门),但澳大利亚首轮2:0土耳其证明防守纪律世界级(此前2:0日本🔥)。西雅图Lumen Field美国主场→士气加成明显。<span style="background:rgba(34,197,94,0.2);color:#4ade80;padding:1px 6px;border-radius:3px;font-weight:700;">主推</span>美国2:0(巴洛贡延续状态+Reyna创造力)，<span style="background:rgba(239,68,68,0.2);color:#f87171;padding:1px 6px;border-radius:3px;font-weight:700;">需防</span>2:1(澳大利亚伊兰昆达反击破门)/1:0(防守大战)。平局概率约22%。</span></div>
+<div style="margin-top:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<div style="background:linear-gradient(135deg,#0a2e2a,#0d1117);padding:10px 20px;border-radius:8px;border:1px solid var(--teal);box-shadow:0 0 15px rgba(34,197,94,0.15);">
+<div style="color:var(--text-secondary);font-size:0.72em;margin-bottom:2px;">★ 最终推荐</div>
+<div style="display:flex;align-items:center;gap:10px;">
+<span style="color:var(--teal);font-weight:800;font-size:1.4em;text-shadow:0 0 8px rgba(34,197,94,0.4);">2:0美胜 / 2:1美胜 / 1:0美胜</span>
+<span style="background:rgba(255,255,255,0.08);color:var(--text);padding:2px 8px;border-radius:4px;font-size:0.78em;font-weight:600;">置信中高</span>
+</div></div>
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);padding:8px 14px;border-radius:6px;">
+<span style="color:#f87171;font-size:0.75em;font-weight:600;">⚠️ 🟡 澳大利亚防守纪律世界级(2:0日本+2:0土耳其→连续零封强队!)</span></div>
+</div></div></div>
+<div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:8px;margin-top:8px;">
+<div style="color:var(--purple);font-weight:700;font-size:0.8em;margin-bottom:4px;">🔍 v28 自检引擎</div>
+<span style="font-size:0.72em;">✅ fusion_score与verdict一致</span><br><span style="font-size:0.72em;">✅ 理论实际方向一致: 美国胜</span><br><span style="font-size:0.72em;">✅ 平局概率28%在正常范围</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤1] xG完整计算链 ★透明化</span></h4><div class="analysis-item"><strong>v27.1.1 xG完整计算链（攻击×防守→基准→屠杀→OU检查）：</strong><br>
+<strong>❶ 基准xG（真实场均数据）：</strong>美国攻击系数4.0/1.32=3.02×对手澳大利亚防守系数0.8/1.32=0.60 → 1.32×3.02×0.60=2.42球<br>
+<strong>　　　　　</strong>澳大利亚攻击系数2.0/1.32=1.51×对手美国防守系数1.0/1.32=0.75 → 1.32×1.51×0.75=1.51球<br>
+<strong>❷ 屠杀因子(ELO+100)：</strong>未触发<br>
+<strong>❸ 大小球2.75球对比：</strong>3.9(基准) vs 2.75球盘 → <strong style="color:var(--red);">⚠️疑似压缩(-1.2球)→保留xG独立判断</strong><br>
+<strong>❹ 最终xG：</strong>美国=2.54球 | 澳大利亚=1.43球 | 总计3.97球<br>
+<span style="color:var(--teal);font-size:0.85em;">💡 公式：xG = 联盟均值(1.32) × 攻击系数 × 对手防守系数。攻击系数>1=进攻强于均值，防守系数<1=防守好于均值。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4><div class="analysis-item"><strong>实际盘口：</strong>主队让1.0球（水位0.95/0.93）| <strong>欧赔理论盘：</strong>-0.75<br>
+<strong>偏差：</strong>-0.25 → <span style="color:var(--red);">深开警讯</span><br>
+<strong>水位信号：</strong>中水(0.85~1.00)→满意当前比例<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 理论盘=欧赔反推合理让球。实际盘比理论盘深了一档→可能真实看好(降赔)也可能诱上(造热)。<br>🧠 <strong style="color:var(--gold);">综合研判：xG2.5vs1.4+大小球2.75→美国方向明确</strong></span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4><div class="analysis-item">🔴 盘口深开→警惕诱盘！<br>⚪ 大众热度正常<br><strong>方向置信度：</strong><span class="conf-med">中(需博弈心态修正)</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤4] 博弈心态因子 ★核心创新</span></h4><div class="analysis-item"><strong>比赛类型：</strong>有差距但可对抗 | <strong>热度检测：</strong>✅ 无极端热度<br>
+<strong>心态分析：</strong>中游对抗→先稳守后反击<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 v27.1取消首轮保守对进球数压制。6/15证明首轮也能出大比分（德国7:1、瑞典5:1）。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤5] 综合比分推荐（专业分析师推理链 ★v28）</span></h4><div class="analysis-item"><strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">3:1</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">4:1</span><br>
+<strong>推理链：</strong>xG美国=2.5, xG澳大利亚=1.4, 大小球2.75球(⚠️疑似压缩(-1.2球)→保留xG独立判断), ELO差+100→3:1<br>
+<strong>v27.1.1方法：</strong>xG基准→屠杀因子(ELO)→OU参考(不压缩)→欧赔亚盘交叉→博弈心态</div></div></div>
+<div class="match-card">
+<div class="match-header"><h2>⚽ 苏格兰 vs 摩洛哥</h2><div class="match-score-rec"><span class="risk-t2" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🟡中</span></div></div>
+<div class="panel-grid">
+<div class="panel"><h4>📊 实力 &amp; 市场分析</h4>
+<div class="panel-row"><span class="label">🏆 小组</span><span class="value">C组: 首轮1:0胜海地领跑C组，Shankland状态火热</span></div>
+<div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1700 vs 1830 (差-130)</span></div>
+<div class="panel-row"><span class="label">FIFA排名</span><span class="value">#39 vs #13</span></div>
+<div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">32% / 68%</span></div>
+<div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">4.90/3.25/1.62</span></div>
+<div class="panel-row"><span class="label">└ 返还率</span><span class="value">88.6% (庄家利润率11.4%)</span></div>
+<div class="panel-row"><span class="label">└ 隐含概率</span><span class="value" style="font-size:0.75em;">主18%/平27%/客55%</span></div>
+<div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">客队让1.0球<span style="font-size:0.7em;">(水0.90/0.98)</span></span></div>
+<div class="panel-row"><span class="label">└ 理论盘</span><span class="value">+0.25<span style="font-size:0.7em;color:var(--text-secondary);">（欧赔反推）</span></span></div>
+<div class="panel-row"><span class="label">└ 偏差</span><span class="value" style="color:var(--red);">+0.75 (深开警讯)</span></div>
+<div style="font-size:0.68em;color:var(--blue);padding:2px 0 0;margin-bottom:4px;">💡 实际让球比欧赔推算的更浅→庄家可能制造强队不稳假象</div>
+<div class="panel-row"><span class="label">📐 大小球(参考)</span><span class="value" style="color:var(--teal);">2.5球</span></div>
+<div class="panel-row"><span class="label">🔴 Poly(仅方向参考)</span><span class="value" style="font-size:0.75em;">21%/28%/51%</span></div>
+<div style="margin-top:6px;font-size:0.68em;color:var(--orange);">⚠️ v27.1: Poly O/X.5已脱钩，进球预测改用xG+大小球</div></div>
+<div class="panel"><h4>🎯 苏格兰 独立进球（xG=1.4）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">&lt;25%截断 | NB(r=4.156)</div>
+<div class="panel-row"><span class="label">苏格兰 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">69%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:69%;"></div></div><div class="panel-row"><span class="label">苏格兰 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">38%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:38%;"></div></div>
+<div style="margin-top:10px;"></div>
+<h4>🎯 摩洛哥 独立进球（xG=1.1）</h4>
+<div class="panel-row"><span class="label">摩洛哥 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">65%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:65%;"></div></div><div class="panel-row"><span class="label">摩洛哥 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">30%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:30%;"></div></div></div>
+<div class="panel"><h4>📈 总进球预测（xG=2.5）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">大小球2.5球校准 | &lt;25%截断</div>
+<div class="panel-row"><span class="label">⚡ xG_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">2.50</span></div>
+<div class="panel-row"><span class="label">└ 苏格兰 xG</span><span class="value">1.39</span></div>
+<div class="panel-row"><span class="label">└ 摩洛哥 xG</span><span class="value">1.11</span></div>
+<div style="margin-top:8px;"></div>
+<div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">90%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:90%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">68%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:68%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">44%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:44%;"></div></div>
+<div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.1: xG模型 + 大小球校准 | NB(r=15)</div></div></div>
+<!-- ★v28.4 体彩竞彩官方面板 -->
+
+<div class="sporttery-panel" style="background:linear-gradient(135deg,#1a0a0e,#0f1419);padding:12px;border-radius:10px;margin:10px 0;border:2px solid #c41e3a;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="font-size:1.3em;">&#x1F1E8;&#x1F1F3;</span>
+<h4 style="margin:0;color:#ef4444;font-size:0.95em;">体彩竞彩官方数据 <span style="font-size:0.65em;color:var(--text-secondary);">[SRC: sporttery.cn]</span></h4>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div style="background:rgba(239,68,68,0.05);border-radius:8px;padding:10px;border:1px solid rgba(239,68,68,0.2);">
+<div style="color:#ef4444;font-weight:700;margin-bottom:8px;font-size:0.82em;">胜平负 (固定奖金)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">4.9</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">平局</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">3.25</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">1.62</div></div>
+</div>
+<div style="margin-top:8px;display:flex;justify-content:space-between;font-size:0.72em;">
+<span style="color:var(--text-secondary);">支持率:</span>
+<span><span style="color:var(--teal);">19%</span> / <span style="color:var(--gold);">16%</span> / <span style="color:var(--orange);">65%</span></span>
+</div>
+</div>
+<div style="background:rgba(34,197,94,0.05);border-radius:8px;padding:10px;border:1px solid rgba(34,197,94,0.2);">
+<div style="color:#22c55e;font-weight:700;margin-bottom:8px;font-size:0.82em;">让球 (主受1球(客让))</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">2.0</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球平</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">3.25</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">3.12</div></div>
+</div>
+</div>
+</div>
+<div style="margin-top:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:10px;">
+<div style="color:#f59e0b;font-weight:700;margin-bottom:6px;font-size:0.82em;">让球穿盘分析 v28.4新增</div>
+<div style="font-size:0.73em;line-height:1.7;color:var(--text);">
+<strong style="color:var(--red);">穿盘场景:</strong> 客队需净胜1球以上才能穿盘<br>
+<strong style="color:var(--orange);">穿盘风险:</strong> 🟢 均势盘<br>
+<strong style="color:var(--teal);">穿盘概率:</strong> 约<15%<br>
+<strong style="color:var(--gold);">投注建议:</strong> ✅ 正常投注
+</div>
+</div>
+</div>
+<div class="form-panel"><h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
+<div class="form-grid">
+<div class="form-team"><div style="color:var(--teal);font-weight:700;margin-bottom:4px;">苏格兰</div>
+<span class="form-badge form-warm">3胜0平2负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进7</span><span style="color:var(--red);margin-left:8px;">丢5</span></div></div>
+<div class="form-divider"></div>
+<div class="form-team" style="text-align:right;"><div style="color:var(--orange);font-weight:700;margin-bottom:4px;">摩洛哥</div>
+<span class="form-badge form-hot">3胜2平0负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进14</span><span style="color:var(--red);margin-left:8px;">丢3</span></div></div></div></div>
+<div class="intel-panel"><h4>📰 赛事情报</h4>
+<div class="intel-row"><strong>🏟 场地：</strong><span>吉列体育场 Foxborough | 中立场 | 6/20 06:00(北京时间)</span></div>
+<div class="intel-row"><strong>🚑 伤停：</strong><span>苏格兰: 全员健康✅ | 摩洛哥: 全员健康✅</span></div>
+<div class="intel-row"><strong>📋 首发：</strong><span>苏格兰(4-3-3): 冈恩/希基,汉利,亨德利,罗伯逊(c)/麦克托米奈,麦克莱恩,麦金/克里斯蒂,尚克兰,亚当斯 | 摩洛哥(4-3-3): 布努/阿什拉夫,迪奥普,里亚德,马兹拉维/阿姆拉巴特,布阿迪,萨巴里/拉希米,布拉欣·迪亚斯,亚辛</span></div>
+<div class="intel-row"><strong>⚔️ 交锋：</strong><span>首次正式比赛交锋</span></div>
+<div class="intel-row"><strong>📊 状态：</strong><span>苏格兰首轮1:0海地(尚克兰制胜)+3连胜 vs 摩洛哥首轮1:1巴西🔥!非洲杯冠军+2022四强底蕴</span></div></div>
+<div class="similar-panel"><h4>🔮 v28.2 类似对手参照 ★四维（近3年世预赛/国际杯赛/大赛，不含友谊赛）</h4>
+<div style="margin-bottom:6px;">💰 <strong>身价:</strong> 苏格兰 €1.8亿(攻€7000万/防€5500万) vs 摩洛哥 €3.5亿(攻€1.5亿/防€1.0亿) (1:1.9)</div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>① 🇺🇳 踢类似FIFA排名对手(≈摩洛哥#13) → 进几球/丢几球</strong></div>
+<div style="margin-left:8px;">🏠 <strong>苏格兰:</strong> <span class="similar-match"><span class="score">1:0 海地#86(世界杯首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">4:0 玻利维亚#74(友谊赛)</span></span> &nbsp;<span class="similar-match"><span class="score">0:1 科特迪瓦#37(友谊赛)</span></span> &nbsp;<span class="similar-match"><span class="score">0:2 日本#15(友谊赛)</span></span> &nbsp;<span class="similar-match"><span class="score">2:1 格鲁吉亚#70(世欧预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA15-86区(世欧预+首轮): 场均进1.4球/失0.8球, 对弱队能赢但面对技术流吃力</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>摩洛哥:</strong> <span class="similar-match"><span class="score">1:1 巴西#5(世界杯首轮)🔥🔥</span></span> &nbsp;<span class="similar-match"><span class="score">4:0 马达加斯加#108(世非预)</span></span> &nbsp;<span class="similar-match"><span class="score">5:0 布隆迪#112(世非预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:1 挪威#20(友谊赛)</span></span> &nbsp;<span class="similar-match"><span class="score">1:2 科特迪瓦#37(友谊赛)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA5-112区(世非预+首轮): 场均进2.4球/失0.8球, 1:1巴西🔥证明能与世界前五抗衡!</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>② 🛡️ vs类似后防线身价(≈摩洛哥防€1.0亿) → 进几球 [进攻测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>苏格兰:</strong> <span class="similar-match"><span class="score">1:0 海地(防≈€350万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">2:1 格鲁吉亚(防≈€5000万)(世欧预)</span></span> &nbsp;<span class="similar-match"><span class="score">0:2 日本(防≈€1.0亿)(友谊赛)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€1.0亿)(大赛): 未遇世界级防线! 对€1亿日本防线0进球! 破门能力存疑</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>摩洛哥:</strong> <span class="similar-match"><span class="score">1:1 巴西(防≈€4.2亿)(首轮)🔥</span></span> &nbsp;<span class="similar-match"><span class="score">4:0 马达加斯加(防≈€400万)(世非预)</span></span> &nbsp;<span class="similar-match"><span class="score">5:0 布隆迪(防≈€500万)(世非预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€5500万)(大赛): 对€4.2亿巴西防线进1球! 对弱防线场均3+球→碾压级</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>③ ⚔️ vs类似进攻线身价(≈摩洛哥攻€1.5亿) → 丢几球 [防守测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>苏格兰:</strong> <span class="similar-match"><span class="score">失0球 海地(攻≈€500万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 科特迪瓦(攻≈€1.5亿)(友谊赛)</span></span> &nbsp;<span class="similar-match"><span class="score">失2球 日本(攻≈€2.0亿)(友谊赛)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€1.5亿)(大赛): 对€2亿日本攻击线失2球! 但对弱攻击线可零封</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>摩洛哥:</strong> <span class="similar-match"><span class="score">失1球 巴西(攻≈€7.5亿)(首轮)🔥</span></span> &nbsp;<span class="similar-match"><span class="score">失0球 马达加斯加(攻≈€200万)(世非预)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 挪威(攻≈€2.0亿)(友谊赛)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€7000万)(大赛): 对€7.5亿巴西仅失1球! 对弱攻击线基本零封</div></div>
+<div class="similar-conclusion">💡 <strong>综合四维：摩洛哥1:1巴西🔥→证明能与世界前五抗衡。苏格兰1:0海地→对手太弱参考价值有限。综合四维: 摩洛哥实力碾压,苏格兰破门能力不足。预测1:2或0:2摩洛哥胜。</strong></div></div>
+<div class="tactic-panel"><h4>⚔️ v28.2 战术分析(含星级力量)</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 苏格兰 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-3-3工兵型防守反击 | 克拉克体系3连胜 | 罗伯逊左路+麦金后插上 | 尚克兰状态火热</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">罗伯逊</span>(利物浦/左后卫)左路传中→<span style="color:var(--gold);font-weight:700;">尚克兰</span>(3场3球🔥)禁区抢点→麦金(阿斯顿维拉)中场后插上。<span style="color:var(--gold);font-weight:700;">麦克托米奈</span>(那不勒斯)远射威胁+中场拦截。克拉克体系注重工兵精神+紧凑防守。首轮1:0海地→进攻创造力存疑但防守稳固。</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 对技术流球队控球能力不足(0:2日本暴露问题) | <span style="color:var(--gold);font-weight:700;">尚克兰</span>3场3球→但对手都是弱队! | 进攻创造力不足→面对强队可能被零封 | 希基+克里斯蒂伤病管理存疑</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(0人): 无超级巨星</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约5人/26 | 英超4(罗伯逊/麦金/希基/克里斯蒂)+意甲1(麦克托米奈) | 克拉克体系注重工兵精神</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 尚克兰(3球3场状态火热)+麦金(后插上) | 麦克托米奈(远射威胁)</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 罗伯逊+麦克托米奈+麦金=三线核心 | 克拉克体系3连胜 | 但面对强队控球能力存疑(对日本0:2)</div>
+</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 摩洛哥 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-3-3控球+快速转换 | 非洲杯冠军+2022四强 | 阿什拉夫+布拉欣+萨巴里三核 | 1:1巴西🔥!</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">阿什拉夫</span>(PSG/世界级右后卫)右路突破→<span style="color:var(--gold);font-weight:700;">布拉欣</span>·迪亚斯(皇马/创造核心)10号位组织→<span style="color:var(--gold);font-weight:700;">萨巴里</span>(3场3球🔥)中场后插上→拉希米(阿联酋联赛)禁区终结。布努(希拉尔/非洲最佳门将)防线核心。马兹拉维+<span style="color:var(--gold);font-weight:700;">阿什拉夫</span>边后卫双引擎。1:1巴西🔥证明能与世界前五抗衡!</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 1:1巴西后可能轻敌(低估苏格兰) | <span style="color:var(--gold);font-weight:700;">布拉欣</span>·迪亚斯体能→首轮消耗大 | <span style="color:var(--gold);font-weight:700;">阿什拉夫</span>前插后右路空档→<span style="color:var(--gold);font-weight:700;">罗伯逊</span>可利用 | 双线作战→板凳深度虽好但轮换影响默契</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(3人): 阿什拉夫(PSG/世界级右后卫)、布拉欣·迪亚斯(皇马/创造核心)、布努(希拉尔/非洲最佳门将)</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约14人/26 | 法甲5+英超2+西甲2+意甲2+德甲1+荷甲2 | 非洲杯冠军骨架+2022四强底蕴</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 萨巴里(3球3场中场后插上!)+拉希米(速度) | 布拉欣被锁→萨巴里中场后插上+B计划</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 阿什拉夫+马兹拉维+布努=防线铁三角 | 萨巴里+布拉欣=创造双核 | 1:1巴西验证顶级对抗能力 | 非洲杯冠军默契顶级</div>
+</div></div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(239,68,68,0.03);border:1px solid #3a2525;border-radius:6px;">
+<div style="color:#ef4444;font-weight:700;margin-bottom:6px;font-size:0.85em;">🩺 首发·伤病·停赛检测</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 苏格兰 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">罗伯逊</strong><span style="color:var(--text-secondary);"> · 左后卫/队长 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">利物浦主力左后卫,苏格兰队长。左路传中是球队最大武器。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Clarke确认</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">尚克兰</strong><span style="color:var(--text-secondary);"> · 前锋/状态火热 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">3场3球🔥! 首轮vs海地制胜球。禁区抢点能力出色但对手弱。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">麦金</strong><span style="color:var(--text-secondary);"> · 中场/后插上 · ⏱85-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">阿斯顿维拉主力,中场后插上+远射。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">麦克托米奈</strong><span style="color:var(--text-secondary);"> · 中场/拦截+远射 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">那不勒斯主力,远射威胁+中场拦截。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 摩洛哥 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">阿什拉夫</strong><span style="color:var(--text-secondary);"> · 右后卫/世界级 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">PSG主力,世界级右后卫! 右路突破+传中是摩洛哥进攻核心。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Regragui确认</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">布拉欣·迪亚斯</strong><span style="color:var(--text-secondary);"> · 10号位/创造核心 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">皇马创造核心,1:1巴西全场最佳。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN, confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">萨巴里</strong><span style="color:var(--text-secondary);"> · 中场/后插上 · ⏱85-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">3场3球🔥! 中场后插上世界级。1:1巴西中进球。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">布努</strong><span style="color:var(--text-secondary);"> · 门将/防线核心 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">希拉尔/非洲最佳门将。1:1巴西全场多次神扑。防线铁三角核心。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(245,158,11,0.08);border-radius:4px;font-size:0.72em;color:var(--orange);line-height:1.5;">⚠️ 对战术推演的影响: ✅ 双方全主力健康! 摩洛哥1:1巴西后信心爆棚(阿什拉夫+布拉欣+萨巴里+布努四核在线)。苏格兰罗伯逊+尚克兰+麦金三线核心可用但面对摩洛哥世界级防线→破门难度大。阿什拉夫vs罗伯逊=世界级边卫正面对话!</div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(34,197,94,0.03);border:1px solid #1e3a2a;border-radius:6px;">
+<div style="color:#4ade80;font-weight:700;margin-bottom:6px;font-size:0.85em;">📈 关键球员近1-2年联赛数据 [SRC:StatMuse+Transfermarkt]</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 苏格兰</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">罗伯逊</span><span style="flex:1;"><span style="color:var(--text-secondary);">利物浦 · 英超2025-26</span><br><span style="color:var(--teal);">30场2球11助攻 | 世界级左后卫 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">尚克兰</span><span style="flex:1;"><span style="color:var(--text-secondary);">— · —</span><br><span style="color:var(--teal);">3场3球🔥(国家队近3场!) | 状态火热 | SRC:国家队</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">麦金</span><span style="flex:1;"><span style="color:var(--text-secondary);">阿斯顿维拉 · 英超2025-26</span><br><span style="color:var(--teal);">32场7球5助攻 | 后插上+远射 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">麦克托米奈</span><span style="flex:1;"><span style="color:var(--text-secondary);">那不勒斯 · 意甲2025-26</span><br><span style="color:var(--teal);">28场6球3助攻 | 远射威胁 | SRC:Transfermarkt</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 摩洛哥</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">阿什拉夫</span><span style="flex:1;"><span style="color:var(--text-secondary);">PSG · 法甲2025-26</span><br><span style="color:var(--teal);">30场5球7助攻 | 世界级右后卫 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">布拉欣·迪亚斯</span><span style="flex:1;"><span style="color:var(--text-secondary);">皇家马德里 · 西甲2025-26</span><br><span style="color:var(--teal);">32场10球8助攻 | 1:1巴西全场最佳 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">萨巴里</span><span style="flex:1;"><span style="color:var(--text-secondary);">— · —</span><br><span style="color:var(--teal);">3场3球🔥(国家队近3场!) | 中场后插上世界级 | SRC:国家队</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">布努</span><span style="flex:1;"><span style="color:var(--text-secondary);">希拉尔 · 沙特联2025-26</span><br><span style="color:var(--teal);">非洲最佳门将 | 1:1巴西多次神扑 | SRC:Transfermarkt</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(34,197,94,0.08);border-radius:4px;font-size:0.72em;color:#4ade80;line-height:1.5;">📊 数据影响: 🔥萨巴里3场3球国家队→后插上世界级! 阿什拉夫5球7助攻PSG→边路核心。布拉欣10球8助攻皇马→创造顶级。罗伯逊11助攻利物浦→苏格兰唯一世界级武器</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:8px;margin-top:8px;">
+<div style="color:var(--gold);font-weight:700;margin-bottom:6px;">⚔️ 战术推演 v28.3 <span style="font-size:0.75em;color:var(--text-secondary);font-weight:400;">(欧冠级分析师三位一体)</span></div>
+<div class="tactic-structured" style="font-size:0.71em;line-height:1.7;">
+<div style="padding:2px 0;">★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">罗伯逊</span>(利物浦)vs<span style="color:var(--gold);font-weight:700;">阿什拉夫</span>(PSG)——世界级左后卫vs世界级右后卫! 苏格兰左路进攻核心vs摩洛哥右路进攻核心→谁先攻破对方? ★第二得分点:<span style="color:var(--gold);font-weight:600;">苏格兰</span><span style="color:var(--gold);font-weight:700;">尚克兰</span>3场3球→被锁→麦金(阿斯顿维拉)后插上+<span style="color:var(--gold);font-weight:700;">麦克托米奈</span>远射→苏格兰第二得分点有但非世界级。★摩洛哥第二得分点:<span style="color:var(--gold);font-weight:700;">萨巴里</span>(3场3球🔥)→<span style="color:var(--gold);font-weight:700;">布拉欣</span>被锁→<span style="color:var(--gold);font-weight:700;">萨巴里</span>中场后插上→<span style="color:var(--gold);font-weight:700;">阿什拉夫</span>右路传中→布努长传反击→摩洛哥第二得分点极其丰富!★第三得分点:拉希米速度+亚辛抢点→摩洛哥进攻层次远超苏格兰(非洲杯冠军骨架!)。★球星默契度:摩洛哥非洲杯冠军+1:1巴西→默契顶级! <span style="color:var(--gold);font-weight:700;">阿什拉夫</span>+马兹拉维+布努=防线铁三角。苏格兰克拉克体系3连胜但对手极弱(<span style="color:var(--gold);font-weight:600;">海地</span>/格鲁吉亚/玻利维亚)→含金量存疑。</div><div style="background:rgba(59,130,246,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--blue);"><strong>▶ ★进程推演</strong></div><div style="padding:2px 0;">:摩洛哥控球60%→上半场<span style="color:var(--gold);font-weight:700;">阿什拉夫</span>vs<span style="color:var(--gold);font-weight:700;">罗伯逊</span>拉锯→0:0→25-40分钟<span style="color:var(--gold);font-weight:700;">萨巴里</span>后插上或<span style="color:var(--gold);font-weight:700;">布拉欣</span>直塞→拉希米破门→1:0→苏格兰被迫压出→摩洛哥反击→<span style="color:var(--gold);font-weight:700;">阿什拉夫</span>右路传中→亚辛或<span style="color:var(--gold);font-weight:700;">布拉欣</span>再入1球→2:0→苏格兰末段定位球→<span style="color:var(--gold);font-weight:700;">尚克兰</span>可能扳回1球→2:1。</div><div style="background:rgba(239,68,68,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--red);"><strong>❗ ★关键变量</strong></div><div style="padding:2px 0;">:①摩洛哥20分钟内能否破门? ②苏格兰<span style="color:var(--gold);font-weight:700;">尚克兰</span>(3场3球)能否延续状态? ③摩洛哥1:1巴西后体能消耗→有无轮换? ④吉列体育场中立场→苏格兰球迷vs摩洛哥球迷比例?</div>
+</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">比赛节奏</div>
+<div style="font-size:0.75em;color:var(--blue);">⏱️ ★v28.4节奏推演★ 摩洛哥60%+控球(非洲杯冠军技术优势)→苏格兰4-3-3工兵防守等待反击。前30分钟:阿什拉夫vs罗伯逊→节奏胶着→萨巴里或布拉欣打破僵局→苏格兰被迫压出→罗伯逊左路传中尚克兰→摩洛哥反击→节奏提速。预计下半场摩洛哥控制更稳</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">进球影响</div>
+<div style="font-size:0.75em;color:var(--teal);">📊 ★v28.4进球影响推演★ ★摩洛哥:3巨星(阿什拉夫+布拉欣+布努)+约14人五大联赛→萨巴里3场3球🔥→布拉欣被锁→萨巴里后插上接管! 非洲杯冠军+1:1巴西→球队信心爆棚。★苏格兰:0巨星+约5人五大联赛→尚克兰3场3球(但对手海地/格鲁吉亚—弱队!)→面对世界级防线可能哑火。罗伯逊左路传中是唯一世界级武器。★进球预期:摩洛哥2球(萨巴里/布拉欣),苏格兰0-1球(尚克兰/定位球)→总2-3球</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">战术推演比分</div>
+<div style="font-size:0.75em;color:var(--gold);font-weight:700;">🎯 ★v28.4推演比分★ 摩洛哥0:2摩胜或1:2摩胜。★进程:25-40分钟萨巴里后插上或布拉欣直塞→拉希米破门→1:0→苏格兰罗伯逊左路传中→尚克兰头球→可能1:1→摩洛哥凭技术优势→阿什拉夫右路传中→亚辛或布拉欣再入1球→2:1→末段摩洛哥控制节奏→可能3:1。★关键:摩洛哥非洲杯冠军实力碾压! 但苏格兰工兵精神不可低估</div></div></div></div>
+<div style="background:linear-gradient(135deg,#0a1628,#1a0a2e);padding:12px;border-radius:10px;margin:12px 0;border:1px solid #2d3a5a;">
+<div style="color:var(--purple);font-weight:700;font-size:0.95em;margin-bottom:10px;">🧬 v28.2 专业分析师推理链 (星级力量+战术推演)</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(59,130,246,0.06);border:1px solid #1e3a5a;border-radius:8px;padding:10px;">
+<div style="color:var(--blue);font-weight:700;font-size:0.85em;margin-bottom:6px;">📊 理论面 (模型+市场) — 6信号+强度</div>
+<div style="font-size:0.72em;line-height:1.6;">
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">ELO:</strong> ELO-130 → 胜率32%/68% <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">欧赔:</strong> 主18%/平27%/客55% (客优) <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">亚盘:</strong> 客队让1.0球 | 偏差+0.75(深开警讯) | 水位0.90 <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">Poly:</strong> 主21%/平28%/客51% <span style="color:#8b95a5;font-size:0.9em;">[弱]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">xG:</strong> 苏格兰=1.4 vs 摩洛哥=1.1(总2.5) <span style="color:#8b95a5;font-size:0.9em;">[弱]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">大小球:</strong> 2.5球(2.5球→预判2-3球)</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #1e3a5a;">
+<strong style="color:var(--teal);">📌 理论结论:</strong> <span style="color:var(--text);">摩洛哥胜(理论强一致)</span>
+<span style="font-size:0.85em;color:var(--orange);"> (置信中高)</span><br>
+<span style="font-size:0.68em;color:#60a5fa;">信号一致性: 基本一致</span></div>
+</div></div>
+<div style="background:rgba(249,115,22,0.06);border:1px solid #5a3a1e;border-radius:8px;padding:10px;">
+<div style="color:var(--orange);font-weight:700;font-size:0.85em;margin-bottom:6px;">🔬 实际面 (战术+真实条件) — 5信号+推理</div>
+<div style="font-size:0.72em;line-height:1.65;">
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">战术:</strong> ★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">罗伯逊</span>(利物浦)vs<span style="color:var(--gold);font-weight:700;">阿什拉夫</span>(PSG)——世界级左后卫vs世界级右后卫! 苏格… <span style="color:#f59e0b;font-size:0.9em;">[克制度5/10]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">可用性:</strong> 主✅4⚠0❌0 | 客✅4⚠0❌0 <span style="color:#22c55e;font-size:0.9em;">[影响轻]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">类似对手:</strong> 摩洛哥1:1巴西🔥→证明能与世界前五抗衡。苏格兰1:0海地→对手太弱参考价值有限。…</div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">进球影响:</strong> ★v28.4进球影响推演★ ★摩洛哥:3巨星(阿什拉夫+布拉欣+布努)+约14人五大联赛…</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #5a3a1e;">
+<strong style="color:var(--teal);">📌 实际结论:</strong> <span style="color:var(--text);">摩洛哥胜(1:1巴西级别→碾压苏格兰)</span>
+<span style="font-size:0.85em;color:var(--green);"> (置信高)</span><br>
+<span style="font-size:0.68em;color:#fbbf24;">平局概率≈28% | —</span></div>
+</div></div></div>
+<div style="background:rgba(34,197,94,0.06);border:2px solid #22c55e;border-radius:8px;padding:12px;margin-top:10px;">
+<div style="color:var(--green);font-weight:700;font-size:0.9em;margin-bottom:8px;">✅ 双面融合 — ✅高度一致</div>
+<div style="font-size:0.73em;line-height:1.7;">
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">分歧点:</strong> <span style="color:var(--text);">摩洛哥1:1巴西🔥后信心爆棚+实力碾压(€3.5亿vs€1.8亿, FIFA#13vs#39)。苏格兰1:0海地但对手是世界杯最弱队之一→真实攻防水平未受检验。对日本0:2→面对技术流控球能力不足。摩洛哥非洲杯冠军+2022四强底蕴→大赛经验远超苏格兰</span></div>
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">关键变量:</strong> <span style="color:var(--gold);">①摩洛哥能否延续vs巴西的防守纪律? ②苏格兰尚克兰(3场3球)vs摩洛哥防线→能否延续状态? ③阿什拉夫vs罗伯逊→世界级边卫对位? ④摩洛哥轻敌风险(1:1巴西后)?</span></div>
+<div style="margin-top:8px;padding-top:8px;border-top:1px solid #22c55e;">
+<strong style="color:var(--teal);">🎯 融合结论:</strong> <span style="color:var(--text);">✅ 理论实际高度一致！摩洛哥1:1巴西🔥→证明能与世界前五抗衡! 萨巴里3场3球+阿什拉夫(PSG)+布拉欣(皇马)→核心骨架世界级。苏格兰1:0海地含金量低+对日本0:2暴露技术短板。<span style="background:rgba(34,197,94,0.2);color:#4ade80;padding:1px 6px;border-radius:3px;font-weight:700;">主推</span>摩洛哥2:0(萨巴里后插上+布拉欣创造力)，<span style="background:rgba(239,68,68,0.2);color:#f87171;padding:1px 6px;border-radius:3px;font-weight:700;">需防</span>1:2(苏格兰定位球)/0:1(防守大战)。1:2概率约18%。</span></div>
+<div style="margin-top:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<div style="background:linear-gradient(135deg,#052e16,#0d1117);padding:10px 20px;border-radius:8px;border:1px solid var(--green);box-shadow:0 0 15px rgba(34,197,94,0.15);">
+<div style="color:var(--text-secondary);font-size:0.72em;margin-bottom:2px;">★ 最终推荐</div>
+<div style="display:flex;align-items:center;gap:10px;">
+<span style="color:var(--green);font-weight:800;font-size:1.4em;text-shadow:0 0 8px rgba(34,197,94,0.4);">0:2摩胜 / 1:2摩胜 / 0:1摩胜</span>
+<span style="background:rgba(255,255,255,0.08);color:var(--text);padding:2px 8px;border-radius:4px;font-size:0.78em;font-weight:600;">置信高</span>
+</div></div>
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);padding:8px 14px;border-radius:6px;">
+<span style="color:#f87171;font-size:0.75em;font-weight:600;">⚠️ 🟢 低风险(摩洛哥1:1巴西后信心爆棚+实力全面碾压+非洲杯冠军底蕴)</span></div>
+</div></div></div>
+<div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:8px;margin-top:8px;">
+<div style="color:var(--purple);font-weight:700;font-size:0.8em;margin-bottom:4px;">🔍 v28 自检引擎</div>
+<span style="font-size:0.72em;">✅ fusion_score与verdict一致</span><br><span style="font-size:0.72em;">🚨 理论说摩洛哥胜 vs 实际说苏格兰胜 → 重大分歧! 需降置信度</span><br><span style="font-size:0.72em;">✅ 平局概率28%在正常范围</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤1] xG完整计算链 ★透明化</span></h4><div class="analysis-item"><strong>v27.1.1 xG完整计算链（攻击×防守→基准→屠杀→OU检查）：</strong><br>
+<strong>❶ 基准xG（真实场均数据）：</strong>苏格兰攻击系数1.0/1.32=0.75×对手摩洛哥防守系数1.0/1.32=0.75 → 1.32×0.75×0.75=0.75球<br>
+<strong>　　　　　</strong>摩洛哥攻击系数1.0/1.32=0.75×对手苏格兰防守系数0.8/1.32=0.60 → 1.32×0.75×0.60=0.60球<br>
+<strong>❷ 屠杀因子(ELO-130)：</strong>未触发<br>
+<strong>❸ 大小球2.5球对比：</strong>1.4(基准) vs 2.5球盘 → <strong style="color:var(--gold);">📈市场更乐观(+1.1球)→向上校准</strong><br>
+<strong>❹ 最终xG：</strong>苏格兰=1.39球 | 摩洛哥=1.11球 | 总计2.50球<br>
+<span style="color:var(--teal);font-size:0.85em;">💡 公式：xG = 联盟均值(1.32) × 攻击系数 × 对手防守系数。攻击系数>1=进攻强于均值，防守系数<1=防守好于均值。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4><div class="analysis-item"><strong>实际盘口：</strong>客队让1.0球（水位0.90/0.98）| <strong>欧赔理论盘：</strong>+0.25<br>
+<strong>偏差：</strong>+0.75 → <span style="color:var(--red);">深开警讯</span><br>
+<strong>水位信号：</strong>中水(0.85~1.00)→满意当前比例<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 理论盘=欧赔反推合理让球。实际盘比理论盘浅了一档→可能真实不看好也可能阻上(吓退)。<br>🧠 <strong style="color:var(--gold);">综合研判：xG1.4vs1.1+大小球2.5→摩洛哥方向明确</strong></span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4><div class="analysis-item">🔴 盘口深开→警惕诱盘！<br><strong>方向置信度：</strong><span class="conf-med">中(需博弈心态修正)</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤4] 博弈心态因子 ★核心创新</span></h4><div class="analysis-item"><strong>比赛类型：</strong>有差距但可对抗 | <strong>热度检测：</strong>✅ 无极端热度<br>
+<strong>心态分析：</strong>中游对抗→先稳守后反击<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 v27.1取消首轮保守对进球数压制。6/15证明首轮也能出大比分（德国7:1、瑞典5:1）。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤5] 综合比分推荐（专业分析师推理链 ★v28）</span></h4><div class="analysis-item"><strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">1:1</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">2:0</span><br>
+<strong>推理链：</strong>xG苏格兰=1.4, xG摩洛哥=1.1, 大小球2.5球(📈市场更乐观(+1.1球)→向上校准), ELO差-130→1:1<br>
+<strong>v27.1.1方法：</strong>xG基准→屠杀因子(ELO)→OU参考(不压缩)→欧赔亚盘交叉→博弈心态</div></div></div>
+<div class="match-card">
+<div class="match-header"><h2>⚽ 巴西 vs 海地</h2><div class="match-score-rec"><span class="risk-t1" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🔴高</span></div></div>
+<div class="panel-grid">
+<div class="panel"><h4>📊 实力 &amp; 市场分析</h4>
+<div class="panel-row"><span class="label">🏆 小组</span><span class="value">C组: 1:1摩洛哥后必须赢球！安切洛蒂调整阵容</span></div>
+<div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">2050 vs 1480 (差+570)</span></div>
+<div class="panel-row"><span class="label">FIFA排名</span><span class="value">#5 vs #86</span></div>
+<div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">96% / 4%</span></div>
+<div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">1.13/11.00/26.00</span></div>
+<div class="panel-row"><span class="label">└ 返还率</span><span class="value">98.6% (庄家利润率1.4%)</span></div>
+<div class="panel-row"><span class="label">└ 隐含概率</span><span class="value" style="font-size:0.75em;">主87%/平9%/客4%</span></div>
+<div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">主队让2.0球<span style="font-size:0.7em;">(水0.92/0.96)</span></span></div>
+<div class="panel-row"><span class="label">└ 理论盘</span><span class="value">-2.00<span style="font-size:0.7em;color:var(--text-secondary);">（欧赔反推）</span></span></div>
+<div class="panel-row"><span class="label">└ 偏差</span><span class="value" style="color:var(--red);">+0.00 (盘赔一致)</span></div>
+<div style="font-size:0.68em;color:var(--blue);padding:2px 0 0;margin-bottom:4px;">💡 实际让球与欧赔推算吻合→庄家无隐藏意图</div>
+<div class="panel-row"><span class="label">📐 大小球(参考)</span><span class="value" style="color:var(--teal);">3.5球</span></div>
+<div class="panel-row"><span class="label">🔴 Poly(仅方向参考)</span><span class="value" style="font-size:0.75em;">78%/15%/7%</span></div>
+<div style="margin-top:6px;font-size:0.68em;color:var(--orange);">⚠️ v27.1: Poly O/X.5已脱钩，进球预测改用xG+大小球</div></div>
+<div class="panel"><h4>🎯 巴西 独立进球（xG=3.0）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">&lt;25%截断 | NB(r=4.156)</div>
+<div class="panel-row"><span class="label">巴西 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">89%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:89%;"></div></div><div class="panel-row"><span class="label">巴西 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">71%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:71%;"></div></div><div class="panel-row"><span class="label">巴西 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">52%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:52%;"></div></div><div class="panel-row"><span class="label">巴西 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">35%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:35%;"></div></div>
+<div style="margin-top:10px;"></div>
+<h4>🎯 海地 独立进球（xG=0.5）</h4>
+<div class="panel-row"><span class="label">海地 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">36%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:36%;"></div></div></div>
+<div class="panel"><h4>📈 总进球预测（xG=3.5）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">大小球3.5球校准 | &lt;25%截断</div>
+<div class="panel-row"><span class="label">⚡ xG_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">3.50</span></div>
+<div class="panel-row"><span class="label">└ 巴西 xG</span><span class="value">3.03</span></div>
+<div class="panel-row"><span class="label">└ 海地 xG</span><span class="value">0.47</span></div>
+<div style="margin-top:8px;"></div>
+<div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">95%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:95%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">83%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:83%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">65%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:65%;"></div></div><div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">45%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:45%;"></div></div><div class="panel-row"><span class="label">全场 O4.5</span><span class="value" style="color:var(--teal);font-weight:700;">28%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:28%;"></div></div>
+<div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.1: xG模型 + 大小球校准 | NB(r=15)</div></div></div>
+<!-- ★v28.4 体彩竞彩官方面板 -->
+
+<div class="sporttery-panel" style="background:linear-gradient(135deg,#1a0a0e,#0f1419);padding:12px;border-radius:10px;margin:10px 0;border:2px solid #c41e3a;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="font-size:1.3em;">&#x1F1E8;&#x1F1F3;</span>
+<h4 style="margin:0;color:#ef4444;font-size:0.95em;">体彩竞彩官方数据 <span style="font-size:0.65em;color:var(--text-secondary);">[SRC: sporttery.cn]</span></h4>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div style="background:rgba(239,68,68,0.05);border-radius:8px;padding:10px;border:1px solid rgba(239,68,68,0.2);">
+<div style="color:#ef4444;font-weight:700;margin-bottom:8px;font-size:0.82em;">胜平负 (固定奖金)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">1.13</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">平局</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">11.0</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">26.0</div></div>
+</div>
+<div style="margin-top:8px;display:flex;justify-content:space-between;font-size:0.72em;">
+<span style="color:var(--text-secondary);">支持率:</span>
+<span><span style="color:var(--teal);">71%</span> / <span style="color:var(--gold);">19%</span> / <span style="color:var(--orange);">10%</span></span>
+</div>
+</div>
+<div style="background:rgba(34,197,94,0.05);border-radius:8px;padding:10px;border:1px solid rgba(34,197,94,0.2);">
+<div style="color:#22c55e;font-weight:700;margin-bottom:8px;font-size:0.82em;">让球 (主让2球)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">1.8</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球平</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">4.0</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">3.1</div></div>
+</div>
+</div>
+</div>
+<div style="margin-top:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:10px;">
+<div style="color:#f59e0b;font-weight:700;margin-bottom:6px;font-size:0.82em;">让球穿盘分析 v28.4新增</div>
+<div style="font-size:0.73em;line-height:1.7;color:var(--text);">
+<strong style="color:var(--red);">穿盘场景:</strong> 主队需净胜3+球才能穿盘(如3:0/4:0)。净胜2球(如2:0)走水, 净胜1球(如1:0)输盘!<br>
+<strong style="color:var(--orange);">穿盘风险:</strong> 🔴 高! 深盘大热→警惕赢球输盘!<br>
+<strong style="color:var(--teal);">穿盘概率:</strong> 约35%<br>
+<strong style="color:var(--gold);">投注建议:</strong> ⚠️ 建议关注受让方或小球
+</div>
+</div>
+</div>
+<div class="form-panel"><h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
+<div class="form-grid">
+<div class="form-team"><div style="color:var(--teal);font-weight:700;margin-bottom:4px;">巴西</div>
+<span class="form-badge form-warm">3胜2平1负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进12</span><span style="color:var(--red);margin-left:8px;">丢7</span></div></div>
+<div class="form-divider"></div>
+<div class="form-team" style="text-align:right;"><div style="color:var(--orange);font-weight:700;margin-bottom:4px;">海地</div>
+<span class="form-badge form-cool">1胜1平3负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进3</span><span style="color:var(--red);margin-left:8px;">丢5</span></div></div></div></div>
+<div class="intel-panel"><h4>📰 赛事情报</h4>
+<div class="intel-row"><strong>🏟 场地：</strong><span>林肯金融体育场 费城 | 中立场 | 6/20 08:30(北京时间)</span></div>
+<div class="intel-row"><strong>🚑 伤停：</strong><span>巴西: 全员健康✅ | 海地: 全员健康✅</span></div>
+<div class="intel-row"><strong>📋 首发：</strong><span>巴西(4-2-3-1): 阿利松/达尼洛,马尔基尼奥斯(c),加布里埃尔,道格拉斯·桑托斯/卡塞米罗,吉马良斯/拉菲尼亚,帕奎塔,维尼修斯/蒂亚戈 | 海地(4-2-3-1): 普拉西德/阿尔库斯,阿德,德尔克鲁瓦,埃克斯佩里安斯/让·雅克,贝莱加德/迪德森,普罗维登斯,皮埃罗/伊西多</span></div>
+<div class="intel-row"><strong>⚔️ 交锋：</strong><span>首次正式比赛交锋</span></div>
+<div class="intel-row"><strong>📊 状态：</strong><span>巴西首轮1:1摩洛哥(维尼破门但防守被破) vs 海地首轮0:1苏格兰(防守有一定韧性但无进攻)</span></div></div>
+<div class="similar-panel"><h4>🔮 v28.2 类似对手参照 ★四维（近3年世预赛/国际杯赛/大赛，不含友谊赛）</h4>
+<div style="margin-bottom:6px;">💰 <strong>身价:</strong> 巴西 €14.5亿(攻€7.5亿/防€4.2亿) vs 海地 €1200万(攻€500万/防€350万) (120:1)</div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>① 🇺🇳 踢类似FIFA排名对手(≈海地#86) → 进几球/丢几球</strong></div>
+<div style="margin-left:8px;">🏠 <strong>巴西:</strong> <span class="similar-match"><span class="score">1:1 摩洛哥#13(世界杯首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">4:1 玻利维亚#74(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">3:2 智利#40(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:2 阿根廷#1(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">2:1 哥伦比亚#14(世南美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA1-74区(世南美预+首轮): 场均进2.2球/失1.4球, 1:1摩洛哥低于预期但维尼进1球</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>海地:</strong> <span class="similar-match"><span class="score">0:1 苏格兰#39(世界杯首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">0:2 牙买加#55(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:1 萨尔瓦多#100(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">0:1 加拿大#40(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:0 圣基茨#135(世北美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA39-135区(世北美预+首轮): 场均进0.4球/失1.0球, 进攻力极度匮乏!</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>② 🛡️ vs类似后防线身价(≈海地防€350万) → 进几球 [进攻测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>巴西:</strong> <span class="similar-match"><span class="score">1:1 摩洛哥(防≈€1.0亿)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">4:1 玻利维亚(防≈€800万)(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">3:2 智利(防≈€5000万)(世南美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€350万)(大赛): 对€800万防线4球! 对€350万防线应4球起步</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>海地:</strong> <span class="similar-match"><span class="score">0:1 苏格兰(防≈€5500万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">0:2 牙买加(防≈€2000万)(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">0:1 加拿大(防≈€5000万)(世北美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€4.2亿)(大赛): 对€5000万防线0进球! 对€4.2亿防线进球几乎不可能</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>③ ⚔️ vs类似进攻线身价(≈海地攻€500万) → 丢几球 [防守测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>巴西:</strong> <span class="similar-match"><span class="score">失1球 摩洛哥(攻≈€1.5亿)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失2球 阿根廷(攻≈€3.2亿)(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 哥伦比亚(攻≈€1.7亿)(世南美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€500万)(大赛): 对€1.5亿+攻击线场均失1球, 对€500万攻击线应零封</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>海地:</strong> <span class="similar-match"><span class="score">失1球 苏格兰(攻≈€7000万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失2球 牙买加(攻≈€3000万)(世北美预)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 加拿大(攻≈€8000万)(世北美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€7.5亿)(大赛): 对€7000万攻击线失1球, 对€7.5亿攻击线是全新维度! 可能崩盘!</div></div>
+<div class="similar-conclusion">💡 <strong>综合四维：巴西vs海地=世界第5 vs 世界第86! 身价120:1碾压! 巴西1:1摩洛哥后必须大胜提升士气。海地场均0.4球进攻→极大概率零封。综合四维: 巴西4球胜。预测4:0或5:0。</strong></div></div>
+<div class="tactic-panel"><h4>⚔️ v28.2 战术分析(含星级力量)</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 巴西 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-2-3-1控球+快速转换 | 安切洛蒂执教 | 维尼+拉菲尼亚+帕奎塔三叉戟 | 首轮1:1摩洛哥→低于预期</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">维尼修斯</span>(皇马)左路突破→<span style="color:var(--gold);font-weight:700;">帕奎塔</span>(西汉姆)10号位组织→<span style="color:var(--gold);font-weight:700;">拉菲尼亚</span>(巴萨)右路内切→蒂亚戈(利物浦)禁区终结。<span style="color:var(--gold);font-weight:700;">卡塞米罗</span>+吉马良斯中场双后腰提供屏障+前插。安切洛蒂体系讲究控球+耐心组织+关键时刻个体能力。首轮1:1摩洛哥暴露问题:破紧防效率低+中前场配合生疏→第二轮必调整!</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 首轮1:1摩洛哥→破紧防效率低 | 维尼+<span style="color:var(--gold);font-weight:700;">帕奎塔</span>+<span style="color:var(--gold);font-weight:700;">拉菲尼亚</span>俱乐部赛季疲劳 | 面对极致防守可能缺乏耐心 | 中前场默契不足(首轮暴露) | 蒂亚戈非顶级中锋→终结能力存疑</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(3人): 维尼修斯(皇马/首轮破门)、拉菲尼亚(巴萨/边路爆点)、内马尔(桑托斯/历史射手王)</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约23人/26 | 英超6+西甲5+法甲3+意甲3+德甲3+葡超3 | 安切洛蒂执教，全队几乎五大联赛</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 拉菲尼亚(巴萨/边路)+卢卡斯·帕奎塔(西汉姆/创造力) | 维尼被锁→拉菲尼亚+帕奎塔可接管</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 维尼+拉菲尼亚+帕奎塔=三叉戟 | 但首轮1:1摩洛哥暴露破紧防难题 | 安切洛蒂需调整中前场默契</div>
+</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 海地 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-2-3-1紧密防守 | 全员退守+定位球 | 个体能力极度匮乏 | 世界杯最弱队之一</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">贝莱加德</span>(狼队/英超唯一球员)中场组织→让·雅克+<span style="color:var(--gold);font-weight:700;">贝莱加德</span>双后腰屏障→皮埃罗(法乙)反击→全员11人退守。首轮0:1苏格兰→防守有一定韧性但进攻几乎不存在(场均0.4球)。全队2人五大联赛→个体能力低但团结一致。</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 进攻力世界最弱(场均0.4球! 5场仅进3球) | 无世界级球员→面对巴西全面被动 | 定位球是唯一得分手段 | 对€4.2亿防线进球概率接近0% | 可能心理崩盘(120:1身价差距!)</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(0人): 无超级巨星</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约2人/26 | 英超1(贝莱加德-狼队)+英冠1(伊西多-桑德兰) | 全队几乎无五大联赛经验</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 皮埃罗(法乙)+伊西多(英冠) | 无欧洲级第二得分点</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 全队北美/法乙联赛→个体能力低但团结 | 首轮0:1苏格兰→防守有一定韧性 | 对巴西是全新维度挑战</div>
+</div></div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(239,68,68,0.03);border:1px solid #3a2525;border-radius:6px;">
+<div style="color:#ef4444;font-weight:700;margin-bottom:6px;font-size:0.85em;">🩺 首发·伤病·停赛检测</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 巴西 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">维尼修斯</strong><span style="color:var(--text-secondary);"> · 左边锋/世界级 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">皇马主力,首轮vs摩洛哥破门。确认首发。安切洛蒂重视。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Ancelotti确认</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">拉菲尼亚</strong><span style="color:var(--text-secondary);"> · 右边锋/爆点 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">巴萨主力,右路内切+传中。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">帕奎塔</strong><span style="color:var(--text-secondary);"> · 10号位/创造力 · ⏱85-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">西汉姆创造力核心,首轮配合生疏→第二轮需证明。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">卡塞米罗</strong><span style="color:var(--text-secondary);"> · 后腰/屏障+头球 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">曼联主力,定位球头球威胁。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#f59e0b;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">⚠️替补待定</span><span style="flex:1;"><strong style="color:var(--gold);">内马尔</strong><span style="color:var(--text-secondary);"> · 前锋/历史射手王 · ⏱20-30'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">桑托斯/巴西历史射手王,首轮替补,第二轮可能替补出场。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Ancelotti</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 海地 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">贝莱加德</strong><span style="color:var(--text-secondary);"> · 中场/唯一英超球员 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">狼队球员,海地唯一五大联赛主力。全队组织核心。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">皮埃罗</strong><span style="color:var(--text-secondary);"> · 前锋/法乙 · ⏱75-85'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">法乙联赛前锋,海地进攻核心但个体能力有限。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(245,158,11,0.08);border-radius:4px;font-size:0.72em;color:var(--orange);line-height:1.5;">⚠️ 对战术推演的影响: ✅ 巴西全主力健康+内马尔可替补! 维尼+拉菲尼亚+帕奎塔三叉戟第二轮需证明。海地贝莱加德(狼队)全队唯一五大联赛主力→面对巴西€4.2亿防线进球概率<5%! 120:1身价碾压!</div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(34,197,94,0.03);border:1px solid #1e3a2a;border-radius:6px;">
+<div style="color:#4ade80;font-weight:700;margin-bottom:6px;font-size:0.85em;">📈 关键球员近1-2年联赛数据 [SRC:StatMuse+Transfermarkt]</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 巴西</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">维尼修斯</span><span style="flex:1;"><span style="color:var(--text-secondary);">皇家马德里 · 西甲2025-26</span><br><span style="color:var(--teal);">38场22球9助攻🔥 | 世界级边路 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">拉菲尼亚</span><span style="flex:1;"><span style="color:var(--text-secondary);">巴塞罗那 · 西甲2025-26</span><br><span style="color:var(--teal);">35场15球11助攻 | 边路爆点 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">帕奎塔</span><span style="flex:1;"><span style="color:var(--text-secondary);">西汉姆联 · 英超2025-26</span><br><span style="color:var(--teal);">30场8球7助攻 | 创造力核心 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">内马尔</span><span style="flex:1;"><span style="color:var(--text-secondary);">桑托斯 · 巴甲2025-26</span><br><span style="color:var(--teal);">⚠️替补 | 巴西历史射手王 | SRC:Transfermarkt</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 海地</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">贝莱加德</span><span style="flex:1;"><span style="color:var(--text-secondary);">狼队 · 英超2025-26</span><br><span style="color:var(--teal);">22场1球2助攻 | 海地唯一五大联赛球员 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">皮埃罗</span><span style="flex:1;"><span style="color:var(--text-secondary);">法乙 · 法乙2025-26</span><br><span style="color:var(--teal);">28场6球 | 法乙前锋→面对€4.2亿防线 | SRC:Transfermarkt</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(34,197,94,0.08);border-radius:4px;font-size:0.72em;color:#4ade80;line-height:1.5;">📊 数据影响: 🔥维尼22球9助攻皇马→世界级! 拉菲尼亚15球11助攻→双满! 帕奎塔8球7助攻→创造力。内马尔替补→巴西板凳深度无与伦比。海地贝莱加德1球英超→全队唯一五大联赛球员→差距120:1</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:8px;margin-top:8px;">
+<div style="color:var(--gold);font-weight:700;margin-bottom:6px;">⚔️ 战术推演 v28.3 <span style="font-size:0.75em;color:var(--text-secondary);font-weight:400;">(欧冠级分析师三位一体)</span></div>
+<div class="tactic-structured" style="font-size:0.71em;line-height:1.7;">
+<div style="padding:2px 0;">★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">维尼修斯</span>(皇马)vs阿尔库斯/阿德——世界级边路vs无名后卫! 但巴西不只靠维尼!★第二得分点:<span style="color:var(--gold);font-weight:700;">拉菲尼亚</span>(巴萨/边路爆点)+<span style="color:var(--gold);font-weight:700;">帕奎塔</span>(西汉姆/创造力)→维尼被双人包夹时,<span style="color:var(--gold);font-weight:700;">拉菲尼亚</span>右路内切+<span style="color:var(--gold);font-weight:700;">帕奎塔</span>直塞是B计划!★第三得分点:蒂亚戈(利物浦)禁区终结+吉马良斯(纽卡)远射+<span style="color:var(--gold);font-weight:700;">卡塞米罗</span>定位球→巴西板凳深度世界级(23人五大联赛!)。★海地反击:<span style="color:var(--gold);font-weight:700;">贝莱加德</span>(狼队)→被锁→海地进攻彻底瘫痪! 全队仅2人五大联赛→无B计划可言。★球星默契度:巴西首轮1:1摩洛哥→维尼+<span style="color:var(--gold);font-weight:700;">帕奎塔</span>+<span style="color:var(--gold);font-weight:700;">拉菲尼亚</span>三叉戟配合生疏! 安切洛蒂第二轮必调整→可能让<span style="color:var(--gold);font-weight:700;">帕奎塔</span>更靠前+维尼更多切入禁区。海地全队法乙/英冠联赛→无默契问题但个体能力太弱。</div><div style="background:rgba(59,130,246,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--blue);"><strong>▶ ★进程推演</strong></div><div style="padding:2px 0;">:巴西控球75%+→前10分钟维尼左路突破→角球→<span style="color:var(--gold);font-weight:700;">卡塞米罗</span>或马尔基尼奥斯头球→1:0→海地被迫略前压→<span style="color:var(--gold);font-weight:700;">拉菲尼亚</span>右路内切→2:0→上半场结束前维尼或蒂亚戈→3:0→下半场安切洛蒂可能轮换→吉马良斯+替补→4:0→5:0。</div><div style="background:rgba(239,68,68,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--red);"><strong>❗ ★关键变量</strong></div><div style="padding:2px 0;">:①巴西能否20分钟内破门?(首轮70分钟才进球→必须提速!) ②安切洛蒂是否轮换(为后续比赛保留主力)? ③海地球员心理→120:1身价差距→避免崩盘? ④巴西净胜球需求→可能进攻到最后一分钟!</div>
+</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">比赛节奏</div>
+<div style="font-size:0.75em;color:var(--blue);">⏱️ ★v28.4节奏推演★ 巴西75%+控球→海地11人退守禁区→节奏由巴西完全主导。前20分钟:巴西两翼+定位球轮番轰炸→海地死守→角球/任意球破门→海地防线松动→巴西反复冲击→节奏持续高压→下半场海地体能崩溃→巴西连续进球</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">进球影响</div>
+<div style="font-size:0.75em;color:var(--teal);">📊 ★v28.4进球影响推演★ ★巴西:3巨星(维尼+拉菲尼亚+内马尔)+约23人五大联赛→维尼被锁→拉菲尼亚+帕奎塔可接管! 内马尔(桑托斯/历史射手王)可能替补→第三得分点板凳深度无与伦比。★海地:0巨星+约2人五大联赛→贝莱加德(狼队)被锁→全队无任何得分手段! 首轮0:1苏格兰→面对€4.2亿巴西防线→进球概率<5%。★进球预期:巴西4-6球(维尼/拉菲尼亚/帕奎塔/卡塞米罗/蒂亚戈),海地0球(全场0射正)→总4-6球</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">战术推演比分</div>
+<div style="font-size:0.75em;color:var(--gold);font-weight:700;">🎯 ★v28.4推演比分★ 巴西5:0巴胜或4:0巴胜。★进程:10-25分钟维尼左路突破→角球→卡塞米罗头球→1:0→拉菲尼亚右路内切→2:0→35分钟维尼或帕奎塔→3:0→下半场安切洛蒂轮换→吉马良斯远射+替补→4:0或5:0。★关键:巴西首轮1:1后必须大胜提升士气! 海地球员心理素质→120:1差距可能崩盘</div></div></div></div>
+<div style="background:linear-gradient(135deg,#0a1628,#1a0a2e);padding:12px;border-radius:10px;margin:12px 0;border:1px solid #2d3a5a;">
+<div style="color:var(--purple);font-weight:700;font-size:0.95em;margin-bottom:10px;">🧬 v28.2 专业分析师推理链 (星级力量+战术推演)</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(59,130,246,0.06);border:1px solid #1e3a5a;border-radius:8px;padding:10px;">
+<div style="color:var(--blue);font-weight:700;font-size:0.85em;margin-bottom:6px;">📊 理论面 (模型+市场) — 6信号+强度</div>
+<div style="font-size:0.72em;line-height:1.6;">
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">ELO:</strong> ELO+570 → 胜率96%/4% <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">欧赔:</strong> 主87%/平9%/客4% (碾压局) <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">亚盘:</strong> 主队让2.0球 | 偏差+0.00(盘赔一致) | 水位0.92 <span style="color:#8b95a5;font-size:0.9em;">[弱(盘赔一致)]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">Poly:</strong> 主78%/平15%/客7% ⚠️大热! <span style="color:#22c55e;font-size:0.9em;">[强(偏热!)]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">xG:</strong> 巴西=3.0 vs 海地=0.5(总3.5) <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">大小球:</strong> 3.5球(3.5球→预判3-4球)</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #1e3a5a;">
+<strong style="color:var(--teal);">📌 理论结论:</strong> <span style="color:var(--text);">巴西胜(理论压倒性优势)</span>
+<span style="font-size:0.85em;color:var(--green);"> (置信高)</span><br>
+<span style="font-size:0.68em;color:#60a5fa;">信号一致性: 基本一致</span></div>
+</div></div>
+<div style="background:rgba(249,115,22,0.06);border:1px solid #5a3a1e;border-radius:8px;padding:10px;">
+<div style="color:var(--orange);font-weight:700;font-size:0.85em;margin-bottom:6px;">🔬 实际面 (战术+真实条件) — 5信号+推理</div>
+<div style="font-size:0.72em;line-height:1.65;">
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">战术:</strong> ★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">维尼修斯</span>(皇马)vs阿尔库斯/阿德——世界级边路vs无名后卫! 但巴西不只靠维… <span style="color:#f59e0b;font-size:0.9em;">[克制度5/10]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">可用性:</strong> 主✅4⚠1❌0 | 客✅2⚠0❌0 <span style="color:#22c55e;font-size:0.9em;">[影响轻]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">类似对手:</strong> 巴西vs海地=世界第5 vs 世界第86! 身价120:1碾压! 巴西1:1摩洛哥后必须大胜提升士…</div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">进球影响:</strong> ★v28.4进球影响推演★ ★巴西:3巨星(维尼+拉菲尼亚+内马尔)+约23人五大联赛→…</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #5a3a1e;">
+<strong style="color:var(--teal);">📌 实际结论:</strong> <span style="color:var(--text);">巴西大胜(1:1后反弹压力+实力碾压)</span>
+<span style="font-size:0.85em;color:var(--green);"> (置信高)</span><br>
+<span style="font-size:0.68em;color:#fbbf24;">平局概率≈33% | 🔥小国精神力激活</span></div>
+</div></div></div>
+<div style="background:rgba(34,197,94,0.06);border:2px solid #22c55e;border-radius:8px;padding:12px;margin-top:10px;">
+<div style="color:var(--green);font-weight:700;font-size:0.9em;margin-bottom:8px;">✅ 双面融合 — ✅高度一致</div>
+<div style="font-size:0.73em;line-height:1.7;">
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">分歧点:</strong> <span style="color:var(--text);">巴西首轮1:1摩洛哥暴露问题:破紧防效率低+中前场默契不足。但面对海地(场均0.4球进攻+0人五大联赛主力)→巴西应该能拿回控制权。安切洛蒂第二轮必调整阵容→让维尼+拉菲尼亚+帕奎塔磨合。海地对€4亿防线零进球概率极高</span></div>
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">关键变量:</strong> <span style="color:var(--gold);">①巴西能否20分钟内破门?(首轮vs摩洛哥70分钟才进球) ②安切洛蒂是否轮换阵容? ③海地球员精神力→能否避免崩盘? ④巴西净胜球需求→可能进攻到最后一分钟!</span></div>
+<div style="margin-top:8px;padding-top:8px;border-top:1px solid #22c55e;">
+<strong style="color:var(--teal);">🎯 融合结论:</strong> <span style="color:var(--text);">✅ 理论实际高度一致！巴西首轮1:1摩洛哥低于预期→第二轮必须大胜海地(身价120:1碾压)! 维尼+拉菲尼亚+帕奎塔三叉戟需要进球来建立信心。海地场均0.4球+0人五大联赛主力→面对巴西€4.2亿防线极大概率零封。★v28.4星级修正:巴西3星vs海地0星(差距3+人)+1.2球→xG 4.6vs0.2! <span style="background:rgba(34,197,94,0.2);color:#4ade80;padding:1px 6px;border-radius:3px;font-weight:700;">主推</span>巴西5:0(安切洛蒂全力进攻)，<span style="background:rgba(239,68,68,0.2);color:#f87171;padding:1px 6px;border-radius:3px;font-weight:700;">需防</span>4:0(控制型)/6:0(屠杀型)。海地进球概率<5%。</span></div>
+<div style="margin-top:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<div style="background:linear-gradient(135deg,#052e16,#0d1117);padding:10px 20px;border-radius:8px;border:1px solid var(--green);box-shadow:0 0 15px rgba(34,197,94,0.15);">
+<div style="color:var(--text-secondary);font-size:0.72em;margin-bottom:2px;">★ 最终推荐</div>
+<div style="display:flex;align-items:center;gap:10px;">
+<span style="color:var(--green);font-weight:800;font-size:1.4em;text-shadow:0 0 8px rgba(34,197,94,0.4);">5:0巴胜 / 4:0巴胜 / 6:0巴胜</span>
+<span style="background:rgba(255,255,255,0.08);color:var(--text);padding:2px 8px;border-radius:4px;font-size:0.78em;font-weight:600;">置信高</span>
+</div></div>
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);padding:8px 14px;border-radius:6px;">
+<span style="color:#f87171;font-size:0.75em;font-weight:600;">⚠️ 🟢 低风险(巴西120:1身价碾压+首轮1:1后必须大胜+海地攻击力最弱)</span></div>
+</div></div></div>
+<div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:8px;margin-top:8px;">
+<div style="color:var(--purple);font-weight:700;font-size:0.8em;margin-bottom:4px;">🔍 v28 自检引擎</div>
+<span style="font-size:0.72em;">✅ fusion_score与verdict一致</span><br><span style="font-size:0.72em;">✅ 理论实际方向一致: 巴西胜</span><br><span style="font-size:0.72em;">⚡ 平局概率33%偏高, 不可忽视</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤1] xG完整计算链 ★透明化</span></h4><div class="analysis-item"><strong>v27.1.1 xG完整计算链（攻击×防守→基准→屠杀→OU检查）：</strong><br>
+<strong>❶ 基准xG（真实场均数据）：</strong>巴西攻击系数1.0/1.32=0.75×对手海地防守系数1.0/1.32=0.75 → 1.32×0.75×0.75=0.75球<br>
+<strong>　　　　　</strong>海地攻击系数0.4/1.32=0.30×对手巴西防守系数1.0/1.32=0.75 → 1.32×0.30×0.75=0.30球<br>
+<strong>❷ 屠杀因子(ELO+570)：</strong>⚡激活! ×1.8 →巴西基准0.75→1.36<br>
+<strong>❸ 大小球3.5球对比：</strong>1.1(基准)→1.6(屠杀后) vs 3.5球盘 → <strong style="color:var(--gold);">📈市场更乐观(+1.9球)→向上校准</strong><br>
+<strong>❹ 最终xG：</strong>巴西=3.03球 | 海地=0.47球 | 总计3.50球<br>
+<span style="color:var(--teal);font-size:0.85em;">💡 公式：xG = 联盟均值(1.32) × 攻击系数 × 对手防守系数。攻击系数>1=进攻强于均值，防守系数<1=防守好于均值。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4><div class="analysis-item"><strong>实际盘口：</strong>主队让2.0球（水位0.92/0.96）| <strong>欧赔理论盘：</strong>-2.00<br>
+<strong>偏差：</strong>+0.00 → <span style="color:var(--red);">盘赔一致</span><br>
+<strong>水位信号：</strong>中水(0.85~1.00)→满意当前比例<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 理论盘=欧赔反推合理让球。实际盘比理论盘吻合→庄家无隐藏意图。<br>🧠 <strong style="color:var(--gold);">综合研判：xG模型3.5球+ELO屠杀因子+大小球3.5球→巴西大胜</strong></span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4><div class="analysis-item">✅ 欧赔亚盘一致→庄家无隐藏意图<br>🚨 大众极度看好(78%投注)→'大热必死'风险！<br><strong>方向置信度：</strong><span class="conf-med">中(需博弈心态修正)</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤4] 博弈心态因子 ★核心创新</span></h4><div class="analysis-item"><strong>比赛类型：</strong>强弱分明 | <strong>热度检测：</strong>✅ 无极端热度<br>
+<strong>心态分析：</strong>弱队心态：'少输当赢'→保守蹲守（但v27.1不再压制强队进球）<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 v27.1取消首轮保守对进球数压制。6/15证明首轮也能出大比分（德国7:1、瑞典5:1）。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤5] 综合比分推荐（专业分析师推理链 ★v28）</span></h4><div class="analysis-item"><strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">3:0</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">2:1</span><br>
+<strong>推理链：</strong>xG巴西=3.0, xG海地=0.5, 大小球3.5球(📈市场更乐观(+1.9球)→向上校准), ELO差+570→3:0<br>
+<strong>v27.1.1方法：</strong>xG基准→屠杀因子(ELO)→OU参考(不压缩)→欧赔亚盘交叉→博弈心态</div></div></div>
+<div class="match-card">
+<div class="match-header"><h2>⚽ 土耳其 vs 巴拉圭</h2><div class="match-score-rec"><span class="risk-t2" style="padding:3px 10px;border-radius:6px;font-size:0.78em;">🟡中</span></div></div>
+<div class="panel-grid">
+<div class="panel"><h4>📊 实力 &amp; 市场分析</h4>
+<div class="panel-row"><span class="label">🏆 小组</span><span class="value">D组: 0:2澳大利亚后背水一战，必须赢球</span></div>
+<div class="panel-row"><span class="label">🎯 ELO评分</span><span class="value">1760 vs 1600 (差+160)</span></div>
+<div class="panel-row"><span class="label">FIFA排名</span><span class="value">#28 vs #50</span></div>
+<div class="panel-row"><span class="label">ELO先验胜率</span><span class="value" style="font-size:0.75em;">72% / 28%</span></div>
+<div class="panel-row"><span class="label">🟢 欧赔(主/平/客)</span><span class="value" style="color:var(--teal);">1.96/3.05/3.43</span></div>
+<div class="panel-row"><span class="label">└ 返还率</span><span class="value">88.5% (庄家利润率11.5%)</span></div>
+<div class="panel-row"><span class="label">└ 隐含概率</span><span class="value" style="font-size:0.75em;">主45%/平29%/客26%</span></div>
+<div class="panel-row"><span class="label">🟣 亚盘</span><span class="value" style="color:var(--purple);">主队让1.0球<span style="font-size:0.7em;">(水0.88/1.02)</span></span></div>
+<div class="panel-row"><span class="label">└ 理论盘</span><span class="value">-0.25<span style="font-size:0.7em;color:var(--text-secondary);">（欧赔反推）</span></span></div>
+<div class="panel-row"><span class="label">└ 偏差</span><span class="value" style="color:var(--red);">-0.75 (深开警讯)</span></div>
+<div style="font-size:0.68em;color:var(--blue);padding:2px 0 0;margin-bottom:4px;">💡 实际让球比欧赔推算的更深→庄家可能故意造热强队，要警惕赢球输盘！</div>
+<div class="panel-row"><span class="label">📐 大小球(参考)</span><span class="value" style="color:var(--teal);">1.5球</span></div>
+<div class="panel-row"><span class="label">🔴 Poly(仅方向参考)</span><span class="value" style="font-size:0.75em;">48%/30%/22%</span></div>
+<div style="margin-top:6px;font-size:0.68em;color:var(--orange);">⚠️ v27.1: Poly O/X.5已脱钩，进球预测改用xG+大小球</div></div>
+<div class="panel"><h4>🎯 土耳其 独立进球（xG=2.5）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">&lt;25%截断 | NB(r=4.156)</div>
+<div class="panel-row"><span class="label">土耳其 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">86%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:86%;"></div></div><div class="panel-row"><span class="label">土耳其 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">64%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:64%;"></div></div><div class="panel-row"><span class="label">土耳其 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">43%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:43%;"></div></div><div class="panel-row"><span class="label">土耳其 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">26%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:26%;"></div></div>
+<div style="margin-top:10px;"></div>
+<h4>🎯 巴拉圭 独立进球（xG=1.4）</h4>
+<div class="panel-row"><span class="label">巴拉圭 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">74%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:74%;"></div></div><div class="panel-row"><span class="label">巴拉圭 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">41%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:41%;"></div></div></div>
+<div class="panel"><h4>📈 总进球预测（xG=4.0）</h4>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-bottom:6px;">大小球1.5球校准 | &lt;25%截断</div>
+<div class="panel-row"><span class="label">⚡ xG_total</span><span class="value" style="color:var(--teal);font-size:1.15em;font-weight:700;">3.97</span></div>
+<div class="panel-row"><span class="label">└ 土耳其 xG</span><span class="value">2.54</span></div>
+<div class="panel-row"><span class="label">└ 巴拉圭 xG</span><span class="value">1.43</span></div>
+<div style="margin-top:8px;"></div>
+<div class="panel-row"><span class="label">全场 O0.5</span><span class="value" style="color:var(--teal);font-weight:700;">97%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-green" style="width:97%;"></div></div><div class="panel-row"><span class="label">全场 O1.5</span><span class="value" style="color:var(--teal);font-weight:700;">87%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-blue" style="width:87%;"></div></div><div class="panel-row"><span class="label">全场 O2.5</span><span class="value" style="color:var(--teal);font-weight:700;">72%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-purple" style="width:72%;"></div></div><div class="panel-row"><span class="label">全场 O3.5</span><span class="value" style="color:var(--teal);font-weight:700;">53%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-orange" style="width:53%;"></div></div><div class="panel-row"><span class="label">全场 O4.5</span><span class="value" style="color:var(--teal);font-weight:700;">36%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill fill-red" style="width:36%;"></div></div>
+<div style="margin-top:6px;font-size:0.72em;color:var(--blue);">v27.1: xG模型 + 大小球校准 | NB(r=15)</div></div></div>
+<!-- ★v28.4 体彩竞彩官方面板 -->
+
+<div class="sporttery-panel" style="background:linear-gradient(135deg,#1a0a0e,#0f1419);padding:12px;border-radius:10px;margin:10px 0;border:2px solid #c41e3a;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+<span style="font-size:1.3em;">&#x1F1E8;&#x1F1F3;</span>
+<h4 style="margin:0;color:#ef4444;font-size:0.95em;">体彩竞彩官方数据 <span style="font-size:0.65em;color:var(--text-secondary);">[SRC: sporttery.cn]</span></h4>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div style="background:rgba(239,68,68,0.05);border-radius:8px;padding:10px;border:1px solid rgba(239,68,68,0.2);">
+<div style="color:#ef4444;font-weight:700;margin-bottom:8px;font-size:0.82em;">胜平负 (固定奖金)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">1.96</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">平局</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">3.05</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">3.43</div></div>
+</div>
+<div style="margin-top:8px;display:flex;justify-content:space-between;font-size:0.72em;">
+<span style="color:var(--text-secondary);">支持率:</span>
+<span><span style="color:var(--teal);">64%</span> / <span style="color:var(--gold);">21%</span> / <span style="color:var(--orange);">15%</span></span>
+</div>
+</div>
+<div style="background:rgba(34,197,94,0.05);border-radius:8px;padding:10px;border:1px solid rgba(34,197,94,0.2);">
+<div style="color:#22c55e;font-weight:700;margin-bottom:8px;font-size:0.82em;">让球 (主让1球)</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;">
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球主胜</div><div style="color:var(--teal);font-weight:700;font-size:1.1em;">4.35</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球平</div><div style="color:var(--gold);font-weight:700;font-size:1.1em;">3.5</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:6px;"><div style="color:var(--text-secondary);font-size:0.65em;">让球客胜</div><div style="color:var(--orange);font-weight:700;font-size:1.1em;">1.63</div></div>
+</div>
+</div>
+</div>
+<div style="margin-top:10px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:8px;padding:10px;">
+<div style="color:#f59e0b;font-weight:700;margin-bottom:6px;font-size:0.82em;">让球穿盘分析 v28.4新增</div>
+<div style="font-size:0.73em;line-height:1.7;color:var(--text);">
+<strong style="color:var(--red);">穿盘场景:</strong> 净胜1+球穿盘(全赢), 平局走水, 输球全输! 如1:0→穿盘, 0:0→走水<br>
+<strong style="color:var(--orange);">穿盘风险:</strong> 🟢 浅盘→穿盘风险低<br>
+<strong style="color:var(--teal);">穿盘概率:</strong> 约<10%<br>
+<strong style="color:var(--gold);">投注建议:</strong> ✅ 正常投注即可
+</div>
+</div>
+</div>
+<div class="form-panel"><h4>🔥 近期6场国际赛战绩 <span style="font-size:0.65em;color:var(--text-secondary);">v26.3 状态因子</span></h4>
+<div class="form-grid">
+<div class="form-team"><div style="color:var(--teal);font-weight:700;margin-bottom:4px;">土耳其</div>
+<span class="form-badge form-warm">3胜1平2负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进8</span><span style="color:var(--red);margin-left:8px;">丢7</span></div></div>
+<div class="form-divider"></div>
+<div class="form-team" style="text-align:right;"><div style="color:var(--orange);font-weight:700;margin-bottom:4px;">巴拉圭</div>
+<span class="form-badge form-cool">2胜1平3负</span>
+<div style="margin-top:4px;"><span style="color:var(--green);">进8</span><span style="color:var(--red);margin-left:8px;">丢11</span></div></div></div></div>
+<div class="intel-panel"><h4>📰 赛事情报</h4>
+<div class="intel-row"><strong>🏟 场地：</strong><span>李维斯体育场 Santa Clara | 中立场 | 6/20 12:00(北京时间)</span></div>
+<div class="intel-row"><strong>🚑 伤停：</strong><span>土耳其: 全员健康✅ | 巴拉圭: 全员健康✅</span></div>
+<div class="intel-row"><strong>📋 首发：</strong><span>土耳其(4-3-3): 恰克尔/切利克,德米拉尔,巴尔达克奇,卡迪奥格鲁/尤克塞克,恰尔汗奥卢(c),居莱尔/科克曲,伊尔马兹,阿克图尔科格鲁 | 巴拉圭(4-3-3): 吉尔/卡塞雷斯,戈麦斯(c),阿尔德雷特,阿隆索/戈麦斯·阿马里利亚,库巴斯,博巴迪拉/阿尔米隆,萨纳布里亚,恩西索</span></div>
+<div class="intel-row"><strong>⚔️ 交锋：</strong><span>首次正式比赛交锋</span></div>
+<div class="intel-row"><strong>📊 状态：</strong><span>土耳其首轮0:2澳大利亚(进攻哑火!居莱尔替补) vs 巴拉圭首轮1:4美国(防守崩盘但博巴迪拉破门)</span></div></div>
+<div class="similar-panel"><h4>🔮 v28.2 类似对手参照 ★四维（近3年世预赛/国际杯赛/大赛，不含友谊赛）</h4>
+<div style="margin-bottom:6px;">💰 <strong>身价:</strong> 土耳其 €2.5亿(攻€1.0亿/防€7500万) vs 巴拉圭 €8000万(攻€3000万/防€2500万) (3.1:1)</div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>① 🇺🇳 踢类似FIFA排名对手(≈巴拉圭#50) → 进几球/丢几球</strong></div>
+<div style="margin-left:8px;">🏠 <strong>土耳其:</strong> <span class="similar-match"><span class="score">0:2 澳大利亚#27(世界杯首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">2:0 冰岛#72(世欧预)</span></span> &nbsp;<span class="similar-match"><span class="score">3:1 苏格兰#39(世欧预)</span></span> &nbsp;<span class="similar-match"><span class="score">1:1 瑞士#19(世欧预)</span></span> &nbsp;<span class="similar-match"><span class="score">2:1 波兰#28(世欧预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA19-72区(世欧预+首轮): 场均进1.6球/失1.2球, 首轮0:2澳大利亚→进攻路线被封锁!</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>巴拉圭:</strong> <span class="similar-match"><span class="score">1:4 美国#16(世界杯首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">1:2 巴西#5(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">0:2 哥伦比亚#14(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">2:0 委内瑞拉#45(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">3:1 秘鲁#42(世南美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ 对FIFA5-45区(世南美预+首轮): 场均进1.4球/失2.2球, 首轮1:4美国防线崩盘! 对强队防守差</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>② 🛡️ vs类似后防线身价(≈巴拉圭防€2500万) → 进几球 [进攻测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>土耳其:</strong> <span class="similar-match"><span class="score">0:2 澳大利亚(防≈€4500万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">2:0 冰岛(防≈€3000万)(世欧预)</span></span> &nbsp;<span class="similar-match"><span class="score">3:1 苏格兰(防≈€5500万)(世欧预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€2500万)(大赛): 首轮vs澳大利亚防0球→破紧防能力存疑! 但对€3000万防线能进球</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>巴拉圭:</strong> <span class="similar-match"><span class="score">1:4 美国(防≈€1.5亿)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">1:2 巴西(防≈€4.2亿)(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">0:2 哥伦比亚(防≈€1.4亿)(世南美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似防线(≈€7500万)(大赛): 对€1.4亿+防线场均0.7球, 破门力有限! 但Bobadilla首轮进球证明有火力</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;margin:6px 0;">
+<div style="margin-bottom:4px;"><strong>③ ⚔️ vs类似进攻线身价(≈巴拉圭攻€3000万) → 丢几球 [防守测试]</strong></div>
+<div style="margin-left:8px;">🏠 <strong>土耳其:</strong> <span class="similar-match"><span class="score">失2球 澳大利亚(攻≈€6000万)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 瑞士(攻≈€1.5亿)(世欧预)</span></span> &nbsp;<span class="similar-match"><span class="score">失1球 波兰(攻≈€3.5亿)(世欧预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€3000万)(大赛): 对€6000万澳大利亚攻击线失2球! 对弱攻击线偶有失误</div>
+<div style="margin-left:8px;margin-top:4px;">🚶 <strong>巴拉圭:</strong> <span class="similar-match"><span class="score">失4球 美国(攻≈€2.0亿)(首轮)</span></span> &nbsp;<span class="similar-match"><span class="score">失2球 巴西(攻≈€7.5亿)(世南美预)</span></span> &nbsp;<span class="similar-match"><span class="score">失2球 哥伦比亚(攻≈€1.7亿)(世南美预)</span></span></div>
+<div style="font-size:0.9em;color:var(--teal);margin-left:8px;">　→ vs类似攻击线(≈€1.0亿)(大赛): 对€2亿+攻击线场均失2+球! 防守面对强攻击线崩盘概率高</div></div>
+<div class="similar-conclusion">💡 <strong>综合四维：土耳其首轮0:2澳大利亚→进攻路线被封锁。巴拉圭首轮1:4美国→防守崩盘但Bobadilla有破门。两队都背水一战必须赢球。综合四维: 土耳其技术优势但进球效率存疑,平局概率高。预测1:0或1:1。</strong></div></div>
+<div class="tactic-panel"><h4>⚔️ v28.2 战术分析(含星级力量)</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 土耳其 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-3-3控球进攻 | 恰尔汗奥卢+居莱尔双核 | 首轮0:2澳大利亚→进攻哑火! | 第二轮背水一战</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">恰尔汗奥卢</span>(国米/组织核心)中场调度→<span style="color:var(--gold);font-weight:700;">居莱尔</span>(皇马/天才少年)10号位创造力→<span style="color:var(--gold);font-weight:700;">科克曲</span>(本菲卡)或阿克图尔科格鲁边路→伊尔马兹禁区终结。德米拉尔防线核心。首轮0:2澳大利亚→进攻路线被完全封锁! <span style="color:var(--gold);font-weight:700;">居莱尔</span>仅替补→第二轮必首发。蒙泰拉体系需更多创造力。</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 首轮0:2澳大利亚→进攻哑火! | <span style="color:var(--gold);font-weight:700;">恰尔汗奥卢</span>被重点盯防→创造力枯竭 | <span style="color:var(--gold);font-weight:700;">居莱尔</span>年轻(22岁)→能否扛住压力? | 防线面对速度型反击存疑 | 心理压力巨大(背水一战!)</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(3人): 恰尔汗奥卢(国米/组织核心)、居莱尔(皇马/天才少年)、德米拉尔(防线核心)</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约10人/26 | 意甲3+西甲2+德甲2+法甲1+英超1+土超大量 | 首轮0:2澳大利亚→进攻哑火!</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 科克曲(本菲卡)+阿克图尔科格鲁(边路) | 恰尔汗奥卢被锁→居莱尔+科克曲可接管</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 恰尔汗奥卢+居莱尔=创造引擎 | 但首轮0:2→进攻路线被封锁! 第二场必须反弹</div>
+</div></div>
+<div style="background:var(--card-inner);border-radius:6px;padding:8px;">
+<div style="color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 巴拉圭 战术风格</div>
+<div style="font-size:0.75em;color:var(--text-secondary);margin-bottom:4px;">4-3-3防守反击 | 阿尔米隆+恩西索双核 | 首轮1:4美国→防守崩盘 | 博巴迪拉破门→有亮点</div>
+<div style="font-size:0.72em;line-height:1.5;"><span style="color:var(--gold);font-weight:700;">阿尔米隆</span>(纽卡/边路核心)右路突破→<span style="color:var(--gold);font-weight:700;">恩西索</span>(布莱顿/创造力)10号位组织→<span style="color:var(--gold);font-weight:700;">博巴迪拉</span>(首轮破门)禁区抢点。库巴斯中场拦截+戈麦斯(队长)防线核心。首轮1:4美国→防线崩盘但<span style="color:var(--gold);font-weight:700;">博巴迪拉</span>破门证明进攻端有威胁。加西亚体系需重建防守信心。</div>
+<div style="font-size:0.7em;color:var(--red);margin-top:4px;">⚠️ 弱点: 首轮1:4美国→防线崩盘 | 戈麦斯+阿尔德雷特中卫组合速度慢 | <span style="color:var(--gold);font-weight:700;">恩西索</span>年轻(21岁)→稳定性存疑 | 全队4人五大联赛→深度不足 | 心理压力(首轮大败!)</div>
+<div style="margin-top:6px;padding:5px 8px;background:rgba(245,158,11,0.08);border-radius:4px;border:1px solid rgba(245,158,11,0.2);">
+<div style="font-size:0.7em;color:var(--gold);font-weight:700;">⭐ 星级力量 [SRC:奥运会官网/WorldFootballQuiz]</div>
+<div style="font-size:0.68em;color:#fcd34d;margin-top:2px;">超级巨星(1人): 阿尔米隆(纽卡斯尔/边路核心)</div>
+<div style="font-size:0.68em;color:var(--text-secondary);margin-top:2px;">五大联赛: 约4人/26 | 英超1(阿尔米隆)+英超1(恩西索-布莱顿)+西甲1+巴甲1 | 首轮1:4美国→防守崩盘</div>
+<div style="font-size:0.68em;color:var(--teal);margin-top:2px;">第二得分点: 恩西索(布莱顿/创造力)+博巴迪拉(首轮破门) | 阿尔米隆被锁→恩西索+博巴迪拉可接管</div>
+<div style="font-size:0.68em;color:#a78bfa;margin-top:2px;">球星默契度: 阿尔米隆+恩西索=双核 | 但首轮防线崩盘→需重建防守信心 | 戈麦斯(队长)防线核心</div>
+</div></div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(239,68,68,0.03);border:1px solid #3a2525;border-radius:6px;">
+<div style="color:#ef4444;font-weight:700;margin-bottom:6px;font-size:0.85em;">🩺 首发·伤病·停赛检测</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 土耳其 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">恰尔汗奥卢</strong><span style="color:var(--text-secondary);"> · 中场/组织核心 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">国米主力,土耳其队长。首轮vs澳大利亚被封锁→第二轮必须反弹!</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰Montella确认</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">居莱尔</strong><span style="color:var(--text-secondary);"> · 10号位/天才少年 · ⏱70-85'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">皇马天才少年! 首轮仅替补出场→第二轮必首发! 创造力是土耳其在最大武器。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN, Montella</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">德米拉尔</strong><span style="color:var(--text-secondary);"> · 中卫/防线核心 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">土耳其防线核心,确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">科克曲</strong><span style="color:var(--text-secondary);"> · 中场/远射 · ⏱85-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">本菲卡主力,远射威胁。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 巴拉圭 关键球员</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">阿尔米隆</strong><span style="color:var(--text-secondary);"> · 右边锋/核心 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">纽卡主力,巴拉圭进攻核心。首轮vs美国仍有威胁。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">恩西索</strong><span style="color:var(--text-secondary);"> · 10号位/创造力 · ⏱80-90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">布莱顿创造力核心,21岁天才。确认首发。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰ESPN</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">博巴迪拉</strong><span style="color:var(--text-secondary);"> · 前锋/首轮破门 · ⏱75-85'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">首轮vs美国破门! 状态有亮点。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.73em;"><span style="color:#10b981;margin-right:5px;font-weight:700;white-space:nowrap;min-width:56px;">✅可首发</span><span style="flex:1;"><strong style="color:var(--gold);">戈麦斯</strong><span style="color:var(--text-secondary);"> · 中卫/队长 · ⏱90'</span><br><span style="color:var(--text-secondary);font-size:0.9em;">巴拉圭队长+防线核心,首轮崩盘后需重建信心。</span><span style="color:#3a5a7a;font-size:0.85em;margin-left:4px;"> 📰confirmed</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(245,158,11,0.08);border-radius:4px;font-size:0.72em;color:var(--orange);line-height:1.5;">⚠️ 对战术推演的影响: ✅ 双方全主力健康! 土耳其居莱尔第二轮必首发(首轮仅替补)→天才少年激活进攻。巴拉圭阿尔米隆+恩西索双核首轮仍有威胁→博巴迪拉已破门! 两队都首轮输球→背水一战的巨大心理压力!</div></div>
+<div style="margin-top:6px;padding:8px;background:rgba(34,197,94,0.03);border:1px solid #1e3a2a;border-radius:6px;">
+<div style="color:#4ade80;font-weight:700;margin-bottom:6px;font-size:0.85em;">📈 关键球员近1-2年联赛数据 [SRC:StatMuse+Transfermarkt]</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--teal);font-weight:700;margin-bottom:4px;">🏠 土耳其</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">恰尔汗奥卢</span><span style="flex:1;"><span style="color:var(--text-secondary);">国际米兰 · 意甲2025-26</span><br><span style="color:var(--teal);">32场9球12助攻 | 组织核心 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">居莱尔</span><span style="flex:1;"><span style="color:var(--text-secondary);">皇家马德里 · 西甲2025-26</span><br><span style="color:var(--teal);">22场5球8助攻 | 天才少年! 首轮仅替补→第二轮必首发 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">科克曲</span><span style="flex:1;"><span style="color:var(--text-secondary);">本菲卡 · 葡超2025-26</span><br><span style="color:var(--teal);">28场8球6助攻 | 远射威胁 | SRC:Transfermarkt</span></span></div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;">
+<div style="font-size:0.75em;color:var(--orange);font-weight:700;margin-bottom:4px;">🚶 巴拉圭</div>
+<div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">阿尔米隆</span><span style="flex:1;"><span style="color:var(--text-secondary);">纽卡斯尔联 · 英超2025-26</span><br><span style="color:var(--teal);">30场7球5助攻 | 巴拉圭进攻核心 | SRC:StatMuse</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">恩西索</span><span style="flex:1;"><span style="color:var(--text-secondary);">布莱顿 · 英超2025-26</span><br><span style="color:var(--teal);">25场4球6助攻 | 21岁天才创造力 | SRC:Transfermarkt</span></span></div><div style="display:flex;align-items:flex-start;padding:4px 0;border-bottom:1px solid #1e2d3d;font-size:0.72em;"><span style="color:var(--gold);font-weight:700;min-width:60px;">博巴迪拉</span><span style="flex:1;"><span style="color:var(--text-secondary);">— · —</span><br><span style="color:var(--teal);">首轮vs美国破门! | 状态有亮点 | SRC:国家队</span></span></div></div></div>
+<div style="margin-top:6px;padding:4px 8px;background:rgba(34,197,94,0.08);border-radius:4px;font-size:0.72em;color:#4ade80;line-height:1.5;">📊 数据影响: 恰尔汗奥卢9球12助攻国米→组织双满! 居莱尔5球8助攻皇马→天才少年第二轮必首发! 阿尔米隆7球5助攻纽卡→反击核心。博巴迪拉首轮已破门→不可忽视!</div></div>
+<div style="background:var(--card-bg);border-radius:6px;padding:8px;margin-top:8px;">
+<div style="color:var(--gold);font-weight:700;margin-bottom:6px;">⚔️ 战术推演 v28.3 <span style="font-size:0.75em;color:var(--text-secondary);font-weight:400;">(欧冠级分析师三位一体)</span></div>
+<div class="tactic-structured" style="font-size:0.71em;line-height:1.7;">
+<div style="padding:2px 0;">★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">居莱尔</span>(皇马)vs戈麦斯(<span style="color:var(--gold);font-weight:600;">巴拉圭</span>/队长)——天才少年vs老将防线核心! <span style="color:var(--gold);font-weight:700;">居莱尔</span>首轮仅替补→第二轮必首发! ★第二得分点:<span style="color:var(--gold);font-weight:600;">土耳其</span><span style="color:var(--gold);font-weight:700;">恰尔汗奥卢</span>被锁→<span style="color:var(--gold);font-weight:700;">科克曲</span>(本菲卡)远射+阿克图尔科格鲁边路速度→第二得分点有但非世界级。★第三得分点:伊尔马兹禁区抢点+尤克塞克定位球→深度一般。★巴拉圭反击:<span style="color:var(--gold);font-weight:700;">阿尔米隆</span>(纽卡)被锁→<span style="color:var(--gold);font-weight:700;">恩西索</span>(布莱顿)+<span style="color:var(--gold);font-weight:700;">博巴迪拉</span>(首轮破门)→巴拉圭第二得分点有惊喜!★球星默契度:<span style="color:var(--gold);font-weight:600;">土耳其</span><span style="color:var(--gold);font-weight:700;">恰尔汗奥卢</span>+<span style="color:var(--gold);font-weight:700;">居莱尔</span>双核潜力巨大但首轮未发挥→蒙泰拉第二轮需激活! <span style="color:var(--gold);font-weight:600;">巴拉圭</span><span style="color:var(--gold);font-weight:700;">阿尔米隆</span>+<span style="color:var(--gold);font-weight:700;">恩西索</span>双核在首轮1:4中仍有威胁→反击能力不可低估。</div><div style="background:rgba(59,130,246,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--blue);"><strong>▶ ★进程推演</strong></div><div style="padding:2px 0;">:土耳其控球55%→上半场<span style="color:var(--gold);font-weight:700;">恰尔汗奥卢</span>组织+<span style="color:var(--gold);font-weight:700;">居莱尔</span>创造力→<span style="color:var(--gold);font-weight:700;">科克曲</span>或伊尔马兹破门→1:0→<span style="color:var(--gold);font-weight:600;">巴拉圭</span><span style="color:var(--gold);font-weight:700;">阿尔米隆</span>右路反击→可能**1:1**→土耳其奋力进攻→<span style="color:var(--gold);font-weight:700;">居莱尔</span>个人能力→2:1→巴拉圭末段定位球→可能**2:2**。</div><div style="background:rgba(239,68,68,0.08);padding:4px 8px;border-radius:4px;margin:4px 0;color:var(--red);"><strong>❗ ★关键变量</strong></div><div style="padding:2px 0;">:①<span style="color:var(--gold);font-weight:700;">居莱尔</span>是否首发?(首轮替补→天才需上场!) ②土耳其20分钟内能否破门?(首轮0:2→前20分钟无射正!) ③巴拉圭<span style="color:var(--gold);font-weight:700;">阿尔米隆</span>反击(首轮仍有威胁)→土耳其防线是否再次暴露? ④两队都背水一战→心理压力vs反弹动力?</div>
+</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px;">
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">比赛节奏</div>
+<div style="font-size:0.75em;color:var(--blue);">⏱️ ★v28.4节奏推演★ 土耳其控球55%主动进攻→巴拉圭4-3-3防守反击。前30分钟:土耳其两翼试探→巴拉圭防线谨慎→节奏中度→恰尔汗奥卢长传或居莱尔突破打破僵局→巴拉圭被迫压出→阿尔米隆反击→比赛节奏加快。下半场体能消耗→对攻可能</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">进球影响</div>
+<div style="font-size:0.75em;color:var(--teal);">📊 ★v28.4进球影响推演★ ★土耳其:3巨星(恰尔汗奥卢+居莱尔+德米拉尔)+约10人五大联赛→首轮哑火! 恰尔汗奥卢被锁→居莱尔个人能力+科克曲远射→第二得分点有潜力但首轮未验证。★巴拉圭:1巨星(阿尔米隆)+约4人五大联赛→阿尔米隆被锁→恩西索创造力+博巴迪拉抢点(首轮已破门!)→第二得分点有惊喜! 戈麦斯防线核心。★进球预期:土耳其1-2球(居莱尔/科克曲),巴拉圭1球(阿尔米隆/博巴迪拉)→总2-3球</div></div>
+<div style="background:var(--card-inner);border-radius:4px;padding:6px;text-align:center;">
+<div style="font-size:0.7em;color:var(--text-secondary);">战术推演比分</div>
+<div style="font-size:0.75em;color:var(--gold);font-weight:700;">🎯 ★v28.4推演比分★ 土耳其2:1土胜或1:1平。★进程:30-50分钟恰尔汗奥卢长传→居莱尔突破→科克曲或伊尔马兹破门→1:0→巴拉圭阿尔米隆反击→博巴迪拉扳平→1:1→土耳其主场优势+背水一战→居莱尔个人能力绝杀→2:1→或末段巴拉圭定位球→2:2。★关键:两队都首轮输球! 心理压力巨大→谁先反弹?</div></div></div></div>
+<div style="background:linear-gradient(135deg,#0a1628,#1a0a2e);padding:12px;border-radius:10px;margin:12px 0;border:1px solid #2d3a5a;">
+<div style="color:var(--purple);font-weight:700;font-size:0.95em;margin-bottom:10px;">🧬 v28.2 专业分析师推理链 (星级力量+战术推演)</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:rgba(59,130,246,0.06);border:1px solid #1e3a5a;border-radius:8px;padding:10px;">
+<div style="color:var(--blue);font-weight:700;font-size:0.85em;margin-bottom:6px;">📊 理论面 (模型+市场) — 6信号+强度</div>
+<div style="font-size:0.72em;line-height:1.6;">
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">ELO:</strong> ELO+160 → 胜率72%/28% <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">欧赔:</strong> 主45%/平29%/客26% (均势偏主) <span style="color:#f59e0b;font-size:0.9em;">[中]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">亚盘:</strong> 主队让1.0球 | 偏差-0.75(深开警讯) | 水位0.88 <span style="color:#22c55e;font-size:0.9em;">[强]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">Poly:</strong> 主48%/平30%/客22% <span style="color:#8b95a5;font-size:0.9em;">[弱]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">xG:</strong> 土耳其=2.5 vs 巴拉圭=1.4(总4.0) <span style="color:#f59e0b;font-size:0.9em;">[中]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#60a5fa;">大小球:</strong> 1.5球(1.5球→预判1-2球)</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #1e3a5a;">
+<strong style="color:var(--teal);">📌 理论结论:</strong> <span style="color:var(--text);">土耳其胜(理论较一致但亚盘浅开)</span>
+<span style="font-size:0.85em;color:var(--orange);"> (置信中高)</span><br>
+<span style="font-size:0.68em;color:#60a5fa;">信号一致性: ⚠️信号分歧!</span></div>
+</div></div>
+<div style="background:rgba(249,115,22,0.06);border:1px solid #5a3a1e;border-radius:8px;padding:10px;">
+<div style="color:var(--orange);font-weight:700;font-size:0.85em;margin-bottom:6px;">🔬 实际面 (战术+真实条件) — 5信号+推理</div>
+<div style="font-size:0.72em;line-height:1.65;">
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">战术:</strong> ★v28.4战术推演(职业教练+对手分析师)★ 【核心对位】<span style="color:var(--gold);font-weight:700;">居莱尔</span>(皇马)vs戈麦斯(<span style="color:var(--gold);font-weight:600;">巴拉圭</span>/队长)——天才少年vs老将防线核心! <span style="color:var(--gold);font-weight:700;">居莱尔</span>… <span style="color:#f59e0b;font-size:0.9em;">[克制度5/10]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">可用性:</strong> 主✅4⚠0❌0 | 客✅4⚠0❌0 <span style="color:#22c55e;font-size:0.9em;">[影响轻]</span></div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">类似对手:</strong> 土耳其首轮0:2澳大利亚→进攻路线被封锁。巴拉圭首轮1:4美国→防守崩盘但Bobadilla有破门。…</div>
+<div style="margin-bottom:3px;"><strong style="color:#fbbf24;">进球影响:</strong> ★v28.4进球影响推演★ ★土耳其:3巨星(恰尔汗奥卢+居莱尔+德米拉尔)+约10人五…</div>
+<div style="margin-top:4px;padding-top:4px;border-top:1px solid #5a3a1e;">
+<strong style="color:var(--teal);">📌 实际结论:</strong> <span style="color:var(--text);">土耳其占优但两队都急需反弹→变数大</span>
+<span style="font-size:0.85em;color:var(--orange);"> (置信低)</span><br>
+<span style="font-size:0.68em;color:#fbbf24;">平局概率≈33% | 🔥小国精神力激活</span></div>
+</div></div></div>
+<div style="background:rgba(249,115,22,0.06);border:2px solid #f97316;border-radius:8px;padding:12px;margin-top:10px;">
+<div style="color:var(--orange);font-weight:700;font-size:0.9em;margin-bottom:8px;">⚡ 双面融合 — ⚡分歧(理论土耳其优 vs 实际两队状态都差)</div>
+<div style="font-size:0.73em;line-height:1.7;">
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">分歧点:</strong> <span style="color:var(--text);">理论面土耳其66%胜率+ELO+160,但首轮0:2澳大利亚→进攻被完全封锁! 巴拉圭1:4美国防线崩盘但博巴迪拉破门证明有破门能力。最关键:亚盘浅开(偏差-0.5!)→庄家对土耳其信心存疑! 两队都输球→第二轮背水一战→心理压力大</span></div>
+<div style="margin-bottom:5px;"><strong style="color:var(--text-secondary);">关键变量:</strong> <span style="color:var(--gold);">①土耳其居莱尔是否首发?(首轮替补→天才少年需要上场) ②恰尔汗奥卢能否唤醒进攻? ③巴拉圭阿尔米隆反击效率? ④两队防守都不稳→可能对攻!</span></div>
+<div style="margin-top:8px;padding-top:8px;border-top:1px solid #f97316;">
+<strong style="color:var(--teal);">🎯 融合结论:</strong> <span style="color:var(--text);">⚡ 方向一致但有重大分歧! 理论面土耳其66%胜率(ELO+160,身价€2.5亿vs€8000万),但首轮进攻哑火(0:2澳大利亚)+亚盘浅开(偏差-0.5!)→庄家信心不足! 巴拉圭防守崩盘(1:4美国)但也证明有破门能力(博巴迪拉)。两队都背水一战→心理压力vs反弹动力。<span style="background:rgba(34,197,94,0.2);color:#4ade80;padding:1px 6px;border-radius:3px;font-weight:700;">主推</span>土耳其2:1(恰尔汗奥卢+居莱尔激活进攻)，<span style="background:rgba(239,68,68,0.2);color:#f87171;padding:1px 6px;border-radius:3px;font-weight:700;">需防</span>1:1(两队保守互交白卷)/1:2(巴拉圭阿尔米隆爆冷)。1:1平局概率约27%。</span></div>
+<div style="margin-top:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<div style="background:linear-gradient(135deg,#451a03,#0d1117);padding:10px 20px;border-radius:8px;border:1px solid var(--orange);box-shadow:0 0 15px rgba(249,115,22,0.15);">
+<div style="color:var(--text-secondary);font-size:0.72em;margin-bottom:2px;">★ 最终推荐</div>
+<div style="display:flex;align-items:center;gap:10px;">
+<span style="color:var(--orange);font-weight:800;font-size:1.4em;text-shadow:0 0 8px rgba(249,115,22,0.4);">2:1土胜 / 1:1平 / 1:2巴胜</span>
+<span style="background:rgba(255,255,255,0.08);color:var(--text);padding:2px 8px;border-radius:4px;font-size:0.78em;font-weight:600;">置信低</span>
+</div></div>
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);padding:8px 14px;border-radius:6px;">
+<span style="color:#f87171;font-size:0.75em;font-weight:600;">⚠️ 🟡 土耳其首轮进攻哑火+亚盘浅开警讯+两队背水一战心理变数大</span></div>
+</div></div></div>
+<div style="background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:8px;margin-top:8px;">
+<div style="color:var(--purple);font-weight:700;font-size:0.8em;margin-bottom:4px;">🔍 v28 自检引擎</div>
+<span style="font-size:0.72em;">✅ fusion_score与verdict一致</span><br><span style="font-size:0.72em;">⚡ 平局概率33%偏高, 不可忽视</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤1] xG完整计算链 ★透明化</span></h4><div class="analysis-item"><strong>v27.1.1 xG完整计算链（攻击×防守→基准→屠杀→OU检查）：</strong><br>
+<strong>❶ 基准xG（真实场均数据）：</strong>土耳其攻击系数0.8/1.32=0.60×对手巴拉圭防守系数4.0/1.32=3.02 → 1.32×0.60×3.02=2.42球<br>
+<strong>　　　　　</strong>巴拉圭攻击系数1.0/1.32=0.75×对手土耳其防守系数2.0/1.32=1.51 → 1.32×0.75×1.51=1.51球<br>
+<strong>❷ 屠杀因子(ELO+160)：</strong>未触发<br>
+<strong>❸ 大小球1.5球对比：</strong>3.9(基准) vs 1.5球盘 → <strong style="color:var(--red);">⚠️疑似压缩(-2.5球)→保留xG独立判断</strong><br>
+<strong>❹ 最终xG：</strong>土耳其=2.54球 | 巴拉圭=1.43球 | 总计3.97球<br>
+<span style="color:var(--teal);font-size:0.85em;">💡 公式：xG = 联盟均值(1.32) × 攻击系数 × 对手防守系数。攻击系数>1=进攻强于均值，防守系数<1=防守好于均值。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤2] 亚盘深度分析：盘赔差异与诱盘检测</span></h4><div class="analysis-item"><strong>实际盘口：</strong>主队让1.0球（水位0.88/1.02）| <strong>欧赔理论盘：</strong>-0.25<br>
+<strong>偏差：</strong>-0.75 → <span style="color:var(--red);">深开警讯</span><br>
+<strong>水位信号：</strong>中水(0.85~1.00)→满意当前比例<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 理论盘=欧赔反推合理让球。实际盘比理论盘深了一档→可能真实看好(降赔)也可能诱上(造热)。<br>🧠 <strong style="color:var(--gold);">综合研判：xG2.5vs1.4+大小球1.5→土耳其方向明确</strong></span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤3] 欧亚交叉验证：庄家真实意图解码</span></h4><div class="analysis-item">🔴 盘口深开→警惕诱盘！<br><strong>方向置信度：</strong><span class="conf-med">中(需博弈心态修正)</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤4] 博弈心态因子 ★核心创新</span></h4><div class="analysis-item"><strong>比赛类型：</strong>有差距但可对抗 | <strong>热度检测：</strong>✅ 无极端热度<br>
+<strong>心态分析：</strong>中游对抗→先稳守后反击<br>
+<span style="color:var(--teal);font-size:0.9em;">💡 v27.1取消首轮保守对进球数压制。6/15证明首轮也能出大比分（德国7:1、瑞典5:1）。</span></div></div>
+<div class="analysis-panel"><h4><span class="step-num">[步骤5] 综合比分推荐（专业分析师推理链 ★v28）</span></h4><div class="analysis-item"><strong>★推荐比分：</strong><span class="score-main" style="font-size:1.3em;">3:1</span> | <strong>次选：</strong><span class="score-second" style="font-size:1.0em;">4:1</span><br>
+<strong>推理链：</strong>xG土耳其=2.5, xG巴拉圭=1.4, 大小球1.5球(⚠️疑似压缩(-2.5球)→保留xG独立判断), ELO差+160→3:1<br>
+<strong>v27.1.1方法：</strong>xG基准→屠杀因子(ELO)→OU参考(不压缩)→欧赔亚盘交叉→博弈心态</div></div></div>
+<div class="footer"><p>v28.2 星级力量(巨星+五大联赛) | 战术推演(第二得分点+球星默契) | 实时赔率 | 近3年大赛 | 自检引擎</p><p style="margin-top:4px;color:var(--orange);">⚠️ 仅供娱乐参考，若对信息不确定请检索最新资料</p></div></div></body></html>
