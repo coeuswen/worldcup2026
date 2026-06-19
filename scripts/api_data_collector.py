@@ -31,22 +31,48 @@ def bj_date_offset(days=2):
     bj_tz = timezone(timedelta(hours=8))
     return (datetime.now(bj_tz) + timedelta(days=days)).strftime("%Y-%m-%d")
 
+# 全局限流控制（API-FOOTBALL免费层: 10次/分钟）
+_request_timestamps = []
+RATE_LIMIT_PER_MINUTE = 8  # 安全值，留2次余量
+
+def _wait_for_rate_limit():
+    """确保不超过每分钟请求限制"""
+    now = time.time()
+    # 清理60秒前的记录
+    global _request_timestamps
+    _request_timestamps = [t for t in _request_timestamps if now - t < 60]
+    
+    if len(_request_timestamps) >= RATE_LIMIT_PER_MINUTE:
+        # 需要等待最早请求过期
+        wait_time = 60 - (now - _request_timestamps[0]) + 1
+        if wait_time > 0:
+            print(f"  ⏳ 限流等待 {wait_time:.0f}s (已用 {len(_request_timestamps)}/{RATE_LIMIT_PER_MINUTE})")
+            time.sleep(wait_time)
+    
+    now = time.time()
+    _request_timestamps.append(now)
+
 def safe_get(url, headers=None, params=None, timeout=15, retry=2):
-    """带重试的GET请求"""
+    """带限流和重试的GET请求"""
     for attempt in range(retry + 1):
+        _wait_for_rate_limit()
         try:
             resp = requests.get(url, headers=headers, params=params, timeout=timeout)
             if resp.status_code == 200:
                 return resp.json()
             elif resp.status_code == 429:  # 限流
-                time.sleep(2)
+                print(f"  [429 限流] 等待60秒...")
+                time.sleep(60)
                 continue
+            elif resp.status_code == 403:
+                print(f"  [403 禁止访问] {url}")
+                return None
             else:
                 print(f"  [HTTP {resp.status_code}] {url}")
                 return None
         except requests.Timeout:
             print(f"  [Timeout] {url} (attempt {attempt+1})")
-            time.sleep(1)
+            time.sleep(2)
         except Exception as e:
             print(f"  [Error] {url}: {e}")
             return None
@@ -221,6 +247,8 @@ def collect_match_data(target_date=None):
     采集指定日期的所有世界杯比赛数据
     target_date: "YYYY-MM-DD"，默认为北京时间后天
     返回: {match_key: {...完整数据...}, ...}
+    
+    优化: API-FOOTBALL免费层8次/分钟，优先获取关键数据
     """
     if target_date is None:
         target_date = bj_date_offset(2)
@@ -229,8 +257,8 @@ def collect_match_data(target_date=None):
     print(f"数据采集: {target_date}")
     print(f"{'='*60}")
     
-    # Step 1: 获取比赛列表
-    print("\n[1/5] 获取比赛列表...")
+    # Step 1: 获取比赛列表 (1次API调用)
+    print("\n[1/4] 获取比赛列表...")
     fixtures = af_get_fixtures_by_date(target_date)
     print(f"  找到 {len(fixtures)} 场世界杯比赛")
     
@@ -238,8 +266,8 @@ def collect_match_data(target_date=None):
         print("  ⚠️ 当天无世界杯比赛")
         return {}
     
-    # Step 2: 获取Odds API的世界杯赛事映射
-    print("\n[2/5] 获取赔率赛事映射...")
+    # Step 2: 获取Odds API的世界杯赛事映射 (不消耗API-FOOTBALL配额)
+    print("\n[2/4] 获取赔率赛事映射...")
     odds_events = odds_get_worldcup_events()
     print(f"  Odds API找到 {len(odds_events)} 场世界杯赛事")
     
@@ -249,13 +277,13 @@ def collect_match_data(target_date=None):
         key = f"{e.get('home','')}_vs_{e.get('away','')}"
         odds_map[key] = e.get("id")
     
-    # Step 3: 逐场采集数据
+    # Step 3: 逐场采集关键数据 (每场2次API-FOOTBALL调用: predictions + odds)
     all_data = {}
     for i, fix in enumerate(fixtures):
         home = fix["home"]
         away = fix["away"]
         mk = f"{home}vs{away}"
-        print(f"\n[3/5] 采集 {mk}...")
+        print(f"\n[3/4] 采集 {mk} ({i+1}/{len(fixtures)})...")
         
         match_data = {
             "fixture": fix,
@@ -270,35 +298,15 @@ def collect_match_data(target_date=None):
             "predictions": {},
         }
         
-        # 获取球队统计
-        if fix["home_id"]:
-            match_data["home_stats"] = af_get_team_stats(fix["home_id"])
-        if fix["away_id"]:
-            match_data["away_stats"] = af_get_team_stats(fix["away_id"])
-        
-        # H2H
-        if fix["home_id"] and fix["away_id"]:
-            match_data["h2h"] = af_get_h2h(fix["home_id"], fix["away_id"])
-        
-        # 球员名单
-        if fix["home_id"]:
-            match_data["home_players"] = af_get_players(fix["home_id"])
-        if fix["away_id"]:
-            match_data["away_players"] = af_get_players(fix["away_id"])
-        
-        # 伤病
-        if fix["fixture_id"]:
-            match_data["injuries"] = af_get_injuries(fix["fixture_id"])
-        
-        # API-FOOTBALL赔率
-        if fix["fixture_id"]:
-            match_data["odds_af"] = af_get_odds(fix["fixture_id"])
-        
-        # API-FOOTBALL预测
+        # 优先级1: 预测数据（含胜率/建议）
         if fix["fixture_id"]:
             match_data["predictions"] = af_get_predictions(fix["fixture_id"])
         
-        # Odds API赔率
+        # 优先级2: 赔率数据
+        if fix["fixture_id"]:
+            match_data["odds_af"] = af_get_odds(fix["fixture_id"])
+        
+        # 优先级3: Odds API外部赔率（不消耗API-FOOTBALL配额）
         odds_key = f"{home}_vs_{away}"
         odds_alt = f"{away}_vs_{home}"
         if odds_key in odds_map:
@@ -306,10 +314,13 @@ def collect_match_data(target_date=None):
         elif odds_alt in odds_map:
             match_data["odds_ext"] = odds_get_event_odds(odds_map[odds_alt])
         
+        # 优先级4: 伤病信息（如有余量）
+        if fix["fixture_id"] and len(_request_timestamps) < RATE_LIMIT_PER_MINUTE * 2:
+            match_data["injuries"] = af_get_injuries(fix["fixture_id"])
+        
         all_data[mk] = match_data
-        time.sleep(0.5)  # 避免请求过快
     
-    print(f"\n✅ 数据采集完成: {len(all_data)} 场比赛")
+    print(f"\n[4/4] ✅ 数据采集完成: {len(all_data)} 场比赛")
     return all_data
 
 # ====================================================
