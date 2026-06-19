@@ -592,6 +592,15 @@ if __name__ == "__main__":
     report_dir.mkdir(parents=True, exist_ok=True)
     report_path = report_dir / report_name
     
+    # 防止覆盖已有的手工制作报告
+    if report_path.exists():
+        existing_size = report_path.stat().st_size
+        new_size = len(html.encode('utf-8'))
+        if existing_size > new_size:
+            print(f"⚠️ 已存在更详细的报告 ({existing_size//1024}KB > 自动生成 {new_size//1024}KB)，跳过覆盖")
+            print(f"   如需强制覆盖，请先删除: {report_path}")
+            sys.exit(0)
+    
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(html)
     
