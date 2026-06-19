@@ -103,6 +103,34 @@ MATCH_DATA = {
         "risk": "🟡中低",
         "risk_icon": "🟡", "risk_label": "中低",
         "score1": "2:0乌拉圭胜", "score2": "1:0乌拉圭胜",
+        # ★ 类似对手参照 (SIMILAR_REF)
+        "sim_ref": {
+            "mv_home": "€4.5亿", "mv_away": "€0.35亿", "mv_ratio": "12.9:1",
+            "home_atk": "€2.8亿", "home_def": "€1.7亿",
+            "away_atk": "€1500万", "away_def": "€1200万",
+            # ① vs类似FIFA排名
+            "home_fifa": ["1:1 沙特#61(世南美预)", "2:1 乌兹别克#58(友谊赛)", "0:0 阿尔及利亚#37(友谊赛)"],
+            "home_fifa_gf": 1.0, "home_fifa_ga": 0.7,
+            "home_fifa_c": "对FIFA37-61区(近3年国际赛): 场均进1.0球/失0.7球, 进攻效率偏低! 对中下游队未能形成碾压",
+            "away_fifa": ["0:0 伊朗#20(友谊赛)", "1:1 埃及#29(友谊赛)", "0:0 西班牙#2(世界杯)", "3:0 塞尔维亚#32(友谊赛)"],
+            "away_fifa_gf": 1.0, "away_fifa_ga": 0.25,
+            "away_fifa_c": "对FIFA2-32区(近3年国际赛): 场均进1.0球/失0.25球! 防守超精英级! 连续零封伊朗+西班牙! 3:0胜塞尔维亚证明进攻也有威胁",
+            # ② vs类似后防线 → 进几球
+            "home_defv": ["1:0 多米尼加(防≈€500万)", "2:1 乌兹别克(防≈€2000万)", "1:1 沙特(防≈€3000万)"],
+            "home_defv_gf": 1.3,
+            "home_defv_c": "vs类似防线(≈€1200万): 对€500-3000万防线场均1.3球, 破密集防守能力一般! 佛得角对西班牙零封证明其防线并非鱼腩",
+            "away_defv": ["0:0 伊朗(防≈€8000万)", "1:0 埃及(防≈€6000万)", "0:0 西班牙(防≈€3.0亿)", "3:0 塞尔维亚(防≈€1.8亿)"],
+            "away_defv_gf": 1.0,
+            "away_defv_c": "vs类似防线(≈€1.7亿): 对€6000万-3.0亿防线场均1.0球! 但3:0爆杀塞尔维亚证明反击能力不可小觑",
+            # ③ vs类似进攻线 → 丢几球
+            "home_atkv": ["失0球 多米尼加(攻≈€300万)", "失1球 乌兹别克(攻≈€1500万)", "失1球 沙特(攻≈€3000万)"],
+            "home_atkv_ga": 0.7,
+            "home_atkv_c": "vs类似攻击线(≈€1500万): 场均失0.7球, 对弱旅攻击线防线稳固, 但沙特能进球说明偶有漏洞",
+            "away_atkv": ["失0球 伊朗(攻≈€1.5亿)", "失1球 埃及(攻≈€2.0亿)", "失0球 西班牙(攻≈€3.0亿)", "失0球 塞尔维亚(攻≈€2.0亿)"],
+            "away_atkv_ga": 0.25,
+            "away_atkv_c": "vs类似攻击线(≈€2.8亿): 场均失0.25球! 对€3.0亿西班牙+€2.0亿埃及皆零封! 佛得角五后卫体系防守精英级!",
+            "conclusion": "四维融合: 乌拉圭身价12.9倍碾压, 但佛得角对强队防守记录极佳(零封伊朗+西班牙+塞尔维亚)。乌拉圭对中下游队进攻效率不高(场均1.0球)。佛得角爆冷概率不低(25-30%), 但乌拉圭经验优势+贝尔萨体系大概率1-0或2-0小胜。"
+        },
     },
 
     "西班牙vs沙特阿拉伯": {
@@ -181,6 +209,30 @@ MATCH_DATA = {
         "risk": "🟢低",
         "risk_icon": "🟢", "risk_label": "低",
         "score1": "3:0西班牙胜", "score2": "4:0西班牙胜",
+        "sim_ref": {
+            "mv_home": "€12.0亿", "mv_away": "€0.90亿", "mv_ratio": "13.3:1",
+            "home_atk": "€4.5亿", "home_def": "€3.5亿",
+            "away_atk": "€4000万", "away_def": "€3500万",
+            "home_fifa": ["4:0 格鲁吉亚#70(世欧预)", "2:2 土耳其#28(世欧预)", "1:1 伊拉克#68(友谊赛)", "0:0 埃及#29(友谊赛)"],
+            "home_fifa_gf": 1.75, "home_fifa_ga": 0.75,
+            "home_fifa_c": "对FIFA28-70区(近3年大赛): 场均进1.75球/失0.75球, 世欧预4:0格鲁吉亚展示统治力, 但对中型队(土耳其/伊拉克)未能全胜",
+            "away_fifa": ["0:0 塞内加尔#18(友谊赛)", "1:2 塞尔维亚#32(友谊赛)", "1:1 乌拉圭#16(世界杯)", "1:2 厄瓜多尔#27(友谊赛)"],
+            "away_fifa_gf": 0.75, "away_fifa_ga": 1.25,
+            "away_fifa_c": "对FIFA16-32区(近3年国际赛): 场均进0.75球/失1.25球, 对强队有进球能力(乌拉圭/塞尔维亚), 但防守漏洞明显",
+            "home_defv": ["4:0 格鲁吉亚(防≈€3000万)", "3:0 塞尔维亚(防≈€1.8亿)", "2:0 挪威(防≈€1.2亿)"],
+            "home_defv_gf": 3.0,
+            "home_defv_c": "vs类似防线(≈€3500万): 对€3000万-1.8亿防线场均3.0球! 碾压级! 沙特防线远不及塞尔维亚, 西班牙有望轰入多球",
+            "away_defv": ["1:1 乌拉圭(防≈€1.7亿)", "0:0 塞内加尔(防≈€1.5亿)", "1:2 塞尔维亚(防≈€1.8亿)"],
+            "away_defv_gf": 0.67,
+            "away_defv_c": "vs类似防线(≈€3.5亿): 对€1.5-1.8亿防线场均0.67球, 沙特面对顶级防线破门能力极弱, 西班牙防线€3.5亿远超沙特曾遭遇的任何防线",
+            "home_atkv": ["失2球 土耳其(攻≈€2.0亿)", "失0球 格鲁吉亚(攻≈€3000万)", "失0球 埃及(攻≈€2.0亿)", "失1球 伊拉克(攻≈€1500万)"],
+            "home_atkv_ga": 0.75,
+            "home_atkv_c": "vs类似攻击线(≈€4000万): 场均失0.75球, 对弱队攻击线零封率50%, 沙特攻击线€4000万约等于伊拉克水平",
+            "away_atkv": ["失2球 塞尔维亚(攻≈€2.0亿)", "失2球 厄瓜多尔(攻≈€1.5亿)", "失1球 乌拉圭(攻≈€2.8亿)"],
+            "away_atkv_ga": 1.67,
+            "away_atkv_c": "vs类似攻击线(≈€4.5亿): 场均失1.67球! 对顶级攻击线防守崩溃! 西班牙攻线€4.5亿远超沙特曾遇任何对手, 大比分可能性高",
+            "conclusion": "四维融合: 西班牙身价13.3倍碾压+攻防线全面超越沙特历史对手。沙特的防守在对乌拉圭时表现不错但面对完全不同的传控体系。西班牙首轮0-0后必须大胜正名, 预计3-0或4-0。沙特唯一的希望是西班牙继续浪费机会。"
+        },
     },
 
     "比利时vs伊朗": {
@@ -259,6 +311,30 @@ MATCH_DATA = {
         "risk": "🟡中",
         "risk_icon": "🟡", "risk_label": "中",
         "score1": "2:1比利时胜", "score2": "1:1平局",
+        "sim_ref": {
+            "mv_home": "€6.0亿", "mv_away": "€1.5亿", "mv_ratio": "4.0:1",
+            "home_atk": "€2.5亿", "home_def": "€2.0亿",
+            "away_atk": "€8000万", "away_def": "€5000万",
+            "home_fifa": ["4:2 威尔士#29(世欧预)", "2:0 克罗地亚#13(友谊赛)", "1:1 乌克兰#25(欧预赛)", "5:0 突尼斯#31(友谊赛)"],
+            "home_fifa_gf": 3.0, "home_fifa_ga": 0.75,
+            "home_fifa_c": "对FIFA13-31区(近3年大赛): 场均进3.0球/失0.75球! 世欧预4:2威尔士+5:0突尼斯证明进攻火力! 对同级对手统治力强",
+            "away_fifa": ["0:0 佛得角#67(友谊赛)", "5:0 哥斯达黎加#54(友谊赛)", "1:2 尼日利亚#30(友谊赛)", "2:2 新西兰#85(世界杯)"],
+            "away_fifa_gf": 2.0, "away_fifa_ga": 1.0,
+            "away_fifa_c": "对FIFA30-85区(近3年国际赛): 场均进2.0球/失1.0球, 5:0哥斯达黎加展示爆发力, 但对新西兰仅2:2暴露防守问题",
+            "home_defv": ["4:2 威尔士(防≈€1.2亿)", "2:0 克罗地亚(防≈€1.5亿)", "5:0 突尼斯(防≈€4000万)"],
+            "home_defv_gf": 3.67,
+            "home_defv_c": "vs类似防线(≈€5000万): 对€4000万-1.5亿防线场均3.67球! 碾压级! 伊朗防线€5000万在比利时进攻面前将承受巨大压力",
+            "away_defv": ["1:2 尼日利亚(防≈€8000万)", "0:0 佛得角(防≈€1200万)", "5:0 哥斯达黎加(防≈€2000万)"],
+            "away_defv_gf": 2.0,
+            "away_defv_c": "vs类似防线(≈€2.0亿): 数据跨度大, 对佛得角零进球但对哥斯达黎加5球, 稳定性不足。比利时防线€2.0亿远超伊朗曾遇到的任何防线",
+            "home_atkv": ["失2球 威尔士(攻≈€1.5亿)", "失0球 克罗地亚(攻≈€1.8亿)", "失1球 乌克兰(攻≈€1.2亿)"],
+            "home_atkv_ga": 1.0,
+            "home_atkv_c": "vs类似攻击线(≈€8000万): 场均失1.0球, 威尔士能进2球说明防线有弱点。伊朗塔雷米+阿兹蒙组合€8000万与威尔士攻击线相当",
+            "away_atkv": ["失2球 尼日利亚(攻≈€2.5亿)", "失2球 新西兰(攻≈€2000万)", "失0球 佛得角(攻≈€1500万)"],
+            "away_atkv_ga": 1.33,
+            "away_atkv_c": "vs类似攻击线(≈€2.5亿): 场均失1.33球! 对尼日利亚失2球+对新西兰失2球! 伊朗防守面对高质量攻击线漏洞大, 比利时攻击线€2.5亿将是巨大考验",
+            "conclusion": "四维融合: 比利时身价4倍优势+FIFA差11位, 但伊朗5:0哥斯达黎加证明有爆发力。比利时对同级防线场均3.67球碾压, 伊朗防线将是大漏洞。但伊朗攻击线(塔雷米+阿兹蒙)也足以威胁比利时防线。大概率比利时2-1或3-1胜, 平局可能20-25%。"
+        },
     },
 
     "新西兰vs埃及": {
@@ -337,6 +413,30 @@ MATCH_DATA = {
         "risk": "🟡中",
         "risk_icon": "🟡", "risk_label": "中",
         "score1": "2:1埃及胜", "score2": "1:0埃及胜",
+        "sim_ref": {
+            "mv_home": "€0.35亿", "mv_away": "€2.5亿", "mv_ratio": "1:7.1",
+            "home_atk": "€2000万", "home_def": "€1200万",
+            "away_atk": "€1.2亿", "away_def": "€8000万",
+            "home_fifa": ["0:1 波兰#28(友谊赛)", "1:1 挪威#43(友谊赛)", "1:2 哥伦比亚#10(友谊赛)", "2:2 伊朗#20(世界杯)"],
+            "home_fifa_gf": 1.0, "home_fifa_ga": 1.5,
+            "home_fifa_c": "对FIFA10-43区(近3年国际赛): 场均进1.0球/失1.5球, 对强队能进球(伊朗2球/哥伦比亚1球)但防守薄弱",
+            "away_fifa": ["1:0 俄罗斯(友谊赛)", "1:1 比利时#9(世界杯)", "1:2 巴西#3(友谊赛)", "0:0 西班牙#2(友谊赛)", "0:1 塞内加尔#18(非洲杯)"],
+            "away_fifa_gf": 0.6, "away_fifa_ga": 0.8,
+            "away_fifa_c": "对FIFA2-18区(近3年大赛): 场均进0.6球/失0.8球, 零封西班牙+逼平比利时证明防守纪律! 但对巴西/塞内加尔零进球暴露攻坚能力不足",
+            "home_defv": ["1:2 哥伦比亚(防≈€2.0亿)", "2:2 伊朗(防≈€5000万)", "1:1 挪威(防≈€8000万)"],
+            "home_defv_gf": 1.33,
+            "home_defv_c": "vs类似防线(≈€8000万): 对€5000万-2.0亿防线场均1.33球! 新西兰有一定的破门能力, 尤其是伍德在定位球中的优势",
+            "away_defv": ["1:0 俄罗斯(防≈€6000万)", "0:0 西班牙(防≈€3.5亿)", "1:1 比利时(防≈€2.0亿)", "1:2 巴西(防≈€2.5亿)"],
+            "away_defv_gf": 0.75,
+            "away_defv_c": "vs类似防线(≈€1200万): 埃及对弱旅数据不足(近3年主要对阵强队), 但1:0俄罗斯证明对阵弱防线时萨拉赫能找到突破口",
+            "home_atkv": ["失1球 波兰(攻≈€2.0亿)", "失2球 哥伦比亚(攻≈€2.5亿)", "失2球 伊朗(攻≈€8000万)"],
+            "home_atkv_ga": 1.67,
+            "home_atkv_c": "vs类似攻击线(≈€1.2亿): 场均失1.67球! 新西兰防守面对强攻击线崩溃, 萨拉赫€1.2亿个人能力远超新西兰曾遇的任何进攻球员",
+            "away_atkv": ["失0球 俄罗斯(攻≈€5000万)", "失0球 西班牙(攻≈€4.5亿)", "失1球 巴西(攻≈€5.0亿)"],
+            "away_atkv_ga": 0.33,
+            "away_atkv_c": "vs类似攻击线(≈€2000万): 场均失0.33球! 零封俄罗斯+西班牙! 埃及防守超精英级, 新西兰攻击线€2000万难以构成实质威胁",
+            "conclusion": "四维融合: 埃及身价7倍优势+FIFA差56位, 但新西兰首轮2:2平伊朗证明有进攻勇气。萨拉赫个人能力远超新西兰防线水准, 埃及防守体系(零封西班牙)对新西兰攻击线更是碾压。但埃及攻坚能力弱(对阵弱队数据不足), 可能需60分钟以上破门。大概率1:0或2:1。"
+        },
     }
 }
 
@@ -480,6 +580,18 @@ body {
 .score-chip { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15); border-radius: 8px; padding: 4px 10px; font-size: .78em; }
 .score-chip em { color: var(--text-secondary); font-style: normal; font-size: .85em; }
 
+/* 类似对手参照 */
+.similar-section { background: rgba(59,130,246,.02); border: 1px solid rgba(59,130,246,.08); }
+.similar-subtitle { font-size: .85em; font-weight: 700; color: var(--teal); margin: 10px 0 4px; }
+.similar-subtitle.first { margin-top: 0; }
+.similar-team-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0; }
+.similar-team-box { background: rgba(0,0,0,.12); border-radius: 8px; padding: 8px 12px; font-size: .74em; }
+.similar-team-label { font-weight: 700; color: var(--gold-bright); font-size: .9em; margin-bottom: 4px; }
+.similar-match { display: inline-block; background: rgba(251,191,36,.05); border: 1px solid rgba(251,191,36,.08); border-radius: 5px; padding: 2px 6px; margin: 1px; font-size: .95em; }
+.similar-match .score { color: var(--gold); font-weight: 700; }
+.similar-conclusion { font-size: .78em; color: var(--teal); margin-top: 8px; padding: 8px; background: rgba(0,0,0,.08); border-radius: 6px; line-height: 1.5; }
+.mv-compare { text-align: center; font-size: .8em; color: var(--text-secondary); margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,.08); border-radius: 6px; }
+
 /* 综合推演 */
 .analysis-text { font-size: .84em; color: var(--text-secondary); line-height: 1.8; }
 .analysis-text-small { font-size: .82em; color: var(--text-secondary); line-height: 1.8; }
@@ -618,6 +730,34 @@ def generate_match_html(mk, d):
     ⚠️ <strong>{d['home_name']}:</strong> {d['injury_home']}<br>
     ⚠️ <strong>{d['away_name']}:</strong> {d['injury_away']}
   </div>
+</div>""")
+    
+    # ★ 类似对手参照 (四维卡片)
+    sim = d.get('sim_ref', {})
+    if sim:
+        H.append(f"""<div class="section similar-section">
+  <div class="section-title">🔬 攻防类比 — 近3年国际大赛(不含友谊赛) vs 类似对手</div>
+  <div class="mv-compare">💰 <strong>身价对比:</strong> {d['home_name']} {sim['mv_home']}(攻{sim['home_atk']}/防{sim['home_def']}) vs {d['away_name']} {sim['mv_away']}(攻{sim['away_atk']}/防{sim['away_def']}) · 比值 {sim['mv_ratio']}</div>
+  
+  <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 {d['home_name']}</div>{' '.join(f'<span class="similar-match"><span class="score">{m}</span></span>' for m in sim['home_fifa'])}<br><span style="color:var(--teal);font-size:.9em;">→ {sim['home_fifa_c']}</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 {d['away_name']}</div>{' '.join(f'<span class="similar-match"><span class="score">{m}</span></span>' for m in sim['away_fifa'])}<br><span style="color:var(--teal);font-size:.9em;">→ {sim['away_fifa_c']}</span></div>
+  </div>
+  
+  <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈{d['away_name']}防{sim['away_def']}) → 进几球 [进攻测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 {d['home_name']}</div>{' '.join(f'<span class="similar-match"><span class="score">{m}</span></span>' for m in sim['home_defv'])}<br><span style="color:var(--teal);font-size:.9em;">→ {sim['home_defv_c']}</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 {d['away_name']}</div>{' '.join(f'<span class="similar-match"><span class="score">{m}</span></span>' for m in sim['away_defv'])}<br><span style="color:var(--teal);font-size:.9em;">→ {sim['away_defv_c']}</span></div>
+  </div>
+  
+  <div class="similar-subtitle">③ ⚔️ vs类似进攻线身价(≈{d['away_name']}攻{sim['away_atk']}) → 丢几球 [防守测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 {d['home_name']}</div>{' '.join(f'<span class="similar-match"><span class="score">{m}</span></span>' for m in sim['home_atkv'])}<br><span style="color:var(--teal);font-size:.9em;">→ {sim['home_atkv_c']}</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 {d['away_name']}</div>{' '.join(f'<span class="similar-match"><span class="score">{m}</span></span>' for m in sim['away_atkv'])}<br><span style="color:var(--teal);font-size:.9em;">→ {sim['away_atkv_c']}</span></div>
+  </div>
+  
+  <div class="similar-conclusion">💡 <strong>综合四维：{sim['conclusion']}</strong></div>
 </div>""")
     
     # 四、赔率

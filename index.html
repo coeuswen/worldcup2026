@@ -140,7 +140,8 @@ body {
 <script>
 // ====== &#x5206;&#x6790;&#x62A5;&#x544A; ======
 const ANALYSIS = [
-  { date:"6/19 v28.4★", file:"分析/2026-06-19-分析报告.html", matches:"捷克 vs 南非 | 瑞士 vs 波黑 | 加拿大 vs 卡塔尔 | 墨西哥 vs 韩国", tag:"latest", summary:"v28.4 第二轮前瞻+6/18复盘 · 葡萄牙爆冷1:1! 英格兰4:2碾压 · 捷克背水一战 · 墨西哥韩国争出线 · 瑞士波黑谁先胜 · 加拿大首胜? · xG=1.8/1.6/2.3/1.9" },
+  { date:"6/21 v30.0★", file:"分析/2026-06-21-分析报告.html", matches:"乌拉圭 vs 佛得角 | 西班牙 vs 沙特阿拉伯 | 比利时 vs 伊朗 | 新西兰 vs 埃及", tag:"latest", summary:"v30.0 七步完整推理链+四维类似对手参照 · 乌拉圭碾压佛得角? · 西班牙必须大胜正名 · 比利时vs伊朗德布劳内回归 · 萨拉赫单核带队埃及 · xG=2.5/3.5/2.8/2.0 · 2:0/3:0/2:1/2:1" },
+  { date:"6/19 v28.4★", file:"分析/2026-06-19-分析报告.html", matches:"捷克 vs 南非 | 瑞士 vs 波黑 | 加拿大 vs 卡塔尔 | 墨西哥 vs 韩国", tag:"", summary:"v28.4 第二轮前瞻+6/18复盘 · 葡萄牙爆冷1:1! 英格兰4:2碾压 · 捷克背水一战 · 墨西哥韩国争出线 · 瑞士波黑谁先胜 · 加拿大首胜? · xG=1.8/1.6/2.3/1.9" },
   { date:"6/20 v28.4", file:"分析/2026-06-20-分析报告.html", matches:"美国 vs 澳大利亚 | 苏格兰 vs 摩洛哥 | 巴西 vs 海地 | 土耳其 vs 巴拉圭", tag:"", summary:"v28.4 第二轮前瞻 · 美国巴洛贡梅开二度🔥 · 摩洛哥1:1巴西后信心爆棚 · 巴西120:1身价碾压海地 · 土耳其背水一战 · xG=2.5/1.4/3.0/2.5 · 2:0/0:2/5:0/2:1" },
   { date:"6/18 v28.4★", file:"分析/2026-06-18-分析报告.html", matches:"葡萄牙 vs 刚果(金) | 英格兰 vs 克罗地亚 | 加纳 vs 巴拿马 | 乌兹别克斯坦 vs 哥伦比亚", tag:"", summary:"v28.4 体彩融合+战术推演 · C罗3巨星+英格兰霸气名单 · Kudus缺阵! · 哥伦比亚28场不败 · xG=3.6/1.6/1.2/0.7 · 3:0/2:1/1:0/0:2" },
   { date:"6/17 v28.3&#x2605;", file:"&#x5206;&#x6790;/2026-06-17-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x6CD5;&#x56FD; vs &#x585E;&#x5185;&#x52A0;&#x5C14; | &#x4F0A;&#x62C9;&#x514B; vs &#x632A;&#x5A01; | &#x963F;&#x6839;&#x5EF7; vs &#x963F;&#x5C14;&#x53CA;&#x5229;&#x4E9A; | &#x5965;&#x5730;&#x5229; vs &#x7EA6;&#x65E6;", tag:"", summary:"v28.3 &#x4f53;&#x5f69;&#x878d;&#x5408;+&#x63a8;&#x6f14;&#x7cbe;&#x5ea6;+&#x590d;&#x76d8;&#x4fee;&#x6b63; &#xB7; &#x6CD5;&#x56FD;3&#x5de8;&#x661f;20&#x4eba;&#x4E94;&#x8054; &#xB7; &#x632A;&#x62C9;14&#x4EBA;&#x4E94;&#x8054; &#xB7; &#x878D;&#x5408; 3:1&#x6CD5;&#x80DC;/4:1&#x632A;&#x80DC;/3:0&#x963F;&#x6839;&#x80DC;" },
@@ -174,7 +175,7 @@ function renderCard(r, group) {
 
 (function(){
   // Stats
-  document.getElementById("totalDays").textContent = "9";
+  document.getElementById("totalDays").textContent = "10";
   var totalM = 0;
   ANALYSIS.concat(BETTING).forEach(function(r) {
     totalM += (r.matches.match(/vs/g)||[]).length;
