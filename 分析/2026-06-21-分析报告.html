@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026世界杯 6月21日 量化分析报告 v30.0</title>
+<style>
+:root {
+    --bg-primary: #0f1119; --bg-secondary: #161822; --bg-tertiary: #1c1f2e;
+    --text-primary: #e8e8e8; --text-secondary: #a0a4b8;
+    --gold: #fbbf24; --gold-bright: #fcd34d;
+    --blue: #3b82f6; --blue-bright: #60a5fa;
+    --orange: #f97316; --red: #ef4444; --green: #22c55e;
+    --purple: #8b5cf6; --pink: #ec4899;
+    --home-color: #60a5fa; --away-color: #f97316; --draw-color: #fbbf24;
+    --border-dim: rgba(255,255,255,.06); --border-bright: rgba(255,255,255,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-primary); color: var(--text-primary); line-height: 1.7;
+    overflow-x: hidden;
+}
+.header {
+    text-align: center; padding: 36px 20px 28px;
+    background: linear-gradient(180deg, #0d1525 0%, #0f1119 100%);
+    border-bottom: 1px solid rgba(251,191,36,.12);
+}
+.header h1 { font-size: 1.9em; font-weight: 800; letter-spacing: -.02em; }
+.header h1 span { color: var(--gold-bright); }
+.header .subtitle { color: var(--text-secondary); font-size: .82em; margin-top: 6px; }
+.identity-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 12px; }
+.id-tag {
+    background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15);
+    border-radius: 20px; padding: 3px 12px; font-size: .73em; color: var(--gold);
+}
+.container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+.disclaimer {
+    background: rgba(251,191,36,.04); border: 1px solid rgba(251,191,36,.1);
+    border-radius: 10px; padding: 12px 18px; margin-bottom: 24px;
+    font-size: .78em; color: var(--text-secondary); text-align: center;
+}
+
+/* 比赛头部 */
+.match-header {
+    background: var(--bg-secondary); border: 1px solid var(--border-dim);
+    border-radius: 14px; padding: 20px 24px; margin-bottom: 24px;
+}
+.match-title { font-size: 1.35em; font-weight: 800; text-align: center; margin-bottom: 8px; }
+.match-meta { text-align: center; font-size: .8em; color: var(--text-secondary); }
+.match-meta span { margin: 0 8px; }
+
+/* Section */
+.section {
+    background: var(--bg-secondary); border: 1px solid var(--border-dim);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+}
+.section-title {
+    font-size: 1.05em; font-weight: 700; margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border-bright);
+    color: var(--gold);
+}
+
+/* ELO条 */
+.elo-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.elo-team { width: 120px; font-size: .9em; font-weight: 600; text-align: right; }
+.elo-team.away { text-align: left; }
+.elo-bar-wrap { flex: 1; height: 22px; background: rgba(255,255,255,.04); border-radius: 11px; position: relative; overflow: hidden; }
+.elo-bar-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); transition: width .8s; }
+.elo-val { font-size: .8em; font-weight: 700; width: 48px; text-align: center; }
+.elo-advantage { text-align: center; font-size: .78em; color: var(--gold); margin: 4px 0; }
+.fifa-badge {
+    display: inline-block; background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.3);
+    border-radius: 12px; padding: 2px 10px; font-size: .73em; color: var(--purple); margin-left: 6px;
+}
+
+/* 近期战绩 */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-card {
+    background: rgba(0,0,0,.15); border-radius: 10px; padding: 12px 14px;
+    border: 1px solid var(--border-dim);
+}
+.form-card-title { font-weight: 700; font-size: .88em; margin-bottom: 6px; }
+.form-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .7em;
+    font-weight: 600; margin-bottom: 6px;
+}
+.form-badge.hot { background: rgba(239,68,68,.15); color: var(--red); }
+.form-badge.stable { background: rgba(34,197,94,.12); color: var(--green); }
+.form-badge.rising { background: rgba(59,130,246,.12); color: var(--blue-bright); }
+.form-badge.mixed { background: rgba(251,191,36,.1); color: var(--gold); }
+.form-badge.solid { background: rgba(34,197,94,.1); color: var(--green); }
+.form-badge.struggling { background: rgba(239,68,68,.1); color: var(--red); }
+.form-record { font-family: 'SF Mono', Consolas, monospace; font-size: .95em; letter-spacing: .15em; margin: 4px 0; }
+.form-matches { font-size: .72em; color: var(--text-secondary); line-height: 1.6; }
+
+/* 战术分析 */
+.tactic-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.tactic-card { background: rgba(0,0,0,.15); border-radius: 10px; padding: 14px; border: 1px solid var(--border-dim); }
+.tactic-card-title { font-weight: 700; font-size: .85em; margin-bottom: 8px; }
+.star-box { margin: 4px 0; padding: 3px 8px; background: rgba(251,191,36,.04); border-radius: 6px; font-size: .76em; display: flex; justify-content: space-between; }
+.star-name { font-weight: 600; }
+.star-club { color: var(--text-secondary); font-size: .9em; }
+.tactic-text { font-size: .78em; color: var(--text-secondary); line-height: 1.7; margin-top: 8px; }
+.injury-box {
+    background: rgba(239,68,68,.06); border: 1px solid rgba(239,68,68,.15);
+    border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: .78em; color: var(--red);
+}
+
+/* 赔率面板 */
+.odds-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.odds-card {
+    background: rgba(0,0,0,.15); border-radius: 8px; padding: 12px;
+    text-align: center; border: 1px solid var(--border-dim);
+}
+.odds-card-title { font-size: .72em; color: var(--text-secondary); margin-bottom: 4px; }
+.odds-num { font-size: 1.3em; font-weight: 800; }
+.odds-num.home-color { color: var(--home-color); }
+.odds-num.draw-color { color: var(--draw-color); }
+.odds-num.away-color { color: var(--away-color); }
+.odds-card-row { display: flex; justify-content: space-between; font-size: .82em; margin: 2px 0; }
+.implied-prob { color: var(--text-secondary); font-size: .75em; }
+.ah-table { margin-top: 10px; background: rgba(0,0,0,.1); border-radius: 8px; padding: 10px 12px; }
+.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 6px; }
+.ah-lines { display: flex; flex-wrap: wrap; gap: 6px; }
+.ah-chip { background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.15); border-radius: 6px; padding: 3px 8px; font-size: .72em; }
+
+/* 概率 */
+.prob-row { display: flex; gap: 8px; align-items: flex-end; }
+.prob-col { flex: 1; text-align: center; }
+.prob-label { font-size: .78em; font-weight: 600; margin-bottom: 4px; }
+.prob-bar { height: 24px; background: rgba(255,255,255,.04); border-radius: 4px; overflow: hidden; margin: 4px 0; }
+.prob-fill { height: 100%; border-radius: 4px; transition: width 1s; }
+.prob-value { font-size: 1.1em; font-weight: 800; }
+.home-color { color: var(--home-color); } .draw-color { color: var(--draw-color); }
+.away-color { color: var(--away-color); } .gold-color { color: var(--gold); }
+.sub-probs { text-align: center; font-size: .78em; color: var(--text-secondary); margin: 8px 0; }
+.score-matrix { background: rgba(0,0,0,.12); border-radius: 8px; padding: 12px; margin-top: 10px; }
+.score-matrix-title { font-size: .8em; color: var(--text-secondary); margin-bottom: 6px; }
+.score-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.score-chip { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15); border-radius: 8px; padding: 4px 10px; font-size: .78em; }
+.score-chip em { color: var(--text-secondary); font-style: normal; font-size: .85em; }
+
+/* 综合推演 */
+.analysis-text { font-size: .84em; color: var(--text-secondary); line-height: 1.8; }
+.analysis-text-small { font-size: .82em; color: var(--text-secondary); line-height: 1.8; }
+.analysis-text strong { color: var(--text-primary); }
+.key-vars-box { margin-top: 10px; padding: 10px; background: rgba(251,191,36,.05); border: 1px solid rgba(251,191,36,.15); border-radius: 8px; font-size: .82em; color: var(--text-secondary); }
+
+/* 双面融合 */
+.conclusion-panel {
+    background: linear-gradient(135deg, rgba(34,197,94,.03) 0%, rgba(59,130,246,.03) 100%);
+    border: 1px solid rgba(59,130,246,.12); border-radius: 16px; padding: 24px;
+}
+.conclusion-header { font-size: 1.1em; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 16px; }
+.fusion-panel { background: rgba(0,0,0,.12); border-radius: 12px; padding: 16px; }
+.fusion-header { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.side-label { font-size: .76em; font-weight: 700; margin-bottom: 4px; }
+.theory-label { color: var(--blue-bright); }
+.practice-label { color: var(--orange); }
+.side-content { font-size: .75em; color: var(--text-secondary); line-height: 1.5; }
+.alignment-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .78em; font-weight: 700; margin-left: 6px;
+}
+.align-consistent { background: rgba(34,197,94,.12); color: var(--green); }
+.align-divergence { background: rgba(251,191,36,.12); color: var(--gold); }
+.align-reversal { background: rgba(239,68,68,.12); color: var(--red); }
+.fusion-verdict-box { margin-top: 12px; padding: 12px; background: rgba(0,0,0,.15); border-radius: 8px; }
+.fusion-verdict-box .title { font-weight: 700; font-size: .9em; color: var(--gold); margin-bottom: 6px; }
+.conclusion-body { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.score-recommendation { text-align: center; padding: 16px 12px; background: rgba(0,0,0,.12); border-radius: 10px; }
+.rec-label { font-size: .78em; color: var(--text-secondary); }
+.rec-score { font-size: 1.8em; font-weight: 900; color: var(--gold-bright); margin: 6px 0; }
+.rec-label-sub { font-size: .76em; color: var(--text-secondary); }
+.verdict-block { padding: 14px; background: rgba(0,0,0,.12); border-radius: 10px; }
+.verdict-main { font-size: .9em; margin-bottom: 4px; }
+.verdict-conf { font-size: .76em; color: var(--text-secondary); }
+.verdict-scores { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
+.verdict-note { font-size: .75em; color: var(--text-secondary); margin-top: 4px; }
+.risk-block { padding: 14px; border-radius: 10px; text-align: center; }
+.risk-bg-low { background: rgba(34,197,94,.06); border: 1px solid rgba(34,197,94,.15); }
+.risk-bg-medium { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15); }
+.risk-bg-high { background: rgba(239,68,68,.06); border: 1px solid rgba(239,68,68,.15); }
+.risk-label { font-size: .73em; color: var(--text-secondary); }
+.risk-value { font-size: 1.1em; font-weight: 800; margin: 4px 0; }
+.btts-note { font-size: .72em; color: var(--text-secondary); margin: 2px 0; }
+
+/* Footer */
+.footer { text-align: center; padding: 28px 16px; font-size: .75em; color: var(--text-secondary); border-top: 1px solid var(--border-dim); margin-top: 24px; }
+
+@media (max-width: 680px) {
+    .form-grid, .tactic-split, .fusion-header, .conclusion-body { grid-template-columns: 1fr; }
+    .odds-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告</h1>
+  <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-19 15:45 北京时间</div>
+  <div class="identity-tags">
+    <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ 泊松概率模型</span>
+    <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
+    <span class="id-tag">⭐ 星级力量评估</span><span class="id-tag">🔄 近期状态追踪</span>
+    <span class="id-tag">🔗 双面融合研判</span><span class="id-tag">🏦 博彩风控</span>
+  </div>
+</div>
+<div class="container">
+<div class="disclaimer">
+  ⚠️ 本报告基于量化模型与专业分析，仅供研究参考。足球存在高度不确定性，任何分析均无法保证结果准确性。请理性决策。
+</div>
+
+<!-- ★ 赛前综述 ★ -->
+<div class="section">
+  <div class="section-title">📋 6月21日赛前综述</div>
+  <div class="analysis-text">
+    <strong>比赛日看点:</strong> 6月21日是G组和H组的第二比赛日(MD2)，共4场比赛。所有8支球队均积1分——G组和H组首轮全部平局，导致两个小组的积分榜完全相同：每队都是1分！这意味着本轮将是打破僵局的关键。西班牙首轮0-0逼平佛得角后急需证明自己；乌拉圭在1-1平沙特后需取胜避免出线危机；比利时1-1平埃及的表现在饱受质疑；而萨拉赫的埃及将挑战新西兰。<br><br>
+    <strong>Group H积分榜:</strong> 乌拉圭1分 · 佛得角1分 · 西班牙1分 · 沙特阿拉伯1分<br>
+    <strong>Group G积分榜:</strong> 比利时1分 · 埃及1分 · 伊朗1分 · 新西兰1分
+  </div>
+</div>
+
+<div class="match-header">
+  <div class="match-title">乌拉圭 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 佛得角</div>
+  <div class="match-meta">
+    <span>🏟 迈阿密花园硬石球场</span><span>📋 H组 · 第2轮</span><span>🕐 6月22日 06:00 北京时间 (6月21日 18:00 迈阿密)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">乌拉圭 <span class="fifa-badge">#16</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:88.18181818181819%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">1940</div>
+  </div>
+  <div class="elo-advantage">乌拉圭领先+380ELO分 | FIFA排名差#51</div>
+  <div class="elo-row">
+    <div class="elo-team">佛得角 <span class="fifa-badge">#67</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:70.9090909090909%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1560</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🏆🏆 ⭐⭐⭐⭐ 世界杯传统强队</span>
+    <span>🌟 ⭐⭐ 非洲新军·首秀惊艳</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">乌拉圭 <span class="fifa-badge">MD1: 沙特阿拉伯 1-1 乌拉圭</span></div>
+      <span class="form-badge stable">近6场: 3胜2平1负 </span>
+      <div class="form-record">WDWWDL</div>
+      <div class="form-matches">1-1 沙特阿拉伯(WC MD1)<br>3-1 秘鲁(友谊赛)<br>2-0 玻利维亚(世预赛)<br>1-1 巴拉圭(世预赛)<br>2-1 智利(世预赛)<br>0-1 厄瓜多尔(世预赛)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">佛得角 <span class="fifa-badge">MD1: 西班牙 0-0 佛得角</span></div>
+      <span class="form-badge rising">近6场: 2胜2平2负 </span>
+      <div class="form-record">DWDLWL</div>
+      <div class="form-matches">0-0 西班牙(WC MD1)<br>2-0 百慕大(友谊赛)<br>1-0 塞尔维亚(友谊赛)<br>0-1 智利(友谊赛)<br>1-1 安哥拉(非预赛)<br>0-2 尼日利亚(非预赛)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 乌拉圭 阵型预测</div>
+      <div class="analysis-text-small">穆莱斯卡(GK) / 巴雷拉·卡塞雷斯·奥利维拉·萨纳夫里亚 / 乌加特·本坦库尔 / 卡诺比奥·巴尔韦德·M.阿劳霍 / 比尼亚斯</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐费德里科·巴尔韦德</span><span style="color:var(--blue-bright);">8.5</span><span class="star-club">皇马</span></div><div class="star-box"><span class="star-name">⭐曼努埃尔·乌加特</span><span style="color:var(--blue-bright);">8.0</span><span class="star-club">曼联</span></div><div class="star-box"><span class="star-name">⭐达尔文·努涅斯</span><span style="color:var(--blue-bright);">8.0</span><span class="star-club">利物浦</span></div><div class="star-box"><span class="star-name">⭐罗德里戈·本坦库尔</span><span style="color:var(--blue-bright);">7.8</span><span class="star-club">热刺</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 佛得角 阵型预测</div>
+      <div class="analysis-text-small">沃齐尼亚(GK) / 莫雷拉·洛佩斯·迪内·洛佩斯卡布拉尔 / 莱尼尼·L.杜阿尔特 / 门德斯·蒙泰罗·J.卡布拉尔 / 利夫拉门托</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐瑞安·门德斯</span><span style="color:var(--orange);">6.5</span><span class="star-club">法蒂赫卡拉古鲁克</span></div><div class="star-box"><span class="star-name">⭐贾米罗·蒙泰罗</span><span style="color:var(--orange);">6.8</span><span class="star-club">圣何塞地震</span></div><div class="star-box"><span class="star-name">⭐罗伯托·洛佩斯(皮科)</span><span style="color:var(--orange);">6.3</span><span class="star-club">沙姆洛克流浪</span></div><div class="star-box"><span class="star-name">⭐沃齐尼亚</span><span style="color:var(--orange);">6.0</span><span class="star-club">特伦钦</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 乌拉圭4-2-3-1 vs 佛得角4-2-3-1 | 巴尔韦德将主导中场，佛得角双后腰将承受巨大压力<br>
+        <strong>控球vs反击:</strong> 乌拉圭预计控球率60-65%，佛得角需依赖门德斯+利夫拉门托的快速反击<br>
+        <strong>高位逼抢:</strong> 乌拉圭在贝尔萨体系下将以高节奏逼抢，佛得角后场出球能力是考验<br>
+        <strong>边路对比:</strong> 卡诺比奥+M.阿劳霍的双边锋将冲击佛得角两翼，佛得角边后卫洛佩斯卡布拉尔+莫雷拉防守压力大<br>
+        <strong>定位球:</strong> 佛得角对西班牙0角球得分证明防空能力不弱，但乌拉圭定位球攻击力更强<br>
+        <strong>防守转换:</strong> 佛得角由攻转守是对西班牙奏效的关键——能否复制此纪律性到对乌拉圭是最大悬念</div>
+  <div class="injury-box">
+    ⚠️ <strong>乌拉圭:</strong> 德阿拉斯卡埃塔(伤缺) | 希门尼斯(身体状态存疑) | 阿劳霍(伤病恢复中)<br>
+    ⚠️ <strong>佛得角:</strong> 洛根·科斯塔(ACL恢复中, 状态未满)
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">乌拉圭胜</div>
+      <div class="odds-num home-color">1.25</div>
+      <div class="implied-prob">80.0%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">5.5</div>
+      <div class="implied-prob">18.2%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">佛得角胜</div>
+      <div class="odds-num away-color">12.0</div>
+      <div class="implied-prob">8.3%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">乌拉圭热度高</div>
+      <div class="implied-prob">亚盘: 乌拉圭 -1.5/2</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 乌拉圭 -1.5/2 | 大小球2.5: 大1.65 / 小2.2 | BTTS: 是2.1 / 否1.67</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">乌拉圭胜</div><div class="prob-bar"><div class="prob-fill" style="width:62%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">62%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:23%;background:var(--gold)"></div></div><div class="prob-value gold-color">23%</div></div>
+    <div class="prob-col"><div class="prob-label">佛得角胜</div><div class="prob-bar"><div class="prob-fill" style="width:15%;background:var(--orange)"></div></div><div class="prob-value away-color">15%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>55%</strong> | 小2.5球: <strong>45%</strong> | BTTS: <strong>48%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:0乌拉圭胜 <em>(21.7%)</em></span><span class="score-chip">1:0乌拉圭胜 <em>(17.4%)</em></span><span class="score-chip">1:0 <em>(13.6%)</em></span><span class="score-chip">1:1 <em>(9.2%)</em></span><span class="score-chip">0:0 <em>(4.6%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 乌拉圭主导，贝尔萨球队习惯开场高节奏。佛得角将像对西班牙一样前15分钟保守<br>
+        • <strong>控球率:</strong> 乌拉圭60% vs 佛得角40%<br>
+        • <strong>谁先控球:</strong> 乌拉圭技术优势明显，巴尔韦德+本坦库尔组合远超佛得角中场<br>
+        • <strong>先进球概率:</strong> 乌拉圭70% / 佛得角15% / 15%进不了球<br>
+        • <strong>落后变化:</strong> 若乌拉圭落后，贝尔萨会换上加急进攻球员全力反扑<br>
+        • <strong>终局走势:</strong> 乌拉圭大概率1球优势取胜，但佛得角对西班牙零封证明他们有能力拉平比数</div>
+  <div class="key-vars-box">🔑 关键变量: ① 贝尔萨的战术部署(无热身赛直接参赛) ② 巴尔韦德的发挥 ③ 佛得角防守纪律性能否维持</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差380→乌拉圭胜率72% | 欧赔1.25→隐含80% | 亚盘-1.5/2→机构认可优势 | 理论面高度一致: 乌拉圭胜</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 乌拉圭胜(理论优势极大)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 佛得角对西班牙0-0展示精英级防守 | 克制度: 3/10(佛得角仅靠反击) | 可用性: 乌拉圭3人存疑 | 平局基线: 28% | 冷门因子: 佛得角精神力指数+15%</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 乌拉圭胜但可能只能净胜1球</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: 理论差极大(ELO380)，实际佛得角防守纪律性超预期</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">理论面与实际面高度一致，乌拉圭胜。但佛得角首轮0-0逼平西班牙证明其防守绝非偶然——5后卫体系纪律性极强，定位球防守出色。乌拉圭首轮1-1平沙特暴露出创造力和终结问题，努涅斯尚未进入最佳状态。预期乌拉圭将主导控球和场面，但破门可能需要60分钟以上。最终比分1-0或2-0为主流，佛得角爆冷概率极低(≤15%)但可能再次制造惊喜。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:0乌拉圭胜</div>
+      <div class="rec-label-sub">次选: 1:0乌拉圭胜</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>乌拉圭胜(让平/让负)</strong></div>
+      <div class="verdict-conf">融合信度: 中高</div>
+      <div class="verdict-scores"><span class="score-chip">2:0乌拉圭胜 (21.7%)</span><span class="score-chip">1:0乌拉圭胜 (17.4%)</span><span class="score-chip">1:0 (13.6%)</span><span class="score-chip">1:1 (9.2%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-中低">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中低</div>
+        <div class="btts-note">BTTS: 48% | 大2.5: 55%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="match-header">
+  <div class="match-title">西班牙 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 沙特阿拉伯</div>
+  <div class="match-meta">
+    <span>🏟 亚特兰大梅赛德斯-奔驰体育场</span><span>📋 H组 · 第2轮</span><span>🕐 6月22日 00:00 北京时间 (6月21日 12:00 亚特兰大)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">西班牙 <span class="fifa-badge">#2</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:91.36363636363637%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">2010</div>
+  </div>
+  <div class="elo-advantage">西班牙领先+250ELO分 | FIFA排名差#59</div>
+  <div class="elo-row">
+    <div class="elo-team">沙特阿拉伯 <span class="fifa-badge">#61</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:80.0%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1760</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🏆🇪🇺 ⭐⭐⭐⭐⭐ 世界顶级·欧洲冠军</span>
+    <span>🕌 ⭐⭐ 亚洲劲旅·首轮不败</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">西班牙 <span class="fifa-badge">MD1: 西班牙 0-0 佛得角</span></div>
+      <span class="form-badge stable">近6场: 3胜3平 </span>
+      <div class="form-record">DWDWDD</div>
+      <div class="form-matches">0-0 佛得角(WC MD1)<br>3-1 秘鲁(友谊赛)<br>1-1 伊拉克(友谊赛)<br>0-0 埃及(友谊赛)<br>3-0 塞尔维亚(友谊赛)<br>2-0 挪威(友谊赛)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">沙特阿拉伯 <span class="fifa-badge">MD1: 沙特阿拉伯 1-1 乌拉圭</span></div>
+      <span class="form-badge mixed">近6场: 2胜2平2负 </span>
+      <div class="form-record">DLWDLW</div>
+      <div class="form-matches">1-1 乌拉圭(WC MD1)<br>0-0 塞内加尔(友谊赛)<br>3-0 波多黎各(友谊赛)<br>1-2 厄瓜多尔(友谊赛)<br>1-2 塞尔维亚(友谊赛)<br>3-0 吉尔吉斯斯坦</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 西班牙 阵型预测</div>
+      <div class="analysis-text-small">乌奈西蒙(GK) / 波罗·库巴尔西·拉波尔特·库库雷拉 / 罗德里(C)·佩德里·鲁伊斯 / 亚马尔·奥亚萨瓦尔·尼科威廉姆斯</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐罗德里</span><span style="color:var(--blue-bright);">9.0</span><span class="star-club">曼城</span></div><div class="star-box"><span class="star-name">⭐拉明·亚马尔</span><span style="color:var(--blue-bright);">8.8</span><span class="star-club">巴塞罗那</span></div><div class="star-box"><span class="star-name">⭐佩德里</span><span style="color:var(--blue-bright);">8.5</span><span class="star-club">巴塞罗那</span></div><div class="star-box"><span class="star-name">⭐尼科·威廉姆斯</span><span style="color:var(--blue-bright);">8.3</span><span class="star-club">巴塞罗那</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 沙特阿拉伯 阵型预测</div>
+      <div class="analysis-text-small">阿尔-奥韦斯(GK) / 阿卜杜勒哈米德·坦巴克蒂·拉贾米·布沙尔 / 朱维尔·坎诺·卡伊巴里·N.达瓦萨里·S.达瓦萨里 / 布赖坎</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐萨勒姆·阿尔-达瓦萨里</span><span style="color:var(--orange);">7.2</span><span class="star-club">利雅得新月</span></div><div class="star-box"><span class="star-name">⭐菲拉斯·阿尔-布赖坎</span><span style="color:var(--orange);">7.0</span><span class="star-club">吉达联合</span></div><div class="star-box"><span class="star-name">⭐穆萨布·阿尔-朱维尔</span><span style="color:var(--orange);">6.5</span><span class="star-club">利雅得胜利</span></div><div class="star-box"><span class="star-name">⭐穆罕默德·阿尔-奥韦斯</span><span style="color:var(--orange);">6.8</span><span class="star-club">利雅得新月</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 西班牙4-3-3 vs 沙特4-5-1防守反击阵 | 西班牙控球预计65%+<br>
+        <strong>控球vs反击:</strong> 西班牙的tikitaka将面对沙特的深度防守，沙特能否打出对乌拉圭时的反击质量是关键<br>
+        <strong>高位逼抢:</strong> 西班牙会在前场高位压迫，沙特后场出球能力一般，可能被迫大脚解围<br>
+        <strong>边路对比:</strong> 亚马尔+尼科威廉姆斯vs沙特边后卫，技术差距巨大。西班牙的宽度将是破门关键<br>
+        <strong>定位球:</strong> 拉波尔特+库巴尔西都是头球好手，沙特需全力防守定位球<br>
+        <strong>防守转换:</strong> 西班牙由攻转守时中卫速度偏慢，沙特可能利用达瓦萨里的突击制造威胁</div>
+  <div class="injury-box">
+    ⚠️ <strong>西班牙:</strong> 全员健康，无伤病问题<br>
+    ⚠️ <strong>沙特阿拉伯:</strong> 无公开伤病信息
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">西班牙胜</div>
+      <div class="odds-num home-color">1.11</div>
+      <div class="implied-prob">90.1%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">11.0</div>
+      <div class="implied-prob">9.1%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">沙特阿拉伯胜</div>
+      <div class="odds-num away-color">28.0</div>
+      <div class="implied-prob">3.6%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">西班牙热度高</div>
+      <div class="implied-prob">亚盘: 西班牙 -2.5</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 西班牙 -2.5 | 大小球2.5: 大1.5 / 小2.4 | BTTS: 是2.5 / 否1.4</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">西班牙胜</div><div class="prob-bar"><div class="prob-fill" style="width:72%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">72%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:18%;background:var(--gold)"></div></div><div class="prob-value gold-color">18%</div></div>
+    <div class="prob-col"><div class="prob-label">沙特阿拉伯胜</div><div class="prob-bar"><div class="prob-fill" style="width:10%;background:var(--orange)"></div></div><div class="prob-value away-color">10%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>63%</strong> | 小2.5球: <strong>37%</strong> | BTTS: <strong>35%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">3:0西班牙胜 <em>(25.2%)</em></span><span class="score-chip">4:0西班牙胜 <em>(20.2%)</em></span><span class="score-chip">1:0 <em>(15.8%)</em></span><span class="score-chip">1:1 <em>(7.2%)</em></span><span class="score-chip">0:0 <em>(3.6%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 西班牙主导绝对控球，沙特全线退守。预期西班牙半场控球率65-70%<br>
+        • <strong>先控球方:</strong> 西班牙从开场哨响就开始传控，沙特全线退守半场<br>
+        • <strong>先进球概率:</strong> 西班牙80% / 沙特10% / 10%进不了球<br>
+        • <strong>落后变化:</strong> 若西班牙落后（极小概率），将全线压上狂攻；若沙特落后，可能换上前锋搏命<br>
+        • <strong>终局走势:</strong> 西班牙大概率取得一场酣畅淋漓的胜利，为被佛得角逼平正名。预期3-0或4-0</div>
+  <div class="key-vars-box">🔑 关键变量: ① 西班牙能否快速破门(前30分钟) ② 沙特的防守纪律性 ③ 罗德里的调度+亚马尔的突破</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差250→西班牙胜率68% | 欧赔1.11→隐含90% | 亚盘-2.5→机构极度看深盘 | 理论面完全统一: 西班牙大胜</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 西班牙大胜(理论碾压级)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 沙特5中场封锁中路 | 克制度: 1/10 | 可用性: 双方全员健康 | 平局基线: 28%→调低至18% | 冷门因子: 沙特存微弱反击希望</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 西班牙胜2-3球</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: 理论碾压(ELO250+欧赔1.11)，实际西班牙缺少终极射手可能延迟破门时间</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">西班牙必须拿下的一战。首轮0-0平佛得角后，舆论压力巨大，德拉富恩特的球队急需一场大胜提振士气。沙特虽然首轮逼平乌拉圭表现出色，但面对的是完全不同的对手——西班牙的传控体系将让沙特几乎没有持球时间，防守压力将持续90分钟。历史交锋西班牙全胜(3场/进9球/失2球)，本届西班牙有亚马尔+罗德里+佩德里的豪华中场，破密集防守只是时间问题。预期西班牙3-0以上取胜。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">3:0西班牙胜</div>
+      <div class="rec-label-sub">次选: 4:0西班牙胜</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>西班牙胜(让胜)</strong></div>
+      <div class="verdict-conf">融合信度: 高</div>
+      <div class="verdict-scores"><span class="score-chip">3:0西班牙胜 (25.2%)</span><span class="score-chip">4:0西班牙胜 (20.2%)</span><span class="score-chip">1:0 (15.8%)</span><span class="score-chip">1:1 (7.2%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-低">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟢 低</div>
+        <div class="btts-note">BTTS: 35% | 大2.5: 63%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="match-header">
+  <div class="match-title">比利时 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 伊朗</div>
+  <div class="match-meta">
+    <span>🏟 洛杉矶SoFi体育场</span><span>📋 G组 · 第2轮</span><span>🕐 6月22日 03:00 北京时间 (6月21日 12:00 洛杉矶)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">比利时 <span class="fifa-badge">#9</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:89.77272727272727%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">1975</div>
+  </div>
+  <div class="elo-advantage">比利时领先+205ELO分 | FIFA排名差#11</div>
+  <div class="elo-row">
+    <div class="elo-team">伊朗 <span class="fifa-badge">#20</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:80.45454545454545%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1770</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🇧🇪 ⭐⭐⭐⭐ 欧洲红魔·黄金一代余晖</span>
+    <span>🇮🇷 ⭐⭐⭐ 亚洲排名第一</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">比利时 <span class="fifa-badge">MD1: 比利时 1-1 埃及</span></div>
+      <span class="form-badge stable">近6场: 3胜2平1负 </span>
+      <div class="form-record">DWWWDL</div>
+      <div class="form-matches">1-1 埃及(WC MD1)<br>3-0 波黑(友谊赛)<br>2-0 威尔士(友谊赛)<br>3-1 以色列(欧预赛)<br>1-1 乌克兰(欧预赛)<br>0-2 法国(欧国联)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">伊朗 <span class="fifa-badge">MD1: 伊朗 2-2 新西兰</span></div>
+      <span class="form-badge solid">近6场: 3胜2平1负 </span>
+      <div class="form-record">WDWWDL</div>
+      <div class="form-matches">2-2 新西兰(WC MD1)<br>2-0 阿联酋(友谊赛)<br>3-1 约旦(友谊赛)<br>1-0 伊拉克(世预赛)<br>1-2 韩国(世预赛)<br>1-1 乌兹别克(世预赛)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 比利时 阵型预测</div>
+      <div class="analysis-text-small">库尔图瓦(GK) / 卡斯塔涅·费斯·维尔通亨·特阿特 / 奥纳纳·蒂勒曼斯·德布劳内 / 多库·卢卡库·特罗萨德</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐凯文·德布劳内</span><span style="color:var(--blue-bright);">9.2</span><span class="star-club">曼城</span></div><div class="star-box"><span class="star-name">⭐罗梅卢·卢卡库</span><span style="color:var(--blue-bright);">8.5</span><span class="star-club">罗马</span></div><div class="star-box"><span class="star-name">⭐杰雷米·多库</span><span style="color:var(--blue-bright);">8.3</span><span class="star-club">曼城</span></div><div class="star-box"><span class="star-name">⭐蒂博·库尔图瓦</span><span style="color:var(--blue-bright);">8.8</span><span class="star-club">皇家马德里</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 伊朗 阵型预测</div>
+      <div class="analysis-text-small">贝兰万德(GK) / 雷扎扬·卡纳尼·哈利勒扎德·穆罕默迪 / 埃扎托拉希·古多斯 / 贾汉巴赫什·塔雷米·阿兹蒙</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐迈赫迪·塔雷米</span><span style="color:var(--orange);">8.0</span><span class="star-club">波尔图</span></div><div class="star-box"><span class="star-name">⭐萨达尔·阿兹蒙</span><span style="color:var(--orange);">7.5</span><span class="star-club">勒沃库森</span></div><div class="star-box"><span class="star-name">⭐阿里雷扎·贾汉巴赫什</span><span style="color:var(--orange);">7.0</span><span class="star-club">费耶诺德</span></div><div class="star-box"><span class="star-name">⭐赛义德·埃扎托拉希</span><span style="color:var(--orange);">6.8</span><span class="star-club">沙巴布阿赫利</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 比利时4-3-3 vs 伊朗4-4-2 | 比利时的中场控制力远超伊朗<br>
+        <strong>控球vs反击:</strong> 比利时控球55-60%，但伊朗拥有塔雷米+阿兹蒙的致命反击双箭头<br>
+        <strong>高位逼抢:</strong> 比利时不擅持续高位压迫，伊朗有空间在中场组织——这是伊朗的主要机会<br>
+        <strong>边路对比:</strong> 多库+特罗萨德vs伊朗边后卫，比利时有明显的速度和技术优势<br>
+        <strong>定位球:</strong> 卢卡库和费斯是定位球威胁点，伊朗定位球防守稳健但高度不足<br>
+        <strong>防守转换:</strong> 伊朗塔雷米的持球推进+分球能力是比利时防线最大威胁，库尔图瓦可能需要多次出击</div>
+  <div class="injury-box">
+    ⚠️ <strong>比利时:</strong> 德布劳内(大腿伤已恢复, 可首发)<br>
+    ⚠️ <strong>伊朗:</strong> 无重大伤病
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">比利时胜</div>
+      <div class="odds-num home-color">1.44</div>
+      <div class="implied-prob">69.4%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">4.33</div>
+      <div class="implied-prob">23.1%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">伊朗胜</div>
+      <div class="odds-num away-color">7.0</div>
+      <div class="implied-prob">14.3%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">比利时热度高</div>
+      <div class="implied-prob">亚盘: 比利时 -1/-1.5</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 比利时 -1/-1.5 | 大小球2.5: 大1.75 / 小2.05 | BTTS: 是1.85 / 否1.87</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">比利时胜</div><div class="prob-bar"><div class="prob-fill" style="width:55%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">55%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:26%;background:var(--gold)"></div></div><div class="prob-value gold-color">26%</div></div>
+    <div class="prob-col"><div class="prob-label">伊朗胜</div><div class="prob-bar"><div class="prob-fill" style="width:19%;background:var(--orange)"></div></div><div class="prob-value away-color">19%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>52%</strong> | 小2.5球: <strong>48%</strong> | BTTS: <strong>55%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:1比利时胜 <em>(19.2%)</em></span><span class="score-chip">1:1平局 <em>(15.4%)</em></span><span class="score-chip">1:0 <em>(12.1%)</em></span><span class="score-chip">1:1 <em>(10.4%)</em></span><span class="score-chip">0:0 <em>(5.2%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 比利时利用德布劳内的传球寻找伊朗防线缝隙，伊朗收缩阵型等待反击<br>
+        • <strong>先控球方:</strong> 比利时掌控局面，德布劳内+蒂勒曼斯包揽中场<br>
+        • <strong>先进球概率:</strong> 比利时55% / 伊朗25% / 20%半场0-0<br>
+        • <strong>落后变化:</strong> 若比利时落后，全力压上由卢卡库+多库组成强攻体系；若伊朗落后，将让塔雷米+阿兹蒙同时压上<br>
+        • <strong>终局走势:</strong> 比利时大概率小胜，但伊朗有能力偷一个。2-1或1-1的可能都存在</div>
+  <div class="key-vars-box">🔑 关键变量: ① 德布劳内的状态(伤愈后首场大赛) ② 伊朗双箭头塔雷米+阿兹蒙 ③ 多库的爆破效率</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差205→比利时胜率58% | 欧赔1.44→隐含69% | 亚盘-1/-1.5→机构浅开 | 理论面: 比利时占优但不够稳</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 比利时胜(理论优势但不够碾压)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 伊朗4-4-2双前锋威胁大 | 克制度: 4/10 | 可用性: 双方主力基本齐整 | 平局基线: 28% | 伊朗精神力指数+10%</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 比利时险胜或平局</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">基本一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: 理论优势(ELO205)与实际预期的差距不大，伊朗反击能力提升了冷门可能</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">比利时首轮1-1平埃及未展现出应有的统治力，德布劳内伤愈归队虽然提升了进攻创造力，但整体状态仍存疑。伊朗2-2平新西兰展示了不俗的攻击力，塔雷米和阿兹蒙的组合在亚洲预选赛中已证明致命性。此役比利时纸面占优，但伊朗有能力在反击中制造威胁。大概率比利时一球小胜，但平局不能被排除。建议小心比利时的让球盘口。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:1比利时胜</div>
+      <div class="rec-label-sub">次选: 1:1平局</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>比利时胜(让平/平局防冷)</strong></div>
+      <div class="verdict-conf">融合信度: 中</div>
+      <div class="verdict-scores"><span class="score-chip">2:1比利时胜 (19.2%)</span><span class="score-chip">1:1平局 (15.4%)</span><span class="score-chip">1:0 (12.1%)</span><span class="score-chip">1:1 (10.4%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-中">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中</div>
+        <div class="btts-note">BTTS: 55% | 大2.5: 52%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="match-header">
+  <div class="match-title">新西兰 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 埃及</div>
+  <div class="match-meta">
+    <span>🏟 温哥华BC Place</span><span>📋 G组 · 第2轮</span><span>🕐 6月22日 09:00 北京时间 (6月21日 18:00 温哥华)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">新西兰 <span class="fifa-badge">#85</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:70.45454545454545%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">1550</div>
+  </div>
+  <div class="elo-advantage">埃及领先+235ELO分 | FIFA排名差#56</div>
+  <div class="elo-row">
+    <div class="elo-team">埃及 <span class="fifa-badge">#29</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:81.13636363636364%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1785</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🦘 ⭐ 大洋洲冠军·世界杯常客</span>
+    <span>🇪🇬⚽ ⭐⭐⭐ 非洲杯冠军·萨拉赫领军</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">新西兰 <span class="fifa-badge">MD1: 伊朗 2-2 新西兰</span></div>
+      <span class="form-badge struggling">近6场: 1胜3平2负 </span>
+      <div class="form-record">LDDLWD</div>
+      <div class="form-matches">2-2 伊朗(WC MD1)<br>1-1 斐济(大洋洲预选)<br>0-0 塔希提(大洋洲预选)<br>1-2 哥斯达黎加(友谊赛)<br>1-2 秘鲁(友谊赛)<br>1-0 瓦努阿图(大洋洲预选)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">埃及 <span class="fifa-badge">MD1: 比利时 1-1 埃及</span></div>
+      <span class="form-badge solid">近6场: 3胜3平 </span>
+      <div class="form-record">DDWWWD</div>
+      <div class="form-matches">1-1 比利时(WC MD1)<br>1-0 安哥拉(非预赛)<br>2-0 津巴布韦(非预赛)<br>0-0 西班牙(友谊赛)<br>2-1 尼日利亚(友谊赛)<br>3-1 埃塞俄比亚(非预赛)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 新西兰 阵型预测</div>
+      <div class="analysis-text-small">克罗科姆(GK) / 博克索尔·派恩·史密斯·卡卡塞 / 鲁费尔·斯塔梅尼奇·贝尔·辛格 / 伍德·马塔</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐克里斯·伍德</span><span style="color:var(--blue-bright);">7.5</span><span class="star-club">诺丁汉森林</span></div><div class="star-box"><span class="star-name">⭐马克斯·马塔</span><span style="color:var(--blue-bright);">6.0</span><span class="star-club">泰格雷斯</span></div><div class="star-box"><span class="star-name">⭐亚历克斯·鲁费尔</span><span style="color:var(--blue-bright);">6.2</span><span class="star-club">雷克雅未克</span></div><div class="star-box"><span class="star-name">⭐迈克尔·博克索尔</span><span style="color:var(--blue-bright);">6.0</span><span class="star-club">明尼苏达联</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 埃及 阵型预测</div>
+      <div class="analysis-text-small">埃尔-申纳维(GK) / 哈尼·赫加齐·哈姆迪·艾尔丁 / 法蒂·阿提亚 / 萨拉赫·埃尔内尼·特雷泽盖 / 马尔穆什</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐穆罕默德·萨拉赫</span><span style="color:var(--orange);">9.5</span><span class="star-club">利物浦</span></div><div class="star-box"><span class="star-name">⭐马哈茂德·特雷泽盖</span><span style="color:var(--orange);">7.5</span><span class="star-club">加拉塔萨雷</span></div><div class="star-box"><span class="star-name">⭐马尔万·阿提亚</span><span style="color:var(--orange);">6.5</span><span class="star-club">阿尔阿赫利</span></div><div class="star-box"><span class="star-name">⭐默罕默德·埃尔-申纳维</span><span style="color:var(--orange);">6.8</span><span class="star-club">阿尔阿赫利</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 新西兰4-4-2 vs 埃及4-3-3 | 埃及由萨拉赫领衔的攻击线远强于新西兰防线<br>
+        <strong>控球vs反击:</strong> 埃及控球55-60%，新西兰长传找伍德是主要战术<br>
+        <strong>高位逼抢:</strong> 埃及在前场会积极施压，新西兰后卫出球能力弱是一大隐患<br>
+        <strong>边路对比:</strong> 萨拉赫+特雷泽盖vs新西兰边后卫，这是比赛的明显错位<br>
+        <strong>定位球:</strong> 伍德是新西兰定位球最大威胁(身高191cm)，埃及需重点盯防<br>
+        <strong>防守转换:</strong> 新西兰由攻转守时中场覆盖不足，萨拉赫的冲刺空间将很大</div>
+  <div class="injury-box">
+    ⚠️ <strong>新西兰:</strong> 无重大伤病<br>
+    ⚠️ <strong>埃及:</strong> 无重大伤病，阵容齐整
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">新西兰胜</div>
+      <div class="odds-num home-color">5.5</div>
+      <div class="implied-prob">18.2%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">3.6</div>
+      <div class="implied-prob">27.8%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">埃及胜</div>
+      <div class="odds-num away-color">1.65</div>
+      <div class="implied-prob">60.6%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">新西兰热度高</div>
+      <div class="implied-prob">亚盘: 埃及 -0.5/1</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 埃及 -0.5/1 | 大小球2.5: 大1.9 / 小1.87 | BTTS: 是2.0 / 否1.73</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">新西兰胜</div><div class="prob-bar"><div class="prob-fill" style="width:20%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">20%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:27%;background:var(--gold)"></div></div><div class="prob-value gold-color">27%</div></div>
+    <div class="prob-col"><div class="prob-label">埃及胜</div><div class="prob-bar"><div class="prob-fill" style="width:53%;background:var(--orange)"></div></div><div class="prob-value away-color">53%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>50%</strong> | 小2.5球: <strong>50%</strong> | BTTS: <strong>52%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:1埃及胜 <em>(7.0%)</em></span><span class="score-chip">1:0埃及胜 <em>(5.6%)</em></span><span class="score-chip">1:0 <em>(4.4%)</em></span><span class="score-chip">1:1 <em>(10.8%)</em></span><span class="score-chip">0:0 <em>(5.4%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 埃及主攻，萨拉赫在右路不断威胁新西兰防线。新西兰稳守等待定位球机会<br>
+        • <strong>先控球方:</strong> 埃及掌控球权，法蒂+埃尔内尼组成技术型中场<br>
+        • <strong>先进球概率:</strong> 埃及60% / 新西兰20% / 20%半场0-0<br>
+        • <strong>落后变化:</strong> 若埃及落后，萨拉赫将承担更多持球突破责任；若新西兰落后，将让伍德+马塔双前锋冲击<br>
+        • <strong>终局走势:</strong> 埃及实力明显占优，但首轮对比利时领先后被追平显示防守存在漏洞。预期埃及小胜2-1或1-0</div>
+  <div class="key-vars-box">🔑 关键变量: ① 萨拉赫的发挥(世界级球星的个人能力) ② 新西兰伍德的头球威胁 ③ 埃及防守注意力的持续性</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差-235→埃及胜率60% | 欧赔1.65→隐含61% | 亚盘-0.5/1→机构认可有差距但不大 | 理论面: 埃及占优</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 埃及胜(理论优势中等)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 萨拉赫单点爆破能力超群 | 克制度: 6/10(埃及边路碾压) | 可用性: 双方主力齐整 | 平局基线: 28% | 新西兰精神力+5%</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 埃及小胜但未必轻松</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">基本一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: 理论差(ELO235)与实际差距基本匹配，但新西兰在体能和身体对抗上可能超出埃及预期</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">埃及纸面实力明显占优，萨拉赫的存在是两队之间最大的差距。这名利物浦巨星有能力凭借一己之力改变比赛。埃及首轮1-1逼平比利时展现了不错的防守组织和反击速度，但进攻端除了萨拉赫外创造力有限。新西兰首轮2-2平伊朗展现了不弱的得分能力，克里斯·伍德的头球和高空优势是最大武器。此役埃及有望取胜，但可能只是一球小胜——新西兰的体能和斗志不容低估。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:1埃及胜</div>
+      <div class="rec-label-sub">次选: 1:0埃及胜</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>埃及胜(让平/平局需防)</strong></div>
+      <div class="verdict-conf">融合信度: 中</div>
+      <div class="verdict-scores"><span class="score-chip">2:1埃及胜 (7.0%)</span><span class="score-chip">1:0埃及胜 (5.6%)</span><span class="score-chip">1:0 (4.4%)</span><span class="score-chip">1:1 (10.8%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-中">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中</div>
+        <div class="btts-note">BTTS: 52% | 大2.5: 50%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="footer">
+  <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
+  <p style="margin-top:4px;">分析框架: v28.4 七步推理链 (基础实力→状态→战术→赔率→概率→推演→双面融合) | v30.0 两阶段架构</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-19 15:45 北京时间</p>
+</div>
+</body>
+</html>
