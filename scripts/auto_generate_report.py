@@ -579,7 +579,7 @@ if __name__ == "__main__":
     html = generate_full_report(target_date, match_data_all, analysis_inputs)
     
     # 保存报告
-    report_name = f"2026-{target_date}-分析报告.html"
+    report_name = f"{target_date}-分析报告.html"
     
     # 支持在GitHub Actions中输出到 分析/ 目录
     output_dir_env = os.environ.get("REPORT_OUTPUT_DIR")
@@ -602,7 +602,7 @@ if __name__ == "__main__":
     if args.deploy:
         pages_dir = PROJECT_ROOT / "worldcup2026-pages" / "分析"
         pages_dir.mkdir(parents=True, exist_ok=True)
-        deploy_path = pages_dir / f"2026-{target_date}-分析报告.html"
+        deploy_path = pages_dir / f"{target_date}-分析报告.html"
         shutil.copy(report_path, deploy_path)
         print(f"✅ 已复制到: {deploy_path}")
         

@@ -16,7 +16,7 @@ target_date = sys.argv[1]
 REPO_ROOT = Path(__file__).parent.parent
 
 # 检查报告文件是否存在
-report_file = REPO_ROOT / "分析" / f"2026-{target_date}-分析报告.html"
+report_file = REPO_ROOT / "分析" / f"{target_date}-分析报告.html"
 if not report_file.exists():
     print(f"  报告文件不存在，跳过 index.html 更新: {report_file}")
     sys.exit(0)
@@ -35,13 +35,13 @@ d = datetime.strptime(target_date, "%Y-%m-%d")
 date_cn = f"{d.month}/{d.day}"
 
 # 检查是否已有该日期的条目
-if f"2026-{target_date}-分析报告" in content:
+if f"{target_date}-分析报告" in content:
     print(f"  index.html 已包含 {target_date} 的条目，跳过")
     sys.exit(0)
 
 # 在ANALYSIS数组第一个元素前插入新条目
 # 格式: { date: "6/21", matches: "...", href: "分析/2026-06-21-分析报告.html" },
-new_entry = f'        {{ date: "{date_cn}", matches: "世界杯赛事", href: "分析/2026-{target_date}-分析报告.html" }},'
+new_entry = f'        {{ date: "{date_cn}", matches: "世界杯赛事", href: "分析/{target_date}-分析报告.html" }},'
 
 # 找到ANALYSIS数组的第一个元素并在前面插入
 pattern = r'(const ANALYSIS\s*=\s*\[)'
