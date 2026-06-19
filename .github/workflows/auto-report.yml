@@ -1,4 +1,4 @@
-name: 🏆 世界杯自动分析报告生成
+name: 🏆 世界杯数据采集 (阶段1: 一至四)
 
 on:
   # 北京时间 12:00 = UTC 04:00
@@ -14,11 +14,11 @@ on:
         default: ''
 
 jobs:
-  generate-report:
+  collect-data:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write  # 允许推送到仓库
+      contents: write
     
     steps:
       - name: 📥 Checkout 仓库
@@ -44,45 +44,43 @@ jobs:
             echo "TARGET_DATE=$TARGET" >> $GITHUB_ENV
           fi
       
-      - name: 🔍 采集API数据 + 生成HTML报告
+      - name: 🔍 采集数据（一至四：基础实力+状态+战术+赔率）
         env:
           APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
           ODDS_KEY: ${{ secrets.ODDS_KEY }}
           ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
           TAVILY_KEY: ${{ secrets.TAVILY_KEY }}
-          # 仓库根目录（脚本会输出到 分析/ 目录）
-          REPORT_OUTPUT_DIR: ${{ github.workspace }}/分析
+          # JSON数据输出到 data/ 目录
+          DATA_OUTPUT_DIR: ${{ github.workspace }}/data
         run: |
           cd scripts
-          python auto_generate_report.py $TARGET_DATE
-          echo "=== 采集和生成完成 ==="
-      
-      - name: 📋 更新 index.html（插入新报告链接）
-        run: |
-          python scripts/update_index.py $TARGET_DATE || echo "index.html 更新跳过（无比赛）"
+          python collect_data.py $TARGET_DATE --output-dir $DATA_OUTPUT_DIR
+          echo "=== 数据采集完成 ==="
       
       - name: 🔧 配置 Git
         run: |
           git config user.name "World Cup Bot 🤖"
           git config user.email "bot@worldcup.imiaozhan.com"
       
-      - name: 📤 提交并推送到 GitHub Pages
+      - name: 📤 提交并推送JSON数据
         run: |
-          git add 分析/ index.html 2>/dev/null || true
-          # 检查是否有变更
+          git add data/*.json 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "⚠️ 无变更，可能当天无世界杯比赛"
+            echo "⚠️ 无数据变更，可能当天无世界杯比赛或数据未更新"
           else
-            git commit -m "🤖 v29.0 自动生成 $TARGET_DATE 量化分析报告 [skip ci]"
+            git commit -m "📊 v30.0 数据采集 $TARGET_DATE (一至四) [skip ci]"
             git push
-            echo "✅ 报告已推送: $TARGET_DATE"
+            echo "✅ JSON数据已推送: data/$TARGET_DATE.json"
           fi
       
       - name: 📊 完成统计
         run: |
           echo "============================================"
-          echo "✅ 自动报告生成流程完成"
+          echo "✅ 阶段1数据采集完成"
           echo "目标日期: $TARGET_DATE"
-          echo "在线地址: https://worldcup.imiaozhan.com"
-          ls -la 分析/ | grep $TARGET_DATE || echo "（当天无比赛，跳过）"
+          echo "输出文件: data/$TARGET_DATE.json"
+          ls -la data/ | grep "$TARGET_DATE" || echo "（当天无比赛）"
+          echo ""
+          echo "📍 下一步: 本地运行 generate_full_report.py"
+          echo "   命令: python generate_full_report.py $TARGET_DATE"
           echo "============================================"
