@@ -48,6 +48,7 @@ jobs:
         env:
           APIFOOTBALL_KEY: ${{ secrets.APIFOOTBALL_KEY }}
           ODDS_KEY: ${{ secrets.ODDS_KEY }}
+          ODDSPAPI_KEY: ${{ secrets.ODDSPAPI_KEY }}
           TAVILY_KEY: ${{ secrets.TAVILY_KEY }}
           # 仓库根目录（脚本会输出到 分析/ 目录）
           REPORT_OUTPUT_DIR: ${{ github.workspace }}/分析
