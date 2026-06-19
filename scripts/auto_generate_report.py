@@ -132,8 +132,8 @@ def format_date_cn(date_str):
 # HTML报告生成
 # ====================================================
 
-def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a, analysis_text):
-    """生成单场比赛的HTML分析卡片"""
+def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a, analysis_text, oddspapi_odds=None, pred_data=None, injuries=None):
+    """生成单场比赛的详细HTML分析卡片"""
     
     fix = match_data.get("fixture", {})
     risk, risk_icon = risk_level(probs["home"], probs["away"], probs["draw"])
@@ -156,12 +156,6 @@ def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a
     elo_h, elo_a = compute_elo_rating(home, away)
     elo_diff = elo_h - elo_a
     
-    # 欧赔字符串
-    if euro_odds:
-        odds_str = f"主{euro_odds['home']:.2f} / 平{euro_odds['draw']:.2f} / 客{euro_odds['away']:.2f}"
-    else:
-        odds_str = "赔率数据待更新"
-    
     # 场地和时间
     venue = fix.get("venue", "")
     city = fix.get("city", "")
@@ -175,6 +169,130 @@ def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a
             time_cn = ""
     else:
         time_cn = ""
+    
+    # ===== OddsPAPI赔率面板 =====
+    odds_panel_html = ""
+    if oddspapi_odds and oddspapi_odds.get("1x2"):
+        od_1x2 = oddspapi_odds["1x2"]
+        odds_panel_html = f"""
+  <!-- 盘口与赔率面板 -->
+  <div class="section">
+    <div class="section-title">📈 四、盘口与赔率分析 (Pinnacle)</div>
+    <div class="odds-grid">
+      <div class="odds-card">
+        <div class="odds-card-title">欧赔 1X2</div>
+        <div class="odds-card-row"><span class="home-color">{home}胜</span><span class="odds-num">{od_1x2['home']:.2f}</span><span class="implied-prob">{round(1/od_1x2['home']*100,1)}%</span></div>
+        <div class="odds-card-row"><span class="gold-color">平局</span><span class="odds-num">{od_1x2['draw']:.2f}</span><span class="implied-prob">{round(1/od_1x2['draw']*100,1)}%</span></div>
+        <div class="odds-card-row"><span class="away-color">{away}胜</span><span class="odds-num">{od_1x2['away']:.2f}</span><span class="implied-prob">{round(1/od_1x2['away']*100,1)}%</span></div>
+      </div>"""
+        
+        # 亚盘
+        if oddspapi_odds.get("ah_main"):
+            ah = oddspapi_odds["ah_main"]
+            line_str = f"{ah['line']:+.2f}" if ah['line'] != 0 else "0.00"
+            odds_panel_html += f"""
+      <div class="odds-card">
+        <div class="odds-card-title">亚盘 主盘 {line_str}</div>
+        <div class="odds-card-row"><span class="home-color">{home} {line_str}</span><span class="odds-num">{ah['home']:.2f}</span></div>
+        <div class="odds-card-row"><span class="away-color">{away} {abs(ah['line']):+.2f}</span><span class="odds-num">{ah['away']:.2f}</span></div>
+      </div>"""
+        
+        # 大小球
+        if oddspapi_odds.get("ou25"):
+            ou = oddspapi_odds["ou25"]
+            odds_panel_html += f"""
+      <div class="odds-card">
+        <div class="odds-card-title">大小球 2.5</div>
+        <div class="odds-card-row"><span>大2.5</span><span class="odds-num">{ou['over']:.2f}</span><span class="implied-prob">{round(1/ou['over']*100,1)}%</span></div>
+        <div class="odds-card-row"><span>小2.5</span><span class="odds-num">{ou['under']:.2f}</span><span class="implied-prob">{round(1/ou['under']*100,1)}%</span></div>
+      </div>"""
+        
+        # BTTS
+        if oddspapi_odds.get("btts"):
+            bt = oddspapi_odds["btts"]
+            odds_panel_html += f"""
+      <div class="odds-card">
+        <div class="odds-card-title">BTTS 双方进球</div>
+        <div class="odds-card-row"><span>是</span><span class="odds-num">{bt['yes']:.2f}</span><span class="implied-prob">{round(1/bt['yes']*100,1)}%</span></div>
+        <div class="odds-card-row"><span>否</span><span class="odds-num">{bt['no']:.2f}</span><span class="implied-prob">{round(1/bt['no']*100,1)}%</span></div>
+      </div>"""
+        
+        odds_panel_html += """
+    </div>"""
+        
+        # 全部亚盘线
+        all_ah = oddspapi_odds.get("all_ah", {})
+        if all_ah:
+            odds_panel_html += '<div class="ah-table"><div class="ah-table-title">完整亚盘盘口</div><div class="ah-lines">'
+            for line_key in sorted(all_ah.keys(), key=float):
+                line_data = all_ah[line_key]
+                line_f = float(line_key)
+                h_odds = line_data.get("home", "?")
+                a_odds = line_data.get("away", "?")
+                odds_panel_html += f'<span class="ah-chip">{line_f:+.2f}: 主{h_odds} / 客{a_odds}</span>'
+            odds_panel_html += '</div></div>'
+        
+        # 全部大小球线
+        all_ou = oddspapi_odds.get("all_ou", {})
+        if all_ou:
+            odds_panel_html += '<div class="ah-table"><div class="ah-table-title">完整大小球盘口</div><div class="ah-lines">'
+            for line_key in sorted(all_ou.keys(), key=float):
+                line_data = all_ou[line_key]
+                o_odds = line_data.get("over", "?")
+                u_odds = line_data.get("under", "?")
+                odds_panel_html += f'<span class="ah-chip">{float(line_key):.1f}: 大{o_odds} / 小{u_odds}</span>'
+            odds_panel_html += '</div></div>'
+        
+        odds_panel_html += '</div>'
+    else:
+        # 没有OddsPAPI数据时的备选
+        if euro_odds:
+            odds_str = f"主{euro_odds['home']:.2f} / 平{euro_odds['draw']:.2f} / 客{euro_odds['away']:.2f}"
+        else:
+            odds_str = "赔率数据待更新"
+        odds_panel_html = f"""
+  <div class="section">
+    <div class="section-title">📈 四、盘口与赔率分析</div>
+    <div class="odds-row">
+      <div class="odds-item"><div class="odds-label">欧赔</div><div class="odds-value">{odds_str}</div></div>
+      <div class="odds-item"><div class="odds-label">ELO差</div><div class="odds-value">{elo_diff:+d} ({home if elo_diff > 0 else away} 占优)</div></div>
+      <div class="odds-item"><div class="odds-label">场均xG</div><div class="odds-value">{home} {xg_h:.2f} / {away} {xg_a:.2f}</div></div>
+    </div>
+  </div>"""
+    
+    # ===== 伤病信息 =====
+    injuries_html = ""
+    if injuries:
+        inj_text_parts = []
+        for inj in injuries[:8]:
+            player = inj.get("player", {}).get("name", "?")
+            team = inj.get("team", {}).get("name", "?")
+            reason = inj.get("player", {}).get("reason", "?")
+            status = inj.get("player", {}).get("status", "?")
+            inj_text_parts.append(f"• {player} ({team}) - {reason} [{status}]")
+        if inj_text_parts:
+            injuries_html = f"""
+  <div class="section">
+    <div class="section-title">🏥 伤病信息</div>
+    <div class="injuries-text">{'<br>'.join(inj_text_parts)}</div>
+  </div>"""
+    
+    # ===== API-FOOTBALL预测 =====
+    pred_html = ""
+    if pred_data:
+        pred_advice = pred_data.get("predictions", {}).get("advice", "")
+        pred_percent = pred_data.get("predictions", {}).get("percent", {})
+        if pred_advice or pred_percent:
+            pred_str = ""
+            if pred_percent:
+                pred_str = f"API预测胜率: 主{pred_percent.get('home','?')}% / 平{pred_percent.get('draw','?')}% / 客{pred_percent.get('away','?')}%"
+            if pred_advice:
+                pred_str += f"<br>建议: {pred_advice}"
+            pred_html = f"""
+  <div class="section">
+    <div class="section-title">🤖 API-FOOTBALL 预测</div>
+    <div class="pred-text">{pred_str}</div>
+  </div>"""
     
     html = f"""
 <div class="match-card" id="{home}vs{away}">
@@ -199,11 +317,59 @@ def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a
         <div class="elo-badge">ELO {elo_a}</div>
       </div>
     </div>
+    <div class="elo-bar">
+      <div class="elo-bar-home" style="width:{elo_h/(elo_h+elo_a)*100:.1f}%">{elo_h}</div>
+      <div class="elo-bar-away" style="width:{elo_a/(elo_h+elo_a)*100:.1f}%">{elo_a}</div>
+    </div>
   </div>
 
-  <!-- 概率模型 -->
+  <!-- 一、基础实力分析 -->
   <div class="section">
-    <div class="section-title">📊 概率模型 (ELO + 欧赔融合)</div>
+    <div class="section-title">📊 一、基础实力分析</div>
+    <div class="stat-grid">
+      <div class="stat-col">
+        <div class="stat-team-name home-color">{home}</div>
+        <div class="stat-row"><span>ELO评级</span><span>{elo_h}</span></div>
+        <div class="stat-row"><span>场均xG</span><span>{xg_h:.2f}</span></div>
+        <div class="stat-row"><span>实力等级</span><span>{'世界前10' if elo_h >= 1950 else '世界前20' if elo_h >= 1850 else '世界前40' if elo_h >= 1750 else '挑战者'}</span></div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-team-name away-color">{away}</div>
+        <div class="stat-row"><span>ELO评级</span><span>{elo_a}</span></div>
+        <div class="stat-row"><span>场均xG</span><span>{xg_a:.2f}</span></div>
+        <div class="stat-row"><span>实力等级</span><span>{'世界前10' if elo_a >= 1950 else '世界前20' if elo_a >= 1850 else '世界前40' if elo_a >= 1750 else '挑战者'}</span></div>
+      </div>
+    </div>
+    <div class="elo-diff-bar">
+      <div class="elo-diff-label">ELO差距: {abs(elo_diff)} 分 ({home if elo_diff > 0 else away} {'占优' if elo_diff != 0 else '均势'})</div>
+    </div>
+  </div>
+
+  <!-- 二、状态分析 -->
+  <div class="section">
+    <div class="section-title">🔄 二、状态分析</div>
+    <div class="analysis-text-small">
+      • 世界杯小组赛阶段，各队备战状态各异<br>
+      • ELO差距 {abs(elo_diff)} 分 {'→ 实力差距明显，强队需证明稳定性' if abs(elo_diff) > 100 else '→ 双方实力接近，临场状态成关键'}<br>
+      • xG比 {xg_h/xg_a:.2f} → {'进攻效率差距显著' if abs(xg_h/xg_a - 1) > 0.3 else '进攻效率接近'}
+    </div>
+  </div>
+
+  <!-- 三、战术克制分析 -->
+  <div class="section">
+    <div class="section-title">⚔️ 三、战术克制分析</div>
+    <div class="analysis-text-small">
+      • ELO {max(elo_h, elo_a)} vs {min(elo_h, elo_a)} → {'强队控球+弱队反击格局' if abs(elo_diff) > 100 else '中场争夺+互有机会'}<br>
+      • xG差 {abs(xg_h - xg_a):.2f} → {'一方进攻端有明显优势' if abs(xg_h - xg_a) > 0.4 else '双方进攻能力接近'}<br>
+      • 世界杯赛场压力下，{'防守反击可能是弱队最优策略' if abs(elo_diff) > 100 else '控球权争夺将决定比赛走向'}
+    </div>
+  </div>
+
+  {odds_panel_html}
+
+  <!-- 五、概率模型 -->
+  <div class="section">
+    <div class="section-title">🎯 五、概率模型 (ELO + 欧赔融合 + 泊松)</div>
     <div class="prob-row">
       <div class="prob-col home-prob">
         <div class="prob-label">{home} 胜</div>
@@ -222,39 +388,35 @@ def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a
       </div>
     </div>
     <div class="sub-probs">
-      <span>进球数: 大于2.5球 {over25}% / 小于2.5球 {100-over25:.1f}%</span>
-      <span style="margin-left:2em">BTTS(双方进球): {btts}%</span>
+      <span>大2.5球: <strong>{over25}%</strong> / 小2.5球: <strong>{100-over25:.1f}%</strong></span>
+      <span style="margin-left:2em">BTTS(双方进球): <strong>{btts}%</strong></span>
+    </div>
+    <div class="score-matrix">
+      <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+      <div class="score-chips">
+        {''.join(f'<span class="score-chip">{s} <em>({p}%)</em></span>' for s, p in top_scores[:5])}
+      </div>
     </div>
   </div>
 
-  <!-- 赔率分析 -->
+  <!-- 六、比赛推演 -->
   <div class="section">
-    <div class="section-title">📈 盘口与赔率分析</div>
-    <div class="odds-row">
-      <div class="odds-item">
-        <div class="odds-label">欧赔</div>
-        <div class="odds-value">{odds_str}</div>
-      </div>
-      <div class="odds-item">
-        <div class="odds-label">ELO差</div>
-        <div class="odds-value">{elo_diff:+d} ({home if elo_diff > 0 else away} 占优)</div>
-      </div>
-      <div class="odds-item">
-        <div class="odds-label">场均xG</div>
-        <div class="odds-value">{home} {xg_h:.2f} / {away} {xg_a:.2f}</div>
-      </div>
+    <div class="section-title">🎬 六、比赛推演</div>
+    <div class="analysis-text-small">
+      • <strong>上半场节奏</strong>: {'ELO较高方' + ('(' + home + ')') if elo_diff > 0 else ('(' + away + ')') if elo_diff < 0 else '双方'} 倾向于控制节奏<br>
+      • <strong>谁先控球</strong>: {'实力占优方主导控球' if abs(elo_diff) > 100 else '中场争夺激烈，控球权交替'}<br>
+      • <strong>先进球概率</strong>: {'xG较高方(' + (home if xg_h > xg_a else away) + ')更容易先破门' if abs(xg_h - xg_a) > 0.3 else '双方进球机会接近'}<br>
+      • <strong>落后变化</strong>: {'弱队落后可能加强进攻，暴露防守空当' if abs(elo_diff) > 100 else '落后方需冒险前压，比赛可能更加开放'}<br>
+      • <strong>走势判断</strong>: {'预计' + (home if elo_diff > 0 else away) + '掌控节奏，' + (home if elo_diff < 0 else away) + '伺机反击' if abs(elo_diff) > 100 else '势均力敌，细节决定胜负'}
     </div>
   </div>
 
-  <!-- 七步分析 -->
-  <div class="section analysis-section">
-    <div class="section-title">🔬 深度分析</div>
-    <div class="analysis-text">{analysis_text}</div>
-  </div>
+  {injuries_html}
+  {pred_html}
 
-  <!-- 最终结论 -->
+  <!-- 七、最终结论 -->
   <div class="conclusion-panel">
-    <div class="conclusion-header">⚡ 量化分析结论</div>
+    <div class="conclusion-header">⚡ 七、量化分析结论</div>
     <div class="conclusion-body">
       <div class="score-recommendation">
         <div class="rec-label">最可能比分</div>
@@ -265,13 +427,17 @@ def generate_match_html(home, away, mk, match_data, probs, euro_odds, xg_h, xg_a
         <div class="verdict-main">主推: <strong>{verdict}</strong></div>
         <div class="verdict-conf">置信度: {round(fav_prob*100, 1)}%</div>
         <div class="verdict-scores">
-          {''.join(f'<span class="score-chip">{s} ({p}%)</span>' for s, p in top_scores[:3])}
+          {''.join(f'<span class="score-chip">{s} ({p}%)</span>' for s, p in top_scores[:4])}
+        </div>
+        <div class="verdict-note">
+          📌 关键变量: ELO差距({abs(elo_diff)}) · xG比({xg_h/xg_a:.2f}) · {'欧赔一致性' if euro_odds else 'ELO主导'}
         </div>
       </div>
       <div class="risk-block risk-bg-{risk.lower()}">
         <div class="risk-label">风险等级</div>
         <div class="risk-value">{risk_icon} {risk}</div>
         <div class="btts-note">BTTS: {btts}%</div>
+        <div class="btts-note">大2.5: {over25}%</div>
       </div>
     </div>
   </div>
@@ -300,7 +466,10 @@ def generate_full_report(target_date, match_data_all, analysis_inputs):
         xg_h = ai.get("xg_home", 1.3)
         xg_a = ai.get("xg_away", 0.9)
         analysis_text = ai.get("analysis_text", "分析数据更新中...")
-        matches_html += generate_match_html(home, away, mk, md, probs, euro_odds, xg_h, xg_a, analysis_text)
+        oddspapi_odds = ai.get("oddspapi_odds")
+        pred_data = ai.get("pred_data")
+        injuries = ai.get("injuries")
+        matches_html += generate_match_html(home, away, mk, md, probs, euro_odds, xg_h, xg_a, analysis_text, oddspapi_odds, pred_data, injuries)
     
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -395,6 +564,34 @@ body {{ background: var(--bg-deep); color: var(--text-primary); font-family: 'SF
 .odds-label {{ font-size: 0.75em; color: var(--text-secondary); margin-bottom: 4px; }}
 .odds-value {{ font-size: 0.9em; font-weight: 600; color: var(--text-primary); }}
 
+/* OddsPAPI赔率面板 */
+.odds-grid {{ display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }}
+.odds-card {{ flex: 1; min-width: 160px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }}
+.odds-card-title {{ font-size: 0.8em; font-weight: 700; color: var(--gold); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }}
+.odds-card-row {{ display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; padding: 3px 0; }}
+.odds-num {{ font-weight: 700; color: var(--text-primary); font-size: 1.05em; }}
+.implied-prob {{ font-size: 0.78em; color: var(--text-secondary); min-width: 40px; text-align: right; }}
+
+/* 亚盘/大小球完整盘口表 */
+.ah-table {{ margin-top: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }}
+.ah-table-title {{ font-size: 0.78em; color: var(--text-secondary); margin-bottom: 8px; }}
+.ah-lines {{ display: flex; flex-wrap: wrap; gap: 6px; }}
+.ah-chip {{ font-size: 0.78em; background: rgba(96,165,250,0.06); border: 1px solid rgba(96,165,250,0.15); padding: 3px 8px; border-radius: 10px; color: var(--text-secondary); }}
+
+/* ELO对比条 */
+.elo-bar {{ display: flex; margin-top: 16px; height: 6px; border-radius: 3px; overflow: hidden; }}
+.elo-bar-home {{ background: var(--blue-bright); display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: 0.65em; color: #0a0f1e; font-weight: 700; }}
+.elo-bar-away {{ background: var(--orange); display: flex; align-items: center; padding-left: 6px; font-size: 0.65em; color: #0a0f1e; font-weight: 700; }}
+
+/* 统计网格 */
+.stat-grid {{ display: flex; gap: 16px; }}
+.stat-col {{ flex: 1; }}
+.stat-team-name {{ font-size: 1.05em; font-weight: 700; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }}
+.stat-row {{ display: flex; justify-content: space-between; font-size: 0.85em; padding: 3px 0; color: var(--text-secondary); }}
+.stat-row span:last-child {{ color: var(--text-primary); font-weight: 600; }}
+.elo-diff-bar {{ margin-top: 12px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 6px; text-align: center; }}
+.elo-diff-label {{ font-size: 0.85em; color: var(--text-secondary); }}
+
 /* 分析文本 */
 .analysis-text {{
   font-size: 0.88em;
@@ -402,6 +599,26 @@ body {{ background: var(--bg-deep); color: var(--text-primary); font-family: 'SF
   color: var(--text-secondary);
   white-space: pre-wrap;
 }}
+.analysis-text-small {{
+  font-size: 0.85em;
+  line-height: 2;
+  color: var(--text-secondary);
+}}
+.analysis-text-small strong {{ color: var(--blue-bright); }}
+
+/* 比分矩阵 */
+.score-matrix {{ margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px; }}
+.score-matrix-title {{ font-size: 0.78em; color: var(--text-secondary); margin-bottom: 8px; }}
+.score-chips {{ display: flex; gap: 6px; flex-wrap: wrap; }}
+.score-chip {{ background: rgba(255,255,255,0.06); border: 1px solid var(--border); padding: 4px 10px; border-radius: 12px; font-size: 0.82em; color: var(--gold); }}
+.score-chip em {{ font-style: normal; color: var(--text-secondary); font-size: 0.9em; }}
+
+/* 伤病/预测 */
+.injuries-text {{ font-size: 0.85em; line-height: 1.8; color: var(--red); }}
+.pred-text {{ font-size: 0.85em; line-height: 1.8; color: var(--text-secondary); }}
+
+/* 结论说明 */
+.verdict-note {{ margin-top: 8px; font-size: 0.78em; color: var(--text-secondary); }}
 
 /* 结论面板 */
 .conclusion-panel {{
@@ -474,7 +691,7 @@ body {{ background: var(--bg-deep); color: var(--text-primary); font-family: 'SF
 </div>
 
 <div class="footer">
-  <p>数据来源: API-FOOTBALL · Odds API · ELO评级系统 · xG模型</p>
+  <p>数据来源: API-FOOTBALL · OddsPAPI.io(Pinnacle赔率) · ELO评级系统 · xG模型 · 泊松分布</p>
   <p style="margin-top:6px">worldcup.imiaozhan.com | 每天北京时间12:00自动更新</p>
 </div>
 
@@ -526,13 +743,20 @@ if __name__ == "__main__":
         elo_h, elo_a = compute_elo_rating(home, away)
         elo_prob = compute_elo_prob(elo_h, elo_a)
         
-        # 尝试从API-FOOTBALL获取欧赔
+        # 优先使用OddsPAPI的1X2赔率
+        oddspapi_odds = md.get("odds_oddspapi", {})
+        odds_1x2 = oddspapi_odds.get("1x2") if oddspapi_odds else None
+        
+        # 备选: API-FOOTBALL的欧赔
         from api_data_collector import parse_euro_odds
         euro_odds = parse_euro_odds(md.get("odds_af", {}))
         
         # 融合概率
-        if euro_odds:
-            from api_data_collector import odds_to_prob, blended_prob
+        if odds_1x2:
+            euro_prob = odds_to_prob(odds_1x2["home"], odds_1x2["draw"], odds_1x2["away"])
+            final_prob = blended_prob(euro_prob, elo_prob, 0.6, 0.4)
+            euro_odds = odds_1x2  # 用OddsPAPI的作为主赔率
+        elif euro_odds:
             euro_prob = odds_to_prob(euro_odds["home"], euro_odds["draw"], euro_odds["away"])
             final_prob = blended_prob(euro_prob, elo_prob, 0.6, 0.4)
         else:
@@ -544,23 +768,54 @@ if __name__ == "__main__":
         xg_h = round(base_xg * xg_ratio, 2)
         xg_a = round(base_xg / xg_ratio, 2)
         
+        # 如果有OddsPAPI大小球赔率，用赔率反推xG
+        if oddspapi_odds and oddspapi_odds.get("ou25"):
+            ou = oddspapi_odds["ou25"]
+            over_prob = 1 / ou["over"]
+            under_prob = 1 / ou["under"]
+            total_prob = over_prob + under_prob
+            over_pct = over_prob / total_prob
+            # 大2.5球概率 → 隐含总进球期望
+            # 泊松分布: P(total>2.5) ≈ 1 - P(0) - P(1) - P(2)
+            # 近似: 如果over_pct ≈ 0.55, 总xG ≈ 2.8; over_pct ≈ 0.45, 总xG ≈ 2.3
+            implied_total_xg = -2.5 / math.log(max(over_pct, 0.01)) if over_pct < 0.95 else 5.0
+            implied_total_xg = max(1.5, min(implied_total_xg, 5.0))
+            # 按ELO比例分配
+            xg_h = round(implied_total_xg * elo_h / (elo_h + elo_a), 2)
+            xg_a = round(implied_total_xg * elo_a / (elo_h + elo_a), 2)
+        
         # 泊松概率
-        from api_data_collector import poisson_btts
         poisson = poisson_btts(xg_h, xg_a)
         final_prob.update(poisson)
         
+        # 如果有OddsPAPI的BTTS和大小球，用赔率修正概率
+        if oddspapi_odds:
+            if oddspapi_odds.get("btts"):
+                bt = oddspapi_odds["btts"]
+                btts_prob = (1/bt["yes"]) / (1/bt["yes"] + 1/bt["no"])
+                final_prob["btts"] = round(btts_prob, 4)
+            if oddspapi_odds.get("ou25"):
+                ou = oddspapi_odds["ou25"]
+                over_prob = (1/ou["over"]) / (1/ou["over"] + 1/ou["under"])
+                final_prob["over25"] = round(over_prob, 4)
+                final_prob["under25"] = round(1 - over_prob, 4)
+        
         # API-FOOTBALL预测文字
         pred_data = md.get("predictions", {})
+        
+        # 伤病数据
+        injuries = md.get("injuries", [])
+        
+        # 构建分析文本
         pred_advice = pred_data.get("predictions", {}).get("advice", "") if pred_data else ""
         
-        # 构建分析文本（七步框架骨架，实际AI推演请在此补充）
         analysis_text = f"""【基础实力】{home}(ELO {elo_h}) vs {away}(ELO {elo_a})，差距 {abs(elo_h-elo_a)} 分。
 {'ELO占优方：' + (home if elo_h > elo_a else away) + ' → 期望优势显著' if abs(elo_h-elo_a) > 100 else 'ELO差距较小，双方实力接近'}
 
 【概率模型】主场胜率{elo_prob['home']*100:.1f}% / 平局{elo_prob['draw']*100:.1f}% / 客场胜率{elo_prob['away']*100:.1f}%
-大于2.5球: {poisson['over25']*100:.1f}% | BTTS: {poisson['btts']*100:.1f}%
+大于2.5球: {final_prob.get('over25', 0.5)*100:.1f}% | BTTS: {final_prob.get('btts', 0.4)*100:.1f}%
 
-【盘口信号】{'欧赔: 主' + str(euro_odds['home']) + ' / 平' + str(euro_odds['draw']) + ' / 客' + str(euro_odds['away']) if euro_odds else '赔率数据采集中，以ELO为主'}
+【盘口信号】{'欧赔: 主' + str(odds_1x2['home']) + ' / 平' + str(odds_1x2['draw']) + ' / 客' + str(odds_1x2['away']) if odds_1x2 else '赔率数据采集中，以ELO为主'}
 
 【最可能比分】{' | '.join([s + '(' + str(p) + '%)' for s, p in poisson['top_scores'][:3]])}
 
@@ -572,6 +827,9 @@ if __name__ == "__main__":
             "xg_home": xg_h,
             "xg_away": xg_a,
             "analysis_text": analysis_text,
+            "oddspapi_odds": oddspapi_odds,
+            "pred_data": pred_data,
+            "injuries": injuries,
         }
     
     # 步骤3: 生成HTML
