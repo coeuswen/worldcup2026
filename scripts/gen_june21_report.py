@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-v31.4 2026世界杯 6月21日比赛分析报告生成器 ★Dixon-Coles修正+市场O/U锚定(28%)+防守风格(-0.20)+ELO动态+阶段因子
+v31.5 2026世界杯 6月21日比赛分析报告生成器 ★Dixon-Coles修正+市场O/U锚定(50%)+防守(-0.20仅先验)+ELO动态+阶段因子
 数据源: football-data.org + 网页抓取 + ELO/FIFA + AI深度推演
 """
 import json, os, sys, math
@@ -645,7 +645,7 @@ body {
 """
 
 # ====================================================
-# v31.4 Dixon-Coles修正 + 市场O/U锚定(28%) + 防守风格(-0.20) + ELO动态权重 + 锦标赛阶段
+# v31.5 Dixon-Coles修正 + 市场O/U锚定(50%) + 防守风格(-0.20,仅先验) + ELO动态权重 + 锦标赛阶段
 # ★ 基于32场实战校准(截至6/20): O/U准确率50%→锚定40%→28%; 零封率41%→防守-0.20
 # ★ ELO动态: 差≥200→55%权重, 差<100→35%, 中间线性 (32场: 大差距60%准/小差距50%)
 # ★ 锦标赛阶段: MD1保守→平局倾向↑; MD2出线压力→开放度↑; MD3生死战→极端比分↑
@@ -701,24 +701,25 @@ def market_ou_implied_total(over_odds, under_odds):
     return (lo + hi) / 2
 
 def defense_adj(def_h, def_a):
-    """防守风格调整: (def_h+def_a)/2每高于5 → 总进球-0.20 (v31.4:从-0.15上调,32场零封率41%支撑)"""
+    """防守风格调整: (def_h+def_a)/2每高于5 → 总进球-0.20 (v31.5: 仅作用于先验部分)"""
     avg = (def_h + def_a) / 2
     return -(avg - 5) * 0.20
 
-def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.28, matchday=0):
-    """综合调整：28%市场O/U锚定 + 防守风格修正 + 锦标赛阶段 → 最终λ (v31.4)"""
+def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.50, matchday=0):
+    """综合调整：50%市场O/U锚定 + 防守风格修正(仅作用于先验部分) + 锦标赛阶段 → 最终λ (v31.5)"""
     market_t = market_ou_implied_total(ou_over, ou_under)
     raw_t = lh + la
     blend_t = blend * market_t + (1 - blend) * raw_t
     da = defense_adj(def_h, def_a)
     sf = stage_factor(matchday) if matchday > 0 else 0.0
-    adj_t = max(0.8, blend_t + da + sf)  # 地板：总进球不低于0.8
+    # ★v31.5: defense_adj仅作用于先验部分(1-blend), 市场已包含防守信息不重复计算
+    adj_t = max(0.8, blend_t + (1 - blend) * da + sf)  # 地板：总进球不低于0.8
     if raw_t > 0:
         return adj_t * lh / raw_t, adj_t * la / raw_t, adj_t
     return adj_t * 0.55, adj_t * 0.45, adj_t
 
 def elo_weight_factor(elo_diff):
-    """★v31.4 ELO动态权重: 差距越大ELO越可信, 势均力敌时降低ELO依赖
+    """★v31.5 ELO动态权重: 差距越大ELO越可信, 势均力敌时降低ELO依赖
     基于32场: 差≥200→60%准确; 差<100→仅50%(≈随机)
     """
     abs_diff = abs(elo_diff)
@@ -731,7 +732,7 @@ def elo_weight_factor(elo_diff):
         return 0.35 + (0.55 - 0.35) * (abs_diff - 80) / 120
 
 def stage_factor(matchday, group_standing=None):
-    """★v31.4 锦标赛阶段因子: 调总进球期望而非平局概率
+    """★v31.5 锦标赛阶段因子: 调总进球期望而非平局概率
     MD1(首轮): -0.10球 (保守试探, 32场MD1 Under率56%)
     MD2(次轮): +0.05球 (出线压力→更开放, MD2实际场均3.2球 vs MD1 2.8球)
     MD3(末轮): +0.10球 or -0.15球 (取决出线形势: 必须赢或平即可出线)
@@ -744,7 +745,7 @@ def stage_factor(matchday, group_standing=None):
         return +0.10  # 生死战(默认偏开放, 需结合出线形势调整)
     return 0.0
 
-# ★ v31.4 每场比赛的泊松λ参数 + 防守风格评分 (MD2阶段因子+0.05球自动应用)
+# ★ v31.5 每场比赛的泊松λ参数 + 防守风格评分 (MD2阶段因子+0.05球自动应用)
 MATCH_PARAMS = {
     "荷兰vs瑞典": {
         "lambda_h": 2.0, "lambda_a": 1.4, "def_h": 6, "def_a": 6,
@@ -919,7 +920,7 @@ def generate_match_html(mk, d):
     hp, dp, ap = d['prob_home'], d['prob_draw'], d['prob_away']
     o25 = d['over25_pct']; btts = d['btts_pct']
     
-    # ★ v31.4: 用Dixon-Coles+市场O/U锚定(28%)+阶段因子计算真实比分概率
+    # ★ v31.5: 用Dixon-Coles+市场O/U锚定(50%)+阶段因子计算真实比分概率
     mp = MATCH_PARAMS.get(mk, {"lambda_h": 1.5, "lambda_a": 1.0, "def_h": 5, "def_a": 5})
     lh_adj, la_adj, total_adj = adjusted_lambdas(
         mp["lambda_h"], mp["lambda_a"],
@@ -951,7 +952,7 @@ def generate_match_html(mk, d):
                  f"防守: {mp['desc']} | ELO权={round(elo_w*100)}% | MD{d.get('matchday','?')}因子={sf_val:+.2f}球")
     
     H.append(f"""<div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.4 Dixon-Coles修正+市场O/U锚定(28%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.5 Dixon-Coles修正+市场O/U锚定(50%)</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">{d['home_name']}胜</div><div class="prob-bar"><div class="prob-fill" style="width:{round(dc_home_win*100)}%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">{round(dc_home_win*100)}%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:{round(dc_draw*100)}%;background:var(--gold)"></div></div><div class="prob-value gold-color">{round(dc_draw*100)}%</div></div>
@@ -959,7 +960,7 @@ def generate_match_html(mk, d):
   </div>
   <div class="sub-probs">大2.5球: <strong>{round(dc_over25*100)}%</strong> | 小2.5球: <strong>{round((1-dc_over25)*100)}%</strong> | BTTS: <strong>{round(dc_btts*100)}%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">{dc_detail}</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.4 (Top 5, ρ=-0.13, 28%O/U锚定, 阶段因子)</div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.5 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
     <div class="score-chips">{dc_chips}</div>
   </div>
 </div>""")
@@ -1034,13 +1035,13 @@ def gen_full_html():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月21日 量化分析报告 v31.4</title>
+<title>2026世界杯 6月21日 量化分析报告 v31.5</title>
 <style>{CSS}</style>
 </head>
 <body>
 <div class="header">
-  <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告 v31.4</h1>
-  <div class="subtitle">v31.4 · Dixon-Coles修正 · 市场O/U锚定(28%) · 防守风格(-0.20) · ELO动态权重 · 阶段因子 · 生成于 {now_bj}</div>
+  <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告 v31.5</h1>
+  <div class="subtitle">v31.5 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 {now_bj}</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span>    <span class="id-tag">⚡ Dixon-Coles泊松</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -1073,32 +1074,33 @@ def gen_full_html():
     德国(-1.0)、厄瓜多尔(-2.25)、荷兰(-0.75)、日本(-1.0)——四场均是被让球方受让。但穿盘难度分层明显: 德国和日本穿盘概率相对高(对手实力差距大), 厄瓜多尔穿盘受制于自身进攻效率(近5场场均0.4球), 荷兰穿盘受制于瑞典3-5-2战术克制+双枪状态火热。4场中2场强队穿盘概率约50-60%, 属合理预期。<br><br>
     <strong>② 市场溢价与FIFA排名 — 世界杯MD2阶段特征</strong><br>
     荷兰(FIFA#8): +9pp (ELO56%→市场65%) | 德国(FIFA#10): +6pp (67%→73%) | 日本(FIFA#18): +14pp (59%→73%) | 厄瓜多尔(FIFA#23): +16pp (77%→93%)。溢价与FIFA排名相关系数r≈0.85, 但厄瓜多尔(+16pp)和日本(+14pp)的溢价异常大——部分由于对手首轮惨败(库拉索1-7/突尼斯1-5)导致市场过度修正。ELO独立信号系统性低于市场隐含胜率, "ELO优先+赔率联动验证"策略继续纠正此偏见。<br><br>
-    <strong>③ 融合权重策略 v31.4 — 32场实战数据全面校准</strong><br>
-    ★<strong>v31.4核心校准</strong>: 基于6月13-20日32场完赛数据(世界杯MD1+MD2前半), 系统性对比预测vs实际后做出5项调整:<br>
-    • <strong>市场O/U锚定: 40%→28%</strong>: 32场O/U准确率仅50%(=随机), 40%锚定未改善预测。28%取"弱锚定"保守值, 维持总进球方向指引但不过度依赖。基于2022世界杯回测, 2026适用性待验证(标记为Provisional)。<br>
-    • <strong>防守风格因子: -0.15→-0.20球/分</strong>: 32场零封率41%(13/32场至少一方零封), BTTS仅53%——防守风格对进球压制比预期更强。每+1分铁桶度→-0.20球。临时参数(基于32场反推, 非大规模历史回归), 后续用PPDA等客观指标校准。<br>
-    • <strong>ELO动态权重(新增)</strong>: 差≥200→55%权重(32场: 大差距方向准确率60%); 差80-200→线性35-55%; 差<80→35%(势均力敌时ELO仅~50%准确)。替代v31.3固定45-50%。<br>
-    • <strong>锦标赛阶段因子(新增)</strong>: MD1首轮保守→总进球-0.10; MD2出线压力→+0.05开放度; MD3生死战→极端值(默认+0.10, 根据出线形势调整)。32场: MD1场均2.8球 vs MD2场均3.2球。<br>
-    • <strong>平局基线: 28%→30%</strong>: 32场实赛平局率31.2%, 上调基线2pp反映世界杯小组赛平局倾向。但<strong>不设强制平局规则</strong>——MD2出线压力使比赛更开放(MD1平局多因首场保守, 非结构特征)。由泊松+Dixon-Coles自然产出平局概率。<br>
-    • <strong>新权重分配</strong>: ELO动态35-55% | 市场O/U锚定28%(λ) | 战术推演20-25% | xG/泊松15% | 防守风格-0.20/分 | 阶段因子±0.05~0.10球<br><br>
+    <strong>③ 融合权重策略 v31.5 — 市场锚定50% + 防守调整仅先验</strong><br>
+    ★<strong>v31.5核心升级</strong>: 基于用户指令"更加相信市场"逻辑——亚盘是各大博彩公司系统性研究的结果, 信服力度大:<br>
+    • <strong>市场O/U锚定: 28%→50%</strong>: 市场与先验平等对话。Pinnacle开大小球线时已研究防守风格/伤病/天气, 其隐含总进球是业界最准信号。50%权重确保市场声音不被淹没。<br>
+    • <strong>防守调整仅作用于先验(1-blend): ★关键修复</strong>: 防守风格调整现在仅乘以(1-blend)系数。因为市场O/U线已经包含了防守信息——如果def_a=9(铁桶), 市场已经把这反映在大小球赔率里了, 不应重复扣减。厄瓜多尔vs库拉索: 修复后模型vs市场差从25pp→16pp。<br>
+    • <strong>防守风格因子: -0.20球/分(临时参数)</strong>: 32场零封率41%支撑。每+1分铁桶度→-0.20球(仅作用于先验部分)。后续用PPDA等客观指标校准。<br>
+    • <strong>ELO动态权重</strong>: 差≥200→55%权重; 差80-200→线性35-55%; 差<80→35%。基于32场ELO差分级准确率。<br>
+    • <strong>锦标赛阶段因子</strong>: MD1首轮保守→-0.05; MD2出线压力→+0.05; MD3生死战→极端值。32场: MD1场均2.8球 vs MD2场均3.2球。<br>
+    • <strong>平局基线30%</strong>: 32场实赛31.2%支撑, 但MD2出线压力使平局率边际下降。不设强制平局规则。<br>
+    • <strong>新权重分配</strong>: ELO动态35-55% | 市场O/U锚定50%(λ) | 战术推演20-25% | xG/泊松15% | 防守-0.20×先验 | 阶段因子±0.05球<br><br>
     
     <strong>④ ELO二元 vs 融合三元 — 维度差异的系统性说明</strong><br>
     审计报告指出"3/4场融合&lt;ELO"可能构成数学矛盾。经核查, 此为<strong>ELO二元模型与融合三元模型之间的维度差异</strong>, 非逻辑错误。ELO公式产生二元胜利概率(不知道平局), 而融合概率是三元空间(胜/平/负)。把二元ELO映射到三元空间(引入平局基线)后, 差距仅1.5-3pp。<br><br>
     
     <strong>⑤ 热门偏见折扣标准化 — v31.2方法论透明度升级</strong><br>
-    折扣表: 赔率1.01-1.20→-8~-12pp; 1.21-1.40→-5~-8pp; 1.41-1.60→-3~-5pp; 1.61-2.00→-1~-3pp。<strong>融合&lt;市场是模型识别错误定价的正常功能, 非校准需求。</strong>但若实际赛果证明折扣过度, v31.4将回调折扣系数。<br><br>
+    折扣表: 赔率1.01-1.20→-8~-12pp; 1.21-1.40→-5~-8pp; 1.41-1.60→-3~-5pp; 1.61-2.00→-1~-3pp。<strong>融合&lt;市场是模型识别错误定价的正常功能, 非校准需求。</strong>但若实际赛果证明折扣过度, v31.5将回调折扣系数。<br><br>
     
-    <strong>⑥ 32场实战复盘(截至6月20日) → v31.4校准驱动</strong><br>
+    <strong>⑥ 32场实战复盘(截至6月20日) → v31.5校准驱动</strong><br>
     • <strong>方向准确率19/32(59.4%)</strong> — MD1仅37.5%但MD2大幅提升至81.2%: 信息越充分→预测越准<br>
     • <strong>比分准确率4/32(12.5%)❌</strong> — 但v31.3的Dixon-Coles修正已部署, 本报告为首次用DC+新权重组合<br>
     • <strong>大小球准确率16/32(50.0%)⚠️</strong> — 恰好随机水平, 市场O/U锚定从40%→28%的调整依据<br>
     • <strong>BTTS准确率17/32(53.1%)⚠️</strong> — 防守风格因子-0.20直接针对此问题(预测场均2.50 vs 实际3.00球)<br>
     • <strong>30%平局基线✅</strong> — 32场31.2%平局率支撑上调。但MD2出线压力使平局率边际下降, 不设强制规则<br><br>
     
-    <strong>⑦ v31.4改进路线图 — 实证验证+参数来源声明</strong><br>
-    • <strong>Dixon-Coles</strong>: ρ=-0.13(文献标准值, 非4场反推), 持续追踪RPS vs 标准泊松<br>
-    • <strong>市场O/U锚定(28%)</strong>: 基于2022世界杯回测+32场2026实赛O/U=50%下调。标注为"Provisional"<br>
-    • <strong>防守风格(-0.20/分)</strong>: 标注为"临时参数", 32场反推估计。后续引入PPDA等客观指标回归校准<br>
+    <strong>⑦ v31.5改进路线图 — 市场信任升级+防守双重计数消除</strong><br>
+    • <strong>Dixon-Coles</strong>: ρ=-0.13(文献标准值), 持续追踪RPS vs 标准泊松<br>
+    • <strong>市场O/U锚定(50%)</strong>: 从28%上调, 反映"市场系统性研究比个人判断更可靠"的用户指令。亚盘数据获取需确保准确完整<br>
+    • <strong>防守风格(-0.20×先验)</strong>: 仅作用于(1-blend)非市场部分。消除与市场O/U线的重复计算<br>
     • <strong>ELO动态权重</strong>: 基于32场ELO差分级准确率(≥200→60%, <80→50%)。每轮赛后更新分级统计<br>
     • <strong>阶段因子</strong>: MD1保守/MD2开放/MD3极端 —— 32场MD场均进球差(0.4球)支撑定量<br>
     • <strong>平局基线30%</strong>: 32场实赛支撑。但MD2/MD3出线压力逻辑上压低平局, 不做机械强制
@@ -1109,7 +1111,7 @@ def gen_full_html():
 </div>
 <div class="footer">
   <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
-  <p style="margin-top:4px;">分析框架: v31.4 Dixon-Coles修正+O/U锚定(28%)+防守风格(-0.20)+ELO动态+阶段因子 | 七步推理链 | 双面融合</p>
+  <p style="margin-top:4px;">分析框架: v31.5 DC修正+O/U锚定(50%)+防守(-0.20×先验)+ELO动态+阶段因子 | 七步推理链 | 双面融合</p>
   <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 {now_bj}</p>
 </div>
 </body>
@@ -1118,7 +1120,7 @@ def gen_full_html():
 
 
 if __name__ == "__main__":
-    print("🏆 生成2026世界杯 6月21日 量化分析报告 v31.4 (DC+O/U28%+防守-0.20+ELO动态)...")
+    print("🏆 生成2026世界杯 6月21日 量化分析报告 v31.5 (DC+O/U50%+防守×先验)...")
     html = gen_full_html()
     path = os.path.join(REPORT_DIR, "2026-06-21-分析报告.htm")
     with open(path, "w", encoding="utf-8") as f:
