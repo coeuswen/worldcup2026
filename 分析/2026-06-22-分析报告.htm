@@ -207,6 +207,18 @@ body {
 </style>
 </head>
 <body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+
 <div class="header">
   <h1>🏆 2026世界杯 <span>6月22日</span> 量化分析报告</h1>
   <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-20 11:51 北京时间</div>

@@ -80,6 +80,18 @@ tr:hover td { background:rgba(0,212,204,0.04); }
 </style>
 </head>
 <body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+
 <div class="container">
 
 <h1>&#x26BD; 2026世界杯 &#xB7; 6月12日 &#xB7; v21.0 深度分析</h1>

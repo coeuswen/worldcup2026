@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>世界杯2026 赛果预测</title>
+<title>世界杯2026 赛果预测 - 访问验证</title>
 <style>
 :root {
   --bg: #0f0f0f;
@@ -11,11 +11,9 @@
   --text: #e0e0e0;
   --accent: #f5a623;
   --accent2: #d32f2f;
-  --green: #4caf50;
-  --blue: #42a5f5;
-  --pink: #e91e90;
   --muted: #888;
   --border: #2a2a2a;
+  --green: #4caf50;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
@@ -23,180 +21,108 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1.6;
 }
-.header {
+.container {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 400px;
+  width: 90%;
   text-align: center;
-  padding: 48px 20px 32px;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  border-bottom: 3px solid var(--accent);
 }
-.header h1 { font-size: 2.2em; color: #fff; margin-bottom: 8px; }
-.header .subtitle { color: var(--accent); font-size: 1.1em; opacity: 0.9; }
-.header .emoji { font-size: 1.4em; }
-.container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
-.stats-bar {
-  display: flex; justify-content: center; gap: 24px;
-  margin: 20px 0 32px; flex-wrap: wrap;
+.emoji { font-size: 3em; margin-bottom: 16px; }
+h1 { color: var(--accent); font-size: 1.4em; margin-bottom: 8px; }
+.subtitle { color: var(--muted); font-size: 0.9em; margin-bottom: 28px; }
+label { display: block; color: var(--muted); font-size: 0.85em; margin-bottom: 6px; text-align: left; }
+input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.1em;
+  text-align: center;
+  letter-spacing: 4px;
+  outline: none;
+  transition: border-color 0.2s;
 }
-.stat {
-  text-align: center; background: var(--card-bg);
-  padding: 14px 24px; border-radius: 12px; border: 1px solid var(--border);
+input[type="password"]:focus {
+  border-color: var(--accent);
 }
-.stat .num { font-size: 1.8em; font-weight: bold; color: var(--accent); }
-.stat .label { color: var(--muted); font-size: 0.85em; margin-top: 4px; }
-
-.section-header {
-  display: flex; align-items: center; gap: 10px;
-  margin: 28px 0 14px; padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: opacity 0.2s;
 }
-.section-header .icon { font-size: 1.4em; }
-.section-header h3 { color: #ccc; font-size: 1.1em; }
-.section-header .count {
-  color: var(--muted); font-size: 0.85em;
-  margin-left: auto;
-}
-
-.report-card {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: 12px; padding: 20px; margin-bottom: 14px;
-  transition: transform 0.2s, border-color 0.2s;
-  cursor: pointer; display: block; text-decoration: none; color: var(--text);
-}
-.report-card:hover { transform: translateY(-2px); border-color: var(--accent); }
-.report-card.analysis:hover { border-color: var(--blue); }
-.report-card.betting:hover { border-color: var(--pink); }
-.report-card .date {
-  font-size: 1.1em; font-weight: bold; color: var(--accent);
-}
-.report-card.analysis .date { color: var(--blue); }
-.report-card.betting .date { color: var(--pink); }
-.report-card .title { font-size: 0.95em; margin-top: 6px; color: #ccc; }
-.report-card .arrow { float: right; color: var(--muted); font-size: 1.2em; }
-.report-card .matches {
-  font-size: 0.85em; color: var(--muted); margin-top: 8px;
-  padding-top: 8px; border-top: 1px solid var(--border);
-}
-.report-card .tag {
-  display: inline-block; font-size: 0.75em; padding: 2px 8px;
-  border-radius: 4px; margin-right: 6px;
-}
-.tag-latest { background: #2e7d32; color: #a5d6a7; }
-.tag-hist { background: #424242; color: #9e9e9e; }
-
-.empty { text-align: center; color: var(--muted); padding: 60px 20px; }
-.footer {
-  text-align: center; padding: 32px 20px; color: var(--muted);
-  font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 40px;
-}
-@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
-.loading { animation: pulse 1.5s infinite; }
-@media (max-width: 600px) {
-  .header h1 { font-size: 1.6em; }
-  .stats-bar { gap: 12px; }
-  .stat { padding: 10px 16px; }
-  .stat .num { font-size: 1.4em; }
-}
+.btn:hover { opacity: 0.85; }
+.error { color: var(--accent2); font-size: 0.85em; margin-top: 12px; min-height: 1.2em; }
+.hint { color: var(--muted); font-size: 0.78em; margin-top: 16px; opacity: 0.6; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
+.shake { animation: shake 0.4s; }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1><span class="emoji">&#x26BD;</span> &#x4E16;&#x754C;&#x676F;2026 &#x8D5B;&#x679C;&#x9884;&#x6D4B;</h1>
-  <p class="subtitle">v28.4 · 体彩融合+星级力量+战术推演 · 6/19第二轮前瞻(捷克/瑞士/加拿大/墨西哥) · 6/18复盘</p>
-</div>
-
-<div class="container">
-  <div class="stats-bar">
-    <div class="stat"><div class="num" id="totalDays">—</div><div class="label">&#x1F4C5; &#x5DF2;&#x5206;&#x6790;&#x6BD4;&#x8D5B;&#x65E5;</div></div>
-    <div class="stat"><div class="num" id="totalMatches">—</div><div class="label">&#x1F3DF; &#x9884;&#x6D4B;&#x573A;&#x6B21;</div></div>
-    <div class="stat"><div class="num" id="analysisCount">—</div><div class="label">&#x1F4CA; &#x5206;&#x6790;&#x62A5;&#x544A;</div></div>
-    <div class="stat"><div class="num" id="bettingCount">—</div><div class="label">&#x1F3AF; &#x6295;&#x6CE8;&#x5EFA;&#x8BAE;</div></div>
-  </div>
-
-  <!-- &#x5206;&#x6790;&#x62A5;&#x544A;&#x5206;&#x7EC4; -->
-  <div class="section-header">
-    <span class="icon">&#x1F4CA;</span>
-    <h3>&#x8D5B;&#x679C;&#x5206;&#x6790;</h3>
-    <span class="count" id="analysisCount2">—</span>
-  </div>
-  <div id="analysisList"><p class="empty loading">&#x52A0;&#x8F7D;&#x4E2D;...</p></div>
-
-  <!-- &#x6295;&#x6CE8;&#x5EFA;&#x8BAE;&#x5206;&#x7EC4; -->
-  <div class="section-header">
-    <span class="icon">&#x1F3AF;</span>
-    <h3>&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;</h3>
-    <span class="count" id="bettingCount2">—</span>
-  </div>
-  <div id="bettingList"><p class="empty loading">&#x52A0;&#x8F7D;&#x4E2D;...</p></div>
-</div>
-
-<div class="footer">
-  <p>&#x6570;&#x636E;&#x6765;&#x6E90;&#xFF1A;worldcup-odds.com &#xB7; titan007.com &#xB7; Polymarket &#xB7; ELO&#x6A21;&#x578B; | &#x4EC5;&#x4F9B;&#x5A31;&#x4E50;&#x53C2;&#x8003;</p>
-  <p style="margin-top:4px;">&#x7531; WorkBuddy AI &#x81EA;&#x52A8;&#x751F;&#x6210;&#x5E76;&#x53D1;&#x5E03;</p>
+<div class="container" id="box">
+  <div class="emoji">🔒</div>
+  <h1>世界杯2026 赛果预测</h1>
+  <p class="subtitle">请输入访问密码以查看分析报告</p>
+  <label for="pwd">访问密码</label>
+  <input type="password" id="pwd" maxlength="20" autofocus placeholder="•••" />
+  <button class="btn" onclick="checkPwd()">进入</button>
+  <div class="error" id="err"></div>
+  <div class="hint">本站点内容为量化分析预测，仅供学习交流</div>
 </div>
 
 <script>
-// ====== &#x5206;&#x6790;&#x62A5;&#x544A; ======
-const ANALYSIS = [
-  { date:"6/22 v30.0★", file:"分析/2026-06-22-分析报告.html", matches:"乌拉圭 vs 佛得角 | 西班牙 vs 沙特阿拉伯 | 比利时 vs 伊朗 | 新西兰 vs 埃及", tag:"latest", summary:"v30.0 七步完整推理链+四维类似对手参照 · 乌拉圭碾压佛得角? · 西班牙必须大胜正名 · 比利时vs伊朗德布劳内回归 · 萨拉赫单核带队埃及 · xG=2.5/3.5/2.8/2.0 · 2:0/3:0/2:1/2:1" },
-  { date:"6/21 v31.0★", file:"分析/2026-06-21-分析报告.htm", matches:"荷兰 vs 瑞典 | 德国 vs 科特迪瓦 | 厄瓜多尔 vs 库拉索 | 突尼斯 vs 日本", tag:"", summary:"v31.0 ★三项联动赔率分析首次集成 · 六种胜平负组合模式 · 平赔诚实度信号+ELO交叉验证 · 荷兰瑞典进球大战2:1 · 德国穿盘-1.0存疑 · 厄瓜多尔最碾压ELO+400 · 日本高信度推荐 · xG=2.5/2.8/2.3/2.2 · 2:1/2:0/2:0/2:0" },
-  { date:"6/19 v28.4★", file:"分析/2026-06-19-分析报告.html", matches:"捷克 vs 南非 | 瑞士 vs 波黑 | 加拿大 vs 卡塔尔 | 墨西哥 vs 韩国", tag:"", summary:"v28.4 第二轮前瞻+6/18复盘 · 葡萄牙爆冷1:1! 英格兰4:2碾压 · 捷克背水一战 · 墨西哥韩国争出线 · 瑞士波黑谁先胜 · 加拿大首胜? · xG=1.8/1.6/2.3/1.9" },
-  { date:"6/20 v28.4", file:"分析/2026-06-20-分析报告.html", matches:"美国 vs 澳大利亚 | 苏格兰 vs 摩洛哥 | 巴西 vs 海地 | 土耳其 vs 巴拉圭", tag:"", summary:"v28.4 第二轮前瞻 · 美国巴洛贡梅开二度🔥 · 摩洛哥1:1巴西后信心爆棚 · 巴西120:1身价碾压海地 · 土耳其背水一战 · xG=2.5/1.4/3.0/2.5 · 2:0/0:2/5:0/2:1" },
-  { date:"6/18 v28.4★", file:"分析/2026-06-18-分析报告.html", matches:"葡萄牙 vs 刚果(金) | 英格兰 vs 克罗地亚 | 加纳 vs 巴拿马 | 乌兹别克斯坦 vs 哥伦比亚", tag:"", summary:"v28.4 体彩融合+战术推演 · C罗3巨星+英格兰霸气名单 · Kudus缺阵! · 哥伦比亚28场不败 · xG=3.6/1.6/1.2/0.7 · 3:0/2:1/1:0/0:2" },
-  { date:"6/17 v28.3&#x2605;", file:"&#x5206;&#x6790;/2026-06-17-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x6CD5;&#x56FD; vs &#x585E;&#x5185;&#x52A0;&#x5C14; | &#x4F0A;&#x62C9;&#x514B; vs &#x632A;&#x5A01; | &#x963F;&#x6839;&#x5EF7; vs &#x963F;&#x5C14;&#x53CA;&#x5229;&#x4E9A; | &#x5965;&#x5730;&#x5229; vs &#x7EA6;&#x65E6;", tag:"", summary:"v28.3 &#x4f53;&#x5f69;&#x878d;&#x5408;+&#x63a8;&#x6f14;&#x7cbe;&#x5ea6;+&#x590d;&#x76d8;&#x4fee;&#x6b63; &#xB7; &#x6CD5;&#x56FD;3&#x5de8;&#x661f;20&#x4eba;&#x4E94;&#x8054; &#xB7; &#x632A;&#x62C9;14&#x4EBA;&#x4E94;&#x8054; &#xB7; &#x878D;&#x5408; 3:1&#x6CD5;&#x80DC;/4:1&#x632A;&#x80DC;/3:0&#x963F;&#x6839;&#x80DC;" },
-  { date:"6/16 v27.2.1&#x2605;", file:"&#x5206;&#x6790;/2026-06-16-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x897F;&#x73ED;&#x7259; vs &#x4F5B;&#x5F97;&#x89D2; | &#x6BD4;&#x5229;&#x65F6; vs &#x57C3;&#x53CA; | &#x6C99;&#x7279;&#x963F;&#x62C9;&#x4F2F; vs &#x4E4C;&#x62C9;&#x572D; | &#x4F0A;&#x6717; vs &#x65B0;&#x897F;&#x5170;", tag:"", summary:"v27.2.1 四维参照 &#xB7; xG+四维(FIFA→GF+GA/后防→GF/进攻→GA/综合) &#xB7; 4:0/2:1/1:2/2:1" },
-  { date:"6/15 v27.0&#x2605;", file:"&#x5206;&#x6790;/2026-06-15-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x5FB7;&#x56FD; vs &#x5E93;&#x62C9;&#x7D22; | &#x8377;&#x5170; vs &#x65E5;&#x672C; | &#x79D1;&#x7279;&#x8FEA;&#x74E6; vs &#x5384;&#x74DC;&#x591A;&#x5C14; | &#x745E;&#x5178; vs &#x7A81;&#x5C3C;&#x65AF;", tag:"", summary:"v27.0 &#x67B6;&#x6784;&#x9769;&#x547D; &#xB7; &#x6B27;&#x8D54;&#x6838;&#x5FC3;+&#x4E9A;&#x76D8;&#x9A8C;&#x8BC1;+&#x535A;&#x5F08;&#x5FC3;&#x6001; &#xB7; Poly&#x964D;&#x6743;10% &#xB7; 3:0/1:1/1:1/1:0" },
-  { date:"6/14 v26.6&#x2605;", file:"&#x5206;&#x6790;/2026-06-14-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x5361;&#x5854;&#x5C14; vs &#x745E;&#x58EB; | &#x5DF4;&#x897F; vs &#x6469;&#x6D1B;&#x54E5; | &#x6D77;&#x5730; vs &#x82CF;&#x683C;&#x5170; | &#x6FB3;&#x5927;&#x5229;&#x4E9A; vs &#x571F;&#x8033;&#x5176;", tag:"", summary:"v26.6 FIFA&#x6392;&#x540D;/&#x5C0F;&#x7EC4;&#x5F62;&#x52BF; &#xB7; &#x5E02;&#x573A;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x5316; &#xB7; &#x63A8;&#x8350;0:2/2:1/1:2/1:2 &#xB7; AI 7D&#x5F15;&#x64CE;" },
-  { date:"6/13 v23.1&#x2605;", file:"&#x5206;&#x6790;/2026-06-13-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x52A0;&#x62FF;&#x5927; vs &#x6CE2;&#x9ED1; | &#x7F8E;&#x56FD; vs &#x5DF4;&#x62C9;&#x572D;", tag:"", summary:"v23.1 &#27850;&#x677E;+&#x51EF;&#x5229; &#xB7; &#x6267;&#x884C;&#x6458;&#x8981;&#x76F4;&#x51FB;&#x4EF7;&#x503C;&#x65B9;&#x5411; &#xB7; &#x52A0;&#x62FF;&#x5927;1:0|1:1|2:1 Kelly&#x53D1;&#x73B0;0:1&#x88AB;&#x4F4E;&#x4F30; &#xB7; &#x7F8E;&#x56FD;1:0|1:1|2:1 ELO&#x4E0E;&#x5E02;&#x573A;&#x5206;&#x6B67;" },
-  { date:"6/12 v21.0&#x2605;", file:"&#x5206;&#x6790;/2026-06-12-&#x5206;&#x6790;&#x62A5;&#x544A;.html", matches:"&#x58A8;&#x897F;&#x54E5; vs &#x5357;&#x975E; | &#x97E9;&#x56FD; vs &#x6377;&#x514B;", tag:"", summary:"v21.0 &#x5168;&#x65B0;&#x6846;&#x67B6; &#xB7; &#x7EB8;&#x9762;32.5%+&#x5E02;&#x573A;67.5%(Poly50%+&#x6B27;30%+&#x4E9A;20%) &#xB7; ELO/&#x6B27;&#x8D54;/Polymarket/titan007&#x56DB;&#x65B9;&#x9A8C;&#x8BC1; &#xB7; &#x56DB;&#x6B65;&#x5206;&#x6790;&#x8DEF;&#x5F84;" },
-  { date:"6/12 v5", file:"&#x5206;&#x6790;/2026-06-12-&#x8D5B;&#x679C;&#x9884;&#x6D4B;&#x62A5;&#x544A;.html", matches:"&#x58A8;&#x897F;&#x54E5; vs &#x5357;&#x975E; | &#x97E9;&#x56FD; vs &#x6377;&#x514B;", tag:"hist", summary:"v5.0 &#x6B27;&#x4E9A;&#x8054;&#x5408; &#xB7; &#x58A8;&#x897F;&#x54E5;&#x6DF1;&#x76D8;&#x53CC;&#x4FDD;&#x9669; &#xB7; &#x97E9;&#x56FD;vs&#x6377;&#x514B;&#x5E73;&#x624B;&#x76D8;&#x6B27;&#x4E9A;&#x4E00;&#x81F4; &#xB7; &#x4EFB;&#x610F;&#x65B9;&#x5411;&#x53EF;&#x51FA;" }
-];
+const CORRECT = "987";
 
-// ====== &#x6295;&#x6CE8;&#x5EFA;&#x8BAE; ======
-const BETTING = [
-  { date:"6/15 v21.0&#x2605;", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-15-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x5FB7;&#x56FD;vs&#x5E93;&#x62C9;&#x7D22; | &#x8377;&#x5170;vs&#x65E5;&#x672C; | &#x79D1;&#x7279;&#x8FEA;&#x74E6;vs&#x5384;&#x74DC;&#x591A;&#x5C14; | &#x745E;&#x5178;vs&#x7A81;&#x5C3C;&#x65AF;", tag:"latest", summary:"v21.0 5&#x65B9;&#x6848;A~E &#xB7; &#x2605;&#x63A8;&#x8350;SPF&#xD7;TOT&#x4E8C;&#x4E32;&#x4E00;(2.63~5.22) &#xB7; &#x745E;&#x5178;+&#x79D1;&#x7279;&#x8FEA;&#x74E6;SPF&#x4FDD;&#x5B88; &#xB7;RSPF&#x4E09;&#x4E32;&#x56DB;&#x5BB9;1&#x9519; &#xB7;TOT&#x8FC7;2&#x5173;" },
-  { date:"6/14 v21.0&#x2605;", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-14-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x5361;&#x5854;&#x5C14;vs&#x745E;&#x58EB; | &#x5DF4;&#x897F;vs&#x6469;&#x6D1B;&#x54E5; | &#x6D77;&#x5730;vs&#x82CF;&#x683C;&#x5170; | &#x6FB3;&#x5927;&#x5229;&#x4E9A;vs&#x571F;&#x8033;&#x5176;", tag:"", summary:"v21.0 5&#x65B9;&#x6848;A~E &#xB7; &#x2605;&#x63A8;&#x8350;SPF&#xD7;&#x603B;&#x8FDB;&#x7403;&#x4E8C;&#x4E32;&#x4E00; &#xB7; &#x745E;&#x58EB;&#x6BD4;&#x5206;0:2/0:1&#x590D;&#x9009; &#xB7; &#x8FC7;2&#x5173;&#x5BB9;1&#x9519; &#xB7; &#x8BA9;&#x7403;SPF&#x53CC;&#x7A7F;&#x76D8;" },
-  { date:"6/13 v21.0&#x2605;", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-13-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x52A0;&#x62FF;&#x5927;vs&#x6CE2;&#x9ED1; | &#x7F8E;&#x56FD;vs&#x5DF4;&#x62C9;&#x572D;", tag:"", summary:"v21.0 5&#x65B9;&#x6848;A~E &#xB7; &#x2605;&#x63A8;&#x8350;SPF&#xD7;&#x603B;&#x8FDB;&#x7403;&#x4E8C;&#x4E32;&#x4E00; &#xB7; &#x52A0;&#x62FF;&#x5927;&#x6BD4;&#x5206;2:1&#x590D;&#x9009; &#xB7; &#x8FC7;2&#x5173;&#x5BB9;1&#x9519; &#xB7; &#x8BA9;&#x7403;SPF&#x8FDB;&#x53D6;" },
-  { date:"6/12 v21.0&#x2605;", file:"&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;/2026-06-12-&#x6295;&#x6CE8;&#x5EFA;&#x8BAE;.html", matches:"&#x58A8;&#x897F;&#x54E5;vs&#x5357;&#x975E; | &#x97E9;&#x56FD;vs&#x6377;&#x514B;", tag:"", summary:"v21.0 &#x5B98;&#x65B9;&#x5B9E;&#x65F6;&#x8D54;&#x7387; &#xB7; 5&#x65B9;&#x6848;A~E &#xB7; &#x2605;&#x63A8;&#x8350;SPF×&#x603B;&#x8FDB;&#x7403;&#x4E8C;&#x4E32;&#x4E00; &#xB7; &#x58A8;&#x897F;&#x54E5;&#x6BD4;&#x5206;2:0/1:0&#x590D;&#x9009; &#xB7; &#x8FC7;2&#x5173;&#x5BB9;&#x9519;" },
-];
+function checkPwd() {
+  var inp = document.getElementById("pwd");
+  var val = inp.value.trim();
+  var err = document.getElementById("err");
+  var box = document.getElementById("box");
 
-function renderCard(r, group) {
-  var tagClass = r.tag === 'latest' ? 'tag-latest' : (r.tag === 'hist' ? 'tag-hist' : '');
-  var tagHtml = tagClass ? '<span class="tag ' + tagClass + '">' + (r.tag === 'latest' ? '&#x2605;&#x6700;&#x65B0;' : '&#x5386;&#x53F2;') + '</span>' : '';
-  var c = group === 'analysis' ? 'analysis' : 'betting';
-  return '<a class="report-card ' + c + '" href="' + encodeURI(r.file) + '">' +
-    '<span class="arrow">&#x2192;</span>' +
-    '<div class="date">' + tagHtml + '&#x1F4C5; ' + r.date + '</div>' +
-    '<div class="title">' + r.summary + '</div>' +
-    '<div class="matches">&#x1F3DF; ' + r.matches + '</div>' +
-    '</a>';
+  if (val === CORRECT) {
+    err.textContent = "";
+    localStorage.setItem("auth", "1");
+    document.body.style.opacity = "0.5";
+    setTimeout(function() {
+      window.location.href = "home.html";
+    }, 300);
+  } else {
+    err.textContent = "密码错误，请重试";
+    box.classList.remove("shake");
+    void box.offsetWidth; // reflow
+    box.classList.add("shake");
+    inp.value = "";
+    inp.focus();
+  }
 }
 
-(function(){
-  // Stats
-  document.getElementById("totalDays").textContent = "10";
-  var totalM = 0;
-  ANALYSIS.concat(BETTING).forEach(function(r) {
-    totalM += (r.matches.match(/vs/g)||[]).length;
-  });
-  document.getElementById("totalMatches").textContent = totalM;
-  document.getElementById("analysisCount").textContent = ANALYSIS.length;
-  document.getElementById("bettingCount").textContent = BETTING.length;
-  document.getElementById("analysisCount2").innerHTML = ANALYSIS.length + " &#x4EFD;&#x62A5;&#x544A;";
-  document.getElementById("bettingCount2").innerHTML = BETTING.length + " &#x4EFD;&#x62A5;&#x544A;";
+// Enter key
+document.getElementById("pwd").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") checkPwd();
+});
 
-  // Render analysis
-  document.getElementById("analysisList").innerHTML = ANALYSIS.map(function(r) {
-    return renderCard(r, 'analysis');
-  }).join("");
-
-  // Render betting
-  document.getElementById("bettingList").innerHTML = BETTING.map(function(r) {
-    return renderCard(r, 'betting');
-  }).join("");
-})();
+// Auto-redirect if already authed
+if (localStorage.getItem("auth") === "1") {
+  window.location.href = "home.html";
+}
 </script>
 </body>
 </html>

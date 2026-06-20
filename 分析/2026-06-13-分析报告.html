@@ -104,6 +104,18 @@ tr:hover { background: rgba(79,195,247,0.05); }
 </style>
 </head>
 <body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+
 <div class="container">
 
 <div class="header">

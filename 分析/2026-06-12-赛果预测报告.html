@@ -179,6 +179,18 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 </style>
 </head>
 <body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+
 
 <div class="header">
   <h1>2026世界杯 · 6月12日赛果预测报告</h1>

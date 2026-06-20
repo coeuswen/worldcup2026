@@ -34,7 +34,19 @@
 .similar-match{display:inline-block;background:var(--card-bg);padding:2px 10px;border-radius:6px;margin:2px 4px 2px 0;font-size:0.85em;border:1px solid #2d3a4a}
 .similar-match .score{color:var(--gold);font-weight:700}
 .similar-conclusion{color:var(--teal);margin-top:6px;padding-top:6px;border-top:1px solid #2d3a4a;line-height:1.5}.tactic-panel{background:linear-gradient(135deg,#0f1a2e,#1a0a0a);padding:10px 12px;border-radius:8px;margin:10px 0;border-left:3px solid var(--gold);font-size:0.72em}.tactic-panel h4{font-size:0.85em;color:var(--gold);margin-bottom:6px}
-</style></head><body><div class="container">
+</style></head><body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+<div class="container">
 <div class="header-section"><h1>🏆 2026世界杯预测 v28.4 ★ 6/18复盘+第二轮战略+6/19前瞻</h1>
 <div class="subtitle">专业足球赛事分析预测师 | 星级力量(巨星+五大联赛) | 战术推演(第二得分点+球星默契) | 实时赔率 | 近3年大赛 | 2026-06-18 19:17 GMT+8</div>
 <div class="badge-row">

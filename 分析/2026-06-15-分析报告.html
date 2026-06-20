@@ -32,7 +32,19 @@
 .plain-expl{display:inline-block;background:#1e3a5f;color:#93c5fd;padding:1px 6px;border-radius:4px;font-size:0.8em;margin-left:4px;cursor:help}
 .glossary{background:var(--card-inner);padding:12px;border-radius:8px;margin:10px 0;font-size:0.73em;color:var(--text-secondary);line-height:2}
 .glossary strong{color:var(--teal)}
-</style></head><body><div class="container">
+</style></head><body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+<div class="container">
 <div class="header-section">
   <h1>🏆 2026世界杯预测 v27.0 ★最新</h1>
   <div class="subtitle">欧赔核心(40%)+亚盘验证(25%)+ELO基线(15%)+赛前情报(10%)+Poly逆向(10%) | 博弈心态因子 | 2026-06-14 14:28 GMT+8</div>

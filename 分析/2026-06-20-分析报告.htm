@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026世界杯 6月20日 量化分析报告 v30.0</title>
+<style>
+
+:root {
+  --bg-deep: #0a0f1e;
+  --bg-card: #111827;
+  --bg-section: #1a2236;
+  --border: rgba(255,255,255,0.08);
+  --text-primary: #f0f4ff;
+  --text-secondary: #94a3b8;
+  --blue-bright: #60a5fa;
+  --gold: #fbbf24;
+  --orange: #fb923c;
+  --green: #4ade80;
+  --red: #f87171;
+  --purple: #a78bfa;
+  --teal: #2dd4bf;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg-deep); color: var(--text-primary); font-family: 'SF Pro Display', -apple-system, 'Helvetica Neue', sans-serif; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #0a0f1e 0%, #1a1040 50%, #0a1628 100%); padding: 36px 20px; text-align: center; border-bottom: 1px solid var(--border); }
+.header h1 { font-size: 1.9em; font-weight: 800; letter-spacing: .02em; }
+.header h1 span { color: var(--gold); }
+.subtitle { color: var(--text-secondary); margin-top: 8px; font-size: .88em; }
+.identity-tags { margin-top: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.id-tag { background: rgba(96,165,250,.1); border: 1px solid rgba(96,165,250,.3); color: var(--blue-bright); padding: 4px 12px; border-radius: 20px; font-size: .8em; }
+
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+/* Card */
+.match-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 24px; overflow: hidden; }
+
+/* Match header */
+.match-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 20px; border-bottom: 1px solid var(--border); }
+.match-meta { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.round-badge { background: rgba(251,191,36,.15); color: var(--gold); padding: 3px 10px; border-radius: 12px; font-size: .8em; border: 1px solid rgba(251,191,36,.3); }
+.time-badge { background: rgba(96,165,250,.1); color: var(--blue-bright); padding: 3px 10px; border-radius: 12px; font-size: .8em; }
+.venue-badge { background: rgba(167,139,250,.1); color: var(--purple); padding: 3px 10px; border-radius: 12px; font-size: .8em; }
+.teams-row { display: flex; align-items: center; gap: 20px; }
+.team { flex: 1; }
+.team-name { font-size: 1.5em; font-weight: 700; }
+.elo-badge { font-size: .8em; color: var(--text-secondary); margin-top: 4px; }
+.home-team { text-align: right; }
+.vs-center { text-align: center; min-width: 120px; }
+.vs-text { font-size: 1.2em; font-weight: 800; color: var(--text-secondary); }
+.risk-badge { margin-top: 6px; padding: 4px 12px; border-radius: 20px; font-size: .8em; font-weight: 600; display: inline-block; }
+.risk-低 { background: rgba(74,222,128,.1); color: var(--green); border: 1px solid rgba(74,222,128,.3); }
+.risk-中 { background: rgba(251,191,36,.1); color: var(--gold); border: 1px solid rgba(251,191,36,.3); }
+.risk-高 { background: rgba(248,113,113,.1); color: var(--red); border: 1px solid rgba(248,113,113,.3); }
+
+.elo-bar { display: flex; margin-top: 14px; height: 6px; border-radius: 3px; overflow: hidden; }
+.elo-bar-home { background: var(--blue-bright); display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: .65em; color: #0a0f1e; font-weight: 700; }
+.elo-bar-away { background: var(--orange); display: flex; align-items: center; padding-left: 6px; font-size: .65em; color: #0a0f1e; font-weight: 700; }
+
+/* Section */
+.section { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.section-title { font-size: .85em; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; letter-spacing: .05em; text-transform: uppercase; }
+
+/* Stat Grid */
+.stat-grid { display: flex; gap: 16px; }
+.stat-col { flex: 1; }
+.stat-team-name { font-size: 1.05em; font-weight: 700; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.stat-row { display: flex; justify-content: space-between; font-size: .85em; padding: 3px 0; color: var(--text-secondary); }
+.stat-row span:last-child { color: var(--text-primary); font-weight: 600; }
+.fifa-rank-row { display: flex; align-items: center; gap: 6px; }
+.fifa-badge { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #000; padding: 1px 8px; border-radius: 10px; font-size: .75em; font-weight: 700; }
+.elo-diff-bar { margin-top: 10px; padding: 8px; background: rgba(255,255,255,.03); border-radius: 6px; text-align: center; font-size: .85em; color: var(--text-secondary); }
+
+/* Form card */
+.form-card { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.form-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.form-team-name { font-size: .95em; font-weight: 700; }
+.form-record { font-family: monospace; letter-spacing: 2px; font-size: .95em; }
+.form-badge-hot { color: #ef4444; } .form-badge-good { color: #22c55e; }
+.form-badge-ok { color: #eab308; } .form-badge-poor { color: #6b7280; }
+.form-detail { font-size: .82em; color: var(--text-secondary); line-height: 1.7; }
+
+/* Similar ref card */
+.similar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.similar-item { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-size: .82em; line-height: 1.7; }
+.similar-item-title { font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+
+/* Tactic card */
+.tactic-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tactic-side { background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.tactic-team-name { font-weight: 700; margin-bottom: 6px; }
+.star-power-box { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15); border-radius: 8px; padding: 10px; margin-top: 8px; }
+.sp-title { font-size: .78em; color: var(--gold); font-weight: 700; margin-bottom: 4px; }
+
+/* Lineup card */
+.lineup-section { margin-top: 10px; }
+.lineup-side { margin-bottom: 12px; }
+.lineup-team { font-weight: 700; margin-bottom: 6px; color: var(--blue-bright); }
+.player-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.player-chip { background: rgba(96,165,250,.08); border: 1px solid rgba(96,165,250,.18); padding: 3px 10px; border-radius: 12px; font-size: .8em; }
+.player-chip.confirmed { border-color: var(--green); color: var(--green); }
+.player-chip.doubtful { border-color: var(--gold); color: var(--gold); }
+.injury-item { font-size: .83em; color: var(--red); padding: 2px 0; }
+
+/* Odds panel */
+.odds-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.odds-card { flex: 1; min-width: 150px; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.odds-card-title { font-size: .8em; font-weight: 700; color: var(--gold); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.odds-card-row { display: flex; justify-content: space-between; align-items: center; font-size: .85em; padding: 3px 0; }
+.odds-num { font-weight: 700; color: var(--text-primary); font-size: 1.05em; }
+.implied-prob { font-size: .78em; color: var(--text-secondary); min-width: 40px; text-align: right; }
+.ah-table { margin-top: 10px; background: rgba(255,255,255,.02); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 8px; }
+.ah-lines { display: flex; flex-wrap: wrap; gap: 6px; }
+.ah-chip { font-size: .78em; background: rgba(96,165,250,.06); border: 1px solid rgba(96,165,250,.15); padding: 3px 8px; border-radius: 10px; color: var(--text-secondary); }
+
+/* Prob bars */
+.prob-row { display: flex; gap: 12px; }
+.prob-col { flex: 1; }
+.prob-label { font-size: .8em; color: var(--text-secondary); margin-bottom: 6px; }
+.prob-bar { background: rgba(255,255,255,.06); border-radius: 4px; height: 8px; overflow: hidden; margin-bottom: 4px; }
+.prob-fill { height: 100%; border-radius: 4px; transition: width .3s ease; }
+.prob-value { font-size: 1.4em; font-weight: 800; }
+.home-color { color: var(--blue-bright); }
+.gold-color { color: var(--gold); }
+.away-color { color: var(--orange); }
+.sub-probs { margin-top: 12px; font-size: .82em; color: var(--text-secondary); }
+
+/* Score matrix */
+.score-matrix { margin-top: 12px; padding: 10px; background: rgba(255,255,255,.02); border-radius: 8px; }
+.score-matrix-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 8px; }
+.score-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.score-chip { background: rgba(255,255,255,.06); border: 1px solid var(--border); padding: 4px 10px; border-radius: 12px; font-size: .82em; color: var(--gold); }
+.score-chip em { font-style: normal; color: var(--text-secondary); font-size: .9em; }
+
+/* Analysis text */
+.analysis-text { font-size: .88em; line-height: 1.8; color: var(--text-secondary); white-space: pre-wrap; }
+.analysis-text-small { font-size: .85em; line-height: 2; color: var(--text-secondary); }
+.analysis-text-small strong { color: var(--blue-bright); }
+
+/* Fusion panel */
+.fusion-panel { background: linear-gradient(135deg, rgba(96,165,250,.04) 0%, rgba(251,191,36,.04) 100%); border: 1px solid rgba(251,191,36,.12); border-radius: 12px; padding: 14px; margin: 10px 0; }
+.fusion-header { display: flex; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+.theory-side { flex: 1; min-width: 200px; }
+.practice-side { flex: 1; min-width: 200px; }
+.side-label { font-size: .78em; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+.theory-label { color: var(--blue-bright); }
+.practice-label { color: var(--orange); }
+.side-content { font-size: .82em; line-height: 1.7; color: var(--text-secondary); }
+.alignment-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .78em; font-weight: 600; margin-left: 8px; }
+.align-consistent { background: rgba(74,222,128,.1); color: var(--green); border: 1px solid rgba(74,222,128,.3); }
+.align-divergence { background: rgba(251,191,36,.1); color: var(--gold); border: 1px solid rgba(251,191,36,.3); }
+.align-reversal { background: rgba(248,113,113,.1); color: var(--red); border: 1px solid rgba(248,113,113,.3); }
+
+/* Verdict */
+.conclusion-panel { background: linear-gradient(135deg, rgba(251,191,36,.05) 0%, rgba(96,165,250,.05) 100%); padding: 20px; border-top: 1px solid rgba(251,191,36,.2); }
+.conclusion-header { font-size: 1em; font-weight: 800; color: var(--gold); margin-bottom: 16px; letter-spacing: .05em; }
+.conclusion-body { display: flex; gap: 16px; flex-wrap: wrap; }
+.score-recommendation { flex: 1; min-width: 120px; text-align: center; }
+.rec-label { font-size: .75em; color: var(--text-secondary); }
+.rec-score { font-size: 2.5em; font-weight: 900; color: var(--gold); letter-spacing: .05em; }
+.rec-label-sub { font-size: .8em; color: var(--text-secondary); margin-top: 4px; }
+.verdict-block { flex: 2; min-width: 180px; }
+.verdict-main { font-size: 1.1em; font-weight: 700; margin-bottom: 6px; }
+.verdict-conf { font-size: .85em; color: var(--green); margin-bottom: 8px; }
+.verdict-scores { display: flex; gap: 6px; flex-wrap: wrap; }
+.verdict-note { margin-top: 8px; font-size: .78em; color: var(--text-secondary); }
+.risk-block { flex: 1; min-width: 100px; text-align: center; padding: 12px; border-radius: 10px; }
+.risk-bg-低 { background: rgba(74,222,128,.08); border: 1px solid rgba(74,222,128,.2); }
+.risk-bg-中 { background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.2); }
+.risk-bg-高 { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.2); }
+.risk-label { font-size: .75em; color: var(--text-secondary); }
+.risk-value { font-size: 1.2em; font-weight: 700; margin-top: 4px; }
+.btts-note { font-size: .75em; color: var(--text-secondary); margin-top: 4px; }
+
+.footer { text-align: center; padding: 30px; color: var(--text-secondary); font-size: .8em; border-top: 1px solid var(--border); }
+.disclaimer { background: rgba(248,113,113,.05); border: 1px solid rgba(248,113,113,.2); border-radius: 8px; padding: 12px 16px; margin: 20px auto; max-width: 700px; color: #f87171; font-size: .82em; }
+
+</style>
+</head>
+<body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+
+
+<div class="header">
+  <h1>🏆 2026世界杯 <span>6月20日</span> 量化分析报告</h1>
+  <div class="subtitle">v30.0 · v28.4完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-19 15:30 北京时间</div>
+  <div class="identity-tags">
+    <span class="id-tag">📊 ELO+FIFA评级</span>
+    <span class="id-tag">⚡ xG泊松模型</span>
+    <span class="id-tag">📈 Pinnacle全盘口</span>
+    <span class="id-tag">⚔️ 战术克制分析</span>
+    <span class="id-tag">⭐ 星级力量</span>
+    <span class="id-tag">🔄 近期状态</span>
+    <span class="id-tag">🔗 双面融合</span>
+    <span class="id-tag">🏦 博彩风控</span>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="disclaimer">
+  ⚠️ 本报告仅供量化研究参考，基于数学模型与统计分析。足球存在高度不确定性，任何分析均无法保证结果。请理性看待预测数据。
+</div>
+
+<div class="match-card" id="美国vs澳大利亚">
+  
+  <!-- Match Header -->
+  <div class="match-header">
+    <div class="match-meta">
+      <span class="round-badge">小组赛第1轮</span>
+      <span class='time-badge'>18:00 北京时间</span>
+      <span class='venue-badge'>纽约 · MetLife Stadium</span>
+    </div>
+    <div class="teams-row">
+      <div class="team home-team">
+        <div class="team-name">美国</div>
+        <div class="elo-badge">ELO 1920 · FIFA #24</div>
+      </div>
+      <div class="vs-center">
+        <div class="vs-text">VS</div>
+        <div class="risk-badge risk-低">🟢 风险: 低</div>
+      </div>
+      <div class="team away-team">
+        <div class="team-name">澳大利亚</div>
+        <div class="elo-badge">ELO 1855 · FIFA #11</div>
+      </div>
+    </div>
+    <div class="elo-bar">
+      <div class="elo-bar-home" style="width:50.9%">1920</div>
+      <div class="elo-bar-away" style="width:49.1%">1855</div>
+    </div>
+  </div>  <!-- 一、基础实力分析 -->
+  <div class="section">
+    <div class="section-title">📊 一、基础实力分析</div>
+    <div class="stat-grid">
+      <div class="stat-col">
+        <div class="stat-team-name home-color">美国</div>
+        <div class="stat-row"><span>ELO评级</span><span>1920</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#24<span class="fifa-badge">世界强队</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.67</span></div>
+        <div class="stat-row"><span>实力等级</span><span>世界强队</span></div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-team-name away-color">澳大利亚</div>
+        <div class="stat-row"><span>ELO评级</span><span>1855</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#11<span class="fifa-badge">世界强队</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.61</span></div>
+        <div class="stat-row"><span>实力等级</span><span>世界强队</span></div>
+      </div>
+    </div>
+    <div class="elo-diff-bar">
+      ELO差距: <strong>65</strong> 分 (★ 美国 占优)
+      &nbsp;|&nbsp; FIFA排名差: #13
+    </div>
+  </div>  <!-- 二、状态分析：近期国际赛战绩 -->
+  <div class="section">
+    <div class="section-title">🔄 二、状态分析（近期国际赛战绩）</div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name home-color">🔥 美国 近期状态</span>
+        <span class="form-record form-badge-good">WDWLWW</span>
+      </div>
+      <div class='form-detail'>4胜1平1负 | PPG: 2.17</div>
+      <div class='form-detail'>近期: W2:1 | D1:1 | L0:2 | W3:0 | L1:2 | W4:0 进10 失4 | PPG: 2.17</div>
+    </div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name away-color">🔥 澳大利亚 近期状态</span>
+        <span class="form-record form-badge-poor">LDWLWD</span>
+      </div>
+      <div class='form-detail'>2胜1平3负 | PPG: 1.17</div>
+      <div class='form-detail'>近期: L0:3 | W2:0 | L1:2 | W1:0 | L0:4 | D1:1 进4 失10 | PPG: 1.17</div>
+    </div>
+  </div>  <!-- 三、战术克制分析 -->
+  <div class="section">
+    <div class="section-title">⚔️ 三、战术克制分析（含星级力量）</div>
+    <div class="tactic-split">
+      <div class="tactic-side">
+        <div class="tactic-team-name home-color">🏠 美国 战术风格</div>
+        <div class="analysis-text-small">美国战术分析待AI填充...基于ELO 1920 / FIFA #24</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容26人 | 详情待补充</div>
+        </div>
+      </div>
+      <div class="tactic-side">
+        <div class="tactic-team-name away-color">✈️ 澳大利亚 战术风格</div>
+        <div class="analysis-text-small">澳大利亚战术分析待AI填充...基于ELO 1855 / FIFA #11</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容23人 | 详情待补充</div>
+        </div>
+      </div>
+    </div>    <!-- 首发伤病阵容检测 -->
+    <div class="lineup-section" style="margin-top:12px;">
+      <div style="font-weight:700;font-size:.85em;margin-bottom:8px;">👟 首发·伤病·阵容检测</div>
+      <div class="lineup-side">
+        <div class="lineup-team home-color">美国</div>
+        <div class="player-list"><span class='player-chip confirmed'>普利西奇<small>(FW)</small></span><span class='player-chip confirmed'>麦肯尼<small>(MF)</small></span><span class='player-chip confirmed'>亚当斯<small>(MF)</small></span><span class='player-chip confirmed'>维阿<small>(FW)</small></span><span class='player-chip confirmed'>特纳<small>(GK)</small></span></div>
+      </div>
+      <div class="lineup-side">
+        <div class="lineup-team away-color">{away_name}</div>
+        <div class="player-list"><span class='player-chip confirmed'>莱基<small>(FW)</small></span><span class='player-chip confirmed'>苏塔尔<small>(DF)</small></span><span class='player-chip confirmed'>罗吉奇<small>(MF)</small></span><span class='player-chip confirmed'>瑞安<small>(GK)</small></span></div>
+      </div>
+    </div>
+  </div>  <!-- 关键球员近1-2年联赛数据 -->
+  <div class="section">
+    <div class="section-title">⚽ 关键球员近1-2年联赛数据</div>
+    <div class="similar-grid">
+      <div class="similar-item">
+        <div class="similar-item-title home-color">美国 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+      <div class="similar-item">
+        <div class="similar-item-title away-color">澳大利亚 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+    </div>
+  </div>  <!-- 四、盘口与赔率分析 -->
+  <div class="section">
+    <div class="section-title">📈 四、盘口与赔率分析 (Pinnacle)</div>    <div class="odds-grid">
+      <div class="odds-card">
+        <div class="odds-card-title">欧赔 1X2</div>
+        <div class="odds-card-row"><span class="home-color">美国胜</span><span class="odds-num">1.61</span><span class="implied-prob">62.0%</span></div>
+        <div class="odds-card-row"><span class="gold-color">平局</span><span class="odds-num">4.41</span><span class="implied-prob">22.7%</span></div>
+        <div class="odds-card-row"><span class="away-color">澳大利亚胜</span><span class="odds-num">5.44</span><span class="implied-prob">18.4%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">亚盘 主盘 -1.00</div>
+        <div class="odds-card-row"><span class="home-color">美国 -1.00</span><span class="odds-num">1.95</span></div>
+        <div class="odds-card-row"><span class="away-color">澳大利亚 +1.00</span><span class="odds-num">1.89</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">大小球 2.5</div>
+        <div class="odds-card-row"><span>大2.5</span><span class="odds-num">2.05</span><span class="implied-prob">48.8%</span></div>
+        <div class="odds-card-row"><span>小2.5</span><span class="odds-num">1.79</span><span class="implied-prob">55.9%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">BTTS 双方进球</div>
+        <div class="odds-card-row"><span>是</span><span class="odds-num">1.91</span><span class="implied-prob">52.4%</span></div>
+        <div class="odds-card-row"><span>否</span><span class="odds-num">1.90</span><span class="implied-prob">52.6%</span></div>
+      </div>    </div>  </div>  <!-- 五、概率模型 -->
+  <div class="section">
+    <div class="section-title">🎯 五、概率模型 (ELO + Pinnacle欧赔 + 泊松)</div>
+    <div class="prob-row">
+      <div class="prob-col home-prob">
+        <div class="prob-label">美国 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:56.3%;background:var(--blue-bright)"></div></div>
+        <div class="prob-value home-color">56.3%</div>
+      </div>
+      <div class="prob-col draw-prob">
+        <div class="prob-label">平局</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:21.4%;background:var(--gold)"></div></div>
+        <div class="prob-value gold-color">21.4%</div>
+      </div>
+      <div class="prob-col away-prob">
+        <div class="prob-label">澳大利亚 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:22.4%;background:var(--orange)"></div></div>
+        <div class="prob-value away-color">22.4%</div>
+      </div>
+    </div>
+    <div class="sub-probs">
+      <span>大2.5球: <strong>62.3%</strong> / 小2.5球: <strong>37.7%</strong></span>
+      <span style="margin-left:2em">BTTS(双方进球): <strong>63.9%</strong></span>
+    </div>
+    <div class="score-matrix">
+      <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+      <div class="score-chips">
+        <span class='score-chip'>1:1 <em>(10.12%)</em></span><span class='score-chip'>2:1 <em>(8.45%)</em></span><span class='score-chip'>1:2 <em>(8.14%)</em></span><span class='score-chip'>2:2 <em>(6.8%)</em></span><span class='score-chip'>1:0 <em>(6.28%)</em></span>
+      </div>
+    </div>
+  </div>  <!-- 六、综合推演 -->
+  <div class="section">
+    <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+    <div class="analysis-text-small">• <strong>控球节奏</strong>: 待AI推演...
+• <strong>先进球概率</strong>: 待AI推演...
+• <strong>落后变化</strong>: 待AI推演...
+• <strong>关键变量</strong>: 待AI推演...
+• <strong>终局比分</strong>: 待AI推演...</div>    <div style="margin-top:10px;padding:10px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:8px;font-size:.82em;color:var(--text-secondary);">
+      🔑 关键变量: ELO差距65 · FIFA排名差#13 · Pinnacle一致性
+    </div>
+  </div>  <!-- 七、双面融合 + 最终结论 -->
+  <div class="conclusion-panel">
+    <div class="conclusion-header">⚡ 七、专业分析推理链 (层力星+战术推演)</div>
+    
+    <!-- 双面融合面板 -->
+    <div class="fusion-panel">
+      <div class="fusion-header">
+        <div class="theory-side">
+          <div class="side-label theory-label">📐 理论面 (模型+市场) — 6信号+探源</div>
+          <div class="side-content">ELO:ELO 1920→胜率56% | 欧赔:Pinnacle主1.613 | 亚盘:-1.0 | Poly:-- | xG:1.7:1.6 | 大小球:大2.05</div>
+        </div>
+        <div class="practice-side">
+          <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件) — 5信号+推理</div>
+          <div class="side-content">战术:待填充 | 克制度:待计算(0-10) | 可用性:待评估 | 类似对手:待查询 | 平局基线:28%(小组赛)</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <strong>融合判断:</strong>
+        <span class="alignment-badge align-divergence">待分析</span>
+        
+      </div>
+      
+      <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,.15);border-radius:8px;">
+        <div style="font-weight:700;font-size:.9em;color:var(--gold);margin-bottom:6px;">🏆 融合结论</div>
+        <div class="analysis-text-small" style="font-size:.9em;line-height:1.8;">待AI深度推理后填充...</div>
+      </div>
+    </div>
+
+    <div class="conclusion-body" style="margin-top:16px;">
+      <div class="score-recommendation">
+        <div class="rec-label">最可能比分</div>
+        <div class="rec-score">1:1</div>
+        <div class="rec-label-sub">次选: 2:1</div>
+      </div>
+      <div class="verdict-block">
+        <div class="verdict-main">主推: <strong>美国胜</strong></div>
+        <div class="verdict-conf">置信度: 56.3% | 融合信度: ?</div>
+        <div class="verdict-scores">
+          <span class='score-chip'>1:1 (10.12%)</span><span class='score-chip'>2:1 (8.45%)</span><span class='score-chip'>1:2 (8.14%)</span><span class='score-chip'>2:2 (6.8%)</span>
+        </div>
+        <div class="verdict-note">🟢 风险: 低</div>
+      </div>
+      <div class="risk-block risk-bg-低">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟢 低</div>
+        <div class="btts-note">BTTS: 63.9%</div>
+        <div class="btts-note">大2.5: 62.3%</div>
+      </div>
+    </div>
+  </div>
+</div><div class="match-card" id="苏格兰vs摩洛哥">
+  
+  <!-- Match Header -->
+  <div class="match-header">
+    <div class="match-meta">
+      <span class="round-badge">小组赛第2轮</span>
+      <span class='time-badge'>20:00 北京时间</span>
+      <span class='venue-badge'>达拉斯 · AT&T Stadium</span>
+    </div>
+    <div class="teams-row">
+      <div class="team home-team">
+        <div class="team-name">苏格兰</div>
+        <div class="elo-badge">ELO 1795 · FIFA #38</div>
+      </div>
+      <div class="vs-center">
+        <div class="vs-text">VS</div>
+        <div class="risk-badge risk-中">🟡 风险: 中</div>
+      </div>
+      <div class="team away-team">
+        <div class="team-name">摩洛哥</div>
+        <div class="elo-badge">ELO 1890 · FIFA #14</div>
+      </div>
+    </div>
+    <div class="elo-bar">
+      <div class="elo-bar-home" style="width:48.7%">1795</div>
+      <div class="elo-bar-away" style="width:51.3%">1890</div>
+    </div>
+  </div>  <!-- 一、基础实力分析 -->
+  <div class="section">
+    <div class="section-title">📊 一、基础实力分析</div>
+    <div class="stat-grid">
+      <div class="stat-col">
+        <div class="stat-team-name home-color">苏格兰</div>
+        <div class="stat-row"><span>ELO评级</span><span>1795</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#38<span class="fifa-badge">世界中游</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.66</span></div>
+        <div class="stat-row"><span>实力等级</span><span>世界中游</span></div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-team-name away-color">摩洛哥</div>
+        <div class="stat-row"><span>ELO评级</span><span>1890</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#14<span class="fifa-badge">世界强队</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.75</span></div>
+        <div class="stat-row"><span>实力等级</span><span>世界强队</span></div>
+      </div>
+    </div>
+    <div class="elo-diff-bar">
+      ELO差距: <strong>95</strong> 分 (★ 摩洛哥 占优)
+      &nbsp;|&nbsp; FIFA排名差: #24
+    </div>
+  </div>  <!-- 二、状态分析：近期国际赛战绩 -->
+  <div class="section">
+    <div class="section-title">🔄 二、状态分析（近期国际赛战绩）</div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name home-color">🔥 苏格兰 近期状态</span>
+        <span class="form-record form-badge-good">WDWLWW</span>
+      </div>
+      <div class='form-detail'>4胜1平1负 | PPG: 2.17</div>
+      <div class='form-detail'>近期: W2:1 | D1:1 | L0:2 | W3:0 | L1:2 | W4:0 进10 失4 | PPG: 2.17</div>
+    </div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name away-color">🔥 摩洛哥 近期状态</span>
+        <span class="form-record form-badge-poor">LDWLWD</span>
+      </div>
+      <div class='form-detail'>2胜1平3负 | PPG: 1.17</div>
+      <div class='form-detail'>近期: L0:3 | W2:0 | L1:2 | W1:0 | L0:4 | D1:1 进4 失10 | PPG: 1.17</div>
+    </div>
+  </div>  <!-- 三、战术克制分析 -->
+  <div class="section">
+    <div class="section-title">⚔️ 三、战术克制分析（含星级力量）</div>
+    <div class="tactic-split">
+      <div class="tactic-side">
+        <div class="tactic-team-name home-color">🏠 苏格兰 战术风格</div>
+        <div class="analysis-text-small">苏格兰战术分析待AI填充...基于ELO 1795 / FIFA #38</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容26人 | 详情待补充</div>
+        </div>
+      </div>
+      <div class="tactic-side">
+        <div class="tactic-team-name away-color">✈️ 摩洛哥 战术风格</div>
+        <div class="analysis-text-small">摩洛哥战术分析待AI填充...基于ELO 1890 / FIFA #14</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容23人 | 详情待补充</div>
+        </div>
+      </div>
+    </div>    <!-- 首发伤病阵容检测 -->
+    <div class="lineup-section" style="margin-top:12px;">
+      <div style="font-weight:700;font-size:.85em;margin-bottom:8px;">👟 首发·伤病·阵容检测</div>
+      <div class="lineup-side">
+        <div class="lineup-team home-color">苏格兰</div>
+        <div class="player-list"><span class='player-chip confirmed'>普利西奇<small>(FW)</small></span><span class='player-chip confirmed'>麦肯尼<small>(MF)</small></span><span class='player-chip confirmed'>亚当斯<small>(MF)</small></span><span class='player-chip confirmed'>维阿<small>(FW)</small></span><span class='player-chip confirmed'>特纳<small>(GK)</small></span></div>
+      </div>
+      <div class="lineup-side">
+        <div class="lineup-team away-color">{away_name}</div>
+        <div class="player-list"><span class='player-chip confirmed'>莱基<small>(FW)</small></span><span class='player-chip confirmed'>苏塔尔<small>(DF)</small></span><span class='player-chip confirmed'>罗吉奇<small>(MF)</small></span><span class='player-chip confirmed'>瑞安<small>(GK)</small></span></div>
+      </div>
+    </div>
+  </div>  <!-- 关键球员近1-2年联赛数据 -->
+  <div class="section">
+    <div class="section-title">⚽ 关键球员近1-2年联赛数据</div>
+    <div class="similar-grid">
+      <div class="similar-item">
+        <div class="similar-item-title home-color">苏格兰 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+      <div class="similar-item">
+        <div class="similar-item-title away-color">摩洛哥 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+    </div>
+  </div>  <!-- 四、盘口与赔率分析 -->
+  <div class="section">
+    <div class="section-title">📈 四、盘口与赔率分析 (Pinnacle)</div>    <div class="odds-grid">
+      <div class="odds-card">
+        <div class="odds-card-title">欧赔 1X2</div>
+        <div class="odds-card-row"><span class="home-color">苏格兰胜</span><span class="odds-num">5.29</span><span class="implied-prob">18.9%</span></div>
+        <div class="odds-card-row"><span class="gold-color">平局</span><span class="odds-num">3.63</span><span class="implied-prob">27.5%</span></div>
+        <div class="odds-card-row"><span class="away-color">摩洛哥胜</span><span class="odds-num">1.77</span><span class="implied-prob">56.5%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">亚盘 主盘 +0.75</div>
+        <div class="odds-card-row"><span class="home-color">苏格兰 +0.75</span><span class="odds-num">1.88</span></div>
+        <div class="odds-card-row"><span class="away-color">摩洛哥 +0.75</span><span class="odds-num">1.98</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">大小球 2.5</div>
+        <div class="odds-card-row"><span>大2.5</span><span class="odds-num">2.00</span><span class="implied-prob">50.0%</span></div>
+        <div class="odds-card-row"><span>小2.5</span><span class="odds-num">1.85</span><span class="implied-prob">54.1%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">BTTS 双方进球</div>
+        <div class="odds-card-row"><span>是</span><span class="odds-num">1.97</span><span class="implied-prob">50.8%</span></div>
+        <div class="odds-card-row"><span>否</span><span class="odds-num">1.81</span><span class="implied-prob">55.2%</span></div>
+      </div>    </div>  </div>  <!-- 五、概率模型 -->
+  <div class="section">
+    <div class="section-title">🎯 五、概率模型 (ELO + Pinnacle欧赔 + 泊松)</div>
+    <div class="prob-row">
+      <div class="prob-col home-prob">
+        <div class="prob-label">苏格兰 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:23.6%;background:var(--blue-bright)"></div></div>
+        <div class="prob-value home-color">23.6%</div>
+      </div>
+      <div class="prob-col draw-prob">
+        <div class="prob-label">平局</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:25.2%;background:var(--gold)"></div></div>
+        <div class="prob-value gold-color">25.2%</div>
+      </div>
+      <div class="prob-col away-prob">
+        <div class="prob-label">摩洛哥 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:51.2%;background:var(--orange)"></div></div>
+        <div class="prob-value away-color">51.2%</div>
+      </div>
+    </div>
+    <div class="sub-probs">
+      <span>大2.5球: <strong>64.6%</strong> / 小2.5球: <strong>35.4%</strong></span>
+      <span style="margin-left:2em">BTTS(双方进球): <strong>65.6%</strong></span>
+    </div>
+    <div class="score-matrix">
+      <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+      <div class="score-chips">
+        <span class='score-chip'>1:1 <em>(9.6%)</em></span><span class='score-chip'>1:2 <em>(8.4%)</em></span><span class='score-chip'>2:1 <em>(7.97%)</em></span><span class='score-chip'>2:2 <em>(6.97%)</em></span><span class='score-chip'>0:1 <em>(5.78%)</em></span>
+      </div>
+    </div>
+  </div>  <!-- 六、综合推演 -->
+  <div class="section">
+    <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+    <div class="analysis-text-small">• <strong>控球节奏</strong>: 待AI推演...
+• <strong>先进球概率</strong>: 待AI推演...
+• <strong>落后变化</strong>: 待AI推演...
+• <strong>关键变量</strong>: 待AI推演...
+• <strong>终局比分</strong>: 待AI推演...</div>    <div style="margin-top:10px;padding:10px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:8px;font-size:.82em;color:var(--text-secondary);">
+      🔑 关键变量: ELO差距95 · FIFA排名差#24 · Pinnacle一致性
+    </div>
+  </div>  <!-- 七、双面融合 + 最终结论 -->
+  <div class="conclusion-panel">
+    <div class="conclusion-header">⚡ 七、专业分析推理链 (层力星+战术推演)</div>
+    
+    <!-- 双面融合面板 -->
+    <div class="fusion-panel">
+      <div class="fusion-header">
+        <div class="theory-side">
+          <div class="side-label theory-label">📐 理论面 (模型+市场) — 6信号+探源</div>
+          <div class="side-content">ELO:ELO 1795→胜率24% | 欧赔:Pinnacle主5.29 | 亚盘:0.75 | Poly:-- | xG:1.7:1.8 | 大小球:大2.0</div>
+        </div>
+        <div class="practice-side">
+          <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件) — 5信号+推理</div>
+          <div class="side-content">战术:待填充 | 克制度:待计算(0-10) | 可用性:待评估 | 类似对手:待查询 | 平局基线:28%(小组赛)</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <strong>融合判断:</strong>
+        <span class="alignment-badge align-divergence">待分析</span>
+        
+      </div>
+      
+      <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,.15);border-radius:8px;">
+        <div style="font-weight:700;font-size:.9em;color:var(--gold);margin-bottom:6px;">🏆 融合结论</div>
+        <div class="analysis-text-small" style="font-size:.9em;line-height:1.8;">待AI深度推理后填充...</div>
+      </div>
+    </div>
+
+    <div class="conclusion-body" style="margin-top:16px;">
+      <div class="score-recommendation">
+        <div class="rec-label">最可能比分</div>
+        <div class="rec-score">1:1</div>
+        <div class="rec-label-sub">次选: 1:2</div>
+      </div>
+      <div class="verdict-block">
+        <div class="verdict-main">主推: <strong>摩洛哥胜</strong></div>
+        <div class="verdict-conf">置信度: 51.2% | 融合信度: ?</div>
+        <div class="verdict-scores">
+          <span class='score-chip'>1:1 (9.6%)</span><span class='score-chip'>1:2 (8.4%)</span><span class='score-chip'>2:1 (7.97%)</span><span class='score-chip'>2:2 (6.97%)</span>
+        </div>
+        <div class="verdict-note">🟡 风险: 中</div>
+      </div>
+      <div class="risk-block risk-bg-中">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中</div>
+        <div class="btts-note">BTTS: 65.6%</div>
+        <div class="btts-note">大2.5: 64.6%</div>
+      </div>
+    </div>
+  </div>
+</div><div class="match-card" id="巴西vs海地">
+  
+  <!-- Match Header -->
+  <div class="match-header">
+    <div class="match-meta">
+      <span class="round-badge">小组赛第3轮</span>
+      <span class='time-badge'>22:00 北京时间</span>
+      <span class='venue-badge'>洛杉矶 · SoFi Stadium</span>
+    </div>
+    <div class="teams-row">
+      <div class="team home-team">
+        <div class="team-name">巴西</div>
+        <div class="elo-badge">ELO 2080 · FIFA #5</div>
+      </div>
+      <div class="vs-center">
+        <div class="vs-text">VS</div>
+        <div class="risk-badge risk-低">🟢 风险: 低</div>
+      </div>
+      <div class="team away-team">
+        <div class="team-name">海地</div>
+        <div class="elo-badge">ELO 1680 · FIFA #57</div>
+      </div>
+    </div>
+    <div class="elo-bar">
+      <div class="elo-bar-home" style="width:55.3%">2080</div>
+      <div class="elo-bar-away" style="width:44.7%">1680</div>
+    </div>
+  </div>  <!-- 一、基础实力分析 -->
+  <div class="section">
+    <div class="section-title">📊 一、基础实力分析</div>
+    <div class="stat-grid">
+      <div class="stat-col">
+        <div class="stat-team-name home-color">巴西</div>
+        <div class="stat-row"><span>ELO评级</span><span>2080</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#5<span class="fifa-badge">世界前10</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.75</span></div>
+        <div class="stat-row"><span>实力等级</span><span>世界前10</span></div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-team-name away-color">海地</div>
+        <div class="stat-row"><span>ELO评级</span><span>1680</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#57<span class="fifa-badge">挑战者/黑马</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.42</span></div>
+        <div class="stat-row"><span>实力等级</span><span>挑战者/黑马</span></div>
+      </div>
+    </div>
+    <div class="elo-diff-bar">
+      ELO差距: <strong>400</strong> 分 (★ 巴西 占优)
+      &nbsp;|&nbsp; FIFA排名差: #52
+    </div>
+  </div>  <!-- 二、状态分析：近期国际赛战绩 -->
+  <div class="section">
+    <div class="section-title">🔄 二、状态分析（近期国际赛战绩）</div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name home-color">🔥 巴西 近期状态</span>
+        <span class="form-record form-badge-good">WDWLWW</span>
+      </div>
+      <div class='form-detail'>4胜1平1负 | PPG: 2.17</div>
+      <div class='form-detail'>近期: W2:1 | D1:1 | L0:2 | W3:0 | L1:2 | W4:0 进10 失4 | PPG: 2.17</div>
+    </div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name away-color">🔥 海地 近期状态</span>
+        <span class="form-record form-badge-poor">LDWLWD</span>
+      </div>
+      <div class='form-detail'>2胜1平3负 | PPG: 1.17</div>
+      <div class='form-detail'>近期: L0:3 | W2:0 | L1:2 | W1:0 | L0:4 | D1:1 进4 失10 | PPG: 1.17</div>
+    </div>
+  </div>  <!-- 三、战术克制分析 -->
+  <div class="section">
+    <div class="section-title">⚔️ 三、战术克制分析（含星级力量）</div>
+    <div class="tactic-split">
+      <div class="tactic-side">
+        <div class="tactic-team-name home-color">🏠 巴西 战术风格</div>
+        <div class="analysis-text-small">巴西战术分析待AI填充...基于ELO 2080 / FIFA #5</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容26人 | 详情待补充</div>
+        </div>
+      </div>
+      <div class="tactic-side">
+        <div class="tactic-team-name away-color">✈️ 海地 战术风格</div>
+        <div class="analysis-text-small">海地战术分析待AI填充...基于ELO 1680 / FIFA #57</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容23人 | 详情待补充</div>
+        </div>
+      </div>
+    </div>    <!-- 首发伤病阵容检测 -->
+    <div class="lineup-section" style="margin-top:12px;">
+      <div style="font-weight:700;font-size:.85em;margin-bottom:8px;">👟 首发·伤病·阵容检测</div>
+      <div class="lineup-side">
+        <div class="lineup-team home-color">巴西</div>
+        <div class="player-list"><span class='player-chip confirmed'>普利西奇<small>(FW)</small></span><span class='player-chip confirmed'>麦肯尼<small>(MF)</small></span><span class='player-chip confirmed'>亚当斯<small>(MF)</small></span><span class='player-chip confirmed'>维阿<small>(FW)</small></span><span class='player-chip confirmed'>特纳<small>(GK)</small></span></div>
+      </div>
+      <div class="lineup-side">
+        <div class="lineup-team away-color">{away_name}</div>
+        <div class="player-list"><span class='player-chip confirmed'>莱基<small>(FW)</small></span><span class='player-chip confirmed'>苏塔尔<small>(DF)</small></span><span class='player-chip confirmed'>罗吉奇<small>(MF)</small></span><span class='player-chip confirmed'>瑞安<small>(GK)</small></span></div>
+      </div>
+    </div>
+  </div>  <!-- 关键球员近1-2年联赛数据 -->
+  <div class="section">
+    <div class="section-title">⚽ 关键球员近1-2年联赛数据</div>
+    <div class="similar-grid">
+      <div class="similar-item">
+        <div class="similar-item-title home-color">巴西 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+      <div class="similar-item">
+        <div class="similar-item-title away-color">海地 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+    </div>
+  </div>  <!-- 四、盘口与赔率分析 -->
+  <div class="section">
+    <div class="section-title">📈 四、盘口与赔率分析 (Pinnacle)</div>    <div class="odds-grid">
+      <div class="odds-card">
+        <div class="odds-card-title">欧赔 1X2</div>
+        <div class="odds-card-row"><span class="home-color">巴西胜</span><span class="odds-num">1.12</span><span class="implied-prob">89.5%</span></div>
+        <div class="odds-card-row"><span class="gold-color">平局</span><span class="odds-num">11.00</span><span class="implied-prob">9.1%</span></div>
+        <div class="odds-card-row"><span class="away-color">海地胜</span><span class="odds-num">26.00</span><span class="implied-prob">3.8%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">亚盘 主盘 -2.25</div>
+        <div class="odds-card-row"><span class="home-color">巴西 -2.25</span><span class="odds-num">1.90</span></div>
+        <div class="odds-card-row"><span class="away-color">海地 +2.25</span><span class="odds-num">1.93</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">大小球 2.5</div>
+        <div class="odds-card-row"><span>大2.5</span><span class="odds-num">2.10</span><span class="implied-prob">47.6%</span></div>
+        <div class="odds-card-row"><span>小2.5</span><span class="odds-num">1.75</span><span class="implied-prob">57.1%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">BTTS 双方进球</div>
+        <div class="odds-card-row"><span>是</span><span class="odds-num">2.40</span><span class="implied-prob">41.7%</span></div>
+        <div class="odds-card-row"><span>否</span><span class="odds-num">1.58</span><span class="implied-prob">63.3%</span></div>
+      </div>    </div>  </div>  <!-- 五、概率模型 -->
+  <div class="section">
+    <div class="section-title">🎯 五、概率模型 (ELO + Pinnacle欧赔 + 泊松)</div>
+    <div class="prob-row">
+      <div class="prob-col home-prob">
+        <div class="prob-label">巴西 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:84.9%;background:var(--blue-bright)"></div></div>
+        <div class="prob-value home-color">84.9%</div>
+      </div>
+      <div class="prob-col draw-prob">
+        <div class="prob-label">平局</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:10.1%;background:var(--gold)"></div></div>
+        <div class="prob-value gold-color">10.1%</div>
+      </div>
+      <div class="prob-col away-prob">
+        <div class="prob-label">海地 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:5.0%;background:var(--orange)"></div></div>
+        <div class="prob-value away-color">5.0%</div>
+      </div>
+    </div>
+    <div class="sub-probs">
+      <span>大2.5球: <strong>60.1%</strong> / 小2.5球: <strong>39.9%</strong></span>
+      <span style="margin-left:2em">BTTS(双方进球): <strong>61.7%</strong></span>
+    </div>
+    <div class="score-matrix">
+      <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+      <div class="score-chips">
+        <span class='score-chip'>1:1 <em>(10.44%)</em></span><span class='score-chip'>2:1 <em>(9.13%)</em></span><span class='score-chip'>1:2 <em>(7.41%)</em></span><span class='score-chip'>1:0 <em>(7.35%)</em></span><span class='score-chip'>2:2 <em>(6.48%)</em></span>
+      </div>
+    </div>
+  </div>  <!-- 六、综合推演 -->
+  <div class="section">
+    <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+    <div class="analysis-text-small">• <strong>控球节奏</strong>: 待AI推演...
+• <strong>先进球概率</strong>: 待AI推演...
+• <strong>落后变化</strong>: 待AI推演...
+• <strong>关键变量</strong>: 待AI推演...
+• <strong>终局比分</strong>: 待AI推演...</div>    <div style="margin-top:10px;padding:10px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:8px;font-size:.82em;color:var(--text-secondary);">
+      🔑 关键变量: ELO差距400 · FIFA排名差#52 · Pinnacle一致性
+    </div>
+  </div>  <!-- 七、双面融合 + 最终结论 -->
+  <div class="conclusion-panel">
+    <div class="conclusion-header">⚡ 七、专业分析推理链 (层力星+战术推演)</div>
+    
+    <!-- 双面融合面板 -->
+    <div class="fusion-panel">
+      <div class="fusion-header">
+        <div class="theory-side">
+          <div class="side-label theory-label">📐 理论面 (模型+市场) — 6信号+探源</div>
+          <div class="side-content">ELO:ELO 2080→胜率85% | 欧赔:Pinnacle主1.117 | 亚盘:-2.25 | Poly:-- | xG:1.8:1.4 | 大小球:大2.1</div>
+        </div>
+        <div class="practice-side">
+          <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件) — 5信号+推理</div>
+          <div class="side-content">战术:待填充 | 克制度:待计算(0-10) | 可用性:待评估 | 类似对手:待查询 | 平局基线:28%(小组赛)</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <strong>融合判断:</strong>
+        <span class="alignment-badge align-divergence">待分析</span>
+        
+      </div>
+      
+      <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,.15);border-radius:8px;">
+        <div style="font-weight:700;font-size:.9em;color:var(--gold);margin-bottom:6px;">🏆 融合结论</div>
+        <div class="analysis-text-small" style="font-size:.9em;line-height:1.8;">待AI深度推理后填充...</div>
+      </div>
+    </div>
+
+    <div class="conclusion-body" style="margin-top:16px;">
+      <div class="score-recommendation">
+        <div class="rec-label">最可能比分</div>
+        <div class="rec-score">1:1</div>
+        <div class="rec-label-sub">次选: 2:1</div>
+      </div>
+      <div class="verdict-block">
+        <div class="verdict-main">主推: <strong>巴西胜</strong></div>
+        <div class="verdict-conf">置信度: 84.9% | 融合信度: ?</div>
+        <div class="verdict-scores">
+          <span class='score-chip'>1:1 (10.44%)</span><span class='score-chip'>2:1 (9.13%)</span><span class='score-chip'>1:2 (7.41%)</span><span class='score-chip'>1:0 (7.35%)</span>
+        </div>
+        <div class="verdict-note">🟢 风险: 低</div>
+      </div>
+      <div class="risk-block risk-bg-低">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟢 低</div>
+        <div class="btts-note">BTTS: 61.7%</div>
+        <div class="btts-note">大2.5: 60.1%</div>
+      </div>
+    </div>
+  </div>
+</div><div class="match-card" id="土耳其vs巴拉圭">
+  
+  <!-- Match Header -->
+  <div class="match-header">
+    <div class="match-meta">
+      <span class="round-badge">小组赛第4轮</span>
+      <span class='time-badge'>00:00 北京时间</span>
+      <span class='venue-badge'>纽约 · MetLife Stadium</span>
+    </div>
+    <div class="teams-row">
+      <div class="team home-team">
+        <div class="team-name">土耳其</div>
+        <div class="elo-badge">ELO 1820 · FIFA #22</div>
+      </div>
+      <div class="vs-center">
+        <div class="vs-text">VS</div>
+        <div class="risk-badge risk-中">🟡 风险: 中</div>
+      </div>
+      <div class="team away-team">
+        <div class="team-name">巴拉圭</div>
+        <div class="elo-badge">ELO 1715 · FIFA #37</div>
+      </div>
+    </div>
+    <div class="elo-bar">
+      <div class="elo-bar-home" style="width:51.5%">1820</div>
+      <div class="elo-bar-away" style="width:48.5%">1715</div>
+    </div>
+  </div>  <!-- 一、基础实力分析 -->
+  <div class="section">
+    <div class="section-title">📊 一、基础实力分析</div>
+    <div class="stat-grid">
+      <div class="stat-col">
+        <div class="stat-team-name home-color">土耳其</div>
+        <div class="stat-row"><span>ELO评级</span><span>1820</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#22<span class="fifa-badge">世界中游</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.59</span></div>
+        <div class="stat-row"><span>实力等级</span><span>世界中游</span></div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-team-name away-color">巴拉圭</div>
+        <div class="stat-row"><span>ELO评级</span><span>1715</span></div>
+        <div class="stat-row"><span>FIFA世界排名</span><span><span class="fifa-rank-row">#37<span class="fifa-badge">挑战者/黑马</span></span></span></div>
+        <div class="stat-row"><span>场均xG</span><span>1.50</span></div>
+        <div class="stat-row"><span>实力等级</span><span>挑战者/黑马</span></div>
+      </div>
+    </div>
+    <div class="elo-diff-bar">
+      ELO差距: <strong>105</strong> 分 (★ 土耳其 占优)
+      &nbsp;|&nbsp; FIFA排名差: #15
+    </div>
+  </div>  <!-- 二、状态分析：近期国际赛战绩 -->
+  <div class="section">
+    <div class="section-title">🔄 二、状态分析（近期国际赛战绩）</div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name home-color">🔥 土耳其 近期状态</span>
+        <span class="form-record form-badge-good">WDWLWW</span>
+      </div>
+      <div class='form-detail'>4胜1平1负 | PPG: 2.17</div>
+      <div class='form-detail'>近期: W2:1 | D1:1 | L0:2 | W3:0 | L1:2 | W4:0 进10 失4 | PPG: 2.17</div>
+    </div>    <div class="form-card">
+      <div class="form-header">
+        <span class="form-team-name away-color">🔥 巴拉圭 近期状态</span>
+        <span class="form-record form-badge-poor">LDWLWD</span>
+      </div>
+      <div class='form-detail'>2胜1平3负 | PPG: 1.17</div>
+      <div class='form-detail'>近期: L0:3 | W2:0 | L1:2 | W1:0 | L0:4 | D1:1 进4 失10 | PPG: 1.17</div>
+    </div>
+  </div>  <!-- 三、战术克制分析 -->
+  <div class="section">
+    <div class="section-title">⚔️ 三、战术克制分析（含星级力量）</div>
+    <div class="tactic-split">
+      <div class="tactic-side">
+        <div class="tactic-team-name home-color">🏠 土耳其 战术风格</div>
+        <div class="analysis-text-small">土耳其战术分析待AI填充...基于ELO 1820 / FIFA #22</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容26人 | 详情待补充</div>
+        </div>
+      </div>
+      <div class="tactic-side">
+        <div class="tactic-team-name away-color">✈️ 巴拉圭 战术风格</div>
+        <div class="analysis-text-small">巴拉圭战术分析待AI填充...基于ELO 1715 / FIFA #37</div>
+        <div class="star-power-box">
+          <div class="sp-title">⭐ 星级力量</div>
+          <div class="analysis-text-small">阵容23人 | 详情待补充</div>
+        </div>
+      </div>
+    </div>    <!-- 首发伤病阵容检测 -->
+    <div class="lineup-section" style="margin-top:12px;">
+      <div style="font-weight:700;font-size:.85em;margin-bottom:8px;">👟 首发·伤病·阵容检测</div>
+      <div class="lineup-side">
+        <div class="lineup-team home-color">土耳其</div>
+        <div class="player-list"><span class='player-chip confirmed'>普利西奇<small>(FW)</small></span><span class='player-chip confirmed'>麦肯尼<small>(MF)</small></span><span class='player-chip confirmed'>亚当斯<small>(MF)</small></span><span class='player-chip confirmed'>维阿<small>(FW)</small></span><span class='player-chip confirmed'>特纳<small>(GK)</small></span></div>
+      </div>
+      <div class="lineup-side">
+        <div class="lineup-team away-color">{away_name}</div>
+        <div class="player-list"><span class='player-chip confirmed'>莱基<small>(FW)</small></span><span class='player-chip confirmed'>苏塔尔<small>(DF)</small></span><span class='player-chip confirmed'>罗吉奇<small>(MF)</small></span><span class='player-chip confirmed'>瑞安<small>(GK)</small></span></div>
+      </div>
+    </div>
+  </div>  <!-- 关键球员近1-2年联赛数据 -->
+  <div class="section">
+    <div class="section-title">⚽ 关键球员近1-2年联赛数据</div>
+    <div class="similar-grid">
+      <div class="similar-item">
+        <div class="similar-item-title home-color">土耳其 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+      <div class="similar-item">
+        <div class="similar-item-title away-color">巴拉圭 关键球员</div><div class='analysis-text-small'>待AI联网补充(SRC/StatMuse/Transfermarkt)</div>      </div>
+    </div>
+  </div>  <!-- 四、盘口与赔率分析 -->
+  <div class="section">
+    <div class="section-title">📈 四、盘口与赔率分析 (Pinnacle)</div>    <div class="odds-grid">
+      <div class="odds-card">
+        <div class="odds-card-title">欧赔 1X2</div>
+        <div class="odds-card-row"><span class="home-color">土耳其胜</span><span class="odds-num">2.07</span><span class="implied-prob">48.3%</span></div>
+        <div class="odds-card-row"><span class="gold-color">平局</span><span class="odds-num">3.49</span><span class="implied-prob">28.7%</span></div>
+        <div class="odds-card-row"><span class="away-color">巴拉圭胜</span><span class="odds-num">3.87</span><span class="implied-prob">25.8%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">亚盘 主盘 -0.25</div>
+        <div class="odds-card-row"><span class="home-color">土耳其 -0.25</span><span class="odds-num">1.92</span></div>
+        <div class="odds-card-row"><span class="away-color">巴拉圭 +0.25</span><span class="odds-num">2.00</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">大小球 2.5</div>
+        <div class="odds-card-row"><span>大2.5</span><span class="odds-num">2.15</span><span class="implied-prob">46.5%</span></div>
+        <div class="odds-card-row"><span>小2.5</span><span class="odds-num">1.72</span><span class="implied-prob">58.1%</span></div>
+      </div>      <div class="odds-card">
+        <div class="odds-card-title">BTTS 双方进球</div>
+        <div class="odds-card-row"><span>是</span><span class="odds-num">1.94</span><span class="implied-prob">51.5%</span></div>
+        <div class="odds-card-row"><span>否</span><span class="odds-num">1.86</span><span class="implied-prob">53.8%</span></div>
+      </div>    </div>  </div>  <!-- 五、概率模型 -->
+  <div class="section">
+    <div class="section-title">🎯 五、概率模型 (ELO + Pinnacle欧赔 + 泊松)</div>
+    <div class="prob-row">
+      <div class="prob-col home-prob">
+        <div class="prob-label">土耳其 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:50.9%;background:var(--blue-bright)"></div></div>
+        <div class="prob-value home-color">50.9%</div>
+      </div>
+      <div class="prob-col draw-prob">
+        <div class="prob-label">平局</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:23.6%;background:var(--gold)"></div></div>
+        <div class="prob-value gold-color">23.6%</div>
+      </div>
+      <div class="prob-col away-prob">
+        <div class="prob-label">巴拉圭 胜</div>
+        <div class="prob-bar"><div class="prob-fill" style="width:25.5%;background:var(--orange)"></div></div>
+        <div class="prob-value away-color">25.5%</div>
+      </div>
+    </div>
+    <div class="sub-probs">
+      <span>大2.5球: <strong>58.6%</strong> / 小2.5球: <strong>41.4%</strong></span>
+      <span style="margin-left:2em">BTTS(双方进球): <strong>61.0%</strong></span>
+    </div>
+    <div class="score-matrix">
+      <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+      <div class="score-chips">
+        <span class='score-chip'>1:1 <em>(10.85%)</em></span><span class='score-chip'>2:1 <em>(8.63%)</em></span><span class='score-chip'>1:2 <em>(8.14%)</em></span><span class='score-chip'>1:0 <em>(7.23%)</em></span><span class='score-chip'>0:1 <em>(6.83%)</em></span>
+      </div>
+    </div>
+  </div>  <!-- 六、综合推演 -->
+  <div class="section">
+    <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+    <div class="analysis-text-small">• <strong>控球节奏</strong>: 待AI推演...
+• <strong>先进球概率</strong>: 待AI推演...
+• <strong>落后变化</strong>: 待AI推演...
+• <strong>关键变量</strong>: 待AI推演...
+• <strong>终局比分</strong>: 待AI推演...</div>    <div style="margin-top:10px;padding:10px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:8px;font-size:.82em;color:var(--text-secondary);">
+      🔑 关键变量: ELO差距105 · FIFA排名差#15 · Pinnacle一致性
+    </div>
+  </div>  <!-- 七、双面融合 + 最终结论 -->
+  <div class="conclusion-panel">
+    <div class="conclusion-header">⚡ 七、专业分析推理链 (层力星+战术推演)</div>
+    
+    <!-- 双面融合面板 -->
+    <div class="fusion-panel">
+      <div class="fusion-header">
+        <div class="theory-side">
+          <div class="side-label theory-label">📐 理论面 (模型+市场) — 6信号+探源</div>
+          <div class="side-content">ELO:ELO 1820→胜率51% | 欧赔:Pinnacle主2.07 | 亚盘:-0.25 | Poly:-- | xG:1.6:1.5 | 大小球:大2.15</div>
+        </div>
+        <div class="practice-side">
+          <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件) — 5信号+推理</div>
+          <div class="side-content">战术:待填充 | 克制度:待计算(0-10) | 可用性:待评估 | 类似对手:待查询 | 平局基线:28%(小组赛)</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <strong>融合判断:</strong>
+        <span class="alignment-badge align-divergence">待分析</span>
+        
+      </div>
+      
+      <div style="margin-top:12px;padding:10px;background:rgba(0,0,0,.15);border-radius:8px;">
+        <div style="font-weight:700;font-size:.9em;color:var(--gold);margin-bottom:6px;">🏆 融合结论</div>
+        <div class="analysis-text-small" style="font-size:.9em;line-height:1.8;">待AI深度推理后填充...</div>
+      </div>
+    </div>
+
+    <div class="conclusion-body" style="margin-top:16px;">
+      <div class="score-recommendation">
+        <div class="rec-label">最可能比分</div>
+        <div class="rec-score">1:1</div>
+        <div class="rec-label-sub">次选: 2:1</div>
+      </div>
+      <div class="verdict-block">
+        <div class="verdict-main">主推: <strong>土耳其胜</strong></div>
+        <div class="verdict-conf">置信度: 50.9% | 融合信度: ?</div>
+        <div class="verdict-scores">
+          <span class='score-chip'>1:1 (10.85%)</span><span class='score-chip'>2:1 (8.63%)</span><span class='score-chip'>1:2 (8.14%)</span><span class='score-chip'>1:0 (7.23%)</span>
+        </div>
+        <div class="verdict-note">🟡 风险: 中</div>
+      </div>
+      <div class="risk-block risk-bg-中">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中</div>
+        <div class="btts-note">BTTS: 61.0%</div>
+        <div class="btts-note">大2.5: 58.6%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>数据来源: API-FOOTBALL · OddsPAPI.io(Pinnacle) · ELO/FIFA评级 · xG模型 · 泊松分布</p>
+  <p style="margin-top:6px">worldcup.imiaozhan.com | v30.0 两阶段架构</p>
+</div>
+
+</body>
+</html>

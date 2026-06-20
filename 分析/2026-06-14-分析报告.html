@@ -87,6 +87,18 @@ h1 { font-size: 1.5em; color: var(--orange); }
 </style>
 </head>
 <body>
+<script>
+// ===== Auth Check =====
+(function(){
+  if (localStorage.getItem("auth") !== "1") {
+    var here = window.location.pathname;
+    var depth = (here.match(/\//g)||[]).length - 1;
+    var prefix = depth > 1 ? "../" : "";
+    window.location.href = prefix + "index.html";
+  }
+})();
+</script>
+
 <div class="container">
 <div class="header-section">
   <h1>🏆 2026世界杯 全面分析报告 v26.6</h1>
