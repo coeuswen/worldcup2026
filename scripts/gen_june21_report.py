@@ -733,12 +733,12 @@ def elo_weight_factor(elo_diff):
 
 def stage_factor(matchday, group_standing=None):
     """★v31.5 锦标赛阶段因子: 调总进球期望而非平局概率
-    MD1(首轮): -0.10球 (保守试探, 32场MD1 Under率56%)
+    MD1(首轮): -0.05球 (保守试探, 32场MD1 Under率56%)
     MD2(次轮): +0.05球 (出线压力→更开放, MD2实际场均3.2球 vs MD1 2.8球)
     MD3(末轮): +0.10球 or -0.15球 (取决出线形势: 必须赢或平即可出线)
     """
     if matchday == 1:
-        return -0.10  # 首轮保守
+        return -0.05  # 首轮保守
     elif matchday == 2:
         return +0.05  # 次轮出线压力→开放
     elif matchday == 3:
