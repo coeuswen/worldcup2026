@@ -559,7 +559,9 @@ body {
 .odds-card-row { display: flex; justify-content: space-between; font-size: .82em; margin: 2px 0; }
 .implied-prob { color: var(--text-secondary); font-size: .75em; }
 .ah-table { margin-top: 10px; background: rgba(0,0,0,.1); border-radius: 8px; padding: 10px 12px; }
-.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 6px; }
+.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 2px; }
+.ah-prob-line { font-size: .75em; color: var(--teal); padding-top: 3px; border-top: 1px solid rgba(255,255,255,.05); margin-top: 4px; }
+.ah-prob-line span { margin-right: 12px; white-space: nowrap; }
 .ah-lines { display: flex; flex-wrap: wrap; gap: 6px; }
 .ah-chip { background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.15); border-radius: 6px; padding: 3px 8px; font-size: .72em; }
 
@@ -699,6 +701,18 @@ def market_ou_implied_total(over_odds, under_odds):
         else:
             lo = mid  # λ过小→提高下限
     return (lo + hi) / 2
+
+def devig_1x2(h_odds, d_odds, a_odds):
+    """1X2赔率去水 → 真实隐含概率"""
+    rh, rd, ra = 1.0/h_odds, 1.0/d_odds, 1.0/a_odds
+    total = rh + rd + ra
+    return (rh/total*100, rd/total*100, ra/total*100)
+
+def devig_two(odds_a, odds_b):
+    """二元赔率去水(大小球/BTTS) → (prob_a%, prob_b%)"""
+    ra, rb = 1.0/odds_a, 1.0/odds_b
+    total = ra + rb
+    return (ra/total*100, rb/total*100)
 
 def defense_adj(def_h, def_a):
     """防守风格调整: (def_h+def_a)/2每高于5 → 总进球-0.20 (v31.5: 仅作用于先验部分)"""
@@ -887,23 +901,28 @@ def generate_match_html(mk, d):
     odds = d['odds_euro']
     odds_o = d['odds_ou25']
     odds_b = d['odds_btts']
+    # 计算去水隐含概率
+    dv_h, dv_d, dv_a = devig_1x2(odds['home'], odds['draw'], odds['away'])
+    dv_ou_over, dv_ou_under = devig_two(odds_o.get('over', 1.01), odds_o.get('under', 1.01))
+    dv_btts_y, dv_btts_n = devig_two(odds_b.get('yes', 1.01), odds_b.get('no', 1.01))
+    
     H.append(f"""<div class="section">
   <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
   <div class="odds-grid">
     <div class="odds-card">
       <div class="odds-card-title">{d['home_name']}胜</div>
       <div class="odds-num home-color">{odds['home']}</div>
-      <div class="implied-prob">{round(1/odds['home']*100,1)}%</div>
+      <div class="implied-prob">去水 {dv_h:.1f}%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">平局</div>
       <div class="odds-num draw-color">{odds['draw']}</div>
-      <div class="implied-prob">{round(1/odds['draw']*100,1)}%</div>
+      <div class="implied-prob">去水 {dv_d:.1f}%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">{d['away_name']}胜</div>
       <div class="odds-num away-color">{odds['away']}</div>
-      <div class="implied-prob">{round(1/odds['away']*100,1)}%</div>
+      <div class="implied-prob">去水 {dv_a:.1f}%</div>
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
@@ -913,6 +932,7 @@ def generate_match_html(mk, d):
   </div>
   <div class="ah-table">
     <div class="ah-table-title">亚盘: {d['odds_ah']} | 大小球2.5: 大{odds_o.get('over','?')} / 小{odds_o.get('under','?')} | BTTS: 是{odds_b.get('yes','?')} / 否{odds_b.get('no','?')}</div>
+    <div class="ah-prob-line"><span>📊 去水概率 →</span><span>大球 {dv_ou_over:.1f}% / 小球 {dv_ou_under:.1f}%</span><span>BTTS是 {dv_btts_y:.1f}% / 否 {dv_btts_n:.1f}%</span></div>
   </div>
 </div>""")
     

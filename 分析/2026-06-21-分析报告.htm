@@ -121,7 +121,9 @@ body {
 .odds-card-row { display: flex; justify-content: space-between; font-size: .82em; margin: 2px 0; }
 .implied-prob { color: var(--text-secondary); font-size: .75em; }
 .ah-table { margin-top: 10px; background: rgba(0,0,0,.1); border-radius: 8px; padding: 10px 12px; }
-.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 6px; }
+.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 2px; }
+.ah-prob-line { font-size: .75em; color: var(--teal); padding-top: 3px; border-top: 1px solid rgba(255,255,255,.05); margin-top: 4px; }
+.ah-prob-line span { margin-right: 12px; white-space: nowrap; }
 .ah-lines { display: flex; flex-wrap: wrap; gap: 6px; }
 .ah-chip { background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.15); border-radius: 6px; padding: 3px 8px; font-size: .72em; }
 
@@ -209,7 +211,7 @@ body {
 <body>
 <div class="header">
   <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告 v31.5</h1>
-  <div class="subtitle">v31.5 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 2026-06-20 18:24 北京时间</div>
+  <div class="subtitle">v31.5 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 2026-06-20 18:32 北京时间</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span>    <span class="id-tag">⚡ Dixon-Coles泊松</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -374,17 +376,17 @@ body {
     <div class="odds-card">
       <div class="odds-card-title">荷兰胜</div>
       <div class="odds-num home-color">1.54</div>
-      <div class="implied-prob">64.9%</div>
+      <div class="implied-prob">去水 57.5%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">平局</div>
       <div class="odds-num draw-color">3.8</div>
-      <div class="implied-prob">26.3%</div>
+      <div class="implied-prob">去水 23.3%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">瑞典胜</div>
       <div class="odds-num away-color">4.6</div>
-      <div class="implied-prob">21.7%</div>
+      <div class="implied-prob">去水 19.2%</div>
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
@@ -394,6 +396,7 @@ body {
   </div>
   <div class="ah-table">
     <div class="ah-table-title">亚盘: 荷兰 -0.75 | 大小球2.5: 大1.65 / 小2.2 | BTTS: 是1.72 / 否2.0</div>
+    <div class="ah-prob-line"><span>📊 去水概率 →</span><span>大球 57.1% / 小球 42.9%</span><span>BTTS是 53.8% / 否 46.2%</span></div>
   </div>
 </div>
 <div class="section">
@@ -558,17 +561,17 @@ body {
     <div class="odds-card">
       <div class="odds-card-title">德国胜</div>
       <div class="odds-num home-color">1.37</div>
-      <div class="implied-prob">73.0%</div>
+      <div class="implied-prob">去水 64.7%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">平局</div>
       <div class="odds-num draw-color">4.45</div>
-      <div class="implied-prob">22.5%</div>
+      <div class="implied-prob">去水 19.9%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">科特迪瓦胜</div>
       <div class="odds-num away-color">5.75</div>
-      <div class="implied-prob">17.4%</div>
+      <div class="implied-prob">去水 15.4%</div>
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
@@ -578,6 +581,7 @@ body {
   </div>
   <div class="ah-table">
     <div class="ah-table-title">亚盘: 德国 -1.0 | 大小球2.5: 大1.55 / 小2.35 | BTTS: 是1.9 / 否1.8</div>
+    <div class="ah-prob-line"><span>📊 去水概率 →</span><span>大球 60.3% / 小球 39.7%</span><span>BTTS是 48.6% / 否 51.4%</span></div>
   </div>
 </div>
 <div class="section">
@@ -742,17 +746,17 @@ body {
     <div class="odds-card">
       <div class="odds-card-title">厄瓜多尔胜</div>
       <div class="odds-num home-color">1.08</div>
-      <div class="implied-prob">92.6%</div>
+      <div class="implied-prob">去水 86.1%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">平局</div>
       <div class="odds-num draw-color">9.0</div>
-      <div class="implied-prob">11.1%</div>
+      <div class="implied-prob">去水 10.3%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">库拉索胜</div>
       <div class="odds-num away-color">26.0</div>
-      <div class="implied-prob">3.8%</div>
+      <div class="implied-prob">去水 3.6%</div>
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
@@ -762,6 +766,7 @@ body {
   </div>
   <div class="ah-table">
     <div class="ah-table-title">亚盘: 厄瓜多尔 -2.25 | 大小球2.5: 大1.55 / 小2.4 | BTTS: 是2.5 / 否1.45</div>
+    <div class="ah-prob-line"><span>📊 去水概率 →</span><span>大球 60.8% / 小球 39.2%</span><span>BTTS是 36.7% / 否 63.3%</span></div>
   </div>
 </div>
 <div class="section">
@@ -926,17 +931,17 @@ body {
     <div class="odds-card">
       <div class="odds-card-title">突尼斯胜</div>
       <div class="odds-num home-color">6.65</div>
-      <div class="implied-prob">15.0%</div>
+      <div class="implied-prob">去水 13.3%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">平局</div>
       <div class="odds-num draw-color">4.02</div>
-      <div class="implied-prob">24.9%</div>
+      <div class="implied-prob">去水 22.0%</div>
     </div>
     <div class="odds-card">
       <div class="odds-card-title">日本胜</div>
       <div class="odds-num away-color">1.37</div>
-      <div class="implied-prob">73.0%</div>
+      <div class="implied-prob">去水 64.6%</div>
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
@@ -946,6 +951,7 @@ body {
   </div>
   <div class="ah-table">
     <div class="ah-table-title">亚盘: 日本 -0.75→-1.0 | 大小球2.5: 大1.8 / 小1.95 | BTTS: 是2.0 / 否1.72</div>
+    <div class="ah-prob-line"><span>📊 去水概率 →</span><span>大球 52.0% / 小球 48.0%</span><span>BTTS是 46.2% / 否 53.8%</span></div>
   </div>
 </div>
 <div class="section">
@@ -1016,7 +1022,7 @@ body {
 <div class="footer">
   <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
   <p style="margin-top:4px;">分析框架: v31.5 DC修正+O/U锚定(50%)+防守(-0.20×先验)+ELO动态+阶段因子 | 七步推理链 | 双面融合</p>
-  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 18:24 北京时间</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 18:32 北京时间</p>
 </div>
 </body>
 </html>
