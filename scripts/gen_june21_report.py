@@ -1011,7 +1011,7 @@ def generate_match_html(mk, d):
       <div class="risk-block risk-bg-{d['risk_label']}">
         <div class="risk-label">风险等级</div>
         <div class="risk-value">{d['risk_icon']} {d['risk_label']}</div>
-        <div class="btts-note">BTTS: {btts}% | 大2.5: {o25}%</div>
+        <div class="btts-note">BTTS: {round(dc_btts*100)}% | 大2.5: {round(dc_over25*100)}%</div>
       </div>
     </div>
   </div>
