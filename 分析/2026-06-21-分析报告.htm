@@ -209,7 +209,7 @@ body {
 <body>
 <div class="header">
   <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告 v31.0</h1>
-  <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-20 12:16 北京时间</div>
+  <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-20 13:09 北京时间</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ 泊松概率模型</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -241,7 +241,7 @@ body {
     <strong>② 市场溢价与FIFA排名 — 世界杯MD2阶段特征</strong><br>
     荷兰(FIFA#8): +9pp (ELO56%→市场65%) | 德国(FIFA#10): +6pp (67%→73%) | 日本(FIFA#18): +14pp (59%→73%) | 厄瓜多尔(FIFA#23): +16pp (77%→93%)。溢价与FIFA排名相关系数r≈0.85, 但厄瓜多尔(+16pp)和日本(+14pp)的溢价异常大——部分由于对手首轮惨败(库拉索1-7/突尼斯1-5)导致市场过度修正。ELO独立信号系统性低于市场隐含胜率, "ELO优先+赔率联动验证"策略继续纠正此偏见。<br><br>
     <strong>③ 融合权重策略 — 三项联动赔率分析首次集成</strong><br>
-    本报告首次将赔率三项联动分析(胜平负组合模式)纳入融合框架: 每场比赛的赔率组合被归入六种模式(低胜高平/中庸/低负高平等), 平赔"诚实度"与ELO独立概率交叉验证, 联赛特性(世界杯中立场地)校准。融合权重动态分配: ELO权重~60-70%, 战术推演~15-25%, 市场赔率~10-20%。当三项联动信号与ELO一致时(如德国高平排除平局), 融合信度提升。
+    本报告首次将赔率三项联动分析(胜平负组合模式)纳入融合框架: 每场比赛的赔率组合被归入六种模式(低胜高平/中庸/低负高平等), 平赔"诚实度"与ELO独立概率交叉验证, 联赛特性(世界杯中立场地)校准。融合权重动态分配: ELO权重~60-70%, 战术推演~15-25%, 市场赔率~10-20%。<strong>此外, 平局基线修正项(默认28%, 大ELO差距场次下调至20-24%)作为正则化因子防止过度自信, 这可能导致融合胜率略低于纯ELO值(如荷兰52%&lt;ELO56%)——此为设计特性而非数学矛盾。</strong>当三项联动信号与ELO一致时(如德国高平排除平局), 融合信度提升。
   </div>
 </div>
 
@@ -505,7 +505,7 @@ body {
   <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
   <div class="similar-team-row">
     <div class="similar-team-box"><div class="similar-team-label">🏠 德国</div><span class="similar-match"><span class="score">7:1 库拉索#82(世界杯)</span></span> <span class="similar-match"><span class="score">3:0 北爱尔兰#62(世欧预)</span></span> <span class="similar-match"><span class="score">2:0 挪威#36(世欧预)</span></span> <span class="similar-match"><span class="score">3:1 罗马尼亚#44(世欧预)</span></span> <span class="similar-match"><span class="score">1:1 荷兰#8(欧国联)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA8-82区(世欧预+欧国联+世界杯5场): 场均进3.2球/失0.6球! 对挪威荷兰等欧洲强队进2+球, 对弱旅库拉索7:1展示碾压火力</span></div>
-    <div class="similar-team-box"><div class="similar-team-label">🚶 科特迪瓦</div><span class="similar-match"><span class="score">1:0 厄瓜多尔#23(世界杯)</span></span> <span class="similar-match"><span class="score">3:1 摩洛哥#13(非预赛)</span></span> <span class="similar-match"><span class="score">0:2 法国#3(友谊赛)</span></span> <span class="similar-match"><span class="score">1:0 南非#58(非预赛)</span></span> <span class="similar-match"><span class="score">1:1 加蓬#70(非预赛)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA3-70区(非预赛+世界杯+友谊赛5场): 场均进1.2球/失0.8球, 对厄瓜多尔+摩洛哥表现稳健, 但对法国暴露实力差距</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 科特迪瓦</div><span class="similar-match"><span class="score">1:0 厄瓜多尔#23(世界杯)</span></span> <span class="similar-match"><span class="score">3:1 摩洛哥#13(非预赛)</span></span> <span class="similar-match"><span class="score">1:2 塞内加尔#20(非预赛)</span></span> <span class="similar-match"><span class="score">1:0 南非#58(非预赛)</span></span> <span class="similar-match"><span class="score">1:1 加蓬#70(非预赛)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA13-70区(非预赛+世界杯5场): 场均进1.2球/失0.8球, 对厄瓜多尔+摩洛哥表现稳健</span></div>
   </div>
   
   <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈科特迪瓦防€1.8亿) → 进几球 [进攻测试]</div>
@@ -789,9 +789,9 @@ body {
       <div class="verdict-scores"><span class="score-chip">2:0厄瓜多尔胜 (26.2%)</span><span class="score-chip">3:0厄瓜多尔胜 (21.0%)</span><span class="score-chip">比分1-0 (16.5%)</span><span class="score-chip">比分1-1 (6.4%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
-      <div class="risk-block risk-bg-中">
+      <div class="risk-block risk-bg-中高">
         <div class="risk-label">风险等级</div>
-        <div class="risk-value">🟡 中</div>
+        <div class="risk-value">🟠 中高</div>
         <div class="btts-note">BTTS: 30% | 大2.5: 55%</div>
       </div>
     </div>
@@ -828,7 +828,7 @@ body {
       <div class="form-card-title">突尼斯 <span class="fifa-badge">MD1: 瑞典 5-1 突尼斯</span></div>
       <span class="form-badge fading">近6场: 2胜1平3负 </span>
       <div class="form-record">LLLWWD</div>
-      <div class="form-matches">1-5 瑞典(WC MD1)<br>0-5 比利时(友谊赛)<br>0-2 法国(友谊赛)<br>1-0 科摩罗(非预赛)<br>2-0 冈比亚(非预赛)<br>1-1 赤道几内亚(非预赛)</div>
+      <div class="form-matches">1-5 瑞典(WC MD1)<br>0-1 阿尔及利亚(非预赛)<br>1-2 摩洛哥(非预赛)<br>1-0 科摩罗(非预赛)<br>2-0 冈比亚(非预赛)<br>1-1 赤道几内亚(非预赛)</div>
     </div>
     <div class="form-card">
       <div class="form-card-title">日本 <span class="fifa-badge">MD1: 荷兰 2-2 日本</span></div>
@@ -872,23 +872,23 @@ body {
   
   <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
   <div class="similar-team-row">
-    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">1:5 瑞典#38(世界杯)</span></span> <span class="similar-match"><span class="score">0:5 比利时#9(友谊赛)</span></span> <span class="similar-match"><span class="score">0:2 法国#3(友谊赛)</span></span> <span class="similar-match"><span class="score">1:0 科摩罗#125(非预赛)</span></span> <span class="similar-match"><span class="score">2:0 冈比亚#120(非预赛)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA3-125区(非预赛+世界杯+友谊赛5场): 场均进0.8球/失2.4球。对欧洲球队3场丢12球灾难级, 仅对非洲弱旅能取胜</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">1:5 瑞典#38(世界杯)</span></span> <span class="similar-match"><span class="score">0:1 阿尔及利亚#36(非预赛)</span></span> <span class="similar-match"><span class="score">1:2 摩洛哥#13(非预赛)</span></span> <span class="similar-match"><span class="score">1:0 科摩罗#125(非预赛)</span></span> <span class="similar-match"><span class="score">2:0 冈比亚#120(非预赛)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA13-125区(非预赛+世界杯5场): 场均进1.0球/失2.0球。对瑞典惨败, 对非预赛对手发挥正常, 防守仍存隐患</span></div>
     <div class="similar-team-box"><div class="similar-team-label">🚶 日本</div><span class="similar-match"><span class="score">2:2 荷兰#8(世界杯)</span></span> <span class="similar-match"><span class="score">2:1 澳大利亚#23(世亚预)</span></span> <span class="similar-match"><span class="score">1:1 沙特#61(世亚预)</span></span> <span class="similar-match"><span class="score">2:0 中国#71(世亚预)</span></span> <span class="similar-match"><span class="score">4:1 叙利亚#92(世亚预)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA8-92区(世亚预+世界杯5场): 场均进2.2球/失1.0球! 对荷兰能进2球, 对亚洲对手统治力强, 仅沙特能逼平</span></div>
   </div>
   
   <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈日本防€8000万) → 进几球 [进攻测试]</div>
   <div class="similar-team-row">
-    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">vs 瑞典(防≈€1.2亿):5球失1球进</span></span> <span class="similar-match"><span class="score">vs 比利时(防≈€2.0亿):5球失0球进</span></span> <span class="similar-match"><span class="score">vs 法国(防≈€3.0亿):2球失0球进</span></span> <span class="similar-match"><span class="score">vs 科摩罗(防≈€200万):0球失1球进</span></span> <span class="similar-match"><span class="score">vs 冈比亚(防≈€300万):0球失2球进</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€8000万): 对欧洲防线3场被灌12球! 日本防线€8000万, 突尼斯进球概率约20-25%</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">vs 瑞典(防≈€1.2亿):5球失1球进</span></span> <span class="similar-match"><span class="score">vs 阿尔及利亚(防≈€8000万):1球失0球进</span></span> <span class="similar-match"><span class="score">vs 摩洛哥(防≈€1.0亿):2球失1球进</span></span> <span class="similar-match"><span class="score">vs 科摩罗(防≈€200万):0球失1球进</span></span> <span class="similar-match"><span class="score">vs 冈比亚(防≈€300万):0球失2球进</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€8000万): 对北非防线2场失3球, 对瑞典防线崩溃。日本防线€8000万, 突尼斯进球概率约20-25%</span></div>
     <div class="similar-team-box"><div class="similar-team-label">🚶 日本</div><span class="similar-match"><span class="score">vs 荷兰(防≈€2.5亿):2球</span></span> <span class="similar-match"><span class="score">vs 澳大利亚(防≈€5000万):1球</span></span> <span class="similar-match"><span class="score">vs 沙特(防≈€3500万):1球</span></span> <span class="similar-match"><span class="score">vs 中国(防≈€3000万):0球</span></span> <span class="similar-match"><span class="score">vs 叙利亚(防≈€1500万):1球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€2000万): 对荷兰能进2球展示进攻质量! 突尼斯防线€2000万≈叙利亚+中国水平, 日本有望进2-3球</span></div>
   </div>
   
   <div class="similar-subtitle">③ ⚔️ vs类似进攻线身价(≈日本攻€1.2亿) → 丢几球 [防守测试]</div>
   <div class="similar-team-row">
-    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">vs 瑞典(攻≈€1.8亿):1球进5球失</span></span> <span class="similar-match"><span class="score">vs 比利时(攻≈€2.5亿):0球进5球失</span></span> <span class="similar-match"><span class="score">vs 法国(攻≈€5.0亿):0球进2球失</span></span> <span class="similar-match"><span class="score">vs 科摩罗(攻≈€200万):0球失</span></span> <span class="similar-match"><span class="score">vs 冈比亚(攻≈€200万):0球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€1.2亿): 对欧洲攻击线场均失4球! 日本攻击线€1.2亿接近瑞典水平, 突尼斯防线预期失2-3球</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">vs 瑞典(攻≈€1.8亿):1球进5球失</span></span> <span class="similar-match"><span class="score">vs 阿尔及利亚(攻≈€1.0亿):0球进1球失</span></span> <span class="similar-match"><span class="score">vs 摩洛哥(攻≈€1.5亿):1球进2球失</span></span> <span class="similar-match"><span class="score">vs 科摩罗(攻≈€200万):0球失</span></span> <span class="similar-match"><span class="score">vs 冈比亚(攻≈€200万):0球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€1.2亿): 对北非+瑞典攻击线场均失1.6球。日本攻击线€1.2亿, 突尼斯防线预期失2球左右</span></div>
     <div class="similar-team-box"><div class="similar-team-label">🚶 日本</div><span class="similar-match"><span class="score">vs 荷兰(攻≈€3.0亿):2球进2球失</span></span> <span class="similar-match"><span class="score">vs 澳大利亚(攻≈€6000万):1球进2球失</span></span> <span class="similar-match"><span class="score">vs 沙特(攻≈€4000万):1球进1球失</span></span> <span class="similar-match"><span class="score">vs 中国(攻≈€3000万):0球失</span></span> <span class="similar-match"><span class="score">vs 叙利亚(攻≈€1500万):1球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€2500万): 对€1500-6000万攻击线场均失1.0球。突尼斯攻击线€2500万≈中国/叙利亚水平, 日本防线零封概率约55-60%</span></div>
   </div>
   
-  <div class="similar-conclusion">💡 <strong>综合四维：四维融合: ELO-260+身价3.9倍日本碾压。突尼斯3场对欧洲队丢12球防线崩溃, 日本对亚洲对手展现统治力(场均2.2球)。久保缺阵影响创造力但伊东/镰田/堂安组合仍远超突尼斯防线。日本大概率2-0或3-0取胜, 穿盘-1.0概率55-60%。突尼斯爆冷需勒纳尔创造奇迹(概率≤10%)。</strong></div>
+  <div class="similar-conclusion">💡 <strong>综合四维：四维融合: ELO-260+身价3.9倍日本碾压。突尼斯对非预赛对手发挥正常但对瑞典崩盘, 换帅效应存不确定性。日本对亚洲对手展现统治力(场均2.2球)。久保缺阵影响创造力但伊东/镰田/堂安组合仍远超突尼斯防线。日本大概率2-0或3-0取胜, 穿盘-1.0概率55-60%。突尼斯爆冷需勒纳尔创造奇迹(概率≤10%)。</strong></div>
 </div>
 <div class="section">
   <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
@@ -973,9 +973,9 @@ body {
       <div class="verdict-scores"><span class="score-chip">2:0日本胜 (5.2%)</span><span class="score-chip">3:0日本胜 (4.2%)</span><span class="score-chip">比分1-0 (3.3%)</span><span class="score-chip">比分1-1 (8.8%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
-      <div class="risk-block risk-bg-低">
+      <div class="risk-block risk-bg-中">
         <div class="risk-label">风险等级</div>
-        <div class="risk-value">🟢 低</div>
+        <div class="risk-value">🟡 中</div>
         <div class="btts-note">BTTS: 42% | 大2.5: 52%</div>
       </div>
     </div>
@@ -986,7 +986,7 @@ body {
 <div class="footer">
   <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
   <p style="margin-top:4px;">分析框架: v28.4 七步推理链 (基础实力→状态→战术→赔率→概率→推演→双面融合) | v30.0 两阶段架构</p>
-  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 12:16 北京时间</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 13:09 北京时间</p>
 </div>
 </body>
 </html>
