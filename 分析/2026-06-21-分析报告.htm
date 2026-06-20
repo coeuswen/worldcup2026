@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026世界杯 6月21日 量化分析报告 v31.0</title>
+<style>
+:root {
+    --bg-primary: #0f1119; --bg-secondary: #161822; --bg-tertiary: #1c1f2e;
+    --text-primary: #e8e8e8; --text-secondary: #a0a4b8;
+    --gold: #fbbf24; --gold-bright: #fcd34d;
+    --blue: #3b82f6; --blue-bright: #60a5fa;
+    --orange: #f97316; --red: #ef4444; --green: #22c55e;
+    --purple: #8b5cf6; --pink: #ec4899;
+    --home-color: #60a5fa; --away-color: #f97316; --draw-color: #fbbf24;
+    --border-dim: rgba(255,255,255,.06); --border-bright: rgba(255,255,255,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-primary); color: var(--text-primary); line-height: 1.7;
+    overflow-x: hidden;
+}
+.header {
+    text-align: center; padding: 36px 20px 28px;
+    background: linear-gradient(180deg, #0d1525 0%, #0f1119 100%);
+    border-bottom: 1px solid rgba(251,191,36,.12);
+}
+.header h1 { font-size: 1.9em; font-weight: 800; letter-spacing: -.02em; }
+.header h1 span { color: var(--gold-bright); }
+.header .subtitle { color: var(--text-secondary); font-size: .82em; margin-top: 6px; }
+.identity-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 12px; }
+.id-tag {
+    background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15);
+    border-radius: 20px; padding: 3px 12px; font-size: .73em; color: var(--gold);
+}
+.container { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+.disclaimer {
+    background: rgba(251,191,36,.04); border: 1px solid rgba(251,191,36,.1);
+    border-radius: 10px; padding: 12px 18px; margin-bottom: 24px;
+    font-size: .78em; color: var(--text-secondary); text-align: center;
+}
+
+/* 比赛头部 */
+.match-header {
+    background: var(--bg-secondary); border: 1px solid var(--border-dim);
+    border-radius: 14px; padding: 20px 24px; margin-bottom: 24px;
+}
+.match-title { font-size: 1.35em; font-weight: 800; text-align: center; margin-bottom: 8px; }
+.match-meta { text-align: center; font-size: .8em; color: var(--text-secondary); }
+.match-meta span { margin: 0 8px; }
+
+/* Section */
+.section {
+    background: var(--bg-secondary); border: 1px solid var(--border-dim);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+}
+.section-title {
+    font-size: 1.05em; font-weight: 700; margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border-bright);
+    color: var(--gold);
+}
+
+/* ELO条 */
+.elo-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.elo-team { width: 120px; font-size: .9em; font-weight: 600; text-align: right; }
+.elo-team.away { text-align: left; }
+.elo-bar-wrap { flex: 1; height: 22px; background: rgba(255,255,255,.04); border-radius: 11px; position: relative; overflow: hidden; }
+.elo-bar-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); transition: width .8s; }
+.elo-val { font-size: .8em; font-weight: 700; width: 48px; text-align: center; }
+.elo-advantage { text-align: center; font-size: .78em; color: var(--gold); margin: 4px 0; }
+.fifa-badge {
+    display: inline-block; background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.3);
+    border-radius: 12px; padding: 2px 10px; font-size: .73em; color: var(--purple); margin-left: 6px;
+}
+
+/* 近期战绩 */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-card {
+    background: rgba(0,0,0,.15); border-radius: 10px; padding: 12px 14px;
+    border: 1px solid var(--border-dim);
+}
+.form-card-title { font-weight: 700; font-size: .88em; margin-bottom: 6px; }
+.form-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .7em;
+    font-weight: 600; margin-bottom: 6px;
+}
+.form-badge.hot { background: rgba(239,68,68,.15); color: var(--red); }
+.form-badge.stable { background: rgba(34,197,94,.12); color: var(--green); }
+.form-badge.rising { background: rgba(59,130,246,.12); color: var(--blue-bright); }
+.form-badge.mixed { background: rgba(251,191,36,.1); color: var(--gold); }
+.form-badge.solid { background: rgba(34,197,94,.1); color: var(--green); }
+.form-badge.struggling { background: rgba(239,68,68,.1); color: var(--red); }
+.form-record { font-family: 'SF Mono', Consolas, monospace; font-size: .95em; letter-spacing: .15em; margin: 4px 0; }
+.form-matches { font-size: .72em; color: var(--text-secondary); line-height: 1.6; }
+
+/* 战术分析 */
+.tactic-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.tactic-card { background: rgba(0,0,0,.15); border-radius: 10px; padding: 14px; border: 1px solid var(--border-dim); }
+.tactic-card-title { font-weight: 700; font-size: .85em; margin-bottom: 8px; }
+.star-box { margin: 4px 0; padding: 3px 8px; background: rgba(251,191,36,.04); border-radius: 6px; font-size: .76em; display: flex; justify-content: space-between; }
+.star-name { font-weight: 600; }
+.star-club { color: var(--text-secondary); font-size: .9em; }
+.tactic-text { font-size: .78em; color: var(--text-secondary); line-height: 1.7; margin-top: 8px; }
+.injury-box {
+    background: rgba(239,68,68,.06); border: 1px solid rgba(239,68,68,.15);
+    border-radius: 8px; padding: 10px 14px; margin-top: 10px; font-size: .78em; color: var(--red);
+}
+
+/* 赔率面板 */
+.odds-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.odds-card {
+    background: rgba(0,0,0,.15); border-radius: 8px; padding: 12px;
+    text-align: center; border: 1px solid var(--border-dim);
+}
+.odds-card-title { font-size: .72em; color: var(--text-secondary); margin-bottom: 4px; }
+.odds-num { font-size: 1.3em; font-weight: 800; }
+.odds-num.home-color { color: var(--home-color); }
+.odds-num.draw-color { color: var(--draw-color); }
+.odds-num.away-color { color: var(--away-color); }
+.odds-card-row { display: flex; justify-content: space-between; font-size: .82em; margin: 2px 0; }
+.implied-prob { color: var(--text-secondary); font-size: .75em; }
+.ah-table { margin-top: 10px; background: rgba(0,0,0,.1); border-radius: 8px; padding: 10px 12px; }
+.ah-table-title { font-size: .78em; color: var(--text-secondary); margin-bottom: 6px; }
+.ah-lines { display: flex; flex-wrap: wrap; gap: 6px; }
+.ah-chip { background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.15); border-radius: 6px; padding: 3px 8px; font-size: .72em; }
+
+/* 概率 */
+.prob-row { display: flex; gap: 8px; align-items: flex-end; }
+.prob-col { flex: 1; text-align: center; }
+.prob-label { font-size: .78em; font-weight: 600; margin-bottom: 4px; }
+.prob-bar { height: 24px; background: rgba(255,255,255,.04); border-radius: 4px; overflow: hidden; margin: 4px 0; }
+.prob-fill { height: 100%; border-radius: 4px; transition: width 1s; }
+.prob-value { font-size: 1.1em; font-weight: 800; }
+.home-color { color: var(--home-color); } .draw-color { color: var(--draw-color); }
+.away-color { color: var(--away-color); } .gold-color { color: var(--gold); }
+.sub-probs { text-align: center; font-size: .78em; color: var(--text-secondary); margin: 8px 0; }
+.score-matrix { background: rgba(0,0,0,.12); border-radius: 8px; padding: 12px; margin-top: 10px; }
+.score-matrix-title { font-size: .8em; color: var(--text-secondary); margin-bottom: 6px; }
+.score-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.score-chip { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15); border-radius: 8px; padding: 4px 10px; font-size: .78em; }
+.score-chip em { color: var(--text-secondary); font-style: normal; font-size: .85em; }
+
+/* 类似对手参照 */
+.similar-section { background: rgba(59,130,246,.02); border: 1px solid rgba(59,130,246,.08); }
+.similar-subtitle { font-size: .85em; font-weight: 700; color: var(--teal); margin: 10px 0 4px; }
+.similar-subtitle.first { margin-top: 0; }
+.similar-team-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0; }
+.similar-team-box { background: rgba(0,0,0,.12); border-radius: 8px; padding: 8px 12px; font-size: .74em; }
+.similar-team-label { font-weight: 700; color: var(--gold-bright); font-size: .9em; margin-bottom: 4px; }
+.similar-match { display: inline-block; background: rgba(251,191,36,.05); border: 1px solid rgba(251,191,36,.08); border-radius: 5px; padding: 2px 6px; margin: 1px; font-size: .95em; }
+.similar-match .score { color: var(--gold); font-weight: 700; }
+.similar-conclusion { font-size: .78em; color: var(--teal); margin-top: 8px; padding: 8px; background: rgba(0,0,0,.08); border-radius: 6px; line-height: 1.5; }
+.mv-compare { text-align: center; font-size: .8em; color: var(--text-secondary); margin-bottom: 10px; padding: 6px; background: rgba(0,0,0,.08); border-radius: 6px; }
+
+/* 综合推演 */
+.analysis-text { font-size: .84em; color: var(--text-secondary); line-height: 1.8; }
+.analysis-text-small { font-size: .82em; color: var(--text-secondary); line-height: 1.8; }
+.analysis-text strong { color: var(--text-primary); }
+.key-vars-box { margin-top: 10px; padding: 10px; background: rgba(251,191,36,.05); border: 1px solid rgba(251,191,36,.15); border-radius: 8px; font-size: .82em; color: var(--text-secondary); }
+
+/* 双面融合 */
+.conclusion-panel {
+    background: linear-gradient(135deg, rgba(34,197,94,.03) 0%, rgba(59,130,246,.03) 100%);
+    border: 1px solid rgba(59,130,246,.12); border-radius: 16px; padding: 24px;
+}
+.conclusion-header { font-size: 1.1em; font-weight: 700; color: var(--gold); text-align: center; margin-bottom: 16px; }
+.fusion-panel { background: rgba(0,0,0,.12); border-radius: 12px; padding: 16px; }
+.fusion-header { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.side-label { font-size: .76em; font-weight: 700; margin-bottom: 4px; }
+.theory-label { color: var(--blue-bright); }
+.practice-label { color: var(--orange); }
+.side-content { font-size: .75em; color: var(--text-secondary); line-height: 1.5; }
+.alignment-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .78em; font-weight: 700; margin-left: 6px;
+}
+.align-consistent { background: rgba(34,197,94,.12); color: var(--green); }
+.align-divergence { background: rgba(251,191,36,.12); color: var(--gold); }
+.align-reversal { background: rgba(239,68,68,.12); color: var(--red); }
+.fusion-verdict-box { margin-top: 12px; padding: 12px; background: rgba(0,0,0,.15); border-radius: 8px; }
+.fusion-verdict-box .title { font-weight: 700; font-size: .9em; color: var(--gold); margin-bottom: 6px; }
+.conclusion-body { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.score-recommendation { text-align: center; padding: 16px 12px; background: rgba(0,0,0,.12); border-radius: 10px; }
+.rec-label { font-size: .78em; color: var(--text-secondary); }
+.rec-score { font-size: 1.8em; font-weight: 900; color: var(--gold-bright); margin: 6px 0; }
+.rec-label-sub { font-size: .76em; color: var(--text-secondary); }
+.verdict-block { padding: 14px; background: rgba(0,0,0,.12); border-radius: 10px; }
+.verdict-main { font-size: .9em; margin-bottom: 4px; }
+.verdict-conf { font-size: .76em; color: var(--text-secondary); }
+.verdict-scores { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
+.verdict-note { font-size: .75em; color: var(--text-secondary); margin-top: 4px; }
+.risk-block { padding: 14px; border-radius: 10px; text-align: center; }
+.risk-bg-low { background: rgba(34,197,94,.06); border: 1px solid rgba(34,197,94,.15); }
+.risk-bg-medium { background: rgba(251,191,36,.06); border: 1px solid rgba(251,191,36,.15); }
+.risk-bg-high { background: rgba(239,68,68,.06); border: 1px solid rgba(239,68,68,.15); }
+.risk-label { font-size: .73em; color: var(--text-secondary); }
+.risk-value { font-size: 1.1em; font-weight: 800; margin: 4px 0; }
+.btts-note { font-size: .72em; color: var(--text-secondary); margin: 2px 0; }
+
+/* Footer */
+.footer { text-align: center; padding: 28px 16px; font-size: .75em; color: var(--text-secondary); border-top: 1px solid var(--border-dim); margin-top: 24px; }
+
+@media (max-width: 680px) {
+    .form-grid, .tactic-split, .fusion-header, .conclusion-body { grid-template-columns: 1fr; }
+    .odds-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告 v31.0</h1>
+  <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-20 12:16 北京时间</div>
+  <div class="identity-tags">
+    <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ 泊松概率模型</span>
+    <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
+    <span class="id-tag">⭐ 星级力量评估</span><span class="id-tag">🔄 近期状态追踪</span>
+    <span class="id-tag">🔗 双面融合研判</span><span class="id-tag">🏦 博彩风控</span>
+  </div>
+</div>
+<div class="container">
+<div class="disclaimer">
+  ⚠️ 本报告基于量化模型与专业分析，仅供研究参考。足球存在高度不确定性，任何分析均无法保证结果准确性。请理性决策。
+</div>
+
+<!-- ★ 赛前综述 ★ -->
+<div class="section">
+  <div class="section-title">📋 6月21日赛前综述</div>
+  <div class="analysis-text">
+    <strong>比赛日看点:</strong> 6月21日是E组和F组的第二比赛日(MD2)，共4场比赛。与昨日的G/H组100%平局不同，E组首轮两场分出胜负：德国7-1血洗库拉索、科特迪瓦1-0绝杀厄瓜多尔。F组则是荷兰2-2战平日本、瑞典5-1大胜突尼斯——鲜明对比。本轮德国vs科特迪瓦的胜者将基本锁定出线；厄瓜多尔vs库拉索是谁输谁出局的生死战；荷兰必须击败瑞典避免末轮被动；而日本面对惨败后换帅的突尼斯，3分可期。<br><br>
+    <strong>Group E积分榜:</strong> 德国3分(GD+6) · 科特迪瓦3分(GD+1) · 厄瓜多尔0分(GD-1) · 库拉索0分(GD-6)<br>
+    <strong>Group F积分榜:</strong> 瑞典3分(GD+4) · 日本1分(GD0) · 荷兰1分(GD0) · 突尼斯0分(GD-4)
+  </div>
+</div>
+
+<!-- ★ 全局交叉分析 — v30.0复审新增 ★ -->
+<div class="section">
+  <div class="section-title">🔬 全局交叉分析 — 跨场次结构性特征</div>
+  <div class="analysis-text">
+    <strong>① 4场亚盘方向: E组强弱分明, F组存在不确定性</strong><br>
+    德国(-1.0)、厄瓜多尔(-2.25)、荷兰(-0.75)、日本(-1.0)——四场均是被让球方受让。但穿盘难度分层明显: 德国和日本穿盘概率相对高(对手实力差距大), 厄瓜多尔穿盘受制于自身进攻效率(近5场场均0.4球), 荷兰穿盘受制于瑞典3-5-2战术克制+双枪状态火热。4场中2场强队穿盘概率约50-60%, 属合理预期。<br><br>
+    <strong>② 市场溢价与FIFA排名 — 世界杯MD2阶段特征</strong><br>
+    荷兰(FIFA#8): +9pp (ELO56%→市场65%) | 德国(FIFA#10): +6pp (67%→73%) | 日本(FIFA#18): +14pp (59%→73%) | 厄瓜多尔(FIFA#23): +16pp (77%→93%)。溢价与FIFA排名相关系数r≈0.85, 但厄瓜多尔(+16pp)和日本(+14pp)的溢价异常大——部分由于对手首轮惨败(库拉索1-7/突尼斯1-5)导致市场过度修正。ELO独立信号系统性低于市场隐含胜率, "ELO优先+赔率联动验证"策略继续纠正此偏见。<br><br>
+    <strong>③ 融合权重策略 — 三项联动赔率分析首次集成</strong><br>
+    本报告首次将赔率三项联动分析(胜平负组合模式)纳入融合框架: 每场比赛的赔率组合被归入六种模式(低胜高平/中庸/低负高平等), 平赔"诚实度"与ELO独立概率交叉验证, 联赛特性(世界杯中立场地)校准。融合权重动态分配: ELO权重~60-70%, 战术推演~15-25%, 市场赔率~10-20%。当三项联动信号与ELO一致时(如德国高平排除平局), 融合信度提升。
+  </div>
+</div>
+
+<div class="match-header">
+  <div class="match-title">荷兰 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 瑞典</div>
+  <div class="match-meta">
+    <span>🏟 休斯顿NRG体育场</span><span>📋 F组 · 第2轮</span><span>🕐 6月21日 01:00 北京时间 (6月20日 12:00 休斯顿)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">荷兰 <span class="fifa-badge">#8</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:91.36363636363637%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">2010</div>
+  </div>
+  <div class="elo-advantage">荷兰领先+230ELO分 | FIFA排名差#30</div>
+  <div class="elo-row">
+    <div class="elo-team">瑞典 <span class="fifa-badge">#38</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:80.9090909090909%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1780</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🦁 ⭐⭐⭐⭐ 欧洲劲旅·无冕之王</span>
+    <span>🇸🇪 ⭐⭐⭐ 北欧海盗·首轮大胜</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">荷兰 <span class="fifa-badge">MD1: 荷兰 2-2 日本</span></div>
+      <span class="form-badge stable">近6场: 3胜2平1负 </span>
+      <div class="form-record">DWWWDL</div>
+      <div class="form-matches">2-2 日本(WC MD1)<br>3-0 挪威(世欧预)<br>2-1 波兰(世欧预)<br>4-1 北爱尔兰(友谊赛)<br>1-1 德国(欧国联)<br>0-1 法国(欧国联)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">瑞典 <span class="fifa-badge">MD1: 瑞典 5-1 突尼斯</span></div>
+      <span class="form-badge hot">近6场: 4胜1平1负 </span>
+      <div class="form-record">WWWWDW</div>
+      <div class="form-matches">5-1 突尼斯(WC MD1)<br>3-0 瑞士(世欧预)<br>2-0 希腊(世欧预)<br>1-1 波兰(世欧预)<br>2-3 葡萄牙(欧国联)<br>3-0 阿塞拜疆(世欧预)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 荷兰 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 科曼4-3-3控球进攻·德容调度·双边锋冲击</span></div>
+      <div class="analysis-text-small">维布鲁根(GK) / 邓弗里斯·范赫克·范戴克·阿克 / 格拉文贝赫·德容·赖金德斯 / 萨默维尔·马伦·加克波</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 15/26(英超7+西甲4+意甲2+德甲1+法甲1)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐维吉尔·范戴克</span><span style="color:var(--blue-bright);">9.2</span><span class="star-club">利物浦</span></div><div class="star-box"><span class="star-name">⭐弗兰基·德容</span><span style="color:var(--blue-bright);">8.8</span><span class="star-club">巴塞罗那</span></div><div class="star-box"><span class="star-name">⭐科迪·加克波</span><span style="color:var(--blue-bright);">8.3</span><span class="star-club">利物浦</span></div><div class="star-box"><span class="star-name">⭐瑞安·格拉文贝赫</span><span style="color:var(--blue-bright);">8.0</span><span class="star-club">利物浦</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 瑞典 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 波特3-5-2攻击型·伊萨克+吉奥克雷斯双枪·中场人数优势</span></div>
+      <div class="analysis-text-small">诺德菲尔特(GK) / 拉格比尔克·希恩·林德洛夫 / 伯恩哈德森·尼格伦·卡尔斯特罗姆·阿亚里·古德蒙德森 / 吉奥克雷斯·伊萨克</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 5/26(英超4+葡超1)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐亚历山大·伊萨克</span><span style="color:var(--orange);">9.0</span><span class="star-club">纽卡斯尔</span></div><div class="star-box"><span class="star-name">⭐维克托·吉奥克雷斯</span><span style="color:var(--orange);">8.8</span><span class="star-club">葡萄牙体育</span></div><div class="star-box"><span class="star-name">⭐亚辛·阿亚里</span><span style="color:var(--orange);">7.5</span><span class="star-club">布莱顿</span></div><div class="star-box"><span class="star-name">⭐维克托·林德洛夫</span><span style="color:var(--orange);">7.5</span><span class="star-club">曼联</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 荷兰4-3-3 vs 瑞典3-5-2 | 荷兰三中场vs瑞典五中场，瑞典在中场有人数优势<br>
+        <strong>控球vs反击:</strong> 荷兰控球55-60%，但瑞典3-5-2阵型天然克制4-3-3的边路——瑞典翼卫可对位荷兰边锋<br>
+        <strong>高位逼抢:</strong> 荷兰高位逼抢效率高，但瑞典伊萨克的个人能力可破解压迫线<br>
+        <strong>边路对比:</strong> 加克波+萨默维尔vs瑞典翼卫，荷兰边锋速度占优但瑞典5后卫防守宽度好<br>
+        <strong>定位球:</strong> 范戴克头球威胁极大+林德洛夫防守组织，双方定位球都是得分手段<br>
+        <strong>防守转换:</strong> 荷兰后防连续5场无零封暴露问题，瑞典伊萨克+吉奥克雷斯组合是最强反击双枪</div>
+  <div class="injury-box">
+    ⚠️ <strong>荷兰:</strong> 全员健康，孟菲斯·德佩伤愈可出战<br>
+    ⚠️ <strong>瑞典:</strong> 古德蒙德森(小腿抽筋已恢复，可出战)
+  </div>
+</div>
+<div class="section similar-section">
+  <div class="section-title">🔬 攻防类比 — 近3年国际大赛(不含友谊赛) vs 类似对手</div>
+  <div class="mv-compare">💰 <strong>身价对比:</strong> 荷兰 €7.5亿(攻€3.0亿/防€2.5亿) vs 瑞典 €4.1亿(攻€1.8亿/防€1.2亿) · 比值 1.8:1</div>
+  
+  <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 荷兰</div><span class="similar-match"><span class="score">1:1 德国#10(欧国联)</span></span> <span class="similar-match"><span class="score">3:0 挪威#36(世欧预)</span></span> <span class="similar-match"><span class="score">2:1 波兰#24(世欧预)</span></span> <span class="similar-match"><span class="score">0:1 法国#3(欧国联)</span></span> <span class="similar-match"><span class="score">2:2 日本#18(世界杯)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA3-36区(欧国联+世欧预+世界杯5场): 场均进1.6球/失1.0球, 对德国+法国不败但均有失球, 对挪威/波兰能进球但防线漏洞持续</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 瑞典</div><span class="similar-match"><span class="score">5:1 突尼斯#45(世界杯)</span></span> <span class="similar-match"><span class="score">2:3 葡萄牙#6(欧国联)</span></span> <span class="similar-match"><span class="score">1:1 波兰#24(世欧预)</span></span> <span class="similar-match"><span class="score">3:0 瑞士#12(世欧预)</span></span> <span class="similar-match"><span class="score">2:0 希腊#54(世欧预)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA6-54区(欧国联+世欧预+世界杯5场): 场均进2.6球/失1.0球! 对瑞士/希腊零封, 对葡萄牙能进2球, 伊萨克+吉奥克雷斯组合威力巨大</span></div>
+  </div>
+  
+  <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈瑞典防€1.2亿) → 进几球 [进攻测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 荷兰</div><span class="similar-match"><span class="score">vs 德国(防≈€2.5亿):1球</span></span> <span class="similar-match"><span class="score">vs 挪威(防≈€8000万):0球</span></span> <span class="similar-match"><span class="score">vs 波兰(防≈€1.0亿):1球</span></span> <span class="similar-match"><span class="score">vs 法国(防≈€3.0亿):1球</span></span> <span class="similar-match"><span class="score">vs 日本(防≈€1.0亿):2球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€1.2亿): 5场对€8000万-3.0亿防线场均1.0球, 荷兰攻击力对瑞典€1.2亿防线不应被高估, 1-2球是合理期望</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 瑞典</div><span class="similar-match"><span class="score">vs 波兰(防≈€1.0亿):1球</span></span> <span class="similar-match"><span class="score">vs 葡萄牙(防≈€2.5亿):2球</span></span> <span class="similar-match"><span class="score">vs 阿塞拜疆(防≈€500万):0球</span></span> <span class="similar-match"><span class="score">vs 希腊(防≈€5000万):0球</span></span> <span class="similar-match"><span class="score">vs 爱沙尼亚(防≈€300万):0球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€2.5亿): 瑞典对弱队零封但对强队防线失球率高, 荷兰防线€2.5亿是其面对的最强防守, 但荷兰近期防守漏洞可被利用</span></div>
+  </div>
+  
+  <div class="similar-subtitle">③ ⚔️ vs类似进攻线身价(≈瑞典攻€1.8亿) → 丢几球 [防守测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 荷兰</div><span class="similar-match"><span class="score">失1球 德国(攻≈€4.0亿)</span></span> <span class="similar-match"><span class="score">失0球 挪威(攻≈€8000万)</span></span> <span class="similar-match"><span class="score">失1球 波兰(攻≈€1.5亿)</span></span> <span class="similar-match"><span class="score">失1球 法国(攻≈€5.0亿)</span></span> <span class="similar-match"><span class="score">失2球 日本(攻≈€1.5亿)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€1.8亿): 场均失1.0球, 对€1.5亿级别(波兰/日本)均有失球→瑞典双枪组合€1.8亿≥波兰攻击线, 荷兰预计失1-2球</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 瑞典</div><span class="similar-match"><span class="score">失3球 葡萄牙(攻≈€4.0亿)</span></span> <span class="similar-match"><span class="score">失1球 波兰(攻≈€1.5亿)</span></span> <span class="similar-match"><span class="score">失0球 瑞士(攻≈€1.2亿)</span></span> <span class="similar-match"><span class="score">失0球 希腊(攻≈€5000万)</span></span> <span class="similar-match"><span class="score">失0球 阿塞拜疆(攻≈€1000万)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€3.0亿): 对波兰失1球/瑞士零封说明瑞典防守对€1-1.5亿级别有韧性, 但葡萄牙攻入3球暴露对顶级攻击的脆弱性</span></div>
+  </div>
+  
+  <div class="similar-conclusion">💡 <strong>综合四维：四维融合: 荷兰身价1.8倍优势+ELO+230, 但瑞典伊萨克+吉奥克雷斯状态火热(首轮合砍5球4助)。荷兰防线连续5场无零封是致命隐患, 瑞典3-5-2阵型天然克制4-3-3的边路。荷兰小胜概率50-55%, 平局25-30%, 瑞典爆冷15-20%。预计进球大战: BTTS 55%, 大球2.5 58%。预测2-1或2-2, 荷兰让0.75有风险。</strong></div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">荷兰胜</div>
+      <div class="odds-num home-color">1.54</div>
+      <div class="implied-prob">64.9%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">3.8</div>
+      <div class="implied-prob">26.3%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">瑞典胜</div>
+      <div class="odds-num away-color">4.6</div>
+      <div class="implied-prob">21.7%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">荷兰热度高</div>
+      <div class="implied-prob">亚盘: 荷兰 -0.75</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 荷兰 -0.75 | 大小球2.5: 大1.65 / 小2.2 | BTTS: 是1.72 / 否2.0</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">荷兰胜</div><div class="prob-bar"><div class="prob-fill" style="width:52%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">52%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:26%;background:var(--gold)"></div></div><div class="prob-value gold-color">26%</div></div>
+    <div class="prob-col"><div class="prob-label">瑞典胜</div><div class="prob-bar"><div class="prob-fill" style="width:22%;background:var(--orange)"></div></div><div class="prob-value away-color">22%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>58%</strong> | 小2.5球: <strong>42%</strong> | BTTS: <strong>55%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:1荷兰胜 <em>(18.2%)</em></span><span class="score-chip">2:2平局 <em>(14.6%)</em></span><span class="score-chip">比分1-0 <em>(11.4%)</em></span><span class="score-chip">比分1-1 <em>(10.4%)</em></span><span class="score-chip">比分0-0 <em>(5.2%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 荷兰控球主导，瑞典中场人数优势可能使比赛僵持。预期半场控球率55-60%<br>
+        • <strong>先进球概率:</strong> 荷兰48% / 瑞典30% / 22%半场0-0<br>
+        • <strong>落后变化:</strong> 若荷兰落后，科曼将换上德佩加强进攻；若瑞典落后，波特会调整3-5-2为3-4-3全线压上<br>
+        • <strong>终局走势:</strong> 两队防守均有漏洞(荷兰连续5场无零封、瑞典波特时代7场无零封)，大球概率高。荷兰小胜或平局，1-1/2-1/2-2都在合理范围</div>
+  <div class="key-vars-box">🔑 关键变量: ① 荷兰后防能否首次零封 ② 伊萨克+吉奥克雷斯双枪冲击 ③ 德容vs阿亚里中场对决</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差230→荷兰胜率56% | 欧赔1.54→隐含65% | 亚盘-0.75→机构看好荷兰 | 体彩主胜1.54 | 理论面: 荷兰占优</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 荷兰胜(理论面占优, 但市场溢价需注意)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 瑞典3-5-2克制荷兰4-3-3 | 克制: 5/10 | 可用性: 双方主力齐整 | 平局: 26%(ELO+230) | 冷门: 瑞典双枪状态火热</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 荷兰小胜或平局，进球大战</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-divergence">⚠️轻度分歧</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO56% vs 市场65% = 9pp溢价。市场可能低估瑞典3-5-2对荷兰4-3-3的战术克制</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">本场比赛是高不确定性对决。核心论据: ① 荷兰虽ELO+身价占优但防守连续5场无零封是致命隐患, 对日本丢2球暴露问题; ② 瑞典伊萨克+吉奥克雷斯组合是目前世界杯状态最火热的锋线(首轮5球4助), 波特3-5-2阵型在中场人数上克制荷兰4-3-3; ③ 荷兰两翼需要面对瑞典5后卫+3中场的防守宽度, 攻坚效率存疑; ④ 两队均无零封能力→BTTS概率55%合理, 大球>2.5概率58%。<br><br><strong>★三项联动分析:</strong> 体彩1.54/3.80/4.60接近「中庸胜+中庸平」模式→机构面临高不确定性, 三项赔率均在中间区间没有极端信号。平赔3.80非低非高, 与ELO独立概率(26%)基本吻合, 说明平赔「诚实」。负赔4.60→隐含约22%客胜概率, 与瑞典双枪威胁一致。综合: 荷兰略占优但瑞典完全有能力制造麻烦。最可能: 2-1荷兰胜或2-2平局, 大球方向。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:1荷兰胜</div>
+      <div class="rec-label-sub">次选: 2:2平局</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>荷兰胜(让平/防平局)</strong></div>
+      <div class="verdict-conf">融合信度: 中</div>
+      <div class="verdict-scores"><span class="score-chip">2:1荷兰胜 (18.2%)</span><span class="score-chip">2:2平局 (14.6%)</span><span class="score-chip">比分1-0 (11.4%)</span><span class="score-chip">比分1-1 (10.4%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-中">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中</div>
+        <div class="btts-note">BTTS: 55% | 大2.5: 58%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="match-header">
+  <div class="match-title">德国 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 科特迪瓦</div>
+  <div class="match-meta">
+    <span>🏟 多伦多BMO球场</span><span>📋 E组 · 第2轮</span><span>🕐 6月21日 04:00 北京时间 (6月20日 16:00 多伦多)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">德国 <span class="fifa-badge">#10</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:91.81818181818183%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">2020</div>
+  </div>
+  <div class="elo-advantage">德国领先+310ELO分 | FIFA排名差#23</div>
+  <div class="elo-row">
+    <div class="elo-team">科特迪瓦 <span class="fifa-badge">#33</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:77.72727272727272%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1710</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🏆🏆🏆🏆 ⭐⭐⭐⭐⭐ 四星冠军·王者归来</span>
+    <span>🐘 ⭐⭐⭐ 非洲大象·首轮绝杀</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">德国 <span class="fifa-badge">MD1: 德国 7-1 库拉索</span></div>
+      <span class="form-badge hot">近6场: 5胜1平 </span>
+      <div class="form-record">WWWWWD</div>
+      <div class="form-matches">7-1 库拉索(WC MD1)<br>3-0 北爱尔兰(世欧预)<br>2-0 挪威(世欧预)<br>3-1 罗马尼亚(世欧预)<br>4-1 波黑(友谊赛)<br>1-1 荷兰(欧国联)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">科特迪瓦 <span class="fifa-badge">MD1: 科特迪瓦 1-0 厄瓜多尔</span></div>
+      <span class="form-badge solid">近6场: 4胜1平1负 </span>
+      <div class="form-record">WWLDWW</div>
+      <div class="form-matches">1-0 厄瓜多尔(WC MD1)<br>2-1 苏格兰(友谊赛)<br>3-1 摩洛哥(非预赛)<br>0-2 法国(友谊赛)<br>1-0 南非(非预赛)<br>1-1 加蓬(非预赛)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 德国 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 纳格尔斯曼4-2-3-1高压反抢·快速转换·双10号穆西亚拉+维尔茨创意引擎</span></div>
+      <div class="analysis-text-small">诺伊尔(GK) / 基米希·塔·施洛特贝克·布朗 / 恩梅查·帕夫洛维奇 / 萨内·穆西亚拉·维尔茨 / 哈弗茨</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 26/26(英超8+德甲12+西甲2+意甲2+法甲2)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐贾马尔·穆西亚拉</span><span style="color:var(--blue-bright);">9.3</span><span class="star-club">拜仁慕尼黑</span></div><div class="star-box"><span class="star-name">⭐弗洛里安·维尔茨</span><span style="color:var(--blue-bright);">9.0</span><span class="star-club">勒沃库森</span></div><div class="star-box"><span class="star-name">⭐勒鲁瓦·萨内</span><span style="color:var(--blue-bright);">8.5</span><span class="star-club">拜仁慕尼黑</span></div><div class="star-box"><span class="star-name">⭐凯·哈弗茨</span><span style="color:var(--blue-bright);">8.3</span><span class="star-club">阿森纳</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 科特迪瓦 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 法伊4-4-2紧凑防反·边路速度·定位球威胁</span></div>
+      <div class="analysis-text-small">Y.弗法纳(GK) / 杜埃·辛戈·恩迪卡·科南 / 阿马德·凯西·S.弗法纳·迪奥曼德 / 佩佩·邦尼</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 5/26(英超1+西甲1+意甲1+法甲2)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐弗兰克·凯西</span><span style="color:var(--orange);">8.5</span><span class="star-club">巴塞罗那</span></div><div class="star-box"><span class="star-name">⭐阿马德·迪亚洛</span><span style="color:var(--orange);">8.0</span><span class="star-club">曼联</span></div><div class="star-box"><span class="star-name">⭐尼古拉斯·佩佩</span><span style="color:var(--orange);">7.8</span><span class="star-club">比利亚雷亚尔</span></div><div class="star-box"><span class="star-name">⭐塞科·福法纳</span><span style="color:var(--orange);">7.8</span><span class="star-club">利雅得胜利</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 德国4-2-3-1 vs 科特迪瓦4-4-2 | 德国双后腰恩梅查+帕夫洛维奇将面对凯西+福法纳的强力中场<br>
+        <strong>控球vs反击:</strong> 德国控球率60-65%，科特迪瓦依赖阿马德+佩佩的边路快速反击<br>
+        <strong>高位逼抢:</strong> 纳格尔斯曼体系以高位反抢为核心，科特迪瓦后场出球能力将遭受考验<br>
+        <strong>边路对比:</strong> 萨内+穆西亚拉vs科特迪瓦边后卫，德国技术碾压。但科特迪瓦边路速度反击是德国高位防线的威胁<br>
+        <strong>定位球:</strong> 塔+施洛特贝克是德国定位球得分点，科特迪瓦定位球防守数据一般<br>
+        <strong>防守转换:</strong> 德国由攻转守时高位防线暴露身后空间，科特迪瓦若抢断后快速出球→阿马德/佩佩单刀机会</div>
+  <div class="injury-box">
+    ⚠️ <strong>德国:</strong> 全员健康，26人全可用<br>
+    ⚠️ <strong>科特迪瓦:</strong> 瓦希(场外问题/入境限制·存疑) | 恩迪卡(腿筋·疑，可能出战)
+  </div>
+</div>
+<div class="section similar-section">
+  <div class="section-title">🔬 攻防类比 — 近3年国际大赛(不含友谊赛) vs 类似对手</div>
+  <div class="mv-compare">💰 <strong>身价对比:</strong> 德国 €9.5亿(攻€3.8亿/防€3.0亿) vs 科特迪瓦 €5.2亿(攻€2.0亿/防€1.8亿) · 比值 1.8:1</div>
+  
+  <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 德国</div><span class="similar-match"><span class="score">7:1 库拉索#82(世界杯)</span></span> <span class="similar-match"><span class="score">3:0 北爱尔兰#62(世欧预)</span></span> <span class="similar-match"><span class="score">2:0 挪威#36(世欧预)</span></span> <span class="similar-match"><span class="score">3:1 罗马尼亚#44(世欧预)</span></span> <span class="similar-match"><span class="score">1:1 荷兰#8(欧国联)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA8-82区(世欧预+欧国联+世界杯5场): 场均进3.2球/失0.6球! 对挪威荷兰等欧洲强队进2+球, 对弱旅库拉索7:1展示碾压火力</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 科特迪瓦</div><span class="similar-match"><span class="score">1:0 厄瓜多尔#23(世界杯)</span></span> <span class="similar-match"><span class="score">3:1 摩洛哥#13(非预赛)</span></span> <span class="similar-match"><span class="score">0:2 法国#3(友谊赛)</span></span> <span class="similar-match"><span class="score">1:0 南非#58(非预赛)</span></span> <span class="similar-match"><span class="score">1:1 加蓬#70(非预赛)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA3-70区(非预赛+世界杯+友谊赛5场): 场均进1.2球/失0.8球, 对厄瓜多尔+摩洛哥表现稳健, 但对法国暴露实力差距</span></div>
+  </div>
+  
+  <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈科特迪瓦防€1.8亿) → 进几球 [进攻测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 德国</div><span class="similar-match"><span class="score">vs 荷兰(防≈€2.5亿):1球</span></span> <span class="similar-match"><span class="score">vs 挪威(防≈€8000万):0球</span></span> <span class="similar-match"><span class="score">vs 北爱尔兰(防≈€3000万):0球</span></span> <span class="similar-match"><span class="score">vs 罗马尼亚(防≈€5000万):1球</span></span> <span class="similar-match"><span class="score">vs 库拉索(防≈€500万):1球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€1.8亿): 场均进0.6球? 数据受荷兰+挪威等高质量防线影响。科特迪瓦防线€1.8亿约等于半个荷兰, 德国有望进2球左右</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 科特迪瓦</div><span class="similar-match"><span class="score">vs 厄瓜多尔(防≈€1.5亿):0球</span></span> <span class="similar-match"><span class="score">vs 摩洛哥(防≈€2.0亿):1球</span></span> <span class="similar-match"><span class="score">vs 法国(防≈€3.0亿):2球</span></span> <span class="similar-match"><span class="score">vs 南非(防≈€2000万):0球</span></span> <span class="similar-match"><span class="score">vs 加蓬(防≈€1000万):1球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€3.0亿): 对厄瓜多尔零封展示防守, 但法国能进2球暴露对顶级防线的差距。德国防线€3.0亿是其遇过最强, 科特迪瓦进球概率约35-40%</span></div>
+  </div>
+  
+  <div class="similar-subtitle">③ ⚔️ vs类似进攻线身价(≈科特迪瓦攻€2.0亿) → 丢几球 [防守测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 德国</div><span class="similar-match"><span class="score">vs 荷兰(攻≈€3.0亿):1球进1球失</span></span> <span class="similar-match"><span class="score">vs 挪威(攻≈€8000万):2球进0球失</span></span> <span class="similar-match"><span class="score">vs 北爱尔兰(攻≈€2000万):3球进0球失</span></span> <span class="similar-match"><span class="score">vs 罗马尼亚(攻≈€3000万):3球进1球失</span></span> <span class="similar-match"><span class="score">vs 库拉索(攻≈€500万):7球进1球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€2.0亿): 对€2000万-3.0亿攻击线场均进3.2球失0.6球! 科特迪瓦攻击线€2.0亿≈挪威水平, 德国防线大概率限制在0-1球</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 科特迪瓦</div><span class="similar-match"><span class="score">vs 厄瓜多尔(攻≈€1.5亿):1球进0球失</span></span> <span class="similar-match"><span class="score">vs 摩洛哥(攻≈€2.0亿):1球进3球失</span></span> <span class="similar-match"><span class="score">vs 法国(攻≈€5.0亿):2球进0球失</span></span> <span class="similar-match"><span class="score">vs 南非(攻≈€1000万):0球失</span></span> <span class="similar-match"><span class="score">vs 加蓬(攻≈€1500万):1球进1球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€3.8亿): 科特迪瓦防守对€1-2亿级别攻击线有效(厄瓜多尔0球/南非0球), 但法国3.0亿级别不同。德国攻击线€3.8亿接近法国水平, 科特迪瓦防线将承受最大考验</span></div>
+  </div>
+  
+  <div class="similar-conclusion">💡 <strong>综合四维：四维融合: ELO+310+身价1.8倍优势明显。德国首轮7:1展示统治力, 但科特迪瓦远非库拉索——对厄瓜多尔零封+对摩洛哥不败证明竞争力。德国大概率胜出, 净胜1-2球为主。科特迪瓦边路反击有威胁(BTTS~48%)。预测2:0或2:1德国胜。</strong></div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">德国胜</div>
+      <div class="odds-num home-color">1.37</div>
+      <div class="implied-prob">73.0%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">4.45</div>
+      <div class="implied-prob">22.5%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">科特迪瓦胜</div>
+      <div class="odds-num away-color">5.75</div>
+      <div class="implied-prob">17.4%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">德国热度高</div>
+      <div class="implied-prob">亚盘: 德国 -1.0</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 德国 -1.0 | 大小球2.5: 大1.55 / 小2.35 | BTTS: 是1.9 / 否1.8</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">德国胜</div><div class="prob-bar"><div class="prob-fill" style="width:62%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">62%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:22%;background:var(--gold)"></div></div><div class="prob-value gold-color">22%</div></div>
+    <div class="prob-col"><div class="prob-label">科特迪瓦胜</div><div class="prob-bar"><div class="prob-fill" style="width:16%;background:var(--orange)"></div></div><div class="prob-value away-color">16%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>60%</strong> | 小2.5球: <strong>40%</strong> | BTTS: <strong>48%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:0德国胜 <em>(21.7%)</em></span><span class="score-chip">2:1德国胜 <em>(17.4%)</em></span><span class="score-chip">比分1-0 <em>(13.6%)</em></span><span class="score-chip">比分1-1 <em>(8.8%)</em></span><span class="score-chip">比分0-0 <em>(4.4%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 德国高压开局，穆西亚拉+维尔茨的创造力是关键。科特迪瓦收缩等待反击<br>
+        • <strong>先进球概率:</strong> 德国62% / 科特迪瓦18% / 20%半场0-0<br>
+        • <strong>落后变化:</strong> 若德国落后，纳格尔斯曼会换上恩达夫增加前场兵力；若科特迪瓦落后1球，可能换上瓦希(如可出战)加强进攻<br>
+        • <strong>终局走势:</strong> 德国实力优势明显但科特迪瓦不是库拉索级别，首轮对厄瓜多尔展示韧性。德国大概率2-0或2-1取胜，BTTS有一定可能</div>
+  <div class="key-vars-box">🔑 关键变量: ① 穆西亚拉+维尔茨双核能否撕破防线 ② 科特迪瓦边路反击质量 ③ 恩迪卡能否出战(腿筋存疑)</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差310→德国胜率67% | 欧赔1.37→隐含73% | 亚盘-1.0→机构正常定档 | 体彩主胜1.37 | 理论面: 德国胜</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 德国胜(ELO+市场高度一致)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 德国高压vs科特迪瓦防反 | 克制: 3/10 | 可用性: 瓦希/恩迪卡存疑 | 平局: 22%(ELO+310调低) | 冷门: 科特迪瓦边路反击</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 德国净胜1-2球</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO67% vs 市场73% = 6pp小幅溢价, 在合理范围</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">德国胜面较大, 但穿盘-1.0有风险。核心论据: ① 德国首轮7-1库拉索展示恐怖火力, 穆西亚拉+维尔茨双核运转流畅; ② 但科特迪瓦远非库拉索级别——首轮1-0厄瓜多尔展示防守韧性, 凯西+福法纳的中场组合可抗衡德国; ③ 科特迪瓦面临瓦希(场外/入境)和恩迪卡(腿筋)双疑, 若两人均缺阵→前场终结+后防领袖同时缺失; ④ ELO+310在世界杯历史对应约67%胜率, 市场73%溢价6pp在合理范围。<br><br><strong>★三项联动分析:</strong> 体彩1.37/4.45/5.75接近「低胜+高平」模式→机构排除平局, 主要德国赢或科特迪瓦爆冷。平赔4.45→隐含22.5%, 与ELO独立平局概率22%几乎完全吻合→平赔诚实。负赔5.75偏高但未顶穿→科特迪瓦爆冷概率约17%, 不被完全排除。综合: 德国2-0或2-1取胜概率最大。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:0德国胜</div>
+      <div class="rec-label-sub">次选: 2:1德国胜</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>德国胜(让平/让胜一线)</strong></div>
+      <div class="verdict-conf">融合信度: 中高</div>
+      <div class="verdict-scores"><span class="score-chip">2:0德国胜 (21.7%)</span><span class="score-chip">2:1德国胜 (17.4%)</span><span class="score-chip">比分1-0 (13.6%)</span><span class="score-chip">比分1-1 (8.8%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-中低">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟢 中低</div>
+        <div class="btts-note">BTTS: 48% | 大2.5: 60%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="match-header">
+  <div class="match-title">厄瓜多尔 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 库拉索</div>
+  <div class="match-meta">
+    <span>🏟 堪萨斯城箭头体育场</span><span>📋 E组 · 第2轮</span><span>🕐 6月21日 08:00 北京时间 (6月20日 19:00 堪萨斯城)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">厄瓜多尔 <span class="fifa-badge">#23</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:80.9090909090909%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">1780</div>
+  </div>
+  <div class="elo-advantage">厄瓜多尔领先+400ELO分 | FIFA排名差#59</div>
+  <div class="elo-row">
+    <div class="elo-team">库拉索 <span class="fifa-badge">#82</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:62.727272727272734%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1380</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🇪🇨 ⭐⭐⭐ 南美劲旅·上届16强</span>
+    <span>🌟 ⭐ 世界杯新军·首秀破门</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">厄瓜多尔 <span class="fifa-badge">MD1: 科特迪瓦 1-0 厄瓜多尔</span></div>
+      <span class="form-badge struggling">近6场: 1胜3平2负 </span>
+      <div class="form-record">LDDLWD</div>
+      <div class="form-matches">0-1 科特迪瓦(WC MD1)<br>1-1 哥伦比亚(世南美预)<br>0-0 委内瑞拉(世南美预)<br>0-1 阿根廷(世南美预)<br>1-0 巴拉圭(世南美预)<br>1-1 乌拉圭(世南美预)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">库拉索 <span class="fifa-badge">MD1: 德国 7-1 库拉索</span></div>
+      <span class="form-badge fading">近6场: 2胜1平3负 </span>
+      <div class="form-record">LLWDWL</div>
+      <div class="form-matches">1-7 德国(WC MD1)<br>1-3 哥斯达黎加(世中北美预)<br>2-0 牙买加(世中北美预)<br>1-1 危地马拉(世中北美预)<br>2-4 墨西哥(世中北美预)<br>2-5 美国(世中北美预)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 厄瓜多尔 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 贝卡切切4-4-2紧凑防守·凯塞多中场统治·瓦伦西亚支点</span></div>
+      <div class="analysis-text-small">加林德斯(GK) / 弗兰科·帕乔·奥多涅斯·因卡皮耶 / 耶博阿·凯塞多·维特·安古洛 / 瓦伦西亚·普拉塔</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 6/26(英超1+西甲1+德甲1+法甲1+意甲2)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐莫伊塞斯·凯塞多</span><span style="color:var(--blue-bright);">8.5</span><span class="star-club">切尔西</span></div><div class="star-box"><span class="star-name">⭐恩纳·瓦伦西亚</span><span style="color:var(--blue-bright);">7.8</span><span class="star-club">巴西国际</span></div><div class="star-box"><span class="star-name">⭐威廉·帕乔</span><span style="color:var(--blue-bright);">7.5</span><span class="star-club">巴黎圣日耳曼</span></div><div class="star-box"><span class="star-name">⭐皮埃罗·因卡皮耶</span><span style="color:var(--blue-bright);">7.5</span><span class="star-club">勒沃库森</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 库拉索 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 艾德沃卡特4-3-1-2深度收缩·铁桶防守·快速反击偷袭</span></div>
+      <div class="analysis-text-small">鲁姆(GK) / 桑博·奥比斯波·加里·弗洛拉努斯 / 科梅嫩西亚·J巴库纳·L巴库纳 / 钟 / 戈雷·洛卡迪亚</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 0/26(全部非五大联赛)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐利瓦诺·科梅嫩西亚</span><span style="color:var(--orange);">6.5</span><span class="star-club">？？</span></div><div class="star-box"><span class="star-name">⭐尤尔根·洛卡迪亚</span><span style="color:var(--orange);">6.8</span><span class="star-club">？？</span></div><div class="star-box"><span class="star-name">⭐肯吉·戈雷</span><span style="color:var(--orange);">6.5</span><span class="star-club">？？</span></div><div class="star-box"><span class="star-name">⭐J.巴库纳</span><span style="color:var(--orange);">6.5</span><span class="star-club">？？</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 厄瓜多尔4-4-2 vs 库拉索4-3-1-2 | 凯塞多在中场将完全统治库拉索三中场<br>
+        <strong>控球vs反击:</strong> 厄瓜多尔控球率预计60-65%，库拉索全线退守5-4-1变形<br>
+        <strong>高位逼抢:</strong> 厄瓜多尔需耐心破铁桶阵，首轮对科特迪瓦3次中框暴露终结效率问题<br>
+        <strong>边路对比:</strong> 耶博阿+安古洛vs库拉索边后卫，厄瓜多尔两翼优势明显但需要精准传中<br>
+        <strong>定位球:</strong> 厄瓜多尔身高优势(帕乔+奥多涅斯)是破铁桶阵重要武器，库拉索防空能力存疑<br>
+        <strong>防守转换:</strong> 库拉索反击能力有限(场均1.0球)，但科梅嫩西亚首轮进球证明有偷袭能力</div>
+  <div class="injury-box">
+    ⚠️ <strong>厄瓜多尔:</strong> 全员健康，无伤病停赛<br>
+    ⚠️ <strong>库拉索:</strong> 阵容齐整，无核心伤病
+  </div>
+</div>
+<div class="section similar-section">
+  <div class="section-title">🔬 攻防类比 — 近3年国际大赛(不含友谊赛) vs 类似对手</div>
+  <div class="mv-compare">💰 <strong>身价对比:</strong> 厄瓜多尔 €3.7亿(攻€1.5亿/防€1.1亿) vs 库拉索 €2577万(攻€800万/防€600万) · 比值 14.3:1</div>
+  
+  <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 厄瓜多尔</div><span class="similar-match"><span class="score">0:1 科特迪瓦#33(世界杯)</span></span> <span class="similar-match"><span class="score">0:1 阿根廷#1(世南美预)</span></span> <span class="similar-match"><span class="score">1:1 乌拉圭#16(世南美预)</span></span> <span class="similar-match"><span class="score">1:1 哥伦比亚#11(世南美预)</span></span> <span class="similar-match"><span class="score">0:0 委内瑞拉#44(世南美预)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA1-44区(世南美预+世界杯5场): 场均仅进0.4球/失0.8球! 对阿根廷/科特迪瓦/哥伦比亚均难进球, 进攻端严重低效是最大弱点</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 库拉索</div><span class="similar-match"><span class="score">1:7 德国#10(世界杯)</span></span> <span class="similar-match"><span class="score">2:5 美国#15(世中北美预)</span></span> <span class="similar-match"><span class="score">2:4 墨西哥#14(世中北美预)</span></span> <span class="similar-match"><span class="score">2:0 牙买加#48(世中北美预)</span></span> <span class="similar-match"><span class="score">1:1 危地马拉#102(世中北美预)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA10-102区(世中北美预+世界杯5场): 场均进1.6球/失3.4球! 对德国/墨西哥/美国等强队场均丢4+球, 防守灾难级</span></div>
+  </div>
+  
+  <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈库拉索防€600万) → 进几球 [进攻测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 厄瓜多尔</div><span class="similar-match"><span class="score">vs 阿根廷(防≈€2.5亿):0球</span></span> <span class="similar-match"><span class="score">vs 乌拉圭(防≈€1.7亿):1球</span></span> <span class="similar-match"><span class="score">vs 哥伦比亚(防≈€1.5亿):1球</span></span> <span class="similar-match"><span class="score">vs 委内瑞拉(防≈€5000万):0球</span></span> <span class="similar-match"><span class="score">vs 科特迪瓦(防≈€1.8亿):0球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€600万): 对南美顶级防线0-1球, 但库拉索防线€600万远低于委内瑞拉€5000万, 厄瓜多尔应能进2-3球</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 库拉索</div><span class="similar-match"><span class="score">vs 美国(防≈€2.0亿):2球</span></span> <span class="similar-match"><span class="score">vs 墨西哥(防≈€1.5亿):2球</span></span> <span class="similar-match"><span class="score">vs 牙买加(防≈€2000万):0球</span></span> <span class="similar-match"><span class="score">vs 德国(防≈€3.0亿):7球</span></span> <span class="similar-match"><span class="score">vs 危地马拉(防≈€500万):1球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€1.1亿): 对墨西哥/美国能进2球但失球更惨, 对德国丢7球。厄瓜多尔防线€1.1亿, 库拉索进球概率约25-30%</span></div>
+  </div>
+  
+  <div class="similar-subtitle">③ ⚔️ vs类似进攻线身价(≈库拉索攻€800万) → 丢几球 [防守测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 厄瓜多尔</div><span class="similar-match"><span class="score">vs 阿根廷(攻≈€5.0亿):0球进1球失</span></span> <span class="similar-match"><span class="score">vs 乌拉圭(攻≈€2.8亿):1球进1球失</span></span> <span class="similar-match"><span class="score">vs 哥伦比亚(攻≈€1.5亿):1球进1球失</span></span> <span class="similar-match"><span class="score">vs 委内瑞拉(攻≈€3000万):0球进0球失</span></span> <span class="similar-match"><span class="score">vs 科特迪瓦(攻≈€2.0亿):0球进1球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€800万): 对南美€3000万+攻击线场均失0.8球已证明防守质量。库拉索攻击线€800万远低于委内瑞拉, 零封概率高</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 库拉索</div><span class="similar-match"><span class="score">vs 德国(攻≈€3.8亿):1球进7球失</span></span> <span class="similar-match"><span class="score">vs 美国(攻≈€2.5亿):2球进5球失</span></span> <span class="similar-match"><span class="score">vs 墨西哥(攻≈€2.0亿):2球进4球失</span></span> <span class="similar-match"><span class="score">vs 牙买加(攻≈€1000万):2球进0球失</span></span> <span class="similar-match"><span class="score">vs 危地马拉(攻≈€500万):1球进1球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€1.5亿): 对强队场均失3.4球防守灾难! 厄瓜多尔攻击线€1.5亿略低于墨西哥/美国, 但仍远超库拉索曾面对的任何防线</span></div>
+  </div>
+  
+  <div class="similar-conclusion">💡 <strong>综合四维：四维融合: 今日最碾压的比赛(ELO+400, 身价14.3倍)。但厄瓜多尔进攻效率低下(对FIFA前33近5场场均进0.4球)是穿盘最大障碍。库拉索防守灾难(对强队场均失4+球)提供进球空间。预测厄瓜多尔2-0或3-0取胜, 穿盘-2.25取决于前30分钟能否破僵。库拉索爆冷概率≤5%。</strong></div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">厄瓜多尔胜</div>
+      <div class="odds-num home-color">1.08</div>
+      <div class="implied-prob">92.6%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">9.0</div>
+      <div class="implied-prob">11.1%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">库拉索胜</div>
+      <div class="odds-num away-color">26.0</div>
+      <div class="implied-prob">3.8%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">厄瓜多尔热度高</div>
+      <div class="implied-prob">亚盘: 厄瓜多尔 -2.25</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 厄瓜多尔 -2.25 | 大小球2.5: 大1.55 / 小2.4 | BTTS: 是2.5 / 否1.45</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">厄瓜多尔胜</div><div class="prob-bar"><div class="prob-fill" style="width:75%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">75%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:16%;background:var(--gold)"></div></div><div class="prob-value gold-color">16%</div></div>
+    <div class="prob-col"><div class="prob-label">库拉索胜</div><div class="prob-bar"><div class="prob-fill" style="width:9%;background:var(--orange)"></div></div><div class="prob-value away-color">9%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>55%</strong> | 小2.5球: <strong>45%</strong> | BTTS: <strong>30%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:0厄瓜多尔胜 <em>(26.2%)</em></span><span class="score-chip">3:0厄瓜多尔胜 <em>(21.0%)</em></span><span class="score-chip">比分1-0 <em>(16.5%)</em></span><span class="score-chip">比分1-1 <em>(6.4%)</em></span><span class="score-chip">比分0-0 <em>(3.2%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 厄瓜多尔主导围攻，库拉索全线退守。前30分钟破门是关键，若迟迟不能破门焦虑将上升<br>
+        • <strong>先进球概率:</strong> 厄瓜多尔75% / 库拉索8% / 17%半场0-0<br>
+        • <strong>落后变化:</strong> 若厄瓜多尔落后(极小概率)，全线压上；库拉索若领先后会全力死守<br>
+        • <strong>终局走势:</strong> 厄瓜多尔围攻格局，实力碾压但终结效率存疑。2-0或3-0是合理比分，穿盘-2.25有风险</div>
+  <div class="key-vars-box">🔑 关键变量: ① 厄瓜多尔终结效率(首轮3次中框) ② 前30分钟能否破僵 ③ 凯塞多中场统治力</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差400→厄瓜多尔胜率77% | 欧赔1.08→隐含93% | 亚盘-2.25→机构深开 | 理论面: 厄瓜多尔碾压优势</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 厄瓜多尔胜(理论碾压, 实力差距悬殊)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 库拉索铁桶防守 | 克制: 2/10 | 可用性: 双方全员健康 | 平局: 16%(ELO+400调低) | 冷门: 库拉索偷袭一球</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 厄瓜多尔净胜2-3球</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO77% vs 市场93% = 16pp溢价, 部分因库拉索首轮1-7惨败导致市场过度定价</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">厄瓜多尔必胜但净胜球存在不确定性。核心论据: ① ELO差400为今日4场最大碾压局, 厄瓜多尔FIFA#23 vs 库拉索#82实力绝对领先; ② 但厄瓜多尔首轮0:1被科特迪瓦绝杀+全场3次中框暴露终结效率严重不足, 进攻端过度依赖36岁瓦伦西亚; ③ 库拉索首轮1:7惨败德国但并非毫无抵抗——第21分钟反击破门打入队史世界杯首球, 说明面对强队有偷袭能力; ④ 亚盘-2.25很深, 但结合厄瓜多尔的进攻低效(场均0.5球对FIFA前30), 穿盘率存疑。<br><br><strong>★三项联动分析:</strong> 本场体彩无直接赔率(竞彩仅列出3场), 但从亚盘-2.25(初始-1.5→即时-2.25加深)判断为「低胜+低平」模式→机构引导注意力在厄瓜多尔胜+平局上。但实际上平赔极高(隐含<15%), 平局概率极低。这种极端深盘下, 2-0或3-0是正常比分。综合: 厄瓜多尔2-0或3-0取胜, 穿盘-2.25有风险。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:0厄瓜多尔胜</div>
+      <div class="rec-label-sub">次选: 3:0厄瓜多尔胜</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>厄瓜多尔胜(让平/穿盘存疑)</strong></div>
+      <div class="verdict-conf">融合信度: 中高</div>
+      <div class="verdict-scores"><span class="score-chip">2:0厄瓜多尔胜 (26.2%)</span><span class="score-chip">3:0厄瓜多尔胜 (21.0%)</span><span class="score-chip">比分1-0 (16.5%)</span><span class="score-chip">比分1-1 (6.4%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-中">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟡 中</div>
+        <div class="btts-note">BTTS: 30% | 大2.5: 55%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="match-header">
+  <div class="match-title">突尼斯 <span style="color:var(--text-secondary);margin:0 6px;">vs</span> 日本</div>
+  <div class="match-meta">
+    <span>🏟 蒙特雷BBVA体育场</span><span>📋 F组 · 第2轮</span><span>🕐 6月21日 12:00 北京时间 (6月20日 22:00 蒙特雷)</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📊 一、基础实力分析</div>
+  <div class="elo-row">
+    <div class="elo-team">突尼斯 <span class="fifa-badge">#45</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:74.0909090909091%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
+    <div class="elo-val home-color">1630</div>
+  </div>
+  <div class="elo-advantage">日本领先+260ELO分 | FIFA排名差#27</div>
+  <div class="elo-row">
+    <div class="elo-team">日本 <span class="fifa-badge">#18</span></div>
+    <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:85.9090909090909%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+    <div class="elo-val away-color">1890</div>
+  </div>
+  <div style="margin-top:8px; display:flex; justify-content:space-between; font-size:.82em; color:var(--text-secondary);">
+    <span>🦁 ⭐⭐ 非洲雄狮·临阵换帅</span>
+    <span>🇯🇵⚽ ⭐⭐⭐ 蓝武士·逼平荷兰</span>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">📈 二、状态分析 (近期6场国际赛战绩)</div>
+  <div class="form-grid">
+    <div class="form-card">
+      <div class="form-card-title">突尼斯 <span class="fifa-badge">MD1: 瑞典 5-1 突尼斯</span></div>
+      <span class="form-badge fading">近6场: 2胜1平3负 </span>
+      <div class="form-record">LLLWWD</div>
+      <div class="form-matches">1-5 瑞典(WC MD1)<br>0-5 比利时(友谊赛)<br>0-2 法国(友谊赛)<br>1-0 科摩罗(非预赛)<br>2-0 冈比亚(非预赛)<br>1-1 赤道几内亚(非预赛)</div>
+    </div>
+    <div class="form-card">
+      <div class="form-card-title">日本 <span class="fifa-badge">MD1: 荷兰 2-2 日本</span></div>
+      <span class="form-badge hot">近6场: 4胜2平 </span>
+      <div class="form-record">DWWWWD</div>
+      <div class="form-matches">2-2 荷兰(WC MD1)<br>3-0 巴林(世亚预)<br>2-0 中国(世亚预)<br>4-1 叙利亚(世亚预)<br>1-1 沙特(世亚预)<br>2-1 澳大利亚(世亚预)</div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">⚔️ 三、战术克制分析 + 星级力量</div>
+  <div class="tactic-split">
+    <div class="tactic-card">
+      <div class="tactic-card-title">🔵 突尼斯 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 勒纳尔(新帅)4-2-3-1重建体系·防守反击·定位球战术</span></div>
+      <div class="analysis-text-small">达赫门(GK) / 瓦莱里·雷基克·塔尔比·阿卜迪 / 赫迪拉·斯希里 / 阿舒里·梅布里·加布里 / 萨阿德</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 4/26(英超1+意甲1+法甲2)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐埃利耶斯·斯希里</span><span style="color:var(--blue-bright);">7.0</span><span class="star-club">法兰克福</span></div><div class="star-box"><span class="star-name">⭐汉尼拔·梅布里</span><span style="color:var(--blue-bright);">7.5</span><span class="star-club">塞维利亚</span></div><div class="star-box"><span class="star-name">⭐伊萨梅尔·加布里</span><span style="color:var(--blue-bright);">6.5</span><span class="star-club">？？</span></div><div class="star-box"><span class="star-name">⭐阿里·阿卜迪</span><span style="color:var(--blue-bright);">6.8</span><span class="star-club">特鲁瓦</span></div></div>
+    </div>
+    <div class="tactic-card">
+      <div class="tactic-card-title">🟠 日本 阵型预测 <span style="font-size:.75em;color:var(--gold);">| 森保一3-4-2-1技术流控球·高位压迫·多点开花</span></div>
+      <div class="analysis-text-small">铃木(GK) / 富安·谷口·伊藤洋辉 / 堂安·佐野·镰田·中村 / 伊东纯也·前田 / 上田</div>
+      <div style="margin:6px 0;font-size:.73em;color:var(--purple);">🌍 五大联赛: 12/26(英超3+德甲4+法甲3+西甲1+意甲1)人</div>
+      <div style="margin-top:8px;"><div class="star-box"><span class="star-name">⭐镰田大地</span><span style="color:var(--orange);">8.0</span><span class="star-club">拉齐奥</span></div><div class="star-box"><span class="star-name">⭐堂安律</span><span style="color:var(--orange);">8.0</span><span class="star-club">弗赖堡</span></div><div class="star-box"><span class="star-name">⭐伊东纯也</span><span style="color:var(--orange);">7.8</span><span class="star-club">兰斯</span></div><div class="star-box"><span class="star-name">⭐富安健洋</span><span style="color:var(--orange);">8.0</span><span class="star-club">阿森纳</span></div></div>
+    </div>
+  </div>
+  <div class="tactic-text">
+        <strong>阵型对位:</strong> 突尼斯4-2-3-1 vs 日本3-4-2-1 | 日本3后卫体系在进攻时变3-2-5, 镰田+前田将在肋部制造威胁<br>
+        <strong>控球vs反击:</strong> 日本控球率预计55-60%，突尼斯新帅勒纳尔首秀能否立竿见影?<br>
+        <strong>高位逼抢:</strong> 日本高位压迫有效, 突尼斯后场出球能力一般, 可能被压迫失误<br>
+        <strong>边路对比:</strong> 伊东纯也+中村vs突尼斯边后卫, 日本边路速度占优。久保缺阵影响创造力<br>
+        <strong>定位球:</strong> 突尼斯防守定位球是其少数优势, 首轮5-1失球多数来自运动战<br>
+        <strong>防守转换:</strong> 日本由攻转守时富安+谷口的回追速度是关键, 突尼斯反击依赖加布里的边路突击</div>
+  <div class="injury-box">
+    ⚠️ <strong>突尼斯:</strong> 暂无重大伤病<br>
+    ⚠️ <strong>日本:</strong> 久保建英(伤缺, 小组赛剩余可能无法出场)
+  </div>
+</div>
+<div class="section similar-section">
+  <div class="section-title">🔬 攻防类比 — 近3年国际大赛(不含友谊赛) vs 类似对手</div>
+  <div class="mv-compare">💰 <strong>身价对比:</strong> 突尼斯 €6995万(攻€2500万/防€2000万) vs 日本 €2.7亿(攻€1.2亿/防€8000万) · 比值 1:3.9</div>
+  
+  <div class="similar-subtitle first">① 📊 vs类似FIFA排名球队 → 进几球·失几球</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">1:5 瑞典#38(世界杯)</span></span> <span class="similar-match"><span class="score">0:5 比利时#9(友谊赛)</span></span> <span class="similar-match"><span class="score">0:2 法国#3(友谊赛)</span></span> <span class="similar-match"><span class="score">1:0 科摩罗#125(非预赛)</span></span> <span class="similar-match"><span class="score">2:0 冈比亚#120(非预赛)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA3-125区(非预赛+世界杯+友谊赛5场): 场均进0.8球/失2.4球。对欧洲球队3场丢12球灾难级, 仅对非洲弱旅能取胜</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 日本</div><span class="similar-match"><span class="score">2:2 荷兰#8(世界杯)</span></span> <span class="similar-match"><span class="score">2:1 澳大利亚#23(世亚预)</span></span> <span class="similar-match"><span class="score">1:1 沙特#61(世亚预)</span></span> <span class="similar-match"><span class="score">2:0 中国#71(世亚预)</span></span> <span class="similar-match"><span class="score">4:1 叙利亚#92(世亚预)</span></span><br><span style="color:var(--teal);font-size:.9em;">→ 对FIFA8-92区(世亚预+世界杯5场): 场均进2.2球/失1.0球! 对荷兰能进2球, 对亚洲对手统治力强, 仅沙特能逼平</span></div>
+  </div>
+  
+  <div class="similar-subtitle">② 🛡️ vs类似后防线身价(≈日本防€8000万) → 进几球 [进攻测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">vs 瑞典(防≈€1.2亿):5球失1球进</span></span> <span class="similar-match"><span class="score">vs 比利时(防≈€2.0亿):5球失0球进</span></span> <span class="similar-match"><span class="score">vs 法国(防≈€3.0亿):2球失0球进</span></span> <span class="similar-match"><span class="score">vs 科摩罗(防≈€200万):0球失1球进</span></span> <span class="similar-match"><span class="score">vs 冈比亚(防≈€300万):0球失2球进</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€8000万): 对欧洲防线3场被灌12球! 日本防线€8000万, 突尼斯进球概率约20-25%</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 日本</div><span class="similar-match"><span class="score">vs 荷兰(防≈€2.5亿):2球</span></span> <span class="similar-match"><span class="score">vs 澳大利亚(防≈€5000万):1球</span></span> <span class="similar-match"><span class="score">vs 沙特(防≈€3500万):1球</span></span> <span class="similar-match"><span class="score">vs 中国(防≈€3000万):0球</span></span> <span class="similar-match"><span class="score">vs 叙利亚(防≈€1500万):1球</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似防线(≈€2000万): 对荷兰能进2球展示进攻质量! 突尼斯防线€2000万≈叙利亚+中国水平, 日本有望进2-3球</span></div>
+  </div>
+  
+  <div class="similar-subtitle">③ ⚔️ vs类似进攻线身价(≈日本攻€1.2亿) → 丢几球 [防守测试]</div>
+  <div class="similar-team-row">
+    <div class="similar-team-box"><div class="similar-team-label">🏠 突尼斯</div><span class="similar-match"><span class="score">vs 瑞典(攻≈€1.8亿):1球进5球失</span></span> <span class="similar-match"><span class="score">vs 比利时(攻≈€2.5亿):0球进5球失</span></span> <span class="similar-match"><span class="score">vs 法国(攻≈€5.0亿):0球进2球失</span></span> <span class="similar-match"><span class="score">vs 科摩罗(攻≈€200万):0球失</span></span> <span class="similar-match"><span class="score">vs 冈比亚(攻≈€200万):0球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€1.2亿): 对欧洲攻击线场均失4球! 日本攻击线€1.2亿接近瑞典水平, 突尼斯防线预期失2-3球</span></div>
+    <div class="similar-team-box"><div class="similar-team-label">🚶 日本</div><span class="similar-match"><span class="score">vs 荷兰(攻≈€3.0亿):2球进2球失</span></span> <span class="similar-match"><span class="score">vs 澳大利亚(攻≈€6000万):1球进2球失</span></span> <span class="similar-match"><span class="score">vs 沙特(攻≈€4000万):1球进1球失</span></span> <span class="similar-match"><span class="score">vs 中国(攻≈€3000万):0球失</span></span> <span class="similar-match"><span class="score">vs 叙利亚(攻≈€1500万):1球失</span></span><br><span style="color:var(--teal);font-size:.9em;">→ vs类似攻击线(≈€2500万): 对€1500-6000万攻击线场均失1.0球。突尼斯攻击线€2500万≈中国/叙利亚水平, 日本防线零封概率约55-60%</span></div>
+  </div>
+  
+  <div class="similar-conclusion">💡 <strong>综合四维：四维融合: ELO-260+身价3.9倍日本碾压。突尼斯3场对欧洲队丢12球防线崩溃, 日本对亚洲对手展现统治力(场均2.2球)。久保缺阵影响创造力但伊东/镰田/堂安组合仍远超突尼斯防线。日本大概率2-0或3-0取胜, 穿盘-1.0概率55-60%。突尼斯爆冷需勒纳尔创造奇迹(概率≤10%)。</strong></div>
+</div>
+<div class="section">
+  <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
+  <div class="odds-grid">
+    <div class="odds-card">
+      <div class="odds-card-title">突尼斯胜</div>
+      <div class="odds-num home-color">6.65</div>
+      <div class="implied-prob">15.0%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">平局</div>
+      <div class="odds-num draw-color">4.02</div>
+      <div class="implied-prob">24.9%</div>
+    </div>
+    <div class="odds-card">
+      <div class="odds-card-title">日本胜</div>
+      <div class="odds-num away-color">1.37</div>
+      <div class="implied-prob">73.0%</div>
+    </div>
+    <div class="odds-card" style="background:rgba(251,191,36,.04);">
+      <div class="odds-card-title">市场偏向</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">突尼斯热度高</div>
+      <div class="implied-prob">亚盘: 日本 -0.75→-1.0</div>
+    </div>
+  </div>
+  <div class="ah-table">
+    <div class="ah-table-title">亚盘: 日本 -0.75→-1.0 | 大小球2.5: 大1.8 / 小1.95 | BTTS: 是2.0 / 否1.72</div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎯 五、概率模型 (ELO + 泊松 + 市场赔率综合)</div>
+  <div class="prob-row">
+    <div class="prob-col"><div class="prob-label">突尼斯胜</div><div class="prob-bar"><div class="prob-fill" style="width:15%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">15%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:22%;background:var(--gold)"></div></div><div class="prob-value gold-color">22%</div></div>
+    <div class="prob-col"><div class="prob-label">日本胜</div><div class="prob-bar"><div class="prob-fill" style="width:63%;background:var(--orange)"></div></div><div class="prob-value away-color">63%</div></div>
+  </div>
+  <div class="sub-probs">大2.5球: <strong>52%</strong> | 小2.5球: <strong>48%</strong> | BTTS: <strong>42%</strong></div>
+  <div class="score-matrix">
+    <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
+    <div class="score-chips"><span class="score-chip">2:0日本胜 <em>(5.2%)</em></span><span class="score-chip">3:0日本胜 <em>(4.2%)</em></span><span class="score-chip">比分1-0 <em>(3.3%)</em></span><span class="score-chip">比分1-1 <em>(8.8%)</em></span><span class="score-chip">比分0-0 <em>(4.4%)</em></span></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-title">🎬 六、综合推演 (超极分析师三位一体)</div>
+  <div class="analysis-text-small">
+        • <strong>上半场节奏:</strong> 日本主动控球, 突尼斯收缩防守。日本技术优势决定控球率55-60%<br>
+        • <strong>先进球概率:</strong> 日本60% / 突尼斯15% / 25%半场0-0<br>
+        • <strong>落后变化:</strong> 若日本落后, 森保一会换上攻击球员全线压上; 若突尼斯落后1球, 新帅勒纳尔可能压上但防线更暴露<br>
+        • <strong>终局走势:</strong> 日本实力优势明显, 突尼斯5-1惨败+临阵换帅士气低迷。日本2-0或3-0取胜, 穿盘-1.0概率不低</div>
+  <div class="key-vars-box">🔑 关键变量: ① 勒纳尔新帅效应(2022带沙特胜阿根廷) ② 久保建英缺阵对创造力的影响 ③ 突尼斯士气能否恢复</div>
+</div>
+<div class="conclusion-panel">
+  <div class="conclusion-header">⚡ 七、专业分析推理链 (双面融合)</div>
+  <div class="fusion-panel">
+    <div class="fusion-header">
+      <div class="theory-side">
+        <div class="side-label theory-label">📐 理论面 (模型+市场)</div>
+        <div class="side-content">ELO差-260→日本胜率59% | 欧赔1.37→隐含73% | 亚盘-0.75→-1.0加深 | 体彩客胜1.37 | 理论面: 日本大优</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 日本胜(ELO+市场高度一致, 盘口加深确认)</div>
+      </div>
+      <div class="practice-side">
+        <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
+        <div class="side-content">战术: 日本技术碾压vs突尼斯重建 | 克制: 2/10 | 可用性: 久保缺阵 | 平局: 22%(ELO-260) | 冷门: 勒纳尔新帅效应未知</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 日本净胜1-2球, 大概率穿盘</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO59% vs 市场73% = 14pp溢价。部分因突尼斯5-1惨败+换帅+久保缺阵三重因子, 市场反应合理</span></div>
+    <div class="fusion-verdict-box">
+      <div class="title">🏆 融合结论</div>
+      <div class="analysis-text-small">日本胜面很大, 穿盘-1.0可期。核心论据: ① 突尼斯首轮1:5惨败瑞典后火线解雇主帅拉穆奇, 勒纳尔临危受命——但换帅效应在世界杯赛程密度下很难立竿见影; ② 日本首轮2:2逼平荷兰展示韧性+实力, 镰田绝平进球提振士气; ③ 久保建英伤缺是日本最大损失(创造力下降约15%), 但伊东纯也+堂安律+镰田大地的攻击组合仍远超突尼斯防线承受力; ④ 突尼斯3连败(含友谊赛0:5比利时), 防线信心崩溃, 近3场失13球。<br><br><strong>★三项联动分析:</strong> 体彩6.65/4.02/1.37属「低负+高平」模式→机构排除平局, 日本客场打出概率高。平赔4.02高于ELO独立22%→平赔诚实偏排除。负赔1.37→隐含73%日本胜率, 与突尼斯惨状+久保缺阵反差后仍稳定→机构对日本信心坚定。三大博彩公司亚盘从-0.75升至-1.0→资金涌向日本, 是真金白银的投票。综合: 日本2-0或3-0取胜, 穿盘-1.0概率约55-60%。突尼斯爆冷概率≤10%。</div>
+    </div>
+  </div>
+  <div class="conclusion-body">
+    <div class="score-recommendation">
+      <div class="rec-label">最可能比分</div>
+      <div class="rec-score">2:0日本胜</div>
+      <div class="rec-label-sub">次选: 3:0日本胜</div>
+    </div>
+    <div class="verdict-block">
+      <div class="verdict-main">主推: <strong>日本胜(让负/穿盘)</strong></div>
+      <div class="verdict-conf">融合信度: 高</div>
+      <div class="verdict-scores"><span class="score-chip">2:0日本胜 (5.2%)</span><span class="score-chip">3:0日本胜 (4.2%)</span><span class="score-chip">比分1-0 (3.3%)</span><span class="score-chip">比分1-1 (8.8%)</span></div>
+    </div>
+    <div style="grid-column:1/-1;">
+      <div class="risk-block risk-bg-低">
+        <div class="risk-label">风险等级</div>
+        <div class="risk-value">🟢 低</div>
+        <div class="btts-note">BTTS: 42% | 大2.5: 52%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="footer">
+  <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
+  <p style="margin-top:4px;">分析框架: v28.4 七步推理链 (基础实力→状态→战术→赔率→概率→推演→双面融合) | v30.0 两阶段架构</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 12:16 北京时间</p>
+</div>
+</body>
+</html>
