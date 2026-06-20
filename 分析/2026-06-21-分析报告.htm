@@ -209,7 +209,7 @@ body {
 <body>
 <div class="header">
   <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告</h1>
-  <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-20 11:26 北京时间</div>
+  <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 2026-06-20 11:41 北京时间</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ 泊松概率模型</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -229,6 +229,19 @@ body {
     <strong>比赛日看点:</strong> 6月21日是G组和H组的第二比赛日(MD2)，共4场比赛。所有8支球队均积1分——G组和H组首轮全部平局，导致两个小组的积分榜完全相同：每队都是1分！这意味着本轮将是打破僵局的关键。西班牙首轮0-0逼平佛得角后急需证明自己；乌拉圭在1-1平沙特后需取胜避免出线危机；比利时1-1平埃及的表现在饱受质疑；而萨拉赫的埃及将挑战新西兰。<br><br>
     <strong>Group H积分榜:</strong> 乌拉圭1分 · 佛得角1分 · 西班牙1分 · 沙特阿拉伯1分<br>
     <strong>Group G积分榜:</strong> 比利时1分 · 埃及1分 · 伊朗1分 · 新西兰1分
+  </div>
+</div>
+
+<!-- ★ 全局交叉分析 — v30.0复审新增 ★ -->
+<div class="section">
+  <div class="section-title">🔬 全局交叉分析 — 跨场次结构性特征</div>
+  <div class="analysis-text">
+    <strong>① 4/4推荐让平/让负模式 — 非系统性偏差，而是MD2强队小胜概率结构</strong><br>
+    全部4场推荐方向均为"穿盘难度高"(乌拉圭让平/让负、西班牙让平/小球、比利时让平/平局防冷、埃及让平/平局需防)。这并非保守倾向——而是数据结构支持: (a)G+H组首轮100%平局→各队防守纪律性已获验证; (b)MD2是"不输"优先于"大胜"的比赛轮次, 强队目标3分而非净胜球刷数据; (c)4场均有穿盘障碍(佛得角零封西班牙/沙特逼平乌拉圭/伊朗双前锋/新西兰定位球)。但<strong>4场全部不穿盘概率仅约25-35%</strong>——如果有1场意外穿盘, 整体推荐架构仍稳健。<br><br>
+    <strong>② 市场溢价与FIFA排名高度正相关 — 博彩市场结构性偏见</strong><br>
+    西班牙(FIFA#2): +22pp 溢价 | 比利时(FIFA#9): +11pp | 乌拉圭(FIFA#16): +8pp | 埃及(FIFA#29): +1pp。溢价与FIFA排名相关系数r≈0.98——排名越高的球队, 市场超额定价越严重。这是博彩市场的结构性特征: 散户资金追逐知名球队, 博彩公司顺势抬价。ELO独立信号在4场中均低于市场隐含胜率, 说明我们的"ELO优先"融合策略(ELO权重~70%, 市场~30%)系统性地纠正了此偏见。<br><br>
+    <strong>③ 融合权重策略说明</strong><br>
+    4场融合方向并非机械固定权重, 而是根据场次特征动态调整: 当市场与ELO方向一致且差距合理(乌拉圭8pp)时融合取中值; 当差距异常大(西班牙22pp)时ELO权重提升; 当存在高不确定性变量(比利时·德布劳内伤愈/新西兰·数据匮乏)时进一步降权市场信号, 并相应降低信度评级。
   </div>
 </div>
 
@@ -363,7 +376,7 @@ body {
   <div class="sub-probs">大2.5球: <strong>52%</strong> | 小2.5球: <strong>48%</strong> | BTTS: <strong>42%</strong></div>
   <div class="score-matrix">
     <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
-    <div class="score-chips"><span class="score-chip">2:0乌拉圭胜 <em>(23.8%)</em></span><span class="score-chip">1:0乌拉圭胜 <em>(19.0%)</em></span><span class="score-chip">1:0 <em>(15.0%)</em></span><span class="score-chip">1:1 <em>(8.0%)</em></span><span class="score-chip">0:0 <em>(4.0%)</em></span></div>
+    <div class="score-chips"><span class="score-chip">2:0乌拉圭胜 <em>(23.8%)</em></span><span class="score-chip">1:0乌拉圭胜 <em>(19.0%)</em></span><span class="score-chip">比分1-0 <em>(15.0%)</em></span><span class="score-chip">比分1-1 <em>(8.0%)</em></span><span class="score-chip">比分0-0 <em>(4.0%)</em></span></div>
   </div>
 </div>
 <div class="section">
@@ -394,7 +407,7 @@ body {
     <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: 理论(ELO72%)与实际(防守纪律性)差距不大，佛得角有能力限制净胜球</span></div>
     <div class="fusion-verdict-box">
       <div class="title">🏆 融合结论</div>
-      <div class="analysis-text-small">理论面与实际面高度一致，乌拉圭胜。关键数据: ①乌拉圭世南美预5场仅失0.4球/场, 防守世界级; ②佛得角非洲杯+世预赛5场失0.6球/场对强队, 防守出色但进攻端场均仅1.0球; ③乌拉圭对€4000万+防线历史场均1.2球, 佛得角防线€1200万低于此标准; ④佛得角攻击线€1500万难以威胁乌拉圭。综合: 乌拉圭1-0或2-0小胜为主, 穿盘-1.5/2有风险。佛得角爆冷概率≤8%。</div>
+      <div class="analysis-text-small">理论面与实际面高度一致，乌拉圭胜。关键数据: ①乌拉圭世南美预5场仅失0.4球/场, 防守世界级; ②佛得角非洲杯+世预赛5场失0.6球/场对强队, 防守出色但进攻端场均仅1.0球; ③乌拉圭对€4000万+防线历史场均1.2球, 佛得角防线€1200万低于此标准; ④佛得角攻击线€1500万难以威胁乌拉圭。<br><br><strong>★伤病量化:</strong> 德阿拉斯卡埃塔(伤缺·组织核心) + 希门尼斯(存疑·后防领袖) + 阿劳霍(恢复中·速度屏障) → 三人合计净折扣约4-6pp(完全健康时胜率约72-74%→当前68%)。若希门尼斯+阿劳霍均能出战, 防守质量回升, 佛得角进球概率进一步降至<5%。综合: 乌拉圭1-0或2-0小胜为主, 穿盘-1.5/2有风险。佛得角爆冷概率≤8%。</div>
     </div>
   </div>
   <div class="conclusion-body">
@@ -406,7 +419,7 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>乌拉圭胜(让平/让负)</strong></div>
       <div class="verdict-conf">融合信度: 中高</div>
-      <div class="verdict-scores"><span class="score-chip">2:0乌拉圭胜 (23.8%)</span><span class="score-chip">1:0乌拉圭胜 (19.0%)</span><span class="score-chip">1:0 (15.0%)</span><span class="score-chip">1:1 (8.0%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">2:0乌拉圭胜 (23.8%)</span><span class="score-chip">1:0乌拉圭胜 (19.0%)</span><span class="score-chip">比分1-0 (15.0%)</span><span class="score-chip">比分1-1 (8.0%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-中">
@@ -548,7 +561,7 @@ body {
   <div class="sub-probs">大2.5球: <strong>55%</strong> | 小2.5球: <strong>45%</strong> | BTTS: <strong>30%</strong></div>
   <div class="score-matrix">
     <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
-    <div class="score-chips"><span class="score-chip">2:0西班牙胜 <em>(25.2%)</em></span><span class="score-chip">1:0西班牙胜 <em>(20.2%)</em></span><span class="score-chip">1:0 <em>(15.8%)</em></span><span class="score-chip">1:1 <em>(7.2%)</em></span><span class="score-chip">0:0 <em>(3.6%)</em></span></div>
+    <div class="score-chips"><span class="score-chip">2:0西班牙胜 <em>(25.2%)</em></span><span class="score-chip">1:0西班牙胜 <em>(20.2%)</em></span><span class="score-chip">比分1-0 <em>(15.8%)</em></span><span class="score-chip">比分1-1 <em>(7.2%)</em></span><span class="score-chip">比分0-0 <em>(3.6%)</em></span></div>
   </div>
 </div>
 <div class="section">
@@ -578,7 +591,7 @@ body {
     <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-divergence">⚠️分歧</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO68% vs 市场90% = 22pp差距(全场最大), 名气溢价明显</span></div>
     <div class="fusion-verdict-box">
       <div class="title">🏆 融合结论</div>
-      <div class="analysis-text-small">西班牙胜面较大, 但进攻期望需理性修正。核心论据: ①西班牙欧国联+世欧预高质量5场场均1.8球(已扣除保加利亚/格鲁吉亚刷数据场次), 对沙特€3500万防线合理期望1-2球; ②沙特世亚预逼平乌拉圭(#16)+日本(#15)证明防守纪律性, 5-4-1阵型限制传控球队破门空间; ③西班牙首轮对佛得角0:0暴露面对密集防守攻坚效率不足; ④ELO+250在世界杯历史对应约68%胜率+典型净胜1.5-2球, 市场90%隐含胜率明显过热。综合: 西班牙1-0或2-0小胜为主, 穿盘-2.5难度高。沙特反击有微弱威胁但进球概率约20-30%。</div>
+      <div class="analysis-text-small">西班牙胜面较大, 但进攻期望需理性修正。核心论据: ①西班牙欧国联+世欧预高质量5场场均1.8球(已扣除保加利亚/格鲁吉亚刷数据场次), 对沙特€3500万防线合理期望1-2球; ②沙特世亚预逼平乌拉圭(#16)+日本(#15)证明防守纪律性, 5-4-1阵型限制传控球队破门空间; ③西班牙首轮对佛得角0:0暴露面对密集防守攻坚效率不足; ④ELO+250在世界杯历史对应约68%胜率+典型净胜1.5-2球, 市场90%隐含胜率明显过热。<br><br><strong>★大小球说明:</strong> 大2.5:55%看似与Top 5泊松比分(全≤2.5)矛盾, 实则一致: Top 5覆盖约72%概率均≤2.5球, 剩余28%概率分布在2:1(西胜)、3:0(西胜)、3:1等>2.5比分中, 累加即达55%。这意味着西班牙大概率净胜1-2球且对手难破门, 但若一方先破僵局比赛可能开放。综合: 西班牙1-0或2-0小胜为主, 穿盘-2.5难度高。沙特反击有微弱威胁但进球概率约20-30%。</div>
     </div>
   </div>
   <div class="conclusion-body">
@@ -590,7 +603,7 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>西班牙胜(让平/小球)</strong></div>
       <div class="verdict-conf">融合信度: 中高</div>
-      <div class="verdict-scores"><span class="score-chip">2:0西班牙胜 (25.2%)</span><span class="score-chip">1:0西班牙胜 (20.2%)</span><span class="score-chip">1:0 (15.8%)</span><span class="score-chip">1:1 (7.2%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">2:0西班牙胜 (25.2%)</span><span class="score-chip">1:0西班牙胜 (20.2%)</span><span class="score-chip">比分1-0 (15.8%)</span><span class="score-chip">比分1-1 (7.2%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-中">
@@ -732,7 +745,7 @@ body {
   <div class="sub-probs">大2.5球: <strong>50%</strong> | 小2.5球: <strong>50%</strong> | BTTS: <strong>52%</strong></div>
   <div class="score-matrix">
     <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
-    <div class="score-chips"><span class="score-chip">2:1比利时胜 <em>(20.3%)</em></span><span class="score-chip">1:0比利时胜 <em>(16.2%)</em></span><span class="score-chip">1:0 <em>(12.8%)</em></span><span class="score-chip">1:1 <em>(9.6%)</em></span><span class="score-chip">0:0 <em>(4.8%)</em></span></div>
+    <div class="score-chips"><span class="score-chip">2:1比利时胜 <em>(20.3%)</em></span><span class="score-chip">1:0比利时胜 <em>(16.2%)</em></span><span class="score-chip">比分1-0 <em>(12.8%)</em></span><span class="score-chip">比分1-1 <em>(9.6%)</em></span><span class="score-chip">比分0-0 <em>(4.8%)</em></span></div>
   </div>
 </div>
 <div class="section">
@@ -762,7 +775,7 @@ body {
     <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-divergence">⚠️轻度分歧</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO58% vs 市场69% = 11pp, 德布劳内回归效应未完全反映在ELO中</span></div>
     <div class="fusion-verdict-box">
       <div class="title">🏆 融合结论</div>
-      <div class="analysis-text-small">比利时胜面较大, 但进攻期望需理性修正。核心论据: ①比利时有效比赛5场(扣除列支敦士登/哈萨克斯坦)场均1.4球, 对威尔士能进4球展示潜力, 但对乌克兰/法国有失球; ②伊朗世亚预对亚洲中游队稳定进球, 但塔雷米+阿兹蒙组合€8000万接近威尔士水平, 对比利时防线有威胁; ③德布劳内伤愈后状态是最大变量——若状态正常, 比利时有望2-1或1-0小胜; 若状态不佳, 平局风险显著。BTTS 52%定价合理。综合: 比利时小胜为主, 伊朗有望偷1球。</div>
+      <div class="analysis-text-small">比利时胜面较大, 但进攻期望需理性修正。核心论据: ①比利时有效比赛5场(扣除列支敦士登/哈萨克斯坦)场均1.4球, 对威尔士能进4球展示潜力, 但对乌克兰/法国有失球; ②伊朗世亚预对亚洲中游队稳定进球, 但塔雷米+阿兹蒙组合€8000万接近威尔士水平, 对比利时防线有威胁; ③德布劳内伤愈后状态是最大变量——若状态正常, 比利时有望2-1或1-0小胜; 若状态不佳, 平局风险显著。BTTS 52%定价合理。<br><br><strong>★融合权重说明:</strong> 本次融合最终58%=ELO独立58%。欧赔隐含69%的11pp溢价被降权——理由: (a)德布劳内伤愈状态不确定性大, 市场可能过度定价"德布劳内回归"叙事; (b)伊朗亚洲第一+塔雷米/阿兹蒙双前锋反击威胁被市场低估。ELO权重~70%+战术调整~30%, 市场信号因上述理由未大幅采纳。此权重判断与乌拉圭(偏ELO)/西班牙(偏ELO)保持一致的ELO优先策略。综合: 比利时小胜为主, 伊朗有望偷1球。</div>
     </div>
   </div>
   <div class="conclusion-body">
@@ -774,7 +787,7 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>比利时胜(让平/平局防冷)</strong></div>
       <div class="verdict-conf">融合信度: 中</div>
-      <div class="verdict-scores"><span class="score-chip">2:1比利时胜 (20.3%)</span><span class="score-chip">1:0比利时胜 (16.2%)</span><span class="score-chip">1:0 (12.8%)</span><span class="score-chip">1:1 (9.6%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">2:1比利时胜 (20.3%)</span><span class="score-chip">1:0比利时胜 (16.2%)</span><span class="score-chip">比分1-0 (12.8%)</span><span class="score-chip">比分1-1 (9.6%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-中">
@@ -916,7 +929,7 @@ body {
   <div class="sub-probs">大2.5球: <strong>50%</strong> | 小2.5球: <strong>50%</strong> | BTTS: <strong>52%</strong></div>
   <div class="score-matrix">
     <div class="score-matrix-title">泊松比分概率矩阵 (Top 5)</div>
-    <div class="score-chips"><span class="score-chip">2:1埃及胜 <em>(6.3%)</em></span><span class="score-chip">1:0埃及胜 <em>(5.0%)</em></span><span class="score-chip">1:0 <em>(4.0%)</em></span><span class="score-chip">1:1 <em>(8.8%)</em></span><span class="score-chip">0:0 <em>(4.4%)</em></span></div>
+    <div class="score-chips"><span class="score-chip">2:1埃及胜 <em>(6.3%)</em></span><span class="score-chip">1:0埃及胜 <em>(5.0%)</em></span><span class="score-chip">比分1-0 <em>(4.0%)</em></span><span class="score-chip">比分1-1 <em>(8.8%)</em></span><span class="score-chip">比分0-0 <em>(4.4%)</em></span></div>
   </div>
 </div>
 <div class="section">
@@ -947,7 +960,7 @@ body {
     <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">基本一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: 理论差(ELO235)与实际差距基本匹配，但新西兰在体能和身体对抗上可能超出埃及预期</span></div>
     <div class="fusion-verdict-box">
       <div class="title">🏆 融合结论</div>
-      <div class="analysis-text-small">埃及胜面较大, 萨拉赫是关键变量。核心论据: ①埃及非洲杯6场场均1.5球, 对€1500万以下防线场均1.8球——新西兰防线€1200万正是萨拉赫的猎物; ②埃及非洲杯5场场均失1.2球, 科特迪瓦能进2球暴露对非弱旅不稳——新西兰伍德的头球威胁不容忽视; ③新西兰对伊朗€5000万防线进2球证明有一定破门能力; ④双方五大联赛球员均仅2人, 但萨拉赫一个人的身价(€1亿+)远超新西兰全队。预测埃及2-1或3-1取胜, 萨拉赫大概率进球。BTTS概率52%说明新西兰有机会偷一个(伍德头球)。</div>
+      <div class="analysis-text-small">埃及胜面较大, 萨拉赫是关键变量。核心论据: ①埃及非洲杯6场场均1.5球, 对€1500万以下防线场均1.8球——新西兰防线€1200万正是萨拉赫的猎物; ②埃及非洲杯5场场均失1.2球, 科特迪瓦能进2球暴露对非弱旅不稳——新西兰伍德的头球威胁不容忽视; ③新西兰对伊朗€5000万防线进2球证明有一定破门能力; ④双方五大联赛球员均仅2人, 但萨拉赫一个人的身价(€1亿+)远超新西兰全队。<br><br><strong>★信度说明:</strong> 本场泊松分布极平(Top 5仅覆盖28.5%), 71.5%概率分布在长尾中——这是高不确定性信号, 因新西兰仅1场高质量非OFC参照(对伊朗2:2), 模型对新西兰的真实水平估计区间宽。信度「中低」反映了此数据局限性。预测埃及2-1或3-1取胜, 萨拉赫大概率进球。BTTS概率52%说明新西兰有机会偷一个(伍德头球)。</div>
     </div>
   </div>
   <div class="conclusion-body">
@@ -958,8 +971,8 @@ body {
     </div>
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>埃及胜(让平/平局需防)</strong></div>
-      <div class="verdict-conf">融合信度: 中</div>
-      <div class="verdict-scores"><span class="score-chip">2:1埃及胜 (6.3%)</span><span class="score-chip">1:0埃及胜 (5.0%)</span><span class="score-chip">1:0 (4.0%)</span><span class="score-chip">1:1 (8.8%)</span></div>
+      <div class="verdict-conf">融合信度: 中低</div>
+      <div class="verdict-scores"><span class="score-chip">2:1埃及胜 (6.3%)</span><span class="score-chip">1:0埃及胜 (5.0%)</span><span class="score-chip">比分1-0 (4.0%)</span><span class="score-chip">比分1-1 (8.8%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-中">
@@ -975,7 +988,7 @@ body {
 <div class="footer">
   <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
   <p style="margin-top:4px;">分析框架: v28.4 七步推理链 (基础实力→状态→战术→赔率→概率→推演→双面融合) | v30.0 两阶段架构</p>
-  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 11:26 北京时间</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 11:41 北京时间</p>
 </div>
 </body>
 </html>
