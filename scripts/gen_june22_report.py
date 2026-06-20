@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-v30.0 2026世界杯 6月21日比赛分析报告生成器
+v30.0 2026世界杯 6月22日比赛分析报告生成器
 数据源: football-data.org + 网页抓取 + ELO/FIFA + AI深度推演
 """
 import json, os, sys, math
@@ -12,7 +12,7 @@ REPORT_DIR = os.path.join(PROJECT_ROOT, "分析")
 os.makedirs(REPORT_DIR, exist_ok=True)
 
 # ====================================================
-# ★ 完整数据字典 (6月21日 4场比赛)
+# ★ 完整数据字典 (6月22日 4场比赛)
 # ====================================================
 
 MATCH_DATA = {
@@ -903,12 +903,12 @@ def gen_full_html():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月21日 量化分析报告 v30.0</title>
+<title>2026世界杯 6月22日 量化分析报告 v30.0</title>
 <style>{CSS}</style>
 </head>
 <body>
 <div class="header">
-  <h1>🏆 2026世界杯 <span>6月21日</span> 量化分析报告</h1>
+  <h1>🏆 2026世界杯 <span>6月22日</span> 量化分析报告</h1>
   <div class="subtitle">v30.0 · 七步完整推理链 · 双面融合 · 博彩风控模型 · 生成于 {now_bj}</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ 泊松概率模型</span>
@@ -924,9 +924,9 @@ def gen_full_html():
 
 <!-- ★ 赛前综述 ★ -->
 <div class="section">
-  <div class="section-title">📋 6月21日赛前综述</div>
+  <div class="section-title">📋 6月22日赛前综述</div>
   <div class="analysis-text">
-    <strong>比赛日看点:</strong> 6月21日是G组和H组的第二比赛日(MD2)，共4场比赛。所有8支球队均积1分——G组和H组首轮全部平局，导致两个小组的积分榜完全相同：每队都是1分！这意味着本轮将是打破僵局的关键。西班牙首轮0-0逼平佛得角后急需证明自己；乌拉圭在1-1平沙特后需取胜避免出线危机；比利时1-1平埃及的表现在饱受质疑；而萨拉赫的埃及将挑战新西兰。<br><br>
+    <strong>比赛日看点:</strong> 6月22日是G组和H组的第二比赛日(MD2)，共4场比赛。所有8支球队均积1分——G组和H组首轮全部平局，导致两个小组的积分榜完全相同：每队都是1分！这意味着本轮将是打破僵局的关键。西班牙首轮0-0逼平佛得角后急需证明自己；乌拉圭在1-1平沙特后需取胜避免出线危机；比利时1-1平埃及的表现在饱受质疑；而萨拉赫的埃及将挑战新西兰。<br><br>
     <strong>Group H积分榜:</strong> 乌拉圭1分 · 佛得角1分 · 西班牙1分 · 沙特阿拉伯1分<br>
     <strong>Group G积分榜:</strong> 比利时1分 · 埃及1分 · 伊朗1分 · 新西兰1分
   </div>
@@ -958,9 +958,9 @@ def gen_full_html():
 
 
 if __name__ == "__main__":
-    print("🏆 生成2026世界杯 6月21日 量化分析报告 v30.0 ...")
+    print("🏆 生成2026世界杯 6月22日 量化分析报告 v30.0 ...")
     html = gen_full_html()
-    path = os.path.join(REPORT_DIR, "2026-06-21-分析报告.htm")
+    path = os.path.join(REPORT_DIR, "2026-06-22-分析报告.htm")
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
     kb = len(html.encode("utf-8")) // 1024
