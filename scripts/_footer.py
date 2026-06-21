@@ -280,17 +280,30 @@ def defense_adj(def_h, def_a):
     avg = (def_h + def_a) / 2
     return -(avg - 5) * 0.20
 
-def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.50, matchday=0):
-    """综合调整：50%市场O/U锚定 + 防守风格修正(仅作用于先验部分) + 锦标赛阶段 → 最终λ (v31.5)"""
+def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.50, matchday=0, def_drift_h=1.0, def_drift_a=1.0):
+    """★v31.6综合调整：50%市场O/U锚定 + 防守漂移因子(P4) + 锦标赛阶段 → 最终λ
+    P4: 防守漂移因子 - 防线崩盘时λ敏感性增强
+    def_drift = 近3场场均失球 / 赛季场均失球 (>1.5表示崩盘)
+    """
     market_t = market_ou_implied_total(ou_over, ou_under)
     raw_t = lh + la
     blend_t = blend * market_t + (1 - blend) * raw_t
     da = defense_adj(def_h, def_a)
     sf = stage_factor(matchday) if matchday > 0 else 0.0
+    
+    # ★v31.6 P4: 防守漂移因子 - 崩盘防线敏感性增强
+    # def_drift_h: 主队防线漂移 (对手λa上调)
+    # def_drift_a: 客队防线漂移 (主队λh上调)
+    drift_adj_h = 1.0 + max(0, def_drift_a - 1.0) * 0.15  # 客队防线崩盘→主队λ上调
+    drift_adj_a = 1.0 + max(0, def_drift_h - 1.0) * 0.15  # 主队防线崩盘→客队λ上调
+    adj_lh = lh * drift_adj_h
+    adj_la = la * drift_adj_a
+    
     # ★v31.5: defense_adj仅作用于先验部分(1-blend), 市场已包含防守信息不重复计算
     adj_t = max(0.8, blend_t + (1 - blend) * da + sf)  # 地板：总进球不低于0.8
-    if raw_t > 0:
-        return adj_t * lh / raw_t, adj_t * la / raw_t, adj_t
+    adj_raw_t = adj_lh + adj_la
+    if adj_raw_t > 0:
+        return adj_t * adj_lh / adj_raw_t, adj_t * adj_la / adj_raw_t, adj_t
     return adj_t * 0.55, adj_t * 0.45, adj_t
 
 def elo_weight_factor(elo_diff):
@@ -319,6 +332,99 @@ def stage_factor(matchday, group_standing=None):
     elif matchday == 3:
         return +0.10  # 生死战(默认偏开放, 需结合出线形势调整)
     return 0.0
+
+# ========== v31.6 新增函数 (采纳审计师Victor 6项建议) ==========
+
+def calc_draw_probability(elo_diff, home_xg_avg, away_xg_avg, stage="MD2"):
+    """★v31.6 P0+P5: 平局概率重构 — 按ELO差分区+进攻效率修正
+    P0: 进攻低效队(ELO+400+)面对铁桶, 平局概率上浮
+    P5: 平局基线按ELO差分区动态调整
+    返回: 平局概率(0-1之间)
+    """
+    # P5: ELO差分区基线
+    if elo_diff < 100:
+        base = 0.30   # 势均力敌→30%
+    elif elo_diff < 200:
+        base = 0.28   # 略优→28%
+    elif elo_diff < 300:
+        base = 0.24   # 中强→24%
+    elif elo_diff < 400:
+        base = 0.20   # 明显强→20%
+    else:
+        base = 0.18   # 碾压→18%
+
+    # P0: 进攻效率修正 (低效进攻面对强防守, 平局概率上浮)
+    # home_xg_avg: 主队场均xG, away_xg_avg: 客队场均xG
+    weak_attack_threshold = 1.0  # 场均xG<1.0视为低效
+    if elo_diff > 300 and (home_xg_avg < weak_attack_threshold or away_xg_avg < weak_attack_threshold):
+        # 低效进攻+大ELO差→铁桶战术有效, 平局上浮3-5%
+        if home_xg_avg < weak_attack_threshold and away_xg_avg < weak_attack_threshold:
+            base += 0.05  # 双方都低效→+5%
+        else:
+            base += 0.03  # 仅一方低效→+3%
+    
+    # 阶段因子微调 (MD2稍降, MD3根据出线形势)
+    if stage == "MD2":
+        base -= 0.02  # MD2平局率实际约20%, 略低于MD1的30%基线
+    elif stage == "MD3":
+        base += 0.02  # MD3生死战, 平局概率微升
+    
+    return max(0.08, min(0.40, base))  # 钳位8%-40%
+
+def tactic_decay_factor(elo_diff):
+    """★v31.6 P1: 战术克制权重衰减 — ELO差越大, 克制影响越小
+    审计师Victor指出: 荷兰ELO+230, 战术克制-7pp完全错误
+    当ELO差>200时, 实力碾压覆盖战术克制
+    返回: 衰减系数(0-1), 乘以战术克制度评分
+    """
+    if elo_diff <= 100:
+        return 1.0   # 势均力敌, 战术克制全权重
+    elif elo_diff <= 200:
+        return 0.7   # 略优, 克制权重打7折
+    elif elo_diff <= 300:
+        return 0.4   # 中强, 克制权重打4折
+    elif elo_diff <= 400:
+        return 0.2   # 明显强, 克制权重打2折
+    else:
+        return 0.1   # 碾压, 克制权重仅1折(基本忽略)
+
+def normalize_opponent_strength(opponent_elo, opponent_xg_for, opponent_xg_against, elo_threshold=1600):
+    """★v31.6 P2: 首轮对手强度标准化
+    审计师Victor指出: 瑞典5:1突尼斯≠瑞典强, 是突尼斯太弱
+    极端比分(ELO差>400的比赛结果)在推导MD2时应打折
+    返回: 标准化后的对手强度评分(0-10)
+    """
+    # 对手ELO<阈值 → 比赛结果打折
+    if opponent_elo < elo_threshold:
+        discount = 0.5  # 弱对手, 结果打折50%
+    elif opponent_elo < elo_threshold + 200:
+        discount = 0.75
+    else:
+        discount = 1.0  # 强对手, 不打折
+    
+    # 进球/失球效率也做标准化
+    # 场均xG>2.5可能是虐菜, 需打折
+    xg_discount = 1.0
+    if opponent_xg_for > 2.5:
+        xg_discount = 0.7  # 虐菜高分打折
+    elif opponent_xg_for > 1.8:
+        xg_discount = 0.85
+    
+    return discount * xg_discount
+
+def auto_alignment_tag(elo_prob, market_prob, threshold_pp=12):
+    """★v31.6 P3: 融合标签自动化规则
+    审计师Victor指出: 厄瓜多尔ELO-市场差距16pp→标"✅高度一致"是错的
+    返回: (label, emoji)
+    """
+    diff_pp = abs(elo_prob - market_prob)
+    
+    if diff_pp <= 5:
+        return ("✅ 高度一致", "✅")
+    elif diff_pp <= 12:
+        return ("⚠️ 轻度分歧", "⚠️")
+    else:
+        return ("🚨 价值偏差", "🚨")
 
 # ★ v31.5 每场比赛的泊松λ参数 + 防守风格评分 (MD2阶段因子+0.05球自动应用)
 MATCH_PARAMS = {

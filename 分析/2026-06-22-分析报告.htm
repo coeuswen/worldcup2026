@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月22日 量化分析报告 v31.5</title>
+<title>2026世界杯 6月22日 量化分析报告 v31.6</title>
 <style>
 :root {
     --bg-primary: #0f1119; --bg-secondary: #161822; --bg-tertiary: #1c1f2e;
@@ -210,8 +210,8 @@ body {
 </head>
 <body>
 <div class="header">
-  <h1>🏆 2026世界杯 <span>6月22日</span> 量化分析报告 v31.5</h1>
-  <div class="subtitle">v31.5 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 2026-06-20 21:18 北京时间</div>
+  <h1>🏆 2026世界杯 <span>6月22日</span> 量化分析报告 v31.6</h1>
+  <div class="subtitle">v31.6 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 2026-06-21 14:42 北京时间</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span>    <span class="id-tag">⚡ Dixon-Coles泊松</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -236,32 +236,6 @@ body {
   </div>
 </div>
 
-<!-- ★ 6月21日赛果复盘 + 预测精度提升 ★ -->
-<div class="section" style="border-left:4px solid #f59e0b;background:#1a1a2e;">
-  <div class="section-title">📊 6月21日赛果复盘 — 预测 vs 实际 + 精度提升方向</div>
-  <div class="analysis-text">
-    <strong>📋 4场赛果对比</strong><br>
-    <table style="width:100%;margin:10px 0;font-size:.82em;border-collapse:collapse;">
-    <tr style="background:#232339;color:var(--gold);"><th style="padding:6px;">比赛</th><th style="padding:6px;">预测(最可能)</th><th style="padding:6px;">实际赛果</th><th style="padding:6px;">方向</th><th style="padding:6px;">比分</th><th style="padding:6px;">问题根因</th></tr>
-    <tr style="border-bottom:1px solid #2a2a40;"><td style="padding:6px;">🇳🇱荷兰 vs 🇸🇪瑞典</td><td style="padding:6px;">2:1荷兰/2:2平</td><td style="padding:6px;">🚨 <strong>5:1荷兰</strong></td><td style="padding:6px;">✅方向对</td><td style="padding:6px;">❌低估4球</td><td style="padding:6px;">小看荷兰进攻爆发力(德容+加克波完全压制)，高估瑞典防守韧性</td></tr>
-    <tr style="border-bottom:1px solid #2a2a40;"><td style="padding:6px;">🇩🇪德国 vs 🇨🇮科特迪瓦</td><td style="padding:6px;">2:0/2:1德国</td><td style="padding:6px;">✅ <strong>2:1德国</strong></td><td style="padding:6px;">✅</td><td style="padding:6px;">✅<strong>2:1命中！</strong></td><td style="padding:6px;">— 模型方向+比分均正确</td></tr>
-    <tr style="border-bottom:1px solid #2a2a40;"><td style="padding:6px;">🇪🇨厄瓜多尔 vs 🇨🇼库拉索</td><td style="padding:6px;">2:0/3:0厄瓜</td><td style="padding:6px;">🚨 <strong>0:0平(库拉索点球5:4胜)</strong></td><td style="padding:6px;">❌完全误判</td><td style="padding:6px;">❌❌零进球</td><td style="padding:6px;">重复厄瓜多尔vs佛得角错误——对"门将封神"类极端防守事件缺乏概率容错；厄瓜多尔xG转化率低的问题被连续忽视</td></tr>
-    <tr><td style="padding:6px;">🇹🇳突尼斯 vs 🇯🇵日本</td><td style="padding:6px;">2:0/3:0日本</td><td style="padding:6px;">🚨 <strong>0:4日本</strong></td><td style="padding:6px;">✅方向对</td><td style="padding:6px;">❌低估2球</td><td style="padding:6px;">换帅红利被高估(仅几天备战)；突尼斯防线信心崩溃程度被低估；日本多点开花能力被保守预测</td></tr>
-    </table><br>
-    <strong>📊 精度统计（截至6月21日）</strong><br>
-    • 方向准确率: <span style="color:var(--gold);">3/4 (75%)</span> — 厄瓜多尔平局是唯一致命误判<br>
-    • 比分准确率: <span style="color:var(--red);">1/4 (25%)</span> — 仅德国2:1命中<br>
-    • 大小球准确率: 待更新（荷兰5:1→大球✅；德国2:1→小球✅；厄瓜0:0→小球✅；日本4:0→大球✅ → 暂4/4但样本偏差）<br><br>
-    <strong>🔧 未来预测精度提升方向（基于本轮复盘）</strong><br>
-    <strong>① 门将封神事件需概率容错机制</strong>: 厄瓜多尔连续两场被门将零封（佛得角Room 10扑救 + 库拉索Room 15扑救），这是世界杯特有的"铁桶+门将开挂"极端事件。模型应在「ELO差>300 + 对手def≥8」时，自动触发"铁桶保护"：将预测比分从2:0/3:0下调为1:0/2:0，并提高0:0平局概率至15-20%。<br><br>
-    <strong>② 进攻爆发力低估修正</strong>: 荷兰5:1瑞典暴露模型对"球星集中爆发"的低估。当球队拥有≥2名世界级前锋（加克波+布罗比+西蒙斯）且对手防线GD<-3时，应触发"进攻爆发权重"：λ_home上调10-15%，预测比分从2:1上调为3:1/4:1。<br><br>
-    <strong>③ 换帅红利72小时法则</strong>: 突尼斯换帅(勒纳尔)后仅3天即比赛，模型此前高估"换帅效应"。应加入规则：新帅首战若距离上任<5天，不给予任何"换帅红利"加成；若>7天，可给予+5-10%的不确定性加成。<br><br>
-    <strong>④ 穿盘难度分层更精细</strong>: 西班牙让3.0球但实际穿盘概率可能<30%（对佛得角仅0进球）。对"ELO差>500+让球>2.5"的极端深盘，应单独建模：穿盘概率=min(40%, 基于xG的穿盘概率)，避免过度追随市场深盘。<br><br>
-    <strong>⑤ 引入"首轮冷门修正因子"</strong>: 若某队首轮出现极端冷门（如西班牙0:0佛得角），次轮市场会过度惩罚该队（西班牙赔率从1.01→1.08仍被低估）。应引入"市场过度反应因子"：首轮冷门球队次轮真实胜率=ELO独立概率×(-5~+5%)修正，而非追随市场赔率跳水。<br><br>
-    <strong>⑥ 平局基线需按小组阶段动态调整</strong>: 当前平局基线30%是32场平均值，但MD2（出线生死战）的实际平局率仅约18-20%（32场统计支持）。MD2应下调平局基线至20%，MD3（末轮默契球风险）上调至35%。
-  </div>
-</div>
-
 <!-- ★ 全局交叉分析 — v30.0复审新增 ★ -->
 <div class="section">
   <div class="section-title">🔬 全局交叉分析 — 跨场次结构性特征</div>
@@ -270,8 +244,8 @@ body {
     西班牙(-3.0)、比利时(-1.0)、乌拉圭(-1.25)、埃及(-0.5)——四场均为排名高队让球。但穿盘难度分层明显: 西班牙让3球但首轮零进球暴露进攻瓶颈，穿盘概率低于盘口暗示值；比利时-1.0面对伊朗铁桶，德布劳内创造力是关键变量；乌拉圭-1.25对阵首轮零封西班牙的佛得角，卡瓦尼+阿劳霍需要尽快破门；埃及-0.5让球最浅，萨拉赫伤情牵动全场走势。4场中2场强队穿盘概率约40-50%，低于市场预期。<br><br>
     <strong>② 市场溢价与首轮冷门——过度修正风险</strong><br>
     西班牙(FIFA#3): -12pp (ELO95%→市场83%)——首轮0-0佛得角导致市场大砍西班牙溢价，但佛得角门将封神并非可复制事件，西班牙进攻真实水平被低估 | 比利时(FIFA#4): +1pp (69%→70%)——市场对德布劳内回归信任度高 | 乌拉圭(FIFA#6): +10pp (82%→92%)——市场过度看好，忽略首轮对沙特全场仅3射正的进攻乏力 | 埃及(FIFA#44): +8pp (57%→65%)——萨拉赫+马尔穆什双核让市场偏向埃及，但新西兰首轮逼平伊朗展现韧性。ELO独立信号与市场隐含胜率部分背离，"ELO优先+赔率联动验证"策略在本轮尤为重要。<br><br>
-    <strong>③ 融合权重策略 v31.5 — 市场锚定50% + 防守调整仅先验</strong><br>
-    ★<strong>v31.5核心升级</strong>: 基于用户指令"更加相信市场"逻辑——亚盘是各大博彩公司系统性研究的结果, 信服力度大:<br>
+    <strong>③ 融合权重策略 v31.6 — 市场锚定50% + 防守调整仅先验</strong><br>
+    ★<strong>v31.6核心升级</strong>: 基于用户指令"更加相信市场"逻辑——亚盘是各大博彩公司系统性研究的结果, 信服力度大:<br>
     • <strong>市场O/U锚定: 28%→50%</strong>: 市场与先验平等对话。Pinnacle开大小球线时已研究防守风格/伤病/天气, 其隐含总进球是业界最准信号。50%权重确保市场声音不被淹没。<br>
     • <strong>防守调整仅作用于先验(1-blend): ★关键修复</strong>: 防守风格调整现在仅乘以(1-blend)系数。因为市场O/U线已经包含了防守信息——如果def_a=9(铁桶), 市场已经把这反映在大小球赔率里了, 不应重复扣减。厄瓜多尔vs库拉索: 修复后模型vs市场差从25pp→16pp。<br>
     • <strong>防守风格因子: -0.20球/分(临时参数)</strong>: 32场零封率41%支撑。每+1分铁桶度→-0.20球(仅作用于先验部分)。后续用PPDA等客观指标校准。<br>
@@ -284,16 +258,16 @@ body {
     审计报告指出"3/4场融合&lt;ELO"可能构成数学矛盾。经核查, 此为<strong>ELO二元模型与融合三元模型之间的维度差异</strong>, 非逻辑错误。ELO公式产生二元胜利概率(不知道平局), 而融合概率是三元空间(胜/平/负)。把二元ELO映射到三元空间(引入平局基线)后, 差距仅1.5-3pp。<br><br>
     
     <strong>⑤ 热门偏见折扣标准化 — v31.2方法论透明度升级</strong><br>
-    折扣表: 赔率1.01-1.20→-8~-12pp; 1.21-1.40→-5~-8pp; 1.41-1.60→-3~-5pp; 1.61-2.00→-1~-3pp。<strong>融合&lt;市场是模型识别错误定价的正常功能, 非校准需求。</strong>但若实际赛果证明折扣过度, v31.5将回调折扣系数。<br><br>
+    折扣表: 赔率1.01-1.20→-8~-12pp; 1.21-1.40→-5~-8pp; 1.41-1.60→-3~-5pp; 1.61-2.00→-1~-3pp。<strong>融合&lt;市场是模型识别错误定价的正常功能, 非校准需求。</strong>但若实际赛果证明折扣过度, v31.6将回调折扣系数。<br><br>
     
-    <strong>⑥ 32场实战复盘(截至6月20日) → v31.5校准驱动</strong><br>
+    <strong>⑥ 32场实战复盘(截至6月20日) → v31.6校准驱动</strong><br>
     • <strong>方向准确率19/32(59.4%)</strong> — MD1仅37.5%但MD2大幅提升至81.2%: 信息越充分→预测越准<br>
     • <strong>比分准确率4/32(12.5%)❌</strong> — 但v31.3的Dixon-Coles修正已部署, 本报告为首次用DC+新权重组合<br>
     • <strong>大小球准确率16/32(50.0%)⚠️</strong> — 恰好随机水平, 市场O/U锚定从40%→28%的调整依据<br>
     • <strong>BTTS准确率17/32(53.1%)⚠️</strong> — 防守风格因子-0.20直接针对此问题(预测场均2.50 vs 实际3.00球)<br>
     • <strong>30%平局基线✅</strong> — 32场31.2%平局率支撑上调。但MD2出线压力使平局率边际下降, 不设强制规则<br><br>
     
-    <strong>⑦ v31.5改进路线图 — 市场信任升级+防守双重计数消除</strong><br>
+    <strong>⑦ v31.6改进路线图 — 市场信任升级+防守双重计数消除</strong><br>
     • <strong>Dixon-Coles</strong>: ρ=-0.13(文献标准值), 持续追踪RPS vs 标准泊松<br>
     • <strong>市场O/U锚定(50%)</strong>: 从28%上调, 反映"市场系统性研究比个人判断更可靠"的用户指令。亚盘数据获取需确保准确完整<br>
     • <strong>防守风格(-0.20×先验)</strong>: 仅作用于(1-blend)非市场部分。消除与市场O/U线的重复计算<br>
@@ -308,13 +282,6 @@ body {
   <div class="match-meta">
     <span>🏟 亚特兰大梅赛德斯-奔驰球场</span><span>📋 H组 · 第2轮</span><span>🕐 6月22日 00:00 北京时间 (6月22日 12:00 亚特兰大)</span>
   </div>
-  <div style="margin-top:6px;font-size:.78em;color:var(--text-secondary);display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <span>📊 <strong>实力差距:</strong> <span style="color:var(--red);font-weight:700;">超级碾压局</span> (ELO +550, FIFA #1 vs #56)</span>
-    <span>|</span>
-    <span>🎯 <strong>西班牙目标:</strong> 大胜刷净胜球（首轮0:0佛得角需正名）</span>
-    <span>|</span>
-    <span>🎯 <strong>沙特目标:</strong> 守平即史诗级爆冷（1分→抢4分主动权）</span>
-  </div>
 </div>
 <div class="section">
   <div class="section-title">📊 一、基础实力分析</div>
@@ -323,7 +290,7 @@ body {
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:96.81818181818181%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
     <div class="elo-val home-color">2130</div>
   </div>
-  <div class="elo-advantage">西班牙领先+550ELO分 | FIFA排名差#55 <span style="margin-left:8px;color:var(--red);font-size:.82em;">【超级碾压 — ELO差>500，世界杯历史同差位胜率>92%】</span></div>
+  <div class="elo-advantage">西班牙领先+550ELO分 | FIFA排名差#55</div>
   <div class="elo-row">
     <div class="elo-team">沙特阿拉伯 <span class="fifa-badge">#56</span></div>
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:71.81818181818181%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
@@ -427,7 +394,7 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.5 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.6 Dixon-Coles修正+市场O/U锚定(50%)</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">西班牙胜</div><div class="prob-bar"><div class="prob-fill" style="width:85%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">85%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:12%;background:var(--gold)"></div></div><div class="prob-value gold-color">12%</div></div>
@@ -435,7 +402,7 @@ body {
   </div>
   <div class="sub-probs">大2.5球: <strong>54%</strong> | 小2.5球: <strong>46%</strong> | BTTS: <strong>26%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=2.62 λa=0.31 E[总]=2.94 | O/U锚点=3.28 | 防守: 西班牙控球碾压 vs 沙特铁桶·奥韦斯门神(首轮9扑)·定位球是破局关键 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.5 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.6 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
     <div class="score-chips"><span class="score-chip">2:0 <em>(19.2%)</em></span><span class="score-chip">3:0 <em>(16.8%)</em></span><span class="score-chip">1:0 <em>(14.0%)</em></span><span class="score-chip">4:0 <em>(11.0%)</em></span><span class="score-chip">0:0 <em>(6.2%)</em></span></div>
   </div>
 </div>
@@ -456,7 +423,7 @@ body {
       <div class="practice-side">
         <div class="side-label practice-label">🛠️ 实际面 (战术+真实条件)</div>
         <div class="side-content">战术: 沙特铁桶5-4-1+奥韦斯门神 | 克制: 2/10 | 可用性: 双方全员健康 | 平局: 14%(ELO+550调低) | 冷门: 沙特巨人杀手基因(曾2-1阿根廷)</div>
-        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 西班牙小胜或大胜取决于早破门</div>
+        <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 西班牙小胜(战术克制可忽略)</div>
       </div>
     </div>
     <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO89% vs 市场93% = 4pp小幅溢价。深盘下纯押胜平负无价值</span></div>
@@ -490,13 +457,6 @@ body {
   <div class="match-meta">
     <span>🏟 洛杉矶SoFi体育场</span><span>📋 G组 · 第2轮</span><span>🕐 6月22日 03:00 北京时间 (6月22日 12:00 洛杉矶)</span>
   </div>
-  <div style="margin-top:6px;font-size:.78em;color:var(--text-secondary);display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <span>📊 <strong>实力差距:</strong> <span style="color:var(--orange);font-weight:700;">中强对话·比利时略优</span> (ELO +270, FIFA #3 vs #20)</span>
-    <span>|</span>
-    <span>🎯 <strong>比利时目标:</strong> 德布劳内回归抢首胜，赢球=4分掌握出线</span>
-    <span>|</span>
-    <span>🎯 <strong>伊朗目标:</strong> 死守1分=2分（净胜球-1），赢球=4分奇迹</span>
-  </div>
 </div>
 <div class="section">
   <div class="section-title">📊 一、基础实力分析</div>
@@ -505,7 +465,7 @@ body {
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:90.45454545454545%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
     <div class="elo-val home-color">1990</div>
   </div>
-  <div class="elo-advantage">比利时领先+270ELO分 | FIFA排名差#17 <span style="margin-left:8px;color:var(--orange);font-size:.82em;">【中强对话 — ELO差200-300，世界杯历史同差位胜率~68%】</span></div>
+  <div class="elo-advantage">比利时领先+270ELO分 | FIFA排名差#17</div>
   <div class="elo-row">
     <div class="elo-team">伊朗 <span class="fifa-badge">#20</span></div>
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:78.18181818181819%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
@@ -609,7 +569,7 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.5 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.6 Dixon-Coles修正+市场O/U锚定(50%)</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">比利时胜</div><div class="prob-bar"><div class="prob-fill" style="width:58%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">58%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:25%;background:var(--gold)"></div></div><div class="prob-value gold-color">25%</div></div>
@@ -617,7 +577,7 @@ body {
   </div>
   <div class="sub-probs">大2.5球: <strong>55%</strong> | 小2.5球: <strong>45%</strong> | BTTS: <strong>54%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=1.93 λa=0.97 E[总]=2.9 | O/U锚点=2.89 | 防守: 比利时德布劳内创造力 vs 伊朗收缩防反·塔雷米反击·双方均需出线积分 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.5 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.6 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
     <div class="score-chips"><span class="score-chip">1:1 <em>(11.8%)</em></span><span class="score-chip">2:0 <em>(10.4%)</em></span><span class="score-chip">2:1 <em>(10.1%)</em></span><span class="score-chip">1:0 <em>(9.5%)</em></span><span class="score-chip">0:0 <em>(7.0%)</em></span></div>
   </div>
 </div>
@@ -672,13 +632,6 @@ body {
   <div class="match-meta">
     <span>🏟 迈阿密Hard Rock体育场</span><span>📋 H组 · 第2轮</span><span>🕐 6月22日 06:00 北京时间 (6月22日 18:00 迈阿密)</span>
   </div>
-  <div style="margin-top:6px;font-size:.78em;color:var(--text-secondary);display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <span>📊 <strong>实力差距:</strong> <span style="color:var(--red);font-weight:700;">明显碾压局</span> (ELO +390, FIFA #6 vs #65)</span>
-    <span>|</span>
-    <span>🎯 <strong>乌拉圭目标:</strong> 证明首轮0:0是冷门非常态，赢球=4分</span>
-    <span>|</span>
-    <span>🎯 <strong>佛得角目标:</strong> 再守1分=史诗级奇迹，平局=2分（净胜球0）</span>
-  </div>
 </div>
 <div class="section">
   <div class="section-title">📊 一、基础实力分析</div>
@@ -687,7 +640,7 @@ body {
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:86.81818181818181%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
     <div class="elo-val home-color">1910</div>
   </div>
-  <div class="elo-advantage">乌拉圭领先+390ELO分 | FIFA排名差#51 <span style="margin-left:8px;color:var(--red);font-size:.82em;">【明显碾压 — ELO差>300，世界杯历史同差位胜率>85%】</span></div>
+  <div class="elo-advantage">乌拉圭领先+390ELO分 | FIFA排名差#51</div>
   <div class="elo-row">
     <div class="elo-team">佛得角 <span class="fifa-badge">#65</span></div>
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:69.0909090909091%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
@@ -791,7 +744,7 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.5 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.6 Dixon-Coles修正+市场O/U锚定(50%)</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">乌拉圭胜</div><div class="prob-bar"><div class="prob-fill" style="width:68%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">68%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:24%;background:var(--gold)"></div></div><div class="prob-value gold-color">24%</div></div>
@@ -799,7 +752,7 @@ body {
   </div>
   <div class="sub-probs">大2.5球: <strong>41%</strong> | 小2.5球: <strong>59%</strong> | BTTS: <strong>35%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=1.83 λa=0.51 E[总]=2.34 | O/U锚点=2.67 | 防守: 乌拉圭围攻铁桶 vs 佛得角首轮零封西班牙神迹·努涅斯终结效率是关键变量 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.5 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.6 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
     <div class="score-chips"><span class="score-chip">1:0 <em>(16.7%)</em></span><span class="score-chip">2:0 <em>(16.3%)</em></span><span class="score-chip">0:0 <em>(11.0%)</em></span><span class="score-chip">1:1 <em>(10.3%)</em></span><span class="score-chip">3:0 <em>(10.0%)</em></span></div>
   </div>
 </div>
@@ -823,7 +776,7 @@ body {
         <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 乌拉圭小胜或有平局风险</div>
       </div>
     </div>
-    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-divergence">✅基本一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO71% vs 市场67% = -4pp折价。市场被佛得角首轮0:0逼平西班牙震撼, 赋予佛得角额外的防守信用分</span></div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-consistent">✅高度一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO71% vs 市场67% = -4pp折价 (差距≤5pp)。市场被佛得角首轮0:0逼平西班牙震撼, 赋予佛得角额外的防守信用分</span></div>
     <div class="fusion-verdict-box">
       <div class="title">🏆 融合结论</div>
       <div class="analysis-text-small">乌拉圭胜面大但穿盘-1.0风险极高。核心论据: ① ELO+390+FIFA#14vs#65实力差距明显——巴尔韦德/努涅斯/阿劳霍等豪门主力, 佛得角仅1人五大联赛; ② 但佛得角首轮0:0逼平西班牙是本届最大冷门——40岁门将沃辛哈9次扑救零封世界第一; ③ 乌拉圭首轮1:1被沙特逼平暴露终结效率问题——努涅斯多次错失良机, 比尔萨体系面对铁桶阵时创造力不如西班牙; ④ H组四队全部战平→出线形势胶着。<br><br><strong>★三项联动分析:</strong> 体彩赔率1.50/4.20/8.00为「低胜+中平+高负」模式。平赔4.20→隐含约24%, 与ELO独立平局25%几乎完全吻合→平赔诚实。负赔8.00→隐含12.5%冷门概率, 佛得角首轮逼平西班牙后市场已给予充分尊重。综合: 乌拉圭1-0或2-0小胜概率最大, 0-0平局不可完全排除。</div>
@@ -854,13 +807,6 @@ body {
   <div class="match-meta">
     <span>🏟 温哥华BC Place球场</span><span>📋 G组 · 第2轮</span><span>🕐 6月22日 09:00 北京时间 (6月22日 18:00 温哥华)</span>
   </div>
-  <div style="margin-top:6px;font-size:.78em;color:var(--text-secondary);display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-    <span>📊 <strong>实力差距:</strong> <span style="color:var(--blue);font-weight:700;">强弱对话·埃及占优</span> (ELO -220, FIFA #85 vs #30)</span>
-    <span>|</span>
-    <span>🎯 <strong>新西兰目标:</strong> 守平=2分（净胜球0），赢球=4分直通出线</span>
-    <span>|</span>
-    <span>🎯 <strong>埃及目标:</strong> 萨拉赫单核抢3分，赢球=4分基本锁定出线</span>
-  </div>
 </div>
 <div class="section">
   <div class="section-title">📊 一、基础实力分析</div>
@@ -869,7 +815,7 @@ body {
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:67.27272727272727%;background:linear-gradient(90deg, var(--blue), var(--blue-bright))"></div></div>
     <div class="elo-val home-color">1480</div>
   </div>
-  <div class="elo-advantage">埃及领先+220ELO分 | FIFA排名差#55 <span style="margin-left:8px;color:var(--blue);font-size:.82em;">【强弱对话 — ELO差200-250，强弱分明但非碾压】</span></div>
+  <div class="elo-advantage">埃及领先+220ELO分 | FIFA排名差#55</div>
   <div class="elo-row">
     <div class="elo-team">埃及 <span class="fifa-badge">#30</span></div>
     <div class="elo-bar-wrap"><div class="elo-bar-fill" style="width:77.27272727272727%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
@@ -973,7 +919,7 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.5 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.6 Dixon-Coles修正+市场O/U锚定(50%)</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">新西兰胜</div><div class="prob-bar"><div class="prob-fill" style="width:13%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">13%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:25%;background:var(--gold)"></div></div><div class="prob-value gold-color">25%</div></div>
@@ -981,7 +927,7 @@ body {
   </div>
   <div class="sub-probs">大2.5球: <strong>47%</strong> | 小2.5球: <strong>53%</strong> | BTTS: <strong>45%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=0.74 λa=1.85 E[总]=2.59 | O/U锚点=2.38 | 防守: 新西兰直接打法·贾斯特双响 vs 埃及萨拉赫+马尔穆什·预选赛6场零封防守 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.5 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.6 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
     <div class="score-chips"><span class="score-chip">0:2 <em>(13.0%)</em></span><span class="score-chip">0:1 <em>(12.7%)</em></span><span class="score-chip">1:1 <em>(11.7%)</em></span><span class="score-chip">1:2 <em>(9.6%)</em></span><span class="score-chip">0:0 <em>(8.9%)</em></span></div>
   </div>
 </div>
@@ -1005,7 +951,7 @@ body {
         <div style="font-size:.73em;color:var(--text-secondary);margin-top:4px;">方向: 埃及小胜概率最大</div>
       </div>
     </div>
-    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-divergence">✅基本一致</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO56% vs 市场62% = 6pp小幅溢价, 埃及预选赛6场零封提供额外信用</span></div>
+    <div style="margin-top:10px;"><strong>融合判断:</strong> <span class="alignment-badge align-divergence">⚠️轻度分歧</span><span style="font-size:.78em;color:var(--text-secondary);margin-left:6px;">差距: ELO56% vs 市场62% = 6pp小幅溢价 (5-12pp)。埃及预选赛6场零封提供额外信用, 但市场轻微过热</span></div>
     <div class="fusion-verdict-box">
       <div class="title">🏆 融合结论</div>
       <div class="analysis-text-small">埃及胜面较大但新西兰有进球能力。核心论据: ① ELO+220(埃及优势)为合理差距——埃及FIFA#30vs#85, 萨拉赫+马尔穆什组合是非洲最强攻击线; ② 埃及预选赛5胜1平+6场零封(9进球0失球!)的防守纪录令人惊叹, 首轮1:1逼平比利时证明实力; ③ 但新西兰并非毫无抵抗力——首轮2:2平伊朗证明攻击力(贾斯特双响+伍德支点); ④ G组四队同积1分→本场胜者掌握出线主动。<br><br><strong>★三项联动分析:</strong> 体彩赔率5.50/4.33/1.62接近「高负+中平+低胜」模式→引导埃及胜(但新西兰被让0.75球)。平赔4.33→隐含约23%, 与ELO独立平局28%略有差距。负赔1.62→隐含约62%埃及胜率, 在合理区间。综合: 埃及1-0或2-1取胜概率最大, BTTS~52%概率较高。</div>
@@ -1035,8 +981,8 @@ body {
 </div>
 <div class="footer">
   <p>数据来源: football-data.org · OddsPAPI.io(Pinnacle) · ELO评级 · FIFA排名 · 网页抓取</p>
-  <p style="margin-top:4px;">分析框架: v31.5 DC修正+O/U锚定(50%)+防守(-0.20×先验)+ELO动态+阶段因子 | 七步推理链 | 双面融合</p>
-  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-20 21:18 北京时间</p>
+  <p style="margin-top:4px;">分析框架: v31.6 DC修正+O/U锚定(50%)+防守(-0.20×先验)+ELO动态+阶段因子 | 七步推理链 | 双面融合</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-21 14:42 北京时间</p>
 </div>
 </body>
 </html>
