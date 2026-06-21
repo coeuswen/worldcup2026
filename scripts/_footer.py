@@ -573,6 +573,25 @@ def generate_match_html(mk, d):
     dv_ou_over, dv_ou_under = devig_two(odds_o.get('over', 1.01), odds_o.get('under', 1.01))
     dv_btts_y, dv_btts_n = devig_two(odds_b.get('yes', 1.01), odds_b.get('no', 1.01))
     
+    # ★ v31.8 修复: 市场偏向标签动态判断(审计#3)
+    oh, od, oa = float(odds['home']), float(odds['draw']), float(odds['away'])
+    min_odds = min(oh, od, oa)
+    if oh == min_odds and oh < 2.0:
+        hot_label = f"{d['home_name']}热度高"
+    elif oa == min_odds and oa < 2.0:
+        hot_label = f"{d['away_name']}热度高"
+    elif od == min_odds and od < 3.5:
+        hot_label = "平局受追捧"
+    elif max(oh, od, oa) - min(oh, od, oa) < 0.5:
+        hot_label = "市场均衡"
+    else:
+        if oh == min_odds:
+            hot_label = f"{d['home_name']}热度高"
+        elif oa == min_odds:
+            hot_label = f"{d['away_name']}热度高"
+        else:
+            hot_label = "平局受追捧"
+    
     H.append(f"""<div class="section">
   <div class="section-title">💰 四、盘口与赔率分析 (Pinnacle参考)</div>
   <div class="odds-grid">
@@ -593,7 +612,7 @@ def generate_match_html(mk, d):
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
-      <div style="font-size:.9em;font-weight:700;margin-top:4px;">{d['home_name']}热度高</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">{hot_label}</div>
       <div class="implied-prob">亚盘: {d['odds_ah']}</div>
     </div>
   </div>
