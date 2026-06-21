@@ -329,27 +329,39 @@ def build_match_data():
 
 def build_match_params():
     """Build MATCH_PARAMS"""
-    return """# ★ v31.5 每场比赛的泊松λ参数 + 防守风格评分 (MD2阶段因子+0.05球自动应用)
+    return """# ★ v31.6 每场比赛的泊松λ参数 + 类xG代理(10+场大样本) + 防守风格评分
 MATCH_PARAMS = {
     "西班牙vs沙特阿拉伯": {
         "lambda_h": 2.5, "lambda_a": 0.3, "def_h": 4, "def_a": 9,
-        "def_drift_h": 1.0, "def_drift_a": 1.3,  # ★v31.6 P4: 沙特防线可能崩盘
-        "desc": "西班牙控球碾压 vs 沙特铁桶·奥韦斯门神(首轮9扑)·定位球是破局关键"
+        "def_drift_h": 1.0, "def_drift_a": 1.3,
+        # ★v31.7 类xG代理(14场/13场非友谊赛剔除碾压后)
+        "xg_h": 1.71, "xg_a": 1.15, "xga_h": 0.43, "xga_a": 0.69,
+        "xg_total": 2.14,  # 类xG总进球期望
+        "desc": "西班牙控球碾压 vs 沙特铁桶·奥韦斯门神·类xG西班牙1.71沙特1.15→总期望2.14"
     },
     "比利时vs伊朗": {
         "lambda_h": 2.0, "lambda_a": 1.0, "def_h": 5, "def_a": 7,
-        "def_drift_h": 1.0, "def_drift_a": 1.2,  # ★v31.6 P4: 伊朗防线可能小崩
-        "desc": "比利时德布劳内创造力 vs 伊朗收缩防反·塔雷米反击·双方均需出线积分"
+        "def_drift_h": 1.0, "def_drift_a": 1.2,
+        # ★v31.7 类xG代理(13场/13场)
+        "xg_h": 1.31, "xg_a": 2.00, "xga_h": 0.77, "xga_a": 0.85,
+        "xg_total": 2.85,  # 伊朗攻击力被低估? 类xG=2.00 vs 世亚预+亚洲杯
+        "desc": "比利时控球攻坚 vs 伊朗防反·类xG比利时1.31伊朗2.00→伊朗攻击力不容小觑"
     },
     "乌拉圭vs佛得角": {
         "lambda_h": 1.8, "lambda_a": 0.5, "def_h": 5, "def_a": 9,
-        "def_drift_h": 1.0, "def_drift_a": 1.1,  # ★v31.6 P4: 佛得角防线可能不可持续
-        "desc": "乌拉圭围攻铁桶 vs 佛得角首轮零封西班牙神迹·努涅斯终结效率是关键变量"
+        "def_drift_h": 1.0, "def_drift_a": 1.1,
+        # ★v31.7 类xG代理(13场/13场, 乌拉圭剔除玻利维亚5:0)
+        "xg_h": 1.00, "xg_a": 1.31, "xga_h": 0.69, "xga_a": 0.69,
+        "xg_total": 2.00,  # 乌拉圭进攻效率偏低→类xG仅1.00(对强队场均仅1球)
+        "desc": "乌拉圭围攻 vs 佛得角铁桶·类xG乌拉圭1.00佛得角1.31→双方进球预期接近"
     },
     "新西兰vs埃及": {
         "lambda_h": 0.8, "lambda_a": 2.0, "def_h": 6, "def_a": 5,
-        "def_drift_h": 1.0, "def_drift_a": 1.0,  # ★v31.6 P4: 双方防线正常
-        "desc": "新西兰直接打法·贾斯特双响 vs 埃及萨拉赫+马尔穆什·预选赛6场零封防守"
+        "def_drift_h": 1.0, "def_drift_a": 1.0,
+        # ★v31.7 类xG代理(7场/14场, 新西兰剔除5场大洋洲碾压)
+        "xg_h": 1.29, "xg_a": 1.71, "xga_h": 1.14, "xga_a": 0.79,
+        "xg_total": 2.50,  # 新西兰类xG仅1.29(剔除鱼腩后vs高质量对手)
+        "desc": "新西兰直接打法 vs 埃及萨拉赫领衔·类xG新西兰1.29埃及1.71→埃及攻击力明显占优"
     },
 }"""
 
@@ -365,7 +377,7 @@ full = header + "\n" + match_data + "\n\n" + match_params + "\n\n" + footer
 full = full.replace("6月21日", "6月22日")
 full = full.replace("gen_june21_report", "gen_june22_report")
 full = full.replace("2026-06-21-分析报告", "2026-06-22-分析报告")
-full = full.replace("v31.5", "v31.6")  # ★v31.6 升级：采纳审计师6项建议
+full = full.replace("v31.6", "v31.7 类xG代理集成")  # ★v31.7 升级: 类xG代理交叉验证
 
 with open(TARGET, "w", encoding="utf-8") as f:
     f.write(full)

@@ -619,6 +619,28 @@ def generate_match_html(mk, d):
         matchday=d.get('matchday', 0),
         def_drift_h=ddh, def_drift_a=dda
     )
+    
+    # ★ v31.7: 类xG代理交叉验证 — 10+场大样本均值作为λ基准
+    xg_h = mp.get("xg_h", None)
+    xg_a = mp.get("xg_a", None)
+    xg_total = mp.get("xg_total", None)
+    xg_divergence = 0
+    xg_flag = ""
+    if xg_h is not None and xg_a is not None and xg_total is not None:
+        # 计算手动λ总进球 vs 类xG总进球期望的偏离
+        manual_total = mp["lambda_h"] + mp["lambda_a"]
+        xg_divergence = abs(manual_total - xg_total) / max(xg_total, 0.5) * 100
+        if xg_divergence > 30:
+            xg_flag = f'<span style="color:#e74c3c;">⚠️ λ高估{xg_divergence:.0f}%: 手动λ{manual_total:.1f} vs 类xG{xg_total:.2f}({mp.get("xg_h",0)}/{mp.get("xg_a",0)})→建议下调总进球期望</span>'
+        elif xg_divergence > 15:
+            xg_flag = f'<span style="color:#f39c12;">⚡ λ偏差{xg_divergence:.0f}%: 手动λ{manual_total:.1f} vs 类xG{xg_total:.2f}→边际调整</span>'
+        else:
+            xg_flag = f'<span style="color:#27ae60;">✅ λ一致({xg_divergence:.0f}%): 手动λ{manual_total:.1f} vs 类xG{xg_total:.2f}</span>'
+    
+    # ★ v31.7: 类xG校准 — 当偏离>25%时, 向xG代理方向调整λ(30%权重)
+    if xg_divergence > 25 and xg_h is not None:
+        lh_adj = lh_adj * 0.70 + xg_h * 0.30
+        la_adj = la_adj * 0.70 + xg_a * 0.30
     # 同时计算ELO动态权重(供展示)
     elo_w = elo_weight_factor(d.get('elo_diff', 0))
     dc_matrix = compute_score_matrix(lh_adj, la_adj, mp.get("rho", -0.13))
@@ -654,6 +676,12 @@ def generate_match_html(mk, d):
     <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.6 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
     <div class="score-chips">{dc_chips}</div>
   </div>
+</div>""")
+    # ★ v31.7: 类xG交叉验证显示
+    if xg_flag:
+        H.append(f"""<div class="section" style="background:var(--bg-card);padding:12px 18px;border-radius:8px;margin-top:6px;border-left:4px solid {'#e74c3c' if '高估' in xg_flag else '#f39c12' if '偏差' in xg_flag else '#27ae60'};">
+  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.7 — 10+场大样本均值</div>
+  <div style="font-size:.78em;">{xg_flag}</div>
 </div>""")
     
     # 六、综合推演
