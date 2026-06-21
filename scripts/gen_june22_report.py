@@ -111,7 +111,7 @@ MATCH_DATA = {
         "key_vars": "① 亚马尔能否首发并创造破局 ② 奥韦斯能否复制首轮9扑神迹 ③ 西班牙定位球效率 ④ 达瓦萨里偷袭概率",
         "theory_summary": "ELO差550→西班牙胜率89% | 欧赔1.08→隐含93% | 亚盘-2.0/2.5→机构深盘 | 理论面: 碾压优势",
         "theory_dir": "西班牙胜(理论面绝对碾压)",
-        "practice_summary": "战术: 沙特铁桶5-4-1+奥韦斯门神 | 克制: 2/10 | 可用性: 双方全员健康 | 平局: 14%(ELO+550调低) | 冷门: 沙特巨人杀手基因(曾2-1阿根廷)",
+        "practice_summary": "战术: 沙特铁桶5-4-1+奥韦斯门神 | 克制: 2/10(衰减×0.1·ELO差550>350) | 可用性: 双方全员健康 | 平局: 14%(ELO+550调低) | 冷门: 沙特巨人杀手基因(曾2-1阿根廷)",
         "practice_dir": "西班牙小胜(战术克制可忽略)",
         "alignment": "✅高度一致",
         "gap": "ELO89% vs 市场93% = 4pp小幅溢价。深盘下纯押胜平负无价值",
@@ -285,7 +285,7 @@ MATCH_DATA = {
         "key_vars": "① 德布劳内能否在伊朗双后腰间找到空间 ② 卢卡库首发or替补(首发→比利时火力↑) ③ 塔雷米反击效率 ④ 库尔图瓦vs贝兰万德门将对决",
         "theory_summary": "ELO差270→比利时胜率61% | 欧赔1.42→隐含70% | 亚盘-1.0→机构正常定档 | 理论面: 比利时占优",
         "theory_dir": "比利时胜(理论面占优, 伊朗防守不可小觑)",
-        "practice_summary": "战术: 伊朗4-3-3收缩防反vs比利时控球攻坚 | 克制: 4/10 | 可用性: 双方主力齐整 | 平局: 24%(ELO+270) | 冷门: 塔雷米+雷扎伊安连线",
+        "practice_summary": "战术: 伊朗4-3-3收缩防反vs比利时控球攻坚 | 克制: 4/10(衰减×0.2·ELO差270>200) | 可用性: 双方主力齐整 | 平局: 24%(ELO+270) | 冷门: 塔雷米+雷扎伊安连线",
         "practice_dir": "比利时小胜但有平局风险",
         "alignment": "⚠️轻度分歧",
         "gap": "ELO61% vs 市场70% = 9pp溢价。首轮伊朗0-2落后追平新西兰+比利时1-1埃及, 市场可能过度定价",
@@ -459,7 +459,7 @@ MATCH_DATA = {
         "key_vars": "① 努涅斯能否摆脱首轮低迷(多次错失良机) ② 沃辛哈能否复制9扑神迹 ③ 巴尔韦德后插上破局 ④ 门德斯反击速度",
         "theory_summary": "ELO差390→乌拉圭胜率71% | 欧赔1.50→隐含67% | 亚盘-1.0→机构正常 | 理论面: 乌拉圭优势明显",
         "theory_dir": "乌拉圭胜(ELO+市场一致)",
-        "practice_summary": "战术: 佛得角5-4-1铁桶+沃辛哈门神(首轮零封西班牙!) | 克制: 5/10 | 可用性: 双方全员健康 | 平局: 25%(ELO+390) | 冷门: 佛得角延续奇迹",
+        "practice_summary": "战术: 佛得角5-4-1铁桶+沃辛哈门神(首轮零封西班牙!) | 克制: 5/10(衰减×0.1·ELO差390>350) | 可用性: 双方全员健康 | 平局: 25%(ELO+390) | 冷门: 佛得角延续奇迹",
         "practice_dir": "乌拉圭小胜或有平局风险",
         "alignment": "✅高度一致",
         "gap": "ELO71% vs 市场67% = -4pp折价 (差距≤5pp)。市场被佛得角首轮0:0逼平西班牙震撼, 赋予佛得角额外的防守信用分",
@@ -633,7 +633,7 @@ MATCH_DATA = {
         "key_vars": "① 萨拉赫vs卡卡塞的一对一结果 ② 贾斯特能否延续首轮火热状态 ③ 埃及预选赛6场零封的防守能否再现 ④ 伍德定位球头球威胁",
         "theory_summary": "ELO差+220(埃及优势)→埃及胜率56% | 欧赔1.62→隐含62% | 亚盘-0.75→机构看好埃及 | 理论面: 埃及占优",
         "theory_dir": "埃及胜(ELO+市场一致)",
-        "practice_summary": "战术: 埃及4-3-3萨拉赫+马尔穆什vs新西兰4-4-2直接打法 | 克制: 3/10 | 可用性: 双方全员健康 | 平局: 28%(ELO-220) | 冷门: 新西兰首轮2球证明攻击力",
+        "practice_summary": "战术: 埃及4-3-3萨拉赫+马尔穆什vs新西兰4-4-2直接打法 | 克制: 3/10(衰减×0.2·ELO差220>200) | 可用性: 双方全员健康 | 平局: 28%(ELO-220) | 冷门: 新西兰首轮2球证明攻击力",
         "practice_dir": "埃及小胜概率最大",
         "alignment": "⚠️轻度分歧",
         "gap": "ELO56% vs 市场62% = 6pp小幅溢价 (5-12pp)。埃及预选赛6场零封提供额外信用, 但市场轻微过热",
@@ -1330,13 +1330,17 @@ def generate_match_html(mk, d):
     hp, dp, ap = d['prob_home'], d['prob_draw'], d['prob_away']
     o25 = d['over25_pct']; btts = d['btts_pct']
     
-    # ★ v31.6: 用Dixon-Coles+市场O/U锚定(50%)+阶段因子计算真实比分概率
-    mp = MATCH_PARAMS.get(mk, {"lambda_h": 1.5, "lambda_a": 1.0, "def_h": 5, "def_a": 5})
+    # ★ v31.6: 用Dixon-Coles+市场O/U锚定(50%)+阶段因子+防守漂移计算真实比分概率
+    mp = MATCH_PARAMS.get(mk, {"lambda_h": 1.5, "lambda_a": 1.0, "def_h": 5, "def_a": 5, "def_drift_h": 1.0, "def_drift_a": 1.0})
+    # P4: 读取防守漂移因子(若MATCH_PARAMS中定义)
+    ddh = mp.get("def_drift_h", 1.0)
+    dda = mp.get("def_drift_a", 1.0)
     lh_adj, la_adj, total_adj = adjusted_lambdas(
         mp["lambda_h"], mp["lambda_a"],
         d['odds_ou25']['over'], d['odds_ou25']['under'],
         mp["def_h"], mp["def_a"],
-        matchday=d.get('matchday', 0)
+        matchday=d.get('matchday', 0),
+        def_drift_h=ddh, def_drift_a=dda
     )
     # 同时计算ELO动态权重(供展示)
     elo_w = elo_weight_factor(d.get('elo_diff', 0))
