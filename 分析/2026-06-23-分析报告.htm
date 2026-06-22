@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月23日 量化分析报告 v31.7 类xG代理集成</title>
+<title>2026世界杯 6月23日 量化分析报告 v31.9 复盘校准版</title>
 <style>
 :root {
     --bg-primary: #0f1119; --bg-secondary: #161822; --bg-tertiary: #1c1f2e;
@@ -183,8 +183,8 @@ body {
 </head>
 <body>
 <div class="header">
-  <h1>🏆 2026世界杯 <span>6月23日</span> 量化分析报告 v31.7 类xG代理集成</h1>
-  <div class="subtitle">v31.7 类xG代理集成 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 2026-06-21 16:04 北京时间</div>
+  <h1>🏆 2026世界杯 <span>6月23日</span> 量化分析报告 v31.9 复盘校准版</h1>
+  <div class="subtitle">v31.9 复盘校准版 · DC修正(ρ=-0.20) · 市场O/U锚定(65%) · 防守(-0.15×先验) · ELO动态 · 平局基线+2-4pp · 生成于 2026-06-22 13:14 北京时间</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ Dixon-Coles泊松</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -373,21 +373,21 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.7 类xG代理集成 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.9 复盘校准 DC修正(ρ=-0.20)+市场O/U锚定(65%)+xG偏离>15%→50%权重</div>
   <div class="prob-row">
-    <div class="prob-col"><div class="prob-label">阿根廷胜</div><div class="prob-bar"><div class="prob-fill" style="width:60%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">60%</div></div>
-    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:23%;background:var(--gold)"></div></div><div class="prob-value gold-color">23%</div></div>
-    <div class="prob-col"><div class="prob-label">奥地利胜</div><div class="prob-bar"><div class="prob-fill" style="width:18%;background:var(--orange)"></div></div><div class="prob-value away-color">18%</div></div>
+    <div class="prob-col"><div class="prob-label">阿根廷胜</div><div class="prob-bar"><div class="prob-fill" style="width:54%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">54%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:24%;background:var(--gold)"></div></div><div class="prob-value gold-color">24%</div></div>
+    <div class="prob-col"><div class="prob-label">奥地利胜</div><div class="prob-bar"><div class="prob-fill" style="width:22%;background:var(--orange)"></div></div><div class="prob-value away-color">22%</div></div>
   </div>
-  <div class="sub-probs">大2.5球: <strong>64%</strong> | 小2.5球: <strong>36%</strong> | BTTS: <strong>61%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=2.22 λa=1.14 E[总]=2.91 | O/U锚点=2.62 | 防守: 阿根廷控球碾压 vs 奥地利高位逼抢·梅西+阿尔瓦雷斯 vs 萨比策+阿瑙托维奇·朗尼克体系硬仗能力是唯一变量 | ELO权=55% | MD2因子=+0.05球</span></div>
+  <div class="sub-probs">大2.5球: <strong>69%</strong> | 小2.5球: <strong>31%</strong> | BTTS: <strong>68%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=2.24 λa=1.37 E[总]=2.83 | O/U锚点=2.62 | 防守: 阿根廷控球碾压 vs 奥地利高位逼抢·梅西+阿尔瓦雷斯 vs 萨比策+阿瑙托维奇·朗尼克体系硬仗能力是唯一变量 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.7 类xG代理集成 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
-    <div class="score-chips"><span class="score-chip">1:1 <em>(10.2%)</em></span><span class="score-chip">2:1 <em>(10.0%)</em></span><span class="score-chip">2:0 <em>(8.8%)</em></span><span class="score-chip">3:1 <em>(7.4%)</em></span><span class="score-chip">1:0 <em>(6.8%)</em></span></div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.9 复盘校准 (Top 5, ρ=-0.20, 65%O/U锚定, 阶段因子, xG偏离>15%→50%权重)</div>
+    <div class="score-chips"><span class="score-chip">1:1 <em>(10.2%)</em></span><span class="score-chip">2:1 <em>(9.6%)</em></span><span class="score-chip">3:1 <em>(7.2%)</em></span><span class="score-chip">2:0 <em>(7.0%)</em></span><span class="score-chip">2:2 <em>(6.6%)</em></span></div>
   </div>
 </div>
 <div class="section" style="background:var(--bg-card);padding:12px 18px;border-radius:8px;margin-top:6px;border-left:4px solid #e74c3c;">
-  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.7 — 10+场大样本均值</div>
-  <div style="font-size:.78em;"><span style="color:#e74c3c;">⚠️ λ高估32%: 手动λ3.0 vs 类xG4.40(2.4/2.0)→建议下调总进球期望</span></div>
+  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.9 — 10+场大样本均值 · 偏离>10%→警告 · >15%→50%权重校准</div>
+  <div style="font-size:.78em;"><span style="color:#e74c3c;">⚠️ λ高估32%: 手动λ3.0 vs 类xG4.40(2.4/2.0)→已介入校准总进球</span></div>
 </div>
 <div class="section">
   <div class="section-title">🎬 六、综合推演 (超级分析师三位一体)</div>
@@ -433,13 +433,13 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>阿根廷胜(置信度高)·大2.5球倾向</strong></div>
       <div class="verdict-conf">融合信度: 高</div>
-      <div class="verdict-scores"><span class="score-chip">1:1 (10.2%)</span><span class="score-chip">2:1 (10.0%)</span><span class="score-chip">2:0 (8.8%)</span><span class="score-chip">3:1 (7.4%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">1:1 (10.2%)</span><span class="score-chip">2:1 (9.6%)</span><span class="score-chip">3:1 (7.2%)</span><span class="score-chip">2:0 (7.0%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-medium">
         <div class="risk-label">风险等级</div>
         <div class="risk-value">🟡 中低风险</div>
-        <div class="btts-note">BTTS: 61% | 大2.5: 64%</div>
+        <div class="btts-note">BTTS: 68% | 大2.5: 69%</div>
       </div>
     </div>
   </div>
@@ -609,20 +609,20 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.7 类xG代理集成 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.9 复盘校准 DC修正(ρ=-0.20)+市场O/U锚定(65%)+xG偏离>15%→50%权重</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">法国胜</div><div class="prob-bar"><div class="prob-fill" style="width:91%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">91%</div></div>
-    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:8%;background:var(--gold)"></div></div><div class="prob-value gold-color">8%</div></div>
+    <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:9%;background:var(--gold)"></div></div><div class="prob-value gold-color">9%</div></div>
     <div class="prob-col"><div class="prob-label">伊拉克胜</div><div class="prob-bar"><div class="prob-fill" style="width:1%;background:var(--orange)"></div></div><div class="prob-value away-color">1%</div></div>
   </div>
-  <div class="sub-probs">大2.5球: <strong>57%</strong> | 小2.5球: <strong>43%</strong> | BTTS: <strong>14%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=2.95 λa=0.16 E[总]=3.11 | O/U锚点=2.62 | 防守: 法国碾压局·姆巴佩+登贝莱双翼围攻·伊拉克铁桶·法国破铁桶武器(速度/远射/定位球/传中)·大概率零封 | ELO权=55% | MD2因子=+0.05球</span></div>
+  <div class="sub-probs">大2.5球: <strong>54%</strong> | 小2.5球: <strong>46%</strong> | BTTS: <strong>14%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=2.84 λa=0.15 E[总]=3.0 | O/U锚点=2.62 | 防守: 法国碾压局·姆巴佩+登贝莱双翼围攻·伊拉克铁桶·法国破铁桶武器(速度/远射/定位球/传中)·大概率零封 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.7 类xG代理集成 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
-    <div class="score-chips"><span class="score-chip">2:0 <em>(21.1%)</em></span><span class="score-chip">3:0 <em>(20.7%)</em></span><span class="score-chip">4:0 <em>(15.3%)</em></span><span class="score-chip">1:0 <em>(14.0%)</em></span><span class="score-chip">5:0 <em>(9.0%)</em></span></div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.9 复盘校准 (Top 5, ρ=-0.20, 65%O/U锚定, 阶段因子, xG偏离>15%→50%权重)</div>
+    <div class="score-chips"><span class="score-chip">2:0 <em>(21.7%)</em></span><span class="score-chip">3:0 <em>(20.6%)</em></span><span class="score-chip">1:0 <em>(14.8%)</em></span><span class="score-chip">4:0 <em>(14.7%)</em></span><span class="score-chip">5:0 <em>(8.3%)</em></span></div>
   </div>
 </div>
 <div class="section" style="background:var(--bg-card);padding:12px 18px;border-radius:8px;margin-top:6px;border-left:4px solid #27ae60;">
-  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.7 — 10+场大样本均值</div>
+  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.9 — 10+场大样本均值 · 偏离>10%→警告 · >15%→50%权重校准</div>
   <div style="font-size:.78em;"><span style="color:#27ae60;">✅ λ一致(5%): 手动λ3.7 vs 类xG3.90</span></div>
 </div>
 <div class="section">
@@ -664,13 +664,13 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>法国胜(置信度极高)·大3.5球倾向</strong></div>
       <div class="verdict-conf">融合信度: 极高</div>
-      <div class="verdict-scores"><span class="score-chip">2:0 (21.1%)</span><span class="score-chip">3:0 (20.7%)</span><span class="score-chip">4:0 (15.3%)</span><span class="score-chip">1:0 (14.0%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">2:0 (21.7%)</span><span class="score-chip">3:0 (20.6%)</span><span class="score-chip">1:0 (14.8%)</span><span class="score-chip">4:0 (14.7%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-low">
         <div class="risk-label">风险等级</div>
         <div class="risk-value">🟢 低风险</div>
-        <div class="btts-note">BTTS: 14% | 大2.5: 57%</div>
+        <div class="btts-note">BTTS: 14% | 大2.5: 54%</div>
       </div>
     </div>
   </div>
@@ -846,21 +846,21 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.7 类xG代理集成 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.9 复盘校准 DC修正(ρ=-0.20)+市场O/U锚定(65%)+xG偏离>15%→50%权重</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">挪威胜</div><div class="prob-bar"><div class="prob-fill" style="width:50%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">50%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:25%;background:var(--gold)"></div></div><div class="prob-value gold-color">25%</div></div>
     <div class="prob-col"><div class="prob-label">塞内加尔胜</div><div class="prob-bar"><div class="prob-fill" style="width:25%;background:var(--orange)"></div></div><div class="prob-value away-color">25%</div></div>
   </div>
-  <div class="sub-probs">大2.5球: <strong>63%</strong> | 小2.5球: <strong>37%</strong> | BTTS: <strong>64%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=1.95 λa=1.34 E[总]=2.86 | O/U锚点=2.62 | 防守: ★均势局★ 挪威哈兰德+厄德高 vs 塞内加尔马内+萨尔·中场绞杀是关键·哈兰德vs库利巴利空霸对决·市场反向信号需警惕 | ELO权=35% | MD2因子=+0.05球</span></div>
+  <div class="sub-probs">大2.5球: <strong>68%</strong> | 小2.5球: <strong>32%</strong> | BTTS: <strong>69%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=2.09 λa=1.46 E[总]=2.8 | O/U锚点=2.62 | 防守: ★均势局★ 挪威哈兰德+厄德高 vs 塞内加尔马内+萨尔·中场绞杀是关键·哈兰德vs库利巴利空霸对决·市场反向信号需警惕 | ELO权=35% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.7 类xG代理集成 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
-    <div class="score-chips"><span class="score-chip">1:1 <em>(11.2%)</em></span><span class="score-chip">2:1 <em>(9.7%)</em></span><span class="score-chip">2:0 <em>(7.2%)</em></span><span class="score-chip">1:2 <em>(6.6%)</em></span><span class="score-chip">2:2 <em>(6.5%)</em></span></div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.9 复盘校准 (Top 5, ρ=-0.20, 65%O/U锚定, 阶段因子, xG偏离>15%→50%权重)</div>
+    <div class="score-chips"><span class="score-chip">1:1 <em>(10.8%)</em></span><span class="score-chip">2:1 <em>(9.4%)</em></span><span class="score-chip">2:2 <em>(6.9%)</em></span><span class="score-chip">1:2 <em>(6.6%)</em></span><span class="score-chip">3:1 <em>(6.5%)</em></span></div>
   </div>
 </div>
 <div class="section" style="background:var(--bg-card);padding:12px 18px;border-radius:8px;margin-top:6px;border-left:4px solid #e74c3c;">
-  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.7 — 10+场大样本均值</div>
-  <div style="font-size:.78em;"><span style="color:#e74c3c;">⚠️ λ高估30%: 手动λ3.0 vs 类xG4.30(2.5/1.8)→建议下调总进球期望</span></div>
+  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.9 — 10+场大样本均值 · 偏离>10%→警告 · >15%→50%权重校准</div>
+  <div style="font-size:.78em;"><span style="color:#e74c3c;">⚠️ λ高估30%: 手动λ3.0 vs 类xG4.30(2.5/1.8)→已介入校准总进球</span></div>
 </div>
 <div class="section">
   <div class="section-title">🎬 六、综合推演 (超级分析师三位一体)</div>
@@ -905,13 +905,13 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>挪威不败(置信度中)·双方进球是</strong></div>
       <div class="verdict-conf">融合信度: 中</div>
-      <div class="verdict-scores"><span class="score-chip">1:1 (11.2%)</span><span class="score-chip">2:1 (9.7%)</span><span class="score-chip">2:0 (7.2%)</span><span class="score-chip">1:2 (6.6%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">1:1 (10.8%)</span><span class="score-chip">2:1 (9.4%)</span><span class="score-chip">2:2 (6.9%)</span><span class="score-chip">1:2 (6.6%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-medium">
         <div class="risk-label">风险等级</div>
         <div class="risk-value">🟠 中高风险</div>
-        <div class="btts-note">BTTS: 64% | 大2.5: 63%</div>
+        <div class="btts-note">BTTS: 69% | 大2.5: 68%</div>
       </div>
     </div>
   </div>
@@ -1066,7 +1066,7 @@ body {
     </div>
     <div class="odds-card" style="background:rgba(251,191,36,.04);">
       <div class="odds-card-title">市场偏向</div>
-      <div style="font-size:.9em;font-weight:700;margin-top:4px;">约旦热度高</div>
+      <div style="font-size:.9em;font-weight:700;margin-top:4px;">阿尔及利亚热度高</div>
       <div class="implied-prob">亚盘: -1.0</div>
     </div>
   </div>
@@ -1076,20 +1076,20 @@ body {
   </div>
 </div>
 <div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.7 类xG代理集成 Dixon-Coles修正+市场O/U锚定(50%)</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.9 复盘校准 DC修正(ρ=-0.20)+市场O/U锚定(65%)+xG偏离>15%→50%权重</div>
   <div class="prob-row">
-    <div class="prob-col"><div class="prob-label">约旦胜</div><div class="prob-bar"><div class="prob-fill" style="width:8%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">8%</div></div>
+    <div class="prob-col"><div class="prob-label">约旦胜</div><div class="prob-bar"><div class="prob-fill" style="width:7%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">7%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:23%;background:var(--gold)"></div></div><div class="prob-value gold-color">23%</div></div>
-    <div class="prob-col"><div class="prob-label">阿尔及利亚胜</div><div class="prob-bar"><div class="prob-fill" style="width:69%;background:var(--orange)"></div></div><div class="prob-value away-color">69%</div></div>
+    <div class="prob-col"><div class="prob-label">阿尔及利亚胜</div><div class="prob-bar"><div class="prob-fill" style="width:70%;background:var(--orange)"></div></div><div class="prob-value away-color">70%</div></div>
   </div>
-  <div class="sub-probs">大2.5球: <strong>43%</strong> | 小2.5球: <strong>57%</strong> | BTTS: <strong>35%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=0.51 λa=1.9 E[总]=2.41 | O/U锚点=2.62 | 防守: 阿尔及利亚控球围攻·约旦铁桶死守·约旦3连败士气谷底·阿尔及利亚马赫雷斯+本纳赛尔中场压制·塔马里(法甲)唯一威胁 | ELO权=55% | MD2因子=+0.05球</span></div>
+  <div class="sub-probs">大2.5球: <strong>45%</strong> | 小2.5球: <strong>55%</strong> | BTTS: <strong>37%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">λh=0.53 λa=1.98 E[总]=2.51 | O/U锚点=2.62 | 防守: 阿尔及利亚控球围攻·约旦铁桶死守·约旦3连败士气谷底·阿尔及利亚马赫雷斯+本纳赛尔中场压制·塔马里(法甲)唯一威胁 | ELO权=55% | MD2因子=+0.05球</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.7 类xG代理集成 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子)</div>
-    <div class="score-chips"><span class="score-chip">0:2 <em>(16.4%)</em></span><span class="score-chip">0:1 <em>(16.1%)</em></span><span class="score-chip">0:3 <em>(10.4%)</em></span><span class="score-chip">0:0 <em>(10.3%)</em></span><span class="score-chip">1:1 <em>(10.0%)</em></span></div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.9 复盘校准 (Top 5, ρ=-0.20, 65%O/U锚定, 阶段因子, xG偏离>15%→50%权重)</div>
+    <div class="score-chips"><span class="score-chip">0:2 <em>(16.2%)</em></span><span class="score-chip">0:1 <em>(14.7%)</em></span><span class="score-chip">0:3 <em>(10.7%)</em></span><span class="score-chip">1:1 <em>(10.4%)</em></span><span class="score-chip">0:0 <em>(10.0%)</em></span></div>
   </div>
 </div>
 <div class="section" style="background:var(--bg-card);padding:12px 18px;border-radius:8px;margin-top:6px;border-left:4px solid #27ae60;">
-  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.7 — 10+场大样本均值</div>
+  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.9 — 10+场大样本均值 · 偏离>10%→警告 · >15%→50%权重校准</div>
   <div style="font-size:.78em;"><span style="color:#27ae60;">✅ λ一致(4%): 手动λ2.3 vs 类xG2.40</span></div>
 </div>
 <div class="section">
@@ -1133,13 +1133,13 @@ body {
     <div class="verdict-block">
       <div class="verdict-main">主推: <strong>阿尔及利亚胜(置信度高)·小2.5球倾向</strong></div>
       <div class="verdict-conf">融合信度: 高</div>
-      <div class="verdict-scores"><span class="score-chip">0:2 (16.4%)</span><span class="score-chip">0:1 (16.1%)</span><span class="score-chip">0:3 (10.4%)</span><span class="score-chip">0:0 (10.3%)</span></div>
+      <div class="verdict-scores"><span class="score-chip">0:2 (16.2%)</span><span class="score-chip">0:1 (14.7%)</span><span class="score-chip">0:3 (10.7%)</span><span class="score-chip">1:1 (10.4%)</span></div>
     </div>
     <div style="grid-column:1/-1;">
       <div class="risk-block risk-bg-low">
         <div class="risk-label">风险等级</div>
         <div class="risk-value">🟢 低风险</div>
-        <div class="btts-note">BTTS: 35% | 大2.5: 43%</div>
+        <div class="btts-note">BTTS: 37% | 大2.5: 45%</div>
       </div>
     </div>
   </div>
@@ -1160,15 +1160,15 @@ body {
 | 日本vs突尼斯 | 2:0/3:0 🇯🇵 | 4:0 🇯🇵 | ✅ | ✅ | 进攻火力低估 |
 
 方向准确率: 3/4(75%) | 比分准确率: 1/4(25%)
-教训: ①门将超神(库拉索)是最大误判源 ②荷兰/日本进攻火力系统性低估 ③v31.7类xG代理应能修正此类偏差
+教训: ①门将超神(库拉索)是最大误判源 ②荷兰/日本进攻火力系统性低估 ③v31.9 xG增强校准应能修正此类偏差
 </div>
 </div>
 
 </div>
 <div class="footer">
   <p>数据来源: Haizei Worldcup Skill (百度体育) · ELO评级 · FIFA排名 · Pinnacle赔率</p>
-  <p style="margin-top:4px;">分析框架: v31.7 类xG代理集成 DC修正+O/U锚定(50%)+防守(-0.20×先验)+ELO动态+阶段因子 | 七步推理链 | 双面融合</p>
-  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-21 16:04 北京时间</p>
+  <p style="margin-top:4px;">分析框架: v31.9 复盘校准版 DC修正(ρ=-0.20)+O/U锚定(65%)+防守(-0.15×先验)+ELO动态+阶段因子+平局基线+2-4pp | 七步推理链 | 双面融合</p>
+  <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 2026-06-22 13:14 北京时间</p>
 </div>
 </body>
 </html>

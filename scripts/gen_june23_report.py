@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-v31.8 2026世界杯 6月23日比赛分析报告生成器 ★Dixon-Coles修正+市场O/U锚定(50%)+防守(-0.20仅先验)+ELO动态+阶段因子+xG增强校准
+v31.9 2026世界杯 6月23日比赛分析报告生成器 ★复盘校准版: O/U锚定65%(↑50→65)+DC ρ-0.20(↑-0.13)+平局基线+2-4pp+防守-0.15(↑-0.20)+漂移0.20(↑0.15)
 数据源: Haizei Worldcup Skill + ESPN/Worldfootball抓取 + ELO/FIFA + AI深度推演
 """
 import json, os, sys, math
@@ -714,7 +714,7 @@ SYNTHESIS = {
 }
 
 # ====================================================
-# ★ v31.8 每场比赛的泊松λ参数 + 防守风格评分 + xG增强校准 (MD2阶段因子+0.05球自动应用)
+# ★ v31.9 每场比赛的泊松λ参数 + 防守风格评分 + xG增强校准 (MD2阶段因子+0.05球自动应用)
 # ====================================================
 MATCH_PARAMS = {
     "阿根廷vs奥地利": {
@@ -757,7 +757,7 @@ POST_MATCH_REVIEW = """
 | 日本vs突尼斯 | 2:0/3:0 🇯🇵 | 4:0 🇯🇵 | ✅ | ✅ | 进攻火力低估 |
 
 方向准确率: 3/4(75%) | 比分准确率: 1/4(25%)
-教训: ①门将超神(库拉索)是最大误判源 ②荷兰/日本进攻火力系统性低估 ③v31.8 xG增强校准应能修正此类偏差
+教训: ①门将超神(库拉索)是最大误判源 ②荷兰/日本进攻火力系统性低估 ③v31.9 xG增强校准应能修正此类偏差
 """
 
 # ====================================================
@@ -1155,7 +1155,7 @@ body {
 """
 
 # ====================================================
-# v31.8 Dixon-Coles修正 + 市场O/U锚定(50%) + 防守风格(-0.20,仅先验) + ELO动态权重 + 锦标赛阶段 + xG增强校准
+# v31.9 复盘校准 Dixon-Coles修正(ρ=-0.20) + 市场O/U锚定(65%) + 防守风格(-0.15,仅先验) + ELO动态权重 + 锦标赛阶段 + xG增强校准
 # ====================================================
 
 def poisson_pmf(k, lam):
@@ -1163,7 +1163,7 @@ def poisson_pmf(k, lam):
         return 1.0 if k == 0 else 0.0
     return math.exp(-lam) * (lam ** k) / math.factorial(k)
 
-def dixon_coles_tau(h, a, lh, la, rho=-0.13):
+def dixon_coles_tau(h, a, lh, la, rho=-0.20):
     if h == 0 and a == 0:
         return 1.0 - lh * la * rho
     elif h == 0 and a == 1:
@@ -1175,7 +1175,7 @@ def dixon_coles_tau(h, a, lh, la, rho=-0.13):
     else:
         return 1.0
 
-def compute_score_matrix(lh, la, rho=-0.13, max_g=5):
+def compute_score_matrix(lh, la, rho=-0.20, max_g=5):
     raw = {}
     for h in range(max_g + 1):
         for a in range(max_g + 1):
@@ -1213,7 +1213,7 @@ def devig_two(odds_a, odds_b):
 
 def defense_adj(def_h, def_a):
     avg = (def_h + def_a) / 2
-    return -(avg - 5) * 0.20
+    return -(avg - 5) * 0.15
 
 def stage_factor(matchday, group_standing=None):
     if matchday == 1:
@@ -1233,14 +1233,14 @@ def elo_weight_factor(elo_diff):
     else:
         return 0.35 + (0.55 - 0.35) * (abs_diff - 80) / 120
 
-def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.50, matchday=0, def_drift_h=1.0, def_drift_a=1.0):
+def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.65, matchday=0, def_drift_h=1.0, def_drift_a=1.0):
     market_t = market_ou_implied_total(ou_over, ou_under)
     raw_t = lh + la
     blend_t = blend * market_t + (1 - blend) * raw_t
     da = defense_adj(def_h, def_a)
     sf = stage_factor(matchday) if matchday > 0 else 0.0
-    drift_adj_h = 1.0 + max(0, def_drift_a - 1.0) * 0.15
-    drift_adj_a = 1.0 + max(0, def_drift_h - 1.0) * 0.15
+    drift_adj_h = 1.0 + max(0, def_drift_a - 1.0) * 0.20
+    drift_adj_a = 1.0 + max(0, def_drift_h - 1.0) * 0.20
     adj_lh = lh * drift_adj_h
     adj_la = la * drift_adj_a
     adj_t = max(0.8, blend_t + (1 - blend) * da + sf)
@@ -1250,25 +1250,28 @@ def adjusted_lambdas(lh, la, ou_over, ou_under, def_h, def_a, blend=0.50, matchd
     return adj_t * 0.55, adj_t * 0.45, adj_t
 
 def calc_draw_probability(elo_diff, home_xg_avg, away_xg_avg, stage="MD2"):
+    """★v31.9 平局概率重构 — ELO差分区+进攻效率修正 (基线全面上调)
+    v31.9变更: 6/22复盘0/2平局命中→基线+2-4pp; MD2不再降平局
+    """
+    # P5: ELO差分区基线 ★v31.9 全线+2-4pp
     if elo_diff < 100:
-        base = 0.30
+        base = 0.32   # 势均力敌→32% (↑30→32)
     elif elo_diff < 200:
-        base = 0.28
+        base = 0.30   # 略优→30% (↑28→30)
     elif elo_diff < 300:
-        base = 0.24
+        base = 0.27   # 中强→27% (↑24→27)
     elif elo_diff < 400:
-        base = 0.20
+        base = 0.24   # 明显强→24% (↑20→24)
     else:
-        base = 0.18
+        base = 0.22   # 碾压→22% (↑18→22)
     weak_attack_threshold = 1.0
     if elo_diff > 300 and (home_xg_avg < weak_attack_threshold or away_xg_avg < weak_attack_threshold):
         if home_xg_avg < weak_attack_threshold and away_xg_avg < weak_attack_threshold:
             base += 0.05
         else:
             base += 0.03
-    if stage == "MD2":
-        base -= 0.02
-    elif stage == "MD3":
+    # ★v31.9: MD2不再降平局 (6/22比利时-伊朗0:0 + 乌拉圭-佛得角2:2)
+    if stage == "MD3":
         base += 0.02
     return max(0.08, min(0.40, base))
 
@@ -1423,7 +1426,7 @@ def generate_match_html(mk, d):
     dv_ou_over, dv_ou_under = devig_two(odds_o.get('over', 1.01), odds_o.get('under', 1.01))
     dv_btts_y, dv_btts_n = devig_two(odds_b.get('yes', 1.01), odds_b.get('no', 1.01))
     
-    # ★ v31.8 修复: 市场偏向标签动态判断(审计#3)
+    # ★ v31.9 修复: 市场偏向标签动态判断(审计#3)
     oh, od, oa = float(odds['home']), float(odds['draw']), float(odds['away'])
     min_odds = min(oh, od, oa)
     if oh == min_odds and oh < 2.0:
@@ -1484,7 +1487,7 @@ def generate_match_html(mk, d):
         def_drift_h=ddh, def_drift_a=dda
     )
     
-    # ★ v31.8 xG代理交叉验证 (审计#4+#6: 降阈值+增强权重)
+    # ★ v31.9 xG代理交叉验证 (审计#4+#6: 降阈值+增强权重)
     xg_h = mp.get("xg_proxy_h", None)
     xg_a = mp.get("xg_proxy_a", None)
     xg_total = (xg_h + xg_a) if xg_h and xg_a else None
@@ -1501,12 +1504,12 @@ def generate_match_html(mk, d):
             xg_flag = f'<span style="color:#27ae60;">✅ λ一致({xg_divergence:.0f}%): 手动λ{manual_total:.1f} vs 类xG{xg_total:.2f}</span>'
     
     if xg_divergence > 15 and xg_h is not None:
-        # ★ v31.8: 阈值25%→15%, 类xG权重30%→50% (审计#4+#6)
+        # ★ v31.9: 阈值25%→15%, 类xG权重30%→50% (审计#4+#6)
         lh_adj = lh_adj * 0.50 + xg_h * 0.50
         la_adj = la_adj * 0.50 + xg_a * 0.50
     
     elo_w = elo_weight_factor(d.get('elo_diff', 0))
-    dc_matrix = compute_score_matrix(lh_adj, la_adj, mp.get("rho", -0.13))
+    dc_matrix = compute_score_matrix(lh_adj, la_adj, mp.get("rho", -0.20))
     
     dc_home_win = sum(p for (h,a),p in dc_matrix if h > a)
     dc_draw = sum(p for (h,a),p in dc_matrix if h == a)
@@ -1526,7 +1529,7 @@ def generate_match_html(mk, d):
                  f"防守: {mp['desc']} | ELO权={round(elo_w*100)}% | MD{d.get('matchday','?')}因子={sf_val:+.2f}球")
     
     H.append(f"""<div class="section">
-  <div class="section-title">🎯 五、概率模型 ★v31.8 类xG增强校准 Dixon-Coles修正+市场O/U锚定(50%)+xG偏离>15%→50%权重</div>
+  <div class="section-title">🎯 五、概率模型 ★v31.9 复盘校准 DC修正(ρ=-0.20)+市场O/U锚定(65%)+xG偏离>15%→50%权重</div>
   <div class="prob-row">
     <div class="prob-col"><div class="prob-label">{d['home_name']}胜</div><div class="prob-bar"><div class="prob-fill" style="width:{round(dc_home_win*100)}%;background:var(--blue-bright)"></div></div><div class="prob-value home-color">{round(dc_home_win*100)}%</div></div>
     <div class="prob-col"><div class="prob-label">平局</div><div class="prob-bar"><div class="prob-fill" style="width:{round(dc_draw*100)}%;background:var(--gold)"></div></div><div class="prob-value gold-color">{round(dc_draw*100)}%</div></div>
@@ -1534,14 +1537,14 @@ def generate_match_html(mk, d):
   </div>
   <div class="sub-probs">大2.5球: <strong>{round(dc_over25*100)}%</strong> | 小2.5球: <strong>{round((1-dc_over25)*100)}%</strong> | BTTS: <strong>{round(dc_btts*100)}%</strong> | <span style="font-size:.72em;color:var(--text-secondary);">{dc_detail}</span></div>
   <div class="score-matrix">
-    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.8 xG增强校准 (Top 5, ρ=-0.13, 50%O/U锚定, 阶段因子, xG偏离>15%→50%权重)</div>
+    <div class="score-matrix-title">Dixon-Coles比分概率矩阵 ★v31.9 复盘校准 (Top 5, ρ=-0.20, 65%O/U锚定, 阶段因子, xG偏离>15%→50%权重)</div>
     <div class="score-chips">{dc_chips}</div>
   </div>
 </div>""")
     
     if xg_flag:
         H.append(f"""<div class="section" style="background:var(--bg-card);padding:12px 18px;border-radius:8px;margin-top:6px;border-left:4px solid {'#e74c3c' if '高估' in xg_flag else '#f39c12' if '偏差' in xg_flag else '#27ae60'};">
-  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.8 — 10+场大样本均值 · 偏离>10%→警告 · >15%→50%权重校准</div>
+  <div class="section-title" style="font-size:.85em;">📊 类xG代理验证 ★v31.9 — 10+场大样本均值 · 偏离>10%→警告 · >15%→50%权重校准</div>
   <div style="font-size:.78em;">{xg_flag}</div>
 </div>""")
     
@@ -1611,13 +1614,13 @@ def gen_full_html():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026世界杯 6月23日 量化分析报告 v31.8 xG增强校准</title>
+<title>2026世界杯 6月23日 量化分析报告 v31.9 复盘校准版</title>
 <style>{CSS}</style>
 </head>
 <body>
 <div class="header">
-  <h1>🏆 2026世界杯 <span>6月23日</span> 量化分析报告 v31.8 xG增强校准</h1>
-  <div class="subtitle">v31.8 xG增强校准 · DC修正 · 市场O/U锚定(50%) · 防守(-0.20×先验) · ELO动态 · 阶段因子 · 生成于 {now_bj}</div>
+  <h1>🏆 2026世界杯 <span>6月23日</span> 量化分析报告 v31.9 复盘校准版</h1>
+  <div class="subtitle">v31.9 复盘校准版 · DC修正(ρ=-0.20) · 市场O/U锚定(65%) · 防守(-0.15×先验) · ELO动态 · 平局基线+2-4pp · 生成于 {now_bj}</div>
   <div class="identity-tags">
     <span class="id-tag">📊 ELO+FIFA双评级</span><span class="id-tag">⚡ Dixon-Coles泊松</span>
     <span class="id-tag">📈 Pinnacle赔率分析</span><span class="id-tag">⚔️ 战术克制推演</span>
@@ -1653,7 +1656,7 @@ def gen_full_html():
 </div>
 <div class="footer">
   <p>数据来源: Haizei Worldcup Skill (百度体育) · ELO评级 · FIFA排名 · Pinnacle赔率</p>
-  <p style="margin-top:4px;">分析框架: v31.8 xG增强校准 DC修正+O/U锚定(50%)+防守(-0.20×先验)+ELO动态+阶段因子+xG偏离>15%→50%权重 | 七步推理链 | 双面融合</p>
+  <p style="margin-top:4px;">分析框架: v31.9 复盘校准版 DC修正(ρ=-0.20)+O/U锚定(65%)+防守(-0.15×先验)+ELO动态+阶段因子+平局基线+2-4pp | 七步推理链 | 双面融合</p>
   <p style="margin-top:4px;">worldcup.imiaozhan.com | 生成于 {now_bj}</p>
 </div>
 </body>
@@ -1662,7 +1665,7 @@ def gen_full_html():
 
 
 if __name__ == "__main__":
-    print("🏆 生成2026世界杯 6月23日 量化分析报告 v31.8 xG增强校准 (DC+O/U50%+防守×先验+xG偏离>15%→50%)...")
+    print("🏆 生成2026世界杯 6月23日 量化分析报告 v31.9 复盘校准版 (DC ρ=-0.20+O/U65%+防守(-0.15)+平局↑)...")
     html = gen_full_html()
     path = os.path.join(REPORT_DIR, "2026-06-23-分析报告.htm")
     with open(path, "w", encoding="utf-8") as f:
