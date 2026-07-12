@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="zh-CN">
+<head><meta charset="UTF-8"><title>7/11-12 复盘 · 优化 v4.3</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:#0a0e17;color:#d0d0d0;line-height:1.7;padding:20px}
+.container{max-width:950px;margin:0 auto}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid #1e2a3a;margin-bottom:22px}
+.header h1{font-size:1.5em;color:#ffd700}.header .sub{color:#7a8ba0;font-size:.82em}
+.card{background:#111927;border:1px solid #1e2a3a;border-radius:14px;padding:20px;margin-bottom:16px}
+.card-header{font-size:1.1em;font-weight:bold;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #1e2a3a}
+.hl{color:#ffd700;font-weight:bold}.g{color:#4ade80}.r{color:#f87171}.y{color:#fbbf24}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.86em}
+th{background:#1a2a3a;padding:8px 10px;text-align:center;font-weight:600;color:#a0b0c0;border-bottom:2px solid #2a3a4a}
+td{padding:8px 10px;border-bottom:1px solid #1a2533;text-align:center}
+td.l{text-align:left}
+tr:hover td{background:#141d2a}
+.box{background:#0d1520;border:1px solid #1e2a3a;border-radius:10px;padding:12px;margin:8px 0}
+.box-g{border-left:4px solid #4ade80;background:#0a1f1a}
+.box-r{border-left:4px solid #f87171;background:#2a0a0a}
+.box-y{border-left:4px solid #fbbf24;background:#1f1a0a}
+.big{font-size:1.3em;font-weight:bold}
+.rel-f{background:#3a0a0a;color:#f87171;border:1px solid #661111;padding:2px 10px;border-radius:14px;font-size:.7em;font-weight:bold}
+.rel-w{background:#1a2a0a;color:#fbbf24;border:1px solid #66440a;padding:2px 10px;border-radius:14px;font-size:.7em;font-weight:bold}
+.footer{text-align:center;padding:16px;color:#5a6a7a;font-size:.76em;border-top:1px solid #1e2a3a;margin-top:22px}
+.lesson-box{padding:12px;border-radius:10px;margin:8px 0}
+.lesson-g{background:#0a1f1a;border:1px solid #166534}
+.lesson-r{background:#2a0a0a;border:1px solid #661111}
+</style>
+</head><body><div class="container">
+
+<div class="header">
+<h1>📊 7/11-12 复盘 · 优化 v4.3</h1>
+<div class="sub">5场实测 → 3/5正确(60%) · 世界杯双平12.6倍全中 · F级新规则</div>
+</div>
+
+<div class="card">
+<div class="card-header">📋 实际 vs 预测对比</div>
+<table>
+<tr><th>#</th><th>联赛</th><th>对阵</th><th>预测</th><th>赔率</th><th>实际</th><th>评估</th></tr>
+<tr style="background:#0d1a15"><td>4</td><td><span class="rel-w">世界杯</span></td><td class="l">挪威 vs 英格兰</td><td class="hl">不让球平</td><td>3.65</td><td>1-1</td><td class="g">✅✅ 命中</td></tr>
+<tr style="background:#0d1a15"><td>5</td><td><span class="rel-w">世界杯</span></td><td class="l">阿根廷 vs 瑞士</td><td class="hl">不让球平</td><td>3.45</td><td>1-1</td><td class="g">✅✅ 命中</td></tr>
+<tr style="background:#1a1a0a"><td>2</td><td><span class="rel-f">挪超F</span></td><td class="l">奥勒松 vs 莫尔德</td><td class="hl">不让球平</td><td>3.80</td><td>2-2</td><td class="g">✅ 命中</td></tr>
+<tr style="background:#1a0a0a"><td>1</td><td><span class="rel-f">瑞超F</span></td><td class="l">米亚尔比 vs 索尔纳</td><td class="r">不让球平</td><td>3.55</td><td>1-2 客胜</td><td class="r">❌ 方向偏差</td></tr>
+<tr style="background:#1a0a0a"><td>3</td><td><span class="rel-f">挪超F</span></td><td class="l">腓特烈 vs 利勒斯特</td><td class="r">主不败</td><td>2.77</td><td>0-2 客胜</td><td class="r">❌ 方向全错</td></tr>
+</table>
+
+<div class="box box-g">
+<strong>🎯 最佳推荐：世界杯双平 12.6倍</strong><br>
+挪威 3.65 × 阿根廷 3.45 = <span class="big hl">12.6倍</span> → 两场全部1-1 → <span class="big g">✅✅ 全中</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">📊 分联赛命中率</div>
+<table>
+<tr><th>联赛类别</th><th>正确</th><th>总场</th><th>命中率</th><th>与理论一致性</th></tr>
+<tr><td><span class="rel-w">世界杯淘汰赛</span></td><td class="g">2</td><td>2</td><td class="g big">100%</td><td class="l">淘汰赛平局32%规律应验</td></tr>
+<tr><td><span class="rel-f">F级联赛</span></td><td class="y">1</td><td>3</td><td class="y big">33%</td><td class="l">与理论43%接近 · 实际更低</td></tr>
+<tr style="font-weight:bold"><td>总计</td><td class="g">3</td><td>5</td><td class="g big">60%</td><td class="l"></td></tr>
+</table>
+</div>
+
+<div class="card">
+<div class="card-header">🔍 两场错误 · 根因分析</div>
+
+<div class="lesson-box lesson-r">
+<strong>❌ 米亚尔比 1-2 索尔纳</strong><br>
+<strong>我的判断：</strong>-0.5高水1.05 → "主队赢不了=平局"<br>
+<strong>实际：</strong>索尔纳客胜 → "主队赢不了=客胜"<br>
+<strong>漏掉的关键信号：</strong>索尔纳下盘水位 0.85（低水）→ 客队被市场看好<br>
+<strong class="r">纠错规则：</strong>-0.5高水时，下盘水<0.90 → 偏客胜方向；下盘水>0.95 → 偏平局方向
+</div>
+
+<div class="lesson-box lesson-r">
+<strong>❌ 腓特烈 0-2 利勒斯特</strong><br>
+<strong>我的判断：</strong>+0.25低水0.82 → "主队不败"<br>
+<strong>实际：</strong>利勒斯特2-0完胜<br>
+<strong>根因：</strong>F级联赛信息不对称 → 浅盘低水在弱联赛可能是陷阱<br>
+<strong class="hl">纠错规则：</strong>F级联赛中，+0.25低水(≤0.85)不可直接解读为"不败"
+</div>
+
+<div class="lesson-box lesson-g">
+<strong>✅ 奥勒松 2-2 莫尔德</strong><br>
+<strong>正确的判断：</strong>莫尔德降盘(-0.5→-0.25) → 奥勒松不败<br>
+<strong>结果：</strong>90+6'补时绝平 → 2-2<br>
+<strong class="g">有效规则：</strong>降盘信号在F级联赛有效（机构主动退让=真实行为成本）
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">🆕 v4.3 · F级联赛三新规</div>
+<table>
+<tr><th>规则</th><th>内容</th><th>来源</th></tr>
+<tr><td class="hl">规则1</td><td class="l"><b>-0.5高水 ≠ 平局：</b>下盘水<0.90→客胜方向，下盘水>0.95→平局方向</td><td>米亚尔比案例</td></tr>
+<tr><td class="hl">规则2</td><td class="l"><b>+0.25低水不可信：</b>F级联赛中浅盘低水可能是陷阱，不直接=不败</td><td>腓特烈案例</td></tr>
+<tr><td class="hl">规则3</td><td class="l"><b>降盘>升盘：</b>降盘有真实成本，升盘可能是被动跟随</td><td>奥勒松案例</td></tr>
+</table>
+<div class="box box-y">
+<strong>已固化到 SKILL.md § F级联赛特殊规则。</strong> 后续所有F级联赛分析强制执行这三条。
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">🎯 今天剩余比赛 · 应用新规则调整</div>
+<table>
+<tr><th>#</th><th>对阵</th><th>原推荐</th><th>新规则调整</th></tr>
+<tr><td>203</td><td class="l">首尔 vs 江原</td><td>-1让球负 1.48</td><td class="l">维持。新规则1不适用(-0.25非-0.5高水)。-0.25高水+竞彩双确认继续有效。</td></tr>
+<tr><td>204</td><td class="l">马尔默 vs 哥德堡</td><td>-1让球平 3.70</td><td class="l">维持。真强化信号(-0.5低水) 不触发新规则1。降水趋势强于规则判断。</td></tr>
+<tr><td>212</td><td class="l">桑纳菲 vs 汉坎</td><td>-1让球平 3.55</td><td class="y">降级至谨慎。新规则1应用：-0.5水0.86→下盘水0.94>0.90→偏平局方向。维持推荐但降级信号强度。</td></tr>
+</table>
+</div>
+
+<div class="footer">v4.3 复盘优化版 · SKILL.md已更新F级三新规 · 世界杯淘汰赛双平策略确认为最强信号源</div>
+</div></body></html>

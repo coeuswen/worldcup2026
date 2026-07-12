@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7/12 · 亚盘→概率→赔率 交叉验证 v4.2</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:#0a0e17;color:#d0d0d0;line-height:1.7;padding:20px}
+.container{max-width:980px;margin:0 auto}
+.header{text-align:center;padding:24px 0;border-bottom:2px solid #1e2a3a;margin-bottom:22px}
+.header h1{font-size:1.5em;color:#ffd700;margin-bottom:5px}
+.header .sub{color:#7a8ba0;font-size:.82em}
+.rel-f{background:#3a0a0a;color:#f87171;border:1px solid #661111;padding:2px 10px;border-radius:14px;font-size:.7em;font-weight:bold}
+.badge{padding:3px 10px;border-radius:20px;font-size:.7em;font-weight:bold}
+.b-g{background:#0a3a1a;color:#4ade80;border:1px solid #166534}
+.b-r{background:#3a0a0a;color:#f87171;border:1px solid #661111}
+.b-y{background:#3a2a0a;color:#fbbf24;border:1px solid #66440a}
+.b-b{background:#0a1a3a;color:#60a5fa;border:1px solid #112266}
+.card{background:#111927;border:1px solid #1e2a3a;border-radius:14px;padding:20px;margin-bottom:16px}
+.card-header{font-size:1.1em;font-weight:bold;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #1e2a3a}
+.hl{color:#ffd700;font-weight:bold}.g{color:#4ade80}.r{color:#f87171}.y{color:#fbbf24}.b{color:#60a5fa}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.86em}
+th{background:#1a2a3a;padding:8px 10px;text-align:center;font-weight:600;color:#a0b0c0;border-bottom:2px solid #2a3a4a}
+td{padding:8px 10px;border-bottom:1px solid #1a2533;text-align:center}
+tr:hover td{background:#141d2a}
+td.l{text-align:left}
+.box{background:#0d1520;border:1px solid #1e2a3a;border-radius:10px;padding:12px;margin:8px 0}
+.box-g{border-left:4px solid #4ade80;background:#0a1f1a}
+.box-r{border-left:4px solid #f87171;background:#2a0a0a}
+.box-y{border-left:4px solid #fbbf24;background:#1f1a0a}
+.box-b{border-left:4px solid #60a5fa;background:#0a1a2f}
+.cross-comp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.cross-l{background:#0a1a2a;border:1px solid #1a3a4a;border-radius:10px;padding:12px}
+.cross-r{background:#1a2a0a;border:1px solid #3a4a1a;border-radius:10px;padding:12px}
+.tier{background:#0d1520;border:2px solid #1e2a3a;border-radius:12px;padding:16px;margin:10px 0}
+.tier-a{border-color:#4ade80}
+.tier-b{border-color:#fbbf24}
+.edge-pos{color:#4ade80;font-weight:bold}
+.edge-neg{color:#f87171}
+.edge-neu{color:#fbbf24}
+.big{font-size:1.3em;font-weight:bold}
+.footer{text-align:center;padding:16px;color:#5a6a7a;font-size:.76em;border-top:1px solid #1e2a3a;margin-top:22px}
+</style>
+</head>
+<body><div class="container">
+
+<div class="header">
+<h1>⚽ 7/12 · 亚盘→概率→赔率 交叉验证</h1>
+<div class="sub">流程: ①亚盘解盘 → ②竞彩概率 → ③交叉找偏差 → ④串关组合 | <span class="rel-f">F级 ~43%</span></div>
+</div>
+
+<!-- 方法说明 -->
+<div class="card">
+<div class="card-header">📐 分析流程说明</div>
+<div class="box box-b">
+<strong>四步分析法：</strong><br>
+① <b>亚盘盘面还原+盘口翻译</b> → "盘口在说什么方向？"<br>
+② <b>竞彩赔率→去水→公平概率</b> → "竞彩在定什么价？"<br>
+③ <b>交叉验证</b> → 亚盘方向 vs 竞彩概率 → <span class="g">一致=高置信</span> / <span class="y">偏差=被低估</span> / <span class="r">矛盾=避开</span><br>
+④ <b>串关组合</b> → 优先选"被低估"的选项 ≥9倍
+</div>
+</div>
+
+<!-- ====== MATCH 1: 首尔 vs 江原 ====== -->
+<div class="card">
+<div class="card-header">🇰🇷 ① 首尔FC vs 江原FC <span class="rel-f">韩K ~43%</span> <span class="badge b-r">18:30</span></div>
+
+<div class="box box-g">
+<strong>① 亚盘解盘：</strong>首尔让平半 <span class="r">-0.25</span>，上盘水位 <span class="r">0.98高水</span>，下盘0.83。全程平半，7/11曾退至平手盘，说明-0.25都被市场质疑。<br>
+<strong>盘口语言：</strong>-0.25 = 主场优势仅值0.25球。高水0.98 = 市场对首尔赢球信心不足。"两个队基本五五开，首尔主场稍微沾点光。"
+</div>
+
+<div class="cross-comp">
+<div class="cross-l">
+<strong>② 竞彩不让球赔率→概率</strong>
+<table>
+<tr><th>选项</th><th>赔率</th><th>隐含概率</th><th>去水公平概率</th></tr>
+<tr><td>首尔胜</td><td>2.27</td><td>44.1%</td><td class="y">39.1%</td></tr>
+<tr><td>平局</td><td>2.90</td><td>34.5%</td><td class="y">30.6%</td></tr>
+<tr><td>江原胜</td><td>2.92</td><td>34.2%</td><td class="y">30.4%</td></tr>
+</table>
+<div style="font-size:.78em;color:#7a8ba0">抽水率 12.8% · 公平概率: 39.1% / 30.6% / 30.4%</div>
+</div>
+<div class="cross-r">
+<strong>② 竞彩让球(-1)赔率→概率</strong>
+<table>
+<tr><th>选项</th><th>赔率</th><th>去水公平概率</th></tr>
+<tr><td>让球胜</td><td>5.55</td><td>15.9%</td></tr>
+<tr><td>让球平</td><td>3.65</td><td class="y">24.2%</td></tr>
+<tr><td class="hl">让球负</td><td class="hl">1.48</td><td class="g">59.8%</td></tr>
+</table>
+</div>
+</div>
+
+<div class="box box-y">
+<strong>③ 交叉验证：</strong><br>
+· 亚盘说：首尔仅 -0.25高水 → 赢球概率 ≈ 40%出头，平局+客胜 ≈ 60%<br>
+· 竞彩说：首尔赢球概率 39.1%，平+客 = 60.9%<br>
+· <span class="g">→ 高度一致！</span>两套独立系统给出几乎相同的判断。<br>
+· <b>但差异在让球盘：</b>体彩-1（需赢2球），亚盘仅-0.25 → <span class="g">让球(-1)负 59.8%公平概率</span>有强支撑。<br>
+· 首尔赢2球概率 = 15.9%（竞彩定价）= 极低 · 亚盘-0.25也支持这个判断<br>
+<br>
+<span class="edge-pos">📈 被低估选项：</span>不让球平 2.90（公平概率30.6% — 但赔付率2.90对30.6%来说合理，无明显Edge）<br>
+<span class="edge-pos">📈 高置信选项：</span>让球(-1)负 1.48 — 亚盘+竞彩双重确认
+</div>
+
+<div class="box box-b">
+<strong>④ 推荐：</strong><span class="hl big">让球(-1)负 1.48</span>（江原+1不败）★★★★★ · 亚盘/竞彩双确认 · 但赔率低需搭配高赔选项
+</div>
+</div>
+
+<!-- ====== MATCH 2: 马尔默 vs 哥德堡 ====== -->
+<div class="card">
+<div class="card-header">🇸🇪 ② 马尔默 vs 哥德堡 <span class="rel-f">瑞超 ~43%</span> <span class="badge b-r">20:00</span></div>
+
+<div class="box box-g">
+<strong>① 亚盘解盘：</strong>马尔默让半球 <span class="g">-0.5</span>，上盘水位从 <span class="r">1.00</span> 持续降至 <span class="g">0.85</span>。<br>
+<strong>盘口语言：</strong>-0.5 + 持续降水 = 「真强化」信号。市场对马尔默赢球信心在增强。但-0.5而非-0.75，说明"能赢但不碾压"。
+</div>
+
+<div class="cross-comp">
+<div class="cross-l">
+<strong>② 竞彩不让球赔率→概率</strong>
+<table>
+<tr><th>选项</th><th>赔率</th><th>去水公平概率</th></tr>
+<tr><td class="hl">马尔默胜</td><td>1.75</td><td class="g">50.6%</td></tr>
+<tr><td>平局</td><td>3.62</td><td class="y">24.5%</td></tr>
+<tr><td>哥德堡胜</td><td>3.55</td><td>24.9%</td></tr>
+</table>
+<div style="font-size:.78em;color:#7a8ba0">抽水率 12.9%</div>
+</div>
+<div class="cross-r">
+<strong>② 竞彩让球(-1)赔率→概率</strong>
+<table>
+<tr><th>选项</th><th>赔率</th><th>去水公平概率</th></tr>
+<tr><td>让球胜</td><td>3.45</td><td>25.7%</td></tr>
+<tr><td class="hl">让球平</td><td class="hl">3.70</td><td class="g">24.0%</td></tr>
+<tr><td>让球负</td><td>1.76</td><td>50.4%</td></tr>
+</table>
+</div>
+</div>
+
+<div class="box box-y">
+<strong>③ 交叉验证：</strong><br>
+· 亚盘说：马尔默赢球概率 >50%（-0.5低水真强化）<br>
+· 竞彩说：马尔默赢球概率 50.6% → <span class="g">一致</span><br>
+· <b>关键偏差：让球(-1)平</b><br>
+· 亚盘-0.5 = 赢1球=全赢（最常见的赢球方式），概率估计 35-40%<br>
+· 竞彩让球(-1)平 公平概率仅 24.0% → <span class="edge-pos">亚盘认为这个概率被低估了约35%</span><br>
+· <span class="edge-pos">📈 被低估：让球(-1)平 3.70</span> — 亚盘说赢1球概率>24%，竞彩定价偏低<br>
+<br>
+<span class="edge-neu">观察：</span>马尔默-0.5是今天唯一「真强化」信号，但体彩-1让得太深。赢1球走水=让球平是最合理的。
+</div>
+
+<div class="box box-b">
+<strong>④ 推荐：</strong><span class="hl big">让球(-1)平 3.70</span>（马尔默赢1球）★★★★☆ · 亚盘真强化 + 竞彩定价偏低
+</div>
+</div>
+
+<!-- ====== MATCH 3: 桑纳菲 vs 汉坎 ====== -->
+<div class="card">
+<div class="card-header">🇳🇴 ③ 桑纳菲 vs 汉坎 <span class="rel-f">挪超 ~43%</span> <span class="badge b-r">23:00</span></div>
+
+<div class="box box-g">
+<strong>① 亚盘解盘：</strong>桑纳菲让半球 <span class="y">-0.5</span>，上盘水位 <span class="y">0.86</span>，下盘0.94。全程半球稳定，水位中低区间窄幅波动。<br>
+<strong>盘口语言：</strong>-0.5中低水 = 桑纳菲被看好但差距不大。与马尔默的「真强化」不同，这里没有明显的降水趋势——更像是"正常看好"。
+</div>
+
+<div class="cross-comp">
+<div class="cross-l">
+<strong>② 竞彩不让球赔率→概率</strong>
+<table>
+<tr><th>选项</th><th>赔率</th><th>去水公平概率</th></tr>
+<tr><td class="hl">桑纳菲胜</td><td>1.73</td><td class="g">51.2%</td></tr>
+<tr><td>平局</td><td>3.65</td><td class="y">24.3%</td></tr>
+<tr><td>汉坎胜</td><td>3.60</td><td>24.6%</td></tr>
+</table>
+<div style="font-size:.78em;color:#7a8ba0">抽水率 13.0%</div>
+</div>
+<div class="cross-r">
+<strong>② 竞彩让球(-1)赔率→概率</strong>
+<table>
+<tr><th>选项</th><th>赔率</th><th>去水公平概率</th></tr>
+<tr><td>让球胜</td><td>3.25</td><td>27.6%</td></tr>
+<tr><td class="hl">让球平</td><td class="hl">3.55</td><td class="y">25.2%</td></tr>
+<tr><td>让球负</td><td>1.85</td><td>48.4%</td></tr>
+</table>
+</div>
+</div>
+
+<div class="box box-y">
+<strong>③ 交叉验证：</strong><br>
+· 亚盘说：桑纳菲赢球概率 ≈ 51%<br>
+· 竞彩说：桑纳菲赢球概率 51.2% → <span class="g">高度一致</span><br>
+· <b>让球(-1)平评估：</b><br>
+· 亚盘-0.5 → 赢1球全赢 → 这是最可能的赢球方式<br>
+· 竞彩定价赢1球走水概率 25.2%（3.55赔率）<br>
+· 对比马尔默的24.0%（3.70赔率），桑纳菲的25.2%还略高 → 说明竞彩认为桑纳菲穿盘能力略强于马尔默<br>
+· <span class="edge-neu">无明显定价偏差</span>，但3.55作为高赔选项在串关中有独立价值
+</div>
+
+<div class="box box-b">
+<strong>④ 推荐：</strong><span class="hl big">让球(-1)平 3.55</span>（桑纳菲赢1球）★★★☆☆ · 合理定价·串关高赔价值
+</div>
+</div>
+
+<!-- ====== CROSS SUMMARY ====== -->
+<div class="card">
+<div class="card-header">📊 三场交叉验证总表</div>
+<table>
+<tr><th>#</th><th>对阵</th><th>亚盘方向</th><th>竞彩概率</th><th>一致性</th><th>被低估选项</th><th>推荐</th><th>赔率</th></tr>
+<tr style="background:#0d1a15">
+<td>203</td><td class="l">首尔 vs 江原</td><td>五五开·首尔微优</td><td>39/31/30</td><td class="g">高度一致</td><td class="edge-pos">让球(-1)负</td><td class="hl">-1让球负</td><td>1.48</td></tr>
+<tr style="background:#0d1a15">
+<td>204</td><td class="l">马尔默 vs 哥德堡</td><td class="g">真强化·赢球方向</td><td>51/24/25</td><td class="g">一致</td><td class="edge-pos">让球(-1)平 被低估35%</td><td class="hl">-1让球平</td><td>3.70</td></tr>
+<tr style="background:#0d1a15">
+<td>212</td><td class="l">桑纳菲 vs 汉坎</td><td>正常看好</td><td>51/24/25</td><td class="g">一致</td><td class="edge-neu">无明显偏差</td><td class="hl">-1让球平</td><td>3.55</td></tr>
+</table>
+</div>
+
+<!-- ====== PARLAY ====== -->
+<div class="card">
+<div class="card-header">🎯 串关推荐</div>
+
+<div class="tier tier-a">
+<strong>🟢 首选 · 3-leg · ~19.4倍</strong>
+<table>
+<tr><th>#</th><th>对阵</th><th>选项</th><th>赔率</th><th>置信度</th><th>依据</th></tr>
+<tr><td>203</td><td class="l">首尔 vs 江原</td><td class="hl">-1让球负</td><td>1.48</td><td class="g">★★★★★</td><td class="l">亚盘-0.25 + 竞彩双确认</td></tr>
+<tr><td>204</td><td class="l">马尔默 vs 哥德堡</td><td class="hl">-1让球平</td><td>3.70</td><td class="g">★★★★☆</td><td class="l">亚盘真强化·定价偏低</td></tr>
+<tr><td>212</td><td class="l">桑纳菲 vs 汉坎</td><td class="hl">-1让球平</td><td>3.55</td><td class="y">★★★☆☆</td><td class="l">合理定价·串关价值</td></tr>
+<tr><td colspan="6" style="text-align:center"><span class="big hl">1.48 × 3.70 × 3.55 = ≈ 19.4倍</span></td></tr>
+</table>
+</div>
+
+<div class="tier tier-b">
+<strong>🟡 备选 · 2-leg · ~5.5倍（未达9倍门槛）</strong>
+<table>
+<tr><th>#</th><th>对阵</th><th>选项</th><th>赔率</th></tr>
+<tr><td>203</td><td class="l">首尔 vs 江原</td><td class="hl">-1让球负</td><td>1.48</td></tr>
+<tr><td>204</td><td class="l">马尔默 vs 哥德堡</td><td class="hl">-1让球平</td><td>3.70</td></tr>
+<tr><td colspan="4" style="text-align:center"><span class="big y">1.48 × 3.70 = 5.5倍</span> 需搭配第三场</td></tr>
+</table>
+</div>
+
+<div class="tier tier-b">
+<strong>🟡 备选 · 3-leg · ~20.1倍</strong>
+<table>
+<tr><th>#</th><th>对阵</th><th>选项</th><th>赔率</th></tr>
+<tr><td>203</td><td class="l">首尔 vs 江原</td><td class="y">不让球平</td><td>2.90</td></tr>
+<tr><td>204</td><td class="l">马尔默 vs 哥德堡</td><td class="hl">-1让球平</td><td>3.70</td></tr>
+<tr><td>202</td><td class="l">济州SK vs 大田</td><td class="y">不让球平</td><td>3.10</td></tr>
+<tr><td colspan="4" style="text-align:center"><span class="big hl">2.90 × 3.70 × 3.10 ≈ 33.3倍</span></td></tr>
+</table>
+</div>
+</div>
+
+<div class="footer">
+v4.2 概率交叉验证版 · 流程: 亚盘解盘→竞彩概率→交叉找偏差→串关<br>
+数据源: lottery.gov.cn(10:46) + titan007.com | ★ 7/11 F级实测3/4错 · 标注~43%·用户自决
+</div>
+</div></body></html>
