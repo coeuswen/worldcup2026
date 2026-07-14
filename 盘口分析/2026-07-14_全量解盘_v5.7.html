@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="zh-CN">
+<head><meta charset="UTF-8"><title>7/14-16 · v5.7 比分概率+Edge串关</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:#0a0e17;color:#d0d0d0;line-height:1.85;padding:20px}
+.container{max-width:980px;margin:0 auto}
+.header{text-align:center;padding:20px 0;border-bottom:2px solid #1e2a3a;margin-bottom:20px}
+.header h1{font-size:1.5em;color:#ffd700}.sub{color:#7a8ba0;font-size:.78em}
+.card{background:#111927;border:1px solid #1e2a3a;border-radius:14px;padding:22px;margin-bottom:16px}
+.card-header{font-size:1.05em;font-weight:bold;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #1e2a3a}
+.hl{color:#ffd700;font-weight:bold}.g{color:#4ade80}.r{color:#f87171}.y{color:#fbbf24}.b{color:#60a5fa}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.83em}
+th{background:#1a2a3a;padding:7px 9px;text-align:center;font-weight:600;color:#a0b0c0}
+td{padding:7px 9px;border-bottom:1px solid #1a2533;text-align:center}td.l{text-align:left}
+.box{background:#0d1520;border:1px solid #1e2a3a;border-radius:10px;padding:12px;margin:8px 0}
+.box-g{border-left:4px solid #4ade80;background:#0a1f1a}
+.box-r{border-left:4px solid #f87171;background:#2a0a0a}
+.box-y{border-left:4px solid #fbbf24;background:#1f1a0a}
+.box-b{border-left:4px solid #60a5fa;background:#0a1a2f}
+.big{font-size:1.15em;font-weight:bold}
+.step{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;background:#1a2a3a;color:#ffd700;font-size:.75em;font-weight:bold;margin-right:6px}
+.wc{background:#0a1a3a;color:#60a5fa;border:1px solid #112266;padding:2px 10px;border-radius:14px;font-size:.68em}
+.cl{background:#1a0a3a;color:#a78bfa;border:1px solid #330066;padding:2px 10px;border-radius:14px;font-size:.68em}
+.urgent{background:#660000;color:#ff4757;border:2px solid #990000;padding:3px 12px;border-radius:14px;font-size:.78em;font-weight:bold}
+.score-bar{display:flex;gap:6px;margin:8px 0;flex-wrap:wrap}
+.sb{flex:1;min-width:70px;background:#0d1520;border-radius:8px;padding:8px 6px;text-align:center;border:1px solid #1e2a3a}
+.sb.m{border-color:#4ade80;background:#0a1f1a}.sb.c{border-color:#ff4757;background:#1a0a0a}
+.sb .sp{font-size:1.15em;font-weight:bold}.sb .sc{font-size:.7em;color:#7a8ba0}.m .sp{color:#4ade80}.c .sp{color:#ff4757}
+.edge-row{display:flex;gap:10px;margin:8px 0}
+.edge-card{flex:1;background:#0d1520;border:1px solid #1e2a3a;border-radius:10px;padding:10px;text-align:center}
+.edge-card .el{font-size:.72em;color:#7a8ba0}.edge-card .ev{font-size:1.1em;font-weight:bold}
+.footer{text-align:center;padding:14px;color:#5a6a7a;font-size:.72em;border-top:1px solid #1e2a3a;margin-top:18px}
+</style>
+</head><body><div class="container">
+
+<div class="header">
+<h1>7/14-16 · v5.7 盘口→比分概率→Edge串关</h1>
+<div class="sub">1X2+让球+O/U(全动态) → 方向角度 → 比分概率 → 竞彩映射 → <span class="urgent">⚠️ 法国/CL截止19:00</span></div>
+</div>
+
+<!-- ===== FRANCE vs SPAIN ===== -->
+<div class="card"><div class="card-header">🇫🇷 ① 法国 vs 西班牙 🇪🇸 <span class="wc">半决赛</span> <span class="urgent">19:00截止</span></div>
+
+<div class="box box-b"><strong>① 1X2+让球盘口 → 方向</strong><br>亚盘: 法国-0.25平半 · 水位0.85→1.02(+17点) → 合理开盘但水位推高<br>→ <span class="hl">法国不败概率≈65%</span> (平半盘+合理开盘) · 平局≈20% · 西班牙胜≈15%</div>
+
+<div class="box box-b"><strong>② O/U大小球 → 总进球</strong><br>Bet365升盘2.5看大球+威廉回调+澳门防守 → 偏大球<br>→ <span class="hl">总进球≥2球概率≈55%</span> · 2球≈25% · 1球≈15% · 0球≈5%</div>
+
+<div class="box box-g"><strong>③ 比分概率</strong>
+<div class="score-bar">
+<div class="sb m"><div class="sp">1-0</div><div class="sc">法国·30%</div></div>
+<div class="sb m"><div class="sp">2-1</div><div class="sc">法国·20%</div></div>
+<div class="sb m"><div class="sp">1-1</div><div class="sc">平局·20%</div></div>
+<div class="sb"><div class="sp">2-0</div><div class="sc">法国·10%</div></div>
+<div class="sb c"><div class="sp">1-2</div><div class="sc">西班牙·10%</div></div>
+<div class="sb c"><div class="sp">0-1</div><div class="sc">西班牙·5%</div></div>
+<div class="sb"><div class="sp">0-0</div><div class="sc">闷平·5%</div></div>
+</div>
+</div>
+
+<div class="edge-row">
+<div class="edge-card" style="border-color:#4ade80"><div class="el">▸ 不让球主胜 2.09</div><div class="ev g">方向概率65% vs 竞彩43.6%<br>Edge +49%</div></div>
+<div class="edge-card" style="border-color:#fbbf24"><div class="el">▸ 让球(-1)负 1.58</div><div class="ev y">西班牙+1不败≈80% vs 竞彩54%<br>Edge +48%</div></div>
+</div>
+</div>
+
+<!-- ===== ENGLAND vs ARGENTINA ===== -->
+<div class="card"><div class="card-header">🏴󠁧󠁢󠁥󠁮󠁧󠁿 ② 英格兰 vs 阿根廷 🇦🇷 <span class="wc">半决赛</span> 截止明天19:00</div>
+
+<div class="box box-b"><strong>① 1X2+让球 → 方向</strong><br>亚盘: 平手(0)·英格兰低水0.79·阿根廷高水1.09 · O/U降盘升水小球确认<br>→ <span class="hl">平局≈40%</span> · 英格兰胜≈30% · 阿根廷胜≈30%</div>
+
+<div class="box box-b"><strong>② O/U → 总进球</strong><br>Bet365降盘+立博/威廉1.25极端升水 = 小球双重确认<br>→ <span class="r hl">≤2球概率≈75%</span> · 2球≈40% · 1球≈25% · 0球≈15% · ≥3球≈20%</div>
+
+<div class="box box-g"><strong>③ 比分概率</strong>
+<div class="score-bar">
+<div class="sb m"><div class="sp">1-1</div><div class="sc">平局·25%</div></div>
+<div class="sb m"><div class="sp">0-0</div><div class="sc">平局·20%</div></div>
+<div class="sb"><div class="sp">1-0</div><div class="sc">英格兰·15%</div></div>
+<div class="sb c"><div class="sp">0-1</div><div class="sc">阿根廷·15%</div></div>
+<div class="sb"><div class="sp">2-0</div><div class="sc">英格兰·8%</div></div>
+<div class="sb c"><div class="sp">0-2</div><div class="sc">阿根廷·7%</div></div>
+<div class="sb"><div class="sp">2-1</div><div class="sc">英格兰·5%</div></div>
+<div class="sb c"><div class="sp">1-2</div><div class="sc">阿根廷·5%</div></div>
+</div>
+</div>
+
+<div class="edge-row">
+<div class="edge-card" style="border-color:#4ade80"><div class="el">▸ 让球(-1)负 1.46</div><div class="ev g">阿根廷+1不败≈85% vs 竞彩59.6%<br>Edge +43% ★全场最强</div></div>
+<div class="edge-card" style="border-color:#fbbf24"><div class="el">▸ 不让球平 2.75</div><div class="ev y">方向40% vs 竞彩31.5%<br>Edge +27%</div></div>
+</div>
+</div>
+
+<!-- ===== CL 201 ===== -->
+<div class="card"><div class="card-header">🏆 ③ 杰尔 vs 雷克维京 <span class="cl">CL资格赛</span> <span class="urgent">19:00截止</span></div>
+
+<div class="box box-b"><strong>① 让球 → 方向</strong><br>亚盘: 杰尔-0.75半一·水0.86 · 反复跳盘3天 → <span class="hl">杰尔胜≈55%</span> · 平局≈25% · 客胜≈20%</div>
+<div class="box box-b"><strong>② O/U → 总进球</strong><br>资格赛保守 → ≤2球≈60%</div>
+
+<div class="box box-g"><strong>③ 比分概率</strong>
+<div class="score-bar">
+<div class="sb m"><div class="sp">1-0</div><div class="sc">杰尔·30%</div></div>
+<div class="sb"><div class="sp">2-0</div><div class="sc">杰尔·15%</div></div>
+<div class="sb c"><div class="sp">0-0</div><div class="sc">平局·15%</div></div>
+<div class="sb c"><div class="sp">1-1</div><div class="sc">平局·12%</div></div>
+<div class="sb"><div class="sp">2-1</div><div class="sc">杰尔·10%</div></div>
+<div class="sb c"><div class="sp">0-1</div><div class="sc">客胜·8%</div></div>
+<div class="sb"><div class="sp">3-0</div><div class="sc">杰尔·5%</div></div>
+</div>
+</div>
+
+<div class="edge-row">
+<div class="edge-card" style="border-color:#ffd700"><div class="el">▸ 让球(-1)平 3.15</div><div class="ev hl">杰尔赢1球≈30% vs 竞彩<strong class="hl">27.7%</strong><br>Edge +8% · 串关高赔价值</div></div>
+</div>
+</div>
+
+<!-- ===== CL 202 ===== -->
+<div class="card"><div class="card-header">🏆 ④ 新圣徒 vs 萨巴赫 <span class="cl">CL资格赛</span> <span class="urgent">19:00截止</span></div>
+
+<div class="box box-b"><strong>① 让球 → 方向</strong><br>亚盘: 受让一球(+1.0)·新圣徒水0.85低水 → <span class="hl">萨巴赫胜≈65%</span> · 平局≈20% · 主胜≈15%</div>
+<div class="box box-b"><strong>② O/U → 总进球</strong><br>+1.0盘对应强势方·预计 ≥2球≈60%</div>
+
+<div class="box box-g"><strong>③ 比分概率</strong>
+<div class="score-bar">
+<div class="sb m"><div class="sp">0-1</div><div class="sc">萨巴赫·35%</div></div>
+<div class="sb m"><div class="sp">0-2</div><div class="sc">萨巴赫·20%</div></div>
+<div class="sb c"><div class="sp">1-1</div><div class="sc">平局·15%</div></div>
+<div class="sb"><div class="sp">1-2</div><div class="sc">萨巴赫·10%</div></div>
+<div class="sb c"><div class="sp">1-0</div><div class="sc">主胜·8%</div></div>
+</div>
+</div>
+
+<div class="edge-row">
+<div class="edge-card" style="border-color:#4ade80"><div class="el">▸ 不让球客胜 1.41</div><div class="ev g">方向65% vs 竞彩57.8%<br>Edge +12%</div></div>
+<div class="edge-card" style="border-color:#fbbf24"><div class="el">▸ 让球(+1)胜 2.43</div><div class="ev y">新圣徒+1不败≈80% vs 竞彩38.5%?<br>需重新核算</div></div>
+</div>
+</div>
+
+<!-- ===== PARLAY ===== -->
+<div class="card"><div class="card-header">🎯 串关推荐 · Edge加权</div>
+<table><tr><th>方案</th><th>组合(Edge)</th><th>赔率</th><th>联合Edge</th></tr>
+<tr><td class="l">稳健3-leg</td><td class="l">法主胜2.09(Edge+49%) × 英-1负1.46(+43%) × 杰尔-1平3.15(+8%)</td><td class="hl big">9.6倍</td><td class="g">★★★★☆</td></tr>
+<tr><td class="l">博冷3-leg</td><td class="l">法平3.06 × 英平2.75 × 杰尔平4.00</td><td class="hl big">33.7倍</td><td class="y">★★☆☆☆</td></tr>
+<tr><td class="l">稳单2-leg</td><td class="l">法-1负1.58(+48%) × 英-1负1.46(+43%)</td><td>2.3倍</td><td class="g">★★★★★</td></tr>
+</table>
+<div class="box box-y">稳健3-leg Edge分析: 三项总概率 ≈ 65%×85%×30% ≈ <span class="hl">16.6%</span> → 赔率9.6倍隐含约10.4% → 理论Edge ≈ 60%</div>
+</div>
+
+<div class="footer">v5.7 盘口→比分概率→Edge串关 | 竞彩17:12+titan007 18:06<br>⚠️ 法国/CL截止今晚19:00 | 概率为模型估算·非精确预测</div>
+</div></body></html>
