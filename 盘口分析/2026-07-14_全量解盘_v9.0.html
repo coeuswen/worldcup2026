@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="zh-CN">
+<head><meta charset="UTF-8"><title>v9.0 完整推导·透明数据</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei',sans-serif;background:#0a0e17;color:#d0d0d0;line-height:1.8;padding:20px}
+.container{max-width:980px;margin:0 auto}
+.header{text-align:center;padding:18px 0;border-bottom:2px solid #1e2a3a;margin-bottom:18px}
+.header h1{font-size:1.4em;color:#ffd700}.sub{color:#7a8ba0;font-size:.76em}
+.card{background:#111927;border:1px solid #1e2a3a;border-radius:14px;padding:20px;margin-bottom:16px}
+.card-header{font-size:1.05em;font-weight:bold;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #1e2a3a}
+.hl{color:#ffd700;font-weight:bold}.g{color:#4ade80}.r{color:#f87171}.y{color:#fbbf24}.b{color:#60a5fa}
+table{width:100%;border-collapse:collapse;margin:6px 0;font-size:.8em}
+th{background:#1a2a3a;padding:5px 7px;text-align:center;font-weight:600;color:#a0b0c0}
+td{padding:5px 7px;border-bottom:1px solid #1a2533;text-align:center}td.l{text-align:left}
+.box{background:#0d1520;border:1px solid #1e2a3a;border-radius:10px;padding:12px;margin:8px 0}
+.box-g{border-left:4px solid #4ade80;background:#0a1f1a}.box-r{border-left:4px solid #f87171;background:#2a0a0a}
+.box-y{border-left:4px solid #fbbf24;background:#1f1a0a}.box-b{border-left:4px solid #60a5fa;background:#0a1a2f}
+.big{font-size:1.1em;font-weight:bold}
+.step{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%;background:#1a2a3a;color:#ffd700;font-size:.72em;font-weight:bold;margin-right:4px}
+.sc3{display:flex;gap:14px;margin:10px 0;justify-content:center}
+.s3{flex:1;max-width:200px;background:#0d1520;border:2px solid #1e2a3a;border-radius:12px;padding:14px;text-align:center}
+.s3.sa{border-color:#4ade80;background:#0a1f1a}.s3.sb{border-color:#fbbf24;background:#1f1a0a}.s3.sc{border-color:#ff4757;background:#2a0a0a}
+.s3 .ss{font-size:1.8em;font-weight:bold;margin:4px 0}.sa .ss{color:#4ade80}.sb .ss{color:#fbbf24}.sc .ss{color:#ff4757}
+.s3 .sd{font-size:.7em;color:#7a8ba0}
+.data-label{color:#60a5fa;font-weight:bold;font-size:.78em;margin-top:6px;display:block}
+.footer{text-align:center;padding:12px;color:#5a6a7a;font-size:.7em;border-top:1px solid #1e2a3a;margin-top:16px}
+</style>
+</head><body><div class="container">
+
+<div class="header"><h1>v9.0 · 透明推导 · 数据→分析→结论</h1>
+<div class="sub">每场: 📊数据→🔍推导→✅结论→🎯3比分→🎲竞彩 | 7/14 19:46</div></div>
+
+<!-- ===== FRANCE ===== -->
+<div class="card"><div class="card-header">🇫🇷 ① 法国 vs 西班牙 🇪🇸 <span class="wc">世界杯半决赛</span></div>
+
+<span class="data-label">📊 数据</span>
+<table><tr><th colspan="2">亚盘(澳门/立博/威廉/Bet365/皇冠15家)</th></tr>
+<tr><td class="l">初盘</td><td class="l">法国-0.25平半·法水0.85-0.92(中低水)·西水0.98-1.05(高水)</td></tr>
+<tr><td class="l">即时</td><td class="l">法国-0.25平半·法水1.02(满水)·西水0.90(中水)→法水从初盘+0.17</td></tr>
+<tr><td class="l">趋势</td><td class="l">全程平半未变→无一家升半球或降平手→极稳定</td></tr></table>
+
+<table><tr><th colspan="4">O/U大小球</th></tr>
+<tr><td>公司</td><td>盘口线</td><td>初大球水</td><td>即大球水</td></tr>
+<tr><td>Bet365</td><td class="g">2/2.5→2.5升盘</td><td>0.85</td><td class="g">0.93</td></tr>
+<tr><td>澳门</td><td>2.5→2.5不变</td><td>0.92</td><td class="g">0.88(低水)</td></tr>
+<tr><td>立博</td><td>2.5→2.5不变</td><td>0.91</td><td class="g">0.85(低水)</td></tr>
+<tr><td>威廉</td><td>2.5→2.5不变</td><td class="r">1.05(超高)</td><td class="g">0.95(中)→降0.10</td></tr></table>
+<div class="box">解读: 盘口线2.5+大球水0.85-0.88低水→<span class="hl">市场预期≥3球(因为2.5球线=需要3球以上)</span></div>
+
+<table><tr><th colspan="6">💰 资金/热度</th></tr>
+<tr><td>指标</td><td>必发成交</td><td>竞彩投注</td><td>99家平均</td><td>冷热指数</td><td>庄家盈亏</td></tr>
+<tr><td>主胜</td><td>46.84%</td><td>50%</td><td>39.99%</td><td class="r">50大热</td><td class="r">-1509万</td></tr>
+<tr><td>平局</td><td>38.21%</td><td>33%</td><td>30.05%</td><td class="g">-43极冷</td><td class="g">+1330万</td></tr>
+<tr><td>客胜</td><td>14.96%</td><td>17%</td><td>29.96%</td><td>-24冷</td><td class="g">+702万</td></tr></table>
+<div class="box">大额: <span class="hl">200万$押西班牙90分钟不败</span></div>
+
+<span class="data-label">🔍 推导</span>
+<div class="box box-b"><span class="step">①</span>亚盘: 理论盘平~平半=实际盘-0.25→<span class="g">合理开盘</span>。水+0.17属正常波动，无诱盘。<br>
+<span class="step">②</span>O/U: 4家公司大球水全部下降(Bet365升盘)↓无一家升→<span class="g">偏大球方向</span>。预期2.5-3.0球。<br>
+<span class="step">③</span>资金: 竞彩50%买法国=合理热度(非过热)。但平局3.06被严重低估(冷热-43·必发38.2%)。<br>
+<span class="step">④</span>综合: 法国不败(合理开盘)+大球方向+平局价值洼地。</div>
+
+<span class="data-label">✅ 结论</span>
+<div class="sc3">
+<div class="s3 sa"><div class="ss">2-1</div><div class="sd">法国不败方向+大球3球</div></div>
+<div class="s3 sb"><div class="ss">2-2</div><div class="sd">平局价值+冷热-43+大球4球</div></div>
+<div class="s3 sc"><div class="ss">1-2</div><div class="sd">西班牙冷门+大球3球+200万$</div></div></div>
+<div class="box box-g"><strong>竞彩:</strong> <span class="hl">不让球平3.06(冷热-43·价值最大)</span> · <span class="y">让球(-1)负1.58(西班牙+1不败)</span></div>
+</div>
+
+<!-- ===== ENGLAND ===== -->
+<div class="card"><div class="card-header">🏴󠁧󠁢󠁥󠁮󠁧󠁿 ② 英格兰 vs 阿根廷 🇦🇷 <span class="wc">世界杯半决赛</span></div>
+
+<span class="data-label">📊 数据</span>
+<table><tr><th colspan="2">亚盘(15家公司)</th></tr>
+<tr><td class="l">初盘</td><td class="l">平手(0)·英水0.72-0.85(低水)·阿水1.05-1.19(高水)</td></tr>
+<tr><td class="l">即时</td><td class="l">平手(0)·英水0.79·阿水1.09→全天稳定·偶触平半即退</td></tr></table>
+
+<table><tr><th colspan="4">O/U(17家公司)</th></tr>
+<tr><td>公司</td><td>盘口线</td><td>初大球水</td><td>即大球水</td></tr>
+<tr><td class="r">Bet365</td><td class="r">2.5→2/2.5降盘</td><td>0.90</td><td class="r">1.10(高水)+0.20</td></tr>
+<tr><td class="r">立博</td><td>守2.5不降</td><td>1.05</td><td class="r">1.25(极高)+0.20</td></tr>
+<tr><td class="r">威廉</td><td>守2.5不降</td><td>1.00</td><td class="r">1.25(极高)+0.25</td></tr>
+<tr><td>其他14家</td><td>2/2.5</td><td>0.90-1.10</td><td class="r">1.00-1.10全部高水↑</td></tr></table>
+<div class="box">解读: 盘口线2/2.5+大球水1.10高水→<span class="r">预期≤2球(盘口线已降到2/2.5·高水=机构怕大球)</span></div>
+
+<table><tr><th colspan="5">💰 资金</th></tr>
+<tr><td>选项</td><td>竞彩投注</td><td>Opta预测</td><td>赔率隐含</td></tr>
+<tr><td>英格兰</td><td>41%</td><td>39.1%</td><td>36.9%</td></tr>
+<tr><td class="g">平局</td><td>37%</td><td>29.3%</td><td>31.5%</td></tr>
+<tr><td class="y">阿根廷</td><td class="y">22%</td><td class="y">31.6%</td><td>29.5%</td></tr></table>
+<div class="box">大额: <span class="hl">150万$押阿根廷晋级决赛</span></div>
+
+<span class="data-label">🔍 推导</span>
+<div class="box box-b"><span class="step">①</span>亚盘: 平手+英低水阿高水→市场微弱偏英格兰但绝不让球→<span class="g">均势</span>。<br>
+<span class="step">②</span>O/U: 17家中16家高水↑立博/威廉1.25极端=打死不赔大球→<span class="r">小球★★★★★</span>。<br>
+<span class="step">③</span>资金: 竞彩平37%最高·阿根廷22%vsOpta31.6%→阿被低估。<br>
+<span class="step">④</span>综合: 平手+小球+淘汰赛平率32%+平赔最高=<span class="hl">平局核心方向</span>。</div>
+
+<span class="data-label">✅ 结论</span>
+<div class="sc3">
+<div class="s3 sa"><div class="ss">1-1</div><div class="sd">平手盘+O/U小球+淘汰赛高平率</div></div>
+<div class="s3 sb"><div class="ss">0-0</div><div class="sd">立博/威廉1.25极端=极致小球</div></div>
+<div class="s3 sc"><div class="ss">0-1</div><div class="sd">高水1.19阻盘+阿被低估+150万$</div></div></div>
+<div class="box box-g"><strong>竞彩:</strong> <span class="hl big">不让球平2.75 ★★★★★</span> · <span class="y">让球(-1)负1.46</span></div>
+</div>
+
+<!-- ===== CL 201 ===== -->
+<div class="card"><div class="card-header">🏆 ③ 杰尔 vs 雷克维京 <span class="cl">欧冠资格赛</span></div>
+
+<span class="data-label">📊 数据</span>
+<table><tr><th colspan="2">亚盘</th></tr>
+<tr><td class="l">初盘</td><td class="l">杰尔-0.75半一·水0.83-0.93·曾反复跳盘(半球⇌半一)3天</td></tr>
+<tr><td class="l">即时</td><td class="l">杰尔-0.75半一·水0.86中低水</td></tr></table>
+
+<table><tr><th colspan="4">O/U</th></tr>
+<tr><td>公司</td><td>盘口线变化</td><td>初大球水</td><td>即大球水</td></tr>
+<tr><td>立博</td><td class="y">3.5→2.5 降1.0球</td><td>1.20(超高)</td><td>0.53(极低)</td></tr>
+<tr><td>Interwetten</td><td class="y">3.5→2.5 降1.0球</td><td>1.20(超高)</td><td>0.55(极低)</td></tr>
+<tr><td>澳门</td><td>守3.0不变</td><td>0.81</td><td class="g">0.70(低水)降</td></tr>
+<tr><td>多家(伟/盈/平)</td><td>3/3.5→3.0降0.25</td><td>0.83-0.94</td><td>0.81-0.84</td></tr></table>
+<div class="box">解读: 盘口线从3.5降到2.5=机构认为进球少·但大球水从1.20→0.53=却不怕大球→<span class="y">矛盾: 预期2.5-3.0球区间</span></div>
+
+<span class="data-label">🔍 推导</span>
+<div class="box box-b"><span class="step">①</span>亚盘: 半一+水0.86→杰尔被市场看好但反复跳盘3天=市场有分歧。<br>
+<span class="step">②</span>O/U: 立博降1.0(看进球少)但大球水从1.20→0.53(看大球)=<span class="y">矛盾信号→中性</span>。<br>
+<span class="step">③</span>综合: 杰尔胜方向+O/U分歧→比分需兼顾大小球两种可能。</div>
+
+<span class="data-label">✅ 结论</span>
+<div class="sc3">
+<div class="s3 sa"><div class="ss">1-0</div><div class="sd">杰尔小胜·半一中低水</div></div>
+<div class="s3 sb"><div class="ss">2-1</div><div class="sd">杰尔胜+大球分歧下3球</div></div>
+<div class="s3 sc"><div class="ss">0-0</div><div class="sd">跳盘3天=冷门</div></div></div>
+<div class="box box-g"><strong>竞彩:</strong> <span class="hl">让球(-1)平3.15(跳盘分歧下赢1球最稳)</span></div>
+</div>
+
+<!-- ===== CL 202 ===== -->
+<div class="card"><div class="card-header">🏆 ④ 新圣徒 vs 萨巴赫 <span class="cl">欧冠资格赛</span></div>
+
+<span class="data-label">📊 数据</span>
+<table><tr><th colspan="2">亚盘</th></tr>
+<tr><td class="l">初盘</td><td class="l">新圣徒+1.0受让一球·水0.76-0.85低水·偶变+0.75</td></tr>
+<tr><td class="l">即时</td><td class="l">+1.0·新圣徒水0.85低水·萨巴赫水0.97高水</td></tr></table>
+
+<table><tr><th colspan="4">O/U(17家公司)</th></tr>
+<tr><td>公司</td><td>盘口线变化</td><td>初大球水</td><td>即大球水</td></tr>
+<tr><td>1xBet</td><td class="y">3.5→2.5/3 降2档</td><td>1.35(极高)</td><td>0.73(低)</td></tr>
+<tr><td>Bet365</td><td>守3.0不变</td><td>0.80(低)</td><td class="r">1.03(高)↑+0.23</td></tr>
+<tr><td>立博</td><td>守2.5不变</td><td>0.53(极低)</td><td>0.61(持续低水)</td></tr>
+<tr><td>威廉</td><td>守2.5不变</td><td>0.57(极低)</td><td>0.62(持续低水)</td></tr>
+<tr><td>明/12/利/18/平</td><td class="y">3.0→2.5/3 6家降盘</td><td>0.85-0.98</td><td>0.77-0.87</td></tr></table>
+<div class="box">解读: 7家降盘(看进球少) ↔ 立/威守2.5低水(打死看≥2.5球)=<span class="y">分歧·预期2-3球</span></div>
+
+<span class="data-label">🔍 推导</span>
+<div class="box box-b"><span class="step">①</span>亚盘: +1.0低水→萨巴赫强方·但新圣徒+1被市场保护(低水)。<br>
+<span class="step">②</span>O/U: 降盘派(6家降盘=看进球少)vs低水派(立博/威廉/1xBet大球水从超高→低=看大球)=<span class="y">分歧大→中性</span>预期2.5-3.0。<br>
+<span class="step">③</span>综合: 萨巴赫方向+O/U中性→比分多样。</div>
+
+<span class="data-label">✅ 结论</span>
+<div class="sc3">
+<div class="s3 sa"><div class="ss">0-1</div><div class="sd">萨巴赫+1.0盘·赢1球最可能</div></div>
+<div class="s3 sb"><div class="ss">0-2</div><div class="sd">萨巴赫赢2球·竞彩客胜66%</div></div>
+<div class="s3 sc"><div class="ss">1-1</div><div class="sd">新圣徒+1低水保护</div></div></div>
+<div class="box box-g"><strong>竞彩:</strong> <span class="hl">让球(+1)胜2.43(Edge+82%)</span> · <span class="y">不让球客胜1.41</span></div>
+</div>
+
+<!-- ===== PARLAY ===== -->
+<div class="card"><div class="card-header">🎯 串关</div>
+<table><tr><th>方案</th><th>组合</th><th>赔率</th></tr>
+<tr><td class="l">双平三维共振</td><td class="l">法平3.06(冷热-43) × 英平2.75(O小球+淘汰赛)</td><td class="hl big">8.4倍</td></tr>
+<tr><td class="l">价值Edge</td><td class="l">英平2.75 × 新圣徒+1胜2.43</td><td>6.7倍</td></tr>
+<tr><td class="l">稳健3-leg</td><td class="l">法-1负1.58 × 英-1负1.46 × 杰尔-1平3.15</td><td class="hl">7.3倍</td></tr></table>
+</div>
+
+<div class="footer">v9.0 透明推导·每场:数据→分析→结论→3比分→竞彩 | sporttery 19:46·titan007·okooo必发</div>
+</div></body></html>
